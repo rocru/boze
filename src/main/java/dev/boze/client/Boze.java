@@ -59,6 +59,7 @@ import meteordevelopment.orbit.EventBus;
 import meteordevelopment.orbit.EventHandler;
 import meteordevelopment.orbit.IEventBus;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.impl.launch.knot.Knot;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.tutorial.TutorialStep;
@@ -282,7 +283,7 @@ public class Boze implements ModInitializer {
          String var4 = System.getProperty("os.name").toLowerCase();
          boolean var5 = var4.contains("nix") || var4.contains("nux") || var4.contains("aix");
          if (var5 && (!var3.exists() || !new File(var3, "lt").exists())) {
-            var3 = new File(Knot.gameDir, "cache");
+            var3 = new File(FabricLoader.getInstance().getGameDir().toString(), "cache");
          }
 
          File var6 = new File(var3, "lt");
