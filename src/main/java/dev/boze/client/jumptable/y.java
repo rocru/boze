@@ -2,7 +2,7 @@ package dev.boze.client.jumptable;
 
 import net.minecraft.util.math.Direction;
 
-class y {
+class y{
    static final int[] field2131 = new int[Direction.values().length];
 
    static {
