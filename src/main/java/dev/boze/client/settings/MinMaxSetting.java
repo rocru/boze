@@ -105,6 +105,7 @@ public class MinMaxSetting extends Setting<Double> {
       return this.field940 = this.field941;
    }
 
+   @Override
    public Double setValue(Double newVal) {
       if (!this.field945) {
          if (newVal > this.field943) {
@@ -129,7 +130,8 @@ public class MinMaxSetting extends Setting<Double> {
       return tag;
    }
 
-   public Double method438(NbtCompound tag) {
+   @Override
+   public Double load(NbtCompound tag) {
       if (tag.contains("Value")) {
          this.field940 = tag.getDouble("Value");
       }
@@ -139,31 +141,31 @@ public class MinMaxSetting extends Setting<Double> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method438(nbtCompound);
-   }
+   //@Override
+   //public Object load(NbtCompound nbtCompound) {
+   //   return this.method438(nbtCompound);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.setValue((Double)object);
-   }
+
+   // public Object setValue(Object object) {
+   //   return this.setValue((Double)object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.resetValue();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.resetValue();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.getValue();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.getValue();
+   //}
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
       this.setValue((Double)var1.getArgument("value", Double.class));
