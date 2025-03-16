@@ -188,8 +188,8 @@ class AutoCrystalRender implements IMinecraft, SettingsGroup {
             long var16 = this.field175.getElapsedTime();
             if ((float)var16 >= this.field166.method423() * 50.0F) {
                float var10 = 1.0F - ((float)var16 - this.field166.method423() * 50.0F) / (this.field167.method423() * 50.0F);
-               var13 = (BozeDrawColor)var13.method964().method197(var10);
-               var14 = (BozeDrawColor)var14.method964().method197(var10);
+               var13 = (BozeDrawColor)var13.copy().method197(var10);
+               var14 = (BozeDrawColor)var14.copy().method197(var10);
             }
          }
 

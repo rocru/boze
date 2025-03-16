@@ -103,7 +103,7 @@ public class PhaseESP extends Module {
       if (this.field467.method423() > 0.0F) {
          Box var10 = new Box(var8, var9);
          var10 = var10.expand((double)this.field467.method423().floatValue() * 0.5, 0.0, (double)this.field467.method423().floatValue() * 0.5);
-         BozeDrawColor var11 = var4.method964();
+         BozeDrawColor var11 = var4.copy();
          var11.field411 = (int)(this.field468.method423() * 255.0F);
          var1.field1950.method1273(var10, var11, var4, ShapeMode.Full, 0);
       } else {
@@ -141,7 +141,7 @@ public class PhaseESP extends Module {
       if (this.field467.method423() == 0.0F) {
          var1.method1235(var2, var3, var4);
       } else {
-         BozeDrawColor var8 = var4.method964();
+         BozeDrawColor var8 = var4.copy();
          var8.field411 = (int)(this.field468.method423() * 255.0F);
          var1.method1258(
             var2.x,

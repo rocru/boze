@@ -18,7 +18,7 @@ class eZ extends TextBaseComponent {
    protected void method1649(int button) {
       if (button == 0) {
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-         ColorSettingComponent.field1396 = this.field1198.method1362().method964();
+         ColorSettingComponent.field1396 = this.field1198.method1362().copy();
       }
    }
 }

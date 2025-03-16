@@ -20,7 +20,7 @@ class e5 extends TextBaseComponent {
    protected void method1649(int button) {
       if (button == 0) {
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-         RGBASettingComponent.field1482 = this.field1165.method1348().method1347();
+         RGBASettingComponent.field1482 = this.field1165.method1348().copy();
       }
    }
 }

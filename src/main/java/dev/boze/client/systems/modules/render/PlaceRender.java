@@ -92,10 +92,10 @@ public class PlaceRender extends Module {
             this.method2016(),
             this.field3621.method419(),
             this.field3630.method419()
-               ? (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().method964().method196(this.field3628.method1362().field411)
+               ? (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(this.field3628.method1362().field411)
                : this.field3628.method1362(),
             this.field3630.method419()
-               ? (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().method964().method196(this.field3629.method1362().field411)
+               ? (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(this.field3629.method1362().field411)
                : this.field3629.method1362(),
             this.field3625.method434(),
             this.field3626.method423(),
@@ -119,13 +119,13 @@ public class PlaceRender extends Module {
             float var10 = MathHelper.clamp(
                1.0F - ((float)(System.currentTimeMillis() - time) - (float)method2010() / 2.0F) / ((float)method2010() / 2.0F), 0.0F, 1.0F
             );
-            color = (BozeDrawColor)color.method964().method197((float)color.field411 * var10);
-            outline = (BozeDrawColor)outline.method964().method197((float)outline.field411 * var10);
+            color = (BozeDrawColor)color.copy().method197((float)color.field411 * var10);
+            outline = (BozeDrawColor)outline.copy().method197((float)outline.field411 * var10);
          }
 
          if (this.field3630.method419()) {
-            color = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().method964().method196(color.field411);
-            outline = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().method964().method196(outline.field411);
+            color = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(color.field411);
+            outline = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(outline.field411);
          }
 
          if (this.field3633.method419() && (double)(System.currentTimeMillis() - time) < (double)method2010() * this.field3634.getValue()) {
@@ -157,13 +157,13 @@ public class PlaceRender extends Module {
                float var8 = MathHelper.clamp(
                   1.0F - ((float)(System.currentTimeMillis() - renderPos.method1159()) - (float)method2010() / 2.0F) / ((float)method2010() / 2.0F), 0.0F, 1.0F
                );
-               color = (BozeDrawColor)color.method964().method196((int)((float)color.field411 * var8));
-               outline = (BozeDrawColor)outline.method964().method196((int)((float)outline.field411 * var8));
+               color = (BozeDrawColor)color.copy().method196((int)((float)color.field411 * var8));
+               outline = (BozeDrawColor)outline.copy().method196((int)((float)outline.field411 * var8));
             }
 
             if (this.field3630.method419()) {
-               color = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().method964().method196(color.field411);
-               outline = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().method964().method196(outline.field411);
+               color = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(color.field411);
+               outline = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(outline.field411);
             }
 
             Box var11 = new Box(

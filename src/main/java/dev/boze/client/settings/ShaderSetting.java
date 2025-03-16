@@ -50,13 +50,13 @@ public class ShaderSetting extends Setting<String> {
 
    public String method1562() {
       this.field964.method1649(this.field964.field48);
-      this.field964.method205(this.field964.field414.method964());
+      this.field964.method205(this.field964.field414.copy());
       this.field964.method67(this.field964.field415);
       this.field965.method206(this.field965.field53);
       this.field965.method1649(this.field965.field54);
       this.field965.method207(this.field965.field55);
       this.field965.method2325(this.field965.field56);
-      this.field965.method205(this.field965.field414.method964());
+      this.field965.method205(this.field965.field414.copy());
       this.field965.method67(this.field965.field415);
       return "";
    }

@@ -64,7 +64,7 @@ public class Class1174 extends ColorManager implements ISerializable<Class1174> 
    }
 
    public Class1174 method2326() {
-      return new Class1174(this.method1374().method964(), this.method2114(), this.field49, this.field50, this.field51, this.field52);
+      return new Class1174(this.method1374().copy(), this.method2114(), this.field49, this.field50, this.field51, this.field52);
    }
 
    @Override
@@ -80,7 +80,7 @@ public class Class1174 extends ColorManager implements ISerializable<Class1174> 
    }
 
    public Class1174 method2327(NbtCompound tag) {
-      this.method1374().method966(var1227.getCompound("color"));
+      this.method1374().fromTag(var1227.getCompound("color"));
       this.method67(var1227.getBoolean("sync"));
       this.field49 = var1227.getBoolean("fastRender");
       this.field50 = var1227.getInt("radius");

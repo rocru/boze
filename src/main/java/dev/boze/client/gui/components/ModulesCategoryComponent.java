@@ -224,7 +224,7 @@ public class ModulesCategoryComponent extends BaseComponent implements IMinecraf
             .render(
                this.field318 + var20.field203,
                this.field319 + var20.field204,
-               var20.field202 == this.field323 ? Theme.method1350() : Theme.method1350().method1347().method197(0.5F)
+               var20.field202 == this.field323 ? Theme.method1350() : Theme.method1350().copy().method197(0.5F)
             );
       }
 

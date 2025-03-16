@@ -307,10 +307,10 @@ public class HoleESP extends Module {
       boolean var10 = this.field859.method461() == HoleESPMode.Shader;
       if (!var10 && this.field874.method419()) {
          double var11 = this.method387(var2);
-         var3 = var3.method1347().method196((int)((double)var3.field411 * var11));
-         var4 = var3.method1347().method196((int)((double)var4.field411 * var11));
-         var5 = var5.method1347().method196((int)((double)var5.field411 * var11));
-         var6 = var5.method1347().method196((int)((double)var6.field411 * var11));
+         var3 = var3.copy().method196((int)((double)var3.field411 * var11));
+         var4 = var3.copy().method196((int)((double)var4.field411 * var11));
+         var5 = var5.copy().method196((int)((double)var5.field411 * var11));
+         var6 = var5.copy().method196((int)((double)var6.field411 * var11));
       }
 
       this.ap

@@ -16,49 +16,49 @@ public class RGBASetting extends Setting<RGBAColor> {
    public RGBASetting(String name, RGBAColor value, String description) {
       super(name, description);
       this.field957 = value;
-      this.field958 = value.method1347();
+      this.field958 = value.copy();
    }
 
    public RGBASetting(String name, RGBAColor value, String description, BooleanSupplier visibility) {
       super(name, description, visibility);
       this.field957 = value;
-      this.field958 = value.method1347();
+      this.field958 = value.copy();
    }
 
    public RGBASetting(String name, RGBAColor value, String description, Setting parent) {
       super(name, description, parent);
       this.field957 = value;
-      this.field958 = value.method1347();
+      this.field958 = value.copy();
    }
 
    public RGBASetting(String name, RGBAColor value, String description, BooleanSupplier visibility, Setting parent) {
       super(name, description, visibility, parent);
       this.field957 = value;
-      this.field958 = value.method1347();
+      this.field958 = value.copy();
    }
 
    public RGBASetting(String name, RGBAColor value, boolean rainbow, String description) {
       super(name, description);
       this.field957 = value;
-      this.field958 = value.method1347();
+      this.field958 = value.copy();
    }
 
    public RGBASetting(String name, RGBAColor value, boolean rainbow, String description, BooleanSupplier visibility) {
       super(name, description, visibility);
       this.field957 = value;
-      this.field958 = value.method1347();
+      this.field958 = value.copy();
    }
 
    public RGBASetting(String name, RGBAColor value, boolean rainbow, String description, Setting parent) {
       super(name, description, parent);
       this.field957 = value;
-      this.field958 = value.method1347();
+      this.field958 = value.copy();
    }
 
    public RGBASetting(String name, RGBAColor value, boolean rainbow, String description, BooleanSupplier visibility, Setting parent) {
       super(name, description, visibility, parent);
       this.field957 = value;
-      this.field958 = value.method1347();
+      this.field958 = value.copy();
    }
 
    public RGBAColor method1347() {
@@ -86,7 +86,7 @@ public class RGBASetting extends Setting<RGBAColor> {
    }
 
    public RGBAColor method1349() {
-      return this.field957 = this.field958.method1347();
+      return this.field957 = this.field958.copy();
    }
 
    public RGBAColor method198(RGBAColor newVal) {
@@ -128,7 +128,7 @@ public class RGBASetting extends Setting<RGBAColor> {
 
    public RGBAColor method201(NbtCompound tag) {
       if (tag.contains("Color")) {
-         this.field957.method201(tag.getCompound("Color"));
+         this.field957.fromTag(tag.getCompound("Color"));
       }
 
       if (tag.contains("Sync")) {

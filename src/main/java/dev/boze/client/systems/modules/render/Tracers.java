@@ -86,7 +86,7 @@ public class Tracers extends Module {
                   RGBAColor var10 = this.method342(var6, var8);
                   if (this.field668.method419()) {
                      double var11 = this.method1389(var8);
-                     var10 = var10.method1347().method196((int)((double)var10.field411 * var11));
+                     var10 = var10.copy().method196((int)((double)var10.field411 * var11));
                   }
 
                   if (var10 instanceof BozeDrawColor) {

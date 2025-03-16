@@ -55,8 +55,8 @@ class PoppedPlayerEntity extends FakePlayerEntity {
       if (var10 <= 0.0) {
          return true;
       } else {
-         BozeDrawColor var8 = this.field1279.field3643.method1362().method964();
-         BozeDrawColor var9 = this.field1279.field3644.method1362().method964();
+         BozeDrawColor var8 = this.field1279.field3643.method1362().copy();
+         BozeDrawColor var9 = this.field1279.field3644.method1362().copy();
          var8.field411 = (int)((double)var8.field411 * var10);
          var9.field411 = (int)((double)var9.field411 * var10);
          if (this.field1279.field3642.method419()) {

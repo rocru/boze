@@ -128,7 +128,7 @@ public class Theme extends Module {
 
    public static RGBAColor method1353() {
       return INSTANCE.field2433.method419() && INSTANCE.field2408.method1347().field411 > 200
-         ? INSTANCE.field2408.method1347().method1347().method196(200)
+         ? INSTANCE.field2408.method1347().copy().method196(200)
          : INSTANCE.field2408.method1347();
    }
 

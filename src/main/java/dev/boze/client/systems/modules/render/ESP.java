@@ -124,8 +124,8 @@ public class ESP extends Module {
 
    private void method1929(Renderer3D var1, float var2, Entity var3) {
       double var7 = this.method1932(var3);
-      BozeDrawColor var9 = this.method1935(var3).method964();
-      BozeDrawColor var10 = this.method1936(var3).method964();
+      BozeDrawColor var9 = this.method1935(var3).copy();
+      BozeDrawColor var10 = this.method1936(var3).copy();
       var9.field411 = (int)((double)var9.field411 * var7);
       var10.field411 = (int)((double)var10.field411 * var7);
       if (this.field3499.method461() != BoxDrawMode.Simple && !(var3 instanceof FlyingItemEntity)) {
@@ -178,8 +178,8 @@ public class ESP extends Module {
                   && !this.method1931(var7.maxX + var8, var7.maxY + var10, var7.maxZ + var12, this.am, this.an)) {
                   this.ap++;
                   double var14 = this.method1932(var6);
-                  BozeDrawColor var16 = this.method1935(var6).method964();
-                  BozeDrawColor var17 = this.method1936(var6).method964();
+                  BozeDrawColor var16 = this.method1935(var6).copy();
+                  BozeDrawColor var17 = this.method1936(var6).copy();
                   var16.field411 = (int)((double)var16.field411 * var14);
                   var17.field411 = (int)((double)var17.field411 * var14);
                   RenderUtil.field3965.method2253(this.am.x, this.am.y, this.an.x - this.am.x, this.an.y - this.am.y, var16);

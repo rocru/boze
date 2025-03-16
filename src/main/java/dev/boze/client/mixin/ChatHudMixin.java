@@ -169,7 +169,7 @@ public abstract class ChatHudMixin implements IChatHud {
             args.set(2, -MathHelper.ceil((double)var6 * var4));
          }
 
-         args.set(4, ExtraChat.INSTANCE.field2933.method1347().method1347().method196(RGBAColor.method188((Integer)args.get(4))).method2010());
+         args.set(4, ExtraChat.INSTANCE.field2933.method1347().copy().method196(RGBAColor.method188((Integer)args.get(4))).method2010());
       }
    }
 

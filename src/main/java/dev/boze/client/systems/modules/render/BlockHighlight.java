@@ -174,8 +174,8 @@ public class BlockHighlight extends Module {
 
    private void method1901(Box var1, long var2, Renderer3D var4) {
       float var7 = MathHelper.clamp(1.0F - (float)(System.currentTimeMillis() - var2) / (float)this.method1902(), 0.0F, 1.0F);
-      BozeDrawColor var8 = (BozeDrawColor)this.field3388.method1362().method964().method197(var7);
-      BozeDrawColor var9 = (BozeDrawColor)this.field3389.method1362().method964().method197(var7);
+      BozeDrawColor var8 = (BozeDrawColor)this.field3388.method1362().copy().method197(var7);
+      BozeDrawColor var9 = (BozeDrawColor)this.field3389.method1362().copy().method197(var7);
       var4.method1273(var1, var8, var9, ShapeMode.Full, 0);
    }
 

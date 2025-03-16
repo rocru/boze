@@ -430,7 +430,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
       }
 
       if (tag.contains("moduleColor")) {
-         this.rgbaColor.method201(tag.getCompound("moduleColor"));
+         this.rgbaColor.fromTag(tag.getCompound("moduleColor"));
       }
 
       if (tag.contains("visible")) {
@@ -499,7 +499,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
 
       if (tag.contains("ModuleColor")) {
          try {
-            this.rgbaColor.method201(tag.getCompound("ModuleColor"));
+            this.rgbaColor.fromTag(tag.getCompound("ModuleColor"));
          } catch (Exception var14) {
             ErrorLogger.log(var14);
             Boze.LOG.warn("Unable to load module " + this.internalName + "'s color from config");

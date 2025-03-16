@@ -31,10 +31,10 @@ public class HUDRenderer implements IMinecraft {
          if (var4) {
             double var14 = HUD.INSTANCE.field2376.getValue() * (double)Math.min(mc.getWindow().getScaledWidth(), mc.getWindow().getScaledHeight());
             RenderUtil.field3963.method2233();
-            RGBAColor var7 = FontLoader.field1063.method1347();
-            BozeDrawColor var8 = FontLoader.field1064.method964();
-            FontLoader.field1063.method198(HUD.INSTANCE.field2395.method1347());
-            FontLoader.field1064.method961(HUD.INSTANCE.field2396.method1362());
+            RGBAColor var7 = FontLoader.field1063.copy();
+            BozeDrawColor var8 = FontLoader.field1064.copy();
+            FontLoader.field1063.set(HUD.INSTANCE.field2395.method1347());
+            FontLoader.field1064.set(HUD.INSTANCE.field2396.method1362());
             IFontRender.method499().startBuilding(HUD.INSTANCE.field2375.getValue());
             boolean var9 = HUD.INSTANCE.field2394.method419();
             if (HUD.INSTANCE.field2397 == null) {
@@ -87,8 +87,8 @@ public class HUDRenderer implements IMinecraft {
                Scissor.disableScissor();
             }
 
-            FontLoader.field1063.method198(var7);
-            FontLoader.field1064.method961(var8);
+            FontLoader.field1063.set(var7);
+            FontLoader.field1064.set(var8);
          }
       }
    }

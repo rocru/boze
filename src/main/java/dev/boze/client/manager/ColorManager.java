@@ -11,7 +11,7 @@ public abstract class ColorManager {
 
    protected ColorManager(BozeDrawColor color) {
       this.field412 = color;
-      this.field414 = color.method964();
+      this.field414 = color.copy();
       this.field413 = false;
       this.field415 = false;
    }
@@ -19,7 +19,7 @@ public abstract class ColorManager {
    protected ColorManager(BozeDrawColor color, boolean sync) {
       this.field412 = color;
       this.field413 = sync;
-      this.field414 = color.method964();
+      this.field414 = color.copy();
       this.field415 = sync;
    }
 

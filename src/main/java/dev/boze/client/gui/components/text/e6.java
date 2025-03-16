@@ -20,7 +20,7 @@ class e6 extends TextBaseComponent {
    protected void method1649(int button) {
       if (button == 0 && RGBASettingComponent.field1482 != null) {
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-         this.field1167.method1348().method198(RGBASettingComponent.field1482);
+         this.field1167.method1348().set(RGBASettingComponent.field1482);
       }
    }
 }

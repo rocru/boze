@@ -110,8 +110,8 @@ public class StorageESP extends Module {
       for (BlockEntity var6 : this.method2032()) {
          if (this.method2035(var6)) {
             double var7 = this.method2034(var6);
-            RGBAColor var9 = this.method2036(var6).method1347();
-            RGBAColor var10 = this.method2037(var6).method1347();
+            RGBAColor var9 = this.method2036(var6).copy();
+            RGBAColor var10 = this.method2037(var6).copy();
             var9.field411 = (int)((double)var9.field411 * var7);
             var10.field411 = (int)((double)var10.field411 * var7);
             if (this.field3710.method419()) {

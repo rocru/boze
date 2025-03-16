@@ -13,25 +13,25 @@ public class ColorSetting extends Setting<BozeDrawColor> {
    public ColorSetting(String name, BozeDrawColor value, String description) {
       super(name, description);
       this.field979 = value;
-      this.field980 = value.method964();
+      this.field980 = value.copy();
    }
 
    public ColorSetting(String name, BozeDrawColor value, String description, BooleanSupplier visibility) {
       super(name, description, visibility);
       this.field979 = value;
-      this.field980 = value.method964();
+      this.field980 = value.copy();
    }
 
    public ColorSetting(String name, BozeDrawColor value, String description, Setting parent) {
       super(name, description, parent);
       this.field979 = value;
-      this.field980 = value.method964();
+      this.field980 = value.copy();
    }
 
    public ColorSetting(String name, BozeDrawColor value, String description, BooleanSupplier visibility, Setting parent) {
       super(name, description, visibility, parent);
       this.field979 = value;
-      this.field980 = value.method964();
+      this.field980 = value.copy();
    }
 
    public BozeDrawColor method1362() {
@@ -74,7 +74,7 @@ public class ColorSetting extends Setting<BozeDrawColor> {
 
    public BozeDrawColor method966(NbtCompound tag) {
       if (tag.contains("Color")) {
-         this.field979.method966(tag.getCompound("Color"));
+         this.field979.fromTag(tag.getCompound("Color"));
       }
 
       if (tag.contains("Sync")) {

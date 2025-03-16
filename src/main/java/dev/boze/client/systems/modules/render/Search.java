@@ -172,7 +172,7 @@ public class Search extends Module {
                RGBAColor var12 = this.method2025(var10);
                if (this.field3686.method419()) {
                   double var13 = this.method2026(var10);
-                  var12 = var12.method1347().method196((int)((double)var12.field411 * var13));
+                  var12 = var12.copy().method196((int)((double)var12.field411 * var13));
                }
 
                if (var12 instanceof BozeDrawColor) {

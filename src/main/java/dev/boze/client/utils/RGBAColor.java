@@ -322,7 +322,8 @@ public class RGBAColor implements ICopyable<RGBAColor>, ISerializable<RGBAColor>
       return this;
    }
 
-   public RGBAColor method198(RGBAColor var1) {
+   @Override
+   public RGBAColor set(RGBAColor var1) {
       this.field408 = var1.field408;
       this.field409 = var1.field409;
       this.field410 = var1.field410;
@@ -352,7 +353,8 @@ public class RGBAColor implements ICopyable<RGBAColor>, ISerializable<RGBAColor>
       }
    }
 
-   public RGBAColor method1347() {
+   @Override
+   public RGBAColor copy() {
       return new RGBAColor(this.field408, this.field409, this.field410, this.field411);
    }
 
@@ -400,7 +402,8 @@ public class RGBAColor implements ICopyable<RGBAColor>, ISerializable<RGBAColor>
       return var1;
    }
 
-   public RGBAColor method201(NbtCompound var1) {
+   @Override
+   public RGBAColor fromTag(NbtCompound var1) {
       this.field408 = var1.getInt("r");
       this.field409 = var1.getInt("g");
       this.field410 = var1.getInt("b");
@@ -414,29 +417,27 @@ public class RGBAColor implements ICopyable<RGBAColor>, ISerializable<RGBAColor>
    }
 
    public boolean method202(RGBAColor var1) {
-      return var1 == null
-         ? false
-         : this.field408 == var1.field408 && this.field409 == var1.field409 && this.field410 == var1.field410 && this.field411 == var1.field411;
+      return var1 != null && this.field408 == var1.field408 && this.field409 == var1.field409 && this.field410 == var1.field410 && this.field411 == var1.field411;
    }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public ICopyable copy() {
-      return this.method1347();
-   }
+   //@Override
+   //public ICopyable copy() {
+   //   return this.copy();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public ICopyable set(ICopyable var1) {
-      return this.method198((RGBAColor)var1);
-   }
+   //@Override
+   //public ICopyable set(ICopyable var1) {
+   //   return this.method198((RGBAColor)var1);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object fromTag(NbtCompound var1) {
-      return this.method201(var1);
-   }
+   //@Override
+   //public Object fromTag(NbtCompound var1) {
+   //   return this.fromTag(var1);
+   //}
 }

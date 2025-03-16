@@ -20,7 +20,7 @@ class ResetComponent extends TextBaseComponent {
    protected void method1649(int button) {
       if (button == 0) {
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-         this.field1172.method205(this.field1172.field414.method964());
+         this.field1172.method205(this.field1172.field414.copy());
       }
    }
 }

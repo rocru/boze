@@ -37,7 +37,7 @@ public class Class1147 extends ColorManager implements ISerializable<Class1147> 
    }
 
    public Class1147 method2266() {
-      return new Class1147(this.method1362().method964(), this.method2114(), this.field47);
+      return new Class1147(this.method1362().copy(), this.method2114(), this.field47);
    }
 
    @Override
@@ -50,7 +50,7 @@ public class Class1147 extends ColorManager implements ISerializable<Class1147> 
    }
 
    public Class1147 method2267(NbtCompound tag) {
-      this.method1374().method966(var1197.getCompound("color"));
+      this.method1374().fromTag(var1197.getCompound("color"));
       this.method67(var1197.getBoolean("sync"));
       this.field47 = var1197.getInt("blur");
       return this;

@@ -18,7 +18,7 @@ class e0 extends TextBaseComponent {
    protected void method1649(int button) {
       if (button == 0 && ColorSettingComponent.field1396 != null) {
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-         this.field1159.method1362().method961(ColorSettingComponent.field1396.method964());
+         this.field1159.method1362().set(ColorSettingComponent.field1396.copy());
       }
    }
 }
