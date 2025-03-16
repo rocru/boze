@@ -1,7 +1,7 @@
 package dev.boze.client.mixin;
 
 import dev.boze.client.events.KeyPressedEvent;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.option.KeyBinding;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin({KeyBinding.class})
 public abstract class KeyBindingMixin {
    @Shadow
-   public int timesPressed;
+   private int timesPressed;
    @Unique
    private boolean prevState = true;
 
@@ -25,7 +25,7 @@ public abstract class KeyBindingMixin {
    public void hookEventKeyBindingIsPressed(CallbackInfoReturnable<Boolean> cir) {
       boolean var2 = (Boolean)cir.getReturnValue();
       KeyPressedEvent var3 = KeyPressedEvent.method1066((KeyBinding)this, (Boolean)cir.getReturnValue());
-      Class27.EVENT_BUS.post(var3);
+      Boze.EVENT_BUS.post(var3);
       if (var3.method1069() && !this.prevState && !(Boolean)cir.getReturnValue() && var3.method1068()) {
          this.timesPressed++;
       }

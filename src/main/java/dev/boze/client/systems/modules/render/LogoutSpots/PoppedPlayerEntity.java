@@ -50,7 +50,7 @@ class PoppedPlayerEntity extends FakePlayerEntity {
       }
 
       this.lastRenderY = this.getY();
-      ((IVec3d)this.getPos()).setY(this.field1275 + (double)(System.currentTimeMillis() - this.field1274) * 0.01 * this.field1279.field3657.getValue());
+      ((IVec3d)this.getPos()).boze$setY(this.field1275 + (double)(System.currentTimeMillis() - this.field1274) * 0.01 * this.field1279.field3657.getValue());
       double var10 = 1.0 - (double)(System.currentTimeMillis() - this.field1274) * 0.001 * this.field1279.field3656.getValue();
       if (var10 <= 0.0) {
          return true;

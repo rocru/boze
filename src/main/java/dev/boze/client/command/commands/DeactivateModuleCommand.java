@@ -7,7 +7,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.boze.client.command.Command;
 import dev.boze.client.command.arguments.ModuleArgument;
 import dev.boze.client.systems.modules.Module;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 
 public class DeactivateModuleCommand extends Command {
@@ -29,7 +29,7 @@ public class DeactivateModuleCommand extends Command {
    }
 
    private static int lambda$build$4(CommandContext var0) throws CommandSyntaxException {
-      for (Module var5 : Class27.getModules().modules) {
+      for (Module var5 : Boze.getModules().modules) {
          var5.setNotify(false);
       }
 
@@ -37,7 +37,7 @@ public class DeactivateModuleCommand extends Command {
    }
 
    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
-      for (Module var5 : Class27.getModules().modules) {
+      for (Module var5 : Boze.getModules().modules) {
          var5.setNotify(true);
       }
 

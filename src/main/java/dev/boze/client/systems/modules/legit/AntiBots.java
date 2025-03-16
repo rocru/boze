@@ -34,7 +34,7 @@ public class AntiBots extends Module {
       } else if (INSTANCE.field996.method419() && player.age < INSTANCE.field997.method434()) {
          return true;
       } else if (INSTANCE.field998.method419() && player instanceof OtherClientPlayerEntity var4) {
-         return !((IOtherClientPlayerEntity)var4).hasMoved();
+         return !((IOtherClientPlayerEntity)var4).boze$hasMoved();
       } else if (INSTANCE.field999.method461() != AntiBotTabList.On) {
          return INSTANCE.field999.method461() == AntiBotTabList.ZeroPing ? Class5926.method100(player) == 0 : false;
       } else {

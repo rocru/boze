@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class5925;
 import net.minecraft.nbt.NbtCompound;
 import org.jetbrains.annotations.NotNull;
@@ -116,14 +116,14 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
                return false;
             }
 
-            Class27.LOG.debug("Enabling module " + this.internalName);
+            Boze.LOG.debug("Enabling module " + this.internalName);
             this.enabled = true;
-            Class27.EVENT_BUS.subscribe(this);
+            Boze.EVENT_BUS.subscribe(this);
             this.onEnable();
          } else {
-            Class27.LOG.debug("Disabling module " + this.internalName);
+            Boze.LOG.debug("Disabling module " + this.internalName);
             this.enabled = false;
-            Class27.EVENT_BUS.unsubscribe(this);
+            Boze.EVENT_BUS.unsubscribe(this);
             this.onDisable();
          }
 
@@ -480,7 +480,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
             this.setEnabled(tag.getBoolean("State"));
          } catch (Exception var16) {
             ErrorLogger.log(var16);
-            Class27.LOG.warn("Unable to load module state from config");
+            Boze.LOG.warn("Unable to load module state from config");
          }
       }
 
@@ -493,7 +493,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
             this.name = tag.getString("Title");
          } catch (Exception var15) {
             ErrorLogger.log(var15);
-            Class27.LOG.warn("Unable to load module " + this.internalName + "'s title from config");
+            Boze.LOG.warn("Unable to load module " + this.internalName + "'s title from config");
          }
       }
 
@@ -502,7 +502,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
             this.rgbaColor.method201(tag.getCompound("ModuleColor"));
          } catch (Exception var14) {
             ErrorLogger.log(var14);
-            Class27.LOG.warn("Unable to load module " + this.internalName + "'s color from config");
+            Boze.LOG.warn("Unable to load module " + this.internalName + "'s color from config");
          }
       }
 
@@ -511,7 +511,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
             this.onlyWhileHolding = tag.getBoolean("OnlyWhileHolding");
          } catch (Exception var13) {
             ErrorLogger.log(var13);
-            Class27.LOG.warn("Unable to load module " + this.internalName + "'s keybind type from config");
+            Boze.LOG.warn("Unable to load module " + this.internalName + "'s keybind type from config");
          }
       }
 
@@ -520,7 +520,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
             this.visible = tag.getBoolean("Visible");
          } catch (Exception var12) {
             ErrorLogger.log(var12);
-            Class27.LOG.warn("Unable to load module " + this.internalName + "'s visibility from config");
+            Boze.LOG.warn("Unable to load module " + this.internalName + "'s visibility from config");
          }
       }
 
@@ -529,7 +529,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
             this.notify = tag.getBoolean("Notify");
          } catch (Exception var11) {
             ErrorLogger.log(var11);
-            Class27.LOG.warn("Unable to load module " + this.internalName + "'s notifiability from config");
+            Boze.LOG.warn("Unable to load module " + this.internalName + "'s notifiability from config");
          }
       }
 
@@ -538,7 +538,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
             this.field434 = tag.getBoolean("Expanded");
          } catch (Exception var10) {
             ErrorLogger.log(var10);
-            Class27.LOG.warn("Unable to load module " + this.internalName + "'s gui state from config");
+            Boze.LOG.warn("Unable to load module " + this.internalName + "'s gui state from config");
          }
       }
 
@@ -550,7 +550,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
                   var6.fromTag(tag.getCompound(var7));
                } catch (Exception var9) {
                   ErrorLogger.log(var9);
-                  Class27.LOG.warn("Setting " + var6.name + " in module " + this.internalName + " could not be loaded from config");
+                  Boze.LOG.warn("Setting " + var6.name + " in module " + this.internalName + " could not be loaded from config");
                }
             }
          }
@@ -583,7 +583,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
                var6.deserialize(data.getAsJsonObject(var7));
             } catch (Exception var9) {
                ErrorLogger.log(var9);
-               Class27.LOG.warn("Setting " + var6.name + " in module " + this.internalName + " could not be loaded from local data");
+               Boze.LOG.warn("Setting " + var6.name + " in module " + this.internalName + " could not be loaded from local data");
             }
          }
       }

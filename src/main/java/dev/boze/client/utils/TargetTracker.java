@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import mapped.Class1204;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
@@ -100,7 +100,7 @@ public class TargetTracker implements IMinecraft {
                }
 
                Class1204 var6 = new Class1204(var5, (Integer)field1359.get(var5.getNameForScoreboard()));
-               Class27.EVENT_BUS.post(var6);
+               Boze.EVENT_BUS.post(var6);
             } catch (NullPointerException var7) {
             }
          }

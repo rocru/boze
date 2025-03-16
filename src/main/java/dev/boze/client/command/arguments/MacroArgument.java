@@ -12,12 +12,12 @@ import dev.boze.client.utils.Macro;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
 public class MacroArgument implements ArgumentType<Macro> {
-   private static final Collection<String> field1861 = (Collection<String>)Class27.getMacros()
+   private static final Collection<String> field1861 = (Collection<String>) Boze.getMacros()
       .field2140
       .stream()
       .limit(3L)
@@ -37,7 +37,7 @@ public class MacroArgument implements ArgumentType<Macro> {
       String var5 = reader.readString();
       Macro var6 = null;
 
-      for (Macro var8 : Class27.getMacros().field2140) {
+      for (Macro var8 : Boze.getMacros().field2140) {
          if (var8.method210().equalsIgnoreCase(var5)) {
             var6 = var8;
             break;
@@ -52,7 +52,7 @@ public class MacroArgument implements ArgumentType<Macro> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
-      return CommandSource.suggestMatching((Iterable)Class27.getMacros().field2140.stream().map(Macro::method210).collect(Collectors.toList()), builder);
+      return CommandSource.suggestMatching((Iterable) Boze.getMacros().field2140.stream().map(Macro::method210).collect(Collectors.toList()), builder);
    }
 
    public Collection<String> getExamples() {

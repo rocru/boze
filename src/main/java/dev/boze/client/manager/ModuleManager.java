@@ -250,7 +250,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2779;
 import mapped.Class2782;
 import mapped.Class5925;
@@ -265,7 +265,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
    public ServerConnectionHandler field907;
 
    public void init() {
-      Class27.LOG.debug("Initializing Modules");
+      Boze.LOG.debug("Initializing Modules");
       this.method396(NewRenderTest.INSTANCE);
       this.method396(Aura.INSTANCE);
       this.method396(AutoAnchor.INSTANCE);
@@ -294,7 +294,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
       this.method396(SelfTrap.INSTANCE);
       this.method396(Surround.INSTANCE);
       this.field906 = new PacketHandler();
-      Class27.EVENT_BUS.subscribe(this.field906);
+      Boze.EVENT_BUS.subscribe(this.field906);
       this.method396(AntiLevitation.INSTANCE);
       this.method396(AntiVoid.INSTANCE);
       this.method396(AutoFirework.INSTANCE);
@@ -342,7 +342,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
       this.method396(AutoReconnect.INSTANCE);
       this.method396(Regear.INSTANCE);
       this.field907 = new ServerConnectionHandler();
-      Class27.EVENT_BUS.subscribe(this.field907);
+      Boze.EVENT_BUS.subscribe(this.field907);
       this.method396(AutoRespawn.INSTANCE);
       this.method396(AutoScoreboard.INSTANCE);
       this.method396(AutoTool.INSTANCE);
@@ -437,7 +437,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
       this.method396(Media.INSTANCE);
       this.method396(Notifications.INSTANCE);
       this.method396(Options.INSTANCE);
-      Class27.EVENT_BUS.subscribe(Options.INSTANCE);
+      Boze.EVENT_BUS.subscribe(Options.INSTANCE);
       this.method396(Playtime.INSTANCE);
       this.method396(Profiles.INSTANCE);
       this.method396(Theme.INSTANCE);
@@ -495,9 +495,9 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
       this.method396(Ticks.INSTANCE);
       this.method396(Watermark.INSTANCE);
       this.method396(Welcomer.INSTANCE);
-      Class27.EVENT_BUS.subscribe(LatencyTracker.INSTANCE);
+      Boze.EVENT_BUS.subscribe(LatencyTracker.INSTANCE);
       this.method1416();
-      Class27.EVENT_BUS.subscribe(this);
+      Boze.EVENT_BUS.subscribe(this);
    }
 
    public Module method395(String name) {
@@ -588,7 +588,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
             }
          } catch (Exception var14) {
             ErrorLogger.log(var14);
-            Class27.LOG.error("Unable to register a setting for module " + module.internalName + ", this can lead to instability and crashes");
+            Boze.LOG.error("Unable to register a setting for module " + module.internalName + ", this can lead to instability and crashes");
          }
       }
 
@@ -877,7 +877,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
       if (tag.isEmpty()) {
          return this;
       } else {
-         Class27.LOG.debug("Loading modules config");
+         Boze.LOG.debug("Loading modules config");
          if (tag.contains("Magic")) {
             DebugCommand.field1378 = tag.getBoolean("Magic");
          }
@@ -891,7 +891,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
                && var7 != Options.INSTANCE
                && var7 != Colors.INSTANCE
                && tag.contains(var7.internalName)) {
-               Class27.LOG.debug("Loading config for module " + var7.internalName);
+               Boze.LOG.debug("Loading config for module " + var7.internalName);
 
                try {
                   var7.method235(tag.getCompound(var7.internalName));
@@ -900,11 +900,11 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
                      var7.bind.method180(tag.getCompound(var7.internalName).getCompound("Keybind"));
                   } catch (Exception var12) {
                      ErrorLogger.log(var12);
-                     Class27.LOG.warn("Unable to load module " + var7.internalName + "'s keybind from config");
+                     Boze.LOG.warn("Unable to load module " + var7.internalName + "'s keybind from config");
                   }
                } catch (Exception var13) {
                   ErrorLogger.log(var13);
-                  Class27.LOG.warn("Unknown error loading config for module " + var7.internalName);
+                  Boze.LOG.warn("Unknown error loading config for module " + var7.internalName);
                }
             }
          }
@@ -929,7 +929,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
                   }
                } catch (Exception var11) {
                   ErrorLogger.log(var11);
-                  Class27.LOG.warn("Unable to load state for category " + var9.name());
+                  Boze.LOG.warn("Unable to load state for category " + var9.name());
                }
             }
          }
@@ -989,7 +989,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
       if (data == null) {
          return this;
       } else {
-         Class27.LOG.debug("Loading local data");
+         Boze.LOG.debug("Loading local data");
 
          for (Module var6 : this.modules) {
             if (data.has(var6.internalName)) {

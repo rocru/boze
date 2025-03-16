@@ -23,7 +23,7 @@ import java.nio.file.Files;
 import java.util.Locale;
 import javax.net.ssl.HttpsURLConnection;
 import mapped.Class1201;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class5906;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtIo;
@@ -31,14 +31,14 @@ import org.apache.commons.io.IOUtils;
 
 public class ConfigManager {
    public static final String field2137 = "MAIN_PROFILE";
-   public static final File fonts = new File(Class27.FOLDER, "fonts");
-   public static final File images = new File(Class27.FOLDER, "images");
-   public static final File spammer = new File(Class27.FOLDER, "spammer");
-   public static final File sounds = new File(Class27.FOLDER, "sounds");
-   public static final File kits = new File(Class27.FOLDER, "kits");
-   public static final File capes = new File(Class27.FOLDER, "capes");
-   public static final File addons = new File(Class27.FOLDER, "addons");
-   public static final File news = new File(Class27.FOLDER, "news");
+   public static final File fonts = new File(Boze.FOLDER, "fonts");
+   public static final File images = new File(Boze.FOLDER, "images");
+   public static final File spammer = new File(Boze.FOLDER, "spammer");
+   public static final File sounds = new File(Boze.FOLDER, "sounds");
+   public static final File kits = new File(Boze.FOLDER, "kits");
+   public static final File capes = new File(Boze.FOLDER, "capes");
+   public static final File addons = new File(Boze.FOLDER, "addons");
+   public static final File news = new File(Boze.FOLDER, "news");
    public static String field2138 = "";
    public static boolean field2139 = false;
 
@@ -56,7 +56,7 @@ public class ConfigManager {
    }
 
    public static void createDirs() {
-      Class27.FOLDER.mkdir();
+      Boze.FOLDER.mkdir();
       fonts.mkdir();
       images.mkdir();
       spammer.mkdir();
@@ -69,15 +69,15 @@ public class ConfigManager {
 
    public static void save() {
       Class1201.method2383(false);
-      writeFile(Class27.FOLDER, "accounts", Class27.getAccounts().serialize());
-      writeFile(Class27.FOLDER, "macros", Class27.getMacros().serialize());
-      writeFile(Class27.FOLDER, "local-storage", Class5906.field1.serialize());
+      writeFile(Boze.FOLDER, "accounts", Boze.getAccounts().serialize());
+      writeFile(Boze.FOLDER, "macros", Boze.getMacros().serialize());
+      writeFile(Boze.FOLDER, "local-storage", Class5906.field1.serialize());
    }
 
    public static void load() {
-      Class27.getAccounts().method1136(readFile(Class27.FOLDER, "accounts"));
-      Class27.getMacros().method1150(readFile(Class27.FOLDER, "macros"));
-      Class5906.field1.method12(readFile(Class27.FOLDER, "local-storage"));
+      Boze.getAccounts().method1136(readFile(Boze.FOLDER, "accounts"));
+      Boze.getMacros().method1150(readFile(Boze.FOLDER, "macros"));
+      Class5906.field1.method12(readFile(Boze.FOLDER, "local-storage"));
    }
 
    public static void writeFile(File folder, String name, JsonObject object) {
@@ -136,7 +136,7 @@ public class ConfigManager {
          var8.close();
          int var10 = var7.getResponseCode();
          if (var10 != 200) {
-            Class27.LOG.warn("Unable to save " + name + ", this might result in some settings being reset/reverted");
+            Boze.LOG.warn("Unable to save " + name + ", this might result in some settings being reset/reverted");
          }
 
          var7.disconnect();
@@ -145,7 +145,7 @@ public class ConfigManager {
          }
       } catch (IOException var11) {
          ErrorLogger.log(var11);
-         Class27.LOG.warn("Error saving " + name + ", this might result in some settings being reset/reverted");
+         Boze.LOG.warn("Error saving " + name + ", this might result in some settings being reset/reverted");
       }
    }
 
@@ -168,7 +168,7 @@ public class ConfigManager {
          var7.close();
          int var9 = var6.getResponseCode();
          if (var9 != 200) {
-            Class27.LOG.warn("Unable to share " + name);
+            Boze.LOG.warn("Unable to share " + name);
          }
 
          BufferedReader var10 = new BufferedReader(new InputStreamReader(var6.getInputStream()));
@@ -177,7 +177,7 @@ public class ConfigManager {
          return var11;
       } catch (IOException var12) {
          ErrorLogger.log(var12);
-         Class27.LOG.warn("Unable to share " + name);
+         Boze.LOG.warn("Unable to share " + name);
          return null;
       }
    }
@@ -197,7 +197,7 @@ public class ConfigManager {
          return var6;
       } catch (IOException var7) {
          ErrorLogger.log(var7);
-         Class27.LOG.warn("Error loading " + name + ", this might result in some settings being reset/reverted");
+         Boze.LOG.warn("Error loading " + name + ", this might result in some settings being reset/reverted");
          return new NbtCompound();
       }
    }
@@ -214,7 +214,7 @@ public class ConfigManager {
          var5.setRequestProperty("CID", code);
          int var6 = var5.getResponseCode();
          if (var6 != 200) {
-            Class27.LOG.warn("Unable to load " + code);
+            Boze.LOG.warn("Unable to load " + code);
             var5.disconnect();
             return null;
          } else {
@@ -224,7 +224,7 @@ public class ConfigManager {
          }
       } catch (IOException var8) {
          ErrorLogger.log(var8);
-         Class27.LOG.warn("Error loading " + code);
+         Boze.LOG.warn("Error loading " + code);
          return new NbtCompound();
       }
    }
@@ -243,7 +243,7 @@ public class ConfigManager {
          return var5.split(",");
       } catch (IOException var6) {
          ErrorLogger.log(var6);
-         Class27.LOG
+         Boze.LOG
             .warn("Error loading list of " + tagType.name().toLowerCase(Locale.ROOT) + "s, this might result in some commands/GUIs not working properly");
          return new String[0];
       }
@@ -261,7 +261,7 @@ public class ConfigManager {
          var6.setRequestProperty("Name", name);
          int var7 = var6.getResponseCode();
          if (var7 != 200) {
-            Class27.LOG.warn("Unable to delete " + name);
+            Boze.LOG.warn("Unable to delete " + name);
          }
 
          var6.disconnect();
@@ -270,7 +270,7 @@ public class ConfigManager {
          }
       } catch (IOException var8) {
          ErrorLogger.log(var8);
-         Class27.LOG.warn("Error deleting " + name);
+         Boze.LOG.warn("Error deleting " + name);
       }
    }
 

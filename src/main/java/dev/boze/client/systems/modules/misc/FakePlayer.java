@@ -169,7 +169,7 @@ public class FakePlayer extends Module {
    @EventHandler
    private void method1711(PrePacketSendEvent var1) {
       if (var1.packet instanceof IPlayerInteractEntityC2SPacket var5
-         && var5.getType() == InteractType.ATTACK
+         && var5.boze$getType() == InteractType.ATTACK
          && this.fakePlayer.getId() == ((PlayerInteractEntityC2SPacketAccessor)var1.packet).getEntityId()) {
          var1.method1020();
          if (!Criticals.INSTANCE.isEnabled()

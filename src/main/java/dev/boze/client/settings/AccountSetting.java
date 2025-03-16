@@ -9,7 +9,7 @@ import dev.boze.client.systems.accounts.Account;
 import dev.boze.client.systems.accounts.types.MicrosoftAccount;
 import dev.boze.client.utils.IMinecraft;
 import java.util.Base64;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
 import org.lwjgl.glfw.GLFW;
@@ -91,8 +91,8 @@ public class AccountSetting extends Setting<String> implements IMinecraft {
    }
 
    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
-      ChatInstance.method624("Accounts: " + Class27.getAccounts().method1133());
-      Class27.getAccounts().method1135().forEach(AccountSetting::lambda$build$2);
+      ChatInstance.method624("Accounts: " + Boze.getAccounts().method1133());
+      Boze.getAccounts().method1135().forEach(AccountSetting::lambda$build$2);
       return 1;
    }
 
@@ -107,7 +107,7 @@ public class AccountSetting extends Setting<String> implements IMinecraft {
          String var6 = new String(var5);
          MicrosoftAccount var7 = new MicrosoftAccount(var6);
          if (var7.method2114()) {
-            Class27.getAccounts().method1130(var7);
+            Boze.getAccounts().method1130(var7);
             ChatInstance.method624("Added account " + var7.method210() + " from clipboard");
             return 1;
          }

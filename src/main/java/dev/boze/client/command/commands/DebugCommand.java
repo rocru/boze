@@ -20,7 +20,7 @@ import dev.boze.client.utils.InventoryDebugger;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 
 public class DebugCommand extends Command {
@@ -50,10 +50,10 @@ public class DebugCommand extends Command {
 
    private static int lambda$build$9(CommandContext var0) throws CommandSyntaxException {
       if (InventoryDebugger.field1628) {
-         Class27.EVENT_BUS.unsubscribe(InventoryDebugger.class);
+         Boze.EVENT_BUS.unsubscribe(InventoryDebugger.class);
          InventoryDebugger.field1628 = false;
       } else {
-         Class27.EVENT_BUS.subscribe(InventoryDebugger.class);
+         Boze.EVENT_BUS.subscribe(InventoryDebugger.class);
          InventoryDebugger.field1628 = true;
       }
 
@@ -62,7 +62,7 @@ public class DebugCommand extends Command {
 
    private static int lambda$build$8(CommandContext var0) throws CommandSyntaxException {
       try {
-         FileWriter var3 = new FileWriter(new File(Class27.FOLDER, "features.md"));
+         FileWriter var3 = new FileWriter(new File(Boze.FOLDER, "features.md"));
          ModulePrinter var4 = new ModulePrinter(var3);
          var4.method1328();
          var3.close();
@@ -74,7 +74,7 @@ public class DebugCommand extends Command {
 
    private int lambda$build$7(CommandContext var1) throws CommandSyntaxException {
       try {
-         JsonObject var4 = ConfigManager.readFile(Class27.FOLDER, "fakeplayer");
+         JsonObject var4 = ConfigManager.readFile(Boze.FOLDER, "fakeplayer");
          FakePlayer.INSTANCE.method1714(var4);
       } catch (Exception var5) {
          this.method626("Error loading path file, make sure it's .minecraft/Boze/fakeplayer.json", new Object[0]);
@@ -85,7 +85,7 @@ public class DebugCommand extends Command {
 
    private int lambda$build$6(CommandContext var1) throws CommandSyntaxException {
       JsonObject var4 = FakePlayer.INSTANCE.recordPositions();
-      ConfigManager.writeFile(Class27.FOLDER, "fakeplayer", var4);
+      ConfigManager.writeFile(Boze.FOLDER, "fakeplayer", var4);
       this.method624("Saved path to .minecraft/Boze", new Object[0]);
       return 1;
    }

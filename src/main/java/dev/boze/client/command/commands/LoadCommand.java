@@ -17,7 +17,7 @@ import dev.boze.client.systems.modules.client.Profiles;
 import dev.boze.client.utils.ConfigNBTSerializer;
 import java.util.ArrayList;
 import mapped.Class1201;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
@@ -50,13 +50,13 @@ public class LoadCommand extends Command {
             if (var2.contains("v2.modules")) {
                NbtCompound var10 = var2.getCompound("v2.modules");
 
-               for (Module var12 : Class27.getModules().modules) {
+               for (Module var12 : Boze.getModules().modules) {
                   if (var10.contains(var12.internalName)) {
                      ConfigNBTSerializer.method2137(var12, var10.getCompound(var12.internalName));
                   }
                }
             } else {
-               for (Module var17 : Class27.getModules().modules) {
+               for (Module var17 : Boze.getModules().modules) {
                   if (var2.contains(var17.internalName)) {
                      NbtCompound var21 = var2.getCompound(var17.internalName);
                      if (var21 != null) {
@@ -72,13 +72,13 @@ public class LoadCommand extends Command {
                if (var2.contains("v2.modules")) {
                   NbtCompound var14 = var2.getCompound("v2.modules");
 
-                  for (Module var22 : Class27.getModules().modules) {
+                  for (Module var22 : Boze.getModules().modules) {
                      if (var22.category == var9 && var14.contains(var22.internalName)) {
                         ConfigNBTSerializer.method2137(var22, var14.getCompound(var22.internalName));
                      }
                   }
                } else {
-                  for (Module var19 : Class27.getModules().modules) {
+                  for (Module var19 : Boze.getModules().modules) {
                      if (var19.category == var9 && var2.contains(var19.internalName)) {
                         NbtCompound var23 = var2.getCompound(var19.internalName);
                         if (var23 != null) {
@@ -88,7 +88,7 @@ public class LoadCommand extends Command {
                   }
                }
             } else {
-               Module var16 = Class27.getModules().method395(var8);
+               Module var16 = Boze.getModules().method395(var8);
                if (var16 == null) {
                   this.method626("Could not find module " + var8, new Object[0]);
                   return;
@@ -149,7 +149,7 @@ public class LoadCommand extends Command {
                Profiles.INSTANCE.field763.method1341(var21);
                Profiles.INSTANCE.field764.method1341(var22);
                Profiles.INSTANCE.field765.method1341(var23);
-               Class27.getModules().method398(var15, true);
+               Boze.getModules().method398(var15, true);
                Class1201.method2384(true, var19, var21, var22, var23);
                this.method624("Loaded profile (highlight)" + var17, new Object[0]);
                return 1;

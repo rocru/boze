@@ -20,7 +20,7 @@ import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.EntityUtil;
 import dev.boze.client.utils.world.BlockInteraction;
 import java.util.List;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2784;
 import mapped.Class2811;
 import mapped.Class3069;
@@ -89,7 +89,7 @@ public class SelfFill extends Module {
 
             if (this.field2567 != null) {
                IEndCrystalEntity var13 = (IEndCrystalEntity)this.field2567;
-               if ((double)(System.currentTimeMillis() - var13.getLastAttackTime()) < Class27.getModules().field905.field1519) {
+               if ((double)(System.currentTimeMillis() - var13.boze$getLastAttackTime()) < Boze.getModules().field905.field1519) {
                   this.field2567 = null;
                } else {
                   double var15 = Class3069.method6004(mc.player, this.field2567.getPos());
@@ -200,7 +200,7 @@ public class SelfFill extends Module {
                   mc.player.networkHandler.sendPacket(PlayerInteractEntityC2SPacket.attack(this.field2567, mc.player.isSneaking()));
                   mc.player.swingHand(Hand.MAIN_HAND);
                   IEndCrystalEntity var16 = (IEndCrystalEntity)this.field2567;
-                  var16.setLastAttackTime(System.currentTimeMillis());
+                  var16.boze$setLastAttackTime(System.currentTimeMillis());
                   this.field2567 = null;
                } else {
                   BlockPos var7 = var6.down();

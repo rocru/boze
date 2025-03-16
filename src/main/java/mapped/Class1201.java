@@ -1,5 +1,6 @@
 package mapped;
 
+import dev.boze.client.Boze;
 import dev.boze.client.enums.ConfigType;
 import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.settings.CurrentProfileSetting;
@@ -43,7 +44,7 @@ public class Class1201 {
          if (field58.isEmpty() && !field57.isEmpty()) {
             NbtCompound var6 = method2389("MAIN_PROFILE");
             if (var6 != null) {
-               Class27.getModules().method399(var6);
+               Boze.getModules().method399(var6);
             }
          }
 
@@ -53,10 +54,10 @@ public class Class1201 {
 
    private static NbtCompound method2379(String var0) {
       return switch (var0) {
-         case "v2.main." -> Class27.getModules().method225();
-         case "v2.visuals." -> Class27.getModules().method226();
-         case "v2.binds." -> Class27.getModules().method227();
-         case "v2.client." -> Class27.getModules().method228();
+         case "v2.main." -> Boze.getModules().method225();
+         case "v2.visuals." -> Boze.getModules().method226();
+         case "v2.binds." -> Boze.getModules().method227();
+         case "v2.client." -> Boze.getModules().method228();
          default -> throw new IllegalStateException("Unexpected value: " + var0);
       };
    }
@@ -65,16 +66,16 @@ public class Class1201 {
       if (var1254 != null) {
          switch (var1253) {
             case "v2.main.":
-               Class27.getModules().method232(var1254);
+               Boze.getModules().method232(var1254);
                break;
             case "v2.visuals.":
-               Class27.getModules().method394(var1254);
+               Boze.getModules().method394(var1254);
                break;
             case "v2.binds.":
-               Class27.getModules().method233(var1254);
+               Boze.getModules().method233(var1254);
                break;
             case "v2.client.":
-               Class27.getModules().method234(var1254);
+               Boze.getModules().method234(var1254);
          }
       }
    }
@@ -132,10 +133,10 @@ public class Class1201 {
    }
 
    public static void method2384(boolean thread, String main, String visuals, String binds, String client) {
-      NbtCompound var8 = Class27.getModules().method225();
-      NbtCompound var9 = Class27.getModules().method226();
-      NbtCompound var10 = Class27.getModules().method227();
-      NbtCompound var11 = Class27.getModules().method228();
+      NbtCompound var8 = Boze.getModules().method225();
+      NbtCompound var9 = Boze.getModules().method226();
+      NbtCompound var10 = Boze.getModules().method227();
+      NbtCompound var11 = Boze.getModules().method228();
       field58.add(var1262);
       field59.add(var1263);
       field60.add(var1264);
@@ -207,22 +208,22 @@ public class Class1201 {
       NbtCompound var9 = method2389(var1270);
       NbtCompound var10 = method2389(var1271);
       if (var7 != null) {
-         Class27.getModules().method232(var7);
+         Boze.getModules().method232(var7);
          field58.add(var1268);
       }
 
       if (var8 != null) {
-         Class27.getModules().method394(var8);
+         Boze.getModules().method394(var8);
          field59.add(var1269);
       }
 
       if (var9 != null) {
-         Class27.getModules().method233(var9);
+         Boze.getModules().method233(var9);
          field60.add(var1270);
       }
 
       if (var10 != null) {
-         Class27.getModules().method234(var10);
+         Boze.getModules().method234(var10);
          field61.add(var1271);
       }
    }

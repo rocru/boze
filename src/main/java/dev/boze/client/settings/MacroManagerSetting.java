@@ -2,7 +2,7 @@ package dev.boze.client.settings;
 
 import dev.boze.client.manager.MacroManager;
 import dev.boze.client.utils.IMinecraft;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.nbt.NbtCompound;
 
 public class MacroManagerSetting extends Setting<MacroManager> implements IMinecraft {
@@ -11,15 +11,15 @@ public class MacroManagerSetting extends Setting<MacroManager> implements IMinec
    }
 
    public MacroManager method449() {
-      return Class27.getMacros();
+      return Boze.getMacros();
    }
 
    public MacroManager method450() {
-      return Class27.getMacros();
+      return Boze.getMacros();
    }
 
    public MacroManager method451(MacroManager newVal) {
-      return Class27.getMacros();
+      return Boze.getMacros();
    }
 
    @Override
@@ -28,7 +28,7 @@ public class MacroManagerSetting extends Setting<MacroManager> implements IMinec
    }
 
    public MacroManager method452(NbtCompound tag) {
-      return Class27.getMacros();
+      return Boze.getMacros();
    }
 
    // $VF: synthetic method

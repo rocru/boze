@@ -16,7 +16,7 @@ public abstract class OtherClientPlayerEntityMixin extends PlayerEntityMixin imp
    private boolean hasMoved = false;
 
    @Override
-   public boolean doDamage(DamageSource source, float amount) {
+   public boolean boze$doDamage(DamageSource source, float amount) {
       return super.damage(source, amount);
    }
 
@@ -42,7 +42,7 @@ public abstract class OtherClientPlayerEntityMixin extends PlayerEntityMixin imp
    }
 
    @Override
-   public boolean hasMoved() {
+   public boolean boze$hasMoved() {
       return this.hasMoved;
    }
 }

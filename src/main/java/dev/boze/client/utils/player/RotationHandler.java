@@ -9,7 +9,7 @@ import dev.boze.client.events.ACRotationEvent;
 import dev.boze.client.events.RotationEvent;
 import dev.boze.client.mixin.ClientPlayerEntityAccessor;
 import dev.boze.client.utils.IMinecraft;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
@@ -22,7 +22,7 @@ public class RotationHandler implements IMinecraft {
    public void method2142() {
       if (mc.player != null && mc.interactionManager != null) {
          ACRotationEvent var4 = ACRotationEvent.method1016(AnticheatMode.Grim, method215(), method520());
-         Class27.EVENT_BUS.post(var4);
+         Boze.EVENT_BUS.post(var4);
          this.field1547 = var4.method1022();
          this.field1548 = var4.yaw;
          this.field1549 = var4.pitch;
@@ -39,7 +39,7 @@ public class RotationHandler implements IMinecraft {
    public void method1416() {
       if (mc.player != null && mc.interactionManager != null) {
          RotationEvent var4 = RotationEvent.method553(RotationMode.Vanilla, method215(), this.method1385(), method1954(), field1546.method2114());
-         Class27.EVENT_BUS.post(var4);
+         Boze.EVENT_BUS.post(var4);
          Interact var5 = Interact.get(var4.method2114());
          BozeInstance.INSTANCE.post(var5);
       }

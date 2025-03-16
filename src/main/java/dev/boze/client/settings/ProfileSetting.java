@@ -11,7 +11,7 @@ import dev.boze.client.systems.modules.client.Profiles;
 import java.util.Locale;
 import java.util.function.BooleanSupplier;
 import mapped.Class1201;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
 
@@ -118,7 +118,7 @@ public class ProfileSetting extends Setting<String> {
          Profiles.INSTANCE.field763.method1341(var7);
          Profiles.INSTANCE.field764.method1341(var8);
          Profiles.INSTANCE.field765.method1341(var9);
-         Class27.getModules().method398(ConfigManager.downloadConfig(var5, ConfigType.PROFILE), true);
+         Boze.getModules().method398(ConfigManager.downloadConfig(var5, ConfigType.PROFILE), true);
          Class1201.method2384(false, var6, var7, var8, var9);
          this.method1800("Migrated profile " + var5);
          return 1;

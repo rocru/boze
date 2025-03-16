@@ -7,7 +7,7 @@ import dev.boze.api.addon.command.AddonDispatcher;
 import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.utils.DebugHandler;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
 import org.spongepowered.asm.mixin.Mixin;
@@ -34,14 +34,14 @@ public abstract class ChatScreenMixin {
             for (AddonDispatcher var8 : BozeInstance.INSTANCE.getDispatchers()) {
                String var9 = var8.getPrefix() + "-";
                if (!var9.isEmpty() && var6.startsWith(var9)) {
-                  ParseResults var10 = var8.getDispatcher().parse(var6.substring(var9.length()), Class27.getCommands().method1141());
+                  ParseResults var10 = var8.getDispatcher().parse(var6.substring(var9.length()), Boze.getCommands().method1141());
                   var8.getDispatcher().execute(var10);
                   return;
                }
             }
 
             try {
-               Class27.getCommands().method1138(var1.substring(Options.method1563().length()));
+               Boze.getCommands().method1138(var1.substring(Options.method1563().length()));
             } catch (CommandSyntaxException var11) {
                ChatInstance.method626(var11.getMessage());
             }

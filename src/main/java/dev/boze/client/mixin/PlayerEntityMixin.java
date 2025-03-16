@@ -6,7 +6,7 @@ import dev.boze.client.events.PlayerGrimV3BypassEvent;
 import dev.boze.client.systems.modules.legit.Reach;
 import dev.boze.client.systems.modules.movement.Flight;
 import dev.boze.client.utils.player.RotationHandler;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2839;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity.RemovalReason;
@@ -53,7 +53,7 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
    )
    protected void clipAtLedge(CallbackInfoReturnable<Boolean> info) {
       if (((PlayerEntity)this).equals(MinecraftClient.getInstance().player)) {
-         ClipAtLedgeEvent var2 = (ClipAtLedgeEvent)Class27.EVENT_BUS.post(ClipAtLedgeEvent.method1055());
+         ClipAtLedgeEvent var2 = (ClipAtLedgeEvent) Boze.EVENT_BUS.post(ClipAtLedgeEvent.method1055());
          if (var2.method1022()) {
             info.setReturnValue(true);
          }
@@ -62,8 +62,7 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
 
    @Inject(
       method = {"travel"},
-      at = {@At("HEAD")},
-      cancellable = true
+      at = {@At("HEAD")}
    )
    private void onTravelPre(Vec3d var1, CallbackInfo var2) {
       if (MinecraftClient.getInstance().player != null) {
@@ -73,7 +72,7 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
                MinecraftClient.getInstance().player.setYaw(RotationHandler.field1546.method1384());
             } else {
                PlayerGrimV3BypassEvent var3 = PlayerGrimV3BypassEvent.method1079();
-               Class27.EVENT_BUS.post(var3);
+               Boze.EVENT_BUS.post(var3);
                Class2839.field112 = MinecraftClient.getInstance().player.getYaw();
                if (var3.method1022()) {
                   MinecraftClient.getInstance().player.setYaw(var3.yaw);
@@ -85,8 +84,7 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
 
    @Inject(
       method = {"travel"},
-      at = {@At("RETURN")},
-      cancellable = true
+      at = {@At("RETURN")}
    )
    private void onTravelPost(Vec3d var1, CallbackInfo var2) {
       if (MinecraftClient.getInstance().player != null) {
@@ -108,7 +106,7 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
                MinecraftClient.getInstance().player.setYaw(RotationHandler.field1546.method1384());
             } else {
                PlayerGrimV3BypassEvent var2 = PlayerGrimV3BypassEvent.method1079();
-               Class27.EVENT_BUS.post(var2);
+               Boze.EVENT_BUS.post(var2);
                Class2839.field112 = MinecraftClient.getInstance().player.getYaw();
                if (var2.method1022()) {
                   MinecraftClient.getInstance().player.setYaw(var2.yaw);

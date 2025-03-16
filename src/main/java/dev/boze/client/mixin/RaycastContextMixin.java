@@ -36,7 +36,7 @@ public class RaycastContextMixin implements IRaycastContext {
    private ShapeContext shapeContext;
 
    @Override
-   public void set(Vec3d start, Vec3d end, ShapeType shapeType, FluidHandling fluidHandling, Entity entity) {
+   public void boze$set(Vec3d start, Vec3d end, ShapeType shapeType, FluidHandling fluidHandling, Entity entity) {
       this.start = start;
       this.end = end;
       this.shapeType = shapeType;

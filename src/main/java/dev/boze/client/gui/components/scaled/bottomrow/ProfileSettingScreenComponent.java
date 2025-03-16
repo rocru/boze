@@ -14,7 +14,7 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.render.RenderUtil;
 import java.util.ArrayList;
 import mapped.Class1201;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
@@ -80,7 +80,7 @@ public class ProfileSettingScreenComponent extends BottomRowScaledComponent {
          Profiles.INSTANCE.field763.method1341(var22);
          Profiles.INSTANCE.field764.method1341(var23);
          Profiles.INSTANCE.field765.method1341(var24);
-         Class27.getModules().method398(ConfigManager.downloadConfig(var18, ConfigType.PROFILE), true);
+         Boze.getModules().method398(ConfigManager.downloadConfig(var18, ConfigType.PROFILE), true);
          Class1201.method2384(true, var21, var22, var23, var24);
          return true;
       } else {

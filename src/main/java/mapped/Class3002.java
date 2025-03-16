@@ -1,5 +1,6 @@
 package mapped;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.PacketBundleEvent;
 import dev.boze.client.mixin.PlayerPositionLookS2CPacketAccessor;
 import dev.boze.client.utils.IMinecraft;
@@ -20,7 +21,7 @@ class Class3002 {
          ((PlayerPositionLookS2CPacketAccessor)var4).setPitch(IMinecraft.mc.player.getPitch());
          var4.getFlags().remove(PositionFlag.X_ROT);
          var4.getFlags().remove(PositionFlag.Y_ROT);
-         Class27.EVENT_BUS.unsubscribe(Class3002.class);
+         Boze.EVENT_BUS.unsubscribe(Class3002.class);
       }
    }
 }

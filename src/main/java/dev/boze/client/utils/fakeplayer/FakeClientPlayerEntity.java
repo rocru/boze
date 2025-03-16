@@ -73,7 +73,7 @@ public class FakeClientPlayerEntity extends OtherClientPlayerEntity implements I
    }
 
    @Override
-   public boolean hasMoved() {
+   public boolean boze$hasMoved() {
       return true;
    }
 

@@ -13,7 +13,7 @@ import dev.boze.client.utils.RGBAColor;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 
 public class Binds extends HUDModule {
@@ -72,7 +72,7 @@ public class Binds extends HUDModule {
       int[] var6 = new int[]{1};
       boolean var7 = this.method2010() == 1 || this.method2010() == 2;
       boolean var8 = this.method2010() == 2 || this.method2010() == 4;
-      List var9 = (List)Class27.getModules().modules.stream().filter(Binds::lambda$onRender$0).collect(Collectors.toList());
+      List var9 = (List) Boze.getModules().modules.stream().filter(Binds::lambda$onRender$0).collect(Collectors.toList());
       this.field2605 = (float)var9.stream().mapToDouble(this::lambda$onRender$1).max().orElse(0.0);
       this.method314((double)this.field2605);
       var9.stream().sorted(Comparator.comparingDouble(this::lambda$onRender$2)).forEach(this::lambda$onRender$3);

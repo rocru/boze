@@ -11,7 +11,7 @@ import dev.boze.client.events.PostTickEvent;
 import dev.boze.client.utils.Timer;
 import java.util.ArrayList;
 import java.util.Collections;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.command.CommandSource;
 import net.minecraft.network.packet.c2s.play.RequestCommandCompletionsC2SPacket;
@@ -33,7 +33,7 @@ public class PluginsCommand extends Command {
    private void method1810(PostTickEvent var1) {
       if (this.field1384.hasElapsed(5000.0)) {
          this.method626("Request timed out", new Object[0]);
-         Class27.EVENT_BUS.unsubscribe(this);
+         Boze.EVENT_BUS.unsubscribe(this);
       }
    }
 
@@ -45,7 +45,7 @@ public class PluginsCommand extends Command {
             Suggestions var7 = var5.getSuggestions();
             if (var7 == null) {
                this.method626("No plugins found", new Object[0]);
-               Class27.EVENT_BUS.unsubscribe(this);
+               Boze.EVENT_BUS.unsubscribe(this);
                return;
             }
 
@@ -67,11 +67,11 @@ public class PluginsCommand extends Command {
                this.method626("No plugins found", new Object[0]);
             }
 
-            Class27.EVENT_BUS.unsubscribe(this);
+            Boze.EVENT_BUS.unsubscribe(this);
          }
       } catch (Exception var12) {
          this.method626("No plugins found", new Object[0]);
-         Class27.EVENT_BUS.unsubscribe(this);
+         Boze.EVENT_BUS.unsubscribe(this);
       }
    }
 
@@ -81,7 +81,7 @@ public class PluginsCommand extends Command {
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
       this.method624("Requesting suggestions...", new Object[0]);
-      Class27.EVENT_BUS.subscribe(this);
+      Boze.EVENT_BUS.subscribe(this);
       mc.player.networkHandler.sendPacket(new RequestCommandCompletionsC2SPacket(0, "/"));
       this.field1384.reset();
       return 1;

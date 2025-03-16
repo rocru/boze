@@ -73,7 +73,7 @@ public class PlaceHandler extends InteractionHandler {
             if (this.method150(null, var11) instanceof BlockHitResult var13) {
                if (this.method2116() && mc.player.isOnGround()) {
                   float[] var14 = EntityUtil.method2146(var13.getPos());
-                  ((IClientPlayerEntity)mc.player).sendMovementPackets(var14[0], var14[1]);
+                  ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(var14[0], var14[1]);
                }
 
                if (slot >= 0) {

@@ -6,7 +6,7 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.Timer;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -40,8 +40,8 @@ public class nh {
       if (MinecraftUtils.isClientActive()) {
          if (this.method1822() != -1) {
             if (!this.field3212) {
-               Class27.EVENT_BUS.subscribe(this.field3214.field1011);
-               Class27.EVENT_BUS.subscribe(this.field3213);
+               Boze.EVENT_BUS.subscribe(this.field3214.field1011);
+               Boze.EVENT_BUS.subscribe(this.field3213);
                this.field3213.field3215.setLastTime(0L);
                this.field3212 = true;
             }
@@ -50,7 +50,7 @@ public class nh {
    }
 
    public void method1820() {
-      Class27.EVENT_BUS.unsubscribe(this.field3214.field1011);
+      Boze.EVENT_BUS.unsubscribe(this.field3214.field1011);
       this.field3212 = false;
       this.field3213.field3215.reset();
       if (this.field3208 && this.field3210 && IMinecraft.mc.player.getEquippedStack(EquipmentSlot.CHEST).getItem() == Items.ELYTRA) {

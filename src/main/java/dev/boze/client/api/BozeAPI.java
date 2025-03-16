@@ -4,7 +4,7 @@ import dev.boze.api.Globals;
 import dev.boze.api.event.EventGrim.Interact;
 import dev.boze.client.manager.ConfigManager;
 import java.lang.reflect.Field;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class28;
 import net.minecraft.client.MinecraftClient;
 
@@ -23,7 +23,7 @@ public class BozeAPI {
          var4.setAccessible(true);
          var4.set(null, var1);
       } catch (IllegalAccessException | NoSuchFieldException var5) {
-         Class27.LOG.error("Failed to initialize Boze globals, exiting");
+         Boze.LOG.error("Failed to initialize Boze globals, exiting");
          MinecraftClient.getInstance().stop();
       }
    }
@@ -34,7 +34,7 @@ public class BozeAPI {
          var5.setAccessible(true);
          var5.set(null, var2);
       } catch (IllegalAccessException | NoSuchFieldException var6) {
-         Class27.LOG.error("Failed to initialize Boze globals, exiting");
+         Boze.LOG.error("Failed to initialize Boze globals, exiting");
          MinecraftClient.getInstance().stop();
       }
    }

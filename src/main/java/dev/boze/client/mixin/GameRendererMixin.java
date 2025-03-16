@@ -20,7 +20,7 @@ import dev.boze.client.systems.modules.render.NoRender;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.player.RotationHelper;
 import java.util.function.Predicate;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class3094;
 import mapped.Class5922;
 import net.minecraft.client.MinecraftClient;
@@ -63,7 +63,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 public abstract class GameRendererMixin {
    @Shadow
    @Final
-   private MinecraftClient client;
+   MinecraftClient client;
    @Shadow
    @Final
    public HeldItemRenderer firstPersonRenderer;
@@ -101,7 +101,7 @@ public abstract class GameRendererMixin {
       at = {@At("RETURN")}
    )
    private double boze$getFov$return(double var1) {
-      GetFovEvent var3 = (GetFovEvent)Class27.EVENT_BUS.post(GetFovEvent.method1063(var1));
+      GetFovEvent var3 = (GetFovEvent) Boze.EVENT_BUS.post(GetFovEvent.method1063(var1));
       return var3.field1922;
    }
 
@@ -206,7 +206,7 @@ public abstract class GameRendererMixin {
             this.matrices.pop();
             RenderSystem.applyModelViewMatrix();
             this.renderer.method1217();
-            Class27.EVENT_BUS.post(var6);
+            Boze.EVENT_BUS.post(var6);
             this.renderer.method1219(var5);
             RenderSystem.getModelViewStack().popMatrix();
             RenderSystem.applyModelViewMatrix();
@@ -277,7 +277,7 @@ public abstract class GameRendererMixin {
    public void onFindCrosshairTarget(
       Entity camera, double blockInteractionRange, double entityInteractionRange, float tickDelta, CallbackInfoReturnable<HitResult> cir
    ) {
-      CrosshairEvent var8 = (CrosshairEvent)Class27.EVENT_BUS.post(CrosshairEvent.method1023());
+      CrosshairEvent var8 = (CrosshairEvent) Boze.EVENT_BUS.post(CrosshairEvent.method1023());
       if (var8.method1022()) {
          double var9 = Math.max(blockInteractionRange, entityInteractionRange);
          Vec3d var11 = camera.getCameraPosVec(tickDelta);
@@ -299,7 +299,7 @@ public abstract class GameRendererMixin {
             && CrystalOptimizer.INSTANCE.isEnabled()
             && CrystalOptimizer.INSTANCE.field2789.method461() == CrystalOptimizerMode.EntityTrace
             && var10.getEntity() instanceof EndCrystalEntity
-            && System.currentTimeMillis() - ((IEndCrystalEntity)var10.getEntity()).getLastAttackTime() < 1000L
+            && System.currentTimeMillis() - ((IEndCrystalEntity)var10.getEntity()).boze$getLastAttackTime() < 1000L
          ? null
          : var10;
    }
@@ -350,6 +350,7 @@ public abstract class GameRendererMixin {
       }
    }
 
+   @Unique
    private final Vec3d getRotationVector(float var1, float var2) {
       float var3 = var1 * (float) (Math.PI / 180.0);
       float var4 = -var2 * (float) (Math.PI / 180.0);
@@ -360,14 +361,17 @@ public abstract class GameRendererMixin {
       return new Vec3d((double)(var6 * var7), (double)(-var8), (double)(var5 * var7));
    }
 
+   @Unique
    private static boolean lambda$onUpdateTargetedEntity$2(Entity var0) {
       return !var0.isSpectator() && var0.canHit();
    }
 
+   @Unique
    private static boolean lambda$onRaycastEntity$1(Entity var0) {
       return !var0.isSpectator() && var0.canHit();
    }
 
+   @Unique
    private static void lambda$onRenderHandRenderItem$0(HeldItemRenderer var0, float var1, MatrixStack var2, Immediate var3, ClientPlayerEntity var4, int var5) {
       var0.renderItem(var1, var2, var3, var4, var5);
    }

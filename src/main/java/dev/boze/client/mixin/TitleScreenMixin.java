@@ -6,7 +6,7 @@ import dev.boze.client.gui.screens.ClickGUI;
 import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.shaders.ShaderRegistry;
 import dev.boze.client.systems.modules.client.Options;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.AccessibilityOnboardingButtons;
 import net.minecraft.client.gui.screen.Screen;
@@ -26,23 +26,28 @@ import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({TitleScreen.class})
 public abstract class TitleScreenMixin extends Screen {
+   @Unique
    private int copyrightTextWidth;
+   @Unique
    private int copyrightTextX;
    @Shadow
    private RealmsNotificationsScreen realmsNotificationGui;
    @Shadow
    @Final
-   public static Text COPYRIGHT;
+   private static Text COPYRIGHT;
    @Shadow
    @Nullable
-   private SplashTextRenderer splashText;
+   public SplashTextRenderer splashText;
+   @Unique
    private static int aTX;
+   @Unique
    private static int aTY;
 
    @Shadow
@@ -119,8 +124,8 @@ public abstract class TitleScreenMixin extends Screen {
    public void onRender(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
       if (Options.INSTANCE.field985.method419()) {
          context.drawText(this.client.textRenderer, Text.literal("Boze " + Version.tag), 2, this.height - 20, -1, true);
-         if (!Class27.BUILD.isEmpty()) {
-            context.drawText(this.client.textRenderer, Text.literal("Build " + Class27.BUILD), 2, this.height - 30, -1, true);
+         if (!Boze.BUILD.isEmpty()) {
+            context.drawText(this.client.textRenderer, Text.literal("Build " + Boze.BUILD), 2, this.height - 30, -1, true);
          }
 
          if (this.client.getSession() != null) {
@@ -146,26 +151,32 @@ public abstract class TitleScreenMixin extends Screen {
       }
    }
 
+   @Unique
    private void lambda$onInit$5(ButtonWidget var1) {
       this.client.setScreen(new CreditsAndAttributionScreen(this));
    }
 
+   @Unique
    private void lambda$onInit$4(ButtonWidget var1) {
       this.client.setScreen(new AccessibilityOptionsScreen(this, this.client.options));
    }
 
+   @Unique
    private void lambda$onInit$3(ButtonWidget var1) {
       this.client.scheduleStop();
    }
 
+   @Unique
    private void lambda$onInit$2(ButtonWidget var1) {
       this.client.setScreen(new OptionsScreen(this, this.client.options));
    }
 
+   @Unique
    private void lambda$onInit$1(ButtonWidget var1) {
       this.client.setScreen(new LanguageOptionsScreen(this, this.client.options, this.client.getLanguageManager()));
    }
 
+   @Unique
    private void lambda$onInit$0(ButtonWidget var1) {
       ClickGUI.field1335.field1332 = GUIMenu.Normal;
       this.client.setScreen(ClickGUI.field1335);

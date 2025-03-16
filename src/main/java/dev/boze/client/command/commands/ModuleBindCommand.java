@@ -8,7 +8,7 @@ import dev.boze.client.command.arguments.ModuleArgument;
 import dev.boze.client.events.Render3DEvent;
 import dev.boze.client.gui.screens.BindSelectorScreen;
 import dev.boze.client.systems.modules.Module;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.command.CommandSource;
 
@@ -28,14 +28,14 @@ public class ModuleBindCommand extends Command {
    public void method2071(Render3DEvent event) {
       if (mc.currentScreen == null) {
          mc.setScreen(new BindSelectorScreen(this.module));
-         Class27.EVENT_BUS.unsubscribe(this);
+         Boze.EVENT_BUS.unsubscribe(this);
       }
    }
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
       this.module = ModuleArgument.method1004(var1, "module");
       if (this.module != null) {
-         Class27.EVENT_BUS.subscribe(this);
+         Boze.EVENT_BUS.subscribe(this);
       }
 
       return 1;

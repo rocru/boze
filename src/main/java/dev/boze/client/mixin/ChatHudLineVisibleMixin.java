@@ -33,34 +33,32 @@ public abstract class ChatHudLineVisibleMixin implements IChatHudLineVisible {
    }
 
    @Override
-   public String getText() {
-      StringBuilder var1 = new StringBuilder();
-      this.content.accept(ChatHudLineVisibleMixin::lambda$getText$0);
-      return var1.toString();
+   public String boze$getText() {
+      StringBuilder builder = new StringBuilder();
+      this.content.accept((index, style, codePoint) -> {
+         builder.appendCodePoint(codePoint);
+         return true;
+      });
+      return builder.toString();
    }
 
    @Override
-   public GameProfile getSenderProfile() {
+   public GameProfile boze$getSenderProfile() {
       return this.sender;
    }
 
    @Override
-   public void setSenderProfile(GameProfile profile) {
+   public void boze$setSenderProfile(GameProfile profile) {
       this.sender = profile;
    }
 
    @Override
-   public boolean isFirst() {
+   public boolean boze$isFirst() {
       return this.first;
    }
 
    @Override
-   public void setFirst(boolean first) {
+   public void boze$setFirst(boolean first) {
       this.first = first;
-   }
-
-   private static boolean lambda$getText$0(StringBuilder var0, int var1, Style var2, int var3) {
-      var0.appendCodePoint(var3);
-      return true;
    }
 }

@@ -11,7 +11,7 @@ import dev.boze.client.systems.modules.movement.ElytraBoost;
 import dev.boze.client.systems.modules.movement.ElytraRecast;
 import dev.boze.client.systems.modules.movement.NoSlow;
 import dev.boze.client.systems.modules.render.HandTweaks;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;
@@ -39,7 +39,7 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
    @Unique
    private Vec3d lastServerPos;
    @Shadow
-   private int jumpingCooldown;
+   public int jumpingCooldown;
    @Shadow
    protected double serverX;
    @Shadow
@@ -58,17 +58,17 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
    public abstract StatusEffectInstance getStatusEffect(RegistryEntry<StatusEffect> var1);
 
    @Override
-   public long getDamageSyncTime() {
+   public long boze$getDamageSyncTime() {
       return this.damageSyncTime;
    }
 
    @Override
-   public void setDamageSyncTime(long damageSyncTime) {
+   public void boze$setDamageSyncTime(long damageSyncTime) {
       this.damageSyncTime = damageSyncTime;
    }
 
    @Override
-   public Vec3d getLastServerPos() {
+   public Vec3d boze$getLastServerPos() {
       return this.lastServerPos;
    }
 
@@ -117,7 +117,7 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
    private void onTravel(Vec3d var1, CallbackInfo var2) {
       if (this instanceof ClientPlayerEntity) {
          PlayerTravelEvent var3 = PlayerTravelEvent.method1047();
-         Class27.EVENT_BUS.post(var3);
+         Boze.EVENT_BUS.post(var3);
          if (var3.method1022()) {
             var2.cancel();
          }
@@ -184,7 +184,7 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
    )
    private void onCanWalkOnFluid(FluidState var1, CallbackInfoReturnable<Boolean> var2) {
       if (this == MinecraftClient.getInstance().player) {
-         CanWalkOnFluidEvent var3 = (CanWalkOnFluidEvent)Class27.EVENT_BUS.post(CanWalkOnFluidEvent.method1049(var1));
+         CanWalkOnFluidEvent var3 = (CanWalkOnFluidEvent) Boze.EVENT_BUS.post(CanWalkOnFluidEvent.method1049(var1));
          var2.setReturnValue(var3.method1022());
       }
    }

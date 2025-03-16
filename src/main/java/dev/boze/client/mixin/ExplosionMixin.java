@@ -27,15 +27,15 @@ public class ExplosionMixin implements IExplosion {
    @Shadow
    @Final
    @Mutable
-   private double field2143;
+   private double x;
    @Shadow
    @Final
    @Mutable
-   private double field2144;
+   private double y;
    @Shadow
    @Final
    @Mutable
-   private double field2145;
+   private double z;
    @Shadow
    @Final
    @Mutable
@@ -50,12 +50,12 @@ public class ExplosionMixin implements IExplosion {
    private DestructionType destructionType;
 
    @Override
-   public void set(Vec3d pos, float power, boolean createFire) {
+   public void boze$set(Vec3d pos, float power, boolean createFire) {
       this.world = IMinecraft.mc.world;
       this.entity = null;
-      this.field2143 = pos.x;
-      this.field2144 = pos.y;
-      this.field2145 = pos.z;
+      this.x = pos.x;
+      this.y = pos.y;
+      this.z = pos.z;
       this.power = power;
       this.createFire = createFire;
       this.destructionType = DestructionType.DESTROY;

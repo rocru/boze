@@ -41,7 +41,7 @@ import dev.boze.client.utils.render.RenderUtil;
 import java.util.ArrayList;
 import java.util.Locale;
 import mapped.Class1201;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2779;
 import mapped.Class2782;
 import mapped.Class3077;
@@ -529,7 +529,7 @@ public class ClickGUI extends Screen implements IMinecraft {
                )
             );
 
-         for (Module var7 : Class27.getModules().modules) {
+         for (Module var7 : Boze.getModules().modules) {
             if (var7 instanceof HUDModule) {
                this.field1341.add((HUDModule)var7);
             }
@@ -712,7 +712,7 @@ public class ClickGUI extends Screen implements IMinecraft {
    public void close() {
       Class5928.method112(CursorType.Normal);
 
-      for (Module var5 : Class27.getModules().modules) {
+      for (Module var5 : Boze.getModules().modules) {
          for (Setting var7 : var5.method1144()) {
             if (var7 instanceof SettingBlock var8) {
                var8.method421(false);

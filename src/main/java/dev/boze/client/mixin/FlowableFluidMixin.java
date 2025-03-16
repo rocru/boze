@@ -2,7 +2,7 @@ package dev.boze.client.mixin;
 
 import dev.boze.client.events.PlayerVelocityEvent;
 import java.util.Iterator;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.util.math.Direction;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,7 +20,7 @@ public class FlowableFluidMixin {
       )
    )
    public boolean onGetVelocity(Iterator<Direction> var9) {
-      PlayerVelocityEvent var2 = (PlayerVelocityEvent)Class27.EVENT_BUS.post(PlayerVelocityEvent.method1048(true));
+      PlayerVelocityEvent var2 = (PlayerVelocityEvent) Boze.EVENT_BUS.post(PlayerVelocityEvent.method1048(true));
       return var2.method1022() ? false : var9.hasNext();
    }
 }

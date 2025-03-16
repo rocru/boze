@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class3069;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
@@ -173,8 +173,8 @@ public class TrapUtil implements IMinecraft {
             BlockPos var45 = var42.getBlockPos().offset(var42.getSide());
             List var49 = mc.world.getOtherEntities(null, new Box(var45), TrapUtil::lambda$getNextNActions$2);
             if (!var49.isEmpty() && var49.get(0) instanceof EndCrystalEntity var52) {
-               long var56 = ((IEndCrystalEntity)var52).getLastAttackTime();
-               if ((double)(System.currentTimeMillis() - var56) > Class27.getModules().field905.field1519) {
+               long var56 = ((IEndCrystalEntity)var52).boze$getLastAttackTime();
+               if ((double)(System.currentTimeMillis() - var56) > Boze.getModules().field905.field1519) {
                   double var20 = Class3069.method6004(mc.player, var52.getPos());
                   if (var20 >= (double)(mc.player.getHealth() + mc.player.getAbsorptionAmount()) || helper.method148() == CrystalAttackMode.Off) {
                      continue;

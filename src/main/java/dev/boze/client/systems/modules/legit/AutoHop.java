@@ -18,7 +18,7 @@ public class AutoHop extends Module {
 
    @EventHandler
    public void method1588(TickInputPostEvent event) {
-      if (!mc.player.isInLava() && !((IEntity)mc.player).isInWater() && (event.field1954 != 0.0F || event.field1953 != 0.0F)) {
+      if (!mc.player.isInLava() && !((IEntity)mc.player).boze$isInWater() && (event.field1954 != 0.0F || event.field1953 != 0.0F)) {
          if (mc.player.getAbilities().allowFlying && !mc.player.isOnGround()) {
             return;
          }

@@ -14,35 +14,35 @@ public class Vec3dMixin implements IVec3d {
    @Shadow
    @Final
    @Mutable
-   public double field2146;
+   public double x;
    @Shadow
    @Final
    @Mutable
-   public double field2147;
+   public double y;
    @Shadow
    @Final
    @Mutable
-   public double field2148;
+   public double z;
 
    @Override
-   public void set(double x, double y, double z) {
-      this.field2146 = x;
-      this.field2147 = y;
-      this.field2148 = z;
+   public void boze$set(double x, double y, double z) {
+      this.x = x;
+      this.y = y;
+      this.z = z;
    }
 
    @Override
-   public void set(Vec3i vec) {
-      this.set((double)vec.getX(), (double)vec.getY(), (double)vec.getZ());
+   public void boze$set(Vec3i vec) {
+      this.boze$set((double)vec.getX(), (double)vec.getY(), (double)vec.getZ());
    }
 
    @Override
-   public void set(Vector3d vec) {
-      this.set(vec.x, vec.y, vec.z);
+   public void boze$set(Vector3d vec) {
+      this.boze$set(vec.x, vec.y, vec.z);
    }
 
    @Override
-   public void setY(double y) {
-      this.field2147 = y;
+   public void boze$setY(double y) {
+      this.y = y;
    }
 }

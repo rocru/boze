@@ -6,7 +6,7 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.ShulkerColorUtil;
 import dev.boze.client.utils.StackDeserializer;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.ShulkerBoxScreen;
@@ -28,7 +28,7 @@ public class PeekScreen extends ShulkerBoxScreen implements IMinecraft {
       if (field1354 != null && mc.currentScreen == null) {
          mc.setScreen(field1354);
          field1354 = null;
-         Class27.EVENT_BUS.unsubscribe(PeekScreen.class);
+         Boze.EVENT_BUS.unsubscribe(PeekScreen.class);
       }
    }
 
@@ -84,7 +84,7 @@ public class PeekScreen extends ShulkerBoxScreen implements IMinecraft {
          StackDeserializer.method670(itemStack, contents);
          if (pause) {
             field1354 = new PeekScreen(itemStack, contents);
-            Class27.EVENT_BUS.subscribe(PeekScreen.class);
+            Boze.EVENT_BUS.subscribe(PeekScreen.class);
          } else {
             mc.setScreen(new PeekScreen(itemStack, contents));
          }

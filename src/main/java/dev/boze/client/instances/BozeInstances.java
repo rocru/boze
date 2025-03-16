@@ -10,7 +10,7 @@ import dev.boze.client.instances.impl.JsonInstance;
 import dev.boze.client.instances.impl.ModulesInstance;
 import dev.boze.client.instances.impl.RenderInstance;
 import java.lang.reflect.Field;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 
 public class BozeInstances {
@@ -31,7 +31,7 @@ public class BozeInstances {
          var4.setAccessible(true);
          var4.set(null, var1);
       } catch (IllegalAccessException | NoSuchFieldException var5) {
-         Class27.LOG.error("Failed to initialize Boze instances, exiting");
+         Boze.LOG.error("Failed to initialize Boze instances, exiting");
          MinecraftClient.getInstance().stop();
       }
    }

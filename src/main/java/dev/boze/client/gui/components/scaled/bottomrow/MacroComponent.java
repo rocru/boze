@@ -10,7 +10,7 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.Macro;
 import dev.boze.client.utils.render.RenderUtil;
 import java.util.ArrayList;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
@@ -23,7 +23,7 @@ public class MacroComponent extends BottomRowScaledComponent {
       super(setting.name, BottomRow.AddClose, 0.1, 0.4);
       this.field1452 = setting;
 
-      for (Macro var6 : Class27.getMacros().field2140) {
+      for (Macro var6 : Boze.getMacros().field2140) {
          this.field1453.add(var6.field1048);
       }
    }

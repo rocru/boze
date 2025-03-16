@@ -14,7 +14,7 @@ import dev.boze.client.systems.modules.misc.AutoTool.qG;
 import dev.boze.client.utils.FoodUtil;
 import dev.boze.client.utils.InventoryUtil;
 import dev.boze.client.utils.world.BlockBreakingUtil;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -135,7 +135,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
    )
    private void onAttackBlock(BlockPos var1, Direction var2, CallbackInfoReturnable<Boolean> var3) {
       PreBlockBreakEvent var4 = PreBlockBreakEvent.method1033(var1, var2, this.blockBreakingCooldown, this.currentBreakingProgress, true);
-      Class27.EVENT_BUS.post(var4);
+      Boze.EVENT_BUS.post(var4);
       this.blockBreakingCooldown = var4.method1028();
       this.currentBreakingProgress = var4.method1030();
       if (var4.method1022()) {
@@ -160,7 +160,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
    )
    private void onAttackBlockPost(BlockPos var1, Direction var2, CallbackInfoReturnable<Boolean> var3) {
       PostBlockBreakEvent var4 = PostBlockBreakEvent.method1032(var1, var2, this.blockBreakingCooldown, this.currentBreakingProgress);
-      Class27.EVENT_BUS.post(var4);
+      Boze.EVENT_BUS.post(var4);
    }
 
    @Inject(
@@ -170,7 +170,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
    )
    private void onUpdateBlockBreakingProgress(BlockPos var1, Direction var2, CallbackInfoReturnable<Boolean> var3) {
       PreBlockBreakEvent var4 = PreBlockBreakEvent.method1033(var1, var2, this.blockBreakingCooldown, this.currentBreakingProgress, false);
-      Class27.EVENT_BUS.post(var4);
+      Boze.EVENT_BUS.post(var4);
       this.blockBreakingCooldown = var4.method1028();
       this.currentBreakingProgress = var4.method1030();
       if (var4.method1022()) {
@@ -200,7 +200,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
    )
    private void onUpdateBlockBreakingProgressPost(BlockPos var1, Direction var2, CallbackInfoReturnable<Boolean> var3) {
       PostBlockBreakEvent var4 = PostBlockBreakEvent.method1032(var1, var2, this.blockBreakingCooldown, this.currentBreakingProgress);
-      Class27.EVENT_BUS.post(var4);
+      Boze.EVENT_BUS.post(var4);
    }
 
    @Redirect(
@@ -222,7 +222,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
       cancellable = true
    )
    private void onAttackEntityPre(PlayerEntity var1, Entity var2, CallbackInfo var3) {
-      if (((PreAttackEntityEvent)Class27.EVENT_BUS.post(PreAttackEntityEvent.method1089(var2))).method1022()) {
+      if (((PreAttackEntityEvent) Boze.EVENT_BUS.post(PreAttackEntityEvent.method1089(var2))).method1022()) {
          var3.cancel();
       }
    }
@@ -233,7 +233,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
       cancellable = true
    )
    private void onAttackEntityPost(PlayerEntity var1, Entity var2, CallbackInfo var3) {
-      if (((PostAttackEntityEvent)Class27.EVENT_BUS.post(PostAttackEntityEvent.method1084(var2))).method1022()) {
+      if (((PostAttackEntityEvent) Boze.EVENT_BUS.post(PostAttackEntityEvent.method1084(var2))).method1022()) {
          var3.cancel();
       }
    }

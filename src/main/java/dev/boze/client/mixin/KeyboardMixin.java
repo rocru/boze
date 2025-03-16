@@ -3,7 +3,7 @@ package dev.boze.client.mixin;
 import dev.boze.client.enums.KeyAction;
 import dev.boze.client.events.KeyEvent;
 import dev.boze.client.gui.screens.ClickGUI;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class3077;
 import mapped.Class5928;
 import net.minecraft.client.Keyboard;
@@ -23,7 +23,7 @@ public abstract class KeyboardMixin {
    public void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo ci) {
       if (key != -1 && !Class3077.field174) {
          Class5928.method1738(key, action != 0);
-         if (((KeyEvent)Class27.EVENT_BUS.post(KeyEvent.method1065(key, modifiers, KeyAction.method816(action)))).method1022()) {
+         if (((KeyEvent) Boze.EVENT_BUS.post(KeyEvent.method1065(key, modifiers, KeyAction.method816(action)))).method1022()) {
             ci.cancel();
          }
       }

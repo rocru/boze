@@ -10,7 +10,7 @@ import dev.boze.client.systems.accounts.Account;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 
 class AccountArgument implements ArgumentType<Account<?>> {
@@ -24,7 +24,7 @@ class AccountArgument implements ArgumentType<Account<?>> {
    public Account<?> method973(StringReader reader) throws CommandSyntaxException {
       String var5 = reader.readString();
 
-      for (Account var7 : Class27.getAccounts().method1135()) {
+      for (Account var7 : Boze.getAccounts().method1135()) {
          if (var7.method210().equalsIgnoreCase(var5)) {
             return var7;
          }
@@ -39,12 +39,12 @@ class AccountArgument implements ArgumentType<Account<?>> {
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
       return CommandSource.suggestMatching(
-         (Iterable)Class27.getAccounts().method1135().stream().map(AccountArgument::lambda$listSuggestions$0).collect(Collectors.toList()), builder
+         (Iterable) Boze.getAccounts().method1135().stream().map(AccountArgument::lambda$listSuggestions$0).collect(Collectors.toList()), builder
       );
    }
 
    public Collection<String> getExamples() {
-      return (Collection<String>)Class27.getAccounts().method1135().stream().limit(3L).map(AccountArgument::lambda$getExamples$1).collect(Collectors.toList());
+      return (Collection<String>) Boze.getAccounts().method1135().stream().limit(3L).map(AccountArgument::lambda$getExamples$1).collect(Collectors.toList());
    }
 
    // $VF: synthetic method

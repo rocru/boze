@@ -21,7 +21,7 @@ import dev.boze.client.utils.ConfigNBTSerializer;
 import dev.boze.client.utils.network.BozeExecutor;
 import java.util.ArrayList;
 import java.util.Locale;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
 import org.lwjgl.glfw.GLFW;
@@ -71,7 +71,7 @@ public class ConfigCommand extends Command {
       NbtCompound var7 = ConfigNBTSerializer.method2140(var6, var1);
       NbtCompound var8 = new NbtCompound();
 
-      for (Module var10 : Class27.getModules().modules) {
+      for (Module var10 : Boze.getModules().modules) {
          if (var10.category == var1) {
             var8.put(var10.internalName, ConfigNBTSerializer.method2136(var10));
          }
@@ -90,7 +90,7 @@ public class ConfigCommand extends Command {
       NbtCompound var6 = ConfigNBTSerializer.method2141(var5);
       NbtCompound var7 = new NbtCompound();
 
-      for (Module var9 : Class27.getModules().modules) {
+      for (Module var9 : Boze.getModules().modules) {
          if (var9 != Friends.INSTANCE && var9 != Waypoints.INSTANCE && var9 != Accounts.INSTANCE && var9 != Profiles.INSTANCE) {
             var7.put(var9.internalName, ConfigNBTSerializer.method2136(var9));
          }
@@ -138,13 +138,13 @@ public class ConfigCommand extends Command {
                   if (var17.contains("v2.modules")) {
                      NbtCompound var21 = var17.getCompound("v2.modules");
 
-                     for (Module var28 : Class27.getModules().modules) {
+                     for (Module var28 : Boze.getModules().modules) {
                         if (var21.contains(var28.internalName)) {
                            ConfigNBTSerializer.method2137(var28, var21.getCompound(var28.internalName));
                         }
                      }
                   } else {
-                     for (Module var24 : Class27.getModules().modules) {
+                     for (Module var24 : Boze.getModules().modules) {
                         if (var17.contains(var24.internalName)) {
                            NbtCompound var27 = var17.getCompound(var24.internalName);
                            if (var27 != null) {
@@ -163,13 +163,13 @@ public class ConfigCommand extends Command {
                      if (var16.contains("v2.modules")) {
                         NbtCompound var19 = var16.getCompound("v2.modules");
 
-                        for (Module var26 : Class27.getModules().modules) {
+                        for (Module var26 : Boze.getModules().modules) {
                            if (var26.category == var11 && var19.contains(var26.internalName)) {
                               ConfigNBTSerializer.method2137(var26, var19.getCompound(var26.internalName));
                            }
                         }
                      } else {
-                        for (Module var22 : Class27.getModules().modules) {
+                        for (Module var22 : Boze.getModules().modules) {
                            if (var22.category == var11 && var16.contains(var22.internalName)) {
                               NbtCompound var15 = var16.getCompound(var22.internalName);
                               if (var15 != null) {
@@ -180,7 +180,7 @@ public class ConfigCommand extends Command {
                      }
                   }
                } else {
-                  Module var12 = Class27.getModules().method395(var10);
+                  Module var12 = Boze.getModules().method395(var10);
                   NbtCompound var13 = ConfigManager.downloadConfig(var9, ConfigType.CONFIG);
                   if (var13 != null) {
                      if (var13.contains("v2.data")) {

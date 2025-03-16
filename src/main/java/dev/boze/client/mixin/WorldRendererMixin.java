@@ -18,7 +18,7 @@ import dev.boze.client.systems.modules.render.FullBright;
 import dev.boze.client.systems.modules.render.MotionBlur;
 import dev.boze.client.systems.modules.render.NoRender;
 import dev.boze.client.utils.RGBAColor;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class3032;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
@@ -113,7 +113,7 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
       RenderTickCounter var1, boolean var2, Camera var3, GameRenderer var4, LightmapTextureManager var5, Matrix4f var6, Matrix4f var7, CallbackInfo var8
    ) {
       if (RenderSystem.isOnRenderThread()) {
-         Class27.EVENT_BUS.post(PostRender.method1086(var1.getTickDelta(true)));
+         Boze.EVENT_BUS.post(PostRender.method1086(var1.getTickDelta(true)));
       }
    }
 
@@ -191,7 +191,7 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
    }
 
    @Override
-   public void renderEntitiesForChams(float tickDelta, MatrixStack matrices, Camera camera) {
+   public void boze$renderEntitiesForChams(float tickDelta, MatrixStack matrices, Camera camera) {
       Vec3d var4 = camera.getPos();
       double var5 = var4.getX();
       double var7 = var4.getY();

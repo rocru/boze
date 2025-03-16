@@ -44,7 +44,7 @@ import dev.boze.client.utils.TrapUtil;
 import dev.boze.client.utils.trackers.BlockBreakingTracker;
 import java.util.HashMap;
 import mapped.Class1202;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2784;
 import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
@@ -104,8 +104,8 @@ public class Surround extends Module {
          "Surrounds your feet with obsidian, which protects you from explosions\nIf no Obsidian, will use Ender Chests or other blast proof blocks\n",
          Category.Combat
       );
-      Class27.EVENT_BUS.subscribe(this.field2570);
-      Class27.EVENT_BUS.subscribe(this.field2573);
+      Boze.EVENT_BUS.subscribe(this.field2570);
+      Boze.EVENT_BUS.subscribe(this.field2573);
       this.field435 = true;
       this.addSettings(this.field2570.field224);
    }
@@ -337,7 +337,7 @@ public class Surround extends Module {
                            }
 
                            float[] var14 = EntityUtil.method2146(var8.getPos());
-                           ((IClientPlayerEntity)mc.player).sendMovementPackets(var14[0], var14[1]);
+                           ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(var14[0], var14[1]);
                         }
 
                         if (var12 == AttackMode.Vanilla) {
@@ -368,14 +368,14 @@ public class Surround extends Module {
                         }
 
                         float[] var19 = EntityUtil.method2146(var8.getPos());
-                        ((IClientPlayerEntity)mc.player).sendMovementPackets(var19[0], var19[1]);
+                        ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(var19[0], var19[1]);
                      }
 
                      method1530(String.format("Attacking crystal at (%d, %d, %d)", (int)var18.getX(), (int)var18.getY(), (int)var18.getZ()));
                      mc.player.networkHandler.sendPacket(PlayerInteractEntityC2SPacket.attack(var18, mc.player.isSneaking()));
                      mc.player.swingHand(Hand.MAIN_HAND);
                      IEndCrystalEntity var20 = (IEndCrystalEntity)var18;
-                     var20.setLastAttackTime(System.currentTimeMillis());
+                     var20.boze$setLastAttackTime(System.currentTimeMillis());
                      var15 = 2;
                   }
                }

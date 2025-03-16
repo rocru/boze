@@ -2,7 +2,7 @@ package dev.boze.client.font;
 
 import java.io.IOException;
 import java.io.InputStream;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
@@ -17,7 +17,7 @@ public class IconManager {
                .getInputStream();
             field1979 = new FontLoader(var3);
          } catch (IOException var4) {
-            Class27.LOG.error("Failed to load icons font");
+            Boze.LOG.error("Failed to load icons font");
          }
       }
    }

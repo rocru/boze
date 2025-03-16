@@ -7,7 +7,7 @@ import dev.boze.client.systems.modules.render.Chams;
 import dev.boze.client.systems.modules.render.ESP;
 import dev.boze.client.systems.modules.render.FreeCam;
 import dev.boze.client.utils.RGBAColor;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -19,6 +19,7 @@ import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
@@ -29,6 +30,7 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin({LivingEntityRenderer.class})
 public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extends EntityModel<T>> {
+   @Unique
    private float lastPartialTick;
 
    @Shadow
@@ -47,7 +49,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
    }
 
    @ModifyVariable(
-      method = {"render"},
+      method = {"render*"},
       ordinal = 2,
       at = @At(
          value = "STORE",
@@ -55,15 +57,15 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
       )
    )
    private float calculateRenderBodyYaw(float var1, LivingEntity var2) {
-      return !Class27.isInventory && !Options.field993 && var2 == MinecraftClient.getInstance().player && MinecraftClient.getInstance().player != null
+      return !Boze.isInventory && !Options.field993 && var2 == MinecraftClient.getInstance().player && MinecraftClient.getInstance().player != null
          ? MathHelper.lerpAngleDegrees(
-            this.lastPartialTick, Class27.prevLastYaw, ((ClientPlayerEntityAccessor)MinecraftClient.getInstance().player).getLastYaw()
+            this.lastPartialTick, Boze.prevLastYaw, ((ClientPlayerEntityAccessor)MinecraftClient.getInstance().player).getLastYaw()
          )
          : var1;
    }
 
    @ModifyVariable(
-      method = {"render"},
+      method = {"render*"},
       ordinal = 3,
       at = @At(
          value = "STORE",
@@ -71,15 +73,15 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
       )
    )
    private float calculateRenderHeadYaw(float var1, LivingEntity var2) {
-      return !Class27.isInventory && !Options.field993 && var2 == MinecraftClient.getInstance().player && MinecraftClient.getInstance().player != null
+      return !Boze.isInventory && !Options.field993 && var2 == MinecraftClient.getInstance().player && MinecraftClient.getInstance().player != null
          ? MathHelper.lerpAngleDegrees(
-            this.lastPartialTick, Class27.prevLastYaw, ((ClientPlayerEntityAccessor)MinecraftClient.getInstance().player).getLastYaw()
+            this.lastPartialTick, Boze.prevLastYaw, ((ClientPlayerEntityAccessor)MinecraftClient.getInstance().player).getLastYaw()
          )
          : var1;
    }
 
    @ModifyVariable(
-      method = {"render"},
+      method = {"render*"},
       ordinal = 5,
       at = @At(
          value = "STORE",
@@ -87,15 +89,15 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
       )
    )
    private float calculateRenderPitch(float var1, LivingEntity var2) {
-      return !Class27.isInventory && !Options.field993 && var2 == MinecraftClient.getInstance().player && MinecraftClient.getInstance().player != null
+      return !Boze.isInventory && !Options.field993 && var2 == MinecraftClient.getInstance().player && MinecraftClient.getInstance().player != null
          ? MathHelper.lerpAngleDegrees(
-            this.lastPartialTick, Class27.prevLastPitch, ((ClientPlayerEntityAccessor)MinecraftClient.getInstance().player).getLastPitch()
+            this.lastPartialTick, Boze.prevLastPitch, ((ClientPlayerEntityAccessor)MinecraftClient.getInstance().player).getLastPitch()
          )
          : var1;
    }
 
    @Inject(
-      method = {"render"},
+      method = {"render*"},
       at = {@At("HEAD")},
       cancellable = true
    )

@@ -16,7 +16,7 @@ import dev.boze.client.systems.modules.ConfigCategory;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.RotationHelper;
 import dev.boze.client.utils.Timer;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.DownloadingTerrainScreen;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
@@ -51,7 +51,7 @@ public class GhostRotations extends Module {
 
    public GhostRotations() {
       super("GhostRotations", "Ghost rotations", Category.Client, ConfigCategory.Main);
-      Class27.EVENT_BUS.subscribe(this);
+      Boze.EVENT_BUS.subscribe(this);
       this.enabled = false;
       this.setNotificationLengthLimited();
    }
@@ -71,7 +71,7 @@ public class GhostRotations extends Module {
       if (mc.player != null && mc.interactionManager != null && mc.currentScreen == null) {
          RotationHelper var4 = new RotationHelper(mc.player);
          eJ var5 = eJ.method1098(var4);
-         Class27.EVENT_BUS.post(var5);
+         Boze.EVENT_BUS.post(var5);
          if (var5.method1101()) {
             this.field760 = var5.method1100();
             this.field761.reset();

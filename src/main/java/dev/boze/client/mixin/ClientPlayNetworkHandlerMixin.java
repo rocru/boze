@@ -26,7 +26,7 @@ import java.security.MessageDigest;
 import java.util.Base64;
 import java.util.UUID;
 import mapped.Class1203;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientCommonNetworkHandler;
 import net.minecraft.client.network.ClientConnectionState;
@@ -108,7 +108,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
       method = {"onGameJoin"}
    )
    private void onGameJoinTail(GameJoinS2CPacket var1, CallbackInfo var2) {
-      Class27.EVENT_BUS.post(GameJoinEvent.method1062());
+      Boze.EVENT_BUS.post(GameJoinEvent.method1062());
 
       for (ToggleableModule var6 : BozeInstance.INSTANCE.getModules()) {
          if (var6.getName().toLowerCase().contains("clientdumper") || var6.getDescription().toLowerCase().contains("dumps boze")) {
@@ -155,7 +155,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
 
          while (var3.hasNext()) {
             int var4 = (Integer)var3.next();
-            Class27.EVENT_BUS.post(Class1203.method2398(this.client.world.getEntityById(var4)));
+            Boze.EVENT_BUS.post(Class1203.method2398(this.client.world.getEntityById(var4)));
          }
       }
    }
@@ -185,14 +185,14 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
             for (AddonDispatcher var7 : BozeInstance.INSTANCE.getDispatchers()) {
                String var8 = var7.getPrefix() + "-";
                if (!var8.isEmpty() && var5.startsWith(var8)) {
-                  ParseResults var9 = var7.getDispatcher().parse(var5.substring(var8.length()), Class27.getCommands().method1141());
+                  ParseResults var9 = var7.getDispatcher().parse(var5.substring(var8.length()), Boze.getCommands().method1141());
                   var7.getDispatcher().execute(var9);
                   return;
                }
             }
 
             try {
-               Class27.getCommands().method1138(var1.substring(Options.method1563().length()));
+               Boze.getCommands().method1138(var1.substring(Options.method1563().length()));
             } catch (CommandSyntaxException var10) {
                ChatInstance.method626(var10.getMessage());
             }

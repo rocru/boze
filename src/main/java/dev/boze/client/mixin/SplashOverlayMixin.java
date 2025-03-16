@@ -4,10 +4,7 @@ import dev.boze.client.core.Version;
 import java.util.function.IntSupplier;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.SplashOverlay;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -27,6 +24,7 @@ public class SplashOverlayMixin {
       BRAND_ARGB = SplashOverlayMixin::lambda$onInit$0;
    }
 
+   @Unique
    private static int lambda$onInit$0() {
       return Version.isBeta ? 0 : 6179555;
    }

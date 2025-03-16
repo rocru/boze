@@ -30,7 +30,7 @@ import dev.boze.client.systems.modules.combat.AutoCrystal.setting.AutoCrystalTar
 import dev.boze.client.systems.modules.combat.AutoCrystal.setting.AutoCrystalTracker;
 import dev.boze.client.utils.InventoryUtil;
 import dev.boze.client.utils.MinecraftUtils;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2896;
 import mapped.Class2923;
 import meteordevelopment.orbit.EventHandler;
@@ -122,8 +122,8 @@ public class AutoCrystal extends Module {
          "Automatically places and breaks crystals to attack enemies\nAdvanced settings are pre-configured to optimal options, only change if expert\n",
          Category.Combat
       );
-      Class27.EVENT_BUS.subscribe(this.field1047);
-      Class27.EVENT_BUS.subscribe(this.field1040);
+      Boze.EVENT_BUS.subscribe(this.field1047);
+      Boze.EVENT_BUS.subscribe(this.field1040);
       this.addSettings(this.field1040.field168);
    }
 

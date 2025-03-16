@@ -5,7 +5,7 @@ import dev.boze.client.events.EntityRemovedEvent;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.systems.modules.render.Tint;
 import java.util.function.Supplier;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.Entity.RemovalReason;
@@ -54,7 +54,7 @@ public abstract class ClientWorldMixin extends World {
    )
    private void onAddedEntity(Entity var1, CallbackInfo var2) {
       if (var1 != null) {
-         Class27.EVENT_BUS.post(EntityAddedEvent.method1058(var1));
+         Boze.EVENT_BUS.post(EntityAddedEvent.method1058(var1));
       }
    }
 
@@ -64,7 +64,7 @@ public abstract class ClientWorldMixin extends World {
    )
    private void onRemoveEntity(int var1, RemovalReason var2, CallbackInfo var3) {
       if (this.getEntityById(var1) != null) {
-         Class27.EVENT_BUS.post(EntityRemovedEvent.method1059(this.getEntityById(var1)));
+         Boze.EVENT_BUS.post(EntityRemovedEvent.method1059(this.getEntityById(var1)));
       }
    }
 

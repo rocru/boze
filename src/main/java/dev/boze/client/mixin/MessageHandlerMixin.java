@@ -48,7 +48,7 @@ public abstract class MessageHandlerMixin implements Class2780 {
    }
 
    @Override
-   public GameProfile getSenderProfile() {
+   public GameProfile boze$getSenderProfile() {
       return this.sender;
    }
 }

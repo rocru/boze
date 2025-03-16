@@ -9,7 +9,7 @@ import dev.boze.client.command.arguments.CategoryArgument;
 import dev.boze.client.command.arguments.ModuleArgument;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 
 public class ArraylistDrawCommand extends Command {
@@ -33,7 +33,7 @@ public class ArraylistDrawCommand extends Command {
    private static int lambda$build$4(CommandContext var0) throws CommandSyntaxException {
       Category var4 = CategoryArgument.method982(var0, "category");
 
-      for (Module var6 : Class27.getModules().modules) {
+      for (Module var6 : Boze.getModules().modules) {
          if (var6.category == var4) {
             var6.setVisibility(false);
          }
@@ -45,7 +45,7 @@ public class ArraylistDrawCommand extends Command {
    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
       Category var4 = CategoryArgument.method982(var0, "category");
 
-      for (Module var6 : Class27.getModules().modules) {
+      for (Module var6 : Boze.getModules().modules) {
          if (var6.category == var4) {
             var6.setVisibility(true);
          }

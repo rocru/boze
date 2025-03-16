@@ -22,42 +22,42 @@ public class EndCrystalEntityMixin implements IEndCrystalEntity {
    private boolean abandoned;
 
    @Override
-   public long getLastAttackTime() {
+   public long boze$getLastAttackTime() {
       return this.lastAttackTime;
    }
 
    @Override
-   public void setLastAttackTime(long lastAttackTime) {
+   public void boze$setLastAttackTime(long lastAttackTime) {
       this.lastAttackTime = lastAttackTime;
    }
 
    @Override
-   public int getHitsSinceLastAttack() {
+   public int boze$getHitsSinceLastAttack() {
       return this.hitsSinceLastAttack;
    }
 
    @Override
-   public void setHitsSinceLastAttack(int hitsSinceLastAttack) {
+   public void boze$setHitsSinceLastAttack(int hitsSinceLastAttack) {
       this.hitsSinceLastAttack = hitsSinceLastAttack;
    }
 
    @Override
-   public long getSpawnTime() {
+   public long boze$getSpawnTime() {
       return this.spawnTime;
    }
 
    @Override
-   public float getTicksExisted() {
+   public float boze$getTicksExisted() {
       return (float)(System.currentTimeMillis() - this.spawnTime) / 50.0F;
    }
 
    @Override
-   public void setAbandoned() {
+   public void boze$setAbandoned() {
       this.abandoned = true;
    }
 
    @Override
-   public boolean isAbandoned() {
+   public boolean boze$isAbandoned() {
       return this.abandoned;
    }
 

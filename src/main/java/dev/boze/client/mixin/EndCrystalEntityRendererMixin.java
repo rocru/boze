@@ -34,7 +34,7 @@ public class EndCrystalEntityRendererMixin {
    public ModelPart frame;
 
    @Inject(
-      method = {"render"},
+      method = {"render*"},
       at = {@At("HEAD")},
       cancellable = true
    )
@@ -59,7 +59,7 @@ public class EndCrystalEntityRendererMixin {
    }
 
    @ModifyArgs(
-      method = {"render"},
+      method = {"render*"},
       at = @At(
          value = "INVOKE",
          target = "Lnet/minecraft/client/util/math/MatrixStack;scale(FFF)V",

@@ -255,7 +255,7 @@ public class HoleFill extends Module {
                         break;
                      }
 
-                     ((IClientPlayerEntity)mc.player).sendMovementPackets(var10.yaw, var10.pitch);
+                     ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(var10.yaw, var10.pitch);
                   }
                }
 

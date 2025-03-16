@@ -17,7 +17,7 @@ import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
 import dev.boze.client.utils.render.Scissor;
 import java.util.ArrayList;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class3071;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.math.MathHelper;
@@ -53,7 +53,7 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
       double var18 = (double)Theme.method1357() * scaleFactor;
       var18 += (double)Theme.method1366() * scaleFactor;
 
-      for (Module var21 : Class27.getModules().modules) {
+      for (Module var21 : Boze.getModules().modules) {
          if (var21.category == category) {
             ModuleComponent var22 = new ModuleComponent(
                var21, this, x + (double)Theme.method1365() * scaleFactor, var18, width - (double)Theme.method1365() * scaleFactor * 2.0

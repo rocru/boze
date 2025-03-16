@@ -12,7 +12,7 @@ import dev.boze.client.systems.modules.ConfigCategory;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.Timer;
 import java.io.File;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 
 public class Options extends Module {
@@ -115,7 +115,7 @@ public class Options extends Module {
 
    private static void lambda$new$0(Boolean var0) {
       if (var0) {
-         for (Module var5 : Class27.getModules().modules) {
+         for (Module var5 : Boze.getModules().modules) {
             if (!var5.field435) {
                if (var5.moduleState == null) {
                   var5.moduleState = var5.isEnabled() ? ModuleState.On : ModuleState.Off;
@@ -125,7 +125,7 @@ public class Options extends Module {
             }
          }
       } else {
-         for (Module var7 : Class27.getModules().modules) {
+         for (Module var7 : Boze.getModules().modules) {
             if (!var7.field435 && var7.moduleState != null) {
                var7.setEnabled(var7.moduleState == ModuleState.On);
                var7.moduleState = null;

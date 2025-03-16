@@ -10,7 +10,7 @@ import dev.boze.client.systems.modules.render.Crosshair;
 import dev.boze.client.systems.modules.render.NoRender;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.render.RenderUtil;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class3032;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
@@ -81,8 +81,7 @@ public abstract class InGameHudMixin {
 
    @Inject(
       method = {"renderScoreboardSidebar(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/client/render/RenderTickCounter;)V"},
-      at = {@At("HEAD")},
-      cancellable = true
+      at = {@At("HEAD")}
    )
    private void onRenderPre(DrawContext var1, RenderTickCounter var2, CallbackInfo var3) {
       if (RenderUtil.field3968 && MinecraftUtils.isClientActive()) {
@@ -102,7 +101,7 @@ public abstract class InGameHudMixin {
          }
 
          Class3032.method332(var1);
-         Class27.EVENT_BUS.post(Render2DEvent.method1093(var1, var1.getScaledWindowWidth(), var1.getScaledWindowHeight(), var2.getTickDelta(true)));
+         Boze.EVENT_BUS.post(Render2DEvent.method1093(var1, var1.getScaledWindowWidth(), var1.getScaledWindowHeight(), var2.getTickDelta(true)));
          RenderSystem.applyModelViewMatrix();
       }
    }
@@ -125,7 +124,7 @@ public abstract class InGameHudMixin {
    )
    private void onRenderPumpkinOverlay(DrawContext var1, Identifier var2, float var3, CallbackInfo var4) {
       if (var2.equals(PUMPKIN_BLUR)) {
-         PlayerOverlayEvent var5 = (PlayerOverlayEvent)Class27.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Pumpkin));
+         PlayerOverlayEvent var5 = (PlayerOverlayEvent) Boze.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Pumpkin));
          if (var5.method1022()) {
             var4.cancel();
          }

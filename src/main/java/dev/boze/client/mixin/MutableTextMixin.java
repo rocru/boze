@@ -11,12 +11,12 @@ public class MutableTextMixin implements IMutableText {
    private int id;
 
    @Override
-   public void setId(int id) {
+   public void boze$setId(int id) {
       this.id = id;
    }
 
    @Override
-   public int getId() {
+   public int boze$getId() {
       return this.id;
    }
 }

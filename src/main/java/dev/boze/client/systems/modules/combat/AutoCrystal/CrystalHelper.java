@@ -8,7 +8,7 @@ import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.utils.EntityUtil;
 import dev.boze.client.utils.IMinecraft;
 import java.util.Set;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class3087;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -129,10 +129,10 @@ public class CrystalHelper implements IMinecraft {
    private boolean method728(EndCrystalEntity var1) {
       if ((float)var1.age < this.field1626.ticksExisted.method423()) {
          return false;
-      } else if (((IEndCrystalEntity)var1).isAbandoned()) {
+      } else if (((IEndCrystalEntity)var1).boze$isAbandoned()) {
          return true;
       } else {
-         return (double)(System.currentTimeMillis() - ((IEndCrystalEntity)var1).getLastAttackTime()) > Class27.getModules().field905.field1519
+         return (double)(System.currentTimeMillis() - ((IEndCrystalEntity)var1).boze$getLastAttackTime()) > Boze.getModules().field905.field1519
                && var1 != this.field1626.autoCrystalTracker.field1529
             ? var1.age >= this.field1626.hitTicks.method434()
             : false;

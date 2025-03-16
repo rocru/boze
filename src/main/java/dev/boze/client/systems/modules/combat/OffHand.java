@@ -39,7 +39,7 @@ import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.Timer;
 import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import mapped.Class1204;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class3069;
 import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
@@ -424,7 +424,7 @@ public class OffHand extends Module {
          this.ab = var2;
          this.ac = var1;
          if (var1 < 9) {
-            int var6 = Class27.getModules().field906.field1616;
+            int var6 = Boze.getModules().field906.field1616;
             if (var6 != var1) {
                mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(var1));
             }

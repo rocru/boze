@@ -120,7 +120,7 @@ public class Class5924 implements IMinecraft {
       double var0 = (double)MathHelper.floor(mc.player.getX()) + 0.5;
       double var2 = (double)MathHelper.floor(mc.player.getZ()) + 0.5;
       mc.player.updatePosition(var0, mc.player.getY(), var2);
-      ((IClientPlayerEntity)mc.player).sendMovementPackets(mc.player.getX(), mc.player.getY(), mc.player.getZ(), mc.player.isOnGround());
+      ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(mc.player.getX(), mc.player.getY(), mc.player.getZ(), mc.player.isOnGround());
    }
 
    public static boolean method76(boolean var0) {

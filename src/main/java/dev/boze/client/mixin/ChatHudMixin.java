@@ -11,7 +11,7 @@ import dev.boze.client.mixininterfaces.IChatHudLineVisible;
 import dev.boze.client.systems.modules.misc.ExtraChat;
 import dev.boze.client.utils.RGBAColor;
 import java.util.List;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2780;
 import mapped.Class3071;
 import net.minecraft.client.MinecraftClient;
@@ -49,6 +49,7 @@ public abstract class ChatHudMixin implements IChatHud {
    @Shadow
    @Final
    private List<Visible> visibleMessages;
+   @Unique
    private static int lastAge;
    @Unique
    private boolean internalAdd;
@@ -109,7 +110,7 @@ public abstract class ChatHudMixin implements IChatHud {
    )
    private void onAddMessage(Text var1, MessageSignatureData var2, MessageIndicator var3, CallbackInfo var4) {
       if (!this.internalAdd) {
-         AddMessageEvent var5 = (AddMessageEvent)Class27.EVENT_BUS.post(AddMessageEvent.method1040(var1, var3));
+         AddMessageEvent var5 = (AddMessageEvent) Boze.EVENT_BUS.post(AddMessageEvent.method1040(var1, var3));
          if (var5.method1022()) {
             var4.cancel();
          } else {
@@ -211,7 +212,7 @@ public abstract class ChatHudMixin implements IChatHud {
       if (var2 == null) {
          return var1;
       } else {
-         ((IChatHudLine)var1).setSenderProfile(var2.getSenderProfile());
+         ((IChatHudLine)var1).boze$setSenderProfile(var2.boze$getSenderProfile());
          return var1;
       }
    }
@@ -229,12 +230,13 @@ public abstract class ChatHudMixin implements IChatHud {
          return var1;
       } else {
          IChatHudLineVisible var4 = (IChatHudLineVisible)var1;
-         var4.setSenderProfile(var3.getSenderProfile());
-         var4.setFirst(var2 == 0);
+         var4.boze$setSenderProfile(var3.boze$getSenderProfile());
+         var4.boze$setFirst(var2 == 0);
          return var1;
       }
    }
 
+   @Unique
    private boolean lambda$onAddMessage$0(Visible var1) {
       return ((IChatHudLine)var1).boze$getID() == this.addId && this.addId != 0;
    }

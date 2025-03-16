@@ -1,5 +1,6 @@
 package mapped;
 
+import dev.boze.client.Boze;
 import dev.boze.client.mixin.ClientPlayerEntityAccessor;
 import dev.boze.client.mixin.CrossbowItemAccessor;
 import dev.boze.client.mixin.PersistentProjectileEntityAccessor;
@@ -104,8 +105,8 @@ public class Class5919 implements IMinecraft {
       double var17;
       double var19;
       if (var47 instanceof ClientPlayerEntity) {
-         var17 = MathHelper.lerp(var53, (double)Class27.prevLastYaw, (double)((ClientPlayerEntityAccessor)var47).getLastYaw());
-         var19 = MathHelper.lerp(var53, (double)Class27.prevLastPitch, (double)((ClientPlayerEntityAccessor)var47).getLastPitch());
+         var17 = MathHelper.lerp(var53, (double) Boze.prevLastYaw, (double)((ClientPlayerEntityAccessor)var47).getLastYaw());
+         var19 = MathHelper.lerp(var53, (double) Boze.prevLastPitch, (double)((ClientPlayerEntityAccessor)var47).getLastPitch());
       } else {
          var17 = MathHelper.lerp(var53, (double)var47.prevYaw, (double)var47.getYaw());
          var19 = MathHelper.lerp(var53, (double)var47.prevPitch, (double)var47.getPitch());
@@ -190,7 +191,7 @@ public class Class5919 implements IMinecraft {
    }
 
    public HitResult method49() {
-      ((IVec3d)field12).set(this.field13);
+      ((IVec3d)field12).boze$set(this.field13);
       this.field13.add(this.field14);
       this.field14.mul(this.method2114() ? this.field17 : this.field16);
       this.field14.sub(0.0, this.field15, 0.0);
@@ -202,7 +203,7 @@ public class Class5919 implements IMinecraft {
          if (!mc.world.getChunkManager().isChunkLoaded(var4, var5)) {
             return Class3089.field215;
          } else {
-            ((IVec3d)field11).set(this.field13);
+            ((IVec3d)field11).boze$set(this.field13);
             HitResult var6 = this.method51();
             return var6.getType() == Type.MISS ? null : var6;
          }

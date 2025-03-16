@@ -4,7 +4,7 @@ import dev.boze.client.core.Version;
 import dev.boze.client.settings.BooleanSetting;
 import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.hud.ColorHUDModule;
-import mapped.Class27;
+import dev.boze.client.Boze;
 
 public class Watermark extends ColorHUDModule {
    private final BooleanSetting field613 = new BooleanSetting("Version", true, "Show client version in watermark");
@@ -24,10 +24,10 @@ public class Watermark extends ColorHUDModule {
    @Override
    protected String method1563() {
       return (this.field613.method419() ? Version.tag : "")
-         + (this.field614.method419() && !Class27.BUILD.isEmpty() ? (this.field613.method419() ? "+" + Class27.BUILD : Class27.BUILD) : "");
+         + (this.field614.method419() && !Boze.BUILD.isEmpty() ? (this.field613.method419() ? "+" + Boze.BUILD : Boze.BUILD) : "");
    }
 
    private static boolean lambda$new$0() {
-      return !Class27.BUILD.isEmpty();
+      return !Boze.BUILD.isEmpty();
    }
 }

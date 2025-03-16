@@ -12,12 +12,12 @@ import dev.boze.client.systems.modules.Module;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 
 public class ModuleArgument implements ArgumentType<Module> {
-   private static final Collection<String> field1863 = (Collection<String>)Class27.getModules()
+   private static final Collection<String> field1863 = (Collection<String>) Boze.getModules()
       .modules
       .stream()
       .limit(3L)
@@ -37,7 +37,7 @@ public class ModuleArgument implements ArgumentType<Module> {
       String var5 = reader.readString();
       Module var6 = null;
 
-      for (Module var8 : Class27.getModules().modules) {
+      for (Module var8 : Boze.getModules().modules) {
          if (var8.getName().equalsIgnoreCase(var5) || var8.internalName.equalsIgnoreCase(var5)) {
             var6 = var8;
             break;
@@ -52,7 +52,7 @@ public class ModuleArgument implements ArgumentType<Module> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
-      return CommandSource.suggestMatching(Class27.getModules().method2120(), builder);
+      return CommandSource.suggestMatching(Boze.getModules().method2120(), builder);
    }
 
    public Collection<String> getExamples() {

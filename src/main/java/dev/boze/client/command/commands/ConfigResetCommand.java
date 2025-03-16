@@ -24,7 +24,7 @@ import dev.boze.client.systems.modules.hud.core.Coordinates;
 import dev.boze.client.systems.modules.render.PlaceRender;
 import dev.boze.client.utils.Bind;
 import java.io.PrintStream;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2782;
 import net.minecraft.command.CommandSource;
 
@@ -119,7 +119,7 @@ public class ConfigResetCommand extends Command {
    }
 
    private int lambda$build$7(CommandContext var1) throws CommandSyntaxException {
-      for (Module var6 : Class27.getModules().modules) {
+      for (Module var6 : Boze.getModules().modules) {
          this.method396(var6);
       }
 
@@ -174,7 +174,7 @@ public class ConfigResetCommand extends Command {
    }
 
    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
-      for (Module var5 : Class27.getModules().modules) {
+      for (Module var5 : Boze.getModules().modules) {
          var5.setVisibility(true);
       }
 
@@ -182,7 +182,7 @@ public class ConfigResetCommand extends Command {
    }
 
    private static int lambda$build$2(CommandContext var0) throws CommandSyntaxException {
-      for (Module var5 : Class27.getModules().modules) {
+      for (Module var5 : Boze.getModules().modules) {
          var5.field433 = false;
 
          for (Setting var7 : var5.method1144()) {
@@ -194,7 +194,7 @@ public class ConfigResetCommand extends Command {
    }
 
    private static int lambda$build$1(CommandContext var0) throws CommandSyntaxException {
-      for (Module var5 : Class27.getModules().modules) {
+      for (Module var5 : Boze.getModules().modules) {
          if (var5 == Gui.INSTANCE) {
             var5.bind.set(true, 344);
          } else if (var5 == HUD.INSTANCE) {
@@ -208,7 +208,7 @@ public class ConfigResetCommand extends Command {
    }
 
    private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
-      for (Module var5 : Class27.getModules().modules) {
+      for (Module var5 : Boze.getModules().modules) {
          var5.setName(var5.internalName);
       }
 

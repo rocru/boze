@@ -104,7 +104,7 @@ public class FastFall extends Module {
                         )
                      );
                   Class3091.field217 = false;
-                  ((IClientPlayerEntity)mc.player).sendMovementPackets(mc.player.isOnGround());
+                  ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(mc.player.isOnGround());
                   if (this.field3248.method419()) {
                      event.vec3 = event.vec3.subtract(0.0, 0.08, 0.0);
                      mc.player.setVelocity(mc.player.getVelocity().x, mc.player.getVelocity().y - 0.08, mc.player.getVelocity().z);

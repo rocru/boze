@@ -52,7 +52,7 @@ public class Class3069 {
       } else if (var3180 instanceof PlayerEntity && Class5926.method101((PlayerEntity)var3180) == GameMode.CREATIVE && !(var3180 instanceof FakePlayerEntity)) {
          return 0.0;
       } else {
-         ((IVec3d)field162).set(var3180.getPos().x, var3180.getPos().y, var3180.getPos().z);
+         ((IVec3d)field162).boze$set(var3180.getPos().x, var3180.getPos().y, var3180.getPos().z);
          if (var3182 > 0) {
             if (var3180 == FakePlayer.INSTANCE.fakePlayer
                && FakePlayer.INSTANCE.isEnabled()
@@ -63,15 +63,15 @@ public class Class3069 {
                   byte var19 = 0;
                   if (FakePlayer.INSTANCE.loop.method419()) {
                      FakePositions var9 = (FakePositions)FakePlayer.INSTANCE.positions.get(var19);
-                     ((IVec3d)field162).set(var9.method2174().getX(), var9.method2174().getY(), var9.method2174().getZ());
+                     ((IVec3d)field162).boze$set(var9.method2174().getX(), var9.method2174().getY(), var9.method2174().getZ());
                   }
                } else {
                   FakePositions var21 = (FakePositions)FakePlayer.INSTANCE.positions.get(var18);
-                  ((IVec3d)field162).set(var21.method2174().getX(), var21.method2174().getY(), var21.method2174().getZ());
+                  ((IVec3d)field162).boze$set(var21.method2174().getX(), var21.method2174().getY(), var21.method2174().getZ());
                }
             } else {
                Vector3d var8 = Class5921.method55(var3180);
-               ((IVec3d)field162).set(field162.x + var8.x, field162.y + var8.y, field162.z + var8.z);
+               ((IVec3d)field162).boze$set(field162.x + var8.x, field162.y + var8.y, field162.z + var8.z);
             }
          }
 
@@ -95,7 +95,7 @@ public class Class3069 {
                   (float)var3180.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue()
                );
                var14 = method6009(var3180, var14);
-               ((IExplosion)field163).set(var3181, 6.0F, false);
+               ((IExplosion)field163).boze$set(var3181, 6.0F, false);
                var14 = method6008(var3180, var14, field163);
             } catch (Exception var17) {
             }
@@ -113,7 +113,7 @@ public class Class3069 {
       if (var3187 instanceof PlayerEntity && Class5926.method101((PlayerEntity)var3187) == GameMode.CREATIVE && !(var3187 instanceof FakePlayerEntity)) {
          return 0.0;
       } else {
-         ((IVec3d)field162).set(var3187.getPos().x, var3187.getPos().y, var3187.getPos().z);
+         ((IVec3d)field162).boze$set(var3187.getPos().x, var3187.getPos().y, var3187.getPos().z);
          double var7 = Math.sqrt(var3187.squaredDistanceTo(var3188));
          if (var7 > 10.0) {
             return 0.0;
@@ -134,7 +134,7 @@ public class Class3069 {
                   (float)var3187.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue()
                );
                var13 = method6009(var3187, var13);
-               ((IExplosion)field163).set(var3188, 5.0F, true);
+               ((IExplosion)field163).boze$set(var3188, 5.0F, true);
                var13 = method6008(var3187, var13, field163);
             } catch (Exception var16) {
             }
@@ -174,7 +174,7 @@ public class Class3069 {
                (float)var3191.getArmor(),
                (float)var3191.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue()
             );
-            ((IExplosion)field163).set(var3192, 5.0F, true);
+            ((IExplosion)field163).boze$set(var3192, 5.0F, true);
             var13 = method6008(var3191, var13, field163);
             if (var13 < 0.0) {
                var13 = 0.0;

@@ -5,7 +5,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.boze.client.command.Command;
 import dev.boze.client.instances.impl.ChatInstance;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 
 public class CommandInfoCommand extends Command {
@@ -20,7 +20,7 @@ public class CommandInfoCommand extends Command {
 
    private static int lambda$build$1(CommandContext var0) throws CommandSyntaxException {
       ChatInstance.method624("Commands:");
-      Class27.getCommands().method1144().forEach(CommandInfoCommand::lambda$build$0);
+      Boze.getCommands().method1144().forEach(CommandInfoCommand::lambda$build$0);
       return 1;
    }
 

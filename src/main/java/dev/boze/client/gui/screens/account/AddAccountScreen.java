@@ -11,7 +11,7 @@ import dev.boze.client.systems.accounts.types.MicrosoftAccount;
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
@@ -214,7 +214,7 @@ public class AddAccountScreen extends ScaledBaseComponent {
    private void lambda$mouseClicked$0(String var1) {
       if (var1 != null) {
          MicrosoftAccount var5 = new MicrosoftAccount(var1);
-         if (!Class27.getAccounts().method1131(var5)) {
+         if (!Boze.getAccounts().method1131(var5)) {
             AccountManagerComponent.method642(var5, this.field1466);
             mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             ClickGUI.field1335.method580(new AccountManagerComponent(this.field1466));

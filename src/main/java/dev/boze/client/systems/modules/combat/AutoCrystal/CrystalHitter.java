@@ -98,7 +98,7 @@ class CrystalHitter implements IMinecraft {
                }
 
                float[] var9 = EntityUtil.method2146(var6.getPos());
-               ((IClientPlayerEntity)mc.player).sendMovementPackets(var9[0], var9[1]);
+               ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(var9[0], var9[1]);
             }
 
             if (this.field1093.field1041.field205.method461() == AnticheatMode.Grim && mc.world.getBlockState(var8.getBlockPos()).isAir()) {

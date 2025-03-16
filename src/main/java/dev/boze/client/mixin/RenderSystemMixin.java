@@ -4,7 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import dev.boze.client.events.FlipFrameEvent;
 import dev.boze.client.systems.modules.client.GhostRotations;
 import dev.boze.client.systems.modules.render.Tint;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -37,7 +37,7 @@ public class RenderSystemMixin {
       at = {@At("HEAD")}
    )
    private static void onFlipFrame(long var0, CallbackInfo var2) {
-      Class27.EVENT_BUS.post(FlipFrameEvent.method1039());
+      Boze.EVENT_BUS.post(FlipFrameEvent.method1039());
       GhostRotations.INSTANCE.method1904();
    }
 }

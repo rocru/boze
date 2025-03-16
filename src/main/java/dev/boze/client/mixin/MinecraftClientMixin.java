@@ -18,7 +18,7 @@ import dev.boze.client.systems.modules.misc.MultiTask;
 import dev.boze.client.systems.modules.render.NoRender;
 import dev.boze.client.utils.player.RotationHandler;
 import java.io.File;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class3092;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.RunArgs;
@@ -93,7 +93,7 @@ public abstract class MinecraftClientMixin {
       )}
    )
    public void onInitPre(RunArgs args, CallbackInfo ci) {
-      Class27.FOLDER = new File(args.directories.runDir, "boze");
+      Boze.FOLDER = new File(args.directories.runDir, "boze");
       BozeAPI.method951();
       BozeInstances.method1127();
    }
@@ -103,7 +103,7 @@ public abstract class MinecraftClientMixin {
       at = {@At("TAIL")}
    )
    public void onInit(RunArgs args, CallbackInfo ci) {
-      new Class27().initialize();
+      new Boze().initialize();
    }
 
    @Inject(
@@ -167,7 +167,7 @@ public abstract class MinecraftClientMixin {
       cancellable = true
    )
    private void onSetScreen(Screen var1, CallbackInfo var2) {
-      if (((OpenScreenEvent)Class27.EVENT_BUS.post(OpenScreenEvent.method1037(var1))).method1022()) {
+      if (((OpenScreenEvent) Boze.EVENT_BUS.post(OpenScreenEvent.method1037(var1))).method1022()) {
          var2.cancel();
       }
    }
@@ -178,7 +178,7 @@ public abstract class MinecraftClientMixin {
    )
    private void tick(CallbackInfo var1) {
       RotationHandler.field1546.method2142();
-      Class27.EVENT_BUS.post(PreTickEvent.method1092());
+      Boze.EVENT_BUS.post(PreTickEvent.method1092());
       Pre var2 = Pre.get();
       BozeInstance.INSTANCE.post(var2);
    }
@@ -188,7 +188,7 @@ public abstract class MinecraftClientMixin {
       at = {@At("TAIL")}
    )
    private void tickPost(CallbackInfo var1) {
-      Class27.EVENT_BUS.post(PostTickEvent.method1088());
+      Boze.EVENT_BUS.post(PostTickEvent.method1088());
       Post var2 = Post.get();
       BozeInstance.INSTANCE.post(var2);
    }
@@ -234,7 +234,7 @@ public abstract class MinecraftClientMixin {
    )
    public void onHandleInputEventsHead(CallbackInfo ci) {
       HandleInputEvent var2 = HandleInputEvent.method1064();
-      Class27.EVENT_BUS.post(var2);
+      Boze.EVENT_BUS.post(var2);
    }
 
    @Inject(

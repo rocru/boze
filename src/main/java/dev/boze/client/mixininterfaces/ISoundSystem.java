@@ -1,7 +1,7 @@
 package dev.boze.client.mixininterfaces;
 
 public interface ISoundSystem {
-   boolean isPaused();
+   boolean boze$isPaused();
 
-   void setPaused(boolean var1);
+   void boze$setPaused(boolean var1);
 }

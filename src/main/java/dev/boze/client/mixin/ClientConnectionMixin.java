@@ -6,7 +6,7 @@ import dev.boze.client.events.PostPacketSendEvent;
 import dev.boze.client.events.PrePacketSendEvent;
 import java.net.InetSocketAddress;
 import java.util.Iterator;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.listener.PacketListener;
 import net.minecraft.network.packet.Packet;
@@ -24,7 +24,7 @@ public abstract class ClientConnectionMixin {
       at = {@At("HEAD")}
    )
    private static void onConnect(InetSocketAddress var0, boolean var1, ClientConnection var2, CallbackInfoReturnable<?> var3) {
-      Class27.EVENT_BUS.post(ConnectEvent.method1057());
+      Boze.EVENT_BUS.post(ConnectEvent.method1057());
    }
 
    @Inject(
@@ -33,7 +33,7 @@ public abstract class ClientConnectionMixin {
       cancellable = true
    )
    private void onSendPacketHead(Packet<?> var1, CallbackInfo var2) {
-      PrePacketSendEvent var3 = (PrePacketSendEvent)Class27.EVENT_BUS.post(new PrePacketSendEvent(var1));
+      PrePacketSendEvent var3 = (PrePacketSendEvent) Boze.EVENT_BUS.post(new PrePacketSendEvent(var1));
       if (var3.method1022()) {
          var2.cancel();
       }
@@ -45,7 +45,7 @@ public abstract class ClientConnectionMixin {
       cancellable = true
    )
    private void onSendPacketTail(Packet<?> var1, CallbackInfo var2) {
-      PostPacketSendEvent var3 = (PostPacketSendEvent)Class27.EVENT_BUS.post(new PostPacketSendEvent(var1));
+      PostPacketSendEvent var3 = (PostPacketSendEvent) Boze.EVENT_BUS.post(new PostPacketSendEvent(var1));
       if (var3.method1022()) {
          var2.cancel();
       }
@@ -61,12 +61,12 @@ public abstract class ClientConnectionMixin {
          Iterator var4 = var5.getPackets().iterator();
 
          while (var4.hasNext()) {
-            if (((PacketBundleEvent)Class27.EVENT_BUS.post(new PacketBundleEvent((Packet<?>)var4.next()))).method1022()) {
+            if (((PacketBundleEvent) Boze.EVENT_BUS.post(new PacketBundleEvent((Packet<?>)var4.next()))).method1022()) {
                var4.remove();
             }
          }
       } else {
-         PacketBundleEvent var3 = (PacketBundleEvent)Class27.EVENT_BUS.post(new PacketBundleEvent(var0));
+         PacketBundleEvent var3 = (PacketBundleEvent) Boze.EVENT_BUS.post(new PacketBundleEvent(var0));
          if (var3.method1022()) {
             var2.cancel();
          }

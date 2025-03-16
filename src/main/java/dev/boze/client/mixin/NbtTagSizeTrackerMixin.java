@@ -1,6 +1,6 @@
 package dev.boze.client.mixin;
 
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.nbt.NbtSizeTracker;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,12 +19,11 @@ public class NbtTagSizeTrackerMixin {
 
    @Inject(
       method = {"pushStack"},
-      at = {@At("HEAD")},
-      cancellable = true
+      at = {@At("HEAD")}
    )
    private void pushStack(CallbackInfo var1) {
       if (this.depth >= this.maxDepth) {
-         Class27.LOG.error("NBT Tag Size Tracker Overflow", new Exception("NBT Tag Size Tracker Overflow"));
+         Boze.LOG.error("NBT Tag Size Tracker Overflow", new Exception("NBT Tag Size Tracker Overflow"));
          new Exception("NBT Tag Size Tracker Overflow").printStackTrace();
       }
    }

@@ -20,7 +20,7 @@ import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.InventoryUtil;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.Timer;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class3002;
 import mapped.Class5913;
 import mapped.Class5924;
@@ -77,7 +77,7 @@ public class PearlPhase extends Module {
    public void onEnable() {
       if (MinecraftUtils.isClientActive()) {
          this.field563 = false;
-         Class27.EVENT_BUS.unsubscribe(Class3002.class);
+         Boze.EVENT_BUS.unsubscribe(Class3002.class);
       }
    }
 
@@ -124,7 +124,7 @@ public class PearlPhase extends Module {
                         new Vec3d((double)var6.getX() + 0.5, (double)var6.getY() + 1.0, (double)var6.getZ() + 0.5), Direction.UP, var6, false
                      );
                      if (this.zeroTick.method419()) {
-                        ((IClientPlayerEntity)mc.player).sendMovementPackets((float)this.method2010(), 90.0F);
+                        ((IClientPlayerEntity)mc.player).boze$sendMovementPackets((float)this.method2010(), 90.0F);
                      } else if (((ClientPlayerEntityAccessor)mc.player).getLastPitch() < 89.0F
                         || Math.abs(((ClientPlayerEntityAccessor)mc.player).getLastYaw() - (float)this.method2010()) > 5.0F) {
                         return;
@@ -140,9 +140,9 @@ public class PearlPhase extends Module {
                      ChatInstance.method626("No pearls found");
                      this.setEnabled(false);
                   } else if (InventoryUtil.method534(this, 400, this.swapMode.method461(), var5)) {
-                     Class27.EVENT_BUS.subscribe(Class3002.class);
+                     Boze.EVENT_BUS.subscribe(Class3002.class);
                      if (this.zeroTick.method419()) {
-                        ((IClientPlayerEntity)mc.player).sendMovementPackets((float)this.method2010(), this.pitch.method423());
+                        ((IClientPlayerEntity)mc.player).boze$sendMovementPackets((float)this.method2010(), this.pitch.method423());
                      } else if (((ClientPlayerEntityAccessor)mc.player).getLastPitch() < this.pitch.method423() - 2.0F
                         || Math.abs(((ClientPlayerEntityAccessor)mc.player).getLastYaw() - (float)this.method2010()) > 5.0F) {
                         return;

@@ -2,7 +2,7 @@ package dev.boze.client.mixin;
 
 import dev.boze.client.enums.PlayerOverlay;
 import dev.boze.client.events.PlayerOverlayEvent;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.InGameOverlayRenderer;
 import net.minecraft.client.texture.Sprite;
@@ -20,7 +20,7 @@ public class InGameOverlayRendererMixin {
       cancellable = true
    )
    private static void onRenderFireOverlay(MinecraftClient var0, MatrixStack var1, CallbackInfo var2) {
-      PlayerOverlayEvent var3 = (PlayerOverlayEvent)Class27.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Fire));
+      PlayerOverlayEvent var3 = (PlayerOverlayEvent) Boze.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Fire));
       if (var3.method1022()) {
          var2.cancel();
       }
@@ -32,7 +32,7 @@ public class InGameOverlayRendererMixin {
       cancellable = true
    )
    private static void onRenderUnderwaterOverlay(MinecraftClient var0, MatrixStack var1, CallbackInfo var2) {
-      PlayerOverlayEvent var3 = (PlayerOverlayEvent)Class27.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Liquid));
+      PlayerOverlayEvent var3 = (PlayerOverlayEvent) Boze.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Liquid));
       if (var3.method1022()) {
          var2.cancel();
       }
@@ -44,7 +44,7 @@ public class InGameOverlayRendererMixin {
       cancellable = true
    )
    private static void render(Sprite var0, MatrixStack var1, CallbackInfo var2) {
-      PlayerOverlayEvent var3 = (PlayerOverlayEvent)Class27.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Wall));
+      PlayerOverlayEvent var3 = (PlayerOverlayEvent) Boze.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Wall));
       if (var3.method1022()) {
          var2.cancel();
       }

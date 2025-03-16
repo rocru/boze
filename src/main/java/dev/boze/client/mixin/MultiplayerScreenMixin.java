@@ -11,6 +11,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.ButtonWidget.Builder;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -42,6 +43,7 @@ public class MultiplayerScreenMixin extends Screen {
       }
    }
 
+   @Unique
    private void lambda$onInit$0(ButtonWidget var1) {
       ClickGUI.field1335.field1332 = GUIMenu.AltManager;
       this.client.setScreen(ClickGUI.field1335);

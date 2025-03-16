@@ -4,7 +4,7 @@ import dev.boze.api.BozeInstance;
 import dev.boze.api.event.EventInput;
 import dev.boze.client.events.TickInputPostEvent;
 import dev.boze.client.utils.player.RotationHandler;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2866;
 import net.minecraft.client.input.KeyboardInput;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,7 +23,7 @@ public class KeyboardInputMixin extends InputMixin {
       if (RotationHandler.field1546.method2114()) {
          Class2866.method1872(var4);
       } else {
-         Class27.EVENT_BUS.post(var4);
+         Boze.EVENT_BUS.post(var4);
       }
 
       EventInput var5 = EventInput.get(var4.field1953, var4.field1954, var4.field1955, var4.field1956);

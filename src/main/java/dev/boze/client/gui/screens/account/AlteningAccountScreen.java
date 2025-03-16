@@ -11,7 +11,7 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.misc.CursorType;
 import dev.boze.client.utils.render.RenderUtil;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class5928;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
@@ -160,7 +160,7 @@ public class AlteningAccountScreen extends ScaledBaseComponent {
             )
             && !this.field1471.isEmpty()) {
             TheAlteningAccount var11 = new TheAlteningAccount(this.field1471);
-            if (!Class27.getAccounts().method1131(var11)) {
+            if (!Boze.getAccounts().method1131(var11)) {
                AccountManagerComponent.method642(var11, this.field1470);
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
                ClickGUI.field1335.method580(new AccountManagerComponent(this.field1470));
@@ -182,7 +182,7 @@ public class AlteningAccountScreen extends ScaledBaseComponent {
          } else if (keyCode == 257) {
             if (!this.field1471.isEmpty()) {
                TheAlteningAccount var7 = new TheAlteningAccount(this.field1471);
-               if (!Class27.getAccounts().method1131(var7)) {
+               if (!Boze.getAccounts().method1131(var7)) {
                   AccountManagerComponent.method642(var7, this.field1470);
                   mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
                   ClickGUI.field1335.method580(new AccountManagerComponent(this.field1470));

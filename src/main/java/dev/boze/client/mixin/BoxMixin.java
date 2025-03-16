@@ -35,7 +35,7 @@ public class BoxMixin implements IBox {
    public double maxZ;
 
    @Override
-   public void expand(double expand) {
+   public void boze$expand(double expand) {
       this.minX -= expand;
       this.minY -= expand;
       this.minZ -= expand;

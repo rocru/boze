@@ -18,7 +18,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2782;
 import mapped.Class3084;
 import net.minecraft.client.gui.DrawContext;
@@ -63,7 +63,7 @@ public class ModulesCategoryComponent extends BaseComponent implements IMinecraf
       this.field325
          .put(Category.Render, new Class3084(Category.Render, this.field332 * 6.0 + this.field331 * 5.0, this.field333, Notifications.CATEGORY_RENDER));
 
-      for (Module var20 : Class27.getModules().modules) {
+      for (Module var20 : Boze.getModules().modules) {
          if (var20.category != Category.Hud && var20.category != Category.Graph) {
             ModuleComponent var21 = new ModuleComponent(
                var20, this, x + (double)Theme.method1365() * scaleFactor, var13, width - (double)Theme.method1365() * scaleFactor * 2.0

@@ -28,8 +28,8 @@ public class Class5918 implements IMinecraft {
       boolean var7 = SharedConstants.isDevelopment;
       SharedConstants.isDevelopment = true;
       ISoundSystem var8 = (ISoundSystem)mc.getSoundManager().soundSystem;
-      boolean var9 = var8.isPaused();
-      var8.setPaused(true);
+      boolean var9 = var8.boze$isPaused();
+      var8.boze$setPaused(true);
       Class3079 var10 = new Class3079(mc, mc.world, NetworkHandlerWrapper.method739(), new StatHandler(), new ClientRecipeBook(), false, false);
       SharedConstants.isDevelopment = var7;
       Input var11 = method39(var39);
@@ -62,8 +62,8 @@ public class Class5918 implements IMinecraft {
       }
 
       ArrayList var12 = new ArrayList();
-      boolean var13 = ((IParticleManager)mc.particleManager).isPaused();
-      ((IParticleManager)mc.particleManager).setPaused(true);
+      boolean var13 = ((IParticleManager)mc.particleManager).boze$isPaused();
+      ((IParticleManager)mc.particleManager).boze$setPaused(true);
 
       for (int var14 = 0; var14 < var38; var14++) {
          var10.resetPosition();
@@ -72,13 +72,13 @@ public class Class5918 implements IMinecraft {
          var12.add(var10.getPos());
       }
 
-      ((IParticleManager)mc.particleManager).setPaused(var13);
+      ((IParticleManager)mc.particleManager).boze$setPaused(var13);
       var39.setVelocity(var5);
       if (mc.player != null && var39.equals(mc.player)) {
          mc.player.setVelocity(var6);
       }
 
-      var8.setPaused(var9);
+      var8.boze$setPaused(var9);
       return new Pair(var10, var12);
    }
 
@@ -153,8 +153,8 @@ public class Class5918 implements IMinecraft {
    public static Pair<ClientPlayerEntity, ArrayList<Vec3d>> method43(int count, ClientPlayerEntity baseEntity, Vec3d startPos) {
       var41.setPosition(var42.x, var42.y, var42.z);
       ArrayList var6 = new ArrayList();
-      boolean var7 = ((IParticleManager)mc.particleManager).isPaused();
-      ((IParticleManager)mc.particleManager).setPaused(true);
+      boolean var7 = ((IParticleManager)mc.particleManager).boze$isPaused();
+      ((IParticleManager)mc.particleManager).boze$setPaused(true);
 
       for (int var8 = 0; var8 < var40; var8++) {
          var41.resetPosition();
@@ -163,7 +163,7 @@ public class Class5918 implements IMinecraft {
          var6.add(var41.getPos());
       }
 
-      ((IParticleManager)mc.particleManager).setPaused(var7);
+      ((IParticleManager)mc.particleManager).boze$setPaused(var7);
       return new Pair(var41, var6);
    }
 

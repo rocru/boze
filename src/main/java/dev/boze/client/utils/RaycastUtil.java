@@ -77,8 +77,8 @@ public class RaycastUtil implements IMinecraft {
                   double var28 = MathHelper.lerp(var22, var3.minX, var3.maxX);
                   double var30 = MathHelper.lerp(var24, var3.minY, var3.maxY);
                   double var32 = MathHelper.lerp(var26, var3.minZ, var3.maxZ);
-                  ((IVec3d)var2).set(var28 + var16, var30, var32 + var18);
-                  ((IRaycastContext)var4).set(var2, var0, ShapeType.COLLIDER, FluidHandling.NONE, var1);
+                  ((IVec3d)var2).boze$set(var28 + var16, var30, var32 + var18);
+                  ((IRaycastContext)var4).boze$set(var2, var0, ShapeType.COLLIDER, FluidHandling.NONE, var1);
                   if (method577(var4, var5, var6).getType() == Type.MISS) {
                      var20++;
                   }

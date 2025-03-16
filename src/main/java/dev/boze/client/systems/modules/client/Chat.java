@@ -28,7 +28,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
 import net.minecraft.text.Text;
@@ -141,7 +141,7 @@ public class Chat extends Module {
       if (MinecraftUtils.isClientActive()) {
          ChatInstance.method743(this.getName(), error);
       } else {
-         Class27.LOG.error("[Boze] [Chat] - " + error);
+         Boze.LOG.error("[Boze] [Chat] - " + error);
       }
    }
 
@@ -149,7 +149,7 @@ public class Chat extends Module {
       if (MinecraftUtils.isClientActive()) {
          ChatInstance.method740(this.getName(), info);
       } else {
-         Class27.LOG.info("[Boze] [Chat] - " + info);
+         Boze.LOG.info("[Boze] [Chat] - " + info);
       }
    }
 

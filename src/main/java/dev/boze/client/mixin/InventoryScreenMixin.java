@@ -1,6 +1,6 @@
 package dev.boze.client.mixin;
 
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.entity.LivingEntity;
@@ -18,7 +18,7 @@ public class InventoryScreenMixin {
    private static void onDrawEntityPre(
       DrawContext var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, LivingEntity var9, CallbackInfo var10
    ) {
-      Class27.isInventory = true;
+      Boze.isInventory = true;
    }
 
    @Inject(
@@ -28,6 +28,6 @@ public class InventoryScreenMixin {
    private static void onDrawEntityPost(
       DrawContext var0, int var1, int var2, int var3, int var4, int var5, float var6, float var7, float var8, LivingEntity var9, CallbackInfo var10
    ) {
-      Class27.isInventory = false;
+      Boze.isInventory = false;
    }
 }

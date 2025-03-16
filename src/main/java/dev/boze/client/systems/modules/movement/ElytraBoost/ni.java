@@ -4,7 +4,7 @@ import dev.boze.client.events.PacketBundleEvent;
 import dev.boze.client.events.PreTickEvent;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.Timer;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.network.packet.s2c.play.PlaySoundFromEntityS2CPacket;
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;
@@ -23,7 +23,7 @@ class ni {
    @EventHandler
    public void method1824(PreTickEvent event) {
       if (this.field3215.hasElapsed(2500.0) && !this.field3215.hasElapsed(10000.0)) {
-         Class27.EVENT_BUS.unsubscribe(this);
+         Boze.EVENT_BUS.unsubscribe(this);
       }
    }
 

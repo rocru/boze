@@ -14,6 +14,7 @@ import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -51,10 +52,12 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
       }
    }
 
+   @Unique
    private void lambda$onInit$1(ButtonWidget var1) {
       InventoryTweaks.INSTANCE.method1720(this.getScreenHandler());
    }
 
+   @Unique
    private void lambda$onInit$0(ButtonWidget var1) {
       InventoryTweaks.INSTANCE.method1719(this.getScreenHandler());
    }

@@ -43,7 +43,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import mapped.Class1202;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2784;
 import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
@@ -89,7 +89,7 @@ public class AutoWeb extends Module {
 
    private AutoWeb() {
       super("AutoWeb", "Automatically places webs inside enemies", Category.Combat);
-      Class27.EVENT_BUS.subscribe(this.field1016);
+      Boze.EVENT_BUS.subscribe(this.field1016);
       this.field435 = true;
       this.addSettings(this.field1016.field224);
    }
@@ -329,7 +329,7 @@ public class AutoWeb extends Module {
                         }
 
                         float[] var13 = EntityUtil.method2146(var16.getPos());
-                        ((IClientPlayerEntity)mc.player).sendMovementPackets(var13[0], var13[1]);
+                        ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(var13[0], var13[1]);
                      }
 
                      if (var10 == AttackMode.Vanilla) {
@@ -353,7 +353,7 @@ public class AutoWeb extends Module {
                      mc.player.networkHandler.sendPacket(PlayerInteractEntityC2SPacket.attack(var17, mc.player.isSneaking()));
                      mc.player.swingHand(Hand.MAIN_HAND);
                      IEndCrystalEntity var18 = (IEndCrystalEntity)var17;
-                     var18.setLastAttackTime(System.currentTimeMillis());
+                     var18.boze$setLastAttackTime(System.currentTimeMillis());
                      var14 = 2;
                   }
                }

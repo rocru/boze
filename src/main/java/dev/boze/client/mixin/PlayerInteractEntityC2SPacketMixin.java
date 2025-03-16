@@ -20,12 +20,12 @@ public class PlayerInteractEntityC2SPacketMixin implements IPlayerInteractEntity
    private int entityId;
 
    @Override
-   public InteractType getType() {
+   public InteractType boze$getType() {
       return this.type.getType();
    }
 
    @Override
-   public Entity getEntity() {
+   public Entity boze$getEntity() {
       return IMinecraft.mc.world == null ? null : IMinecraft.mc.world.getEntityById(this.entityId);
    }
 }

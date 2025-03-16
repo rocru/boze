@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gl.GlProgramManager;
 import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
@@ -30,7 +30,7 @@ public class ShaderProgram implements IMinecraft {
    private static String field1555 = null;
 
    public ShaderProgram() {
-      this(Class27.getNextKey(), Class27.getNextKey());
+      this(Boze.getNextKey(), Boze.getNextKey());
    }
 
    public ShaderProgram(String vertPath, String fragPath) {

@@ -33,7 +33,7 @@ public class EntitySpeed extends Module {
          if (!this.field442.method419() || var5.isOnGround()) {
             if (this.field443.method419() || !var5.isTouchingWater()) {
                Vec3d var6 = Class5924.method95(this.field440.getValue() * 10.0);
-               ((IVec3d)var1.vec3).set(var6.x, this.field441.method419() && var1.vec3.y < 0.0 ? -3.0 : var1.vec3.y, var6.z);
+               ((IVec3d)var1.vec3).boze$set(var6.x, this.field441.method419() && var1.vec3.y < 0.0 ? -3.0 : var1.vec3.y, var6.z);
             }
          }
       }
@@ -46,7 +46,7 @@ public class EntitySpeed extends Module {
          if (!this.field442.method419() || var5.isOnGround()) {
             if (this.field443.method419() || !var5.isTouchingWater()) {
                Vec3d var6 = Class5924.method95(this.field440.getValue() * 10.0);
-               ((IVec3d)var1.vec3).set(var6.x, this.field441.method419() && var1.vec3.y < 0.0 ? -3.0 : var1.vec3.y, var6.z);
+               ((IVec3d)var1.vec3).boze$set(var6.x, this.field441.method419() && var1.vec3.y < 0.0 ? -3.0 : var1.vec3.y, var6.z);
             }
          }
       }

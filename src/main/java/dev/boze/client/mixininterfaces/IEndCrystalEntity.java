@@ -1,19 +1,19 @@
 package dev.boze.client.mixininterfaces;
 
 public interface IEndCrystalEntity {
-   long getLastAttackTime();
+   long boze$getLastAttackTime();
 
-   void setLastAttackTime(long var1);
+   void boze$setLastAttackTime(long var1);
 
-   int getHitsSinceLastAttack();
+   int boze$getHitsSinceLastAttack();
 
-   void setHitsSinceLastAttack(int var1);
+   void boze$setHitsSinceLastAttack(int var1);
 
-   long getSpawnTime();
+   long boze$getSpawnTime();
 
-   float getTicksExisted();
+   float boze$getTicksExisted();
 
-   void setAbandoned();
+   void boze$setAbandoned();
 
-   boolean isAbandoned();
+   boolean boze$isAbandoned();
 }

@@ -1,5 +1,6 @@
 package dev.boze.client.mixin;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.StringReader;
@@ -8,7 +9,7 @@ import dev.boze.api.BozeInstance;
 import dev.boze.api.addon.command.AddonDispatcher;
 import dev.boze.client.systems.modules.client.Options;
 import java.util.concurrent.CompletableFuture;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatInputSuggestor;
 import net.minecraft.client.gui.screen.ChatInputSuggestor.SuggestionWindow;
@@ -17,6 +18,7 @@ import net.minecraft.command.CommandSource;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -28,12 +30,12 @@ public abstract class CommandSuggestorMixin {
    private ParseResults<CommandSource> parse;
    @Shadow
    @Final
-   private TextFieldWidget textField;
+   TextFieldWidget textField;
    @Shadow
    @Final
-   private MinecraftClient client;
+   MinecraftClient client;
    @Shadow
-   private boolean completingSuggestions;
+   boolean completingSuggestions;
    @Shadow
    private CompletableFuture<Suggestions> pendingSuggestions;
    @Shadow
@@ -43,16 +45,15 @@ public abstract class CommandSuggestorMixin {
    public abstract void show(boolean var1);
 
    @Inject(
-      method = {"refresh"},
-      at = {@At(
-         value = "INVOKE",
-         target = "Lcom/mojang/brigadier/StringReader;canRead()Z",
-         remap = false
-      )},
-      cancellable = true,
-      locals = LocalCapture.CAPTURE_FAILHARD
+           method = {"refresh"},
+           at = {@At(
+                   value = "INVOKE",
+                   target = "Lcom/mojang/brigadier/StringReader;canRead()Z",
+                   remap = false
+           )},
+           cancellable = true
    )
-   public void onRefresh(CallbackInfo ci, String string, StringReader reader) {
+   public void onRefresh(CallbackInfo ci, @Local StringReader reader) {
       String var6 = Options.method1563();
       int var7 = var6.length();
       if (reader.canRead(var7) && reader.getString().startsWith(var6, reader.getCursor())) {
@@ -67,7 +68,7 @@ public abstract class CommandSuggestorMixin {
                   }
 
                   if (this.parse == null) {
-                     this.parse = var9.getDispatcher().parse(reader, Class27.getCommands().method1141());
+                     this.parse = var9.getDispatcher().parse(reader, Boze.getCommands().method1141());
                   }
 
                   int var12 = this.textField.getCursor();
@@ -87,9 +88,9 @@ public abstract class CommandSuggestorMixin {
             return;
          }
 
-         CommandDispatcher var13 = Class27.getCommands().method1140();
+         CommandDispatcher var13 = Boze.getCommands().method1140();
          if (this.parse == null) {
-            this.parse = var13.parse(reader, Class27.getCommands().method1141());
+            this.parse = var13.parse(reader, Boze.getCommands().method1141());
          }
 
          int var14 = this.textField.getCursor();
@@ -102,12 +103,14 @@ public abstract class CommandSuggestorMixin {
       }
    }
 
+   @Unique
    private void lambda$onRefresh$1() {
       if (this.pendingSuggestions.isDone()) {
          this.show(false);
       }
    }
 
+   @Unique
    private void lambda$onRefresh$0() {
       if (this.pendingSuggestions.isDone()) {
          this.show(false);

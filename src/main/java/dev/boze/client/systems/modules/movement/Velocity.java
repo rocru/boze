@@ -18,7 +18,7 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.Timer;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.Blocks;
@@ -62,7 +62,7 @@ public class Velocity extends Module {
 
    @Override
    public void onEnable() {
-      this.field3377 = Class27.lastTeleportId;
+      this.field3377 = Boze.lastTeleportId;
    }
 
    @Override
@@ -129,7 +129,7 @@ public class Velocity extends Module {
          mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), mc.player.isOnGround()));
          mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + 69.0, mc.player.getZ(), mc.player.isOnGround()));
          this.field3377++;
-         this.field3377 = Math.max(this.field3377, Class27.lastTeleportId);
+         this.field3377 = Math.max(this.field3377, Boze.lastTeleportId);
          mc.player.networkHandler.sendPacket(new TeleportConfirmC2SPacket(this.field3377));
       }
    }

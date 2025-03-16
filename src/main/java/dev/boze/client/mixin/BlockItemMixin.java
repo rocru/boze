@@ -16,6 +16,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -57,6 +58,7 @@ public class BlockItemMixin {
       }
    }
 
+   @Unique
    private static boolean lambda$redirectCanPlace$0(Entity var0) {
       return var0 instanceof EndCrystalEntity;
    }

@@ -15,7 +15,7 @@ import dev.boze.client.systems.pathfinding.Path;
 import dev.boze.client.systems.pathfinding.PathBuilder;
 import dev.boze.client.systems.pathfinding.PathFinder;
 import dev.boze.client.systems.pathfinding.PathRules;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.command.CommandSource;
@@ -44,7 +44,7 @@ public class FlytoCommand extends Command {
 
    private void method627(BlockPos var1, PathRules var2) {
       if (this.field1375) {
-         Class27.EVENT_BUS.unsubscribe(this);
+         Boze.EVENT_BUS.unsubscribe(this);
          this.field1375 = false;
          this.field1376 = false;
       }
@@ -53,7 +53,7 @@ public class FlytoCommand extends Command {
       this.field1374 = new PathFinder(var1, var2);
       this.field1375 = true;
       this.field1376 = true;
-      Class27.EVENT_BUS.subscribe(this);
+      Boze.EVENT_BUS.subscribe(this);
    }
 
    @EventHandler
@@ -67,7 +67,7 @@ public class FlytoCommand extends Command {
                this.field1374 = null;
             } else {
                this.method626("Unable to find path", new Object[0]);
-               Class27.EVENT_BUS.unsubscribe(this);
+               Boze.EVENT_BUS.unsubscribe(this);
             }
 
             this.field1376 = false;
@@ -81,7 +81,7 @@ public class FlytoCommand extends Command {
          Vec3d var5 = this.field1377.method2094();
          if (var5 == null) {
             this.field1377 = null;
-            Class27.EVENT_BUS.unsubscribe(this);
+            Boze.EVENT_BUS.unsubscribe(this);
          } else {
             event.vec3 = var5;
             mc.player.setVelocity(Vec3d.ZERO);
@@ -94,7 +94,7 @@ public class FlytoCommand extends Command {
    public void method2042(PacketBundleEvent event) {
       if (event.packet instanceof PlayerPositionLookS2CPacket && this.field1377 != null) {
          this.field1377 = null;
-         Class27.EVENT_BUS.unsubscribe(this);
+         Boze.EVENT_BUS.unsubscribe(this);
          this.method626("Path interrupted", new Object[0]);
       }
    }

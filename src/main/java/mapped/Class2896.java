@@ -72,7 +72,7 @@ public class Class2896 implements IMinecraft {
                   (float)var3011.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue()
                );
                var16 = this.method5668(var3011, var16);
-               ((IExplosion)this.field124).set(var3013, 6.0F, false);
+               ((IExplosion)this.field124).boze$set(var3013, 6.0F, false);
                var16 = this.method5667(var3011, var16, this.field124);
             } catch (Exception var19) {
             }

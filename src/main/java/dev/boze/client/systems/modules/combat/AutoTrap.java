@@ -45,7 +45,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import mapped.Class1202;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2784;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.Entity;
@@ -95,7 +95,7 @@ public class AutoTrap extends Module {
 
    private AutoTrap() {
       super("AutoTrap", "Traps enemies with Obsidian\nIf no Obsidian, will use Ender Chests or other blast proof blocks\n", Category.Combat);
-      Class27.EVENT_BUS.subscribe(this.field2537);
+      Boze.EVENT_BUS.subscribe(this.field2537);
       this.field435 = true;
       this.addSettings(this.field2537.field224);
    }
@@ -336,7 +336,7 @@ public class AutoTrap extends Module {
                            }
 
                            float[] var14 = EntityUtil.method2146(var18.getPos());
-                           ((IClientPlayerEntity)mc.player).sendMovementPackets(var14[0], var14[1]);
+                           ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(var14[0], var14[1]);
                         }
 
                         if (var12 == AttackMode.Vanilla) {
@@ -370,13 +370,13 @@ public class AutoTrap extends Module {
                         }
 
                         float[] var20 = EntityUtil.method2146(var18.getPos());
-                        ((IClientPlayerEntity)mc.player).sendMovementPackets(var20[0], var20[1]);
+                        ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(var20[0], var20[1]);
                      }
 
                      mc.player.networkHandler.sendPacket(PlayerInteractEntityC2SPacket.attack(var19, mc.player.isSneaking()));
                      mc.player.swingHand(Hand.MAIN_HAND);
                      IEndCrystalEntity var21 = (IEndCrystalEntity)var19;
-                     var21.setLastAttackTime(System.currentTimeMillis());
+                     var21.boze$setLastAttackTime(System.currentTimeMillis());
                      var15 = 2;
                   }
                }

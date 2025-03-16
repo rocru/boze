@@ -10,7 +10,7 @@ import dev.boze.client.settings.MinMaxSetting;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class3071;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ChatScreen;
@@ -101,7 +101,7 @@ public abstract class HUDModule extends Module {
             this.field596 = tag.getDouble("x");
          } catch (Exception var10) {
             ErrorLogger.log(var10);
-            Class27.LOG.warn("Unable to load HUD module " + this.internalName + "'s x position from config");
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s x position from config");
          }
       }
 
@@ -110,7 +110,7 @@ public abstract class HUDModule extends Module {
             this.field597 = tag.getDouble("y");
          } catch (Exception var9) {
             ErrorLogger.log(var9);
-            Class27.LOG.warn("Unable to load HUD module " + this.internalName + "'s y position from config");
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s y position from config");
          }
       }
 
@@ -119,7 +119,7 @@ public abstract class HUDModule extends Module {
             this.field603 = tag.getInt("a");
          } catch (Exception var8) {
             ErrorLogger.log(var8);
-            Class27.LOG.warn("Unable to load HUD module " + this.internalName + "'s anchor position from config");
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s anchor position from config");
          }
       }
 
@@ -128,7 +128,7 @@ public abstract class HUDModule extends Module {
             this.field604 = tag.getBoolean("sX");
          } catch (Exception var7) {
             ErrorLogger.log(var7);
-            Class27.LOG.warn("Unable to load HUD module " + this.internalName + "'s x-axis snap from config");
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s x-axis snap from config");
          }
       }
 
@@ -137,7 +137,7 @@ public abstract class HUDModule extends Module {
             this.field605 = tag.getBoolean("sY");
          } catch (Exception var6) {
             ErrorLogger.log(var6);
-            Class27.LOG.warn("Unable to load HUD module " + this.internalName + "'s y-axis snap from config");
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s y-axis snap from config");
          }
       }
 
@@ -292,7 +292,7 @@ public abstract class HUDModule extends Module {
       }
 
       if (!HUD.INSTANCE.field2381.method419()) {
-         for (Module var11 : Class27.getModules().modules) {
+         for (Module var11 : Boze.getModules().modules) {
             if (var11 instanceof HUDModule && var11.isEnabled()) {
                HUDModule var12 = (HUDModule)var11;
                if (!this.method301(

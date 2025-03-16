@@ -236,7 +236,7 @@ public class AutoBed extends Module {
          while (!this.ax.isEmpty()) {
             ActionWrapper var5 = (ActionWrapper)this.ax.poll();
             if (var5.field3900 && (RotationHandler.method215() != var5.field3902 || RotationHandler.method520() != var5.field3903)) {
-               ((IClientPlayerEntity)mc.player).sendMovementPackets(var5.field3902, var5.field3903);
+               ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(var5.field3902, var5.field3903);
             }
 
             var5.field3904.run();

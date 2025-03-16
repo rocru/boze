@@ -15,7 +15,7 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.network.BozeExecutor;
 import dev.boze.client.utils.render.RenderUtil;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 
 public class AccountManagerComponent extends BottomRowScaledComponent {
@@ -25,7 +25,7 @@ public class AccountManagerComponent extends BottomRowScaledComponent {
    public AccountManagerComponent(AccountSetting setting) {
       super(setting.name, BottomRow.AddClose, 0.15, 0.4);
       this.field1447 = setting;
-      this.field1448 = Class27.getAccounts();
+      this.field1448 = Boze.getAccounts();
    }
 
    @Override
@@ -118,10 +118,10 @@ public class AccountManagerComponent extends BottomRowScaledComponent {
 
    private static void lambda$addAccount$1(Account var0, AccountSetting var1) {
       if (var0.method2114()) {
-         Class27.getAccounts().method1130(var0);
+         Boze.getAccounts().method1130(var0);
          if (var0.method2115()) {
             var1.method1341(var0.method210());
-            Class27.getPlayerManager().method2142();
+            Boze.getPlayerManager().method2142();
          }
       }
    }
@@ -129,7 +129,7 @@ public class AccountManagerComponent extends BottomRowScaledComponent {
    private void lambda$handleItemClick$0(Account var1) {
       if (var1.method2115()) {
          this.field1447.method1341(var1.method210());
-         Class27.getPlayerManager().method2142();
+         Boze.getPlayerManager().method2142();
       }
    }
 }

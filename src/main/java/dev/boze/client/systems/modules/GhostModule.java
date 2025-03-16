@@ -7,7 +7,7 @@ import dev.boze.client.utils.IMinecraft;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import mapped.Class27;
+import dev.boze.client.Boze;
 
 public abstract class GhostModule implements IMinecraft {
    public abstract InteractionMode getInteractionMode();
@@ -29,7 +29,7 @@ public abstract class GhostModule implements IMinecraft {
             }
          } catch (Exception var10) {
             ErrorLogger.log(var10);
-            Class27.LOG.error("Unable to register a setting for a module, this can lead to instability and crashes");
+            Boze.LOG.error("Unable to register a setting for a module, this can lead to instability and crashes");
          }
       }
 

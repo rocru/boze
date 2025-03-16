@@ -2,7 +2,7 @@ package dev.boze.client.mixin;
 
 import dev.boze.client.events.FinishUsingEvent;
 import dev.boze.client.utils.IMinecraft;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -19,7 +19,7 @@ public class ItemStackMixin {
    )
    private void onFinishUsing(World var1, LivingEntity var2, CallbackInfoReturnable<ItemStack> var3) {
       if (var2 == IMinecraft.mc.player) {
-         Class27.EVENT_BUS.post(FinishUsingEvent.method1061((ItemStack)this));
+         Boze.EVENT_BUS.post(FinishUsingEvent.method1061((ItemStack)this));
       }
    }
 }

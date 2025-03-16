@@ -66,7 +66,7 @@ public class EntityRenderDispatcherMixin {
    ) {
       double var11 = Hitboxes.INSTANCE.method1603(var2);
       if (var11 != 0.0) {
-         ((IBox)var8).expand(var11);
+         ((IBox)var8).boze$expand(var11);
       }
    }
 

@@ -14,7 +14,7 @@ import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import dev.boze.client.utils.fakeplayer.FakeClientPlayerEntity;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import java.util.List;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -44,7 +44,7 @@ public abstract class EntityMixin implements IEntity {
    @Shadow
    private Box boundingBox;
    @Shadow
-   public World world;
+   private World world;
    @Shadow
    protected boolean firstUpdate;
    @Shadow
@@ -61,10 +61,10 @@ public abstract class EntityMixin implements IEntity {
    }
 
    @Shadow
-   protected abstract Vec3d getRotationVector(float var1, float var2);
+   public abstract Vec3d getRotationVector(float var1, float var2);
 
    @Override
-   public boolean isInWater() {
+   public boolean boze$isInWater() {
       return !this.firstUpdate && this.fluidHeight.getDouble(FluidTags.WATER) > 0.0;
    }
 
@@ -91,7 +91,7 @@ public abstract class EntityMixin implements IEntity {
    )
    private void onPushAwayFrom(Entity var1, CallbackInfo var2) {
       if (this == MinecraftClient.getInstance().player) {
-         PlayerPushEvent var3 = (PlayerPushEvent)Class27.EVENT_BUS.post(PlayerPushEvent.method1083());
+         PlayerPushEvent var3 = (PlayerPushEvent) Boze.EVENT_BUS.post(PlayerPushEvent.method1083());
          if (var3.method1022()) {
             var2.cancel();
          }
@@ -106,9 +106,9 @@ public abstract class EntityMixin implements IEntity {
    )
    private void onMove(MovementType var1, Vec3d var2, CallbackInfo var3) {
       if (this instanceof LivingEntity) {
-         Class27.EVENT_BUS.post(LivingEntityMoveEvent.method1071((LivingEntity)this, var2));
+         Boze.EVENT_BUS.post(LivingEntityMoveEvent.method1071((LivingEntity)this, var2));
       } else if (this instanceof BoatEntity) {
-         Class27.EVENT_BUS.post(BoatEntityMoveEvent.method1051((BoatEntity)this, var2));
+         Boze.EVENT_BUS.post(BoatEntityMoveEvent.method1051((BoatEntity)this, var2));
       }
    }
 
@@ -136,7 +136,7 @@ public abstract class EntityMixin implements IEntity {
    )
    private void inject$stepEvent(MovementType var1, Vec3d var2, CallbackInfo var3, Vec3d var4) {
       if (this == MinecraftClient.getInstance().player) {
-         Class27.EVENT_BUS.post(PlayerPositionEvent.method1081(var4.y));
+         Boze.EVENT_BUS.post(PlayerPositionEvent.method1081(var4.y));
       }
    }
 }

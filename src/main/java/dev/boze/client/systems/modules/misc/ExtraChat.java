@@ -89,7 +89,7 @@ public class ExtraChat extends Module {
 
    public void method1702(DrawContext var1, Visible var2, int var3, int var4) {
       if (this.isEnabled() && this.field2939.method419()) {
-         if (((IChatHudLineVisible)var2).isFirst()) {
+         if (((IChatHudLineVisible)var2).boze$isFirst()) {
             RenderSystem.enableBlend();
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, (float)RGBAColor.method188(var4) / 255.0F);
             this.method1703(var1, (IChatHudLine)var2, var3);
@@ -102,7 +102,7 @@ public class ExtraChat extends Module {
    }
 
    private void method1703(DrawContext v1, IChatHudLine v2, int i3) {
-      String v7 = v2.getText().trim();
+      String v7 = v2.boze$getText().trim();
       GameProfile v8 = this.method1704(v2, v7);
       if (v8 != null) {
          PlayerListEntry v9 = mc.getNetworkHandler().getPlayerListEntry(v8.getId());
@@ -115,7 +115,7 @@ public class ExtraChat extends Module {
    }
 
    private GameProfile method1704(IChatHudLine var1, String var2) {
-      GameProfile var6 = var1.getSenderProfile();
+      GameProfile var6 = var1.boze$getSenderProfile();
       if (var6 == null) {
          Matcher var7 = field2945.matcher(var2);
          if (var7.matches()) {

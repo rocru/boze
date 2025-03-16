@@ -211,7 +211,7 @@ public class AutoCrystalTracker implements IMinecraft {
             if (var5 != null) {
                Entity var6 = mc.world.getEntityById(var5);
                if (var6 != null && var6 instanceof EndCrystalEntity) {
-                  ((IEndCrystalEntity)var6).setAbandoned();
+                  ((IEndCrystalEntity)var6).boze$setAbandoned();
                }
             }
          }

@@ -8,7 +8,7 @@ import dev.boze.client.settings.Setting;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.Bind;
 import java.util.Locale;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 
 public class SetSettingsCommand extends Command {
@@ -18,7 +18,7 @@ public class SetSettingsCommand extends Command {
 
    @Override
    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-      for (Module var6 : Class27.getModules().modules) {
+      for (Module var6 : Boze.getModules().modules) {
          LiteralArgumentBuilder var7 = LiteralArgumentBuilder.literal(var6.internalName.toLowerCase(Locale.ROOT));
          var7.then(method403("reset").executes(SetSettingsCommand::lambda$build$0));
 

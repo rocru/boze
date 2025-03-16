@@ -16,7 +16,7 @@ import java.io.FileOutputStream;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.command.CommandSource;
 
@@ -36,7 +36,7 @@ public class NewsCommand extends Command {
    public void method2071(Render3DEvent event) {
       if (mc.currentScreen == null && this.field1379 != null) {
          mc.setScreen(new NewsScreen(this.field1379));
-         Class27.EVENT_BUS.unsubscribe(this);
+         Boze.EVENT_BUS.unsubscribe(this);
          this.field1379 = null;
       }
    }
@@ -50,7 +50,7 @@ public class NewsCommand extends Command {
       List var1 = NewsUtil.getNews();
       var1.removeIf(NewsCommand::lambda$build$0);
       this.field1379 = (String[])var1.toArray(new String[0]);
-      Class27.EVENT_BUS.subscribe(this);
+      Boze.EVENT_BUS.subscribe(this);
    }
 
    private static boolean lambda$build$0(String var0) {

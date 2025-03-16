@@ -9,7 +9,7 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import java.util.HashMap;
 import java.util.Map.Entry;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket;
@@ -58,7 +58,7 @@ public class Playtime extends Module {
       try {
          JsonObject var3 = new JsonObject();
          this.field2406.forEach(var3::addProperty);
-         ConfigManager.writeFile(Class27.FOLDER, "playtime", var3);
+         ConfigManager.writeFile(Boze.FOLDER, "playtime", var3);
       } catch (Exception var4) {
       }
 
@@ -68,7 +68,7 @@ public class Playtime extends Module {
    @Override
    public Module method235(NbtCompound tag) {
       try {
-         JsonObject var4 = ConfigManager.readFile(Class27.FOLDER, "playtime");
+         JsonObject var4 = ConfigManager.readFile(Boze.FOLDER, "playtime");
          var4.entrySet().forEach(this::lambda$fromTag$0);
       } catch (Exception var5) {
       }

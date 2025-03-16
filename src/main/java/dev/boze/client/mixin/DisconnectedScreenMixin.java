@@ -4,7 +4,7 @@ import dev.boze.client.enums.GUIMenu;
 import dev.boze.client.gui.screens.ClickGUI;
 import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.misc.AutoReconnect;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gui.screen.DisconnectedScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -41,6 +41,7 @@ public abstract class DisconnectedScreenMixin extends Screen {
       super(title);
    }
 
+   @Unique
    private String getText() {
       String var3 = "Reconnect";
       if (AutoReconnect.INSTANCE.isEnabled()) {
@@ -60,7 +61,7 @@ public abstract class DisconnectedScreenMixin extends Screen {
       locals = LocalCapture.CAPTURE_FAILHARD
    )
    private void onInitPre(CallbackInfo var1, ButtonWidget var2) {
-      if (AutoReconnect.INSTANCE.isEnabled() && Class27.getModules().field907.field1613 != null) {
+      if (AutoReconnect.INSTANCE.isEnabled() && Boze.getModules().field907.field1613 != null) {
          this.reconnectBtn = (ButtonWidget)this.grid.add(new Builder(Text.literal(this.getText()), this::lambda$onInitPre$0).build());
          this.grid
             .add(new Builder(Text.literal((AutoReconnect.INSTANCE.isEnabled() ? "Disable " : "Enable ") + "AutoReconnect"), this::lambda$onInitPre$1).build());
@@ -72,7 +73,7 @@ public abstract class DisconnectedScreenMixin extends Screen {
    }
 
    public void tick() {
-      if (AutoReconnect.INSTANCE.isEnabled() && Class27.getModules().field907.field1613 != null) {
+      if (AutoReconnect.INSTANCE.isEnabled() && Boze.getModules().field907.field1613 != null) {
          if (this.remainingDelay <= 0.0) {
             this.tryConnecting();
          } else {
@@ -84,8 +85,9 @@ public abstract class DisconnectedScreenMixin extends Screen {
       }
    }
 
+   @Unique
    private void tryConnecting() {
-      ServerInfo var1 = Class27.getModules().field907.field1613;
+      ServerInfo var1 = Boze.getModules().field907.field1613;
       String var2 = var1.address;
       if (var2.contains(":")) {
          var2 = var2.substring(0, var2.indexOf(":"));
@@ -94,25 +96,28 @@ public abstract class DisconnectedScreenMixin extends Screen {
       ConnectScreen.connect(
          new TitleScreen(),
          this.client,
-         ServerAddress.parse(Class27.getModules().field907.field1613.address),
-         new ServerInfo(I18n.translate("selectServer.defaultName", new Object[0]), Class27.getModules().field907.field1613.address, ServerType.OTHER),
+         ServerAddress.parse(Boze.getModules().field907.field1613.address),
+         new ServerInfo(I18n.translate("selectServer.defaultName", new Object[0]), Boze.getModules().field907.field1613.address, ServerType.OTHER),
          false,
          null
       );
    }
 
+   @Unique
    private void lambda$onInitPre$2(ButtonWidget var1) {
       ClickGUI.field1335.field1332 = GUIMenu.AltManager;
       ClickGUI.field1335.field1338 = this;
       this.client.setScreen(ClickGUI.field1335);
    }
 
+   @Unique
    private void lambda$onInitPre$1(ButtonWidget var1) {
       AutoReconnect.INSTANCE.setEnabled(!AutoReconnect.INSTANCE.isEnabled());
       this.reconnectBtn.setMessage(Text.literal(this.getText()));
       this.remainingDelay = AutoReconnect.INSTANCE.delay.getValue();
    }
 
+   @Unique
    private void lambda$onInitPre$0(ButtonWidget var1) {
       this.tryConnecting();
    }

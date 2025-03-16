@@ -3,7 +3,7 @@ package dev.boze.client.systems.modules.combat;
 import dev.boze.client.core.Version;
 import dev.boze.client.utils.IMinecraft;
 import java.text.DecimalFormat;
-import mapped.Class27;
+import dev.boze.client.Boze;
 
 class AutoCrystalDisplayInfo implements IMinecraft {
    private final AutoCrystal field1353;
@@ -24,7 +24,7 @@ class AutoCrystalDisplayInfo implements IMinecraft {
          if (Version.isBeta) {
             float var6 = this.field1353.autoCrystalTracker.method1385() + this.field1353.autoCrystalTracker.method215();
             this.method588(var4, var5.format((double)var6));
-            this.method588(var4, var5.format(Class27.getModules().field905.field1519));
+            this.method588(var4, var5.format(Boze.getModules().field905.field1519));
          }
 
          String var7 = var4.toString();

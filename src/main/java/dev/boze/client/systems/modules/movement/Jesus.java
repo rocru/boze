@@ -97,14 +97,14 @@ public class Jesus extends Module {
             if (!mc.player.isInLava() || this.method1845()) {
                if (!mc.player.isTouchingWater() && !mc.player.isInLava()) {
                   if (this.field3293 == 0) {
-                     ((IVec3d)mc.player.getVelocity()).setY(0.3);
+                     ((IVec3d)mc.player.getVelocity()).boze$setY(0.3);
                   } else if (this.field3293 == 1) {
-                     ((IVec3d)mc.player.getVelocity()).setY(0.0);
+                     ((IVec3d)mc.player.getVelocity()).boze$setY(0.0);
                   }
 
                   this.field3293++;
                } else {
-                  ((IVec3d)mc.player.getVelocity()).setY(0.11);
+                  ((IVec3d)mc.player.getVelocity()).boze$setY(0.11);
                   this.field3293 = 0;
                }
             }

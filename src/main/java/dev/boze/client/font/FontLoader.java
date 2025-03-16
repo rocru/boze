@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 import org.lwjgl.BufferUtils;
 
@@ -208,7 +208,7 @@ public class FontLoader implements IFontRender, IMinecraft {
          var0.close();
          return var4.toByteArray();
       } catch (IOException var7) {
-         Class27.LOG.error("Failed to read bytes from input stream for font");
+         Boze.LOG.error("Failed to read bytes from input stream for font");
          return new byte[0];
       }
    }

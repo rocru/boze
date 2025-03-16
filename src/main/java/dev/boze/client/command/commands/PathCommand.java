@@ -14,7 +14,7 @@ import dev.boze.client.systems.pathfinding.Path;
 import dev.boze.client.systems.pathfinding.PathBuilder;
 import dev.boze.client.systems.pathfinding.PathFinder;
 import dev.boze.client.systems.pathfinding.PathRules;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.command.CommandSource;
 import net.minecraft.util.math.BlockPos;
@@ -56,7 +56,7 @@ public class PathCommand extends Command {
 
    private void method630(BlockPos var1, PathRules var2) {
       if (this.field1381) {
-         Class27.EVENT_BUS.unsubscribe(this);
+         Boze.EVENT_BUS.unsubscribe(this);
          this.field1381 = false;
          this.field1382 = false;
       }
@@ -64,7 +64,7 @@ public class PathCommand extends Command {
       this.field1380 = new PathFinder(var1, var2);
       this.field1381 = true;
       this.field1382 = true;
-      Class27.EVENT_BUS.subscribe(this);
+      Boze.EVENT_BUS.subscribe(this);
       this.field1383 = System.nanoTime();
    }
 
@@ -79,7 +79,7 @@ public class PathCommand extends Command {
                this.method624("Path found in " + var5 + "ms", new Object[0]);
             } else {
                this.method626("Unable to find path", new Object[0]);
-               Class27.EVENT_BUS.unsubscribe(this);
+               Boze.EVENT_BUS.unsubscribe(this);
             }
 
             this.field1382 = false;

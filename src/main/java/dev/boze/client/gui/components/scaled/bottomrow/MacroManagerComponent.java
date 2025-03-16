@@ -17,7 +17,7 @@ import dev.boze.client.utils.KeyboardUtil;
 import dev.boze.client.utils.Macro;
 import dev.boze.client.utils.render.RenderUtil;
 import java.util.ArrayList;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
@@ -30,7 +30,7 @@ public class MacroManagerComponent extends BottomRowScaledComponent {
    public MacroManagerComponent(MacroManagerSetting setting) {
       super("Manage Macros", BottomRow.AddClose, 0.15, 0.4);
       this.field1449 = setting;
-      this.field1450 = Class27.getMacros();
+      this.field1450 = Boze.getMacros();
       this.field1451 = new ArrayList(this.field1450.field2140);
    }
 

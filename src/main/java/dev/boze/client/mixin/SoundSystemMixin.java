@@ -2,7 +2,7 @@ package dev.boze.client.mixin;
 
 import dev.boze.client.events.SoundPlayEvent;
 import dev.boze.client.mixininterfaces.ISoundSystem;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.client.sound.SoundSystem;
 import net.minecraft.client.sound.TickableSoundInstance;
@@ -26,7 +26,7 @@ public class SoundSystemMixin implements ISoundSystem {
       if (this.paused) {
          ci.cancel();
       } else {
-         SoundPlayEvent var3 = (SoundPlayEvent)Class27.EVENT_BUS.post(SoundPlayEvent.method1095(soundInstance));
+         SoundPlayEvent var3 = (SoundPlayEvent) Boze.EVENT_BUS.post(SoundPlayEvent.method1095(soundInstance));
          if (var3.method1022()) {
             ci.cancel();
          }
@@ -42,7 +42,7 @@ public class SoundSystemMixin implements ISoundSystem {
       if (this.paused) {
          ci.cancel();
       } else {
-         SoundPlayEvent var4 = (SoundPlayEvent)Class27.EVENT_BUS.post(SoundPlayEvent.method1095(soundInstance));
+         SoundPlayEvent var4 = (SoundPlayEvent) Boze.EVENT_BUS.post(SoundPlayEvent.method1095(soundInstance));
          if (var4.method1022()) {
             ci.cancel();
          }
@@ -58,7 +58,7 @@ public class SoundSystemMixin implements ISoundSystem {
       if (this.paused) {
          ci.cancel();
       } else {
-         SoundPlayEvent var3 = (SoundPlayEvent)Class27.EVENT_BUS.post(SoundPlayEvent.method1095(sound));
+         SoundPlayEvent var3 = (SoundPlayEvent) Boze.EVENT_BUS.post(SoundPlayEvent.method1095(sound));
          if (var3.method1022()) {
             ci.cancel();
          }
@@ -66,12 +66,12 @@ public class SoundSystemMixin implements ISoundSystem {
    }
 
    @Override
-   public boolean isPaused() {
+   public boolean boze$isPaused() {
       return this.paused;
    }
 
    @Override
-   public void setPaused(boolean paused) {
+   public void boze$setPaused(boolean paused) {
       this.paused = paused;
    }
 }

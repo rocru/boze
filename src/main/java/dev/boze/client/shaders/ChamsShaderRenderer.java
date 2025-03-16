@@ -71,7 +71,7 @@ public class ChamsShaderRenderer implements IMinecraft {
             field2243.beginWrite(false);
             WorldRenderer var6 = mc.worldRenderer;
             field2248 = true;
-            ((IWorldRenderer)var6).renderEntitiesForChams(tickDelta, matrices, camera);
+            ((IWorldRenderer)var6).boze$renderEntitiesForChams(tickDelta, matrices, camera);
             field2248 = false;
             mc.getFramebuffer().beginWrite(false);
             ShaderRegistry.field2265.method2142();

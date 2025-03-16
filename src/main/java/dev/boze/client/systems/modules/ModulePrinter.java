@@ -3,7 +3,7 @@ package dev.boze.client.systems.modules;
 import dev.boze.client.settings.Setting;
 import java.io.FileWriter;
 import java.io.IOException;
-import mapped.Class27;
+import dev.boze.client.Boze;
 
 public class ModulePrinter {
    private final FileWriter field2312;
@@ -28,7 +28,7 @@ public class ModulePrinter {
       this.method1332("<details class=\"module-category-details\">");
       this.method1332("<summary class=\"module-category\">%s</summary>", var1.toString());
 
-      for (Module var6 : Class27.getModules().modules) {
+      for (Module var6 : Boze.getModules().modules) {
          if (var6.category == var1) {
             this.method1330(var6);
          }

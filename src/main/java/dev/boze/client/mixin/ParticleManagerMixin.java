@@ -9,7 +9,7 @@ import dev.boze.client.systems.modules.render.NoRender;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleManager;
@@ -121,7 +121,7 @@ public class ParticleManagerMixin implements IParticleManager {
       cancellable = true
    )
    public void onAddEmmiter(Entity entity, ParticleEffect particleEffect, CallbackInfo ci) {
-      ParticleEffectEvent var4 = (ParticleEffectEvent)Class27.EVENT_BUS.post(ParticleEffectEvent.method1077(particleEffect));
+      ParticleEffectEvent var4 = (ParticleEffectEvent) Boze.EVENT_BUS.post(ParticleEffectEvent.method1077(particleEffect));
       if (var4.method1022()) {
          ci.cancel();
       }
@@ -133,22 +133,23 @@ public class ParticleManagerMixin implements IParticleManager {
       cancellable = true
    )
    public void onAddEmmiterAged(Entity entity, ParticleEffect particleEffect, int maxAge, CallbackInfo ci) {
-      ParticleEffectEvent var5 = (ParticleEffectEvent)Class27.EVENT_BUS.post(ParticleEffectEvent.method1077(particleEffect));
+      ParticleEffectEvent var5 = (ParticleEffectEvent) Boze.EVENT_BUS.post(ParticleEffectEvent.method1077(particleEffect));
       if (var5.method1022()) {
          ci.cancel();
       }
    }
 
    @Override
-   public boolean isPaused() {
+   public boolean boze$isPaused() {
       return this.paused;
    }
 
    @Override
-   public void setPaused(boolean paused) {
+   public void boze$setPaused(boolean paused) {
       this.paused = paused;
    }
 
+   @Unique
    private void lambda$onRenderParticlesTail$0(LightmapTextureManager var1, Camera var2, float var3) {
       var1.enable();
       RenderSystem.enableDepthTest();

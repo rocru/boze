@@ -19,7 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.DrawContext;
 
@@ -92,7 +92,7 @@ public class ArrayList extends HUDModule {
    }
 
    private java.util.ArrayList<ArrayListModuleInfo> method2120() {
-      java.util.ArrayList var4 = (java.util.ArrayList)Class27.getModules()
+      java.util.ArrayList var4 = (java.util.ArrayList) Boze.getModules()
          .modules
          .stream()
          .filter(Module::getVisibility)

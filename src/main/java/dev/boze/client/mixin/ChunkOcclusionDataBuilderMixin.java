@@ -1,7 +1,7 @@
 package dev.boze.client.mixin;
 
 import dev.boze.client.events.OcclusionEvent;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.render.chunk.ChunkOcclusionDataBuilder;
 import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +17,7 @@ public class ChunkOcclusionDataBuilderMixin {
       cancellable = true
    )
    private void onMarkClosed(BlockPos var1, CallbackInfo var2) {
-      OcclusionEvent var3 = (OcclusionEvent)Class27.EVENT_BUS.post(OcclusionEvent.method1076());
+      OcclusionEvent var3 = (OcclusionEvent) Boze.EVENT_BUS.post(OcclusionEvent.method1076());
       if (var3.method1022()) {
          var2.cancel();
       }

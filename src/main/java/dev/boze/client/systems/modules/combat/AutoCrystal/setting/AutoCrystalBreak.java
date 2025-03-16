@@ -21,7 +21,7 @@ import dev.boze.client.utils.InventoryUtil;
 import dev.boze.client.utils.Timer;
 import java.util.ArrayList;
 import java.util.List;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2923;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -71,7 +71,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
       Entity[] var4 = this.method95();
       if (var4 != null && var4[0] != null) {
          EndCrystalEntity var5 = (EndCrystalEntity)var4[0];
-         if (((IEndCrystalEntity)var5).getTicksExisted() >= this.field183.ticksExisted.method423()) {
+         if (((IEndCrystalEntity)var5).boze$getTicksExisted() >= this.field183.ticksExisted.method423()) {
             this.field183.autoCrystalTracker.field1529 = var5;
             return true;
          } else {
@@ -145,7 +145,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
                if (this.field183.damageSync.method419() && var2 != null) {
                   for (int var8 = 1; var8 < var2.length; var8++) {
                      if (var2[var8] != null && var2[var8] instanceof LivingEntity var9) {
-                        ((ILivingEntity)var9).setDamageSyncTime(System.currentTimeMillis());
+                        ((ILivingEntity)var9).boze$setDamageSyncTime(System.currentTimeMillis());
                      }
                   }
                }
@@ -192,7 +192,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
                if (this.field183.damageSync.method419() && var3 != null) {
                   for (int var13 = 1; var13 < var3.length; var13++) {
                      if (var3[var13] != null && var3[var13] instanceof LivingEntity var10) {
-                        ((ILivingEntity)var10).setDamageSyncTime(System.currentTimeMillis());
+                        ((ILivingEntity)var10).boze$setDamageSyncTime(System.currentTimeMillis());
                      }
                   }
                }
@@ -306,12 +306,12 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
          return false;
       } else {
          if (this.field181.method461() != InhibitMode.Off) {
-            if (((IEndCrystalEntity)var1).isAbandoned()) {
+            if (((IEndCrystalEntity)var1).boze$isAbandoned()) {
                return false;
             }
 
-            if (((IEndCrystalEntity)var1).getHitsSinceLastAttack() > this.field183.extraLimit.method434()
-               && (double)(System.currentTimeMillis() - ((IEndCrystalEntity)var1).getLastAttackTime()) < Class27.getModules().field905.field1519) {
+            if (((IEndCrystalEntity)var1).boze$getHitsSinceLastAttack() > this.field183.extraLimit.method434()
+               && (double)(System.currentTimeMillis() - ((IEndCrystalEntity)var1).boze$getLastAttackTime()) < Boze.getModules().field905.field1519) {
                return false;
             }
          }
@@ -333,7 +333,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
 
    boolean method2116() {
       return this.method2117()
-         && !Class27.getModules()
+         && !Boze.getModules()
             .field906
             .field1617
             .hasElapsed((double)((float)this.field183.field1041.field215.method434().intValue() * 50.0F * this.field183.autoCrystalTracker.field1525));

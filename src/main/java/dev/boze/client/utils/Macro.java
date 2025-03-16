@@ -9,7 +9,7 @@ import dev.boze.client.utils.misc.IJsonSerializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import mapped.Class27;
+import dev.boze.client.Boze;
 
 public class Macro implements IJsonSerializable<Macro>, IMinecraft {
    public String field1048 = "";
@@ -32,7 +32,7 @@ public class Macro implements IJsonSerializable<Macro>, IMinecraft {
       for (String var5 : this.field1051) {
          if (var5.startsWith(Options.method1563())) {
             try {
-               Class27.getCommands().method1138(var5.substring(Options.method1563().length()));
+               Boze.getCommands().method1138(var5.substring(Options.method1563().length()));
             } catch (Exception var7) {
             }
          } else {

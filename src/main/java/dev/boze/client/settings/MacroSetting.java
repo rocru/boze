@@ -2,7 +2,7 @@ package dev.boze.client.settings;
 
 import dev.boze.client.utils.Macro;
 import java.util.function.BooleanSupplier;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.nbt.NbtCompound;
 
 public class MacroSetting extends Setting<String> {
@@ -29,7 +29,7 @@ public class MacroSetting extends Setting<String> {
       if (this.field974.isEmpty()) {
          return null;
       } else {
-         for (Macro var5 : Class27.getMacros().field2140) {
+         for (Macro var5 : Boze.getMacros().field2140) {
             if (var5.field1048.equals(this.field974)) {
                return var5;
             }

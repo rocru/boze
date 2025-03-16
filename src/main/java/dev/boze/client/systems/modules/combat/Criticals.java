@@ -29,8 +29,8 @@ public class Criticals extends Module {
    @EventHandler
    public void method1853(PrePacketSendEvent event) {
       if (event.packet instanceof IPlayerInteractEntityC2SPacket var5
-         && var5.getType() == InteractType.ATTACK
-         && var5.getEntity() instanceof LivingEntity
+         && var5.boze$getType() == InteractType.ATTACK
+         && var5.boze$getEntity() instanceof LivingEntity
          && mc.player.isOnGround()
          && !mc.player.isInLava()
          && !mc.player.isSubmergedInWater()) {

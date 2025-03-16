@@ -1,4 +1,4 @@
-package mapped;
+package dev.boze.client;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
@@ -52,9 +52,13 @@ import java.util.LinkedList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import mapped.Class1201;
+import mapped.Class3069;
 import meteordevelopment.orbit.EventBus;
 import meteordevelopment.orbit.EventHandler;
 import meteordevelopment.orbit.IEventBus;
+import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.impl.launch.knot.Knot;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.tutorial.TutorialStep;
@@ -63,7 +67,7 @@ import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Class27 {
+public class Boze implements ModInitializer {
    public static float prevLastYaw;
    public static float prevLastPitch;
    public static boolean isInventory = false;
@@ -80,7 +84,8 @@ public class Class27 {
    private ScheduledExecutorService playtimeExecutor;
    private static final LinkedList<String> keys = new LinkedList();
 
-   public void initialize() {
+   @Override
+   public void onInitialize() {
       LOG.info("Initializing Boze");
 
       try {
@@ -136,7 +141,7 @@ public class Class27 {
          }
 
          var15.close();
-         EVENT_BUS.registerLambdaFactory("dev.boze.client", Class27::lambda$initialize$0);
+         EVENT_BUS.registerLambdaFactory("dev.boze.client", Boze::lambda$initialize$0);
       } catch (NoSuchAlgorithmException | IOException var12) {
          LOG.error("Error during initialization", var12);
       }
@@ -153,11 +158,11 @@ public class Class27 {
          }
       }
 
-      Runtime.getRuntime().addShutdownHook(new Thread(Class27::lambda$initialize$1));
-      MinecraftClient.getInstance().execute(Class27::lambda$initialize$2);
+      Runtime.getRuntime().addShutdownHook(new Thread(Boze::lambda$initialize$1));
+      MinecraftClient.getInstance().execute(Boze::lambda$initialize$2);
       this.initApi();
       this.playtimeExecutor = Executors.newSingleThreadScheduledExecutor(new ThreadFactoryBuilder().setDaemon(true).build());
-      this.playtimeExecutor.scheduleAtFixedRate(Class27::lambda$initialize$3, 10L, 10L, TimeUnit.MINUTES);
+      this.playtimeExecutor.scheduleAtFixedRate(Boze::lambda$initialize$3, 10L, 10L, TimeUnit.MINUTES);
       LOG.info("Initialized Boze");
    }
 

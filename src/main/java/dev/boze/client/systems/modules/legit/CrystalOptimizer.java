@@ -27,7 +27,7 @@ public class CrystalOptimizer extends Module {
          if (this.field2789.method461() == CrystalOptimizerMode.SetDead) {
             event.entity.kill();
          } else if (this.field2789.method461() == CrystalOptimizerMode.EntityTrace) {
-            ((IEndCrystalEntity)event.entity).setLastAttackTime(System.currentTimeMillis());
+            ((IEndCrystalEntity)event.entity).boze$setLastAttackTime(System.currentTimeMillis());
          }
       }
    }

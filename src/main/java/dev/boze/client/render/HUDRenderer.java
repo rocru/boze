@@ -12,7 +12,7 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
 import dev.boze.client.utils.render.Scissor;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class5929;
 import net.minecraft.client.gui.DrawContext;
 
@@ -21,7 +21,7 @@ public class HUDRenderer implements IMinecraft {
       if (mc.currentScreen instanceof ClickGUI && ClickGUI.field1335.field1336 || HUD.INSTANCE.field2373.method419()) {
          boolean var4 = false;
 
-         for (Module var6 : Class27.getModules().modules) {
+         for (Module var6 : Boze.getModules().modules) {
             if (var6 instanceof HUDModule && var6.isEnabled()) {
                var4 = true;
                break;
@@ -53,7 +53,7 @@ public class HUDRenderer implements IMinecraft {
                HUD.INSTANCE.field2397.method2233();
             }
 
-            for (Module var11 : Class27.getModules().modules) {
+            for (Module var11 : Boze.getModules().modules) {
                if (var11 instanceof HUDModule && var11.isEnabled()) {
                   double var12 = IFontRender.method499().getFontScale();
                   IFontRender.method499().setFontScale(var12 * ((HUDModule)var11).field595.getValue());
@@ -66,7 +66,7 @@ public class HUDRenderer implements IMinecraft {
                HUD.INSTANCE.shader.field963.applyShader(HUDRenderer::lambda$renderHud$0, HUD.INSTANCE.field2398, HUD.INSTANCE.field2399);
             }
 
-            for (Module var16 : Class27.getModules().modules) {
+            for (Module var16 : Boze.getModules().modules) {
                if (var16 instanceof Class5929) {
                   Class5929 var17 = (Class5929)var16;
                   if (var16.isEnabled()) {

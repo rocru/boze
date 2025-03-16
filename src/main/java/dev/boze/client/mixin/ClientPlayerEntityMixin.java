@@ -29,7 +29,7 @@ import dev.boze.client.utils.EntityTracker;
 import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.player.InvUtils;
 import dev.boze.client.utils.player.RotationHandler;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import mapped.Class2839;
 import mapped.Class3091;
 import mapped.Class5913;
@@ -59,6 +59,7 @@ import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -92,7 +93,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
    @Shadow
    private boolean lastOnGround;
    @Shadow
-   private boolean autoJumpEnabled;
+   public boolean autoJumpEnabled;
    @Shadow
    @Final
    protected MinecraftClient client;
@@ -106,8 +107,11 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
    public float lastRenderPitch;
    @Shadow
    public Input input;
+   @Unique
    private float lastSpoofedYaw;
+   @Unique
    private float lastSpoofedPitch;
+   @Unique
    private long lastSpoofedTime;
 
    public ClientPlayerEntityMixin(ClientWorld world, GameProfile profile) {
@@ -132,6 +136,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
    @Shadow
    public abstract float getYaw(float var1);
 
+   @Unique
    public void sendMovementPackets(
       double x, double y, double z, float yaw, float pitch, boolean onGround, boolean sprinting, boolean sneaking, boolean hardRotate
    ) {
@@ -224,38 +229,38 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
    }
 
    @Override
-   public void sendMovementPackets(double x, double y, double z, float yaw, float pitch, boolean onGround) {
+   public void boze$sendMovementPackets(double x, double y, double z, float yaw, float pitch, boolean onGround) {
       this.sendMovementPackets(x, y, z, yaw, pitch, onGround, this.isSprinting(), this.isSneaking(), false);
    }
 
    @Override
-   public void sendMovementPackets(double x, double y, double z, float yaw, float pitch) {
-      this.sendMovementPackets(x, y, z, yaw, pitch, this.isOnGround());
+   public void boze$sendMovementPackets(double x, double y, double z, float yaw, float pitch) {
+      this.boze$sendMovementPackets(x, y, z, yaw, pitch, this.isOnGround());
    }
 
    @Override
-   public void sendMovementPackets(double x, double y, double z) {
-      this.sendMovementPackets(x, y, z, this.getYaw(), this.getPitch(), this.isOnGround());
+   public void boze$sendMovementPackets(double x, double y, double z) {
+      this.boze$sendMovementPackets(x, y, z, this.getYaw(), this.getPitch(), this.isOnGround());
    }
 
    @Override
-   public void sendMovementPackets(float yaw, float pitch, boolean onGround) {
-      this.sendMovementPackets(this.getX(), this.getY(), this.getZ(), yaw, pitch, onGround);
+   public void boze$sendMovementPackets(float yaw, float pitch, boolean onGround) {
+      this.boze$sendMovementPackets(this.getX(), this.getY(), this.getZ(), yaw, pitch, onGround);
    }
 
    @Override
-   public void sendMovementPackets(float yaw, float pitch) {
-      this.sendMovementPackets(this.getX(), this.getY(), this.getZ(), yaw, pitch, this.isOnGround());
+   public void boze$sendMovementPackets(float yaw, float pitch) {
+      this.boze$sendMovementPackets(this.getX(), this.getY(), this.getZ(), yaw, pitch, this.isOnGround());
    }
 
    @Override
-   public void sendMovementPackets(double x, double y, double z, boolean onGround) {
-      this.sendMovementPackets(x, y, z, this.getYaw(), this.getPitch(), onGround);
+   public void boze$sendMovementPackets(double x, double y, double z, boolean onGround) {
+      this.boze$sendMovementPackets(x, y, z, this.getYaw(), this.getPitch(), onGround);
    }
 
    @Override
-   public void sendMovementPackets(boolean onGround) {
-      this.sendMovementPackets(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch(), onGround);
+   public void boze$sendMovementPackets(boolean onGround) {
+      this.boze$sendMovementPackets(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch(), onGround);
    }
 
    @Override
@@ -306,9 +311,9 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
          && this.isUsingItem()
          && this.getActiveItem().getItem() != Items.BOW;
       if (!RotationHandler.field1546.method2114() && !var11 && !ElytraBoost.INSTANCE.field1011.field3208 && !ElytraBoost.INSTANCE.field1011.field3211) {
-         Class27.prevLastYaw = this.lastYaw;
-         Class27.prevLastPitch = this.lastPitch;
-         MovementEvent var12 = (MovementEvent)Class27.EVENT_BUS
+         Boze.prevLastYaw = this.lastYaw;
+         Boze.prevLastPitch = this.lastPitch;
+         MovementEvent var12 = (MovementEvent) Boze.EVENT_BUS
             .post(
                MovementEvent.method1075(
                   this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch(), this.isOnGround(), this.isSprinting(), this.isSneaking()
@@ -320,7 +325,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
             ACRotationEvent var14 = ACRotationEvent.method1016(
                AnticheatMode.NCP, RotationHandler.field1546.method1384(), RotationHandler.field1546.method1385()
             );
-            Class27.EVENT_BUS.post(var14);
+            Boze.EVENT_BUS.post(var14);
             TickShift.field898 = true;
             if (var14.method1022()) {
                var1.cancel();
@@ -334,7 +339,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
             }
 
             RotationEvent var15 = RotationEvent.method553(RotationMode.Sequential, var12.yaw, var12.pitch, this.getRotationVector(), false);
-            Class27.EVENT_BUS.post(var15);
+            Boze.EVENT_BUS.post(var15);
 
             while (!var12.field1933.isEmpty()) {
                ActionWrapper var17 = (ActionWrapper)var12.field1933.poll();
@@ -428,11 +433,11 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
             this.isSneaking()
          );
          var13.method1021(RotationHandler.field1546.method2114());
-         Class27.EVENT_BUS.post(var13);
+         Boze.EVENT_BUS.post(var13);
          if (!var13.field1934) {
             ACRotationEvent var7 = ACRotationEvent.method1016(AnticheatMode.NCP, var13.yaw, var13.pitch);
             var7.method1021(RotationHandler.field1546.method2114());
-            Class27.EVENT_BUS.post(var7);
+            Boze.EVENT_BUS.post(var7);
             this.sendMovementPackets(
                this.getX(),
                this.getY(),
@@ -445,9 +450,9 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
                false
             );
             RotationEvent var16 = RotationEvent.method553(RotationMode.Sequential, var13.yaw, var13.pitch, this.getRotationVector(), true);
-            Class27.EVENT_BUS.post(var16);
-            Class27.prevLastYaw = this.lastYaw;
-            Class27.prevLastPitch = this.lastPitch;
+            Boze.EVENT_BUS.post(var16);
+            Boze.prevLastYaw = this.lastYaw;
+            Boze.prevLastPitch = this.lastPitch;
             Options.field994.reset();
             if (this.getInventory().selectedSlot != Class2839.field111) {
                this.getInventory().selectedSlot = Class2839.field111;
@@ -487,7 +492,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
    )
    private void onPlayerTickPre(CallbackInfo var1) {
       if (((ClientPlayerEntity)this).equals(this.client.player)) {
-         Class27.EVENT_BUS.post(PrePlayerTickEvent.method1090(MinecraftClient.getInstance().player));
+         Boze.EVENT_BUS.post(PrePlayerTickEvent.method1090(MinecraftClient.getInstance().player));
       }
    }
 
@@ -497,7 +502,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
    )
    private void onPlayerTickPost(CallbackInfo var1) {
       if (((ClientPlayerEntity)this).equals(this.client.player)) {
-         Class27.EVENT_BUS.post(PostPlayerTickEvent.method1085(MinecraftClient.getInstance().player));
+         Boze.EVENT_BUS.post(PostPlayerTickEvent.method1085(MinecraftClient.getInstance().player));
       }
    }
 
@@ -523,7 +528,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
       if (((ClientPlayerEntity)this).equals(this.client.player)) {
          if (!Class3091.field217) {
             ci.cancel();
-            PlayerMoveEvent var4 = (PlayerMoveEvent)Class27.EVENT_BUS.post(PlayerMoveEvent.method1036(type, movement));
+            PlayerMoveEvent var4 = (PlayerMoveEvent) Boze.EVENT_BUS.post(PlayerMoveEvent.method1036(type, movement));
             if (!var4.method1022()) {
                double var5 = this.getX();
                double var7 = this.getZ();
@@ -572,7 +577,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
       if (((ClientPlayerEntity)this).equals(this.client.player)) {
          ElytraRecast.INSTANCE.method1854();
          ElytraBoost.INSTANCE.method1854();
-         dN var4 = (dN)Class27.EVENT_BUS.post(dN.method1035());
+         dN var4 = (dN) Boze.EVENT_BUS.post(dN.method1035());
          if (var4.method1022()) {
             Class2839.field113 = true;
          }
@@ -642,13 +647,14 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
    )
    private void onPushOutOfBlocks(double var1, double var3, CallbackInfo var5) {
       if (((ClientPlayerEntity)this).equals(this.client.player)) {
-         PlayerVelocityEvent var6 = (PlayerVelocityEvent)Class27.EVENT_BUS.post(PlayerVelocityEvent.method1048(false));
+         PlayerVelocityEvent var6 = (PlayerVelocityEvent) Boze.EVENT_BUS.post(PlayerVelocityEvent.method1048(false));
          if (var6.method1022()) {
             var5.cancel();
          }
       }
    }
 
+   @Unique
    private static boolean lambda$sendMovementPackets$0(ItemStack var0) {
       return var0.isEmpty();
    }

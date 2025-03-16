@@ -30,17 +30,17 @@ public abstract class ChatHudLineMixin implements IChatHudLine {
    }
 
    @Override
-   public String getText() {
+   public String boze$getText() {
       return this.content.getString();
    }
 
    @Override
-   public GameProfile getSenderProfile() {
+   public GameProfile boze$getSenderProfile() {
       return this.sender;
    }
 
    @Override
-   public void setSenderProfile(GameProfile sender) {
+   public void boze$setSenderProfile(GameProfile sender) {
       this.sender = sender;
    }
 }

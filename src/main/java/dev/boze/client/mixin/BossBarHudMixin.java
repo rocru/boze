@@ -6,7 +6,7 @@ import dev.boze.client.events.BossBarSpacingEvent;
 import dev.boze.client.systems.modules.render.NoRender;
 import java.util.Collection;
 import java.util.Iterator;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.client.gui.hud.BossBarHud;
 import net.minecraft.client.gui.hud.ClientBossBar;
 import net.minecraft.text.Text;
@@ -39,7 +39,7 @@ public class BossBarHudMixin {
       )
    )
    public Iterator<ClientBossBar> onIterate(Collection<ClientBossBar> collection) {
-      BossBarIteratorEvent var2 = (BossBarIteratorEvent)Class27.EVENT_BUS.post(BossBarIteratorEvent.method1052(collection.iterator()));
+      BossBarIteratorEvent var2 = (BossBarIteratorEvent) Boze.EVENT_BUS.post(BossBarIteratorEvent.method1052(collection.iterator()));
       return var2.field1904;
    }
 
@@ -51,7 +51,7 @@ public class BossBarHudMixin {
       )
    )
    public Text onGetName(ClientBossBar clientBossBar) {
-      BossBarNameEvent var2 = (BossBarNameEvent)Class27.EVENT_BUS.post(BossBarNameEvent.method1053(clientBossBar, clientBossBar.getName()));
+      BossBarNameEvent var2 = (BossBarNameEvent) Boze.EVENT_BUS.post(BossBarNameEvent.method1053(clientBossBar, clientBossBar.getName()));
       return var2.text;
    }
 
@@ -63,7 +63,7 @@ public class BossBarHudMixin {
       )}
    )
    public int changeSpacing(int j) {
-      BossBarSpacingEvent var2 = (BossBarSpacingEvent)Class27.EVENT_BUS.post(BossBarSpacingEvent.method1054(j));
+      BossBarSpacingEvent var2 = (BossBarSpacingEvent) Boze.EVENT_BUS.post(BossBarSpacingEvent.method1054(j));
       return var2.field1908;
    }
 }

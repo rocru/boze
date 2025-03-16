@@ -5,7 +5,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.boze.client.command.Command;
 import dev.boze.client.utils.files.FileUtil;
-import mapped.Class27;
+import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 
 public class OpenFolderCommand extends Command {
@@ -19,7 +19,7 @@ public class OpenFolderCommand extends Command {
    }
 
    private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
-      FileUtil.openFile(Class27.FOLDER);
+      FileUtil.openFile(Boze.FOLDER);
       return 1;
    }
 }
