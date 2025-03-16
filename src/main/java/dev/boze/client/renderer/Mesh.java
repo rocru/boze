@@ -19,6 +19,22 @@ import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryUtil;
 
 public class Mesh implements IMinecraft {
+   public enum Attrib {
+      Int(1),
+      Float(1),
+      Vec2(2),
+      Vec3(3),
+      Color(4),
+      Hsba(4);
+
+      public final int size;
+
+      Attrib(int var3) {
+         this.size = var3;
+      }
+   }
+
+
    public double field1593 = 1.0;
    public float field1594 = 1.0F;
    public boolean field1595 = true;
