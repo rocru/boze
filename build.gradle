@@ -6,9 +6,14 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 
+loom {
+	accessWidenerPath = file("src/main/resources/boze.accesswidener")
+}
+
 base {
 	archivesName = project.archives_base_name
 }
+
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
