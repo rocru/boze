@@ -10,7 +10,7 @@ import dev.boze.client.systems.modules.legit.NoMissDelay;
 import dev.boze.client.systems.modules.misc.AutoTool;
 import dev.boze.client.systems.modules.misc.FastUse;
 import dev.boze.client.systems.modules.misc.MiningTweaks;
-import dev.boze.client.systems.modules.misc.AutoTool.qG;
+import dev.boze.client.systems.modules.misc.autotool.qG;
 import dev.boze.client.utils.FoodUtil;
 import dev.boze.client.utils.InventoryUtil;
 import dev.boze.client.utils.world.BlockBreakingUtil;

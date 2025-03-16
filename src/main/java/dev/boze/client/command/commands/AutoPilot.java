@@ -8,7 +8,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.boze.client.command.Command;
 import dev.boze.client.systems.modules.movement.ElytraAutoPilot;
-import dev.boze.client.systems.modules.movement.ElytraAutoPilot.pi;
+import dev.boze.client.systems.modules.movement.elytraautopilot.pi;
 import net.minecraft.command.CommandSource;
 import net.minecraft.util.math.Vec3d;
 

@@ -44,6 +44,7 @@ import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
@@ -76,7 +77,7 @@ public class HoleFill extends Module {
    private final MinMaxSetting hradius = new MinMaxSetting("HRadius", 1.5, 0.5, 5.0, 0.05, "Proximity horizontal radius", this.proximity);
    private final MinMaxSetting vradius = new MinMaxSetting("VRadius", 1.5, 0.5, 5.0, 0.05, "Proximity vertical radius", this.proximity);
    private final IntSetting extrapolation = new IntSetting("Extrapolation", 0, 0, 20, 1, "Predict target motion by this amount of ticks", this.proximity);
-   private final BooleanSetting double = new BooleanSetting("Double", true, "Fill double holes");
+   private final BooleanSetting doubleHoles = new BooleanSetting("Double", true, "Fill double holes");
    private BooleanSetting obsidian = new BooleanSetting("Obsidian", true, "Use Obsidian");
    private BooleanSetting webs = new BooleanSetting("Webs", false, "Use Webs");
    private BooleanSetting other = new BooleanSetting("Other", false, "Use other blocks");
@@ -274,12 +275,12 @@ public class HoleFill extends Module {
    }
 
    private List<BlockPos> method2032() {
-      List var4 = null;
+      List<AbstractClientPlayerEntity> var4 = null;
       if (this.proximity.method419()) {
-         var4 = (List)mc.world.getPlayers().stream().filter(this::method1617).collect(Collectors.toList());
+         var4 = mc.world.getPlayers().stream().filter(this::method1617).toList();
       }
 
-      ArrayList var5 = new ArrayList();
+      List<BlockPos> var5 = new ArrayList<>();
       BlockPos var6 = mc.player.getBlockPos();
       int var7 = (int)Math.ceil(this.range.getValue() + 1.0);
       int var8 = this.vRange.method434();
@@ -288,13 +289,13 @@ public class HoleFill extends Module {
          for (int var10 = var6.getY() - var8; var10 < var6.getY() + var8; var10++) {
             for (int var11 = var6.getZ() - var7; var11 < var6.getZ() + var7; var11++) {
                BlockPos var12 = new BlockPos(var9, var10, var11);
-               if (Class5914.method5504(var12, this.double.method419()) && mc.world.getBlockState(var12).getFluidState().isEmpty()) {
+               if (Class5914.method5504(var12, this.doubleHoles.method419()) && mc.world.getBlockState(var12).getFluidState().isEmpty()) {
                   if (this.proximity.method419()) {
                      this.ah.set((double)var12.getX() + 0.5, (double)var12.getY() + 1.0, (double)var12.getZ() + 0.5);
 
                      for (PlayerEntity var14 : var4) {
                         Class5920.method52(var14, this.extrapolation.method434(), this.ag);
-                        if (this.ag.getDistance(this.ah.x, this.ag.y, this.ah.z) <= this.hradius.getValue()
+                        if (this.ag.distance(this.ah.x, this.ag.y, this.ah.z) <= this.hradius.getValue()
                            && Math.abs(this.ag.y - this.ah.y) <= this.vradius.getValue()) {
                            var5.add(var12);
                            break;

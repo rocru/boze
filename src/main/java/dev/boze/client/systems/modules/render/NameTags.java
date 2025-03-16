@@ -23,7 +23,7 @@ import dev.boze.client.systems.modules.client.Fonts;
 import dev.boze.client.systems.modules.client.Friends;
 import dev.boze.client.systems.modules.client.Media;
 import dev.boze.client.systems.modules.misc.BetterTab;
-import dev.boze.client.systems.modules.render.LogoutSpots.LogoutPlayerEntity;
+import dev.boze.client.systems.modules.render.logoutspots.LogoutPlayerEntity;
 import dev.boze.client.systems.waypoints.WayPoint;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.TargetTracker;

@@ -35,7 +35,7 @@ import dev.boze.client.systems.modules.GhostModule;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.Friends;
 import dev.boze.client.systems.modules.client.Options;
-import dev.boze.client.systems.modules.combat.Aura.AuraGhost;
+import dev.boze.client.systems.modules.combat.aura.AuraGhost;
 import dev.boze.client.systems.modules.misc.AutoEat;
 import dev.boze.client.systems.modules.misc.FakePlayer;
 import dev.boze.client.utils.EntityUtil;

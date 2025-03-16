@@ -23,7 +23,7 @@ import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.iterators.ChunkIterator;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.systems.modules.render.TunnelESP.TunnelRenderer;
+import dev.boze.client.systems.modules.render.tunnelesp.TunnelRenderer;
 import dev.boze.client.utils.network.BozeExecutor;
 import dev.boze.client.utils.render.ByteTexture;
 import it.unimi.dsi.fastutil.ints.IntIterator;

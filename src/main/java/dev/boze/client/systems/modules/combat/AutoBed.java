@@ -21,7 +21,7 @@ import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.AntiCheat;
 import dev.boze.client.systems.modules.client.Friends;
 import dev.boze.client.systems.modules.client.Options;
-import dev.boze.client.systems.modules.combat.AutoBed.mu;
+import dev.boze.client.systems.modules.combat.autobed.mu;
 import dev.boze.client.systems.modules.render.PlaceRender;
 import dev.boze.client.utils.ActionWrapper;
 import dev.boze.client.utils.Bind;

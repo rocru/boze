@@ -26,7 +26,7 @@ import dev.boze.client.settings.StringSetting;
 import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.systems.modules.render.HoleESP.HoleESPRunnable;
+import dev.boze.client.systems.modules.render.holeesp.HoleESPRunnable;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.ByteTexture;
 import java.io.File;

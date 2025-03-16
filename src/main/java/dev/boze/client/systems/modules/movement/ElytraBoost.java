@@ -11,7 +11,7 @@ import dev.boze.client.settings.IntSetting;
 import dev.boze.client.settings.MinMaxSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.systems.modules.movement.ElytraBoost.nh;
+import dev.boze.client.systems.modules.movement.elytraboost.nh;
 import dev.boze.client.utils.DirectionUtil;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.RotationHelper;

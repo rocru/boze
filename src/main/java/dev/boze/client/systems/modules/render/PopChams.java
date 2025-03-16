@@ -21,7 +21,7 @@ import dev.boze.client.settings.StringSetting;
 import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.systems.modules.render.LogoutSpots.PoppedPlayerEntity;
+import dev.boze.client.systems.modules.render.logoutspots.PoppedPlayerEntity;
 import dev.boze.client.utils.fakeplayer.FakePlayerEntityWithTotem;
 import dev.boze.client.utils.render.ByteTexture;
 import java.io.File;

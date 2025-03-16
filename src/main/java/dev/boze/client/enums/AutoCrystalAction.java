@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-import dev.boze.client.systems.modules.combat.AutoCrystal.setting.AutoCrystalPrediction;
+import dev.boze.client.systems.modules.combat.autocrystal.setting.AutoCrystalPrediction;
 import dev.boze.client.utils.IMinecraft;
 import java.util.HashMap;
 import net.minecraft.entity.LivingEntity;

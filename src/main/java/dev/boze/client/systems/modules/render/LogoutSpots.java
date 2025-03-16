@@ -31,7 +31,7 @@ import dev.boze.client.settings.generic.ScalingSetting;
 import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.systems.modules.render.LogoutSpots.LogoutPlayerEntity;
+import dev.boze.client.systems.modules.render.logoutspots.LogoutPlayerEntity;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.ByteTexture;

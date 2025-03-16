@@ -13,7 +13,7 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.Friends;
 import dev.boze.client.systems.modules.client.Options;
-import dev.boze.client.systems.modules.misc.AutoTool.qG;
+import dev.boze.client.systems.modules.misc.autotool.qG;
 import dev.boze.client.utils.EntityUtil;
 import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.PlaceAction;

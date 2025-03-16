@@ -42,9 +42,9 @@ public class FontRenderer implements IFontRender, IMinecraft {
     private double field1085 = 1.0;
     private boolean field1086;
     private final double field1087 = 1.0;
-    private final List<Class3061> field1088 = new LinkedList<>();
-    private final List<Class3061> field1089 = new LinkedList<>();
-    private final List<Class3061> field1090 = new LinkedList<>();
+    private final List<FontDescriptor> field1088 = new LinkedList<>();
+    private final List<FontDescriptor> field1089 = new LinkedList<>();
+    private final List<FontDescriptor> field1090 = new LinkedList<>();
 
     private FontRenderer() {
     }
@@ -88,13 +88,13 @@ public class FontRenderer implements IFontRender, IMinecraft {
                 this.field1082 = new BaseFramebuffer(false);
             }
 
-            this.field1088.add(new Class3061(text, x / var11, y / var11 + 1.0, var19, false, null, this.field1084, this.field1085));
+            this.field1088.add(new FontDescriptor(text, x / var11, y / var11 + 1.0, var19, false, null, this.field1084, this.field1085));
         } else {
             int var20 = (int) (choice.field3910.method208().method1384() * 255.0F) << 16
                     | (int) (choice.field3910.method208().method1385() * 255.0F) << 8
                     | (int) (choice.field3910.method208().method215() * 255.0F)
                     | (int) (choice.field3911 * 255.0F) << 24;
-            this.field1089.add(new Class3061(text, x / var11, y / var11 + 1.0, var20, false, null, this.field1084, this.field1085));
+            this.field1089.add(new FontDescriptor(text, x / var11, y / var11 + 1.0, var20, false, null, this.field1084, this.field1085));
         }
 
         if (!var10) {
@@ -122,11 +122,11 @@ public class FontRenderer implements IFontRender, IMinecraft {
             color.field411 = (int) ((double) (color.field411 / 255) * this.field1087 * 255.0);
             var15 = (double) mc.textRenderer.getWidth(text) * var12;
             if (color instanceof BozeDrawColor var17 && (var17.field1842 || var17.field1843 != 0.0)) {
-                this.field1090.add(new Class3061(text, x / var12, y / var12 + 1.0, -1, shadow, var17, this.field1084, this.field1085));
+                this.field1090.add(new FontDescriptor(text, x / var12, y / var12 + 1.0, -1, shadow, var17, this.field1084, this.field1085));
                 break label23;
             }
 
-            this.field1089.add(new Class3061(text, x / var12, y / var12 + 1.0, color.method2010(), shadow, null, this.field1084, this.field1085));
+            this.field1089.add(new FontDescriptor(text, x / var12, y / var12 + 1.0, color.method2010(), shadow, null, this.field1084, this.field1085));
         }
 
         color.field411 = var14;
@@ -182,7 +182,7 @@ public class FontRenderer implements IFontRender, IMinecraft {
             var5.scale((float) this.field1084, (float) this.field1084, 1.0F);
             RenderSystem.applyModelViewMatrix();
             if (!this.field1089.isEmpty()) {
-                for (Class3061 var7 : this.field1089) {
+                for (FontDescriptor var7 : this.field1089) {
                     Matrix4f var8 = new Matrix4f(this.field1083);
                     var8 = var8.scale((float) var7.field154, (float) var7.field154, 1.0F);
                     mc.textRenderer
@@ -196,7 +196,7 @@ public class FontRenderer implements IFontRender, IMinecraft {
             }
 
             if (!this.field1090.isEmpty()) {
-                for (Class3061 var12 : this.field1090) {
+                for (FontDescriptor var12 : this.field1090) {
 //               FontRenderContext var15 = this.field1077.computeIfAbsent(var12.field152.hashCode(), this::lambda$end$1);
                     FontRenderContext var15 = this.field1077.computeIfAbsent(var12.field152.hashCode(), n -> this.field1076.method5993().method1108(var12.field152));
                     Matrix4f var9 = new Matrix4f(this.field1083);
@@ -327,7 +327,7 @@ public class FontRenderer implements IFontRender, IMinecraft {
 
         this.field1082.method1156(false, true);
 
-        for (Class3061 var7 : this.field1088) {
+        for (FontDescriptor var7 : this.field1088) {
             Matrix4f var8 = new Matrix4f(this.field1083);
             var8 = var8.scale((float) var7.field154, (float) var7.field154, 1.0F);
             int var9 = var7.field150;

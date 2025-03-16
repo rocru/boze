@@ -1,9 +1,9 @@
 package dev.boze.client.enums;
 
 import dev.boze.client.systems.modules.movement.BoatFly;
-import dev.boze.client.systems.modules.movement.BoatFly.nj;
-import dev.boze.client.systems.modules.movement.BoatFly.nk;
-import dev.boze.client.systems.modules.movement.BoatFly.nl;
+import dev.boze.client.systems.modules.movement.boatfly.nj;
+import dev.boze.client.systems.modules.movement.boatfly.nk;
+import dev.boze.client.systems.modules.movement.boatfly.nl;
 
 enum BoatFlyMode {
    Grim,

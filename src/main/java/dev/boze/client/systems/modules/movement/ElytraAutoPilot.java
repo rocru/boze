@@ -10,7 +10,7 @@ import dev.boze.client.settings.IntArraySetting;
 import dev.boze.client.settings.MinMaxSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.systems.modules.movement.ElytraAutoPilot.pi;
+import dev.boze.client.systems.modules.movement.elytraautopilot.pi;
 import dev.boze.client.utils.MinecraftUtils;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.DeathScreen;

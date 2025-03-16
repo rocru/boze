@@ -6,7 +6,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.boze.client.command.Command;
 import dev.boze.client.command.arguments.BlockArgument;
 import dev.boze.client.instances.impl.ChatInstance;
-import dev.boze.client.systems.modules.movement.ElytraAutoPilot.pi;
+import dev.boze.client.systems.modules.movement.elytraautopilot.pi;
 import dev.boze.client.systems.modules.render.XRay;
 import net.minecraft.block.Block;
 import net.minecraft.command.CommandSource;

@@ -1,34 +1,28 @@
 {
-	"schemaVersion": 1,
-	"id": "modid",
-	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"Me!"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"com.example.ExampleMod"
-		]
-	},
-	"mixins": [
-		"boze.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.16.10",
-		"minecraft": "~1.21.4",
-		"java": ">=21",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
-	}
+  "schemaVersion": 1,
+  "id": "boze",
+  "version": "${version}",
+  "name": "Boze",
+  "description": "A modern client with guaranteed support from the devs, designed for both ghost and anarchy gameplay. Supports Minecraft versions 1.18.2-1.21.1.",
+  "authors": [
+    "Boze devs"
+  ],
+  "contact": {
+    "homepage": "https://boze.dev/"
+  },
+  "icon": "assets/boze/textures/logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.boze.client.Boze"
+    ]
+  },
+  "mixins": [
+    "boze.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
 }

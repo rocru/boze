@@ -18,7 +18,7 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.AntiCheat;
 import dev.boze.client.systems.modules.client.Options;
-import dev.boze.client.systems.modules.misc.AutoArmor.nd;
+import dev.boze.client.systems.modules.misc.autoarmor.nd;
 import dev.boze.client.utils.Bind;
 import dev.boze.client.utils.ItemEnchantmentUtils;
 import dev.boze.client.utils.MinecraftUtils;

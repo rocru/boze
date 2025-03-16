@@ -22,7 +22,7 @@ import dev.boze.client.settings.EnumSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.Gui;
-import dev.boze.client.systems.modules.movement.ElytraBoost.nh;
+import dev.boze.client.systems.modules.movement.elytraboost.nh;
 import dev.boze.client.systems.modules.render.FreeCam;
 import dev.boze.client.systems.modules.render.FreeLook;
 import dev.boze.client.utils.ItemEnchantmentUtils;

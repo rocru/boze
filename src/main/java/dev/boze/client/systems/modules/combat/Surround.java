@@ -26,7 +26,7 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.GhostRotations;
 import dev.boze.client.systems.modules.client.Options;
-import dev.boze.client.systems.modules.combat.Surround.AutoEnable;
+import dev.boze.client.systems.modules.combat.surround.AutoEnable;
 import dev.boze.client.systems.modules.legit.Reach;
 import dev.boze.client.systems.modules.movement.Step;
 import dev.boze.client.systems.render.PlacementRenderer;

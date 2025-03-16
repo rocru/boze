@@ -16,7 +16,7 @@ import dev.boze.client.settings.IntSetting;
 import dev.boze.client.settings.MinMaxSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.systems.modules.movement.BoatFly.nk;
+import dev.boze.client.systems.modules.movement.boatfly.nk;
 import dev.boze.client.utils.Bind;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.network.packet.s2c.play.VehicleMoveS2CPacket;

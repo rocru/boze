@@ -16,7 +16,7 @@ import dev.boze.client.settings.MinMaxDoubleSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.Options;
-import dev.boze.client.systems.modules.movement.AntiVoid.ne;
+import dev.boze.client.systems.modules.movement.antivoid.ne;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.RotationHelper;
 import dev.boze.client.utils.Timer;

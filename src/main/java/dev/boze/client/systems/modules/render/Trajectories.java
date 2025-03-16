@@ -9,7 +9,7 @@ import dev.boze.client.settings.FloatSetting;
 import dev.boze.client.settings.RGBASetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.systems.modules.render.Trajectories.nz;
+import dev.boze.client.systems.modules.render.trajectories.nz;
 import dev.boze.client.utils.ItemEnchantmentUtils;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.RGBAColor;

@@ -8,7 +8,7 @@ import dev.boze.client.settings.IntArraySetting;
 import dev.boze.client.settings.RGBASetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.systems.modules.render.Trails.nx;
+import dev.boze.client.systems.modules.render.trails.nx;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.RGBAColor;
 import java.util.ArrayList;

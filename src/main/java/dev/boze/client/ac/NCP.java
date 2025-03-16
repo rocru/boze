@@ -1,6 +1,6 @@
 package dev.boze.client.ac;
 
-import dev.boze.client.systems.modules.combat.AutoCrystal.BlockSelection;
+import dev.boze.client.systems.modules.combat.autocrystal.BlockSelection;
 import dev.boze.client.utils.BoundingBoxUtil;
 import dev.boze.client.utils.BoxUtil;
 import dev.boze.client.utils.RaycastUtil;

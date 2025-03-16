@@ -12,7 +12,7 @@ import dev.boze.client.settings.IntSetting;
 import dev.boze.client.shaders.ShaderRegistry;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.systems.modules.render.SpawnESP.BlockRenderer;
+import dev.boze.client.systems.modules.render.spawnesp.BlockRenderer;
 import java.util.ArrayList;
 import java.util.List;
 import mapped.Class3064;

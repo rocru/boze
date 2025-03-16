@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AutoMineMode {
+public enum AutoMineMode {
    Auto,
    Manual,
    Bomber;
