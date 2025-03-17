@@ -91,7 +91,8 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
       return this.field947;
    }
 
-   public List<String> method442() {
+   @Override
+   public List<String> getValue() {
       return this.field947;
    }
 
@@ -166,10 +167,10 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method442();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method442();
+   //}
 
    private static void lambda$addValueToTag$7(NbtList var0, String var1) {
       if (!var0.contains(NbtString.of(var1))) {

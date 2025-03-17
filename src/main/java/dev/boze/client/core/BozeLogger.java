@@ -24,7 +24,7 @@ public class BozeLogger implements IMinecraft {
    public static String method523(Module module, long timeSeconds) {
       long var6 = System.currentTimeMillis() - timeSeconds * 1000L;
       StringBuilder var8 = new StringBuilder("\n");
-      LinkedList var9 = (LinkedList)field1235.get(module);
+      LinkedList<LogMessage> var9 = (LinkedList)field1235.get(module);
       if (var9 != null) {
          for (LogMessage var11 : var9) {
             if (var11.field1869 >= var6) {

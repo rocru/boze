@@ -131,7 +131,7 @@ public class BindSettingComponent extends ScaledSettingBaseComponent implements 
    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
       if (this.field270) {
          if (keyCode == 256) {
-            this.field269.rebind(Bind.create());
+            this.field269.setValue(Bind.create());
          } else {
             this.field269.method476().set(true, keyCode);
          }

@@ -35,6 +35,6 @@ public class CrackedAccount extends Account<CrackedAccount> {
    }
 
    public boolean equals(Object o) {
-      return !(o instanceof CrackedAccount) ? false : ((CrackedAccount)o).method210().equals(this.method210());
+      return o instanceof CrackedAccount && ((CrackedAccount) o).method210().equals(this.method210());
    }
 }

@@ -4,6 +4,7 @@ import dev.boze.client.mixin.ChunkAccessor;
 import java.util.Iterator;
 import java.util.Map;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.chunk.Chunk;
 
 public class BlockEntityIterator implements Iterator<BlockEntity> {
@@ -16,8 +17,8 @@ public class BlockEntityIterator implements Iterator<BlockEntity> {
 
    private void method2142() {
       while (this.field1262.hasNext()) {
-         Map var4 = ((ChunkAccessor)this.field1262.next()).getBlockEntities();
-         if (var4.size() > 0) {
+         Map<BlockPos, BlockEntity> var4 = ((ChunkAccessor)this.field1262.next()).getBlockEntities();
+         if (!var4.isEmpty()) {
             this.field1263 = var4.values().iterator();
             break;
          }
@@ -35,13 +36,14 @@ public class BlockEntityIterator implements Iterator<BlockEntity> {
       }
    }
 
-   public BlockEntity method545() {
+   @Override
+   public BlockEntity next() {
       return (BlockEntity)this.field1263.next();
    }
 
    // $VF: synthetic method
    // $VF: bridge method
-   public Object next() {
-      return this.method545();
-   }
+   //public Object next() {
+   //   return this.method545();
+   //}
 }

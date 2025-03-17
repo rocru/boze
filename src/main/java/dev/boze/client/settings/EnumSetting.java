@@ -10,7 +10,7 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
 
 public class EnumSetting<T extends Enum> extends Setting<T> {
-   private T field972;
+   public T field972;
    private final T field973;
 
    public EnumSetting(String name, T value, String description) {

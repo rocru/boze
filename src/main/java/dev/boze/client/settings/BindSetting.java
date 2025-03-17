@@ -32,15 +32,18 @@ public class BindSetting extends Setting<Bind> {
       this.defaultBind = value;
    }
 
-   public Bind method476() {
+   @Override
+   public Bind getValue() {
       return this.bind;
    }
 
-   public Bind method179() {
+   @Override
+   public Bind resetValue() {
       return this.bind.copy(this.defaultBind);
    }
 
-   public Bind rebind(Bind newVal) {
+   @Override
+   public Bind setValue(Bind newVal) {
       return this.bind.copy(newVal);
    }
 
@@ -50,7 +53,8 @@ public class BindSetting extends Setting<Bind> {
       return tag;
    }
 
-   public Bind method180(NbtCompound tag) {
+   @Override
+   public Bind load(NbtCompound tag) {
       if (tag.contains("Keybind")) {
          this.bind.method180(tag.getCompound("Keybind"));
       }
@@ -60,29 +64,29 @@ public class BindSetting extends Setting<Bind> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method180(nbtCompound);
-   }
+   //@Override
+   //public Object load(NbtCompound nbtCompound) {
+   //   return this.method180(nbtCompound);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.rebind((Bind)object);
-   }
+   //@Override
+   ///public Object setValue(Object object) {
+   //   return this.rebind((Bind)object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method179();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method179();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method476();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method476();
+   //}
 }

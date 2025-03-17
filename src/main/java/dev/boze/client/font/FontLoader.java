@@ -127,7 +127,8 @@ public class FontLoader implements IFontRender, IMinecraft {
       return (var7.method1109(text, length) + (double)(shadow ? 1 : 0)) * this.field1072;
    }
 
-   public double measureTextHeight(boolean shadow) {
+   @Override
+   public double method502(boolean shadow) {
       GlyphBuffer var5 = this.field1070 ? this.field1069 : this.field1068[0];
       return (var5.method1110() + (double)(shadow ? 1 : 0)) * this.field1072 * this.field1074;
    }

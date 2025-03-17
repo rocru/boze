@@ -4,6 +4,14 @@ import com.google.gson.annotations.SerializedName;
 import dev.boze.client.systems.accounts.UuidToProfileResponse.Property;
 
 public class UuidToProfileResponse {
+   class Property {
+      @SerializedName("name")
+      public String field2296;
+      @SerializedName("value")
+      public String field2297;
+   }
+
+
    @SerializedName("properties")
    public Property[] field2295;
 

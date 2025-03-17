@@ -26,8 +26,7 @@ public class ShaderCheck implements IMinecraft {
          var7.writeUTF(method971(ConfigManager.field2138, var10));
          String var10001 = SharedConstants.getGameVersion().getName();
          String var15 = Version.isBeta ? "-beta" : "";
-         String var16 = var10001;
-         var7.writeUTF(method971("boze-" + var16 + var15, var10));
+          var7.writeUTF(method971("boze-" + var10001 + var15, var10));
          var7.writeUTF(method971(path, var10));
          var7.writeInt(blocks.length);
 

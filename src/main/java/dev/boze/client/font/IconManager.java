@@ -8,7 +8,7 @@ import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
 
 public class IconManager {
-   private static FontLoader field1979 = null;
+   public static FontLoader field1979 = null;
 
    public static void initialize() {
       if (field1979 == null) {

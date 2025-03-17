@@ -19,8 +19,8 @@ public class BozeClassLoader extends SecureClassLoader {
    public static boolean field4010;
 
    BozeClassLoader(ClassLoader var1) {
-      boolean var10000 = Count.field4012;
       super(var1);
+      boolean var10000 = Count.field4012;
       boolean var4 = var10000;
       BozeClassLoader var5 = field4007;
       if (!var4) {

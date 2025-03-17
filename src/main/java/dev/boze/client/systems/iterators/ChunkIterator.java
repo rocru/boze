@@ -7,7 +7,7 @@ import java.util.Iterator;
 import net.minecraft.world.chunk.Chunk;
 
 public class ChunkIterator implements Iterator<Chunk>, IMinecraft {
-   private final ClientChunkMapAccessor field1258 = (ClientChunkMapAccessor)((ClientChunkManagerAccessor)mc.world.getChunkManager()).getChunks();
+   private final ClientChunkMapAccessor field1258 = (ClientChunkMapAccessor)(((ClientChunkManagerAccessor)mc.world.getChunkManager()).getChunks());
    private final boolean field1259;
    private int field1260 = 0;
    private Chunk field1261;
@@ -44,21 +44,22 @@ public class ChunkIterator implements Iterator<Chunk>, IMinecraft {
       return this.field1261 != null;
    }
 
-   public Chunk method543() {
+   @Override
+   public Chunk next() {
       return this.method541();
    }
 
    public static Iterable<Chunk> method544(boolean onlyWithLoadedNeighbours) {
-      return ChunkIterator::lambda$chunks$0;
+      return () -> new ChunkIterator(onlyWithLoadedNeighbours);
    }
 
    // $VF: synthetic method
    // $VF: bridge method
-   public Object next() {
-      return this.method543();
-   }
+   //p/ublic Object next() {
+    //  return this.method543();
+   //}
 
-   private static Iterator lambda$chunks$0(boolean var0) {
-      return new ChunkIterator(var0);
-   }
+   //private static Iterator<Chunk> lambda$chunks$0(boolean var0) {
+   //   return new ChunkIterator(var0);
+   //}
 }

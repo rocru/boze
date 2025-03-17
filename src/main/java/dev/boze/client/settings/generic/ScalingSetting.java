@@ -6,8 +6,14 @@ import dev.boze.client.settings.Setting;
 import dev.boze.client.settings.generic.ScalingSetting.ScalingMode;
 
 public class ScalingSetting implements SettingsGroup {
-   public final EnumSetting<ScalingMode> field2234 = new EnumSetting<ScalingMode>(
-      "Scaling", ScalingMode.Dist, "Scaling Mode\n - Dist: Scale based on distance\n - Const: Constant scale\n"
+   public enum ScalingMode {
+      Dist,
+      Const;
+   }
+
+
+   public final EnumSetting<ScalingMode> field2234 = new EnumSetting<>(
+           "Scaling", ScalingMode.Dist, "Scaling Mode\n - Dist: Scale based on distance\n - Const: Constant scale\n"
    );
    public final MinMaxSetting field2235 = new MinMaxSetting("Factor", 1.0, 0.1, 2.0, 0.05, "Scale factor", this::lambda$new$0, this.field2234);
    public final MinMaxSetting field2236 = new MinMaxSetting("Min", 0.03, 0.01, 0.1, 0.01, "Min scale", this::lambda$new$1, this.field2234);

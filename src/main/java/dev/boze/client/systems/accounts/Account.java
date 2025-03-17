@@ -84,10 +84,11 @@ public abstract class Account<T extends Account<?>> implements IJsonSerializable
       return var3;
    }
 
-   public T method677(JsonObject object) {
+   @Override
+   public T deserialize(JsonObject object) {
       if (object.has("name") && object.has("data")) {
          this.field1521 = object.get("name").getAsString();
-         this.field1522.method552(object.getAsJsonObject("data"));
+         this.field1522.deserialize(object.getAsJsonObject("data"));
          return (T)this;
       } else {
          this.field1521 = "INVALID";
@@ -97,10 +98,10 @@ public abstract class Account<T extends Account<?>> implements IJsonSerializable
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object deserialize(JsonObject jsonObject) {
-      return this.method677(jsonObject);
-   }
+   //@Override
+   ////public Object deserialize(JsonObject jsonObject) {
+   //   return this.method677(jsonObject);
+   //}
 
    private static ProfileResult lambda$setSession$0() {
       return mc.getSessionService().fetchProfile(mc.getSession().getUuidOrNull(), true);

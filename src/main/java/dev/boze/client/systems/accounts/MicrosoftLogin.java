@@ -1,5 +1,8 @@
 package dev.boze.client.systems.accounts;
 
+import com.google.gson.annotations.SerializedName;
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import dev.boze.client.core.ErrorLogger;
 import dev.boze.client.systems.accounts.MicrosoftLogin.AuthTokenResponse;
@@ -12,11 +15,174 @@ import dev.boze.client.systems.accounts.MicrosoftLogin.XblXstsResponse;
 import dev.boze.client.utils.http.HttpUtil;
 import dev.boze.client.utils.network.BozeExecutor;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.function.Consumer;
 import net.minecraft.util.Util;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
 
 public class MicrosoftLogin {
+   public static class Handler implements HttpHandler {
+      private Handler() {
+      }
+
+      public void handle(HttpExchange req) throws IOException {
+         if (req.getRequestMethod().equals("GET")) {
+            List<NameValuePair> var5 = URLEncodedUtils.parse(req.getRequestURI(), StandardCharsets.UTF_8.name());
+            boolean var6 = false;
+
+            for (NameValuePair var8 : var5) {
+               if (var8.getName().equals("code")) {
+                  this.method1318(var8.getValue());
+                  var6 = true;
+                  break;
+               }
+            }
+
+            if (!var6) {
+               this.method1319(req, "Authentication failed");
+            } else {
+               this.method1319(req, "Please close this page");
+            }
+         }
+
+         MicrosoftLogin.stopServer();
+      }
+
+      private void method1318(String var1) {
+         AuthTokenResponse var5 = HttpUtil.post("https://login.live.com/oauth20_token.srf")
+                 .method2181("client_id=2cd47301-d033-4784-8f9c-a616ff9070ec&code=" + var1 + "&grant_type=authorization_code&redirect_uri=http://127.0.0.1:30222")
+                 .<AuthTokenResponse>method2189(AuthTokenResponse.class);
+         if (var5 == null) {
+            MicrosoftLogin.field2277.accept(null);
+         } else {
+            MicrosoftLogin.field2277.accept(var5.field2279);
+         }
+      }
+
+      private void method1319(HttpExchange var1, String var2) throws IOException {
+         OutputStream var3 = var1.getResponseBody();
+         var1.sendResponseHeaders(200, (long)var2.length());
+         var3.write(var2.getBytes(StandardCharsets.UTF_8));
+         var3.flush();
+         var3.close();
+      }
+   }
+
+   class GameOwnershipResponse {
+      class Item {
+         @SerializedName("name")
+         private String name;
+
+         private Item() {
+         }
+      }
+
+
+      @SerializedName("items")
+      private Item[] field2280;
+
+      private GameOwnershipResponse() {
+      }
+
+      private boolean method1317() {
+         boolean var4 = false;
+         boolean var5 = false;
+
+         for (Item var9 : this.field2280) {
+            if (var9.name.equals("product_minecraft")) {
+               var4 = true;
+            } else if (var9.name.equals("game_minecraft")) {
+               var5 = true;
+            }
+         }
+
+         return var4 && var5;
+      }
+   }
+
+
+   class XblXstsResponse {
+      class DisplayClaims {
+         class Claim {
+            @SerializedName("uhs")
+            private String field2291;
+
+            private Claim() {
+            }
+         }
+
+
+         @SerializedName("xui")
+         private Claim[] field2290;
+
+         private DisplayClaims() {
+         }
+      }
+
+
+      @SerializedName("Token")
+      public String field2288;
+      @SerializedName("DisplayClaims")
+      public DisplayClaims field2289;
+
+      private XblXstsResponse() {
+      }
+   }
+
+   public static class LoginData {
+      public String field2281;
+      public String field2282;
+      public String field2283;
+      public String field2284;
+
+      public LoginData() {
+      }
+
+      public LoginData(String mcToken, String newRefreshToken, String uuid, String username) {
+         this.field2281 = mcToken;
+         this.field2282 = newRefreshToken;
+         this.field2283 = uuid;
+         this.field2284 = username;
+      }
+
+      public boolean method1320() {
+         return this.field2281 != null;
+      }
+   }
+
+   class McResponse {
+      @SerializedName("access_token")
+      public String field2285;
+
+      private McResponse() {
+      }
+   }
+   class ProfileResponse {
+      @SerializedName("id")
+      public String field2286;
+      @SerializedName("name")
+      public String field2287;
+
+      private ProfileResponse() {
+      }
+   }
+
+
+   class AuthTokenResponse {
+      @SerializedName("access_token")
+      public String field2278;
+      @SerializedName("refresh_token")
+      public String field2279;
+
+      private AuthTokenResponse() {
+      }
+   }
+
+
    private static final String field2274 = "2cd47301-d033-4784-8f9c-a616ff9070ec";
    private static final int field2275 = 30222;
    private static HttpServer field2276;

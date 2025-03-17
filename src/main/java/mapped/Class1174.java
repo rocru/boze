@@ -79,7 +79,8 @@ public class Class1174 extends ColorManager implements ISerializable<Class1174> 
       return var4;
    }
 
-   public Class1174 method2327(NbtCompound tag) {
+   @Override
+   public Class1174 fromTag(NbtCompound tag) {
       this.method1374().fromTag(var1227.getCompound("color"));
       this.method67(var1227.getBoolean("sync"));
       this.field49 = var1227.getBoolean("fastRender");
@@ -91,8 +92,8 @@ public class Class1174 extends ColorManager implements ISerializable<Class1174> 
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object fromTag(NbtCompound nbtCompound) {
-      return this.method2327(nbtCompound);
-   }
+   //@Override
+   //public Object fromTag(NbtCompound nbtCompound) {
+   //   return this.method2327(nbtCompound);
+   //}
 }

@@ -9,19 +9,19 @@ import dev.boze.client.systems.modules.hud.core.Welcomer;
 import net.minecraft.command.CommandSource;
 
 public class WelcomeCommand extends Command {
-   public WelcomeCommand() {
-      super("welcomer", "Welcomer", "Sets your welcomer text");
-   }
+    public WelcomeCommand() {
+        super("welcomer", "Welcomer", "Sets your welcomer text");
+    }
 
-   @Override
-   public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-      builder.then(method403("text").then(method402("text", StringArgumentType.greedyString()).executes(this::lambda$build$0)));
-   }
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.then(method403("text").then(method402("text", StringArgumentType.greedyString()).executes(this::lambda$build$0)));
+    }
 
-   private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
-      String var4 = (String)var1.getArgument("text", String.class);
-      Welcomer.INSTANCE.field2663.method1341(var4);
-      this.method624("Welcomer text set to: " + var4, new Object[0]);
-      return 1;
-   }
+    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
+        String var4 = (String) var1.getArgument("text", String.class);
+        Welcomer.INSTANCE.field2663.method1341(var4);
+        this.method624("Welcomer text set to: " + var4);
+        return 1;
+    }
 }

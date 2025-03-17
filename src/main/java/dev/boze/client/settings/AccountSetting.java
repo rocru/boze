@@ -32,15 +32,18 @@ public class AccountSetting extends Setting<String> implements IMinecraft {
       this.field982 = this.field981;
    }
 
-   public String method1322() {
+   @Override
+   public String getValue() {
       return this.field981;
    }
 
-   public String method1562() {
+   @Override
+   public String resetValue() {
       return this.field981 = this.field982;
    }
 
-   public String method1341(String newVal) {
+   @Override
+   public String setValue(String newVal) {
       this.field981 = newVal;
       return newVal;
    }
@@ -58,37 +61,38 @@ public class AccountSetting extends Setting<String> implements IMinecraft {
       return tag;
    }
 
-   public String method1286(NbtCompound tag) {
+   @Override
+   public String load(NbtCompound tag) {
       return "";
    }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method1286(nbtCompound);
-   }
+   //@Override
+   //public Object load(NbtCompound nbtCompound) {
+   //   return this.method1286(nbtCompound);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method1341((String)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+   //   return this.method1341((String)object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method1562();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method1562();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1322();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method1322();
+   //}
 
    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
       ChatInstance.method624("Accounts: " + Boze.getAccounts().method1133());

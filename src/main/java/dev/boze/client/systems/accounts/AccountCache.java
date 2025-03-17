@@ -31,7 +31,8 @@ public class AccountCache implements IJsonSerializable<AccountCache>, IMinecraft
       return var3;
    }
 
-   public AccountCache method552(JsonObject object) {
+   @Override
+   public AccountCache deserialize(JsonObject object) {
       if (object.has("username") && object.has("uuid")) {
          this.field1280 = object.get("username").getAsString();
          this.field1281 = object.get("uuid").getAsString();
@@ -46,8 +47,8 @@ public class AccountCache implements IJsonSerializable<AccountCache>, IMinecraft
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object deserialize(JsonObject jsonObject) {
-      return this.method552(jsonObject);
-   }
+   //@Override
+   //public Object deserialize(JsonObject jsonObject) {
+   //   return this.method552(jsonObject);
+   //}
 }
