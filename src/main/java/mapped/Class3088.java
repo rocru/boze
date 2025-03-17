@@ -1,6 +1,6 @@
 package mapped;
 
-record Class3088() {
+public class Class3088 {
    private final boolean field214;
 
    Class3088(boolean var1) {

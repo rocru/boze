@@ -3,7 +3,7 @@ package mapped;
 import dev.boze.client.gui.notification.Notifications;
 import dev.boze.client.systems.modules.Category;
 
-record Class3084() {
+class Class3084 {
    private final Category field202;
    private final double field203;
    private final double field204;

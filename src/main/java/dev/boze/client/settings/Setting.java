@@ -155,19 +155,15 @@ public abstract class Setting<T> implements ISerializable<T>, IJsonSerializable2
       return var3;
    }
 
-   public Setting<T> deserialize(JsonObject data) {
-      if (data.has("DescriptionSeen")) {
-         this.descriptionSeen = data.get("DescriptionSeen").getAsBoolean();
-      }
-
-      return this;
-   }
-
    // $VF: synthetic method
    // $VF: bridge method
    @Override
-   public Object deserialize(JsonObject jsonObject) {
-      return this.deserialize(jsonObject);
+   public Setting<T> deserialize(JsonObject jsonObject) {
+      if (jsonObject.has("DescriptionSeen")) {
+         this.descriptionSeen = jsonObject.get("DescriptionSeen").getAsBoolean();
+      }
+
+      return this;
    }
 
    private static boolean lambda$hide$1() {

@@ -3,7 +3,7 @@ package mapped;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 
-record Class3086() {
+public class Class3086 {
    private final BlockPos field208;
    private final HitResult field209;
    private final double field210;
