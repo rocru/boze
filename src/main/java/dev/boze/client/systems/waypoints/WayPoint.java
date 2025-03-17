@@ -58,42 +58,31 @@ public class WayPoint implements ISerializable<WayPoint>, IJsonSerializable2<Way
       return var4;
    }
 
-   public WayPoint deserialize(JsonObject data) {
-      this.field908 = data.get("name").getAsString();
-      this.field909 = data.get("x").getAsInt();
-      this.field910 = data.get("y").getAsInt();
-      this.field911 = data.get("z").getAsInt();
-      this.field912 = data.get("dimension").getAsString();
-      this.field913 = data.get("ip").getAsString();
-      return this;
-   }
-
    @Override
    public NbtCompound toTag() {
       return null;
    }
-
-   public WayPoint fromTag(NbtCompound tag) {
-      this.field908 = tag.getString("name");
-      this.field909 = tag.getInt("x");
-      this.field910 = tag.getInt("y");
-      this.field911 = tag.getInt("z");
-      this.field912 = tag.getString("dimension");
-      this.field913 = tag.getString("ip");
+   
+   
+   @Override
+   public WayPoint fromTag(NbtCompound nbtCompound) {
+      this.field908 = nbtCompound.getString("name");
+      this.field909 = nbtCompound.getInt("x");
+      this.field910 = nbtCompound.getInt("y");
+      this.field911 = nbtCompound.getInt("z");
+      this.field912 = nbtCompound.getString("dimension");
+      this.field913 = nbtCompound.getString("ip");
       return this;
    }
-
-   // $VF: synthetic method
-   // $VF: bridge method
+   
    @Override
-   public Object fromTag(NbtCompound nbtCompound) {
-      return this.fromTag(nbtCompound);
-   }
-
-   // $VF: synthetic method
-   // $VF: bridge method
-   @Override
-   public Object deserialize(JsonObject jsonObject) {
-      return this.deserialize(jsonObject);
+   public WayPoint deserialize(JsonObject jsonObject) {
+      this.field908 = jsonObject.get("name").getAsString();
+      this.field909 = jsonObject.get("x").getAsInt();
+      this.field910 = jsonObject.get("y").getAsInt();
+      this.field911 = jsonObject.get("z").getAsInt();
+      this.field912 = jsonObject.get("dimension").getAsString();
+      this.field913 = jsonObject.get("ip").getAsString();
+      return this;
    }
 }

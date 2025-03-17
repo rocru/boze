@@ -2,7 +2,7 @@ package mapped;
 
 import net.minecraft.util.math.BlockPos;
 
-record Class3085() {
+public class Class3085 {
    private final BlockPos field206;
    private final BlockPos field207;
 

@@ -112,7 +112,7 @@ public class PathFinder implements IMinecraft {
             var6[var8] *= 4.5395155F;
          }
 
-         if (!this.field3887.method1475() && mc.world.getBlockState(var9.down()).getBlock() instanceof SoulSandBlock) {
+         if (!this.field3887.isFlying() && mc.world.getBlockState(var9.down()).getBlock() instanceof SoulSandBlock) {
             var6[var8] *= 2.5F;
          }
       }
@@ -147,7 +147,7 @@ public class PathFinder implements IMinecraft {
          BlockPos var14 = var1.up();
          BlockPos var15 = var1.down();
          boolean var16 = this.method2101(var15);
-         if (this.field3887.method1475() || var16 || var1.isJumping() || this.method2102(var1) || this.method2103(var1.down())) {
+         if (this.field3887.isFlying() || var16 || var1.isJumping() || this.method2102(var1) || this.method2103(var1.down())) {
             if (this.method2104(var1, var17)) {
                var5.add(new PathPos(var17));
             }
@@ -181,12 +181,12 @@ public class PathFinder implements IMinecraft {
             }
          }
 
-         if (!this.field3887.method1478()) {
+         if (!this.field3887.shouldBoat()) {
             if (var1.getY() < mc.world.getTopY()
                && this.method2110(var14.up())
-               && (this.field3887.method1475() || var16 || this.method2103(var1))
+               && (this.field3887.isFlying() || var16 || this.method2103(var1))
                && (
-                  this.field3887.method1475()
+                  this.field3887.isFlying()
                      || this.method2103(var1)
                      || this.field3882.equals(var14)
                      || this.method2112(var17)
@@ -200,7 +200,7 @@ public class PathFinder implements IMinecraft {
             if (var1.getY() > mc.world.getBottomY()
                && this.method2110(var15)
                && this.method2111(var15.down())
-               && (this.field3887.method1475() || this.method2113(var1))) {
+               && (this.field3887.isFlying() || this.method2113(var1))) {
                var5.add(new PathPos(var15));
             }
          }
@@ -216,7 +216,7 @@ public class PathFinder implements IMinecraft {
       Block var6 = var5.getBlock();
       return var5.blocksMovement() && !(var6 instanceof AbstractSignBlock)
          || var6 instanceof LadderBlock
-         || this.field3887.method1476() && (var6 == Blocks.WATER || var6 == Blocks.LAVA);
+         || this.field3887.hasJesus() && (var6 == Blocks.WATER || var6 == Blocks.LAVA);
    }
 
    private boolean method2102(BlockPos var1) {
@@ -247,11 +247,11 @@ public class PathFinder implements IMinecraft {
    }
 
    private boolean method2104(BlockPos var1, BlockPos var2) {
-      return this.method2106(var2) && (this.field3887.method1475() || this.method2110(var2.down()) || this.method2112(var2.down()));
+      return this.method2106(var2) && (this.field3887.isFlying() || this.method2110(var2.down()) || this.method2112(var2.down()));
    }
 
    private boolean method2105(BlockPos var1, Direction var2, Direction var3) {
-      if (this.field3887.method1478() && !BoatFly.INSTANCE.field3172.method419()) {
+      if (this.field3887.shouldBoat() && !BoatFly.INSTANCE.field3172.method419()) {
          return false;
       } else {
          BlockPos var7 = var1.offset(var2);
@@ -280,7 +280,7 @@ public class PathFinder implements IMinecraft {
    }
 
    private boolean method2108(BlockPos var1, boolean var2) {
-      if (this.field3887.method1478() && var2) {
+      if (this.field3887.shouldBoat() && var2) {
          double var6 = (double)var1.getY();
          if (mc.player.getVehicle() instanceof BoatEntity var8) {
             var6 = var8.getY();
@@ -348,11 +348,11 @@ public class PathFinder implements IMinecraft {
 
    private boolean method2113(PathPos var1) {
       BlockPos var5 = var1.down(2);
-      if (this.field3887.method1477() && this.method2110(var5)) {
+      if (this.field3887.hasNoFall() && this.method2110(var5)) {
          return true;
       } else if (!this.method2112(var5)) {
          return false;
-      } else if (this.field3887.method1477()) {
+      } else if (this.field3887.hasNoFall()) {
          return true;
       } else if (mc.world.getBlockState(var5).getBlock() instanceof SlimeBlock) {
          return true;
@@ -424,7 +424,7 @@ public class PathFinder implements IMinecraft {
             var4 = this.field3880;
 
             for (PathPos var6 : this.field3889.keySet()) {
-               if (this.method2119(var6) < this.method2119(var4) && (this.field3887.method1475() || this.method2101(var6.down()))) {
+               if (this.method2119(var6) < this.method2119(var4) && (this.field3887.isFlying() || this.method2101(var6.down()))) {
                   var4 = var6;
                }
             }

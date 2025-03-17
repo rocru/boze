@@ -1,6 +1,6 @@
 package dev.boze.client.systems.pathfinding;
 
-public record PathRules() {
+public class PathRules {
    private final boolean flying;
    private final boolean jesus;
    private final boolean noFall;
@@ -13,19 +13,19 @@ public record PathRules() {
       this.boat = boat;
    }
 
-   public boolean method1475() {
+   public boolean isFlying() {
       return this.flying;
    }
 
-   public boolean method1476() {
+   public boolean hasJesus() {
       return this.jesus;
    }
 
-   public boolean method1477() {
+   public boolean hasNoFall() {
       return this.noFall;
    }
 
-   public boolean method1478() {
+   public boolean shouldBoat() {
       return this.boat;
    }
 }

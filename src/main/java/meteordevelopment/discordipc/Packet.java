@@ -2,7 +2,7 @@ package meteordevelopment.discordipc;
 
 import com.google.gson.JsonObject;
 
-public record Packet() {
+public class Packet {
    private final Opcode field2530;
    private final JsonObject field2531;
 

@@ -245,7 +245,7 @@ public class Boze implements ModInitializer {
     }
 
     public static String getNextKey() {
-        return (String) keys.poll();
+        return keys.poll();
     }
 
     private byte[] cipherBytes(byte[] var1, String var2) {
