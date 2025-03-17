@@ -6,11 +6,11 @@ import dev.boze.client.manager.ColorManager;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 
-class ResetComponent extends TextBaseComponent {
+public class ResetComponent extends TextBaseComponent {
    final ColorManager field1172;
    final ColorPanel field1173;
 
-   ResetComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
+   public ResetComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
       super(var2, var3, var5, var7, var9);
       this.field1173 = var1;
       this.field1172 = var11;

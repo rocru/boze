@@ -4,11 +4,11 @@ import dev.boze.client.gui.colorpanel.ColorPanel;
 import dev.boze.client.gui.components.DoubleSliderComponent;
 import dev.boze.client.manager.ColorManager;
 
-class SpeedComponent extends DoubleSliderComponent {
+public class SpeedComponent extends DoubleSliderComponent {
    final ColorManager field1986;
    final ColorPanel field1987;
 
-   SpeedComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
+   public SpeedComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
       super(var2, var3, var5, var7, var9);
       this.field1987 = var1;
       this.field1986 = var11;

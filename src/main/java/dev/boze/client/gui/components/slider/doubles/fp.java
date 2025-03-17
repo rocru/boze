@@ -4,7 +4,7 @@ import dev.boze.client.gui.components.DoubleSliderComponent;
 import dev.boze.client.gui.components.scaled.ColorSettingComponent;
 import dev.boze.client.settings.ColorSetting;
 
-class fp extends DoubleSliderComponent {
+public class fp extends DoubleSliderComponent {
    final ColorSetting field2002;
    final ColorSettingComponent field2003;
 

@@ -5,7 +5,7 @@ import dev.boze.client.gui.components.scaled.ColorSettingComponent;
 import dev.boze.client.settings.ColorSetting;
 import dev.boze.client.utils.RGBAColor;
 
-class f3 extends IntSliderComponent {
+public class f3 extends IntSliderComponent {
    final ColorSetting field2017;
    final ColorSettingComponent field2018;
 

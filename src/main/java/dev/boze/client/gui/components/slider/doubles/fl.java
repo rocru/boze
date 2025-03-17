@@ -3,10 +3,10 @@ package dev.boze.client.gui.components.slider.doubles;
 import dev.boze.client.gui.components.DoubleSliderComponent;
 import dev.boze.client.gui.components.scaled.SettingColorComponent;
 
-class fl extends DoubleSliderComponent {
+public class fl extends DoubleSliderComponent {
    final SettingColorComponent field1999;
 
-   fl(SettingColorComponent var1, String var2, double var3, double var5, double var7, double var9) {
+   public fl(SettingColorComponent var1, String var2, double var3, double var5, double var7, double var9) {
       super(var2, var3, var5, var7, var9);
       this.field1999 = var1;
    }

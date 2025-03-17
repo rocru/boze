@@ -4,7 +4,7 @@ import dev.boze.client.gui.components.IntSliderComponent;
 import dev.boze.client.gui.components.scaled.ColorSettingComponent;
 import dev.boze.client.settings.ColorSetting;
 
-class f2 extends IntSliderComponent {
+public class f2 extends IntSliderComponent {
    final ColorSetting field2015;
    final ColorSettingComponent field2016;
 

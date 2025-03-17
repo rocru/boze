@@ -6,7 +6,7 @@ import dev.boze.client.settings.ColorSetting;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 
-class e_ extends TextBaseComponent {
+public class e_ extends TextBaseComponent {
    final ColorSetting field1199;
    final ColorSettingComponent field1200;
 

@@ -5,11 +5,11 @@ import dev.boze.client.gui.components.scaled.RGBASettingComponent;
 import dev.boze.client.settings.RGBASetting;
 import dev.boze.client.utils.RGBAColor;
 
-class fY extends IntSliderComponent {
+public class fY extends IntSliderComponent {
    final RGBASetting field2040;
    final RGBASettingComponent field2041;
 
-   fY(RGBASettingComponent var1, String var2, double var3, double var5, double var7, double var9, RGBASetting var11) {
+   public fY(RGBASettingComponent var1, String var2, double var3, double var5, double var7, double var9, RGBASetting var11) {
       super(var2, var3, var5, var7, var9);
       this.field2041 = var1;
       this.field2040 = var11;

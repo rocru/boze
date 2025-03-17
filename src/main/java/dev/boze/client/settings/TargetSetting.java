@@ -31,17 +31,11 @@ public class TargetSetting implements IMinecraft, SettingsGroup {
             return Friends.method2055(entity) ? this.field1319.method419() : this.field1318.method419();
          }
       } else {
-         switch (al.field2094[entity.getType().getSpawnGroup().ordinal()]) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-               return this.field1320.method419();
-            case 5:
-               return this.field1321.method419();
-            default:
-               return false;
-         }
+          return switch (al.field2094[entity.getType().getSpawnGroup().ordinal()]) {
+              case 1, 2, 3, 4 -> this.field1320.method419();
+              case 5 -> this.field1321.method419();
+              default -> false;
+          };
       }
    }
 

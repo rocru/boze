@@ -1,13 +1,18 @@
 package dev.boze.client.systems.iterators;
 
 import dev.boze.client.mixin.ClientChunkManagerAccessor;
-import dev.boze.client.mixin.ClientChunkMapAccessor;
 import dev.boze.client.utils.IMinecraft;
+
+import java.lang.reflect.Field;
 import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+
+import net.minecraft.client.world.ClientChunkManager;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.WorldChunk;
 
 public class ChunkIterator implements Iterator<Chunk>, IMinecraft {
-   private final ClientChunkMapAccessor field1258 = (ClientChunkMapAccessor)(((ClientChunkManagerAccessor)mc.world.getChunkManager()).getChunks());
+   private final ClientChunkManager.ClientChunkMap field1258 = ((ClientChunkManagerAccessor) mc.world.getChunkManager()).getChunks();
    private final boolean field1259;
    private int field1260 = 0;
    private Chunk field1261;
@@ -21,14 +26,31 @@ public class ChunkIterator implements Iterator<Chunk>, IMinecraft {
       Chunk var4 = this.field1261;
       this.field1261 = null;
 
-      while (this.field1260 < this.field1258.getChunks().length()) {
-         this.field1261 = (Chunk)this.field1258.getChunks().get(this.field1260++);
+      AtomicReferenceArray<WorldChunk> chunks = getChunks(this.field1258);
+      if (chunks == null) return var4;
+
+      while (this.field1260 < chunks.length()) {
+         this.field1261 = chunks.get(this.field1260++);
          if (this.field1261 != null && (!this.field1259 || this.method542(this.field1261))) {
             break;
          }
       }
 
       return var4;
+   }
+
+   // I'm too lazy to fix it using accessors
+   @SuppressWarnings("unchecked")
+   private AtomicReferenceArray<WorldChunk> getChunks(ClientChunkManager.ClientChunkMap chunkMap) {
+      try {
+         Field chunksField;
+         chunksField = ClientChunkManager.ClientChunkMap.class.getDeclaredField("chunks");
+         chunksField.setAccessible(true);
+         return (AtomicReferenceArray<WorldChunk>) chunksField.get(chunkMap);
+      } catch (Exception e) {
+         e.printStackTrace();
+         return null;
+      }
    }
 
    private boolean method542(Chunk var1) {

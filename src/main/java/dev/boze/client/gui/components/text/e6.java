@@ -6,11 +6,11 @@ import dev.boze.client.settings.RGBASetting;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 
-class e6 extends TextBaseComponent {
+public class e6 extends TextBaseComponent {
    final RGBASetting field1167;
    final RGBASettingComponent field1168;
 
-   e6(RGBASettingComponent var1, String var2, double var3, double var5, double var7, double var9, RGBASetting var11) {
+   public e6(RGBASettingComponent var1, String var2, double var3, double var5, double var7, double var9, RGBASetting var11) {
       super(var2, var3, var5, var7, var9);
       this.field1168 = var1;
       this.field1167 = var11;

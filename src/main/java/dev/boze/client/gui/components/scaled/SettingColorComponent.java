@@ -27,15 +27,15 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
 import java.util.ArrayList;
-import mapped.Class5909;
+import mapped.ColorComponentPosition;
 import net.minecraft.client.gui.DrawContext;
 
 public class SettingColorComponent extends ScaledBaseComponent {
    private static final double field1404 = 6.0;
    private final SettingColor field1405;
-   private final ArrayList<InputBaseComponent> field1406 = new ArrayList();
-   private final ArrayList<InputBaseComponent> field1407 = new ArrayList();
-   private final ArrayList<InputBaseComponent> field1408 = new ArrayList();
+   private final ArrayList<InputBaseComponent> field1406 = new ArrayList<>();
+   private final ArrayList<InputBaseComponent> field1407 = new ArrayList<>();
+   private final ArrayList<InputBaseComponent> field1408 = new ArrayList<>();
 
    private BozeDrawColor method1362() {
       return (BozeDrawColor)this.field1405.getValue();
@@ -79,7 +79,7 @@ public class SettingColorComponent extends ScaledBaseComponent {
          );
       this.field1406
          .add(
-            new Class5909(
+            new ColorComponentPosition(
                this,
                "Strength",
                this.field1388 + 112.0 * BaseComponent.scaleFactor,

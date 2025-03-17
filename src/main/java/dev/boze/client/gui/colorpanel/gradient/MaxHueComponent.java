@@ -4,11 +4,11 @@ import dev.boze.client.gui.colorpanel.ColorPanel;
 import dev.boze.client.gui.components.RotationComponent;
 import dev.boze.client.manager.ColorManager;
 
-class MaxHueComponent extends RotationComponent {
+public class MaxHueComponent extends RotationComponent {
    final ColorManager field1206;
    final ColorPanel field1207;
 
-   MaxHueComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
+   public MaxHueComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
       super(var2, var3, var5, var7, var9);
       this.field1207 = var1;
       this.field1206 = var11;

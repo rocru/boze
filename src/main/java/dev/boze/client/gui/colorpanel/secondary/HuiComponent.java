@@ -6,11 +6,11 @@ import dev.boze.client.manager.ColorManager;
 import dev.boze.client.utils.RGBAColor;
 import java.awt.Color;
 
-class HuiComponent extends RotationComponent {
+public class HuiComponent extends RotationComponent {
    final ColorManager field1216;
    final ColorPanel field1217;
 
-   HuiComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
+   public HuiComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
       super(var2, var3, var5, var7, var9);
       this.field1217 = var1;
       this.field1216 = var11;

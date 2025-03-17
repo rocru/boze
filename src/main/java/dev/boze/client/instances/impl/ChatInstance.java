@@ -104,7 +104,7 @@ public class ChatInstance implements IMinecraft, IChat {
 
    public static void method751(int id, @Nullable String prefixTitle, @Nullable Style prefixStyle, String messageContent) {
       if (mc.world != null) {
-         MutableText var7 = Text.literal(method755(messageContent, Formatting.GRAY, null));
+         MutableText var7 = Text.literal(method755(messageContent, Formatting.GRAY, (Object) null));
          MutableText var8 = Text.literal("");
          var8.append(method754());
          if (prefixTitle != null) {

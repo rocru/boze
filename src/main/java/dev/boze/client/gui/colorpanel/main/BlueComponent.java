@@ -5,11 +5,11 @@ import dev.boze.client.gui.components.IntSliderComponent;
 import dev.boze.client.manager.ColorManager;
 import dev.boze.client.utils.RGBAColor;
 
-class BlueComponent extends IntSliderComponent {
+public class BlueComponent extends IntSliderComponent {
    final ColorManager field1229;
    final ColorPanel field1230;
 
-   BlueComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
+   public BlueComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
       super(var2, var3, var5, var7, var9);
       this.field1230 = var1;
       this.field1229 = var11;

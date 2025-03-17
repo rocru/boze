@@ -4,10 +4,10 @@ import dev.boze.client.gui.components.IntSliderComponent;
 import dev.boze.client.gui.components.scaled.SettingColorComponent;
 import dev.boze.client.utils.RGBAColor;
 
-class fQ extends IntSliderComponent {
+public class fQ extends IntSliderComponent {
    final SettingColorComponent field2032;
 
-   fQ(SettingColorComponent var1, String var2, double var3, double var5, double var7, double var9) {
+   public fQ(SettingColorComponent var1, String var2, double var3, double var5, double var7, double var9) {
       super(var2, var3, var5, var7, var9);
       this.field2032 = var1;
    }

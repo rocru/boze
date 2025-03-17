@@ -29,9 +29,9 @@ public class RGBASettingComponent extends ScaledBaseComponent {
    public static RGBAColor field1482 = null;
    private static final double field1483 = 6.0;
    private final RGBASetting field1484;
-   private final ArrayList<InputBaseComponent> field1485 = new ArrayList();
-   private final ArrayList<InputBaseComponent> field1486 = new ArrayList();
-   private final ArrayList<InputBaseComponent> field1487 = new ArrayList();
+   private final ArrayList<InputBaseComponent> field1485 = new ArrayList<>();
+   private final ArrayList<InputBaseComponent> field1486 = new ArrayList<>();
+   private final ArrayList<InputBaseComponent> field1487 = new ArrayList<>();
 
    public RGBASettingComponent(RGBASetting setting) {
       super(setting.name, 218.0 * BaseComponent.scaleFactor, 128.0 * BaseComponent.scaleFactor, true);

@@ -6,11 +6,11 @@ import dev.boze.client.manager.ColorManager;
 import dev.boze.client.utils.RGBAColor;
 import java.awt.Color;
 
-class SBComponent extends FloatArraySliderComponent {
+public class SBComponent extends FloatArraySliderComponent {
    final ColorManager field1984;
    final ColorPanel field1985;
 
-   SBComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
+   public SBComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
       super(var2, var3, var5, var7, var9);
       this.field1985 = var1;
       this.field1984 = var11;

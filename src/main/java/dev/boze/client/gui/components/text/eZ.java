@@ -6,10 +6,10 @@ import dev.boze.client.gui.components.scaled.SettingColorComponent;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 
-class eZ extends TextBaseComponent {
+public class eZ extends TextBaseComponent {
    final SettingColorComponent field1198;
 
-   eZ(SettingColorComponent var1, String var2, double var3, double var5, double var7, double var9) {
+   public eZ(SettingColorComponent var1, String var2, double var3, double var5, double var7, double var9) {
       super(var2, var3, var5, var7, var9);
       this.field1198 = var1;
    }

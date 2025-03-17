@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum WorldRenderingFog {
+public enum WorldRenderingFog {
    Off,
    Terrain,
    Sky,

@@ -6,11 +6,11 @@ import dev.boze.client.gui.components.BindComponent;
 import dev.boze.client.gui.components.scaled.ToggleableModuleSettingComponent;
 import dev.boze.client.utils.Bind;
 
-class eP extends BindComponent {
+public class eP extends BindComponent {
    final ToggleableModule field1990;
    final ToggleableModuleSettingComponent field1991;
 
-   eP(ToggleableModuleSettingComponent var1, String var2, double var3, double var5, double var7, double var9, ToggleableModule var11) {
+   public eP(ToggleableModuleSettingComponent var1, String var2, double var3, double var5, double var7, double var9, ToggleableModule var11) {
       super(var2, var3, var5, var7, var9);
       this.field1991 = var1;
       this.field1990 = var11;

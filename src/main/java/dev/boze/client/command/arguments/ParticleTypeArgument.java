@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
-class ParticleTypeArgument implements ArgumentType<ParticleType<?>> {
+public class ParticleTypeArgument implements ArgumentType<ParticleType<?>> {
     private ParticleTypeArgument() {
     }
 

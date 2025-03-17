@@ -6,11 +6,11 @@ import dev.boze.client.settings.RGBASetting;
 import dev.boze.client.utils.RGBAColor;
 import java.awt.Color;
 
-class fE extends RotationComponent {
+public class fE extends RotationComponent {
    final RGBASetting field1218;
    final RGBASettingComponent field1219;
 
-   fE(RGBASettingComponent var1, String var2, double var3, double var5, double var7, double var9, RGBASetting var11) {
+   public fE(RGBASettingComponent var1, String var2, double var3, double var5, double var7, double var9, RGBASetting var11) {
       super(var2, var3, var5, var7, var9);
       this.field1219 = var1;
       this.field1218 = var11;

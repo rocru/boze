@@ -4,7 +4,7 @@ import dev.boze.client.gui.components.RotationComponent;
 import dev.boze.client.gui.components.scaled.ColorSettingComponent;
 import dev.boze.client.settings.ColorSetting;
 
-class fH extends RotationComponent {
+public class fH extends RotationComponent {
    final ColorSetting field1210;
    final ColorSettingComponent field1211;
 

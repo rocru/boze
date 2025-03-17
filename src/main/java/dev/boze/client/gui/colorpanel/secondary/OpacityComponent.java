@@ -4,11 +4,11 @@ import dev.boze.client.gui.colorpanel.ColorPanel;
 import dev.boze.client.gui.components.IntSliderComponent;
 import dev.boze.client.manager.ColorManager;
 
-class OpacityComponent extends IntSliderComponent {
+public class OpacityComponent extends IntSliderComponent {
    final ColorManager field1231;
    final ColorPanel field1232;
 
-   OpacityComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
+   public OpacityComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
       super(var2, var3, var5, var7, var9);
       this.field1232 = var1;
       this.field1231 = var11;

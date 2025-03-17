@@ -6,7 +6,7 @@ import dev.boze.client.gui.screens.ClickGUI;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 
-class fc extends TextBaseComponent {
+public class fc extends TextBaseComponent {
    final ColorSettingComponent field1178;
 
    fc(ColorSettingComponent var1, String var2, double var3, double var5, double var7, double var9) {

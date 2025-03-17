@@ -7,11 +7,11 @@ import dev.boze.client.manager.ColorManager;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 
-class PasteComponent extends TextBaseComponent {
+public class PasteComponent extends TextBaseComponent {
    final ColorManager field1157;
    final ColorPanel field1158;
 
-   PasteComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
+   public PasteComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
       super(var2, var3, var5, var7, var9);
       this.field1158 = var1;
       this.field1157 = var11;

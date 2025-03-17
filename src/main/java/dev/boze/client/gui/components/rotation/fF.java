@@ -6,7 +6,7 @@ import dev.boze.client.settings.ColorSetting;
 import dev.boze.client.utils.RGBAColor;
 import java.awt.Color;
 
-class fF extends RotationComponent {
+public class fF extends RotationComponent {
    final ColorSetting field1214;
    final ColorSettingComponent field1215;
 

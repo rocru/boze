@@ -4,11 +4,11 @@ import dev.boze.client.gui.colorpanel.ColorPanel;
 import dev.boze.client.gui.components.DoubleSliderComponent;
 import dev.boze.client.manager.ColorManager;
 
-class OffsetComponent extends DoubleSliderComponent {
+public class OffsetComponent extends DoubleSliderComponent {
    final ColorManager field1982;
    final ColorPanel field1983;
 
-   OffsetComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
+   public OffsetComponent(ColorPanel var1, String var2, double var3, double var5, double var7, double var9, ColorManager var11) {
       super(var2, var3, var5, var7, var9);
       this.field1983 = var1;
       this.field1982 = var11;

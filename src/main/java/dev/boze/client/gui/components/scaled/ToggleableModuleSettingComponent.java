@@ -15,7 +15,7 @@ import net.minecraft.client.gui.DrawContext;
 
 public class ToggleableModuleSettingComponent extends ScaledBaseComponent {
    private static final double field1392 = 6.0;
-   private final ArrayList<InputBaseComponent> field1393 = new ArrayList();
+   private final ArrayList<InputBaseComponent> field1393 = new ArrayList<>();
 
    public ToggleableModuleSettingComponent(ToggleableModule module) {
       super(module.getTitle(), 150.0 * BaseComponent.scaleFactor, 12.0 + 20.0 * BaseComponent.scaleFactor, true);

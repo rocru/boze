@@ -82,26 +82,6 @@ public class StringListSetting extends Setting<List<String>> implements IMinecra
       return this.field955;
    }
 
-   public List<String> method2033() {
-      this.field955.clear();
-      this.field956.clear();
-      return this.field956;
-   }
-
-   public List<String> method442() {
-      return this.field956;
-   }
-
-   public List<String> method443(List<String> newVal) {
-      this.field956 = newVal;
-      this.method1416();
-      if (this.callback != null) {
-         this.callback.accept(newVal);
-      }
-
-      return this.field956;
-   }
-
    @Override
    public boolean buildCommand(LiteralArgumentBuilder<CommandSource> builder) {
       builder.then(method403("particles").then(method403("add").then(method402("particle", ParticleTypeArgument.method1006()).executes(this::lambda$build$1))));
@@ -114,14 +94,19 @@ public class StringListSetting extends Setting<List<String>> implements IMinecra
    @Override
    public NbtCompound save(NbtCompound tag) {
       NbtList var4 = new NbtList();
-      this.field956.forEach(StringListSetting::lambda$addValueToTag$6);
+      this.field956.forEach((var1) -> {
+         if (!var4.contains(NbtString.of(var1))) {
+            var4.add(NbtString.of(var1));
+         }
+      });
       tag.put("Particles", var4);
       return tag;
    }
 
-   public List<String> method444(NbtCompound tag) {
-      if (tag.contains("Particles")) {
-         NbtList var5 = tag.getList("Particles", 8);
+   @Override
+   public List<String> load(NbtCompound nbtCompound) {
+      if (nbtCompound.contains("Particles")) {
+         NbtList var5 = nbtCompound.getList("Particles", 8);
          this.field956.clear();
 
          for (NbtElement var7 : var5) {
@@ -136,43 +121,33 @@ public class StringListSetting extends Setting<List<String>> implements IMinecra
       return this.field956;
    }
 
-   // $VF: synthetic method
-   // $VF: bridge method
    @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method444(nbtCompound);
-   }
-
-   // $VF: synthetic method
-   // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method443((List<String>)object);
-   }
-
-   // $VF: synthetic method
-   // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method2033();
-   }
-
-   // $VF: synthetic method
-   // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method442();
-   }
-
-   private static void lambda$addValueToTag$6(NbtList var0, String var1) {
-      if (!var0.contains(NbtString.of(var1))) {
-         var0.add(NbtString.of(var1));
+   public List<String> setValue(List<String> list) {
+      this.field956 = list;
+      this.method1416();
+      if (this.callback != null) {
+         this.callback.accept(list);
       }
+
+      return this.field956;
+   }
+
+   @Override
+   public List<String> resetValue() {
+      this.field955.clear();
+      this.field956.clear();
+      return this.field956;
+   }
+
+   @Override
+   public List<String> getValue() {
+      return this.field956;
    }
 
    private int lambda$build$5(CommandContext var1) throws CommandSyntaxException {
       ChatInstance.method624("Clearing all particles...");
-      this.method2033();
+      this.field955.clear();
+      this.field956.clear();
       return 1;
    }
 

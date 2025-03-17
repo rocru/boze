@@ -5,10 +5,10 @@ import dev.boze.client.gui.components.scaled.SettingColorComponent;
 import dev.boze.client.utils.RGBAColor;
 import java.awt.Color;
 
-class fB extends RotationComponent {
+public class fB extends RotationComponent {
    final SettingColorComponent field1205;
 
-   fB(SettingColorComponent var1, String var2, double var3, double var5, double var7, double var9) {
+   public fB(SettingColorComponent var1, String var2, double var3, double var5, double var7, double var9) {
       super(var2, var3, var5, var7, var9);
       this.field1205 = var1;
    }

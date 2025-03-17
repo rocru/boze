@@ -3,10 +3,10 @@ package mapped;
 import dev.boze.client.gui.components.DoubleArrayComponent;
 import dev.boze.client.gui.components.scaled.SettingColorComponent;
 
-class Class5909 extends DoubleArrayComponent {
+public class ColorComponentPosition extends DoubleArrayComponent {
    final SettingColorComponent field2;
 
-   Class5909(SettingColorComponent var1, String var2, double var3, double var5, double var7, double var9) {
+   public ColorComponentPosition(SettingColorComponent var1, String var2, double var3, double var5, double var7, double var9) {
       super(var2, var3, var5, var7, var9);
       this.field2 = var1;
    }

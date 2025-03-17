@@ -5,10 +5,10 @@ import dev.boze.client.settings.generic.SettingsGroup;
 import net.minecraft.client.render.BackgroundRenderer.FogType;
 
 class WorldRenderingSettings implements SettingsGroup {
-   private final EnumSetting<WorldRenderingFog> field2225 = new EnumSetting<WorldRenderingFog>(
-      "Fog",
-      WorldRenderingFog.Both,
-      "Don't render fog\nOff: Don't NoRender Fog\nTerrain: Disables fog rendering for terrain\nSky: Disables fog rendering for sky\nBoth: Disables fog rendering for both terrain and sky"
+   private final EnumSetting<WorldRenderingFog> field2225 = new EnumSetting<>(
+           "Fog",
+           WorldRenderingFog.Both,
+           "Don't render fog\nOff: Don't NoRender Fog\nTerrain: Disables fog rendering for terrain\nSky: Disables fog rendering for sky\nBoth: Disables fog rendering for both terrain and sky"
    );
    final BooleanSetting field2226 = new BooleanSetting("Weather", true, "Don't render weather");
    final BooleanSetting field2227 = new BooleanSetting("WorldBorder", false, "Don't render world border");

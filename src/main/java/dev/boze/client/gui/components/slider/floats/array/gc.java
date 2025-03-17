@@ -6,11 +6,11 @@ import dev.boze.client.settings.RGBASetting;
 import dev.boze.client.utils.RGBAColor;
 import java.awt.Color;
 
-class gc extends FloatArraySliderComponent {
+public class gc extends FloatArraySliderComponent {
    final RGBASetting field2005;
    final RGBASettingComponent field2006;
 
-   gc(RGBASettingComponent var1, String var2, double var3, double var5, double var7, double var9, RGBASetting var11) {
+   public gc(RGBASettingComponent var1, String var2, double var3, double var5, double var7, double var9, RGBASetting var11) {
       super(var2, var3, var5, var7, var9);
       this.field2006 = var1;
       this.field2005 = var11;
