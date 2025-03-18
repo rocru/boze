@@ -3,10 +3,10 @@ package dev.boze.client.gui.components.toggle;
 import dev.boze.client.gui.components.ToggleComponent;
 import dev.boze.client.gui.components.scaled.ShaderSettingComponent;
 
-class ToggleShaderSettingComponent extends ToggleComponent {
+public class ToggleShaderSettingComponent extends ToggleComponent {
    final ShaderSettingComponent field1222;
 
-   ToggleShaderSettingComponent(ShaderSettingComponent var1, String var2, double var3, double var5, double var7, double var9) {
+   public ToggleShaderSettingComponent(ShaderSettingComponent var1, String var2, double var3, double var5, double var7, double var9) {
       super(var2, var3, var5, var7, var9);
       this.field1222 = var1;
    }

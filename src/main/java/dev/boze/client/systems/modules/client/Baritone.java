@@ -34,80 +34,24 @@ public class Baritone extends Module {
    private Baritone() {
       super("Baritone", "Configure Baritone from your GUI", Category.Client);
       this.setEnabled(true);
-      this.field2325.method401(this::lambda$new$0);
-      this.field2326.method401(this::lambda$new$1);
-      this.field2328.method401(this::lambda$new$2);
-      this.field2329.method401(this::lambda$new$3);
-      this.field2330.method401(this::lambda$new$4);
-      this.field2331.method401(this::lambda$new$5);
-      this.field2332.method401(this::lambda$new$6);
-      this.field2333.method401(this::lambda$new$7);
-      this.field2334.method401(this::lambda$new$8);
-      this.field2335.method401(this::lambda$new$9);
-      this.field2336.method401(this::lambda$new$10);
-      this.field2337.method401(this::lambda$new$11);
-      this.field2338.method401(this::lambda$new$12);
-      this.field2339.method401(this::lambda$new$13);
+      this.field2325.method401(var14 -> this.field2340.legitMine.value = var14);
+      this.field2326.method401(var13 -> this.field2340.backfill.value = var13);
+      this.field2328.method401(var12 -> this.field2340.allowBreak.value = var12);
+      this.field2329.method401(var11 -> this.field2340.allowPlace.value = var11);
+      this.field2330.method401(var10 -> this.field2340.allowSprint.value = var10);
+      this.field2331.method401(var9 -> this.field2340.allowParkour.value = var9);
+      this.field2332.method401(var8 -> this.field2340.allowParkourPlace.value = var8);
+      this.field2333.method401(var7 -> this.field2340.blockPlacementPenalty.value = var7);
+      this.field2334.method401(var6 -> this.field2340.costHeuristic.value = var6);
+      this.field2335.method401(var5 -> this.field2340.renderCachedChunks.value = var5);
+      this.field2336.method401(var4 -> this.field2340.cachedChunksOpacity.value = var4);
+      this.field2337.method401(var3 -> this.field2340.avoidance.value = var3);
+      this.field2338.method401(var2 -> this.field2340.followRadius.value = var2);
+      this.field2339.method401(var1 -> this.field2340.mineScanDroppedItems.value = var1);
    }
 
    @Override
    public boolean setEnabled(boolean newState) {
       return false;
-   }
-
-   private void lambda$new$13(Boolean var1) {
-      this.field2340.mineScanDroppedItems.value = var1;
-   }
-
-   private void lambda$new$12(Integer var1) {
-      this.field2340.followRadius.value = var1;
-   }
-
-   private void lambda$new$11(Boolean var1) {
-      this.field2340.avoidance.value = var1;
-   }
-
-   private void lambda$new$10(Float var1) {
-      this.field2340.cachedChunksOpacity.value = var1;
-   }
-
-   private void lambda$new$9(Boolean var1) {
-      this.field2340.renderCachedChunks.value = var1;
-   }
-
-   private void lambda$new$8(Double var1) {
-      this.field2340.costHeuristic.value = var1;
-   }
-
-   private void lambda$new$7(Double var1) {
-      this.field2340.blockPlacementPenalty.value = var1;
-   }
-
-   private void lambda$new$6(Boolean var1) {
-      this.field2340.allowParkourPlace.value = var1;
-   }
-
-   private void lambda$new$5(Boolean var1) {
-      this.field2340.allowParkour.value = var1;
-   }
-
-   private void lambda$new$4(Boolean var1) {
-      this.field2340.allowSprint.value = var1;
-   }
-
-   private void lambda$new$3(Boolean var1) {
-      this.field2340.allowPlace.value = var1;
-   }
-
-   private void lambda$new$2(Boolean var1) {
-      this.field2340.allowBreak.value = var1;
-   }
-
-   private void lambda$new$1(Boolean var1) {
-      this.field2340.backfill.value = var1;
-   }
-
-   private void lambda$new$0(Boolean var1) {
-      this.field2340.legitMine.value = var1;
    }
 }

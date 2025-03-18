@@ -3,10 +3,10 @@ package dev.boze.client.gui.components.slider.doubles;
 import dev.boze.client.gui.components.DoubleSliderComponent;
 import dev.boze.client.gui.components.scaled.ShaderSettingComponent;
 
-class fn extends DoubleSliderComponent {
+public class fn extends DoubleSliderComponent {
    final ShaderSettingComponent field1202;
 
-   fn(ShaderSettingComponent var1, String var2, double var3, double var5, double var7, double var9) {
+   public fn(ShaderSettingComponent var1, String var2, double var3, double var5, double var7, double var9) {
       super(var2, var3, var5, var7, var9);
       this.field1202 = var1;
    }

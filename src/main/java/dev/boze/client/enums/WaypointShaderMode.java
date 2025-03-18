@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum WaypointShaderMode {
+public enum WaypointShaderMode {
    Normal,
    Image;
 

@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum TpsSyncMode {
+public enum TpsSyncMode {
    Off,
    Avg,
    Last,

@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AutoSwapMode {
+public enum AutoSwapMode {
    Sword,
    Axe,
    Both;

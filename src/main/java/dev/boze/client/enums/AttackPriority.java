@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AttackPriority {
+public enum AttackPriority {
    Distance,
    FOV,
    Health;

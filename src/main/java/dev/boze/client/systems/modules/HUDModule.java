@@ -94,55 +94,6 @@ public abstract class HUDModule extends Module {
       var1.putBoolean("sY", this.field605);
    }
 
-   public Module fromTag(NbtCompound tag) {
-      if (tag.contains("x")) {
-         try {
-            this.field596 = tag.getDouble("x");
-         } catch (Exception var10) {
-            ErrorLogger.log(var10);
-            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s x position from config");
-         }
-      }
-
-      if (tag.contains("y")) {
-         try {
-            this.field597 = tag.getDouble("y");
-         } catch (Exception var9) {
-            ErrorLogger.log(var9);
-            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s y position from config");
-         }
-      }
-
-      if (tag.contains("a")) {
-         try {
-            this.field603 = tag.getInt("a");
-         } catch (Exception var8) {
-            ErrorLogger.log(var8);
-            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s anchor position from config");
-         }
-      }
-
-      if (tag.contains("sX")) {
-         try {
-            this.field604 = tag.getBoolean("sX");
-         } catch (Exception var7) {
-            ErrorLogger.log(var7);
-            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s x-axis snap from config");
-         }
-      }
-
-      if (tag.contains("sY")) {
-         try {
-            this.field605 = tag.getBoolean("sY");
-         } catch (Exception var6) {
-            ErrorLogger.log(var6);
-            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s y-axis snap from config");
-         }
-      }
-
-      return super.fromTag(tag);
-   }
-
    public abstract void method295(DrawContext var1);
 
    protected void method296(String text, BozeDrawColor color, boolean shadow) {
@@ -631,10 +582,53 @@ public abstract class HUDModule extends Module {
       }
    }
 
-   // $VF: synthetic method
-   // $VF: bridge method
    @Override
-   public Object fromTag(NbtCompound nbtCompound) {
-      return this.fromTag(nbtCompound);
+   public Module fromTag(NbtCompound tag) {
+      if (tag.contains("x")) {
+         try {
+            this.field596 = tag.getDouble("x");
+         } catch (Exception var10) {
+            ErrorLogger.log(var10);
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s x position from config");
+         }
+      }
+
+      if (tag.contains("y")) {
+         try {
+            this.field597 = tag.getDouble("y");
+         } catch (Exception var9) {
+            ErrorLogger.log(var9);
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s y position from config");
+         }
+      }
+
+      if (tag.contains("a")) {
+         try {
+            this.field603 = tag.getInt("a");
+         } catch (Exception var8) {
+            ErrorLogger.log(var8);
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s anchor position from config");
+         }
+      }
+
+      if (tag.contains("sX")) {
+         try {
+            this.field604 = tag.getBoolean("sX");
+         } catch (Exception var7) {
+            ErrorLogger.log(var7);
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s x-axis snap from config");
+         }
+      }
+
+      if (tag.contains("sY")) {
+         try {
+            this.field605 = tag.getBoolean("sY");
+         } catch (Exception var6) {
+            ErrorLogger.log(var6);
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s y-axis snap from config");
+         }
+      }
+
+      return super.fromTag(tag);
    }
 }

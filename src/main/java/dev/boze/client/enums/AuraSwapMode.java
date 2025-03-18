@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AuraSwapMode {
+public enum AuraSwapMode {
    OnlyWeapon,
    Off,
    Normal,

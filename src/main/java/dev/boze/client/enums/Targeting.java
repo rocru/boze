@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum Targeting {
+public enum Targeting {
    Single,
    Multi;
 

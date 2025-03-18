@@ -11,7 +11,10 @@ repositories {
 		name = "modrinth"
 		url = "https://api.modrinth.com/maven"
 	}
-	mavenCentral()
+	maven {
+		name = "meteor-maven"
+		url = "https://maven.meteordev.org/snapshots"
+	}
 }
 
 loom {
@@ -29,6 +32,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	modCompileOnly "maven.modrinth:sodium:${project.sodium_version}"
+	modCompileOnly "meteordevelopment:baritone:${project.baritone_version}-SNAPSHOT"
 }
 
 processResources {

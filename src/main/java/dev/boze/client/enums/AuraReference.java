@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AuraReference {
+public enum AuraReference {
    Client,
    Server;
 

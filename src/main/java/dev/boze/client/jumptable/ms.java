@@ -2,8 +2,8 @@ package dev.boze.client.jumptable;
 
 import net.minecraft.entity.SpawnGroup;
 
-class ms {
-   static final int[] field2109 = new int[SpawnGroup.values().length];
+public class ms {
+   public static final int[] field2109 = new int[SpawnGroup.values().length];
 
    static {
       try {

@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum PlacePosition {
+public enum PlacePosition {
    Feet,
    Head,
    Above;

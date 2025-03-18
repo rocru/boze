@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AimPoint {
+public enum AimPoint {
    MinAngle,
    Closest,
    Clamped,

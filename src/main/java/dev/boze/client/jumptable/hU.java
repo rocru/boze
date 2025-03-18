@@ -2,8 +2,8 @@ package dev.boze.client.jumptable;
 
 import dev.boze.client.enums.ToggleStyle;
 
-class hU {
-   static final int[] field2105 = new int[ToggleStyle.values().length];
+public class hU {
+   public static final int[] field2105 = new int[ToggleStyle.values().length];
 
    static {
       try {

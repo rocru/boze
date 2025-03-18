@@ -6,10 +6,10 @@ import dev.boze.client.gui.screens.ClickGUI;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 
-class e3 extends TextBaseComponent {
+public class e3 extends TextBaseComponent {
    final ShaderSettingComponent field1162;
 
-   e3(ShaderSettingComponent var1, String var2, double var3, double var5, double var7, double var9) {
+   public e3(ShaderSettingComponent var1, String var2, double var3, double var5, double var7, double var9) {
       super(var2, var3, var5, var7, var9);
       this.field1162 = var1;
    }

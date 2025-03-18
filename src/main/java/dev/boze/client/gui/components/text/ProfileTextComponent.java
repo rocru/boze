@@ -6,10 +6,10 @@ import dev.boze.client.gui.screens.ClickGUI;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 
-class ProfileTextComponent extends TextBaseComponent {
+public class ProfileTextComponent extends TextBaseComponent {
    final ProfileComponent field2044;
 
-   ProfileTextComponent(ProfileComponent var1, String var2, double var3, double var5, double var7, double var9) {
+   public ProfileTextComponent(ProfileComponent var1, String var2, double var3, double var5, double var7, double var9) {
       super(var2, var3, var5, var7, var9);
       this.field2044 = var1;
    }

@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum TargetPriority {
+public enum TargetPriority {
    Highest,
    Lowest;
 

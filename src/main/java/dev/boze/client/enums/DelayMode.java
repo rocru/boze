@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum DelayMode {
+public enum DelayMode {
    Dynamic,
    Tick;
 

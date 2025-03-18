@@ -499,17 +499,11 @@ public class Aura extends Module {
          if (var1 instanceof ArmorStandEntity && this.armorStands.method419()) {
             return true;
          } else {
-            switch (ms.field2109[var1.getType().getSpawnGroup().ordinal()]) {
-               case 1:
-               case 2:
-               case 3:
-               case 4:
-                  return this.animals.method419();
-               case 5:
-                  return this.monsters.method419();
-               default:
-                  return false;
-            }
+             return switch (ms.field2109[var1.getType().getSpawnGroup().ordinal()]) {
+                 case 1, 2, 3, 4 -> this.animals.method419();
+                 case 5 -> this.monsters.method419();
+                 default -> false;
+             };
          }
       }
    }

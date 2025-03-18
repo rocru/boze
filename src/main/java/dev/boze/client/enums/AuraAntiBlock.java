@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AuraAntiBlock {
+public enum AuraAntiBlock {
    Off,
    On,
    Always;

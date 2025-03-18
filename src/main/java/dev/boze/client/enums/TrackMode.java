@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum TrackMode {
+public enum TrackMode {
    Off,
    Track,
    Attack;

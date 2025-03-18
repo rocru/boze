@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum TargetMode {
+public enum TargetMode {
    Distance,
    Health;
 

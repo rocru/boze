@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum PacketRenderMode {
+public enum PacketRenderMode {
    Off,
    On,
    Auto;

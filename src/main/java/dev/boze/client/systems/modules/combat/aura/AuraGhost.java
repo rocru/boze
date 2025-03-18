@@ -53,7 +53,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.item.AxeItem;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.ShieldItem;
 import net.minecraft.item.SwordItem;
@@ -498,7 +497,7 @@ public class AuraGhost extends GhostModule {
             || mc.player.getMainHandStack().getItem() instanceof SwordItem
             || mc.player.getMainHandStack().getItem() instanceof AxeItem) {
             if (!this.field2467.method419() || mc.options.attackKey.isPressed()) {
-               ArrayList var5 = new ArrayList();
+               ArrayList<Pair> var5 = new ArrayList<>();
                this.field2496.stream().filter(this::lambda$onInteract$7).forEach(this::lambda$onInteract$8);
                if (!var5.isEmpty() && !event.method2114()) {
                   int var6 = this.field2461.method2171();
@@ -547,9 +546,9 @@ public class AuraGhost extends GhostModule {
 
    public void method1422(Render3DEvent event) {
       if (!this.field2499.hasElapsed(2500.0) && GhostRotations.INSTANCE.field760 != null && this.field2498 != null) {
-         double var4 = MathHelper.lerp((double)event.field1951, this.field2498.lastRenderX, this.field2498.getX()) - this.field2498.getX();
-         double var6 = MathHelper.lerp((double)event.field1951, this.field2498.lastRenderY, this.field2498.getY()) - this.field2498.getY();
-         double var8 = MathHelper.lerp((double)event.field1951, this.field2498.lastRenderZ, this.field2498.getZ()) - this.field2498.getZ();
+         double var4 = MathHelper.lerp(event.field1951, this.field2498.lastRenderX, this.field2498.getX()) - this.field2498.getX();
+         double var6 = MathHelper.lerp(event.field1951, this.field2498.lastRenderY, this.field2498.getY()) - this.field2498.getY();
+         double var8 = MathHelper.lerp(event.field1951, this.field2498.lastRenderZ, this.field2498.getZ()) - this.field2498.getZ();
          Box var10 = this.field2498.getBoundingBox();
          if (var10 != null) {
             event.field1950
@@ -1189,20 +1188,14 @@ public class AuraGhost extends GhostModule {
 
    private boolean method1425(Entity var1) {
       if (!(mc.player.getMainHandStack().getItem() instanceof AxeItem)) {
-         if (!this.field2487.method419()
-            && var1 instanceof LivingEntity
-            && ((LivingEntity)var1).isBlocking()
-            && ((LivingEntity)var1).blockedByShield(var1.getDamageSources().playerAttack(mc.player))) {
-            return false;
-         }
-      } else if (this.field2486.method461() == AuraAntiBlock.On
-         && var1 instanceof PlayerEntity var5
-         && var5.getOffHandStack().getItem() instanceof ShieldItem
-         && (!var5.isBlocking() || !var5.blockedByShield(var1.getDamageSources().playerAttack(mc.player)))) {
-         return false;
-      }
-
-      return true;
+          return this.field2487.method419()
+                  || !(var1 instanceof LivingEntity)
+                  || !((LivingEntity) var1).isBlocking()
+                  || !((LivingEntity) var1).blockedByShield(var1.getDamageSources().playerAttack(mc.player));
+      } else return this.field2486.method461() != AuraAntiBlock.On
+              || !(var1 instanceof PlayerEntity var5)
+              || !(var5.getOffHandStack().getItem() instanceof ShieldItem)
+              || (var5.isBlocking() && var5.blockedByShield(var1.getDamageSources().playerAttack(mc.player)));
    }
 
    // $VF: Unable to simplify switch on enum
@@ -1218,7 +1211,7 @@ public class AuraGhost extends GhostModule {
          } else if (Friends.method2055(var1)) {
             return this.field2492.method419();
          } else {
-            return AntiBots.method2055(var1) ? false : this.field2491.method419();
+            return !AntiBots.method2055(var1) && this.field2491.method419();
          }
       } else if (var1 instanceof FireballEntity) {
          return this.field2495.method419();
@@ -1244,17 +1237,14 @@ public class AuraGhost extends GhostModule {
    }
 
    private boolean method1428(Entity var1) {
-      return !(var1 instanceof PlayerEntity var5)
-         ? false
-         : var5.getInventory().getMainHandStack().getItem() == Items.SHIELD || ((ItemStack)var5.getInventory().offHand.get(0)).getItem() == Items.SHIELD;
+      return var1 instanceof PlayerEntity var5 && (var5.getInventory().getMainHandStack().getItem() == Items.SHIELD || var5.getInventory().offHand.get(0).getItem() == Items.SHIELD);
    }
 
    private boolean method1429(Predicate<LivingEntity> var1) {
       if (this.field2483.method461() == Targeting.Single) {
-         Optional var5 = this.field2496.stream().findFirst().map(AuraGhost::lambda$allAttackedLivingEntities$10);
-         if (var5.isPresent() && var5.get() instanceof LivingEntity) {
-            LivingEntity var6 = (LivingEntity)var5.get();
-            return var1.test(var6);
+         Optional<Entity> var5 = this.field2496.stream().findFirst().map(AuraGhost::lambda$allAttackedLivingEntities$10);
+         if (var5.isPresent() && var5.get() instanceof LivingEntity var6) {
+             return var1.test(var6);
          } else {
             return false;
          }
@@ -1276,7 +1266,7 @@ public class AuraGhost extends GhostModule {
    }
 
    private static boolean lambda$allAttackedLivingEntities$11(Predicate var0, Pair var1) {
-      return var1.getLeft() instanceof LivingEntity && var0.test((LivingEntity)var1.getLeft());
+      return var1.getLeft() instanceof LivingEntity && var0.test(var1.getLeft());
    }
 
    private static Entity lambda$allAttackedLivingEntities$10(Pair var0) {
@@ -1338,7 +1328,7 @@ public class AuraGhost extends GhostModule {
    }
 
    private static Boolean lambda$onRotate$3(Pair var0) {
-      return var0.getLeft() instanceof LivingEntity ? ((LivingEntity)var0.getLeft()).isDead() : true;
+      return !(var0.getLeft() instanceof LivingEntity) || ((LivingEntity) var0.getLeft()).isDead();
    }
 
    private static boolean lambda$onRotate$2(Entity var0, Pair var1) {
