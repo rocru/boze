@@ -883,7 +883,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
          }
 
          if (tag.contains("Colors")) {
-            Colors.INSTANCE.method235(tag.getCompound("Colors"));
+            Colors.INSTANCE.fromTag(tag.getCompound("Colors"));
          }
 
          for (Module var7 : this.modules) {
@@ -894,7 +894,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
                Boze.LOG.debug("Loading config for module " + var7.internalName);
 
                try {
-                  var7.method235(tag.getCompound(var7.internalName));
+                  var7.fromTag(tag.getCompound(var7.internalName));
 
                   try {
                      var7.bind.method180(tag.getCompound(var7.internalName).getCompound("Keybind"));
@@ -910,7 +910,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
          }
 
          if (tag.contains(Options.INSTANCE.internalName)) {
-            Options.INSTANCE.method235(tag.getCompound(Options.INSTANCE.internalName));
+            Options.INSTANCE.fromTag(tag.getCompound(Options.INSTANCE.internalName));
          }
 
          for (Category var9 : Category.values()) {

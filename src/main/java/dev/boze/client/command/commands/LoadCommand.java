@@ -61,7 +61,7 @@ public class LoadCommand extends Command {
                         if (var2.contains(var17.internalName)) {
                             NbtCompound var21 = var2.getCompound(var17.internalName);
                             if (var21 != null) {
-                                var17.method235(var21);
+                                var17.fromTag(var21);
                             }
                         }
                     }
@@ -83,7 +83,7 @@ public class LoadCommand extends Command {
                             if (var19.category == var9 && var2.contains(var19.internalName)) {
                                 NbtCompound var23 = var2.getCompound(var19.internalName);
                                 if (var23 != null) {
-                                    var19.method235(var23);
+                                    var19.fromTag(var23);
                                 }
                             }
                         }
@@ -100,7 +100,7 @@ public class LoadCommand extends Command {
                         ConfigNBTSerializer.method2137(var16, var20);
                         var7.add(var16.internalName);
                     } else {
-                        var16.method235(var2);
+                        var16.fromTag(var2);
                         var7.add(var16.internalName);
                     }
                 }

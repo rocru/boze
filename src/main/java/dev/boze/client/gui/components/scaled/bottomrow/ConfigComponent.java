@@ -116,7 +116,7 @@ public class ConfigComponent extends BottomRowScaledComponent {
          NbtCompound var6 = var5.getCompound("v2.data");
          ConfigNBTSerializer.method2137(this.field1992, var6);
       } else {
-         this.field1992.method235(var5);
+         this.field1992.fromTag(var5);
       }
 
       mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));

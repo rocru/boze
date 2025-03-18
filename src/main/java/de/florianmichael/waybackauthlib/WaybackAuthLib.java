@@ -33,8 +33,8 @@ public class WaybackAuthLib {
    private String field1826;
    private boolean field1827;
    private GameProfile field1828;
-   private List<Property> field1829 = new ArrayList();
-   private List<GameProfile> field1830 = new ArrayList();
+   private List<Property> field1829 = new ArrayList<>();
+   private List<GameProfile> field1830 = new ArrayList<>();
 
    public WaybackAuthLib() {
       this("https://authserver.mojang.com/", "");
@@ -197,39 +197,36 @@ public class WaybackAuthLib {
    }
 
    public String toString() {
-      List var3 = this.field1830;
-      List var4 = this.field1829;
+      List<GameProfile> var3 = this.field1830;
+      List<Property> var4 = this.field1829;
       GameProfile var5 = this.field1828;
       boolean var6 = this.field1827;
       String var7 = this.field1826;
       String var8 = this.field1825;
       String var9 = this.field1824;
       String var10 = this.field1823;
-      MinecraftClient var11 = this.field1822;
-      String var12 = this.field1821;
-      URI var13 = this.field1820;
-      return "WaybackAuthLib{baseURI="
-         + var13
-         + ", clientToken='"
-         + var12
-         + "', client="
-         + var11
-         + ", username='"
-         + var10
-         + "', password='"
-         + var9
-         + "', accessToken='"
-         + var8
-         + "', userId='"
-         + var7
-         + "', loggedIn="
-         + var6
-         + ", currentProfile="
-         + var5
-         + ", properties="
-         + var4
-         + ", profiles="
-         + var3
-         + "}";
+       return "WaybackAuthLib{baseURI="
+              + this.field1820
+              + ", clientToken='"
+              + this.field1821
+              + "', client="
+              + this.field1822
+              + ", username='"
+              + var10
+              + "', password='"
+              + var9
+              + "', accessToken='"
+              + var8
+              + "', userId='"
+              + var7
+              + "', loggedIn="
+              + var6
+              + ", currentProfile="
+              + var5
+              + ", properties="
+              + var4
+              + ", profiles="
+              + var3
+              + "}";
    }
 }

@@ -61,7 +61,7 @@ public abstract class HUDModule extends Module {
       super.isFriend(tag);
       if (tag.contains("settings")) {
          NbtCompound var5 = tag.getCompound("settings");
-         this.method235(var5);
+         this.fromTag(var5);
       }
    }
 
@@ -94,8 +94,7 @@ public abstract class HUDModule extends Module {
       var1.putBoolean("sY", this.field605);
    }
 
-   @Override
-   public Module method235(NbtCompound tag) {
+   public Module fromTag(NbtCompound tag) {
       if (tag.contains("x")) {
          try {
             this.field596 = tag.getDouble("x");
@@ -141,7 +140,7 @@ public abstract class HUDModule extends Module {
          }
       }
 
-      return super.method235(tag);
+      return super.fromTag(tag);
    }
 
    public abstract void method295(DrawContext var1);
@@ -636,6 +635,6 @@ public abstract class HUDModule extends Module {
    // $VF: bridge method
    @Override
    public Object fromTag(NbtCompound nbtCompound) {
-      return this.method235(nbtCompound);
+      return this.fromTag(nbtCompound);
    }
 }

@@ -362,7 +362,8 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
       }
    }
 
-   public void isFriend(NbtCompound tag) {
+   @Override
+   public void method394(NbtCompound tag) {
       if (tag.contains("visible")) {
          this.visible = tag.getBoolean("visible");
       }
@@ -474,7 +475,8 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
       return var4;
    }
 
-   public Module method235(NbtCompound tag) {
+   @Override
+   public Module fromTag(NbtCompound tag) {
       if (tag.contains("State")) {
          try {
             this.setEnabled(tag.getBoolean("State"));
@@ -571,7 +573,8 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
       return var4;
    }
 
-   public Module method236(JsonObject data) {
+   @Override
+   public Module deserialize(JsonObject data) {
       if (data.has("DescriptionSeen")) {
          this.field433 = data.get("DescriptionSeen").getAsBoolean();
       }
@@ -606,27 +609,28 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
       return Objects.hash(new Object[]{this.internalName});
    }
 
-   public int compareModule(@NotNull Module o) {
+   @Override
+   public int compareTo(@NotNull Module o) {
       return this.internalName.compareTo(o.internalName);
    }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object fromTag(NbtCompound nbtCompound) {
-      return this.method235(nbtCompound);
-   }
+   //@Override
+   //public Object fromTag(NbtCompound nbtCompound) {
+   //   return this.method235(nbtCompound);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   public int compareTo(@NotNull Object object) {
-      return this.compareModule((Module)object);
-   }
+   //public int compareTo(@NotNull Object object) {
+   //   return this.compareModule((Module)object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object deserialize(JsonObject jsonObject) {
-      return this.method236(jsonObject);
-   }
+  // @Override
+   //public Object deserialize(JsonObject jsonObject) {
+   //   return this.method236(jsonObject);
+   //}
 }

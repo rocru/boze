@@ -51,8 +51,7 @@ public class Colors extends Module {
       return var4;
    }
 
-   @Override
-   public Module method235(NbtCompound tag) {
+   public Module fromTag(NbtCompound tag) {
       if (tag.contains("colors")) {
          NbtCompound var5 = tag.getCompound("colors");
 
@@ -69,14 +68,14 @@ public class Colors extends Module {
          }
       }
 
-      return super.method235(tag);
+      return super.fromTag(tag);
    }
 
    // $VF: synthetic method
    // $VF: bridge method
    @Override
    public Object fromTag(NbtCompound nbtCompound) {
-      return this.method235(nbtCompound);
+      return this.fromTag(nbtCompound);
    }
 
    private ScaledBaseComponent lambda$new$0() {

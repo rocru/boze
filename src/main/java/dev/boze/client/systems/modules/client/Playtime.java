@@ -66,22 +66,22 @@ public class Playtime extends Module {
    }
 
    @Override
-   public Module method235(NbtCompound tag) {
+   public Module fromTag(NbtCompound tag) {
       try {
          JsonObject var4 = ConfigManager.readFile(Boze.FOLDER, "playtime");
          var4.entrySet().forEach(this::lambda$fromTag$0);
       } catch (Exception var5) {
       }
 
-      return super.method235(tag);
+      return super.fromTag(tag);
    }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object fromTag(NbtCompound nbtCompound) {
-      return this.method235(nbtCompound);
-   }
+   //@Override
+   //public Object fromTag(NbtCompound nbtCompound) {
+   //   return this.fromTag(nbtCompound);
+   //}
 
    private void lambda$fromTag$0(Entry var1) {
       this.field2406.put((String)var1.getKey(), ((JsonElement)var1.getValue()).getAsLong());

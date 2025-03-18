@@ -145,7 +145,7 @@ public class ConfigCommand extends Command {
                                 if (var17.contains(var24.internalName)) {
                                     NbtCompound var27 = var17.getCompound(var24.internalName);
                                     if (var27 != null) {
-                                        var24.method235(var27);
+                                        var24.fromTag(var27);
                                     }
                                 }
                             }
@@ -170,7 +170,7 @@ public class ConfigCommand extends Command {
                                     if (var22.category == var11 && var16.contains(var22.internalName)) {
                                         NbtCompound var15 = var16.getCompound(var22.internalName);
                                         if (var15 != null) {
-                                            var22.method235(var15);
+                                            var22.fromTag(var15);
                                         }
                                     }
                                 }
@@ -185,7 +185,7 @@ public class ConfigCommand extends Command {
                                 ConfigNBTSerializer.method2137(var12, var14);
                                 var5.add(var12.internalName);
                             } else {
-                                var12.method235(var13);
+                                var12.fromTag(var13);
                                 var5.add(var12.internalName);
                             }
                         }
