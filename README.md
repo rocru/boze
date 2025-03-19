@@ -9,6 +9,7 @@
 + GL_DONT_CARE/Sunsets, Darki, auto - making this client
 + nick - abusing jadyen to deobf it for him
 + ceejay - heavy carrying the remap
++ mrbubbles - fixing errors
 
 <div align="center">
   
