@@ -20,8 +20,7 @@ public class BozeClassLoader extends SecureClassLoader {
 
    BozeClassLoader(ClassLoader var1) {
       super(var1);
-      boolean var10000 = Count.field4012;
-      boolean var4 = var10000;
+       boolean var4 = Count.field4012;
       BozeClassLoader var5 = field4007;
       if (!var4) {
          if (field4007 != null) {
@@ -36,7 +35,7 @@ public class BozeClassLoader extends SecureClassLoader {
 
    static final void method2305(Function<byte[], byte[]> var0) {
       boolean var3 = Count.field4012;
-      Function var10000 = var0;
+      Function<byte[], byte[]> var10000 = var0;
       if (!var3) {
          if (var0 == null) {
             return;

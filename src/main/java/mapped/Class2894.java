@@ -5,7 +5,7 @@ import dev.boze.client.font.IFontRender;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.systems.modules.hud.core.TextRadar;
 
-class Class2894 {
+public class Class2894 {
    private final String field117;
    private final BozeDrawColor field118;
 

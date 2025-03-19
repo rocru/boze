@@ -20,7 +20,7 @@ public class Class5906 implements IJsonSerializable2<Class5906> {
          return this;
       } else {
          if (var1.has("modules")) {
-            Boze.getModules().method400(var1.getAsJsonObject("modules"));
+            Boze.getModules().deserialize(var1.getAsJsonObject("modules"));
          }
 
          return this;

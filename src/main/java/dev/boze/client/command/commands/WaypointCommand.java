@@ -46,11 +46,11 @@ public class WaypointCommand extends Command {
         builder.then(method403("clear").executes(this::lambda$build$9));
     }
 
-    private int lambda$build$9(CommandContext var1) throws CommandSyntaxException {
+    private int lambda$build$9(CommandContext commandContext) throws CommandSyntaxException {
         this.method624("Clearing all waypoints for the current server/dimension...");
-        String var4 = mc.world.getRegistryKey().getValue().getPath();
-        String var5 = mc.getCurrentServerEntry().address;
-        Waypoints.INSTANCE.field2437.method2120().removeIf(WaypointCommand::lambda$build$8);
+        String string = WaypointCommand.mc.world.getRegistryKey().getValue().getPath();
+        String string2 = WaypointCommand.mc.getCurrentServerEntry().address;
+        Waypoints.INSTANCE.field2437.method2120().removeIf(arg_0 -> WaypointCommand.lambda$build$8(string, string2, arg_0));
         return 1;
     }
 

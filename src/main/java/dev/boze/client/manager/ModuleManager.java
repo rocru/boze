@@ -985,7 +985,8 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
       return var4;
    }
 
-   public ModuleManager method400(JsonObject data) {
+   @Override
+   public ModuleManager deserialize(JsonObject data) {
       if (data == null) {
          return this;
       } else {
@@ -1014,8 +1015,8 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object deserialize(JsonObject jsonObject) {
-      return this.method400(jsonObject);
-   }
+   //@Override
+   //public Object deserialize(JsonObject jsonObject) {
+   //   return this.method400(jsonObject);
+   //}
 }

@@ -94,6 +94,56 @@ public abstract class HUDModule extends Module {
       var1.putBoolean("sY", this.field605);
    }
 
+   @Override
+   public Module fromTag(NbtCompound tag) {
+      if (tag.contains("x")) {
+         try {
+            this.field596 = tag.getDouble("x");
+         } catch (Exception var10) {
+            ErrorLogger.log(var10);
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s x position from config");
+         }
+      }
+
+      if (tag.contains("y")) {
+         try {
+            this.field597 = tag.getDouble("y");
+         } catch (Exception var9) {
+            ErrorLogger.log(var9);
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s y position from config");
+         }
+      }
+
+      if (tag.contains("a")) {
+         try {
+            this.field603 = tag.getInt("a");
+         } catch (Exception var8) {
+            ErrorLogger.log(var8);
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s anchor position from config");
+         }
+      }
+
+      if (tag.contains("sX")) {
+         try {
+            this.field604 = tag.getBoolean("sX");
+         } catch (Exception var7) {
+            ErrorLogger.log(var7);
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s x-axis snap from config");
+         }
+      }
+
+      if (tag.contains("sY")) {
+         try {
+            this.field605 = tag.getBoolean("sY");
+         } catch (Exception var6) {
+            ErrorLogger.log(var6);
+            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s y-axis snap from config");
+         }
+      }
+
+      return super.fromTag(tag);
+   }
+
    public abstract void method295(DrawContext var1);
 
    protected void method296(String text, BozeDrawColor color, boolean shadow) {
@@ -290,46 +340,31 @@ public abstract class HUDModule extends Module {
 
    public double method1614() {
       double var3 = method2091();
-      switch (this.field603) {
-         case 1:
-         case 3:
-            return var3;
-         case 2:
-         case 4:
-            return (double)mc.getWindow().getScaledWidth() - var3;
-         default:
-            return 0.0;
-      }
+       return switch (this.field603) {
+           case 1, 3 -> var3;
+           case 2, 4 -> (double) mc.getWindow().getScaledWidth() - var3;
+           default -> 0.0;
+       };
    }
 
    public double method1390() {
       double var3 = method2091();
-      switch (this.field603) {
-         case 1:
-         case 2:
-            return var3;
-         case 3:
-         case 4:
-            return (double)mc.getWindow().getScaledHeight() - var3;
-         default:
-            return 0.0;
-      }
+       return switch (this.field603) {
+           case 1, 2 -> var3;
+           case 3, 4 -> (double) mc.getWindow().getScaledHeight() - var3;
+           default -> 0.0;
+       };
    }
 
    public double method1391() {
       if (this.field604) {
          return (double)mc.getWindow().getScaledWidth() * 0.5 - this.method313() * 0.5;
       } else {
-         switch (this.field603) {
-            case 1:
-            case 3:
-               return this.method1614() + this.method307();
-            case 2:
-            case 4:
-               return this.method1614() + this.method307() - this.field598;
-            default:
-               return 0.0;
-         }
+          return switch (this.field603) {
+              case 1, 3 -> this.method1614() + this.method307();
+              case 2, 4 -> this.method1614() + this.method307() - this.field598;
+              default -> 0.0;
+          };
       }
    }
 
@@ -381,16 +416,11 @@ public abstract class HUDModule extends Module {
          return (double)mc.getWindow().getScaledHeight() * 0.5 - this.method315() * 0.5;
       } else {
          double var4 = this.method322();
-         switch (this.field603) {
-            case 1:
-            case 2:
-               return this.method1390() + this.method309() + var4;
-            case 3:
-            case 4:
-               return this.method1390() + var4 + this.method309() - this.field599;
-            default:
-               return 0.0;
-         }
+          return switch (this.field603) {
+              case 1, 2 -> this.method1390() + this.method309() + var4;
+              case 3, 4 -> this.method1390() + var4 + this.method309() - this.field599;
+              default -> 0.0;
+          };
       }
    }
 
@@ -582,53 +612,10 @@ public abstract class HUDModule extends Module {
       }
    }
 
-   @Override
-   public Module fromTag(NbtCompound tag) {
-      if (tag.contains("x")) {
-         try {
-            this.field596 = tag.getDouble("x");
-         } catch (Exception var10) {
-            ErrorLogger.log(var10);
-            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s x position from config");
-         }
-      }
-
-      if (tag.contains("y")) {
-         try {
-            this.field597 = tag.getDouble("y");
-         } catch (Exception var9) {
-            ErrorLogger.log(var9);
-            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s y position from config");
-         }
-      }
-
-      if (tag.contains("a")) {
-         try {
-            this.field603 = tag.getInt("a");
-         } catch (Exception var8) {
-            ErrorLogger.log(var8);
-            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s anchor position from config");
-         }
-      }
-
-      if (tag.contains("sX")) {
-         try {
-            this.field604 = tag.getBoolean("sX");
-         } catch (Exception var7) {
-            ErrorLogger.log(var7);
-            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s x-axis snap from config");
-         }
-      }
-
-      if (tag.contains("sY")) {
-         try {
-            this.field605 = tag.getBoolean("sY");
-         } catch (Exception var6) {
-            ErrorLogger.log(var6);
-            Boze.LOG.warn("Unable to load HUD module " + this.internalName + "'s y-axis snap from config");
-         }
-      }
-
-      return super.fromTag(tag);
-   }
+   // $VF: synthetic method
+   // $VF: bridge method
+   //@Override
+   //public Object fromTag(NbtCompound nbtCompound) {
+   //   return this.fromTag(nbtCompound);
+   //}
 }

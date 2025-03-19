@@ -28,7 +28,7 @@ public class ShaderSettingComponent extends ScaledBaseComponent {
    private final ColorPanel field1476;
    private final ArrayList<InputBaseComponent> field1477 = new ArrayList();
    private final ShaderSetting field1478;
-   private final ShaderSetting field1479;
+   public final ShaderSetting field1479;
 
    private static double method2091() {
       IFontRender.method499().startBuilding(BaseComponent.scaleFactor, true);

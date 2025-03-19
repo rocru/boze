@@ -7,7 +7,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.util.Identifier;
 
-class Class2895 extends Class2894 {
+public class Class2895 extends Class2894 {
    private final PlayerListEntry field119;
    private double field120;
    private double field121;
