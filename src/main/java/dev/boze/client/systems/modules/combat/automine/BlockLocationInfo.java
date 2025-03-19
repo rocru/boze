@@ -20,7 +20,7 @@ public final class BlockLocationInfo {
         this.field2529 = burrow;
     }
 
-    BlockDirectionInfo method1467() {
+    public BlockDirectionInfo method1467() {
         return new BlockDirectionInfo(this.field2528, this.method1470(), AutoMineMode.Auto);
     }
 

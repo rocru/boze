@@ -2,8 +2,8 @@ package dev.boze.client.jumptable;
 
 import net.minecraft.world.Difficulty;
 
-class mI {
-   static final int[] field2107 = new int[Difficulty.values().length];
+public class mI {
+   public static final int[] field2107 = new int[Difficulty.values().length];
 
    static {
       try {

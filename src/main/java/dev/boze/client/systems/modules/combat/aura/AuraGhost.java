@@ -45,6 +45,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
 import mapped.Class1202;
 import mapped.Class3089;
+import mapped.Class5917;
 import mapped.Class5924;
 import net.minecraft.client.gui.screen.DeathScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -1249,7 +1250,7 @@ public class AuraGhost extends GhostModule {
             return false;
          }
       } else {
-         return this.field2496.stream().allMatch(AuraGhost::lambda$allAttackedLivingEntities$11);
+         return this.field2496.stream().allMatch(var0 -> ((Pair<Entity, Vec3d>) null).getLeft() instanceof LivingEntity && ((Predicate<Entity>) var0).test(((Pair<Entity, Vec3d>) null).getLeft()));
       }
    }
 
@@ -1265,23 +1266,19 @@ public class AuraGhost extends GhostModule {
       }
    }
 
-   private static boolean lambda$allAttackedLivingEntities$11(Predicate var0, Pair var1) {
-      return var1.getLeft() instanceof LivingEntity && var0.test(var1.getLeft());
+   private static Entity lambda$allAttackedLivingEntities$10(Pair<Entity, Vec3d> var0) {
+      return var0.getLeft();
    }
 
-   private static Entity lambda$allAttackedLivingEntities$10(Pair var0) {
-      return (Entity)var0.getLeft();
-   }
-
-   private static boolean lambda$onInteract$9(Pair var0) {
+   private static boolean lambda$onInteract$9(Pair<Entity, Vec3d> var0) {
       return var0.getLeft() instanceof LivingEntity
          && ((LivingEntity)var0.getLeft()).isBlocking()
          && ((LivingEntity)var0.getLeft()).blockedByShield(((Entity)var0.getLeft()).getDamageSources().playerAttack(mc.player));
    }
 
-   private void lambda$onInteract$8(ArrayList var1, Pair var2) {
-      Entity var6 = (Entity)var2.getLeft();
-      Vec3d var7 = (Vec3d)var2.getRight();
+   private void lambda$onInteract$8(ArrayList<Pair<Entity, Vec3d>> var1, Pair<Entity, Vec3d> var2) {
+      Entity var6 = var2.getLeft();
+      Vec3d var7 = var2.getRight();
       double var8 = var7.squaredDistanceTo(mc.player.getEyePos());
       if (this.field2474.method419()) {
          if (GhostRotations.INSTANCE.field760 == null) {
@@ -1299,7 +1296,7 @@ public class AuraGhost extends GhostModule {
                : Class1202.method2391(mc.player.getEyePos(), var7),
             this.field2475.method461() == TrackMode.Attack
          );
-         if (var10 == null || !(var10 instanceof EntityHitResult) || ((EntityHitResult)var10).getEntity() == null) {
+         if (!(var10 instanceof EntityHitResult) || ((EntityHitResult) var10).getEntity() == null) {
             return;
          }
 
@@ -1308,113 +1305,68 @@ public class AuraGhost extends GhostModule {
          return;
       }
 
-      var1.add(new Pair(var6, var7));
+      var1.add(new Pair<>(var6, var7));
    }
 
-   private boolean lambda$onInteract$7(Pair var1) {
-      return this.method1425((Entity)var1.getLeft());
+   private boolean lambda$onInteract$7(Pair<Entity, Vec3d> var1) {
+      return this.method1425(var1.getLeft());
    }
 
    private Boolean lambda$onRotate$6(RotationHelper var1) {
       return Class5924.method73(this.field2469.method1295(), var1, this.field2475.method461() == TrackMode.Attack) instanceof EntityHitResult;
    }
 
-   private Boolean lambda$onRotate$5(Pair var1) {
-      return mc.player.getEyePos().squaredDistanceTo((Vec3d)var1.getRight()) > this.field2469.method1295() * this.field2469.method1295();
+   private Boolean lambda$onRotate$5(Pair<Entity, Vec3d> var1) {
+      return mc.player.getEyePos().squaredDistanceTo(var1.getRight()) > this.field2469.method1295() * this.field2469.method1295();
    }
 
-   private Boolean lambda$onRotate$4(Pair var1) {
-      return !this.method1425((Entity)var1.getLeft());
+   private Boolean lambda$onRotate$4(Pair<Entity, Vec3d> var1) {
+      return !this.method1425(var1.getLeft());
    }
 
-   private static Boolean lambda$onRotate$3(Pair var0) {
+   private static Boolean lambda$onRotate$3(Pair<Entity, Vec3d> var0) {
       return !(var0.getLeft() instanceof LivingEntity) || ((LivingEntity) var0.getLeft()).isDead();
    }
 
-   private static boolean lambda$onRotate$2(Entity var0, Pair var1) {
+   private static boolean lambda$onRotate$2(Entity var0, Pair<Entity, Vec3d> var1) {
       return var1.getLeft() == var0;
    }
 
-   private Double lambda$new$1(Pair param1) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot read field "classStruct" because "classNode" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifyNewEnumSwitch(SwitchHelper.java:319)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplify(SwitchHelper.java:41)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:30)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-      //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:376)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: getfield dev/boze/client/systems/modules/combat/Aura/AuraGhost.field2485 Ldev/boze/client/settings/BooleanSetting;
-      // 04: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-      // 07: invokevirtual java/lang/Boolean.booleanValue ()Z
-      // 0a: ifeq 1d
-      // 0d: aload 1
-      // 0e: invokevirtual net/minecraft/util/Pair.getLeft ()Ljava/lang/Object;
-      // 11: aload 0
-      // 12: getfield dev/boze/client/systems/modules/combat/Aura/AuraGhost.field2498 Lnet/minecraft/entity/Entity;
-      // 15: if_acmpne 1d
-      // 18: dconst_0
-      // 19: invokestatic java/lang/Double.valueOf (D)Ljava/lang/Double;
-      // 1c: areturn
-      // 1d: aload 0
-      // 1e: getfield dev/boze/client/systems/modules/combat/Aura/AuraGhost.field2484 Ldev/boze/client/settings/EnumSetting;
-      // 21: invokevirtual dev/boze/client/settings/EnumSetting.method461 ()Ljava/lang/Enum;
-      // 24: checkcast dev/boze/client/enums/AttackPriority
-      // 27: invokevirtual dev/boze/client/enums/AttackPriority.ordinal ()I
-      // 2a: tableswitch 136 0 2 26 99 69
-      // 44: getstatic dev/boze/client/systems/modules/combat/Aura/AuraGhost.mc Lnet/minecraft/client/MinecraftClient;
-      // 47: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-      // 4a: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getEyePos ()Lnet/minecraft/util/math/Vec3d;
-      // 4d: aload 1
-      // 4e: invokevirtual net/minecraft/util/Pair.getLeft ()Ljava/lang/Object;
-      // 51: checkcast net/minecraft/entity/Entity
-      // 54: invokevirtual net/minecraft/entity/Entity.getBoundingBox ()Lnet/minecraft/util/math/Box;
-      // 57: aload 1
-      // 58: invokevirtual net/minecraft/util/Pair.getLeft ()Ljava/lang/Object;
-      // 5b: checkcast net/minecraft/entity/Entity
-      // 5e: invokevirtual net/minecraft/entity/Entity.getTargetingMargin ()F
-      // 61: f2d
-      // 62: invokevirtual net/minecraft/util/math/Box.expand (D)Lnet/minecraft/util/math/Box;
-      // 65: invokestatic mapped/Class5917.method34 (Lnet/minecraft/util/math/Box;)Lnet/minecraft/util/math/Vec3d;
-      // 68: invokevirtual net/minecraft/util/math/Vec3d.squaredDistanceTo (Lnet/minecraft/util/math/Vec3d;)D
-      // 6b: invokestatic java/lang/Double.valueOf (D)Ljava/lang/Double;
-      // 6e: areturn
-      // 6f: aload 1
-      // 70: invokevirtual net/minecraft/util/Pair.getLeft ()Ljava/lang/Object;
-      // 73: instanceof net/minecraft/entity/LivingEntity
-      // 76: ifeq 88
-      // 79: aload 1
-      // 7a: invokevirtual net/minecraft/util/Pair.getLeft ()Ljava/lang/Object;
-      // 7d: checkcast net/minecraft/entity/LivingEntity
-      // 80: invokevirtual net/minecraft/entity/LivingEntity.getHealth ()F
-      // 83: f2d
-      // 84: invokestatic java/lang/Double.valueOf (D)Ljava/lang/Double;
-      // 87: areturn
-      // 88: dconst_0
-      // 89: invokestatic java/lang/Double.valueOf (D)Ljava/lang/Double;
-      // 8c: areturn
-      // 8d: getstatic dev/boze/client/systems/modules/combat/Aura/AuraGhost.mc Lnet/minecraft/client/MinecraftClient;
-      // 90: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-      // 93: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getEyePos ()Lnet/minecraft/util/math/Vec3d;
-      // 96: aload 1
-      // 97: invokevirtual net/minecraft/util/Pair.getLeft ()Ljava/lang/Object;
-      // 9a: checkcast net/minecraft/entity/Entity
-      // 9d: invokevirtual net/minecraft/entity/Entity.getBoundingBox ()Lnet/minecraft/util/math/Box;
-      // a0: invokestatic mapped/Class5917.method34 (Lnet/minecraft/util/math/Box;)Lnet/minecraft/util/math/Vec3d;
-      // a3: invokestatic mapped/Class1202.method2391 (Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Vec3d;)Ldev/boze/client/utils/RotationHelper;
-      // a6: aload 0
-      // a7: invokevirtual dev/boze/client/systems/modules/combat/Aura/AuraGhost.method1427 ()Ldev/boze/client/utils/RotationHelper;
-      // aa: invokevirtual dev/boze/client/utils/RotationHelper.method605 (Ldev/boze/client/utils/RotationHelper;)F
-      // ad: f2d
-      // ae: invokestatic java/lang/Double.valueOf (D)Ljava/lang/Double;
-      // b1: areturn
-      // b2: dconst_0
-      // b3: invokestatic java/lang/Double.valueOf (D)Ljava/lang/Double;
-      // b6: areturn
+   private Double lambda$new$1(Pair<?, ?> pair) {
+      if (this.field2485.method419() && pair.getLeft() == this.field2498) {
+         return 0.0;
+      }
+
+      AttackPriority priority = this.field2484.method461();
+      switch (priority.ordinal()) {
+         case 0 -> {
+            Vec3d eyePos = AuraGhost.mc.player.getEyePos();
+            Entity entity = (Entity) pair.getLeft();
+            Box box = entity.getBoundingBox();
+            double margin = entity.getTargetingMargin();
+            Box expandedBox = box.expand(margin);
+            Vec3d targetPos = Class5917.method34(expandedBox);
+             return eyePos.squaredDistanceTo(targetPos);
+         }
+         case 1 -> {
+            Object obj = pair.getLeft();
+            if (obj instanceof LivingEntity living) {
+                return (double) living.getHealth();
+            }
+            return 0.0;
+         }
+         case 2 -> {
+            Vec3d eyePos = AuraGhost.mc.player.getEyePos();
+            Entity entity = (Entity) pair.getLeft();
+            Box box = entity.getBoundingBox();
+            Vec3d targetPos = Class5917.method34(box);
+            RotationHelper computedRotation = Class1202.method2391(eyePos, targetPos);
+            return (double) computedRotation.method605(this.method1427());
+         }
+          default -> {
+              return 0.0;
+          }
+      }
    }
 
    private boolean lambda$new$0() {

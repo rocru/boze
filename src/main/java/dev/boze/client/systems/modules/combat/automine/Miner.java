@@ -27,7 +27,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-class Miner implements IMinecraft, SettingsGroup {
+public class Miner implements IMinecraft, SettingsGroup {
    final BooleanSetting field185 = new BooleanSetting("MultiTask", false, "Whether or not to multi-task");
    final EnumSetting<AutoMineItemResetMode> field186 = new EnumSetting<AutoMineItemResetMode>(
       "ItemReset",
@@ -37,7 +37,7 @@ class Miner implements IMinecraft, SettingsGroup {
    public final EnumSetting<AnticheatMode> field187 = new EnumSetting<AnticheatMode>(
       "Mode", AnticheatMode.Grim, "The anti-cheat mode to use\n - Grim: For 2b2t.org, 2bpvp.com, etc.\n - NCP: For crystalpvp.cc, 6b6t.org, etc."
    );
-   final BooleanSetting field188 = new BooleanSetting(
+   public final BooleanSetting field188 = new BooleanSetting(
       "AllowAbort", true, "Allow aborting current mine to mine another block\nThis doesn't work on some servers\n", this::lambda$new$0
    );
    final BooleanSetting field189 = new BooleanSetting("Rotate", true, "Whether or not to rotate to the block when mining", this::lambda$new$1);
@@ -62,7 +62,7 @@ class Miner implements IMinecraft, SettingsGroup {
       "Vanilla mining is slower when you're not standing on ground\nThis setting allows you to mine at full speed even when not standing on ground\nThis won't work on all servers\n",
       this.field194
    );
-   final BooleanSetting field197 = new BooleanSetting("DoubleMine", false, "Allows you to mine two blocks at once");
+   public final BooleanSetting field197 = new BooleanSetting("DoubleMine", false, "Allows you to mine two blocks at once");
    private final EnumSetting<AutoMineSwapbackMode> field198 = new EnumSetting<AutoMineSwapbackMode>(
       "Await",
       AutoMineSwapbackMode.Dynamic,
@@ -87,10 +87,10 @@ class Miner implements IMinecraft, SettingsGroup {
       this.field198
    );
    private final AutoMine field200;
-   final List<TaskLogger> field201 = new ArrayList();
+   public final List<TaskLogger> field201 = new ArrayList();
    private int field202 = 0;
    private boolean field203;
-   final List<TaskLogger> field204 = new ArrayList();
+   public final List<TaskLogger> field204 = new ArrayList();
 
    private static void method1800(String var0) {
       if (AutoMine.field2518 && mc.player != null) {
@@ -103,11 +103,11 @@ class Miner implements IMinecraft, SettingsGroup {
       return this.field199.method472();
    }
 
-   Miner(AutoMine var1) {
+   public Miner(AutoMine var1) {
       this.field200 = var1;
    }
 
-   void method99(BlockDirectionInfo var1) {
+   public void method99(BlockDirectionInfo var1) {
       method1800("Adding task at " + var1.field2523.toShortString());
       if (this.method2101(var1.field2523)) {
          method1800("Task already active");
@@ -118,7 +118,7 @@ class Miner implements IMinecraft, SettingsGroup {
       }
    }
 
-   void method2142() {
+   public void method2142() {
       if (this.field186.method461() == AutoMineItemResetMode.On && mc.player.isUsingItem()) {
          for (TaskLogger var10 : this.field201) {
             var10.field2533 = 0.0F;
@@ -201,7 +201,7 @@ class Miner implements IMinecraft, SettingsGroup {
       }
    }
 
-   boolean method2114() {
+   public boolean method2114() {
       if (!this.field204.isEmpty()) {
          return false;
       } else if (!this.field201.isEmpty()) {
@@ -211,7 +211,7 @@ class Miner implements IMinecraft, SettingsGroup {
       }
    }
 
-   boolean method2101(BlockPos var1) {
+   public boolean method2101(BlockPos var1) {
       for (TaskLogger var6 : this.field201) {
          if (var6.field2532.field2523.equals(var1)) {
             return true;
@@ -263,7 +263,7 @@ class Miner implements IMinecraft, SettingsGroup {
       }
    }
 
-   void method101(TaskLogger var1) {
+   public void method101(TaskLogger var1) {
       mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.ABORT_DESTROY_BLOCK, var1.field2532.field2523, var1.field2532.field2524));
    }
 
@@ -348,7 +348,7 @@ class Miner implements IMinecraft, SettingsGroup {
       }
    }
 
-   void method1416() {
+   public void method1416() {
       this.field202 = 0;
    }
 
@@ -356,7 +356,7 @@ class Miner implements IMinecraft, SettingsGroup {
       return this.field200.instantRemine.method419() && var1.equals(this.field200.field2519) && this.field200.field2520;
    }
 
-   Vec3d method1954() {
+   public Vec3d method1954() {
       if (!this.field201.isEmpty()) {
          TaskLogger var4 = (TaskLogger)this.field201.get(0);
          if (this.field189.method419() && this.field187.method461() == AnticheatMode.NCP && var4.field2533 > 0.9F) {

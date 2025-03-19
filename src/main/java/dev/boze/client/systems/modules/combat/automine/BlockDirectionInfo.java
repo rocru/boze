@@ -8,13 +8,13 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 
 public class BlockDirectionInfo {
-   final BlockPos field2523;
+   public final BlockPos field2523;
    final Direction field2524;
    final Vec3d field2525;
-   final AutoMineMode field2526;
+   public final AutoMineMode field2526;
    final Function<BlockPos, Boolean> field2527;
 
-   BlockDirectionInfo(BlockPos var1, Direction var2, AutoMineMode var3) {
+   public BlockDirectionInfo(BlockPos var1, Direction var2, AutoMineMode var3) {
       this(var1, var2, var3, BlockDirectionInfo::lambda$new$0);
    }
 

@@ -10,14 +10,14 @@ import dev.boze.client.utils.Bind;
 import dev.boze.client.utils.IMinecraft;
 import net.minecraft.util.math.BlockPos;
 
-class ProneEscape implements IMinecraft, SettingsGroup {
+public class ProneEscape implements IMinecraft, SettingsGroup {
    public final BooleanSetting field1632 = new BooleanSetting("ProneEscape", false, "Whether or not to enable prone escape", ProneEscape::lambda$new$0);
-   final BindSetting field1633 = new BindSetting("Bind", Bind.create(), "The bind to toggle prone escape (optional)", this.field1632);
+   public final BindSetting field1633 = new BindSetting("Bind", Bind.create(), "The bind to toggle prone escape (optional)", this.field1632);
    private final SettingBlock field1634 = new SettingBlock(
       "ProneEscape", "Escapes from 1x1x1 positions by mining block above\n", this.field1632, this.field1633
    );
 
-   ProneEscape(AutoMine var1) {
+   public ProneEscape(AutoMine var1) {
       this.field1634.setVisibility(var1.advanced::method419);
    }
 
@@ -26,7 +26,7 @@ class ProneEscape implements IMinecraft, SettingsGroup {
       return this.field1634.method472();
    }
 
-   BlockDirectionInfo method1462() {
+   public BlockDirectionInfo method1462() {
       return mc.player.isInSwimmingPose()
          ? new BlockLocationInfo(BlockPos.ofFloored(mc.player.getPos().add(0.0, 1.0, 0.0)), false).method1468(ProneEscape::lambda$update$1)
          : null;

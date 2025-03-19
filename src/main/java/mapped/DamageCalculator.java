@@ -28,12 +28,12 @@ import net.minecraft.world.RaycastContext.ShapeType;
 import net.minecraft.world.explosion.Explosion;
 import net.minecraft.world.explosion.Explosion.DestructionType;
 
-public class Class2896 implements IMinecraft {
+public class DamageCalculator implements IMinecraft {
    private final AutoCrystal field123;
    private Explosion field124;
    private RaycastContext field125;
 
-   public Class2896(AutoCrystal ac) {
+   public DamageCalculator(AutoCrystal ac) {
       this.field123 = ac;
    }
 
@@ -44,40 +44,40 @@ public class Class2896 implements IMinecraft {
    }
 
    public double method5665(LivingEntity entity, AutoCrystalAction type, Vec3d crystal, BlockPos obsidianPos, boolean ignoreTerrain) {
-      if (var3011 == null) {
+      if (entity == null) {
          return 0.0;
-      } else if (var3011 instanceof PlayerEntity
-         && Class5926.method101((PlayerEntity)var3011) == GameMode.CREATIVE
-         && var3011 != FakePlayer.INSTANCE.fakePlayer) {
+      } else if (entity instanceof PlayerEntity
+         && Class5926.method101((PlayerEntity)entity) == GameMode.CREATIVE
+         && entity != FakePlayer.INSTANCE.fakePlayer) {
          return 0.0;
       } else {
-         Vec3d var9 = this.field123.ac.method510(var3011, var3012);
-         double var10 = Math.sqrt(var9.squaredDistanceTo(var3013));
+         Vec3d var9 = this.field123.ac.method510(entity, type);
+         double var10 = Math.sqrt(var9.squaredDistanceTo(crystal));
          if (var10 > 12.0) {
             return 0.0;
          } else {
-            double var12 = RaycastUtil.method576(var3013, var3011, var9, this.field123.ac.method511(var3011, var3012), this.field125, var3014, var3015);
+            double var12 = RaycastUtil.method576(crystal, entity, var9, this.field123.ac.method511(entity, type), this.field125, obsidianPos, ignoreTerrain);
             double var14 = (1.0 - var10 / 12.0) * var12;
             double var16 = (var14 * var14 + var14) / 2.0 * 7.0 * 12.0 + 1.0;
-            if (var3011 instanceof PlayerEntity) {
+            if (entity instanceof PlayerEntity) {
                var16 = this.method5666(var16);
             }
 
             try {
-               var16 = (double)DamageUtil.getDamageLeft(
-                  var3011,
+               var16 = DamageUtil.getDamageLeft(
+                  entity,
                   (float)var16,
                   mc.world.getDamageSources().explosion(null),
-                  (float)var3011.getArmor(),
-                  (float)var3011.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue()
+                  (float)entity.getArmor(),
+                  (float)entity.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue()
                );
-               var16 = this.method5668(var3011, var16);
-               ((IExplosion)this.field124).boze$set(var3013, 6.0F, false);
-               var16 = this.method5667(var3011, var16, this.field124);
-            } catch (Exception var19) {
+               var16 = this.method5668(entity, var16);
+               ((IExplosion)this.field124).boze$set(crystal, 6.0F, false);
+               var16 = this.method5667(entity, var16, this.field124);
+            } catch (Exception ignored) {
             }
 
-            return var16 < 0.0 ? 0.0 : var16;
+            return Math.max(var16, 0.0);
          }
       }
    }
@@ -100,9 +100,8 @@ public class Class2896 implements IMinecraft {
             if (!var10.getEnchantments().isEmpty()) {
                var8 += 4;
                Item var12 = var10.getItem();
-               if (var12 instanceof ArmorItem) {
-                  ArmorItem var11 = (ArmorItem)var12;
-                  if (var11.getSlotType() == EquipmentSlot.LEGS) {
+               if (var12 instanceof ArmorItem var11) {
+                   if (var11.getSlotType() == EquipmentSlot.LEGS) {
                      var8 += 4;
                   }
                }
@@ -117,7 +116,7 @@ public class Class2896 implements IMinecraft {
       }
 
       var2 *= 1.0 - (double)var8 / 25.0;
-      return var2 < 0.0 ? 0.0 : var2;
+      return Math.max(var2, 0.0);
    }
 
    private double method5668(LivingEntity var1, double var2) {
@@ -126,6 +125,6 @@ public class Class2896 implements IMinecraft {
          var2 *= 1.0 - (double)var7 * 0.2;
       }
 
-      return var2 < 0.0 ? 0.0 : var2;
+      return Math.max(var2, 0.0);
    }
 }

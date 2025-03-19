@@ -2,9 +2,9 @@ package dev.boze.client.systems.modules.combat.automine;
 
 import dev.boze.client.utils.Timer;
 
-class TaskLogger {
+public class TaskLogger {
    BlockDirectionInfo field2532;
-   float field2533;
+   public float field2533;
    int field2534;
    final Timer field2535;
    final Miner field2536;

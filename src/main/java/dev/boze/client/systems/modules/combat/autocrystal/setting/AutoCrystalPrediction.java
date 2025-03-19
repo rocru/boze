@@ -38,11 +38,11 @@ public class AutoCrystalPrediction implements IMinecraft {
       }
    }
 
-   Vec3d method510(LivingEntity var1, AutoCrystalAction var2) {
+   public Vec3d method510(LivingEntity var1, AutoCrystalAction var2) {
       return var1 instanceof PlayerEntity && var2.method886(var1) != 0 ? var2.method887((PlayerEntity)var1) : var1.getPos();
    }
 
-   Box method511(LivingEntity var1, AutoCrystalAction var2) {
+   public Box method511(LivingEntity var1, AutoCrystalAction var2) {
       return var1 instanceof PlayerEntity && var2.method886(var1) != 0
          ? var2.method888((PlayerEntity)var1)
          : var1.getBoundingBox(var1.getPose()).offset(var1.getPos());

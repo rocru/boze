@@ -58,8 +58,8 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
       this::lambda$new$0,
       this.field60
    );
-   final BindSetting field63 = new BindSetting("Bind", Bind.create(), "The bind to toggle auto select (optional)", this.field60);
-   final BindSetting field64 = new BindSetting("SelectBind", Bind.create(), "The key to press to auto select a block", this::lambda$new$1);
+   public final BindSetting field63 = new BindSetting("Bind", Bind.create(), "The bind to toggle auto select (optional)", this.field60);
+   public final BindSetting field64 = new BindSetting("SelectBind", Bind.create(), "The key to press to auto select a block", this::lambda$new$1);
    private final EnumSetting<AutoSelectSortingMode> field65 = new EnumSetting<AutoSelectSortingMode>(
       "Sorting", AutoSelectSortingMode.Distance, "How to sort the players"
    );
@@ -72,7 +72,7 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
       false,
       "Bomb players with crystals from above\nThis will only work when:\n - AutoCrystal is enabled\n - Target is surrounded, regardless of OnlySurrounded\n"
    );
-   final BindSetting field69 = new BindSetting("Bind", Bind.create(), "The bind to toggle crystal bomber (optional)", this.field68);
+   public final BindSetting field69 = new BindSetting("Bind", Bind.create(), "The bind to toggle crystal bomber (optional)", this.field68);
    public final BooleanSetting field70 = new BooleanSetting("AirPlace", false, "Air place obsidian", this.field68);
    public final EnumSetting<AutoSelectPriority> field71 = new EnumSetting<AutoSelectPriority>(
       "Priority",
@@ -130,8 +130,8 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
    private BlockLocationInfo field81 = null;
    private BlockPos field82 = null;
    public int field83 = -1;
-   int field84 = 0;
-   boolean field85 = false;
+   public int field84 = 0;
+   public boolean field85 = false;
    private final ArrayList<BlockPos> field86 = new ArrayList();
 
    private static void method1800(String var0) {
@@ -157,14 +157,14 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
       return this.field78.method472();
    }
 
-   void method2142() {
+   public void method2142() {
       this.field82 = null;
       this.field83 = -1;
       this.field84 = 0;
       this.method1416();
    }
 
-   int method2010() {
+   public int method2010() {
       if (this.field60.method419() && this.method2114()) {
          if (this.field82 != null) {
             Entity var4 = mc.world.getEntityById(this.field83);
@@ -226,15 +226,15 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
       }
    }
 
-   BlockDirectionInfo method1462() {
+   public BlockDirectionInfo method1462() {
       return this.field79 != null ? this.field79.method1469(AutoMineMode.Bomber, this::lambda$getBomberTask$6) : null;
    }
 
-   void method1416() {
+   public void method1416() {
       this.field79 = null;
    }
 
-   BlockDirectionInfo method60() {
+   public BlockDirectionInfo method60() {
       if (!this.field60.method419()) {
          this.method2142();
          this.field80 = null;
@@ -284,7 +284,7 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
       }
    }
 
-   BlockDirectionInfo method61() {
+   public BlockDirectionInfo method61() {
       if (this.field60.method419() && this.field67.method419()) {
          if (this.field85 && this.field61.method461() == AutoSelectMode.Bind) {
             this.method1904();
@@ -338,7 +338,7 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
       }
    }
 
-   boolean method2114() {
+   public boolean method2114() {
       return this.field68.method419() && AutoCrystal.INSTANCE.isEnabled();
    }
 

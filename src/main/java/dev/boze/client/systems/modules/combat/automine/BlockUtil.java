@@ -12,8 +12,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 
-class BlockUtil implements IMinecraft {
-   static boolean method2101(BlockPos var0) {
+public class BlockUtil implements IMinecraft {
+   public static boolean method2101(BlockPos var0) {
       try {
          AutoMine var4 = AutoMine.INSTANCE;
          BlockState var5 = mc.world.getBlockState(var0);

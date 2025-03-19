@@ -17,8 +17,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
-class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
-   final EnumSetting<AnticheatMode> field205 = new EnumSetting<AnticheatMode>(
+public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
+   public final EnumSetting<AnticheatMode> field205 = new EnumSetting<AnticheatMode>(
       "AntiCheat", AnticheatMode.Grim, "The anti-cheat mode to use\n - Grim: For 2b2t.org, 2bpvp.com, etc.\n - NCP: For crystalpvp.cc, 6b6t.org, etc."
    );
    private final BooleanSetting field206 = new BooleanSetting("MultiTask", false, "Whether or not to multi-task", this.field205);

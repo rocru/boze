@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AutoMineManualPriorityMode {
+public enum AutoMineManualPriorityMode {
     Off,
     On,
     Force;

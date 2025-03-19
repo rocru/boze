@@ -3,9 +3,9 @@ package dev.boze.client.jumptable;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.math.Direction;
 
-class mt {
-   static final int[] field2110;
-   static final int[] field2111 = new int[Direction.values().length];
+public class mt {
+   public static final int[] field2110;
+   public static final int[] field2111 = new int[Direction.values().length];
 
    static {
       try {

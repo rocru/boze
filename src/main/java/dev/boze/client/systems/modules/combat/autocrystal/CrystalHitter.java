@@ -129,22 +129,22 @@ class CrystalHitter implements IMinecraft {
 
    HitResult method150(HashSet<BlockPos> var1, BlockPos var2) {
       NCP var6 = NCP.field1836;
-      ArrayList var7 = new ArrayList(6);
+      ArrayList<Direction> var7 = new ArrayList<>(6);
       this.method513(var1, var2, var7, false, var6);
       if (var7.isEmpty() && Class2811.field101) {
          this.method513(var1, var2, var7, true, var6);
       }
 
-      ArrayList var8 = new ArrayList(var7.size());
+      ArrayList<BlockHitResult> var8 = new ArrayList<>(var7.size());
       if (this.field1093.field1041.field205.method461() == AnticheatMode.NCP) {
          var6.method941(
-            (double)this.field1093.autoCrystalPlace.field138.method423().floatValue(),
-            (double)this.field1093.autoCrystalPlace.field139.method423().floatValue()
+                 this.field1093.autoCrystalPlace.field138.method423(),
+                 this.field1093.autoCrystalPlace.field139.method423()
          );
       } else {
          var6.method941(
-            (double)this.field1093.autoCrystalPlace.field138.method423().floatValue(),
-            (double)this.field1093.autoCrystalPlace.field138.method423().floatValue()
+                 this.field1093.autoCrystalPlace.field138.method423(),
+                 this.field1093.autoCrystalPlace.field138.method423()
          );
       }
 
@@ -176,14 +176,12 @@ class CrystalHitter implements IMinecraft {
       if (context != null && context.contains(pos)) {
          return true;
       } else {
-         return EntityTracker.field3914.containsKey(pos)
-            ? true
-            : airPlace && var7.isAir() || Class2811.field102 && !var7.getFluidState().isEmpty() || !var7.isAir() && var7.getFluidState().isEmpty();
+         return EntityTracker.field3914.containsKey(pos) || airPlace && var7.isAir() || Class2811.field102 && !var7.getFluidState().isEmpty() || !var7.isAir() && var7.getFluidState().isEmpty();
       }
    }
 
    private Anticheat method515() {
-      return (Anticheat)(this.field1093.field1041.field205.method461() == AnticheatMode.NCP ? NCP.field1836 : Grim.field1831);
+      return this.field1093.field1041.field205.method461() == AnticheatMode.NCP ? NCP.field1836 : Grim.field1831;
    }
 
    private SwapMode method149() {
@@ -200,7 +198,7 @@ class CrystalHitter implements IMinecraft {
       } else if (mc.options.backKey.isPressed()) {
          return true;
       } else {
-         return mc.options.leftKey.isPressed() ? true : mc.options.rightKey.isPressed();
+         return mc.options.leftKey.isPressed() || mc.options.rightKey.isPressed();
       }
    }
 }

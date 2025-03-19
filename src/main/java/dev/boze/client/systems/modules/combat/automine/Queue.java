@@ -12,15 +12,15 @@ import dev.boze.client.utils.IMinecraft;
 import java.util.LinkedList;
 import net.minecraft.util.math.BlockPos;
 
-class Queue implements IMinecraft, SettingsGroup {
+public class Queue implements IMinecraft, SettingsGroup {
    final LinkedList<BlockDirectionInfo> field87 = new LinkedList();
-   final IntSetting field88 = new IntSetting("MaxQueue", 0, 0, 10, 1, "The max queue size\nIf 0, forces instant mining of manually selected blocks");
-   final EnumSetting<AutoMineManualPriorityMode> field89 = new EnumSetting<AutoMineManualPriorityMode>(
+   public final IntSetting field88 = new IntSetting("MaxQueue", 0, 0, 10, 1, "The max queue size\nIf 0, forces instant mining of manually selected blocks");
+   public final EnumSetting<AutoMineManualPriorityMode> field89 = new EnumSetting<AutoMineManualPriorityMode>(
       "ManualPriority",
       AutoMineManualPriorityMode.Off,
       "Prioritize manually selected blocks\n - Off: Don't prioritise\n - On: Prioritise\n - Force: LIFO instead of FIFO queue\nLIFO = Last in, first out\nFIFO = First in, first out\n"
    );
-   final BooleanSetting field90 = new BooleanSetting(
+   public final BooleanSetting field90 = new BooleanSetting(
       "Repetitive", false, "Add blocks repetitively when holding down left click\nLets you mine several blocks without clicking several times\n"
    );
    private final SettingBlock field91 = new SettingBlock("Queue", "Queue settings", this.field88, this.field89, this.field90);
@@ -31,7 +31,7 @@ class Queue implements IMinecraft, SettingsGroup {
       }
    }
 
-   Queue(AutoMine var1) {
+   public Queue(AutoMine var1) {
       this.field91.setVisibility(var1.advanced::method419);
    }
 
@@ -40,11 +40,11 @@ class Queue implements IMinecraft, SettingsGroup {
       return this.field91.method472();
    }
 
-   void method2142() {
+   public void method2142() {
       this.field87.clear();
    }
 
-   boolean method71(BlockDirectionInfo var1) {
+   public boolean method71(BlockDirectionInfo var1) {
       method1800("Adding task at " + var1.field2523.toShortString());
       if (this.field87.contains(var1)) {
          method1800("Task with pos " + var1.field2523.toShortString() + " already in queue");
@@ -72,19 +72,19 @@ class Queue implements IMinecraft, SettingsGroup {
       }
    }
 
-   BlockDirectionInfo method1462() {
+   public BlockDirectionInfo method1462() {
       return (BlockDirectionInfo)this.field87.poll();
    }
 
-   boolean method2114() {
+   public boolean method2114() {
       return this.field87.isEmpty();
    }
 
-   int method2010() {
+   public int method2010() {
       return this.field87.size();
    }
 
-   void method1416() {
+   public void method1416() {
       this.field87.clear();
    }
 

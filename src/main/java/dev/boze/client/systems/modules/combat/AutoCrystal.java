@@ -11,7 +11,7 @@ import dev.boze.client.systems.modules.combat.autocrystal.*;
 import dev.boze.client.systems.modules.combat.autocrystal.setting.*;
 import dev.boze.client.utils.InventoryUtil;
 import dev.boze.client.utils.MinecraftUtils;
-import mapped.Class2896;
+import mapped.DamageCalculator;
 import mapped.Class2923;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.Entity;
@@ -27,12 +27,12 @@ public class AutoCrystal extends Module {
    public static boolean field1038 = false;
    public static boolean field1039 = false;
    final AutoCrystalRender field1040 = new AutoCrystalRender(this);
-   final PlaceHelper field1041 = new PlaceHelper(this);
+   public final PlaceHelper field1041 = new PlaceHelper(this);
    public final AutoCrystalTargeting field1042 = new AutoCrystalTargeting(this);
    final TargetSetting field1043 = new TargetSetting();
    final AutoCrystalBreak autoCrystalBreak = new AutoCrystalBreak(this);
-   final AutoCrystalPlace autoCrystalPlace = new AutoCrystalPlace(this);
-   final AutoCrystalBasePlace autoCrystalBasePlace = new AutoCrystalBasePlace(this);
+   public final AutoCrystalPlace autoCrystalPlace = new AutoCrystalPlace(this);
+   public final AutoCrystalBasePlace autoCrystalBasePlace = new AutoCrystalBasePlace(this);
    final BooleanSetting proMode = new BooleanSetting("ProMode", false, "Show advanced options", AutoCrystal::lambda$new$0);
    final SettingCategory advancedSettings = new SettingCategory(
       "Advanced", "Advanced options\nDon't touch them unless you know what you're doing\n.set autocrystal promode false to hide\n", this.proMode::method419
@@ -80,13 +80,13 @@ public class AutoCrystal extends Module {
    final FloatSetting movingMinDamage = new FloatSetting(
       "MovingMinDmg", 7.0F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for moving players", this.minDamage::method419, this.advancedSettings
    );
-   final CrystalSelectionHandler field1044 = new CrystalSelectionHandler(this);
+   public final CrystalSelectionHandler field1044 = new CrystalSelectionHandler(this);
    final CrystalHelper field1045 = new CrystalHelper(this);
    final CrystalHitter field1046 = new CrystalHitter(this);
-   public final Class2896 field1047 = new Class2896(this);
+   public final DamageCalculator field1047 = new DamageCalculator(this);
    CrystalEntityTracker aa = new CrystalEntityTracker();
    final AutoCrystalDisplayInfo ab = new AutoCrystalDisplayInfo(this);
-   final AutoCrystalPrediction ac = new AutoCrystalPrediction(this);
+   public final AutoCrystalPrediction ac = new AutoCrystalPrediction(this);
    private CrystalProcessor ad = new CrystalProcessor(this);
    final AutoCrystalTracker autoCrystalTracker = new AutoCrystalTracker(this);
 

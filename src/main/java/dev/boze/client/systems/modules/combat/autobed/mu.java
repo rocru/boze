@@ -4,10 +4,10 @@ import dev.boze.client.systems.modules.combat.AutoBed;
 import dev.boze.client.utils.PlaceAction;
 import net.minecraft.util.math.BlockPos;
 
-class mu {
-   final BlockPos field2509;
-   final BlockPos field2510;
-   final PlaceAction field2511;
+public class mu {
+   public final BlockPos field2509;
+   public final BlockPos field2510;
+   public final PlaceAction field2511;
    final double field2512;
    final AutoBed field2513;
 

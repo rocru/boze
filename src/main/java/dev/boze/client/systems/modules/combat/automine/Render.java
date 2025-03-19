@@ -18,7 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 
-class Render implements SettingsGroup {
+public class Render implements SettingsGroup {
    private final BooleanSetting field252 = new BooleanSetting("Render", true, "Render block being mined");
    private final ColorSetting field253 = new ColorSetting("Start", new BozeDrawColor(1694442018), "Color for unbroken blocks");
    private final ColorSetting field254 = new ColorSetting("StartLine", new BozeDrawColor(-56798), "Color for unbroken block lines");
@@ -34,7 +34,7 @@ class Render implements SettingsGroup {
    final BooleanSetting field264 = new BooleanSetting("Queue", false, "Show block in the queue");
    private final ColorSetting field265 = new ColorSetting("Color", new BozeDrawColor(1679958783), "Color for queued blocks", this.field264);
    private final ColorSetting field266 = new ColorSetting("Outline", new BozeDrawColor(-14540033), "Color for queued block lines", this.field264);
-   final SettingBlock field267 = new SettingBlock(
+   public final SettingBlock field267 = new SettingBlock(
       "Renderer",
       "Renderer settings",
       this.field252,

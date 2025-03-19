@@ -14,15 +14,15 @@ import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-class AntiRegear implements IMinecraft, SettingsGroup {
+public class AntiRegear implements IMinecraft, SettingsGroup {
    public final BooleanSetting field131 = new BooleanSetting("AntiRegear", false, "Whether or not to enable anti regear", AntiRegear::lambda$new$0);
-   final BindSetting field132 = new BindSetting("Bind", Bind.create(), "The bind to toggle anti regear (optional)", this.field131);
+   public final BindSetting field132 = new BindSetting("Bind", Bind.create(), "The bind to toggle anti regear (optional)", this.field131);
    private final MinMaxSetting field133 = new MinMaxSetting("Range", 4.5, 1.0, 6.0, 0.1, "The range to check for shulkers within");
    private final SettingBlock field134;
    public BlockLocationInfo field135 = null;
    private HashSet<BlockPos> field136 = new HashSet();
 
-   AntiRegear(AutoMine var1) {
+   public AntiRegear(AutoMine var1) {
       this.field134 = new SettingBlock("AntiRegear", "Anti regear settings", this.field131, this.field132, this.field133);
       this.field134.setVisibility(var1.advanced::method419);
    }
@@ -32,11 +32,11 @@ class AntiRegear implements IMinecraft, SettingsGroup {
       return this.field134.method472();
    }
 
-   void method2142() {
+   public void method2142() {
       this.field135 = null;
    }
 
-   BlockDirectionInfo method1462() {
+   public BlockDirectionInfo method1462() {
       if (this.field135 != null) {
          if (mc.world.getBlockState(this.field135.method1471()).getBlock() instanceof ShulkerBoxBlock) {
             return this.field135.method1467();
@@ -67,7 +67,7 @@ class AntiRegear implements IMinecraft, SettingsGroup {
       return this.field135 == null ? null : this.field135.method1467();
    }
 
-   void method1801(BlockPos var1) {
+   public void method1801(BlockPos var1) {
       if (this.field136.size() > 100) {
          this.field136.clear();
       }

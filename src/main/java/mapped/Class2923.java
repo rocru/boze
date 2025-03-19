@@ -10,11 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.SwordItem;
 
-class Class2923 implements IMinecraft {
-   static final Predicate<ItemStack> field126 = Class2923::lambda$static$0;
+public class Class2923 implements IMinecraft {
+   public static final Predicate<ItemStack> field126 = Class2923::lambda$static$0;
    static final Predicate<ItemStack> field127 = Class2923::lambda$static$1;
 
-   static boolean method2114() {
+   public static boolean method2114() {
       return mc.player.getOffHandStack().getItem() == Items.END_CRYSTAL || OffHand.INSTANCE.isEnabled() && OffHand.INSTANCE.ab == Items.END_CRYSTAL;
    }
 

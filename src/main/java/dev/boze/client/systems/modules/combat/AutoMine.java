@@ -36,12 +36,12 @@ public class AutoMine extends Module {
    private final SettingCategory remineSettings = new SettingCategory("ReMine", "Re-mine options");
    final BooleanSetting instantRemine = new BooleanSetting("Instant", true, "Instantly re-mine blocks", this.remineSettings);
    private final BooleanSetting autoRemine = new BooleanSetting("Auto", false, "Automatically always re-mine blocks", this.remineSettings);
-   private final BindSetting remineBind = new BindSetting("Bind", Bind.create(), "Re-mine keybind", this::lambda$new$0, this.remineSettings);
+   private final BindSetting remineBind = new BindSetting("Bind", Bind.create(), "Re-mine keybind", () -> !this.autoRemine.method419(), this.remineSettings);
    private final FloatSetting remineDelay = new FloatSetting(
-      "Delay", 0.05F, 0.0F, 1.0F, 0.01F, "Re-mine delay in seconds", this::lambda$new$1, this.remineSettings
+      "Delay", 0.05F, 0.0F, 1.0F, 0.01F, "Re-mine delay in seconds", () -> this.autoRemine.method419() || this.remineBind.method476().isValid(), this.remineSettings
    );
    private final BooleanSetting ignoreSelf = new BooleanSetting(
-      "IgnoreSelf", false, "Don't re-mine self-placed blocks", this::lambda$new$2, this.remineSettings
+      "IgnoreSelf", false, "Don't re-mine self-placed blocks", () -> this.autoRemine.method419() || this.remineBind.method476().isValid(), this.remineSettings
    );
    final EnumSetting<AutoMineSwapMode> swapMode = new EnumSetting<AutoMineSwapMode>(
       "Swap",
@@ -49,7 +49,7 @@ public class AutoMine extends Module {
       "Mode for swapping to pickaxe/tool\nHot-bar only modes:\n - Normal: Vanilla swap, hot-bar only\n - Silent: Instantaneously swap to tool and back\nWhole inventory modes (you don't need to keep the tool in your hot-bar):\n - Alt: Alternative silent swap mode, may work where mode silent is patched\nNote: Whole inventory modes may not work on some servers\n"
    );
    final IntSetting swapDelay = new IntSetting("Delay", 0, 0, 20, 1, "Swap tick delay", this.swapMode);
-   private final BooleanSetting onlyPickaxe = new BooleanSetting("OnlyPickaxe", false, "Only Packet Mine when holding a pickaxe", this::lambda$new$3);
+   private final BooleanSetting onlyPickaxe = new BooleanSetting("OnlyPickaxe", false, "Only Packet Mine when holding a pickaxe", () -> this.swapMode.method461() == AutoMineSwapMode.Off);
    public final StringModeSetting blocks = new StringModeSetting("Blocks", "Blocks to filter");
    final EnumSetting<FilterMode> filter = new EnumSetting<FilterMode>(
       "Filter",
@@ -171,7 +171,7 @@ public class AutoMine extends Module {
                            }
                         }
 
-                        for (TaskLogger var11 : new ArrayList(this.miner.field201)) {
+                        for (TaskLogger var11 : new ArrayList<>(this.miner.field201)) {
                            if (var11 != var7) {
                               this.miner.method101(var11);
                            }
@@ -307,11 +307,9 @@ public class AutoMine extends Module {
          Vec3d var5 = this.miner.method1954();
          if (var5 != null) {
             float[] var6 = EntityUtil.method2146(var5);
-            if (var6 != null) {
-               event.method1021(true);
-               event.yaw = var6[0];
-               event.pitch = var6[1];
-            }
+             event.method1021(true);
+             event.yaw = var6[0];
+             event.pitch = var6[1];
          }
       }
    }
@@ -380,19 +378,4 @@ public class AutoMine extends Module {
       }
    }
 
-   private boolean lambda$new$3() {
-      return this.swapMode.method461() == AutoMineSwapMode.Off;
-   }
-
-   private boolean lambda$new$2() {
-      return this.autoRemine.method419() || this.remineBind.method476().isValid();
-   }
-
-   private boolean lambda$new$1() {
-      return this.autoRemine.method419() || this.remineBind.method476().isValid();
-   }
-
-   private boolean lambda$new$0() {
-      return !this.autoRemine.method419();
-   }
 }

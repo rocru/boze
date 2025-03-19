@@ -37,10 +37,10 @@ import net.minecraft.util.math.Vec3d;
 
 public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
    private final SettingCategory field137 = new SettingCategory("Place", "Place settings\n");
-   final FloatSetting field138 = new FloatSetting(
+   public final FloatSetting field138 = new FloatSetting(
       "Range", 4.5F, 1.0F, 6.0F, 0.1F, "Range for placing\n4.5 is vanilla\n5-6 may work on some servers\n", this.field137
    );
-   final FloatSetting field139 = new FloatSetting("WallsRange", 3.0F, 0.0F, 6.0F, 0.1F, "Place range for placing through walls", this.field137);
+   public final FloatSetting field139 = new FloatSetting("WallsRange", 3.0F, 0.0F, 6.0F, 0.1F, "Place range for placing through walls", this.field137);
    final FloatSetting field140 = new FloatSetting("Delay", 0.0F, 0.0F, 10.0F, 0.05F, "Place delay (in ticks)", this.field137);
    final BooleanSetting field141 = new BooleanSetting("Await", true, "Await\nImproves consistency, but reduces speed\n", this.field137);
    private final Setting<?>[] field142;
