@@ -1,6 +1,7 @@
 package dev.boze.client.settings;
 
 import dev.boze.client.utils.ColorWrapper;
+
 import java.util.function.BooleanSupplier;
 
 public class OpacityColorSetting extends WeirdColorSetting {

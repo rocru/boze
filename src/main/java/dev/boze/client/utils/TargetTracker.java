@@ -1,16 +1,11 @@
 package dev.boze.client.utils;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.PacketBundleEvent;
 import dev.boze.client.events.PrePacketSendEvent;
 import dev.boze.client.events.PrePlayerTickEvent;
 import dev.boze.client.mixin.PlayerInteractEntityC2SPacketAccessor;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
 import mapped.Class1204;
-import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
@@ -19,6 +14,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket.InteractType;
 import net.minecraft.network.packet.s2c.play.EntityStatusS2CPacket;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 public class TargetTracker implements IMinecraft {
    private static final Map<Entity, Long> field1358 = new ConcurrentHashMap();

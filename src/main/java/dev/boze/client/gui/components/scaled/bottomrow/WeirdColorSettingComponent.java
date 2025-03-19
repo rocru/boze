@@ -18,15 +18,16 @@ import dev.boze.client.utils.ColorWrapper;
 import dev.boze.client.utils.render.color.ChangingColor;
 import dev.boze.client.utils.render.color.GradientColor;
 import dev.boze.client.utils.render.color.StaticColor;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 import mapped.Class2776;
 import mapped.Class2777;
 import mapped.Class2778;
 import mapped.Class5903;
 import net.minecraft.client.gui.DrawContext;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class WeirdColorSettingComponent extends BottomRowScaledComponent {
    private final WeirdColorSetting field1458;

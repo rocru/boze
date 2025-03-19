@@ -1,12 +1,12 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.core.Version;
 import dev.boze.client.enums.GUIMenu;
 import dev.boze.client.gui.screens.ClickGUI;
 import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.shaders.ShaderRegistry;
 import dev.boze.client.systems.modules.client.Options;
-import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.AccessibilityOnboardingButtons;
 import net.minecraft.client.gui.screen.Screen;

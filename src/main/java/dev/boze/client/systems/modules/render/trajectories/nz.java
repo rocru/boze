@@ -7,8 +7,6 @@ import dev.boze.client.systems.modules.render.Trajectories;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.player.RotationHelper;
-import java.util.ArrayList;
-import java.util.List;
 import mapped.Class3062;
 import mapped.Class3071;
 import net.minecraft.entity.Entity;
@@ -19,6 +17,9 @@ import net.minecraft.util.hit.HitResult.Type;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import org.joml.Vector3d;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class nz {
    private final List<Vector3d> field3807;

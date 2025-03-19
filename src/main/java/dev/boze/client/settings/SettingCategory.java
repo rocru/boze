@@ -1,8 +1,9 @@
 package dev.boze.client.settings;
 
 import dev.boze.client.utils.ConfigNBTSerializer;
-import java.util.function.BooleanSupplier;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.function.BooleanSupplier;
 
 public class SettingCategory extends Setting<Boolean> {
    public boolean field927 = true;

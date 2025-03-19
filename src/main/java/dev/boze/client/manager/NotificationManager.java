@@ -3,6 +3,7 @@ package dev.boze.client.manager;
 import dev.boze.client.gui.notification.INotification;
 import dev.boze.client.gui.notification.NotificationType;
 import dev.boze.client.systems.modules.client.Notifications;
+
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 

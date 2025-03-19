@@ -1,18 +1,7 @@
 package dev.boze.client.systems.modules.render;
 
-import dev.boze.client.events.PacketBundleEvent;
-import dev.boze.client.events.PlayerOverlayEvent;
-import dev.boze.client.events.PreRenderEvent;
-import dev.boze.client.events.PreTickEvent;
-import dev.boze.client.events.SoundPlayEvent;
-import dev.boze.client.settings.BlockEntitySetting;
-import dev.boze.client.settings.EntitySettings;
-import dev.boze.client.settings.HudSettings;
-import dev.boze.client.settings.MiscSettings;
-import dev.boze.client.settings.ParticleSettings;
-import dev.boze.client.settings.PerformanceSettings;
-import dev.boze.client.settings.StringListSetting;
-import dev.boze.client.settings.WorldRenderingSettings;
+import dev.boze.client.events.*;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;

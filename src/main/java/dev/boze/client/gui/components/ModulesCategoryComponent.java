@@ -1,5 +1,6 @@
 package dev.boze.client.gui.components;
 
+import dev.boze.client.Boze;
 import dev.boze.client.enums.MaxHeight;
 import dev.boze.client.font.IFontRender;
 import dev.boze.client.font.IconManager;
@@ -13,16 +14,16 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
 import dev.boze.client.utils.render.Scissor;
+import mapped.Class2782;
+import mapped.Class3084;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.util.math.MathHelper;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-import dev.boze.client.Boze;
-import mapped.Class2782;
-import mapped.Class3084;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.util.math.MathHelper;
 
 public class ModulesCategoryComponent extends BaseComponent implements IMinecraft {
    private final double field322;

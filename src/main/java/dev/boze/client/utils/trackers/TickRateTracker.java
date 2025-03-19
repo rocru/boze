@@ -1,7 +1,8 @@
 package dev.boze.client.utils.trackers;
 
-import java.util.Arrays;
 import net.minecraft.util.math.MathHelper;
+
+import java.util.Arrays;
 
 public class TickRateTracker {
    private static final float[] field3974 = new float[20];

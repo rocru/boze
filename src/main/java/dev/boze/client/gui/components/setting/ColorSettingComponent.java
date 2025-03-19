@@ -12,11 +12,12 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
-import java.awt.Color;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
+
+import java.awt.*;
 
 public class ColorSettingComponent extends ScaledSettingBaseComponent implements IMinecraft {
    private final ColorSetting field292;

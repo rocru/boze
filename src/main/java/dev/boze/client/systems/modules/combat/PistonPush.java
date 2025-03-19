@@ -12,8 +12,6 @@ import dev.boze.client.systems.modules.client.Friends;
 import dev.boze.client.utils.ActionWrapper;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.PlaceAction;
-import java.util.ArrayList;
-import java.util.Comparator;
 import mapped.Class2811;
 import mapped.Class2812;
 import meteordevelopment.orbit.EventHandler;
@@ -27,6 +25,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class PistonPush extends Module {
    public static final PistonPush INSTANCE = new PistonPush();

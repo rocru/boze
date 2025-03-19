@@ -8,8 +8,6 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.ActionWrapper;
 import dev.boze.client.utils.EntityUtil;
-import java.util.ArrayList;
-import java.util.Comparator;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.ingame.HorseScreen;
 import net.minecraft.entity.Entity;
@@ -21,6 +19,9 @@ import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.util.Hand;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class AutoMount extends Module {
    public static final AutoMount INSTANCE = new AutoMount();

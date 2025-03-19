@@ -1,5 +1,6 @@
 package dev.boze.client.gui.components.scaled.bottomrow;
 
+import dev.boze.client.Boze;
 import dev.boze.client.enums.BottomRow;
 import dev.boze.client.font.IFontRender;
 import dev.boze.client.font.IconManager;
@@ -16,11 +17,11 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.KeyboardUtil;
 import dev.boze.client.utils.Macro;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
-import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
+
+import java.util.ArrayList;
 
 public class MacroManagerComponent extends BottomRowScaledComponent {
    private final MacroManagerSetting field1449;

@@ -1,10 +1,7 @@
 package dev.boze.client.systems.modules.combat;
 
-import dev.boze.client.enums.AnticheatMode;
-import dev.boze.client.enums.PlaceMode;
-import dev.boze.client.enums.RotationMode;
-import dev.boze.client.enums.SelfFillMode;
-import dev.boze.client.enums.SwapMode;
+import dev.boze.client.Boze;
+import dev.boze.client.enums.*;
 import dev.boze.client.events.ACRotationEvent;
 import dev.boze.client.events.MovementEvent;
 import dev.boze.client.events.RotationEvent;
@@ -19,8 +16,6 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.EntityUtil;
 import dev.boze.client.utils.world.BlockInteraction;
-import java.util.List;
-import dev.boze.client.Boze;
 import mapped.Class2784;
 import mapped.Class2811;
 import mapped.Class3069;
@@ -42,6 +37,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.List;
 
 public class SelfFill extends Module {
    public static final SelfFill INSTANCE = new SelfFill();

@@ -8,11 +8,12 @@ import dev.boze.client.command.arguments.ColorArgument;
 import dev.boze.client.enums.ColorTypes;
 import dev.boze.client.systems.modules.client.Colors;
 import dev.boze.client.utils.ColorWrapper;
-import java.util.Locale;
-import java.util.function.BooleanSupplier;
 import mapped.Class5903;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.Locale;
+import java.util.function.BooleanSupplier;
 
 public class WeirdColorSetting extends Setting<ColorWrapper> {
    private ColorTypes field934 = ColorTypes.ALL;

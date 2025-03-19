@@ -1,11 +1,12 @@
 package dev.boze.client.utils.render.color;
 
-import java.util.ArrayList;
-import java.util.Objects;
 import mapped.Class3071;
 import mapped.Class5903;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class ChangingColor extends Class5903<ChangingColor> {
    public final ArrayList<StaticColor> field416 = new ArrayList();

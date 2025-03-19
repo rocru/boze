@@ -2,9 +2,9 @@ package dev.boze.client.settings;
 
 import dev.boze.client.settings.generic.SettingsGroup;
 import net.minecraft.client.particle.CampfireSmokeParticle;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.FireworksSparkParticle.FireworkParticle;
 import net.minecraft.client.particle.FireworksSparkParticle.Flash;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;

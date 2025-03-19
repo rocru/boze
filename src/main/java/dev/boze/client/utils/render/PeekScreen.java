@@ -1,12 +1,12 @@
 package dev.boze.client.utils.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import dev.boze.client.Boze;
 import dev.boze.client.events.MovementEvent;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.ShulkerColorUtil;
 import dev.boze.client.utils.StackDeserializer;
-import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.ShulkerBoxScreen;

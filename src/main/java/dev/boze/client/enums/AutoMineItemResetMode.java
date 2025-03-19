@@ -1,13 +1,13 @@
 package dev.boze.client.enums;
 
 enum AutoMineItemResetMode {
-   Off,
-   On,
-   Delay;
+    Off,
+    On,
+    Delay;
 
-   private static final AutoMineItemResetMode[] field1804 = method914();
+    private static final AutoMineItemResetMode[] field1804 = method914();
 
-   private static AutoMineItemResetMode[] method914() {
-      return new AutoMineItemResetMode[]{Off, On, Delay};
-   }
+    private static AutoMineItemResetMode[] method914() {
+        return new AutoMineItemResetMode[]{Off, On, Delay};
+    }
 }

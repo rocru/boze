@@ -3,12 +3,7 @@ package dev.boze.client.systems.modules.movement;
 import baritone.api.BaritoneAPI;
 import baritone.api.pathing.goals.GoalBlock;
 import dev.boze.client.enums.ElytraRecastDirection;
-import dev.boze.client.events.MovementEvent;
-import dev.boze.client.events.PacketBundleEvent;
-import dev.boze.client.events.PostPlayerTickEvent;
-import dev.boze.client.events.PostRender;
-import dev.boze.client.events.PrePacketSendEvent;
-import dev.boze.client.events.PreTickEvent;
+import dev.boze.client.events.*;
 import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.mixin.ClientPlayerEntityAccessor;
 import dev.boze.client.settings.BooleanSetting;
@@ -20,7 +15,6 @@ import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.combat.AutoMend;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.Timer;
-import java.util.LinkedList;
 import mapped.Class3076;
 import mapped.Class5928;
 import meteordevelopment.orbit.EventHandler;
@@ -42,6 +36,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.RaycastContext.FluidHandling;
 import net.minecraft.world.RaycastContext.ShapeType;
+
+import java.util.LinkedList;
 
 public class ElytraRecast extends Module {
    public static final ElytraRecast INSTANCE = new ElytraRecast();

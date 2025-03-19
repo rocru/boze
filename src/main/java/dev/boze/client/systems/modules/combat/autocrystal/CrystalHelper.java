@@ -1,5 +1,6 @@
 package dev.boze.client.systems.modules.combat.autocrystal;
 
+import dev.boze.client.Boze;
 import dev.boze.client.enums.AnticheatMode;
 import dev.boze.client.enums.AutoCrystalAction;
 import dev.boze.client.enums.AutoCrystalMaxDamage;
@@ -7,8 +8,6 @@ import dev.boze.client.mixininterfaces.IEndCrystalEntity;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.utils.EntityUtil;
 import dev.boze.client.utils.IMinecraft;
-import java.util.Set;
-import dev.boze.client.Boze;
 import mapped.Class3087;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -20,6 +19,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.Set;
 
 public class CrystalHelper implements IMinecraft {
    private final AutoCrystal field1626;

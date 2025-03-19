@@ -7,11 +7,12 @@ import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import dev.boze.client.systems.modules.GhostModule;
 import dev.boze.client.utils.misc.IJsonSerializable2;
 import dev.boze.client.utils.misc.ISerializable;
+import net.minecraft.command.CommandSource;
+import net.minecraft.nbt.NbtCompound;
+
 import java.util.ArrayList;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
-import net.minecraft.command.CommandSource;
-import net.minecraft.nbt.NbtCompound;
 
 public abstract class Setting<T> implements ISerializable<T>, IJsonSerializable2<Setting<T>> {
    public final String name;

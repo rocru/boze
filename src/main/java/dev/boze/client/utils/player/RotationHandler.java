@@ -3,13 +3,13 @@ package dev.boze.client.utils.player;
 import dev.boze.api.BozeInstance;
 import dev.boze.api.event.EventGrim.Interact;
 import dev.boze.api.event.EventGrim.Rotate;
+import dev.boze.client.Boze;
 import dev.boze.client.enums.AnticheatMode;
 import dev.boze.client.enums.RotationMode;
 import dev.boze.client.events.ACRotationEvent;
 import dev.boze.client.events.RotationEvent;
 import dev.boze.client.mixin.ClientPlayerEntityAccessor;
 import dev.boze.client.utils.IMinecraft;
-import dev.boze.client.Boze;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 

@@ -4,10 +4,11 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.boze.client.command.arguments.EnumArgument;
-import java.util.Locale;
-import java.util.function.BooleanSupplier;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.Locale;
+import java.util.function.BooleanSupplier;
 
 public class EnumSetting<T extends Enum> extends Setting<T> {
    public T field972;

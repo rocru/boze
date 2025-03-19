@@ -4,7 +4,6 @@ import com.mojang.authlib.GameProfile;
 import dev.boze.client.systems.modules.render.PopChams;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.Entity.RemovalReason;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;

@@ -1,8 +1,9 @@
 package dev.boze.client.settings;
 
 import dev.boze.client.utils.Bind;
-import java.util.function.BooleanSupplier;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.function.BooleanSupplier;
 
 public class BindSetting extends Setting<Bind> {
    private final Bind bind;

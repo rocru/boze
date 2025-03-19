@@ -1,11 +1,12 @@
 package dev.boze.client.settings;
 
-import java.util.ArrayList;
-import java.util.function.BooleanSupplier;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
+
+import java.util.ArrayList;
+import java.util.function.BooleanSupplier;
 
 public class ListSetting extends Setting<ArrayList<String>> {
    private ArrayList<String> field953;

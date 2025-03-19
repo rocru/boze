@@ -11,11 +11,7 @@ import dev.boze.client.utils.FoodUtil;
 import dev.boze.client.utils.InventoryUtil;
 import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.BoatItem;
-import net.minecraft.item.EndCrystalItem;
-import net.minecraft.item.ExperienceBottleItem;
-import net.minecraft.item.Item;
+import net.minecraft.item.*;
 import net.minecraft.network.packet.c2s.play.PlayerInteractBlockC2SPacket;
 
 public class FastUse extends Module {

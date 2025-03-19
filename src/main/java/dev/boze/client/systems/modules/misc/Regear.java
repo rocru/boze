@@ -11,13 +11,14 @@ import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.AntiCheat;
 import dev.boze.client.utils.player.InvUtils;
 import dev.boze.client.utils.player.InventoryUtil;
-import java.util.concurrent.atomic.AtomicBoolean;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.ingame.ShulkerBoxScreen;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.c2s.play.CloseHandledScreenC2SPacket;
 import net.minecraft.screen.ShulkerBoxScreenHandler;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Regear extends Module {
    public static final Regear INSTANCE = new Regear();

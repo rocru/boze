@@ -7,8 +7,9 @@ import dev.boze.client.settings.WeirdSettingString;
 import dev.boze.client.systems.modules.HUDModule;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.systems.modules.client.Media;
-import java.util.Calendar;
 import net.minecraft.client.gui.DrawContext;
+
+import java.util.Calendar;
 
 public class Welcomer extends HUDModule {
    public static final Welcomer INSTANCE = new Welcomer();

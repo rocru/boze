@@ -6,6 +6,7 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.misc.IJsonSerializable;
 import dev.boze.client.utils.render.PlayerHeadTexture;
 import dev.boze.client.utils.render.PlayerHeadUtils;
+
 import java.util.UUID;
 
 public class AccountCache implements IJsonSerializable<AccountCache>, IMinecraft {

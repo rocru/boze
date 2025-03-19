@@ -1,33 +1,20 @@
 package dev.boze.client.systems.modules.misc;
 
 import dev.boze.client.api.BozeDrawColor;
-import dev.boze.client.enums.AnticheatMode;
-import dev.boze.client.enums.PlaceMode;
-import dev.boze.client.enums.RotationMode;
-import dev.boze.client.enums.ScaffoldFilter;
-import dev.boze.client.enums.ScaffoldTower;
-import dev.boze.client.enums.SwapMode;
+import dev.boze.client.enums.*;
 import dev.boze.client.events.ACRotationEvent;
 import dev.boze.client.events.PlayerMoveEvent;
 import dev.boze.client.events.Render3DEvent;
 import dev.boze.client.events.RotationEvent;
 import dev.boze.client.mixin.ClientPlayerInteractionManagerAccessor;
 import dev.boze.client.render.Placement;
-import dev.boze.client.settings.BindSetting;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.ColorSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.MinMaxSetting;
-import dev.boze.client.settings.StringModeSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.render.PlaceRender;
 import dev.boze.client.utils.Bind;
 import dev.boze.client.utils.EntityUtil;
 import dev.boze.client.utils.world.BlockInteraction;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import mapped.Class2784;
 import mapped.Class3076;
 import mapped.Class5924;
@@ -41,6 +28,10 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Scaffold extends Module {
    public static final Scaffold INSTANCE = new Scaffold();

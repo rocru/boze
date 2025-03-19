@@ -1,7 +1,6 @@
 package dev.boze.client.utils;
 
 import dev.boze.client.mixin.ContainerComponentAccessor;
-import java.util.Arrays;
 import net.minecraft.component.ComponentMap;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
@@ -10,6 +9,8 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.util.collection.DefaultedList;
+
+import java.util.Arrays;
 
 public class StackDeserializer implements IMinecraft {
    public static boolean method1756(ItemStack itemStack) {

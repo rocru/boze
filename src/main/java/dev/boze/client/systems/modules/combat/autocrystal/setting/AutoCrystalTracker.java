@@ -7,15 +7,16 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.math.NumberUtils;
 import dev.boze.client.utils.trackers.TickRateTracker;
-import java.util.ConcurrentModificationException;
-import java.util.HashMap;
-import java.util.Map.Entry;
 import mapped.Class3087;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+
+import java.util.ConcurrentModificationException;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class AutoCrystalTracker implements IMinecraft {
    private final AutoCrystal field1524;

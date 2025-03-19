@@ -2,10 +2,10 @@ package dev.boze.client.utils.entity.fakeplayer;
 
 import com.mojang.authlib.GameProfile;
 import dev.boze.client.utils.IMinecraft;
-import java.util.UUID;
 import net.minecraft.client.network.OtherClientPlayerEntity;
-import net.minecraft.entity.Entity.RemovalReason;
 import net.minecraft.entity.player.PlayerEntity;
+
+import java.util.UUID;
 
 public class FakePlayerEntity extends OtherClientPlayerEntity implements IMinecraft {
    public boolean field1265 = false;

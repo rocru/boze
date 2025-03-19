@@ -1,11 +1,10 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.EntityAddedEvent;
 import dev.boze.client.events.EntityRemovedEvent;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.systems.modules.render.Tint;
-import java.util.function.Supplier;
-import dev.boze.client.Boze;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.Entity.RemovalReason;
@@ -23,6 +22,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.function.Supplier;
 
 @Mixin({ClientWorld.class})
 public abstract class ClientWorldMixin extends World {

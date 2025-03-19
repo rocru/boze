@@ -13,15 +13,16 @@ import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.ConfigNBTSerializer;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.Collectors;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundEvents;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 public class ConfigComponent extends BottomRowScaledComponent {
    private final Module field1992;

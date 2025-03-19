@@ -4,7 +4,8 @@ import dev.boze.client.gui.components.RotationComponent;
 import dev.boze.client.gui.components.scaled.ColorSettingComponent;
 import dev.boze.client.settings.ColorSetting;
 import dev.boze.client.utils.RGBAColor;
-import java.awt.Color;
+
+import java.awt.*;
 
 public class fF extends RotationComponent {
    final ColorSetting field1214;

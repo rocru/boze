@@ -10,13 +10,14 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.misc.CursorType;
 import dev.boze.client.utils.render.RenderUtil;
-import java.text.DecimalFormat;
 import mapped.Class5928;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import org.lwjgl.glfw.GLFW;
+
+import java.text.DecimalFormat;
 
 public class SetIntValueComponent extends ScaledBaseComponent {
    private final IntSetting field1394;

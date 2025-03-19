@@ -11,24 +11,19 @@ import dev.boze.client.jumptable.no;
 import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.manager.NotificationManager;
 import dev.boze.client.renderer.packer.ByteTexturePacker;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.ColorSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.RGBASetting;
-import dev.boze.client.settings.StringSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.Friends;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.TargetTracker;
 import dev.boze.client.utils.render.ByteTexture;
-import java.io.File;
-import java.io.FileInputStream;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.entity.player.PlayerEntity;
+
+import java.io.File;
+import java.io.FileInputStream;
 
 public class Chams extends Module {
    public static final Chams INSTANCE = new Chams();

@@ -3,6 +3,7 @@ package dev.boze.client.mixin;
 import dev.boze.api.BozeInstance;
 import dev.boze.api.event.EventTick.Post;
 import dev.boze.api.event.EventTick.Pre;
+import dev.boze.client.Boze;
 import dev.boze.client.api.BozeAPI;
 import dev.boze.client.events.HandleInputEvent;
 import dev.boze.client.events.OpenScreenEvent;
@@ -17,8 +18,6 @@ import dev.boze.client.systems.modules.misc.MiddleClickAction;
 import dev.boze.client.systems.modules.misc.MultiTask;
 import dev.boze.client.systems.modules.render.NoRender;
 import dev.boze.client.utils.player.RotationHandler;
-import java.io.File;
-import dev.boze.client.Boze;
 import mapped.Class3092;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.RunArgs;
@@ -43,6 +42,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.io.File;
 
 @Mixin({MinecraftClient.class})
 public abstract class MinecraftClientMixin {

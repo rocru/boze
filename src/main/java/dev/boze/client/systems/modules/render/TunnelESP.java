@@ -12,13 +12,7 @@ import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.manager.NotificationManager;
 import dev.boze.client.renderer.Renderer3D;
 import dev.boze.client.renderer.packer.ByteTexturePacker;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.ColorSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxSetting;
-import dev.boze.client.settings.StringSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.iterators.ChunkIterator;
 import dev.boze.client.systems.modules.Category;
@@ -31,19 +25,20 @@ import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.File;
-import java.io.FileInputStream;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.math.BlockPos.Mutable;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.BlockPos.Mutable;
 import net.minecraft.util.math.Direction.Axis;
 import net.minecraft.world.Heightmap.Type;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkSection;
 import net.minecraft.world.chunk.ChunkStatus;
+
+import java.io.File;
+import java.io.FileInputStream;
 
 public class TunnelESP extends Module {
    public static final TunnelESP INSTANCE = new TunnelESP();

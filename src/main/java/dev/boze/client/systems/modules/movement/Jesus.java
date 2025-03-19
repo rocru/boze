@@ -16,9 +16,6 @@ import dev.boze.client.settings.IntSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.MinecraftUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -28,11 +25,15 @@ import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.Full;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.PositionAndOnGround;
 import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.util.math.BlockPos.Mutable;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.BlockPos.Mutable;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Jesus extends Module {
    public static final Jesus INSTANCE = new Jesus();

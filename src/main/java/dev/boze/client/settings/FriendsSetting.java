@@ -8,9 +8,6 @@ import dev.boze.client.command.arguments.FriendArgument;
 import dev.boze.client.command.arguments.PlayerListArgument;
 import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.systems.modules.client.Friends;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.function.BooleanSupplier;
 import mapped.Class3063;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.command.CommandSource;
@@ -18,6 +15,10 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
+
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.function.BooleanSupplier;
 
 public class FriendsSetting extends Setting<ArrayList<Class3063>> {
    private ArrayList<Class3063> field916;

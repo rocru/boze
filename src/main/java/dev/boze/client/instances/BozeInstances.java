@@ -1,17 +1,11 @@
 package dev.boze.client.instances;
 
 import dev.boze.api.internal.Instances;
-import dev.boze.client.instances.impl.CapesInstance;
-import dev.boze.client.instances.impl.ChatInstance;
-import dev.boze.client.instances.impl.FriendsInstance;
-import dev.boze.client.instances.impl.InputInstance;
-import dev.boze.client.instances.impl.InteractionInstance;
-import dev.boze.client.instances.impl.JsonInstance;
-import dev.boze.client.instances.impl.ModulesInstance;
-import dev.boze.client.instances.impl.RenderInstance;
-import java.lang.reflect.Field;
 import dev.boze.client.Boze;
+import dev.boze.client.instances.impl.*;
 import net.minecraft.client.MinecraftClient;
+
+import java.lang.reflect.Field;
 
 public class BozeInstances {
    public static void method1127() {

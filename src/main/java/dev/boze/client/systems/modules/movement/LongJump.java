@@ -6,11 +6,12 @@ import dev.boze.client.settings.MinMaxSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.Timer;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.util.math.Vec3d;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class LongJump extends Module {
    public static final LongJump INSTANCE = new LongJump();

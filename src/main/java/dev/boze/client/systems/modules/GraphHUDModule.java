@@ -9,10 +9,11 @@ import dev.boze.client.settings.RGBASetting;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.concurrent.CopyOnWriteArrayList;
 import mapped.Class3071;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.math.MathHelper;
+
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public abstract class GraphHUDModule extends HUDModule {
    public final BooleanSetting field2300 = new BooleanSetting("FromZero", false, "Start graph from zero");

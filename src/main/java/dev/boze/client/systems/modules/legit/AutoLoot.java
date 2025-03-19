@@ -12,8 +12,6 @@ import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.player.SlotUtils;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.DownloadingTerrainScreen;
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen;
@@ -22,6 +20,9 @@ import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.math.Vec2f;
+
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class AutoLoot extends Module {
    public static AutoLoot INSTANCE = new AutoLoot();

@@ -8,13 +8,7 @@ import dev.boze.client.enums.NameTagsArmor;
 import dev.boze.client.events.Render2DEvent;
 import dev.boze.client.font.IFontRender;
 import dev.boze.client.mixin.WorldRendererAccessor;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.ColorSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxSetting;
-import dev.boze.client.settings.SettingCategory;
+import dev.boze.client.settings.*;
 import dev.boze.client.settings.generic.ScalingSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
@@ -30,9 +24,6 @@ import dev.boze.client.utils.TargetTracker;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import dev.boze.client.utils.math.NumberUtils;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicReference;
 import mapped.Class3060;
 import mapped.Class3071;
 import mapped.Class5922;
@@ -54,6 +45,10 @@ import net.minecraft.util.StringHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Vector3d;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class NameTags extends Module {
    public static final NameTags INSTANCE = new NameTags();

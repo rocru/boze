@@ -15,9 +15,6 @@ import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.utils.ActionWrapper;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.player.InvUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
@@ -28,6 +25,10 @@ import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.entry.RegistryEntry;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class SelfBow extends Module {
    public static final SelfBow INSTANCE = new SelfBow();

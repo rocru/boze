@@ -10,7 +10,6 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.MinecraftUtils;
-import java.util.Iterator;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
@@ -18,6 +17,8 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SplashPotionItem;
+
+import java.util.Iterator;
 
 public class ThrowPot extends Module {
    public static final ThrowPot INSTANCE = new ThrowPot();

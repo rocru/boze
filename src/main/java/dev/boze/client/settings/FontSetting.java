@@ -2,9 +2,10 @@ package dev.boze.client.settings;
 
 import dev.boze.client.font.FontManager;
 import dev.boze.client.manager.ConfigManager;
+import net.minecraft.nbt.NbtCompound;
+
 import java.io.File;
 import java.util.function.BooleanSupplier;
-import net.minecraft.nbt.NbtCompound;
 
 public class FontSetting extends Setting<String> {
    private String field2177;

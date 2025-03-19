@@ -11,8 +11,6 @@ import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.render.trails.nx;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.RGBAColor;
-import java.util.ArrayList;
-import java.util.List;
 import mapped.Class3062;
 import mapped.Class3064;
 import meteordevelopment.orbit.EventHandler;
@@ -20,6 +18,9 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import org.joml.Vector3d;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Trails extends Module {
    public static final Trails INSTANCE = new Trails();

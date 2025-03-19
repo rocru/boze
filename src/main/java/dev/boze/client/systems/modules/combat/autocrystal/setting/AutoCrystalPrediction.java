@@ -6,7 +6,6 @@ import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.systems.modules.misc.FakePlayer;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
-import java.util.Map.Entry;
 import mapped.Class5918;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;
@@ -14,6 +13,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.Map.Entry;
 
 public class AutoCrystalPrediction implements IMinecraft {
    private final AutoCrystal field1091;

@@ -1,6 +1,7 @@
 package dev.boze.client.utils.http;
 
 import com.google.gson.Gson;
+
 import java.net.http.HttpClient;
 
 public class HttpUtil {

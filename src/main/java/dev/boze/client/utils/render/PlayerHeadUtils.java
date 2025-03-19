@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import dev.boze.client.systems.accounts.TexturesJson;
 import dev.boze.client.systems.accounts.UuidToProfileResponse;
 import dev.boze.client.utils.http.HttpUtil;
+
 import java.util.Base64;
 import java.util.UUID;
 

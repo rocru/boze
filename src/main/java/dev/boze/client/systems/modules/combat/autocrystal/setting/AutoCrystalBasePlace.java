@@ -15,8 +15,6 @@ import dev.boze.client.utils.Bind;
 import dev.boze.client.utils.EntityUtil;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.Timer;
-import java.util.ArrayList;
-import java.util.List;
 import mapped.Class2811;
 import mapped.Class3086;
 import mapped.Class5912;
@@ -25,6 +23,9 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGroup {
    final EnumSetting<BasePlace> field122 = new EnumSetting<BasePlace>(

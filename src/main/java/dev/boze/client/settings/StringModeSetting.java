@@ -6,10 +6,6 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.boze.client.command.arguments.BlockArgument;
 import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.utils.IMinecraft;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.function.BooleanSupplier;
 import net.minecraft.block.Block;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
@@ -17,6 +13,11 @@ import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
 import net.minecraft.registry.Registries;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.BooleanSupplier;
 
 public class StringModeSetting extends Setting<List<String>> implements IMinecraft {
    private List<Block> field949 = new ArrayList();

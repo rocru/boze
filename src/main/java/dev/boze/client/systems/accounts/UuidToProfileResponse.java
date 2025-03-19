@@ -1,7 +1,6 @@
 package dev.boze.client.systems.accounts;
 
 import com.google.gson.annotations.SerializedName;
-import dev.boze.client.systems.accounts.UuidToProfileResponse.Property;
 
 public class UuidToProfileResponse {
    class Property {

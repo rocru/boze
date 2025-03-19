@@ -1,9 +1,10 @@
 package dev.boze.client.systems.modules.render.logoutspots;
 
 import dev.boze.client.systems.modules.render.LogoutSpots;
-import java.util.UUID;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.UUID;
 
 public class LogoutPlayerEntity {
    public final Vec3d field3586;

@@ -1,12 +1,13 @@
 package dev.boze.client.utils.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.nio.ByteBuffer;
 import net.minecraft.client.texture.AbstractTexture;
 import net.minecraft.resource.ResourceManager;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL30C;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 public class ByteTexture extends AbstractTexture {
    public ByteTexture(int width, int height, byte[] data, Format format, Filter filterMin, Filter filterMag) {

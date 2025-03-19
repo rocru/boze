@@ -6,11 +6,12 @@ import dev.boze.client.events.BossBarSpacingEvent;
 import dev.boze.client.settings.BooleanSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import java.util.HashMap;
-import java.util.WeakHashMap;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.hud.ClientBossBar;
 import net.minecraft.text.Text;
+
+import java.util.HashMap;
+import java.util.WeakHashMap;
 
 public class BossStack extends Module {
    public static final BossStack INSTANCE = new BossStack();

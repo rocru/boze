@@ -12,12 +12,13 @@ import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.network.BozeExecutor;
-import java.util.HashSet;
-import java.util.Locale;
 import mapped.Class1201;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.HashSet;
+import java.util.Locale;
 
 public class CurrentProfileSetting extends Setting<String> implements IMinecraft {
    public final HashSet<String> field968;

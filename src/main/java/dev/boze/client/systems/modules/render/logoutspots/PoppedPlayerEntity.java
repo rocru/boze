@@ -6,9 +6,10 @@ import dev.boze.client.mixininterfaces.IVec3d;
 import dev.boze.client.renderer.Renderer3D;
 import dev.boze.client.systems.modules.render.PopChams;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
-import java.util.UUID;
 import mapped.Class5923;
 import net.minecraft.entity.player.PlayerEntity;
+
+import java.util.UUID;
 
 class PoppedPlayerEntity extends FakePlayerEntity {
    private final UUID field1273;

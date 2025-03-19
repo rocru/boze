@@ -1,7 +1,7 @@
 package dev.boze.client.mixin;
 
-import dev.boze.client.events.OcclusionEvent;
 import dev.boze.client.Boze;
+import dev.boze.client.events.OcclusionEvent;
 import net.minecraft.client.render.chunk.ChunkOcclusionDataBuilder;
 import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;

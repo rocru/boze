@@ -2,8 +2,9 @@ package dev.boze.client.settings;
 
 import dev.boze.client.api.BozeDrawColor;
 import dev.boze.client.systems.modules.client.OldColors;
-import java.util.function.BooleanSupplier;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.function.BooleanSupplier;
 
 public class ColorSetting extends Setting<BozeDrawColor> {
    private boolean sync = false;

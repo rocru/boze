@@ -4,7 +4,6 @@ import dev.boze.client.events.PrePlayerTickEvent;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.legit.Reach;
-import java.util.ArrayList;
 import mapped.Class5914;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.entity.BlockEntity;
@@ -13,6 +12,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.ArrayList;
 
 public class WallInteract extends Module {
    public static final WallInteract INSTANCE = new WallInteract();

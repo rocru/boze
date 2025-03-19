@@ -6,19 +6,11 @@ import dev.boze.client.enums.ExtraChatMode;
 import dev.boze.client.events.AddMessageEvent;
 import dev.boze.client.mixininterfaces.IChatHudLine;
 import dev.boze.client.mixininterfaces.IChatHudLineVisible;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.RGBASetting;
-import dev.boze.client.settings.WeirdSettingString;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.utils.RGBAColor;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.ChatHudLine.Visible;
@@ -27,6 +19,11 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ExtraChat extends Module {
    public static final ExtraChat INSTANCE = new ExtraChat();

@@ -1,10 +1,7 @@
 package dev.boze.client.systems.modules.combat;
 
-import dev.boze.client.enums.AwaitMode;
-import dev.boze.client.enums.PearlMode;
-import dev.boze.client.enums.PlaceMode;
-import dev.boze.client.enums.RotationMode;
-import dev.boze.client.enums.SwapMode;
+import dev.boze.client.Boze;
+import dev.boze.client.enums.*;
 import dev.boze.client.events.ACRotationEvent;
 import dev.boze.client.events.RotationEvent;
 import dev.boze.client.instances.impl.ChatInstance;
@@ -15,12 +12,7 @@ import dev.boze.client.settings.EnumSetting;
 import dev.boze.client.settings.FloatSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.utils.EntityUtil;
-import dev.boze.client.utils.InventoryHelper;
-import dev.boze.client.utils.InventoryUtil;
-import dev.boze.client.utils.MinecraftUtils;
-import dev.boze.client.utils.Timer;
-import dev.boze.client.Boze;
+import dev.boze.client.utils.*;
 import mapped.Class3002;
 import mapped.Class5913;
 import mapped.Class5924;

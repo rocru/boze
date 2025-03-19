@@ -16,10 +16,6 @@ import dev.boze.client.systems.modules.legit.Reach;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import dev.boze.client.utils.fakeplayer.FakeClientPlayerEntity;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.concurrent.atomic.AtomicBoolean;
 import mapped.Class5918;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.Entity;
@@ -29,6 +25,11 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BackTrack extends Module {
    public static final BackTrack INSTANCE = new BackTrack();

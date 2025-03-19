@@ -1,18 +1,19 @@
 package dev.boze.client.mixin;
 
 import com.mojang.authlib.GameProfile;
-import java.time.Instant;
 import mapped.Class2780;
 import net.minecraft.client.network.message.MessageHandler;
-import net.minecraft.network.message.SignedMessage;
 import net.minecraft.network.message.MessageType.Parameters;
+import net.minecraft.network.message.SignedMessage;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.At.Shift;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.time.Instant;
 
 @Mixin({MessageHandler.class})
 public abstract class MessageHandlerMixin implements Class2780 {

@@ -1,9 +1,10 @@
 package dev.boze.client.systems.modules.combat;
 
+import dev.boze.client.Boze;
 import dev.boze.client.core.Version;
 import dev.boze.client.utils.IMinecraft;
+
 import java.text.DecimalFormat;
-import dev.boze.client.Boze;
 
 class AutoCrystalDisplayInfo implements IMinecraft {
    private final AutoCrystal field1353;

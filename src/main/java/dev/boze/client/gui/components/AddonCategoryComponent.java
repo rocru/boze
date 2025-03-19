@@ -15,11 +15,12 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
 import dev.boze.client.utils.render.Scissor;
-import java.util.ArrayList;
 import mapped.Class2779;
 import mapped.Class3071;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.math.MathHelper;
+
+import java.util.ArrayList;
 
 public class AddonCategoryComponent extends BaseComponent implements IMinecraft {
    private final double field350;

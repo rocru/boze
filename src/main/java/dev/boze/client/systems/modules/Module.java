@@ -1,6 +1,7 @@
 package dev.boze.client.systems.modules;
 
 import com.google.gson.JsonObject;
+import dev.boze.client.Boze;
 import dev.boze.client.api.BozeDrawColor;
 import dev.boze.client.core.ErrorLogger;
 import dev.boze.client.enums.ModuleColors;
@@ -20,15 +21,15 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.misc.IJsonSerializable2;
 import dev.boze.client.utils.misc.ISerializable;
+import mapped.Class5925;
+import net.minecraft.nbt.NbtCompound;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
-import dev.boze.client.Boze;
-import mapped.Class5925;
-import net.minecraft.nbt.NbtCompound;
-import org.jetbrains.annotations.NotNull;
 
 public abstract class Module implements Class5925, ISerializable<Module>, Comparable<Module>, IMinecraft, IJsonSerializable2<Module> {
    protected boolean enabled = false;

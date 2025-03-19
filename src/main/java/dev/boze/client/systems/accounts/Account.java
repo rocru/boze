@@ -11,8 +11,6 @@ import dev.boze.client.mixin.MinecraftClientAccessor;
 import dev.boze.client.mixin.PlayerSkinProviderAccessor;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.misc.IJsonSerializable;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
 import net.minecraft.client.network.SocialInteractionsManager;
 import net.minecraft.client.session.ProfileKeys;
 import net.minecraft.client.session.Session;
@@ -22,6 +20,9 @@ import net.minecraft.client.texture.PlayerSkinProvider;
 import net.minecraft.client.texture.PlayerSkinProvider.FileCache;
 import net.minecraft.network.encryption.SignatureVerifier;
 import net.minecraft.util.Util;
+
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 
 public abstract class Account<T extends Account<?>> implements IJsonSerializable<T>, IMinecraft {
    protected AccountType field1520;

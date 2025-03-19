@@ -1,17 +1,13 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.CanWalkOnFluidEvent;
 import dev.boze.client.events.PlayerTravelEvent;
 import dev.boze.client.mixininterfaces.ILivingEntity;
 import dev.boze.client.mixininterfaces.ILivingEntityClientAttack;
 import dev.boze.client.systems.modules.misc.SoundFX;
-import dev.boze.client.systems.modules.movement.AntiLevitation;
-import dev.boze.client.systems.modules.movement.BoatFly;
-import dev.boze.client.systems.modules.movement.ElytraBoost;
-import dev.boze.client.systems.modules.movement.ElytraRecast;
-import dev.boze.client.systems.modules.movement.NoSlow;
+import dev.boze.client.systems.modules.movement.*;
 import dev.boze.client.systems.modules.render.HandTweaks;
-import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;

@@ -1,6 +1,7 @@
 package dev.boze.client.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import dev.boze.client.Boze;
 import dev.boze.client.enums.PlayerOverlay;
 import dev.boze.client.events.PlayerOverlayEvent;
 import dev.boze.client.events.Render2DEvent;
@@ -10,7 +11,6 @@ import dev.boze.client.systems.modules.render.Crosshair;
 import dev.boze.client.systems.modules.render.NoRender;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.render.RenderUtil;
-import dev.boze.client.Boze;
 import mapped.Class3032;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;

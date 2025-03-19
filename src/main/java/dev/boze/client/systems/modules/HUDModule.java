@@ -1,5 +1,6 @@
 package dev.boze.client.systems.modules;
 
+import dev.boze.client.Boze;
 import dev.boze.client.api.BozeDrawColor;
 import dev.boze.client.core.ErrorLogger;
 import dev.boze.client.font.IFontRender;
@@ -10,7 +11,6 @@ import dev.boze.client.settings.MinMaxSetting;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
-import dev.boze.client.Boze;
 import mapped.Class3071;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ChatScreen;

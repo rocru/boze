@@ -1,13 +1,13 @@
 package dev.boze.client.enums;
 
 enum SprintMode {
-   NCP,
-   Grim,
-   Ghost;
+    NCP,
+    Grim,
+    Ghost;
 
-   private static final SprintMode[] field1746 = method861();
+    private static final SprintMode[] field1746 = method861();
 
-   private static SprintMode[] method861() {
-      return new SprintMode[]{NCP, Grim, Ghost};
-   }
+    private static SprintMode[] method861() {
+        return new SprintMode[]{NCP, Grim, Ghost};
+    }
 }

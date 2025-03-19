@@ -2,13 +2,14 @@ package dev.boze.client.utils;
 
 import dev.boze.client.enums.AutoMineSwapMode;
 import dev.boze.client.enums.SwapMode;
-import java.util.function.Function;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolItem;
 import net.minecraft.util.math.BlockPos;
+
+import java.util.function.Function;
 
 public class BlockMiningUtils implements IMinecraft {
    public static int method590(BlockPos pos, AutoMineSwapMode mode) {

@@ -1,5 +1,6 @@
 package dev.boze.client.gui.screens.account;
 
+import dev.boze.client.Boze;
 import dev.boze.client.font.IFontRender;
 import dev.boze.client.gui.components.BaseComponent;
 import dev.boze.client.gui.components.ScaledBaseComponent;
@@ -11,7 +12,6 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.misc.CursorType;
 import dev.boze.client.utils.render.RenderUtil;
-import dev.boze.client.Boze;
 import mapped.Class5928;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;

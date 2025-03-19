@@ -1,6 +1,12 @@
 package dev.boze.client.utils;
 
 import dev.boze.client.systems.modules.client.GhostRotations;
+import mapped.Class3092;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.Pair;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -8,11 +14,6 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import mapped.Class3092;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.Pair;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 
 public class RotationHelper implements IMinecraft {
    public static final double field1361 = 1.4166666666666667;

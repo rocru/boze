@@ -1,6 +1,7 @@
 package dev.boze.client.events;
 
 import dev.boze.client.utils.ActionWrapper;
+
 import java.util.LinkedList;
 
 public class MovementEvent extends CancelableEvent {

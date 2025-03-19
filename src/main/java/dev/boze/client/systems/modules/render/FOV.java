@@ -5,8 +5,9 @@ import dev.boze.client.mixininterfaces.ISimpleOption;
 import dev.boze.client.settings.IntSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import java.util.Objects;
 import meteordevelopment.orbit.EventHandler;
+
+import java.util.Objects;
 
 public class FOV extends Module {
    public static final FOV INSTANCE = new FOV();

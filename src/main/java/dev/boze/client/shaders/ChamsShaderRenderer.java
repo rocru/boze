@@ -17,8 +17,6 @@ import dev.boze.client.settings.ColorSetting;
 import dev.boze.client.systems.modules.render.Chams;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.render.ByteTexture;
-import java.io.File;
-import java.io.FileInputStream;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.gl.SimpleFramebuffer;
 import net.minecraft.client.render.Camera;
@@ -26,6 +24,9 @@ import net.minecraft.client.render.OutlineVertexConsumerProvider;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import org.lwjgl.opengl.GL32;
+
+import java.io.File;
+import java.io.FileInputStream;
 
 public class ChamsShaderRenderer implements IMinecraft {
    private static ShaderProgram field2239;

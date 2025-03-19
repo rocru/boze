@@ -13,13 +13,14 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.combat.Surround;
 import dev.boze.client.utils.Timer;
-import java.util.LinkedHashMap;
-import java.util.Map.Entry;
 import mapped.Class3076;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.PositionAndOnGround;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
+
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
 
 public class Step extends Module {
    public static final Step INSTANCE = new Step();

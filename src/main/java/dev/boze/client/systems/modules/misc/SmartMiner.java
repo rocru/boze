@@ -16,12 +16,6 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.ItemEnchantmentUtils;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.function.Predicate;
 import mapped.Class2839;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.Block;
@@ -34,6 +28,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.function.Predicate;
 
 public class SmartMiner extends Module {
    public static final SmartMiner INSTANCE = new SmartMiner();

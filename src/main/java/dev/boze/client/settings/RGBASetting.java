@@ -2,9 +2,10 @@ package dev.boze.client.settings;
 
 import dev.boze.client.systems.modules.client.OldColors;
 import dev.boze.client.utils.RGBAColor;
-import java.awt.Color;
-import java.util.function.BooleanSupplier;
 import net.minecraft.nbt.NbtCompound;
+
+import java.awt.*;
+import java.util.function.BooleanSupplier;
 
 public class RGBASetting extends Setting<RGBAColor> {
    private RGBAColor field957;

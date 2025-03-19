@@ -10,8 +10,9 @@ import dev.boze.client.gui.screens.ClickGUI;
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
 import net.minecraft.client.gui.DrawContext;
+
+import java.util.ArrayList;
 
 public class ToggleableModuleSettingComponent extends ScaledBaseComponent {
    private static final double field1392 = 6.0;

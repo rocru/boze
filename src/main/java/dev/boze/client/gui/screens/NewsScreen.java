@@ -12,17 +12,18 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.http.NewsUtil;
 import dev.boze.client.utils.render.RenderUtil;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.text.Text;
+import org.lwjgl.stb.STBImage;
+import org.lwjgl.system.MemoryStack;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.security.NoSuchAlgorithmException;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.text.Text;
-import org.lwjgl.stb.STBImage;
-import org.lwjgl.system.MemoryStack;
 
 public class NewsScreen extends Screen implements IMinecraft {
    private int field1128;

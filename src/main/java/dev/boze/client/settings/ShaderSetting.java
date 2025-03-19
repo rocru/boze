@@ -1,10 +1,11 @@
 package dev.boze.client.settings;
 
 import dev.boze.client.shaders.ShaderProcessor;
-import java.util.ArrayList;
 import mapped.Class1147;
 import mapped.Class1174;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.ArrayList;
 
 public class ShaderSetting extends Setting<String> {
    public static final ArrayList<ShaderSetting> field962 = new ArrayList();

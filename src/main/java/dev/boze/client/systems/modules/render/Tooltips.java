@@ -12,16 +12,17 @@ import dev.boze.client.utils.StackDeserializer;
 import dev.boze.client.utils.tooltip.BannerTooltipComponent;
 import dev.boze.client.utils.tooltip.ItemStackTooltipComponent;
 import dev.boze.client.utils.tooltip.MapTooltipComponent;
-import java.util.List;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BannerPatternsComponent;
-import net.minecraft.component.type.MapIdComponent;
 import net.minecraft.component.type.BannerPatternsComponent.Layer;
+import net.minecraft.component.type.MapIdComponent;
 import net.minecraft.item.BannerItem;
 import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+
+import java.util.List;
 
 public class Tooltips extends Module {
    public static final Tooltips INSTANCE = new Tooltips();

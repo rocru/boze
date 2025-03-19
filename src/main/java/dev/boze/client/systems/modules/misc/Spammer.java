@@ -8,12 +8,13 @@ import dev.boze.client.settings.ListSetting;
 import dev.boze.client.settings.MinMaxSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
+import meteordevelopment.orbit.EventHandler;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Random;
-import meteordevelopment.orbit.EventHandler;
 
 public class Spammer extends Module {
    public static final Spammer INSTANCE = new Spammer();

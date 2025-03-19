@@ -1,5 +1,6 @@
 package dev.boze.client.systems.modules.hud.core;
 
+import dev.boze.client.Boze;
 import dev.boze.client.api.BozeDrawColor;
 import dev.boze.client.font.IFontRender;
 import dev.boze.client.settings.BooleanSetting;
@@ -10,11 +11,11 @@ import dev.boze.client.systems.modules.HUDModule;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.utils.RGBAColor;
+import net.minecraft.client.gui.DrawContext;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import dev.boze.client.Boze;
-import net.minecraft.client.gui.DrawContext;
 
 public class Binds extends HUDModule {
    private final BooleanSetting field2596 = new BooleanSetting("Custom", false, "Use custom theme settings");

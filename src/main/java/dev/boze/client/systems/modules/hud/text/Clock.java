@@ -1,6 +1,7 @@
 package dev.boze.client.systems.modules.hud.text;
 
 import dev.boze.client.systems.modules.hud.TextHUDModule;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

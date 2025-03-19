@@ -6,24 +6,24 @@ import dev.boze.client.systems.modules.movement.boatfly.nk;
 import dev.boze.client.systems.modules.movement.boatfly.nl;
 
 enum BoatFlyMode {
-   Grim,
-   NCP;
+    Grim,
+    NCP;
 
-   private nj field1792;
+    private nj field1792;
 
-   nj method903(BoatFly var1) {
-      if (this.field1792 == null) {
-         this.field1792 = (nj)(switch (this) {
-            case Grim -> new nk(var1);
-            case NCP -> new nl(var1);
-         });
-      }
+    nj method903(BoatFly var1) {
+        if (this.field1792 == null) {
+            this.field1792 = switch (this) {
+                case Grim -> new nk(var1);
+                case NCP -> new nl(var1);
+            };
+        }
 
-      return this.field1792;
-   }
+        return this.field1792;
+    }
 
-   // $VF: synthetic method
-   private static BoatFlyMode[] method904() {
-      return new BoatFlyMode[]{Grim, NCP};
-   }
+    // $VF: synthetic method
+    private static BoatFlyMode[] method904() {
+        return new BoatFlyMode[]{Grim, NCP};
+    }
 }

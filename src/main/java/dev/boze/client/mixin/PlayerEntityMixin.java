@@ -1,12 +1,12 @@
 package dev.boze.client.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import dev.boze.client.Boze;
 import dev.boze.client.events.ClipAtLedgeEvent;
 import dev.boze.client.events.PlayerGrimV3BypassEvent;
 import dev.boze.client.systems.modules.legit.Reach;
 import dev.boze.client.systems.modules.movement.Flight;
 import dev.boze.client.utils.player.RotationHandler;
-import dev.boze.client.Boze;
 import mapped.Class2839;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity.RemovalReason;
@@ -16,8 +16,8 @@ import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.At.Shift;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 

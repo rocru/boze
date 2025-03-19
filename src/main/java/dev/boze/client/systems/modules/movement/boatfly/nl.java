@@ -5,18 +5,19 @@ import dev.boze.client.events.PlayerTravelEvent;
 import dev.boze.client.events.PrePacketSendEvent;
 import dev.boze.client.mixin.PlayerPositionLookS2CPacketAccessor;
 import dev.boze.client.systems.modules.movement.BoatFly;
-import java.util.concurrent.atomic.AtomicBoolean;
 import mapped.Class5924;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.network.packet.c2s.play.PlayerInputC2SPacket;
+import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.LookAndOnGround;
 import net.minecraft.network.packet.c2s.play.TeleportConfirmC2SPacket;
 import net.minecraft.network.packet.c2s.play.VehicleMoveC2SPacket;
-import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.LookAndOnGround;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
 import net.minecraft.network.packet.s2c.play.PositionFlag;
 import net.minecraft.network.packet.s2c.play.VehicleMoveS2CPacket;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class nl extends nj {
    private static final int field1581 = 20;

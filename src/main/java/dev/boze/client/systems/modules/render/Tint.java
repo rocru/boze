@@ -13,9 +13,10 @@ import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.Random;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
+
+import java.util.Random;
 
 public class Tint extends Module {
    public static final Tint INSTANCE = new Tint();

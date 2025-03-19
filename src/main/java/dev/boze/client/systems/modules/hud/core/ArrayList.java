@@ -2,6 +2,7 @@ package dev.boze.client.systems.modules.hud.core;
 
 import dev.boze.api.BozeInstance;
 import dev.boze.api.addon.module.ToggleableModule;
+import dev.boze.client.Boze;
 import dev.boze.client.api.BozeDrawColor;
 import dev.boze.client.events.MovementEvent;
 import dev.boze.client.font.IFontRender;
@@ -13,15 +14,15 @@ import dev.boze.client.systems.modules.HUDModule;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.utils.RGBAColor;
+import meteordevelopment.orbit.EventHandler;
+import net.minecraft.client.gui.DrawContext;
+
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
-import dev.boze.client.Boze;
-import meteordevelopment.orbit.EventHandler;
-import net.minecraft.client.gui.DrawContext;
 
 public class ArrayList extends HUDModule {
    private final BooleanSetting field649 = new BooleanSetting("OnlyBound", false, "Only show modules with binds");

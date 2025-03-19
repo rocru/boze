@@ -8,9 +8,10 @@ import dev.boze.client.settings.SettingCategory;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.FoodUtil;
-import java.text.DecimalFormat;
 import mapped.Class3076;
 import meteordevelopment.orbit.EventHandler;
+
+import java.text.DecimalFormat;
 
 public class Timer extends Module {
    public static final Timer INSTANCE = new Timer();

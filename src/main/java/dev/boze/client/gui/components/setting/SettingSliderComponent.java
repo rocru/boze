@@ -9,11 +9,12 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.math.NumberUtils;
 import dev.boze.client.utils.render.RenderUtil;
-import java.text.DecimalFormat;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
+
+import java.text.DecimalFormat;
 
 public class SettingSliderComponent extends SettingBaseComponent implements IMinecraft {
    private final SettingSlider field1302;

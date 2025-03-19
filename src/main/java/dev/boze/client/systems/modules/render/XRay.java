@@ -7,15 +7,16 @@ import dev.boze.client.settings.StringModeSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.MinecraftUtils;
-import java.util.List;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.BlockPos.Mutable;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+
+import java.util.List;
 
 public class XRay extends Module {
    public static final XRay INSTANCE = new XRay();

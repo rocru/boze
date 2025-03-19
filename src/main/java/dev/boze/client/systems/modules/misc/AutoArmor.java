@@ -8,12 +8,7 @@ import dev.boze.client.events.FlipFrameEvent;
 import dev.boze.client.events.KeyEvent;
 import dev.boze.client.events.MouseButtonEvent;
 import dev.boze.client.events.PrePlayerTickEvent;
-import dev.boze.client.settings.BindSetting;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxDoubleSetting;
-import dev.boze.client.settings.MinMaxSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.AntiCheat;
@@ -27,9 +22,6 @@ import dev.boze.client.utils.player.InventoryUtil;
 import dev.boze.client.utils.player.SlotUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.concurrent.ThreadLocalRandom;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.DownloadingTerrainScreen;
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen;
@@ -47,6 +39,10 @@ import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.math.Vec2f;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class AutoArmor extends Module {
    public static final AutoArmor INSTANCE = new AutoArmor();

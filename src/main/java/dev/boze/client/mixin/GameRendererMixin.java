@@ -3,6 +3,7 @@ package dev.boze.client.mixin;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.systems.RenderSystem;
+import dev.boze.client.Boze;
 import dev.boze.client.enums.CrystalOptimizerMode;
 import dev.boze.client.events.CrosshairEvent;
 import dev.boze.client.events.GetFovEvent;
@@ -19,8 +20,6 @@ import dev.boze.client.systems.modules.render.FreeCam;
 import dev.boze.client.systems.modules.render.NoRender;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.player.RotationHelper;
-import java.util.function.Predicate;
-import dev.boze.client.Boze;
 import mapped.Class3094;
 import mapped.Class5922;
 import net.minecraft.client.MinecraftClient;
@@ -58,6 +57,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+
+import java.util.function.Predicate;
 
 @Mixin({GameRenderer.class})
 public abstract class GameRendererMixin {

@@ -4,7 +4,8 @@ import dev.boze.client.gui.components.FloatArraySliderComponent;
 import dev.boze.client.gui.components.scaled.ColorSettingComponent;
 import dev.boze.client.settings.ColorSetting;
 import dev.boze.client.utils.RGBAColor;
-import java.awt.Color;
+
+import java.awt.*;
 
 public class gd extends FloatArraySliderComponent {
    final ColorSetting field2007;

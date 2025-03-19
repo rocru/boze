@@ -1,27 +1,17 @@
 package dev.boze.client.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import dev.boze.client.Boze;
 import dev.boze.client.events.ParticleEffectEvent;
 import dev.boze.client.mixininterfaces.IParticleManager;
 import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.modules.render.Chams;
 import dev.boze.client.systems.modules.render.NoRender;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-import dev.boze.client.Boze;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleManager;
 import net.minecraft.client.particle.ParticleTextureSheet;
-import net.minecraft.client.render.BufferBuilder;
-import net.minecraft.client.render.BufferRenderer;
-import net.minecraft.client.render.BuiltBuffer;
-import net.minecraft.client.render.Camera;
-import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.render.LightmapTextureManager;
-import net.minecraft.client.render.Tessellator;
-import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.*;
 import net.minecraft.client.texture.TextureManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.particle.ParticleEffect;
@@ -37,6 +27,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 @Mixin({ParticleManager.class})
 public class ParticleManagerMixin implements IParticleManager {

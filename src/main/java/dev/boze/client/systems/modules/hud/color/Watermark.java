@@ -1,10 +1,10 @@
 package dev.boze.client.systems.modules.hud.color;
 
+import dev.boze.client.Boze;
 import dev.boze.client.core.Version;
 import dev.boze.client.settings.BooleanSetting;
 import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.hud.ColorHUDModule;
-import dev.boze.client.Boze;
 
 public class Watermark extends ColorHUDModule {
    private final BooleanSetting field613 = new BooleanSetting("Version", true, "Show client version in watermark");

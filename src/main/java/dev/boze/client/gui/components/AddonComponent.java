@@ -1,22 +1,14 @@
 package dev.boze.client.gui.components;
 
 import dev.boze.api.addon.module.ToggleableModule;
-import dev.boze.api.setting.SettingBase;
-import dev.boze.api.setting.SettingColor;
-import dev.boze.api.setting.SettingMode;
-import dev.boze.api.setting.SettingSlider;
-import dev.boze.api.setting.SettingToggle;
+import dev.boze.api.setting.*;
 import dev.boze.client.api.BozeBind;
 import dev.boze.client.enums.AlignMode;
 import dev.boze.client.enums.ModuleDisplayMode;
 import dev.boze.client.font.IFontRender;
 import dev.boze.client.font.IconManager;
 import dev.boze.client.gui.components.scaled.ToggleableModuleSettingComponent;
-import dev.boze.client.gui.components.setting.SettingColorComponent;
-import dev.boze.client.gui.components.setting.SettingModeComponent;
-import dev.boze.client.gui.components.setting.SettingSliderComponent;
-import dev.boze.client.gui.components.setting.SettingToggleComponent;
-import dev.boze.client.gui.components.setting.ToggleableModuleComponent;
+import dev.boze.client.gui.components.setting.*;
 import dev.boze.client.gui.notification.Notifications;
 import dev.boze.client.gui.screens.ClickGUI;
 import dev.boze.client.jumptable.hM;
@@ -27,12 +19,13 @@ import dev.boze.client.utils.KeyboardUtil;
 import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.misc.CursorType;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
 import mapped.Class2773;
 import mapped.Class3077;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
+
+import java.util.ArrayList;
 
 public class AddonComponent extends BaseComponent implements IMinecraft {
    public final ToggleableModule field362;

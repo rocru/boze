@@ -1,7 +1,7 @@
 package dev.boze.client.utils;
 
-import dev.boze.client.mixininterfaces.IEndCrystalEntity;
 import dev.boze.client.Boze;
+import dev.boze.client.mixininterfaces.IEndCrystalEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.util.math.Vec3d;

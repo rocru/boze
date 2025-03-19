@@ -6,11 +6,12 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.boze.client.command.arguments.ItemArgument;
 import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.utils.IMinecraft;
-import java.util.Locale;
 import net.minecraft.command.CommandSource;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
+
+import java.util.Locale;
 
 public class ItemSetting extends Setting<String> implements IMinecraft {
    private String field952 = "";

@@ -5,9 +5,10 @@ import dev.boze.client.events.PrePacketSendEvent;
 import dev.boze.client.settings.IntSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import java.util.concurrent.ConcurrentHashMap;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.network.packet.c2s.common.KeepAliveC2SPacket;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 public class PingSpoof extends Module {
    public static final PingSpoof INSTANCE = new PingSpoof();

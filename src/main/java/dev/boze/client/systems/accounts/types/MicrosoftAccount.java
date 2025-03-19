@@ -5,8 +5,9 @@ import dev.boze.client.systems.accounts.Account;
 import dev.boze.client.systems.accounts.AccountType;
 import dev.boze.client.systems.accounts.MicrosoftLogin;
 import dev.boze.client.systems.accounts.MicrosoftLogin.LoginData;
-import java.util.Optional;
 import net.minecraft.client.session.Session;
+
+import java.util.Optional;
 
 public class MicrosoftAccount extends Account<MicrosoftAccount> {
    public MicrosoftAccount(String refreshToken) {

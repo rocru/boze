@@ -4,6 +4,8 @@ import dev.boze.client.core.ErrorLogger;
 import dev.boze.client.core.Version;
 import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.utils.IMinecraft;
+import net.minecraft.SharedConstants;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -11,7 +13,6 @@ import java.net.Socket;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
-import net.minecraft.SharedConstants;
 
 public class ShaderCheck implements IMinecraft {
    public static String method970(String path, boolean[] blocks) {

@@ -1,7 +1,8 @@
 package dev.boze.client.settings;
 
-import java.util.function.BooleanSupplier;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.function.BooleanSupplier;
 
 public class SettingBlock extends Setting<Boolean> {
    private boolean field977 = false;

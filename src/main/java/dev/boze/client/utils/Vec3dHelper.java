@@ -1,8 +1,8 @@
 package dev.boze.client.utils;
 
 import dev.boze.client.jumptable.ir;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Direction.Axis;
+import net.minecraft.util.math.Vec3d;
 
 public class Vec3dHelper {
    public static final Vec3d[] field3930 = new Vec3d[]{

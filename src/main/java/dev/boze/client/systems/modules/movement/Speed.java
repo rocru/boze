@@ -1,18 +1,9 @@
 package dev.boze.client.systems.modules.movement;
 
 import dev.boze.client.enums.SpeedMode;
-import dev.boze.client.events.MovementEvent;
-import dev.boze.client.events.PacketBundleEvent;
-import dev.boze.client.events.PlayerGrimV3BypassEvent;
-import dev.boze.client.events.PlayerMoveEvent;
-import dev.boze.client.events.PostTickEvent;
-import dev.boze.client.events.TickInputPostEvent;
+import dev.boze.client.events.*;
 import dev.boze.client.mixin.LivingEntityAccessor;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.ActionWrapper;
@@ -21,8 +12,6 @@ import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import dev.boze.client.utils.fakeplayer.FakeClientPlayerEntity;
 import dev.boze.client.utils.player.RotationHandler;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import mapped.Class3076;
 import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
@@ -35,6 +24,9 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.network.packet.s2c.play.ExplosionS2CPacket;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
 import net.minecraft.util.math.Box;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Speed extends Module {
    public static final Speed INSTANCE = new Speed();

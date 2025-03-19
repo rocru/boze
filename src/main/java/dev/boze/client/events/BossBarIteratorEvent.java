@@ -1,7 +1,8 @@
 package dev.boze.client.events;
 
-import java.util.Iterator;
 import net.minecraft.client.gui.hud.ClientBossBar;
+
+import java.util.Iterator;
 
 public class BossBarIteratorEvent {
    private static final BossBarIteratorEvent field1903 = new BossBarIteratorEvent();

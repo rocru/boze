@@ -1,18 +1,9 @@
 package dev.boze.client.systems.modules.combat;
 
+import dev.boze.client.Boze;
 import dev.boze.client.ac.Ghost;
-import dev.boze.client.enums.Anticheat;
-import dev.boze.client.enums.AttackMode;
-import dev.boze.client.enums.BlockPlaceMode;
-import dev.boze.client.enums.TrapMode;
-import dev.boze.client.enums.WorldReactMode;
-import dev.boze.client.events.ACRotationEvent;
-import dev.boze.client.events.HandleInputEvent;
-import dev.boze.client.events.MouseUpdateEvent;
-import dev.boze.client.events.PacketBundleEvent;
-import dev.boze.client.events.PlayerPositionEvent;
-import dev.boze.client.events.RotationEvent;
-import dev.boze.client.events.eJ;
+import dev.boze.client.enums.*;
+import dev.boze.client.events.*;
 import dev.boze.client.gui.screens.ClickGUI;
 import dev.boze.client.mixin.KeyBindingAccessor;
 import dev.boze.client.mixininterfaces.IClientPlayerEntity;
@@ -27,21 +18,9 @@ import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.legit.Reach;
 import dev.boze.client.systems.modules.movement.Step;
 import dev.boze.client.systems.render.PlacementRenderer;
-import dev.boze.client.utils.BlastResistanceCalculator;
-import dev.boze.client.utils.EntityTracker;
-import dev.boze.client.utils.EntityUtil;
-import dev.boze.client.utils.InventoryHelper;
-import dev.boze.client.utils.MinecraftUtils;
-import dev.boze.client.utils.PlaceHandler;
-import dev.boze.client.utils.RaycastUtil;
-import dev.boze.client.utils.RotationHelper;
-import dev.boze.client.utils.SwapHandler;
-import dev.boze.client.utils.Timer;
-import dev.boze.client.utils.TrapUtil;
+import dev.boze.client.utils.*;
 import dev.boze.client.utils.trackers.BlockBreakingTracker;
-import java.util.HashMap;
 import mapped.Class1202;
-import dev.boze.client.Boze;
 import mapped.Class2784;
 import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
@@ -58,6 +37,8 @@ import net.minecraft.util.hit.HitResult.Type;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.HashMap;
 
 public class SelfTrap extends Module {
    public static SelfTrap INSTANCE = new SelfTrap();

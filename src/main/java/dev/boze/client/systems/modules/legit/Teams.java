@@ -3,12 +3,13 @@ package dev.boze.client.systems.modules.legit;
 import dev.boze.client.settings.BooleanSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Teams extends Module {
    public static final Teams INSTANCE = new Teams();

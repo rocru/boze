@@ -2,11 +2,12 @@ package dev.boze.client.utils;
 
 import dev.boze.client.enums.InteractionBlockMode;
 import dev.boze.client.settings.StringModeSetting;
-import java.util.function.Function;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+
+import java.util.function.Function;
 
 public class BlastResistanceCalculator {
    public static final Function<ItemStack, Float> field3905 = BlastResistanceCalculator::lambda$static$0;

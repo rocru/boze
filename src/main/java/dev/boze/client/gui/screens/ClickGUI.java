@@ -1,24 +1,12 @@
 package dev.boze.client.gui.screens;
 
 import dev.boze.api.BozeInstance;
-import dev.boze.client.enums.AAMode;
-import dev.boze.client.enums.GUILayout;
-import dev.boze.client.enums.GUIMenu;
-import dev.boze.client.enums.MaxHeight;
-import dev.boze.client.enums.RenderMode;
+import dev.boze.client.Boze;
+import dev.boze.client.enums.*;
 import dev.boze.client.font.FontLoader;
 import dev.boze.client.font.FontManager;
 import dev.boze.client.font.IFontRender;
-import dev.boze.client.gui.components.AddonCategoryComponent;
-import dev.boze.client.gui.components.AddonComponent;
-import dev.boze.client.gui.components.BaseComponent;
-import dev.boze.client.gui.components.EditableComponent;
-import dev.boze.client.gui.components.GhostModeComponent;
-import dev.boze.client.gui.components.InputBaseComponent;
-import dev.boze.client.gui.components.ModuleCategoryComponent;
-import dev.boze.client.gui.components.ModuleComponent;
-import dev.boze.client.gui.components.ModulesCategoryComponent;
-import dev.boze.client.gui.components.ScaledBaseComponent;
+import dev.boze.client.gui.components.*;
 import dev.boze.client.gui.components.scaled.bottomrow.AccountManagerComponent;
 import dev.boze.client.render.Framebuffer;
 import dev.boze.client.settings.Setting;
@@ -38,14 +26,7 @@ import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.http.HttpUtil;
 import dev.boze.client.utils.misc.CursorType;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
-import java.util.Locale;
-import mapped.Class1201;
-import dev.boze.client.Boze;
-import mapped.Class2779;
-import mapped.Class2782;
-import mapped.Class3077;
-import mapped.Class5928;
+import mapped.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
@@ -53,6 +34,9 @@ import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.text.Text;
 import org.lwjgl.opengl.GL32;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class ClickGUI extends Screen implements IMinecraft {
    public GUIMenu field1332 = GUIMenu.Normal;

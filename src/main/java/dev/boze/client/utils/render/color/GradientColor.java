@@ -1,13 +1,14 @@
 package dev.boze.client.utils.render.color;
 
 import dev.boze.client.settings.WeirdColorSetting;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
 import mapped.Class3003;
 import mapped.Class5903;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class GradientColor extends Class5903<GradientColor> {
    public static final HashMap<String, GradientColor> field420 = new HashMap();

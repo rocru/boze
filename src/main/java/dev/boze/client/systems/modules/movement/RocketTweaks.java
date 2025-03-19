@@ -11,7 +11,6 @@ import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.Timer;
 import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.LinkedList;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -20,6 +19,8 @@ import net.minecraft.network.packet.s2c.common.CommonPingS2CPacket;
 import net.minecraft.network.packet.s2c.play.EntitiesDestroyS2CPacket;
 import net.minecraft.network.packet.s2c.play.EntityStatusS2CPacket;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.LinkedList;
 
 public class RocketTweaks extends Module {
    public static RocketTweaks INSTANCE = new RocketTweaks();

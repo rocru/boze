@@ -7,16 +7,17 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.Notifications;
 import dev.boze.client.utils.TargetTracker;
-import java.io.File;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.BowItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.FloatControl.Type;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.BowItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import java.io.File;
 
 public class SoundFX extends Module {
    public static final SoundFX INSTANCE = new SoundFX();

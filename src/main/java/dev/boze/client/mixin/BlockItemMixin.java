@@ -1,7 +1,6 @@
 package dev.boze.client.mixin;
 
 import dev.boze.client.systems.modules.misc.NoGhostBlocks;
-import java.util.List;
 import mapped.Class2811;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -21,6 +20,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.List;
 
 @Mixin({BlockItem.class})
 public class BlockItemMixin {

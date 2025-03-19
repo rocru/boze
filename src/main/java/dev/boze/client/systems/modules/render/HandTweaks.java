@@ -8,11 +8,7 @@ import dev.boze.client.settings.IntSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.MaceItem;
-import net.minecraft.item.ShieldItem;
-import net.minecraft.item.SwordItem;
+import net.minecraft.item.*;
 
 public class HandTweaks extends Module {
    public static final HandTweaks INSTANCE = new HandTweaks();

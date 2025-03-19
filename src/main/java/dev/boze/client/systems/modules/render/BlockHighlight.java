@@ -14,21 +14,12 @@ import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.manager.NotificationManager;
 import dev.boze.client.renderer.Renderer3D;
 import dev.boze.client.renderer.packer.ByteTexturePacker;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.ColorSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.StringSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.misc.AirPlace;
 import dev.boze.client.utils.render.ByteTexture;
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.AirBlock;
 import net.minecraft.block.BlockState;
@@ -38,6 +29,11 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.shape.VoxelShape;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class BlockHighlight extends Module {
    public static final BlockHighlight INSTANCE = new BlockHighlight();

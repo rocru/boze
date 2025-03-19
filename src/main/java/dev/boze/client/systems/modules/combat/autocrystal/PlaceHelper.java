@@ -1,18 +1,10 @@
 package dev.boze.client.systems.modules.combat.autocrystal;
 
-import dev.boze.client.enums.AnticheatMode;
-import dev.boze.client.enums.AutoMineSwapMode;
-import dev.boze.client.enums.CrystalAuraUpdateMode;
-import dev.boze.client.enums.CrystalAuraYawStep;
-import dev.boze.client.enums.RotationMode;
+import dev.boze.client.enums.*;
 import dev.boze.client.events.ACRotationEvent;
 import dev.boze.client.events.RotationEvent;
 import dev.boze.client.mixin.ClientPlayerEntityAccessor;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.Setting;
+import dev.boze.client.settings.*;
 import dev.boze.client.settings.generic.SettingsGroup;
 import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.combat.AutoCrystal;

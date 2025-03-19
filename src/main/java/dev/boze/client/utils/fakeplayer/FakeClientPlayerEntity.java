@@ -4,10 +4,11 @@ import com.mojang.authlib.GameProfile;
 import dev.boze.client.mixininterfaces.ILivingEntityClientAttack;
 import dev.boze.client.mixininterfaces.IOtherClientPlayerEntity;
 import dev.boze.client.utils.IMinecraft;
-import java.util.function.BooleanSupplier;
 import net.minecraft.client.network.OtherClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.damage.DamageSource;
+
+import java.util.function.BooleanSupplier;
 
 public class FakeClientPlayerEntity extends OtherClientPlayerEntity implements IMinecraft, IOtherClientPlayerEntity, ILivingEntityClientAttack {
    private BooleanSupplier field1304 = FakeClientPlayerEntity::lambda$new$0;

@@ -20,9 +20,10 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
 import dev.boze.client.utils.render.color.StaticColor;
-import java.util.ArrayList;
 import mapped.Class2775;
 import net.minecraft.client.gui.DrawContext;
+
+import java.util.ArrayList;
 
 public class NewColorComponent extends ScaledBaseComponent {
    public static StaticColor field1488 = null;

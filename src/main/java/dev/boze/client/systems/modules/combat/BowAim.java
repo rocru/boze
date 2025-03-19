@@ -8,11 +8,7 @@ import dev.boze.client.events.ACRotationEvent;
 import dev.boze.client.events.eJ;
 import dev.boze.client.jumptable.mx;
 import dev.boze.client.mixin.CrossbowItemAccessor;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxDoubleSetting;
-import dev.boze.client.settings.SettingCategory;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.Friends;
@@ -21,8 +17,6 @@ import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.legit.AntiBots;
 import dev.boze.client.utils.RotationHelper;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
-import java.util.ArrayList;
-import java.util.Comparator;
 import mapped.Class1202;
 import mapped.Class5918;
 import meteordevelopment.orbit.EventHandler;
@@ -36,6 +30,9 @@ import net.minecraft.item.CrossbowItem;
 import net.minecraft.item.Items;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class BowAim extends Module {
    public static final BowAim INSTANCE = new BowAim();

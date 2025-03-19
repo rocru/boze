@@ -1,16 +1,7 @@
 package dev.boze.client.systems.modules.movement;
 
-import dev.boze.client.enums.PacketFlyBounds;
-import dev.boze.client.enums.PacketFlyLimit;
-import dev.boze.client.enums.PacketFlyMode;
-import dev.boze.client.enums.PacketFlyPhase;
-import dev.boze.client.enums.PacketFlyType;
-import dev.boze.client.events.PacketBundleEvent;
-import dev.boze.client.events.PlayerMoveEvent;
-import dev.boze.client.events.PlayerVelocityEvent;
-import dev.boze.client.events.PrePacketSendEvent;
-import dev.boze.client.events.PrePlayerTickEvent;
-import dev.boze.client.events.PreTickEvent;
+import dev.boze.client.enums.*;
+import dev.boze.client.events.*;
 import dev.boze.client.mixin.PlayerPositionLookS2CPacketAccessor;
 import dev.boze.client.settings.BooleanSetting;
 import dev.boze.client.settings.EnumSetting;
@@ -18,20 +9,21 @@ import dev.boze.client.settings.MinMaxSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.MinecraftUtils;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
 import mapped.Class3090;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.DownloadingTerrainScreen;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
-import net.minecraft.network.packet.c2s.play.TeleportConfirmC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.PositionAndOnGround;
+import net.minecraft.network.packet.c2s.play.TeleportConfirmC2SPacket;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
 import net.minecraft.network.packet.s2c.play.PositionFlag;
 import net.minecraft.util.math.ChunkSectionPos;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 public class PacketFly extends Module {
    public static final PacketFly INSTANCE = new PacketFly();

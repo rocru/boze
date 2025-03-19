@@ -13,13 +13,7 @@ import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.player.SlotUtils;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.ingame.SmithingScreen;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterials;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.ToolItem;
-import net.minecraft.item.ToolMaterials;
+import net.minecraft.item.*;
 import net.minecraft.screen.SmithingScreenHandler;
 import net.minecraft.screen.slot.SlotActionType;
 

@@ -6,13 +6,7 @@ import dev.boze.client.enums.AimAssistPriority;
 import dev.boze.client.events.MouseUpdateEvent;
 import dev.boze.client.gui.screens.ClickGUI;
 import dev.boze.client.jumptable.m_;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.ItemSetting;
-import dev.boze.client.settings.MinMaxDoubleSetting;
-import dev.boze.client.settings.MinMaxSetting;
-import dev.boze.client.settings.SettingCategory;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.Friends;
@@ -20,8 +14,6 @@ import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.RotationHelper;
 import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
-import java.util.ArrayList;
-import java.util.Comparator;
 import mapped.Class1202;
 import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
@@ -36,6 +28,9 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class AimAssist extends Module {
    public static final AimAssist INSTANCE = new AimAssist();

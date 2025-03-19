@@ -1,13 +1,13 @@
 package dev.boze.client.enums;
 
 public enum PlacePosition {
-   Feet,
-   Head,
-   Above;
+    Feet,
+    Head,
+    Above;
 
-   private static final PlacePosition[] field35 = method30();
+    private static final PlacePosition[] field35 = method30();
 
-   private static PlacePosition[] method30() {
-      return new PlacePosition[]{Feet, Head, Above};
-   }
+    private static PlacePosition[] method30() {
+        return new PlacePosition[]{Feet, Head, Above};
+    }
 }

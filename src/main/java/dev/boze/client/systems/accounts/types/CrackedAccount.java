@@ -2,9 +2,10 @@ package dev.boze.client.systems.accounts.types;
 
 import dev.boze.client.systems.accounts.Account;
 import dev.boze.client.systems.accounts.AccountType;
-import java.util.Optional;
 import net.minecraft.client.session.Session;
 import net.minecraft.util.Uuids;
+
+import java.util.Optional;
 
 public class CrackedAccount extends Account<CrackedAccount> {
    public CrackedAccount(String name) {

@@ -6,14 +6,15 @@ import dev.boze.client.events.Render3DEvent;
 import dev.boze.client.settings.ColorSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import java.util.ArrayList;
-import java.util.List;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.block.entity.SignText;
 import net.minecraft.text.Text;
 import net.minecraft.world.chunk.WorldChunk;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OldSigns extends Module {
    public static final OldSigns INSTANCE = new OldSigns();

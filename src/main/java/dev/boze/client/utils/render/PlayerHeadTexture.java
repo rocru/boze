@@ -5,18 +5,19 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import dev.boze.client.renderer.Texture;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.http.HttpUtil;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import javax.imageio.ImageIO;
 import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.stb.STBImage;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 
 public class PlayerHeadTexture extends Texture implements IMinecraft {
    private boolean field1054;

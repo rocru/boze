@@ -1,33 +1,22 @@
 package dev.boze.client.manager;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
+import dev.boze.client.Boze;
 import dev.boze.client.command.arguments.ConfigArgument;
 import dev.boze.client.core.Cache;
 import dev.boze.client.core.ErrorLogger;
 import dev.boze.client.enums.ConfigType;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.file.Files;
-import java.util.Locale;
-import javax.net.ssl.HttpsURLConnection;
 import mapped.Class1201;
-import dev.boze.client.Boze;
 import mapped.Class5906;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtIo;
 import org.apache.commons.io.IOUtils;
+
+import javax.net.ssl.HttpsURLConnection;
+import java.io.*;
+import java.net.URL;
+import java.nio.file.Files;
+import java.util.Locale;
 
 public class ConfigManager {
    public static final String field2137 = "MAIN_PROFILE";

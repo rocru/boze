@@ -1,8 +1,9 @@
 package dev.boze.client.utils.render.color;
 
-import java.util.Objects;
 import mapped.Class5903;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.Objects;
 
 public class StaticColor extends Class5903<StaticColor> {
    public int field430;

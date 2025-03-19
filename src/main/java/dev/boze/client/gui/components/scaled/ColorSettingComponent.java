@@ -11,11 +11,7 @@ import dev.boze.client.gui.components.rotation.fH;
 import dev.boze.client.gui.components.slider.doubles.fo;
 import dev.boze.client.gui.components.slider.doubles.fp;
 import dev.boze.client.gui.components.slider.floats.array.gd;
-import dev.boze.client.gui.components.slider.ints.f2;
-import dev.boze.client.gui.components.slider.ints.f3;
-import dev.boze.client.gui.components.slider.ints.f4;
-import dev.boze.client.gui.components.slider.ints.f5;
-import dev.boze.client.gui.components.slider.ints.f6;
+import dev.boze.client.gui.components.slider.ints.*;
 import dev.boze.client.gui.components.text.e_;
 import dev.boze.client.gui.components.text.fa;
 import dev.boze.client.gui.components.text.fb;
@@ -26,9 +22,10 @@ import dev.boze.client.settings.ColorSetting;
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
 import mapped.Class5910;
 import net.minecraft.client.gui.DrawContext;
+
+import java.util.ArrayList;
 
 public class ColorSettingComponent extends ScaledBaseComponent {
    public static BozeDrawColor field1396 = null;

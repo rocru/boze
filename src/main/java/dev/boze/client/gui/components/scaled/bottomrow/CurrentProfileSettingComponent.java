@@ -14,13 +14,14 @@ import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.network.BozeExecutor;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
 import mapped.Class1201;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundEvents;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.ArrayList;
 
 public class CurrentProfileSettingComponent extends BottomRowScaledComponent {
    private final CurrentProfileSetting field1463;

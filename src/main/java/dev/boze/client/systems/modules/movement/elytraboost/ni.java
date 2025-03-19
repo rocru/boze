@@ -1,10 +1,10 @@
 package dev.boze.client.systems.modules.movement.elytraboost;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.PacketBundleEvent;
 import dev.boze.client.events.PreTickEvent;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.Timer;
-import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.network.packet.s2c.play.PlaySoundFromEntityS2CPacket;
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;

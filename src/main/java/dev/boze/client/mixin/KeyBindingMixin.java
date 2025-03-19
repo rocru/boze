@@ -1,7 +1,7 @@
 package dev.boze.client.mixin;
 
-import dev.boze.client.events.KeyPressedEvent;
 import dev.boze.client.Boze;
+import dev.boze.client.events.KeyPressedEvent;
 import net.minecraft.client.option.KeyBinding;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

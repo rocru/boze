@@ -1,22 +1,19 @@
 package dev.boze.client.systems.modules.combat;
 
-import dev.boze.client.events.FinishUsingEvent;
-import dev.boze.client.events.KeyEvent;
-import dev.boze.client.events.MouseButtonEvent;
-import dev.boze.client.events.PrePacketSendEvent;
-import dev.boze.client.events.PreTickEvent;
+import dev.boze.client.events.*;
 import dev.boze.client.settings.BindSetting;
 import dev.boze.client.settings.BooleanSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.Bind;
 import dev.boze.client.utils.MinecraftUtils;
-import java.util.LinkedList;
-import java.util.Queue;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.TeleportConfirmC2SPacket;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class ChorusPostpone extends Module {
    public static final ChorusPostpone INSTANCE = new ChorusPostpone();

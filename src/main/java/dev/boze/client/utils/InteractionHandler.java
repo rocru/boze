@@ -2,29 +2,19 @@ package dev.boze.client.utils;
 
 import dev.boze.client.ac.Grim;
 import dev.boze.client.ac.NCP;
-import dev.boze.client.enums.Anticheat;
-import dev.boze.client.enums.AttackMode;
-import dev.boze.client.enums.BlockPlaceMode;
-import dev.boze.client.enums.CrystalAttackMode;
-import dev.boze.client.enums.PlayerAimPoint;
-import dev.boze.client.enums.SwapMode;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxDoubleSetting;
-import dev.boze.client.settings.MinMaxSetting;
-import dev.boze.client.settings.Setting;
-import dev.boze.client.settings.SettingBlock;
+import dev.boze.client.enums.*;
+import dev.boze.client.settings.*;
 import dev.boze.client.settings.generic.SettingsGroup;
 import dev.boze.client.systems.modules.client.Options;
-import java.util.ArrayList;
-import java.util.HashSet;
 import mapped.Class2811;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class InteractionHandler implements SettingsGroup, IMinecraft {
    final EnumSetting<Anticheat> field226 = new EnumSetting<Anticheat>(

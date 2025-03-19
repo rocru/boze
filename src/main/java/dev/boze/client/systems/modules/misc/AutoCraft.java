@@ -10,8 +10,6 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.player.SlotUtils;
-import java.util.LinkedList;
-import java.util.Queue;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.recipebook.RecipeResultCollection;
 import net.minecraft.item.Item;
@@ -21,6 +19,9 @@ import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.screen.CraftingScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.SlotActionType;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class AutoCraft extends Module {
    public static final AutoCraft INSTANCE = new AutoCraft();

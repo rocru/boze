@@ -3,7 +3,8 @@ package dev.boze.client.gui.components.slider.floats.array;
 import dev.boze.client.gui.components.FloatArraySliderComponent;
 import dev.boze.client.gui.components.scaled.SettingColorComponent;
 import dev.boze.client.utils.RGBAColor;
-import java.awt.Color;
+
+import java.awt.*;
 
 public class gb extends FloatArraySliderComponent {
    final SettingColorComponent field2004;

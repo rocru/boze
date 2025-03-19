@@ -3,7 +3,6 @@ package dev.boze.client.settings.generic;
 import dev.boze.client.settings.EnumSetting;
 import dev.boze.client.settings.MinMaxSetting;
 import dev.boze.client.settings.Setting;
-import dev.boze.client.settings.generic.ScalingSetting.ScalingMode;
 
 public class ScalingSetting implements SettingsGroup {
    public enum ScalingMode {

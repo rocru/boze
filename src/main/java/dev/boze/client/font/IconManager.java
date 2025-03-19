@@ -1,11 +1,12 @@
 package dev.boze.client.font;
 
-import java.io.IOException;
-import java.io.InputStream;
 import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class IconManager {
    public static FontLoader field1979 = null;

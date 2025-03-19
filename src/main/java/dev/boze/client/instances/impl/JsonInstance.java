@@ -1,13 +1,10 @@
 package dev.boze.client.instances.impl;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import dev.boze.api.addon.Addon;
 import dev.boze.api.config.Serializable;
 import dev.boze.api.internal.interfaces.IJson;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;

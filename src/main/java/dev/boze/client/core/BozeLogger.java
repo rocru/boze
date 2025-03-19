@@ -2,81 +2,80 @@ package dev.boze.client.core;
 
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.IMinecraft;
+
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
-public class BozeLogger implements IMinecraft {
-   private static final ConcurrentHashMap<Module, LinkedList<LogMessage>> field1235 = new ConcurrentHashMap();
-   private static final long field1236 = TimeUnit.MINUTES.toMillis(3L);
-   public static final BozeLogger field1237 = new BozeLogger();
+public class BozeLogger
+        implements IMinecraft {
+    private static final ConcurrentHashMap<Module, LinkedList<LogMessage>> field1235 = new ConcurrentHashMap();
+    private static final long field1236 = TimeUnit.MINUTES.toMillis(3L);
+    public static final BozeLogger field1237 = new BozeLogger();
 
-   public static void method522(Module module, String source, String message) {
-      String var6 = source;
-      if (mc.player != null) {
-         var6 = source + "@" + mc.player.age;
-      }
+    public static void method522(Module module, String source, String message) {
+        Object object = source;
+        if (BozeLogger.mc.player != null) {
+            object = source + "@" + BozeLogger.mc.player.age;
+        }
+        field1235.computeIfAbsent(module, BozeLogger::lambda$log$0).add(new LogMessage((String)object, message));
+        BozeLogger.method396(module);
+    }
 
-      ((LinkedList)field1235.computeIfAbsent(module, BozeLogger::lambda$log$0)).add(new LogMessage(var6, message));
-      method396(module);
-   }
-
-   public static String method523(Module module, long timeSeconds) {
-      long var6 = System.currentTimeMillis() - timeSeconds * 1000L;
-      StringBuilder var8 = new StringBuilder("\n");
-      LinkedList<LogMessage> var9 = (LinkedList)field1235.get(module);
-      if (var9 != null) {
-         for (LogMessage var11 : var9) {
-            if (var11.field1869 >= var6) {
-               var8.append("[").append(var11.field1871).append("] ").append(var11.field1870).append("\n");
+    public static String method523(Module module, long timeSeconds) {
+        long l = System.currentTimeMillis() - timeSeconds * 1000L;
+        StringBuilder stringBuilder = new StringBuilder("\n");
+        LinkedList<LogMessage> linkedList = field1235.get(module);
+        if (linkedList != null) {
+            for (LogMessage logMessage : linkedList) {
+                if (logMessage.field1869 < l) continue;
+                stringBuilder.append("[").append(logMessage.field1871).append("] ").append(logMessage.field1870).append("\n");
             }
-         }
-      }
+        }
+        return stringBuilder.toString();
+    }
 
-      return var8.toString();
-   }
+    public static void method396(Module module) {
+        long l = System.currentTimeMillis() - field1236;
+        BozeLogger.method524(module, l);
+    }
 
-   public static void method396(Module module) {
-      long var1 = System.currentTimeMillis() - field1236;
-      method524(module, var1);
-   }
+    private static void method524(Module module, long l) {
+        LinkedList<LogMessage> linkedList = field1235.get(module);
+        if (linkedList != null) {
+            linkedList.removeIf(arg_0 -> BozeLogger.lambda$cleanOldEntriesWithCutoff$1(l, arg_0));
+            if (linkedList.isEmpty()) {
+                field1235.remove(module);
+            }
+        }
+    }
 
-   private static void method524(Module var0, long var1) {
-      LinkedList var6 = (LinkedList)field1235.get(var0);
-      if (var6 != null) {
-         var6.removeIf(BozeLogger::lambda$cleanOldEntriesWithCutoff$1);
-         if (var6.isEmpty()) {
-            field1235.remove(var0);
-         }
-      }
-   }
+    public static void method525(Module module, String source, String message) {
+        BozeLogger.method522(module, source, "ERROR: " + message);
+    }
 
-   public static void method525(Module module, String source, String message) {
-      method522(module, source, "ERROR: " + message);
-   }
+    public static void method1338(String source, String message) {
+        BozeLogger.method525(null, source, message);
+    }
 
-   public static void method1338(String source, String message) {
-      method525(null, source, message);
-   }
+    public static void method527(Module module, String source, String message) {
+        BozeLogger.method522(module, source, "CRASH: " + message);
+        throw new RuntimeException(String.format("BOZE CRASHED [%s]: %s", source, message));
+    }
 
-   public static void method527(Module module, String source, String message) {
-      method522(module, source, "CRASH: " + message);
-      throw new RuntimeException(String.format("BOZE CRASHED [%s]: %s", source, message));
-   }
+    public static void method1339(String source, String message) {
+        BozeLogger.method527(null, source, message);
+    }
 
-   public static void method1339(String source, String message) {
-      method527(null, source, message);
-   }
+    public static void method529(Module module, String message) {
+        BozeLogger.method522(module, module.getName(), message);
+    }
 
-   public static void method529(Module module, String message) {
-      method522(module, module.getName(), message);
-   }
+    private static boolean lambda$cleanOldEntriesWithCutoff$1(long l, LogMessage logMessage) {
+        return logMessage.field1869 < l;
+    }
 
-   private static boolean lambda$cleanOldEntriesWithCutoff$1(long var0, LogMessage var2) {
-      return var2.field1869 < var0;
-   }
-
-   private static LinkedList lambda$log$0(Module var0) {
-      return new LinkedList();
-   }
+    private static LinkedList lambda$log$0(Module module) {
+        return new LinkedList();
+    }
 }

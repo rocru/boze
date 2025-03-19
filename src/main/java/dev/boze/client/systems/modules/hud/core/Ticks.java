@@ -6,8 +6,9 @@ import dev.boze.client.settings.ColorSetting;
 import dev.boze.client.systems.modules.HUDModule;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.utils.trackers.TickRateTracker;
-import java.text.DecimalFormat;
 import net.minecraft.client.gui.DrawContext;
+
+import java.text.DecimalFormat;
 
 public class Ticks extends HUDModule {
    private final BooleanSetting field2656 = new BooleanSetting("ShowPrefix", false, "Show prefix (TickRate)");

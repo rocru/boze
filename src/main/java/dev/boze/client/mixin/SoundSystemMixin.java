@@ -1,8 +1,8 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.SoundPlayEvent;
 import dev.boze.client.mixininterfaces.ISoundSystem;
-import dev.boze.client.Boze;
 import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.client.sound.SoundSystem;
 import net.minecraft.client.sound.TickableSoundInstance;

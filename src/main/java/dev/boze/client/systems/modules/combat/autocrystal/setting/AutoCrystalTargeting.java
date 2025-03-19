@@ -3,20 +3,17 @@ package dev.boze.client.systems.modules.combat.autocrystal.setting;
 import dev.boze.client.enums.AutoCrystalMaxDamage;
 import dev.boze.client.enums.AutoCrystalTargetingMode;
 import dev.boze.client.enums.ServerType;
-import dev.boze.client.settings.BindSetting;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.Setting;
+import dev.boze.client.settings.*;
 import dev.boze.client.settings.generic.SettingsGroup;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.utils.Bind;
 import dev.boze.client.utils.IMinecraft;
-import java.util.ArrayList;
-import java.util.List;
 import mapped.Class5924;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AutoCrystalTargeting implements IMinecraft, SettingsGroup {
    private final EnumSetting<AutoCrystalTargetingMode> field107 = new EnumSetting<AutoCrystalTargetingMode>(

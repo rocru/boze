@@ -2,9 +2,10 @@ package dev.boze.client.utils;
 
 import dev.boze.client.utils.misc.ICopyable;
 import dev.boze.client.utils.misc.ISerializable;
-import java.awt.Color;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Vec3d;
+
+import java.awt.*;
 
 public class RGBAColor implements ICopyable<RGBAColor>, ISerializable<RGBAColor> {
    public static final RGBAColor field402 = new RGBAColor();

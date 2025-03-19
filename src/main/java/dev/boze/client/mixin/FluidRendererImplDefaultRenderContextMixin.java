@@ -1,7 +1,6 @@
 package dev.boze.client.mixin;
 
 import dev.boze.client.systems.modules.render.Tint;
-import java.util.Arrays;
 import net.caffeinemc.mods.sodium.api.util.ColorABGR;
 import net.caffeinemc.mods.sodium.client.model.color.ColorProvider;
 import net.caffeinemc.mods.sodium.client.model.quad.ModelQuadView;
@@ -16,6 +15,8 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Arrays;
 
 @Mixin(
    targets = {"net.caffeinemc.mods.sodium.fabric.render.FluidRendererImpl$DefaultRenderContext"},

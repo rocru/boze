@@ -8,14 +8,15 @@ import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.utils.BlockMiningUtils;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.world.BlockBreakingUtil;
-import java.util.HashMap;
-import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.BlockBreakingInfo;
 import net.minecraft.network.packet.s2c.play.BlockBreakingProgressS2CPacket;
 import net.minecraft.util.math.BlockPos;
+
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class BlockBreakingTracker implements IMinecraft {
    public static final BlockBreakingTracker field1511 = new BlockBreakingTracker();

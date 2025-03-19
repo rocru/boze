@@ -2,8 +2,9 @@ package dev.boze.client.gui.components;
 
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.render.RenderUtil;
-import java.awt.Color;
 import net.minecraft.client.gui.DrawContext;
+
+import java.awt.*;
 
 public abstract class FloatArraySliderComponent extends InputBaseComponent {
    public FloatArraySliderComponent(String name, double x, double y, double width, double height) {

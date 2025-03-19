@@ -1,25 +1,22 @@
 package dev.boze.client.font;
 
+import dev.boze.client.Boze;
 import dev.boze.client.api.BozeDrawColor;
-import dev.boze.client.renderer.DrawMode;
-import dev.boze.client.renderer.GL;
-import dev.boze.client.renderer.Mesh;
-import dev.boze.client.renderer.ShaderMesh;
-import dev.boze.client.renderer.TextureShaderMesh;
+import dev.boze.client.renderer.*;
 import dev.boze.client.renderer.Mesh.Attrib;
 import dev.boze.client.shaders.ShaderRegistry;
 import dev.boze.client.utils.ColorWrapper;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.color.GradientColor;
+import net.minecraft.client.gui.DrawContext;
+import org.lwjgl.BufferUtils;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
-import dev.boze.client.Boze;
-import net.minecraft.client.gui.DrawContext;
-import org.lwjgl.BufferUtils;
 
 public class FontLoader implements IFontRender, IMinecraft {
    public static boolean field1062 = false;

@@ -6,21 +6,15 @@ import dev.boze.client.gui.colorpanel.action.PasteComponent;
 import dev.boze.client.gui.colorpanel.action.ResetComponent;
 import dev.boze.client.gui.colorpanel.gradient.MaxHueComponent;
 import dev.boze.client.gui.colorpanel.gradient.MinHueComponent;
-import dev.boze.client.gui.colorpanel.main.BlueComponent;
-import dev.boze.client.gui.colorpanel.main.GradientComponent;
-import dev.boze.client.gui.colorpanel.main.GreenComponent;
-import dev.boze.client.gui.colorpanel.main.OffsetComponent;
-import dev.boze.client.gui.colorpanel.main.RedComponent;
-import dev.boze.client.gui.colorpanel.main.SBComponent;
-import dev.boze.client.gui.colorpanel.main.SpeedComponent;
-import dev.boze.client.gui.colorpanel.main.StrengthComponent;
+import dev.boze.client.gui.colorpanel.main.*;
 import dev.boze.client.gui.colorpanel.secondary.HuiComponent;
 import dev.boze.client.gui.colorpanel.secondary.OpacityComponent;
 import dev.boze.client.gui.components.InputBaseComponent;
 import dev.boze.client.manager.ColorManager;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
 import net.minecraft.client.gui.DrawContext;
+
+import java.util.ArrayList;
 
 public class ColorPanel extends InputBaseComponent {
    private static final double field1138 = 6.0;

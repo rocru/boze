@@ -10,14 +10,15 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.Timer;
-import java.util.LinkedList;
-import java.util.Queue;
 import mapped.Class3076;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.LookAndOnGround;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class TickShift extends Module {
    public static final TickShift INSTANCE = new TickShift();

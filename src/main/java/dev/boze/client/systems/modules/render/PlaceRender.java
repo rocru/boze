@@ -13,25 +13,20 @@ import dev.boze.client.manager.NotificationManager;
 import dev.boze.client.render.Placement;
 import dev.boze.client.renderer.Renderer3D;
 import dev.boze.client.renderer.packer.ByteTexturePacker;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.ColorSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxSetting;
-import dev.boze.client.settings.StringSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.OldColors;
 import dev.boze.client.utils.render.ByteTexture;
-import java.io.File;
-import java.io.FileInputStream;
 import mapped.Class3064;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
+
+import java.io.File;
+import java.io.FileInputStream;
 
 public class PlaceRender extends Module {
    public static final PlaceRender INSTANCE = new PlaceRender();

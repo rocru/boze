@@ -2,6 +2,8 @@ package dev.boze.client.utils.http;
 
 import dev.boze.client.core.ErrorLogger;
 import dev.boze.client.manager.ConfigManager;
+import org.apache.commons.io.IOUtils;
+
 import java.io.IOException;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
@@ -11,7 +13,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.apache.commons.io.IOUtils;
 
 public class NewsUtil {
    public static List<String> getNews() {

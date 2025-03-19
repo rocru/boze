@@ -7,10 +7,11 @@ import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.renderer.GL;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
-import java.awt.Color;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
+
+import java.awt.*;
 
 public class EyedropperScreen extends Screen implements IMinecraft {
    private boolean field1052;

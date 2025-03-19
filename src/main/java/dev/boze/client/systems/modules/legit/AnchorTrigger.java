@@ -3,26 +3,14 @@ package dev.boze.client.systems.modules.legit;
 import dev.boze.client.enums.AnchorTriggerDefaultItem;
 import dev.boze.client.enums.ClickMethod;
 import dev.boze.client.enums.RotationMode;
-import dev.boze.client.events.HandleInputEvent;
-import dev.boze.client.events.MouseUpdateEvent;
-import dev.boze.client.events.MovementEvent;
-import dev.boze.client.events.PrePacketSendEvent;
-import dev.boze.client.events.RotationEvent;
+import dev.boze.client.events.*;
 import dev.boze.client.gui.screens.ClickGUI;
 import dev.boze.client.mixin.KeyBindingAccessor;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntArraySetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxDoubleSetting;
-import dev.boze.client.settings.MinMaxSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.click.ClickManager;
-import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.RespawnAnchorBlock;
@@ -33,6 +21,9 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.network.packet.c2s.play.PlayerInteractBlockC2SPacket;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class AnchorTrigger extends Module {
    public static final AnchorTrigger INSTANCE = new AnchorTrigger();

@@ -2,11 +2,18 @@ package dev.boze.client.shaders;
 
 import com.google.common.io.Files;
 import com.mojang.blaze3d.systems.RenderSystem;
+import dev.boze.client.Boze;
 import dev.boze.client.core.ErrorLogger;
 import dev.boze.client.renderer.GL;
 import dev.boze.client.utils.IMinecraft;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import net.minecraft.client.gl.GlProgramManager;
+import net.minecraft.resource.Resource;
+import net.minecraft.util.Identifier;
+import org.apache.commons.io.IOUtils;
+import org.joml.Matrix4f;
+
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -16,12 +23,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
-import dev.boze.client.Boze;
-import net.minecraft.client.gl.GlProgramManager;
-import net.minecraft.resource.Resource;
-import net.minecraft.util.Identifier;
-import org.apache.commons.io.IOUtils;
-import org.joml.Matrix4f;
 
 public class ShaderProgram implements IMinecraft {
    public static ShaderProgram field1552;

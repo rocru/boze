@@ -1,5 +1,6 @@
 package dev.boze.client.gui.components;
 
+import dev.boze.client.Boze;
 import dev.boze.client.enums.AlignMode;
 import dev.boze.client.enums.LetterMode;
 import dev.boze.client.enums.MaxHeight;
@@ -16,11 +17,11 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
 import dev.boze.client.utils.render.Scissor;
-import java.util.ArrayList;
-import dev.boze.client.Boze;
 import mapped.Class3071;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.math.MathHelper;
+
+import java.util.ArrayList;
 
 public class ModuleCategoryComponent extends BaseComponent implements IMinecraft {
    public final Category field375;

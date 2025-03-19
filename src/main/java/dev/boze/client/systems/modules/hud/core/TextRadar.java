@@ -12,11 +12,6 @@ import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.systems.modules.hud.core.TextRadar.pt;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.TargetTracker;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
 import mapped.Class2894;
 import mapped.Class2895;
 import mapped.Class5926;
@@ -26,6 +21,12 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.entity.player.PlayerEntity;
+
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TextRadar extends HUDModule implements Class5929 {
    private final IntSetting field626 = new IntSetting("Range", 64, 8, 256, 1, "Range to display players");

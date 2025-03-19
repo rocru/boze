@@ -3,17 +3,18 @@ package dev.boze.client.settings;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import dev.boze.client.Boze;
 import dev.boze.client.command.arguments.ProfileArgument;
 import dev.boze.client.enums.ConfigType;
 import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.systems.modules.client.Profiles;
-import java.util.Locale;
-import java.util.function.BooleanSupplier;
 import mapped.Class1201;
-import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.Locale;
+import java.util.function.BooleanSupplier;
 
 public class ProfileSetting extends Setting<String> {
    public ProfileSetting(String name, String description, BooleanSupplier visibility) {

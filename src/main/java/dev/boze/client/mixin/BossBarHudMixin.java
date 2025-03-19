@@ -1,22 +1,19 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.BossBarIteratorEvent;
 import dev.boze.client.events.BossBarNameEvent;
 import dev.boze.client.events.BossBarSpacingEvent;
 import dev.boze.client.systems.modules.render.NoRender;
-import java.util.Collection;
-import java.util.Iterator;
-import dev.boze.client.Boze;
 import net.minecraft.client.gui.hud.BossBarHud;
 import net.minecraft.client.gui.hud.ClientBossBar;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Collection;
+import java.util.Iterator;
 
 @Mixin({BossBarHud.class})
 public class BossBarHudMixin {

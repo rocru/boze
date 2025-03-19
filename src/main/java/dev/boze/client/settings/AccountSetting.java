@@ -3,16 +3,17 @@ package dev.boze.client.settings;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import dev.boze.client.Boze;
 import dev.boze.client.command.arguments.AccountArgument;
 import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.systems.accounts.Account;
 import dev.boze.client.systems.accounts.types.MicrosoftAccount;
 import dev.boze.client.utils.IMinecraft;
-import java.util.Base64;
-import dev.boze.client.Boze;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.Base64;
 
 public class AccountSetting extends Setting<String> implements IMinecraft {
    private String field981;

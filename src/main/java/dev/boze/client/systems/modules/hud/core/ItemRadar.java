@@ -10,15 +10,16 @@ import dev.boze.client.settings.MinMaxSetting;
 import dev.boze.client.systems.modules.HUDModule;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.utils.RGBAColor;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import mapped.Class2893;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class ItemRadar extends HUDModule {
    private final IntSetting field2629 = new IntSetting("Range", 64, 8, 256, 1, "Range to display players");

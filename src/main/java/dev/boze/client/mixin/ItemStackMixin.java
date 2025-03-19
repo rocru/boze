@@ -1,8 +1,8 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.FinishUsingEvent;
 import dev.boze.client.utils.IMinecraft;
-import dev.boze.client.Boze;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

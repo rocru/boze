@@ -1,10 +1,6 @@
 package dev.boze.client.systems.modules.movement.boatfly;
 
-import dev.boze.client.events.PacketBundleEvent;
-import dev.boze.client.events.PlayerTravelEvent;
-import dev.boze.client.events.PrePacketSendEvent;
-import dev.boze.client.events.PreTickEvent;
-import dev.boze.client.events.Render3DEvent;
+import dev.boze.client.events.*;
 import dev.boze.client.systems.modules.movement.BoatFly;
 import dev.boze.client.utils.IMinecraft;
 import net.minecraft.network.packet.s2c.play.VehicleMoveS2CPacket;

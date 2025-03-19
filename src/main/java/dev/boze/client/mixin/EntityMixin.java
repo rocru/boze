@@ -1,5 +1,6 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.BoatEntityMoveEvent;
 import dev.boze.client.events.LivingEntityMoveEvent;
 import dev.boze.client.events.PlayerPositionEvent;
@@ -13,8 +14,6 @@ import dev.boze.client.utils.RotationHelper;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import dev.boze.client.utils.fakeplayer.FakeClientPlayerEntity;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
-import java.util.List;
-import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -31,11 +30,13 @@ import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.At.Shift;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+
+import java.util.List;
 
 @Mixin({Entity.class})
 public abstract class EntityMixin implements IEntity {

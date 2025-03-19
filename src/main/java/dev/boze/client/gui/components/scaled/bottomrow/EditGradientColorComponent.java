@@ -2,11 +2,7 @@ package dev.boze.client.gui.components.scaled.bottomrow;
 
 import dev.boze.client.enums.BottomRow;
 import dev.boze.client.font.IFontRender;
-import dev.boze.client.gui.components.BaseComponent;
-import dev.boze.client.gui.components.BottomRowScaledComponent;
-import dev.boze.client.gui.components.FloatSliderComponent;
-import dev.boze.client.gui.components.ScaledBaseComponent;
-import dev.boze.client.gui.components.ToggleComponent;
+import dev.boze.client.gui.components.*;
 import dev.boze.client.gui.components.scaled.NewColorComponent;
 import dev.boze.client.gui.components.slider.floats.fu;
 import dev.boze.client.gui.components.slider.floats.fv;

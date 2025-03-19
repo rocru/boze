@@ -1,11 +1,7 @@
 package dev.boze.client.settings;
 
 import dev.boze.client.settings.generic.SettingsGroup;
-import net.minecraft.client.particle.ElderGuardianAppearanceParticle;
-import net.minecraft.client.particle.ExplosionLargeParticle;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.SpellParticle;
-import net.minecraft.client.particle.TotemParticle;
+import net.minecraft.client.particle.*;
 
 public class ParticleSettings implements SettingsGroup {
    private final MinMaxSetting field2212 = new MinMaxSetting("PopParticles", 0.5, 0.0, 1.0, 0.01, "Reduce pop particles");

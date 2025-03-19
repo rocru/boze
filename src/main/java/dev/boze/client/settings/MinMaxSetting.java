@@ -4,10 +4,11 @@ import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Locale;
-import java.util.function.BooleanSupplier;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.Locale;
+import java.util.function.BooleanSupplier;
 
 public class MinMaxSetting extends Setting<Double> {
    private double field940;

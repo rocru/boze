@@ -1,12 +1,12 @@
 package dev.boze.client.enums;
 
 enum AutoLootInventory {
-   Ignore,
-   Await;
+    Ignore,
+    Await;
 
-   private static final AutoLootInventory[] field1655 = method774();
+    private static final AutoLootInventory[] field1655 = method774();
 
-   private static AutoLootInventory[] method774() {
-      return new AutoLootInventory[]{Ignore, Await};
-   }
+    private static AutoLootInventory[] method774() {
+        return new AutoLootInventory[]{Ignore, Await};
+    }
 }

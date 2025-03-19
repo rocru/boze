@@ -1,9 +1,10 @@
 package dev.boze.client.systems.modules;
 
+import dev.boze.client.Boze;
 import dev.boze.client.settings.Setting;
+
 import java.io.FileWriter;
 import java.io.IOException;
-import dev.boze.client.Boze;
 
 public class ModulePrinter {
    private final FileWriter field2312;

@@ -3,9 +3,10 @@ package dev.boze.client.utils;
 import dev.boze.client.events.MovementEvent;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.systems.modules.misc.FastLatency;
+import meteordevelopment.orbit.EventHandler;
+
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import meteordevelopment.orbit.EventHandler;
 
 public class MovementHandler implements IMinecraft {
    public double field1519;

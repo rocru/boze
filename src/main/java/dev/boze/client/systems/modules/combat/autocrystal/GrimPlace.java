@@ -4,17 +4,14 @@ import dev.boze.client.ac.Grim;
 import dev.boze.client.mixin.ClientPlayerEntityAccessor;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.utils.IMinecraft;
-import java.util.HashSet;
-import java.util.Set;
 import mapped.Class3062;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Pair;
 import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 class GrimPlace implements IPlace, IMinecraft {
    @Override

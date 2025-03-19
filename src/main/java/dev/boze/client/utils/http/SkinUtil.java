@@ -5,12 +5,13 @@ import com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService;
 import dev.boze.client.core.ErrorLogger;
 import dev.boze.client.systems.accounts.TexturesJson;
 import dev.boze.client.systems.accounts.UuidToProfileResponse;
+import net.fabricmc.loader.impl.util.log.Log;
+import net.fabricmc.loader.impl.util.log.LogCategory;
+
 import java.lang.reflect.Field;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Base64;
-import net.fabricmc.loader.impl.util.log.Log;
-import net.fabricmc.loader.impl.util.log.LogCategory;
 
 public class SkinUtil {
    public static void method2191(YggdrasilMinecraftSessionService service, String url) {

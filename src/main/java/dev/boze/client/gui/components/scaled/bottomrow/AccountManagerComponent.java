@@ -1,5 +1,6 @@
 package dev.boze.client.gui.components.scaled.bottomrow;
 
+import dev.boze.client.Boze;
 import dev.boze.client.enums.BottomRow;
 import dev.boze.client.font.IFontRender;
 import dev.boze.client.gui.components.BaseComponent;
@@ -15,7 +16,6 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.network.BozeExecutor;
 import dev.boze.client.utils.render.RenderUtil;
-import dev.boze.client.Boze;
 import net.minecraft.client.gui.DrawContext;
 
 public class AccountManagerComponent extends BottomRowScaledComponent {

@@ -8,8 +8,9 @@ import dev.boze.client.settings.FloatSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.movement.GrimDisabler;
-import java.util.Random;
 import meteordevelopment.orbit.EventHandler;
+
+import java.util.Random;
 
 public class RotationLock extends Module {
    public static final RotationLock INSTANCE = new RotationLock();

@@ -1,12 +1,12 @@
 package dev.boze.client.systems.modules.movement.elytraboost;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.PacketBundleEvent;
 import dev.boze.client.systems.modules.movement.ElytraBoost;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.Timer;
-import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;

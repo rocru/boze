@@ -6,23 +6,16 @@ import dev.boze.client.events.MouseUpdateEvent;
 import dev.boze.client.events.RotationEvent;
 import dev.boze.client.gui.screens.ClickGUI;
 import dev.boze.client.mixin.KeyBindingAccessor;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntArraySetting;
-import dev.boze.client.settings.MinMaxDoubleSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.click.ClickManager;
-import java.util.HashMap;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.option.KeyBinding;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.TridentItem;
+import net.minecraft.item.*;
+
+import java.util.HashMap;
 
 public class AutoClicker extends Module {
    public static final AutoClicker INSTANCE = new AutoClicker();

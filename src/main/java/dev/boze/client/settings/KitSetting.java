@@ -11,6 +11,10 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.utils.IMinecraft;
+import net.minecraft.command.CommandSource;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,9 +22,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.function.BooleanSupplier;
-import net.minecraft.command.CommandSource;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
 
 public class KitSetting extends Setting<String> implements IMinecraft {
    private String field2195;

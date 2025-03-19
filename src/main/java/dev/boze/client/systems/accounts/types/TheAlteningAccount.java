@@ -8,8 +8,9 @@ import dev.boze.client.mixin.MinecraftClientAccessor;
 import dev.boze.client.mixin.YggdrasilMinecraftSessionServiceAccessor;
 import dev.boze.client.systems.accounts.Account;
 import dev.boze.client.systems.accounts.AccountType;
-import java.util.Optional;
 import net.minecraft.client.session.Session;
+
+import java.util.Optional;
 
 public class TheAlteningAccount extends Account<TheAlteningAccount> {
    private static final Environment field2298 = new Environment("http://sessionserver.thealtening.com", "http://authserver.thealtening.com", "The Altening");

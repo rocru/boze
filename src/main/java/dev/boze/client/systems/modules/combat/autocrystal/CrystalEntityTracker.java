@@ -1,12 +1,13 @@
 package dev.boze.client.systems.modules.combat.autocrystal;
 
+import dev.boze.client.Boze;
 import dev.boze.client.mixininterfaces.IEndCrystalEntity;
 import dev.boze.client.utils.IMinecraft;
-import java.util.LinkedList;
-import dev.boze.client.Boze;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.LinkedList;
 
 class CrystalEntityTracker implements IMinecraft {
    private LinkedList<Runnable> field1238 = new LinkedList();

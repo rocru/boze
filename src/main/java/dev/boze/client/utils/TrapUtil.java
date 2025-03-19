@@ -1,17 +1,11 @@
 package dev.boze.client.utils;
 
+import dev.boze.client.Boze;
 import dev.boze.client.enums.CheckEntityMode;
 import dev.boze.client.enums.CrystalAttackMode;
 import dev.boze.client.enums.TrapMode;
 import dev.boze.client.mixininterfaces.IEndCrystalEntity;
 import dev.boze.client.utils.trackers.BlockBreakingTracker;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Predicate;
-import dev.boze.client.Boze;
 import mapped.Class3069;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
@@ -23,6 +17,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.*;
+import java.util.function.Predicate;
 
 public class TrapUtil implements IMinecraft {
    private static final HashSet<BlockPos> field1351 = new HashSet();

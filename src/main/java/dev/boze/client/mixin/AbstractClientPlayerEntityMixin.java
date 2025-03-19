@@ -1,7 +1,6 @@
 package dev.boze.client.mixin;
 
 import dev.boze.client.systems.modules.client.Media;
-import java.util.Locale;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.client.util.DefaultSkinHelper;
@@ -12,6 +11,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Locale;
 
 @Mixin({AbstractClientPlayerEntity.class})
 public abstract class AbstractClientPlayerEntityMixin {

@@ -13,11 +13,12 @@ import dev.boze.client.settings.FontSetting;
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.files.FileUtil;
 import dev.boze.client.utils.render.RenderUtil;
-import java.io.File;
-import java.util.ArrayList;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
+
+import java.io.File;
+import java.util.ArrayList;
 
 public class FontSelectComponent extends BottomRowScaledComponent {
    private final FontSetting field1428;

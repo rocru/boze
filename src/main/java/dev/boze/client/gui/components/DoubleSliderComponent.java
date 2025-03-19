@@ -5,11 +5,12 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.math.NumberUtils;
 import dev.boze.client.utils.render.RenderUtil;
-import java.text.DecimalFormat;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
+
+import java.text.DecimalFormat;
 
 public abstract class DoubleSliderComponent extends InputBaseComponent {
    public DoubleSliderComponent(String name, double x, double y, double width, double height) {

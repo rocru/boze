@@ -8,13 +8,14 @@ import dev.boze.client.settings.ColorSetting;
 import dev.boze.client.systems.modules.HUDModule;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.utils.RGBAColor;
-import java.util.Collection;
-import java.util.Comparator;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.util.math.MathHelper;
+
+import java.util.Collection;
+import java.util.Comparator;
 
 public class Effects extends HUDModule {
    public static final Effects INSTANCE = new Effects();

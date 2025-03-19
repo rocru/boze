@@ -12,13 +12,14 @@ import dev.boze.client.command.arguments.PlayerListArgument;
 import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.systems.waypoints.WayPoint;
 import dev.boze.client.utils.IMinecraft;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.function.BooleanSupplier;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.function.BooleanSupplier;
 
 public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMinecraft {
    private ArrayList<WayPoint> field924;

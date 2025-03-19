@@ -5,8 +5,9 @@ import dev.boze.client.font.IFontRender;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
 import net.minecraft.client.gui.DrawContext;
+
+import java.util.ArrayList;
 
 public class CategoriesComponent extends BaseComponent implements IMinecraft {
    private Category field348 = Category.Combat;

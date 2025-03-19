@@ -1,9 +1,9 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.AmbientOcclusionEvent;
 import dev.boze.client.events.CollisionEvent;
 import dev.boze.client.events.CollisionType;
-import dev.boze.client.Boze;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;

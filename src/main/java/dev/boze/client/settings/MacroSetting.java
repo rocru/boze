@@ -1,9 +1,10 @@
 package dev.boze.client.settings;
 
-import dev.boze.client.utils.Macro;
-import java.util.function.BooleanSupplier;
 import dev.boze.client.Boze;
+import dev.boze.client.utils.Macro;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.function.BooleanSupplier;
 
 public class MacroSetting extends Setting<String> {
    private String field974 = "";

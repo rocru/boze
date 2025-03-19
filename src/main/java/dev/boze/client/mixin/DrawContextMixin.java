@@ -1,9 +1,6 @@
 package dev.boze.client.mixin;
 
 import dev.boze.client.utils.tooltip.BozeTooltipData;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.tooltip.HoveredTooltipPositioner;
@@ -16,6 +13,10 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Mixin({DrawContext.class})
 public abstract class DrawContextMixin {

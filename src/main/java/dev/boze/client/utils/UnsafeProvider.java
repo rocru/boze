@@ -1,7 +1,8 @@
 package dev.boze.client.utils;
 
-import java.lang.reflect.Field;
 import sun.misc.Unsafe;
+
+import java.lang.reflect.Field;
 
 public class UnsafeProvider {
    private static final Unsafe unsafe;

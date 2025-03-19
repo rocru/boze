@@ -1,7 +1,8 @@
 package dev.boze.client.settings;
 
-import java.util.function.BooleanSupplier;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.function.BooleanSupplier;
 
 public class WeirdSettingString extends Setting<String> {
    private String field938;

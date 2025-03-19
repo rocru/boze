@@ -1,16 +1,11 @@
 package dev.boze.client.systems.modules.combat;
 
+import dev.boze.client.Boze;
 import dev.boze.client.ac.Ghost;
 import dev.boze.client.enums.AttackMode;
 import dev.boze.client.enums.BlockPlaceMode;
 import dev.boze.client.enums.CheckEntityMode;
-import dev.boze.client.events.ACRotationEvent;
-import dev.boze.client.events.HandleInputEvent;
-import dev.boze.client.events.MouseUpdateEvent;
-import dev.boze.client.events.PacketBundleEvent;
-import dev.boze.client.events.PlayerPositionEvent;
-import dev.boze.client.events.RotationEvent;
-import dev.boze.client.events.eJ;
+import dev.boze.client.events.*;
 import dev.boze.client.gui.screens.ClickGUI;
 import dev.boze.client.jumptable.mw;
 import dev.boze.client.mixin.KeyBindingAccessor;
@@ -26,24 +21,9 @@ import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.legit.Reach;
 import dev.boze.client.systems.modules.movement.Step;
 import dev.boze.client.systems.render.PlacementRenderer;
-import dev.boze.client.utils.BlastResistanceCalculator;
-import dev.boze.client.utils.EntityTracker;
-import dev.boze.client.utils.EntityUtil;
-import dev.boze.client.utils.InteractionHandler;
-import dev.boze.client.utils.InventoryHelper;
-import dev.boze.client.utils.MinecraftUtils;
-import dev.boze.client.utils.RaycastUtil;
-import dev.boze.client.utils.RotationHelper;
-import dev.boze.client.utils.SwapHandler;
-import dev.boze.client.utils.Timer;
+import dev.boze.client.utils.*;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.stream.Collectors;
 import mapped.Class1202;
-import dev.boze.client.Boze;
 import mapped.Class2784;
 import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
@@ -61,6 +41,12 @@ import net.minecraft.util.hit.HitResult.Type;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext.ShapeType;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AutoWeb extends Module {
    public static final AutoWeb INSTANCE = new AutoWeb();

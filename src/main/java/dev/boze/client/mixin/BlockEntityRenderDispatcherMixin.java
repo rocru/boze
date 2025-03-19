@@ -1,8 +1,8 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.PostRenderEvent;
 import dev.boze.client.events.PreRenderEvent;
-import dev.boze.client.Boze;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;

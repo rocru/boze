@@ -1,18 +1,18 @@
 package dev.boze.client.utils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.Set;
 import net.minecraft.registry.VersionedIdentifier;
 import net.minecraft.resource.InputSupplier;
 import net.minecraft.resource.ResourcePack;
 import net.minecraft.resource.ResourcePackInfo;
 import net.minecraft.resource.ResourceType;
-import net.minecraft.resource.ResourcePack.ResultConsumer;
 import net.minecraft.resource.metadata.ResourceMetadataReader;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.Set;
 
 public class BozeResourcePack implements ResourcePack {
    @Nullable

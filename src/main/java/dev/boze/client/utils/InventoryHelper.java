@@ -4,13 +4,14 @@ import dev.boze.client.enums.AutoMineSwapMode;
 import dev.boze.client.enums.SlotSwapMode;
 import dev.boze.client.enums.SwapMode;
 import dev.boze.client.systems.modules.misc.XCarry;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
+
+import java.util.function.BiPredicate;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class InventoryHelper implements IMinecraft {
    public static int method2010() {

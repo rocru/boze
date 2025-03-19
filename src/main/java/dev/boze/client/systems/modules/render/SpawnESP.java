@@ -5,28 +5,25 @@ import dev.boze.client.events.MovementEvent;
 import dev.boze.client.events.Render3DEvent;
 import dev.boze.client.renderer.DrawMode;
 import dev.boze.client.renderer.Mesh;
-import dev.boze.client.renderer.ShaderMesh;
 import dev.boze.client.renderer.Mesh.Attrib;
+import dev.boze.client.renderer.ShaderMesh;
 import dev.boze.client.settings.ColorSetting;
 import dev.boze.client.settings.IntSetting;
 import dev.boze.client.shaders.ShaderRegistry;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.render.spawnesp.BlockRenderer;
-import java.util.ArrayList;
-import java.util.List;
 import mapped.Class3064;
 import meteordevelopment.orbit.EventHandler;
-import net.minecraft.block.AirBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.StairsBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.block.enums.SlabType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.LightType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SpawnESP extends Module {
    public static final SpawnESP INSTANCE = new SpawnESP();

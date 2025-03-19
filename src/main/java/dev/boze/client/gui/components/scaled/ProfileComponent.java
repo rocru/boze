@@ -10,11 +10,12 @@ import dev.boze.client.settings.CurrentProfileSetting;
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
 import mapped.Class5907;
 import mapped.Class5908;
 import mapped.Class5911;
 import net.minecraft.client.gui.DrawContext;
+
+import java.util.ArrayList;
 
 public class ProfileComponent extends ScaledBaseComponent {
    private final double field1416 = 6.0 * BaseComponent.scaleFactor;

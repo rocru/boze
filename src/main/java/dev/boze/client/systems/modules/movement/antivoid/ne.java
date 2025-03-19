@@ -2,8 +2,6 @@ package dev.boze.client.systems.modules.movement.antivoid;
 
 import dev.boze.client.systems.modules.movement.AntiVoid;
 import dev.boze.client.utils.Timer;
-import java.util.ArrayList;
-import java.util.List;
 import mapped.Class3062;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.hit.BlockHitResult;
@@ -11,6 +9,9 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.hit.HitResult.Type;
 import org.joml.Vector3d;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ne {
    private final List<Vector3d> field3138;

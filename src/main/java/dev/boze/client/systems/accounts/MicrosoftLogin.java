@@ -5,24 +5,18 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import dev.boze.client.core.ErrorLogger;
-import dev.boze.client.systems.accounts.MicrosoftLogin.AuthTokenResponse;
-import dev.boze.client.systems.accounts.MicrosoftLogin.GameOwnershipResponse;
-import dev.boze.client.systems.accounts.MicrosoftLogin.Handler;
-import dev.boze.client.systems.accounts.MicrosoftLogin.LoginData;
-import dev.boze.client.systems.accounts.MicrosoftLogin.McResponse;
-import dev.boze.client.systems.accounts.MicrosoftLogin.ProfileResponse;
-import dev.boze.client.systems.accounts.MicrosoftLogin.XblXstsResponse;
 import dev.boze.client.utils.http.HttpUtil;
 import dev.boze.client.utils.network.BozeExecutor;
+import net.minecraft.util.Util;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.function.Consumer;
-import net.minecraft.util.Util;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
 
 public class MicrosoftLogin {
    public static class Handler implements HttpHandler {

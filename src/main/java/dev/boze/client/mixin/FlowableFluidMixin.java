@@ -1,13 +1,14 @@
 package dev.boze.client.mixin;
 
-import dev.boze.client.events.PlayerVelocityEvent;
-import java.util.Iterator;
 import dev.boze.client.Boze;
+import dev.boze.client.events.PlayerVelocityEvent;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.util.math.Direction;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
+
+import java.util.Iterator;
 
 @Mixin({FlowableFluid.class})
 public class FlowableFluidMixin {

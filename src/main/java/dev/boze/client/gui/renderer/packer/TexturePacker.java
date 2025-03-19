@@ -2,17 +2,10 @@ package dev.boze.client.gui.renderer.packer;
 
 import com.mojang.blaze3d.platform.TextureUtil;
 import dev.boze.client.core.ErrorLogger;
-import dev.boze.client.gui.renderer.packer.TexturePacker.Image;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.render.ByteTexture;
 import dev.boze.client.utils.render.Filter;
 import dev.boze.client.utils.render.Format;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.util.ArrayList;
-import java.util.List;
 import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
 import org.lwjgl.BufferUtils;
@@ -20,6 +13,13 @@ import org.lwjgl.stb.STBImage;
 import org.lwjgl.stb.STBImageResize;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TexturePacker implements IMinecraft {
    public class Image {

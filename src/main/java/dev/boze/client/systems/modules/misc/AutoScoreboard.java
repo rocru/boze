@@ -9,14 +9,15 @@ import dev.boze.client.settings.BooleanSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.TargetTracker;
-import java.util.HashMap;
-import java.util.Map.Entry;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.DeathScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Pair;
+
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class AutoScoreboard extends Module {
    public static final AutoScoreboard INSTANCE = new AutoScoreboard();

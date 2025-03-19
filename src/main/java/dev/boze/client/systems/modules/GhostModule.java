@@ -1,13 +1,14 @@
 package dev.boze.client.systems.modules;
 
+import dev.boze.client.Boze;
 import dev.boze.client.core.ErrorLogger;
 import dev.boze.client.enums.InteractionMode;
 import dev.boze.client.settings.Setting;
 import dev.boze.client.utils.IMinecraft;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import dev.boze.client.Boze;
 
 public abstract class GhostModule implements IMinecraft {
    public abstract InteractionMode getInteractionMode();

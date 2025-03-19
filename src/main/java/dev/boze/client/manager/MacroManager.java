@@ -9,9 +9,10 @@ import dev.boze.client.events.MouseButtonEvent;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.Macro;
 import dev.boze.client.utils.misc.IJsonSerializable;
+import meteordevelopment.orbit.EventHandler;
+
 import java.util.ArrayList;
 import java.util.List;
-import meteordevelopment.orbit.EventHandler;
 
 public class MacroManager implements IJsonSerializable<MacroManager>, IMinecraft {
    public List<Macro> field2140 = new ArrayList();

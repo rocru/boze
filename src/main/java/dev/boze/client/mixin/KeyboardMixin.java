@@ -1,9 +1,9 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.enums.KeyAction;
 import dev.boze.client.events.KeyEvent;
 import dev.boze.client.gui.screens.ClickGUI;
-import dev.boze.client.Boze;
 import mapped.Class3077;
 import mapped.Class5928;
 import net.minecraft.client.Keyboard;

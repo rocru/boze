@@ -18,22 +18,13 @@ import dev.boze.client.mixin.ClientPlayerInteractionManagerAccessor;
 import dev.boze.client.mixin.WorldRendererAccessor;
 import dev.boze.client.renderer.Renderer3D;
 import dev.boze.client.renderer.packer.ByteTexturePacker;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.ColorSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.StringSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.settings.generic.ScalingSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.ByteTexture;
 import dev.boze.client.utils.trackers.BlockBreakingTracker;
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
 import mapped.Class5922;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.BlockState;
@@ -44,6 +35,11 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import org.joml.Vector3d;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class BreakHighlight extends Module {
    public static final BreakHighlight INSTANCE = new BreakHighlight();

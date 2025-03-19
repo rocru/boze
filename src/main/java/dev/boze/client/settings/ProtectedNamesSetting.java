@@ -7,13 +7,14 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.boze.client.command.arguments.PlayerListArgument;
 import dev.boze.client.instances.impl.ChatInstance;
-import java.util.HashMap;
-import java.util.Locale;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
+
+import java.util.HashMap;
+import java.util.Locale;
 
 public class ProtectedNamesSetting extends Setting<HashMap<String, String>> {
    private HashMap<String, String> field976 = new HashMap();

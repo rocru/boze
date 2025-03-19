@@ -5,13 +5,14 @@ import dev.boze.client.events.MouseButtonEvent;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.systems.modules.combat.AutoMine;
 import dev.boze.client.utils.IMinecraft;
-import java.util.HashSet;
 import mapped.Class2811;
 import mapped.Class5912;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Direction.Axis;
+
+import java.util.HashSet;
 
 public class CrystalSelectionHandler implements Class5912, IMinecraft {
    private final AutoCrystal field130;

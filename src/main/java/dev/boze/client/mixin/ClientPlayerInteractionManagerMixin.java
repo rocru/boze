@@ -1,5 +1,6 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.PostAttackEntityEvent;
 import dev.boze.client.events.PostBlockBreakEvent;
 import dev.boze.client.events.PreAttackEntityEvent;
@@ -14,7 +15,6 @@ import dev.boze.client.systems.modules.misc.autotool.qG;
 import dev.boze.client.utils.FoodUtil;
 import dev.boze.client.utils.InventoryUtil;
 import dev.boze.client.utils.world.BlockBreakingUtil;
-import dev.boze.client.Boze;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;

@@ -10,6 +10,7 @@ import dev.boze.client.systems.accounts.types.CrackedAccount;
 import dev.boze.client.systems.accounts.types.MicrosoftAccount;
 import dev.boze.client.systems.accounts.types.TheAlteningAccount;
 import dev.boze.client.utils.misc.IJsonSerializable;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

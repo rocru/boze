@@ -19,11 +19,6 @@ import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.PlaceAction;
 import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
 import mapped.Class2811;
 import mapped.Class2812;
 import mapped.Class3069;
@@ -42,6 +37,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AutoAnchor extends Module {
    public static final AutoAnchor INSTANCE = new AutoAnchor();

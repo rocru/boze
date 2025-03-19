@@ -10,9 +10,10 @@ import dev.boze.client.settings.Setting;
 import dev.boze.client.settings.SettingBlock;
 import dev.boze.client.settings.generic.SettingsGroup;
 import dev.boze.client.systems.modules.render.PlaceRender;
-import java.util.ArrayList;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.util.hit.BlockHitResult;
+
+import java.util.ArrayList;
 
 public class PlacementRenderer implements SettingsGroup {
    private final BooleanSetting field221 = new BooleanSetting("Render", true, "Render placements");

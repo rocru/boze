@@ -3,6 +3,7 @@ package dev.boze.client.mixin;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReceiver;
 import com.llamalad7.mixinextras.sugar.Local;
+import dev.boze.client.Boze;
 import dev.boze.client.events.AddMessageEvent;
 import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.mixininterfaces.IChatHud;
@@ -10,8 +11,6 @@ import dev.boze.client.mixininterfaces.IChatHudLine;
 import dev.boze.client.mixininterfaces.IChatHudLineVisible;
 import dev.boze.client.systems.modules.misc.ExtraChat;
 import dev.boze.client.utils.RGBAColor;
-import java.util.List;
-import dev.boze.client.Boze;
 import mapped.Class2780;
 import mapped.Class3071;
 import net.minecraft.client.MinecraftClient;
@@ -19,8 +18,8 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.ChatHudLine;
-import net.minecraft.client.gui.hud.MessageIndicator;
 import net.minecraft.client.gui.hud.ChatHudLine.Visible;
+import net.minecraft.client.gui.hud.MessageIndicator;
 import net.minecraft.network.message.MessageSignatureData;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
@@ -31,12 +30,14 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
-import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
+
+import java.util.List;
 
 @Mixin({ChatHud.class})
 public abstract class ChatHudMixin implements IChatHud {

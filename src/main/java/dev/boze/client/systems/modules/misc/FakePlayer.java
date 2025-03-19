@@ -4,12 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mojang.authlib.GameProfile;
 import dev.boze.client.enums.KeyAction;
-import dev.boze.client.events.KeyEvent;
-import dev.boze.client.events.MouseButtonEvent;
-import dev.boze.client.events.MovementEvent;
-import dev.boze.client.events.PacketBundleEvent;
-import dev.boze.client.events.PrePacketSendEvent;
-import dev.boze.client.events.PreTickEvent;
+import dev.boze.client.events.*;
 import dev.boze.client.mixin.PlayerEntityAccessor;
 import dev.boze.client.mixin.PlayerInteractEntityC2SPacketAccessor;
 import dev.boze.client.mixininterfaces.IPlayerInteractEntityC2SPacket;
@@ -25,11 +20,6 @@ import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.fakeplayer.FakeClientPlayerEntity;
 import dev.boze.client.utils.fakeplayer.FakePlayerEntityWithTotem;
 import dev.boze.client.utils.fakeplayer.FakePositions;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.function.BiFunction;
 import mapped.Class5914;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.network.OtherClientPlayerEntity;
@@ -44,6 +34,12 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.explosion.Explosion;
 import net.minecraft.world.explosion.Explosion.DestructionType;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.BiFunction;
 
 public class FakePlayer extends Module {
    public static final FakePlayer INSTANCE = new FakePlayer();

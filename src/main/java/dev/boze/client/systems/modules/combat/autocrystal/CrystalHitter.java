@@ -13,14 +13,7 @@ import dev.boze.client.events.RotationEvent;
 import dev.boze.client.mixininterfaces.IClientPlayerEntity;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.systems.modules.misc.AirPlace;
-import dev.boze.client.utils.BlastResistanceCalculator;
-import dev.boze.client.utils.EntityTracker;
-import dev.boze.client.utils.EntityUtil;
-import dev.boze.client.utils.IMinecraft;
-import dev.boze.client.utils.InventoryHelper;
-import dev.boze.client.utils.SwapHandler;
-import java.util.ArrayList;
-import java.util.HashSet;
+import dev.boze.client.utils.*;
 import mapped.Class2811;
 import mapped.Class2923;
 import mapped.Class5912;
@@ -32,6 +25,9 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 
 class CrystalHitter implements IMinecraft {
    private final AutoCrystal field1093;

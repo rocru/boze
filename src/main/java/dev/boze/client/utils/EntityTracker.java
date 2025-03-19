@@ -1,10 +1,6 @@
 package dev.boze.client.utils;
 
 import dev.boze.client.enums.CheckEntityMode;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
@@ -13,6 +9,11 @@ import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.shape.VoxelShape;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class EntityTracker implements IMinecraft {
    public static ConcurrentHashMap<BlockPos, Long> field3914 = new ConcurrentHashMap();

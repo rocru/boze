@@ -2,8 +2,8 @@ package dev.boze.client.instances.impl;
 
 import dev.boze.api.exception.ModuleNotFoundException;
 import dev.boze.api.internal.interfaces.IModules;
-import dev.boze.client.systems.modules.Module;
 import dev.boze.client.Boze;
+import dev.boze.client.systems.modules.Module;
 
 public class ModulesInstance implements IModules {
    public boolean getState(String module) throws ModuleNotFoundException {

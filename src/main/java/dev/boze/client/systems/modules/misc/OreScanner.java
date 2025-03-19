@@ -13,19 +13,11 @@ import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.manager.NotificationManager;
 import dev.boze.client.renderer.Renderer3D;
 import dev.boze.client.renderer.packer.ByteTexturePacker;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.ColorSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.StringSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.render.ByteTexture;
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.ArrayList;
 import mapped.Class5913;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.util.Hand;
@@ -34,6 +26,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkSectionPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.ArrayList;
 
 public class OreScanner extends Module {
    public static final OreScanner INSTANCE = new OreScanner();

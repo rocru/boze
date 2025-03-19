@@ -1,12 +1,12 @@
 package dev.boze.client.enums;
 
 public enum TargetMode {
-   Distance,
-   Health;
+    Distance,
+    Health;
 
-   private static final TargetMode[] field50 = method43();
+    private static final TargetMode[] field50 = method43();
 
-   private static TargetMode[] method43() {
-      return new TargetMode[]{Distance, Health};
-   }
+    private static TargetMode[] method43() {
+        return new TargetMode[]{Distance, Health};
+    }
 }

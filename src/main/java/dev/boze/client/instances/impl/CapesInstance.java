@@ -2,6 +2,7 @@ package dev.boze.client.instances.impl;
 
 import dev.boze.api.client.cape.CapeSource;
 import dev.boze.api.internal.interfaces.ICapes;
+
 import java.util.ArrayList;
 
 public class CapesInstance implements ICapes {

@@ -1,8 +1,8 @@
 package dev.boze.client.settings;
 
+import dev.boze.client.Boze;
 import dev.boze.client.manager.MacroManager;
 import dev.boze.client.utils.IMinecraft;
-import dev.boze.client.Boze;
 import net.minecraft.nbt.NbtCompound;
 
 public class MacroManagerSetting extends Setting<MacroManager> implements IMinecraft {

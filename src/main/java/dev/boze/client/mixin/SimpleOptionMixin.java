@@ -1,13 +1,14 @@
 package dev.boze.client.mixin;
 
 import dev.boze.client.mixininterfaces.ISimpleOption;
-import java.util.Objects;
-import java.util.function.Consumer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.SimpleOption;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+
+import java.util.Objects;
+import java.util.function.Consumer;
 
 @Mixin({SimpleOption.class})
 public class SimpleOptionMixin implements ISimpleOption {

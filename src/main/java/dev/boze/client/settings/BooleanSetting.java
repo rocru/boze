@@ -6,10 +6,11 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.systems.modules.client.Options;
-import java.util.Locale;
-import java.util.function.BooleanSupplier;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.Locale;
+import java.util.function.BooleanSupplier;
 
 public class BooleanSetting extends Setting<Boolean> {
    private boolean value;

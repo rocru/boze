@@ -1,15 +1,12 @@
 package dev.boze.client.mixin;
 
 import dev.boze.client.systems.modules.misc.BeaconSelector;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
 import net.minecraft.block.entity.BeaconBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.BeaconScreen;
-import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.screen.ingame.BeaconScreen.EffectButtonWidget;
+import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.ClickableWidget;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -18,9 +15,13 @@ import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.At.Shift;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 @Mixin({BeaconScreen.class})
 public abstract class BeaconScreenMixin extends HandledScreen<BeaconScreenHandler> {

@@ -4,21 +4,18 @@ import dev.boze.client.enums.BreadcrumbsLimit;
 import dev.boze.client.events.GameJoinEvent;
 import dev.boze.client.events.PostPlayerTickEvent;
 import dev.boze.client.events.Render3DEvent;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.RGBASetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.Timer;
-import java.awt.Color;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+
+import java.awt.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Breadcrumbs extends Module {
    public static final Breadcrumbs INSTANCE = new Breadcrumbs();
