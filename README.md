@@ -43,15 +43,17 @@ Object resourceProvider_inst = patch(knot.getClass().getDeclaredField("resourceP
 Field rsc = patch(resourceProvider_inst.getClass().getDeclaredField("resources"));
 ```
 
-#### Step 3: **B is the magic word?**
+#### Step 3: **B is the magic letter?**
 
-Byte encryption? Pfft. We can just use their decrypt method.
+If the classess are encrypted how will we deobf it
 
 ```java
 Class<?> encryption = Class.forName("netutil.d");
 Function decrypt_stage0 = (Function) patch(encryption.getDeclaredField("b")).get(null);
 Method decrypt_stage1 = patch(encryption.getDeclaredMethod("b", byte[].class));
 ```
+
+oh wait nvm
 
 #### Step 4: **Time to play garbage man**
 
