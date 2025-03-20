@@ -44,7 +44,7 @@ public class Class1201 {
          if (field58.isEmpty() && !field57.isEmpty()) {
             NbtCompound var6 = method2389("MAIN_PROFILE");
             if (var6 != null) {
-               Boze.getModules().method399(var6);
+               Boze.getModules().fromTag(var6);
             }
          }
 

@@ -1,7 +1,11 @@
-package dev.boze.client.settings;
+package dev.boze.client.settings.impl;
 
 import dev.boze.client.enums.PlayerOverlay;
 import dev.boze.client.events.PlayerOverlayEvent;
+import dev.boze.client.settings.BooleanSetting;
+import dev.boze.client.settings.Setting;
+import dev.boze.client.settings.SettingBlock;
+import dev.boze.client.settings.SettingCategory;
 import dev.boze.client.settings.generic.SettingsGroup;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;

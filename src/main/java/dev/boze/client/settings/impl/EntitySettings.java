@@ -1,6 +1,7 @@
-package dev.boze.client.settings;
+package dev.boze.client.settings.impl;
 
 import dev.boze.client.mixin.LimbAnimatorAccessor;
+import dev.boze.client.settings.*;
 import dev.boze.client.settings.generic.SettingsGroup;
 import dev.boze.client.utils.IMinecraft;
 import net.minecraft.entity.Entity;

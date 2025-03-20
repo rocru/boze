@@ -2,6 +2,10 @@ package dev.boze.client.systems.modules.render;
 
 import dev.boze.client.events.*;
 import dev.boze.client.settings.*;
+import dev.boze.client.settings.impl.EntitySettings;
+import dev.boze.client.settings.impl.MiscSettings;
+import dev.boze.client.settings.impl.ParticleSettings;
+import dev.boze.client.settings.impl.PerformanceSettings;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;

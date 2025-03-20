@@ -1,6 +1,9 @@
-package dev.boze.client.settings;
+package dev.boze.client.settings.impl;
 
 import dev.boze.client.events.SoundPlayEvent;
+import dev.boze.client.settings.BooleanSetting;
+import dev.boze.client.settings.Setting;
+import dev.boze.client.settings.SettingBlock;
 import dev.boze.client.settings.generic.SettingsGroup;
 
 public class MiscSettings implements SettingsGroup {
