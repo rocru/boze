@@ -7,16 +7,19 @@ import dev.boze.client.mixin.ClientPlayerInteractionManagerAccessor;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.AntiCheat;
 import dev.boze.client.systems.modules.combat.OffHand;
+import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.trackers.ItemTracker;
 import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import mapped.Class2839;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.ClickSlotC2SPacket;
 import net.minecraft.network.packet.c2s.play.UpdateSelectedSlotC2SPacket;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.SlotActionType;
 
-public class InventoryUtil implements IMinecraft {
+public class InventoryUtil
+        implements IMinecraft {
     private static Module field1249 = null;
     private static int field1250 = -1;
     private static SlotSwapMode field1251 = null;
@@ -38,240 +41,185 @@ public class InventoryUtil implements IMinecraft {
     }
 
     public static ItemStack method1774() {
-        return field1250 != -1 && field1252 != -1 ? mc.player.getInventory().getStack(field1252) : mc.player.getMainHandStack();
+        if (field1250 != -1 && field1252 != -1) {
+            return InventoryUtil.mc.player.getInventory().getStack(field1252);
+        }
+        return InventoryUtil.mc.player.getMainHandStack();
     }
 
     public static Module method532() {
         return field1249;
     }
 
-    public static void method1649(int param0) {
-        // $VF: Couldn't be decompiled
-        // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-        // java.lang.NullPointerException: Cannot read field "classStruct" because "classNode" is null
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifyNewEnumSwitch(SwitchHelper.java:319)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplify(SwitchHelper.java:41)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:30)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:376)
-        //
-        // Bytecode:
-        // 00: getstatic dev/boze/client/utils/InventoryUtil.field1250 I
-        // 03: bipush -1
-        // 04: if_icmpne 08
-        // 07: return
-        // 08: getstatic dev/boze/client/utils/InventoryUtil.field1251 Ldev/boze/client/enums/SlotSwapMode;
-        // 0b: invokevirtual dev/boze/client/enums/SlotSwapMode.ordinal ()I
-        // 0e: lookupswitch 70 2 0 26 1 52
-        // 28: iload 0
-        // 29: getstatic dev/boze/client/utils/InventoryUtil.field1252 I
-        // 2c: if_icmpeq 54
-        // 2f: aconst_null
-        // 30: putstatic dev/boze/client/utils/InventoryUtil.field1249 Ldev/boze/client/systems/modules/Module;
-        // 33: bipush -1
-        // 34: putstatic dev/boze/client/utils/InventoryUtil.field1250 I
-        // 37: aconst_null
-        // 38: putstatic dev/boze/client/utils/InventoryUtil.field1251 Ldev/boze/client/enums/SlotSwapMode;
-        // 3b: bipush -1
-        // 3c: putstatic dev/boze/client/utils/InventoryUtil.field1252 I
-        // 3f: goto 54
-        // 42: getstatic dev/boze/client/utils/InventoryUtil.field1254 [I
-        // 45: ifnull 54
-        // 48: iload 0
-        // 49: getstatic dev/boze/client/utils/InventoryUtil.field1254 [I
-        // 4c: bipush 1
-        // 4d: iaload
-        // 4e: if_icmpeq 54
-        // 51: invokestatic dev/boze/client/utils/InventoryUtil.method1904 ()V
-        // 54: return
-    }
-
-    public static boolean method533(Module var0, int var1, AutoMineSwapMode var2, int var3) {
-        return var2 != AutoMineSwapMode.Off && method534(var0, var1, var2.swapMode, var3);
-    }
-
-    public static boolean method534(Module var0, int var1, SwapMode var2, int var3) {
-        if (!OffHand.INSTANCE.isEnabled() || OffHand.INSTANCE.ab == null || var3 != 45 && var3 != OffHand.INSTANCE.ac) {
-            if (field1250 != -1) {
-                if (field1249 != null && field1249.isEnabled() && field1250 >= var1) {
-                    return false;
-                }
-
-                if (field1251 != SlotSwapMode.Normal || var2 != SwapMode.Normal && var2 != SwapMode.Silent) {
-                    method2142();
-                }
+    public static void method1649(int n) {
+        if (field1250 == -1) {
+            return;
+        }
+        switch (field1251.ordinal()) {
+            case 0: {
+                if (n == field1252) break;
+                field1249 = null;
+                field1250 = -1;
+                field1251 = null;
+                field1252 = -1;
+                break;
             }
+            case 1: {
+                if (field1254 == null || n == field1254[1]) break;
+                InventoryUtil.method1904();
+            }
+        }
+    }
 
-            if (var2 != SwapMode.Normal && var3 != mc.player.getInventory().selectedSlot) {
-                return method535(var0, var1, var2.field8, var3);
-            } else if (var3 >= 0) {
-                mc.player.getInventory().selectedSlot = var3;
-                Class2839.field111 = var3;
-                ((ClientPlayerInteractionManagerAccessor) mc.interactionManager).callSyncSelectedSlot();
-                return true;
+    public static boolean method533(Module module, int n, AutoMineSwapMode autoMineSwapMode, int n2) {
+        if (autoMineSwapMode == AutoMineSwapMode.Off) {
+            return false;
+        }
+        return InventoryUtil.method534(module, n, autoMineSwapMode.swapMode, n2);
+    }
+
+    public static boolean method534(Module module, int n, SwapMode swapMode, int n2) {
+        if (OffHand.INSTANCE.isEnabled() && OffHand.INSTANCE.ab != null && (n2 == 45 || n2 == OffHand.INSTANCE.ac)) {
+            return false;
+        }
+        if (field1250 != -1) {
+            if (field1249 == null || !field1249.isEnabled() || field1250 < n) {
+                if (field1251 != SlotSwapMode.Normal || swapMode != SwapMode.Normal && swapMode != SwapMode.Silent) {
+                    InventoryUtil.method2142();
+                }
             } else {
                 return false;
             }
-        } else {
+        }
+        if (swapMode == SwapMode.Normal || n2 == InventoryUtil.mc.player.getInventory().selectedSlot) {
+            if (n2 >= 0) {
+                InventoryUtil.mc.player.getInventory().selectedSlot = n2;
+                Class2839.field111 = n2;
+                ((ClientPlayerInteractionManagerAccessor)InventoryUtil.mc.interactionManager).callSyncSelectedSlot();
+                return true;
+            }
             return false;
         }
+        return InventoryUtil.method535(module, n, swapMode.field8, n2);
     }
 
-    private static boolean method535(Module param0, int param1, SlotSwapMode param2, int param3) {
-        // $VF: Couldn't be decompiled
-        // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-        // java.lang.NullPointerException: Cannot read field "classStruct" because "classNode" is null
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifyNewEnumSwitch(SwitchHelper.java:319)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplify(SwitchHelper.java:41)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:30)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:376)
-        //
-        // Bytecode:
-        // 00: aload 2
-        // 01: invokevirtual dev/boze/client/enums/SlotSwapMode.ordinal ()I
-        // 04: lookupswitch 28 2 0 36 1 45
-        // 20: new java/lang/IncompatibleClassChangeError
-        // 23: dup
-        // 24: invokespecial java/lang/IncompatibleClassChangeError.<init> ()V
-        // 27: athrow
-        // 28: aload 0
-        // 29: iload 1
-        // 2a: iload 3
-        // 2b: invokestatic dev/boze/client/utils/InventoryUtil.method536 (Ldev/boze/client/systems/modules/Module;II)Z
-        // 2e: goto 37
-        // 31: aload 0
-        // 32: iload 1
-        // 33: iload 3
-        // 34: invokestatic dev/boze/client/utils/InventoryUtil.method537 (Ldev/boze/client/systems/modules/Module;II)Z
-        // 37: ireturn
+    private static boolean method535(Module module, int n, SlotSwapMode slotSwapMode, int n2) {
+        return switch (slotSwapMode.ordinal()) {
+            default -> throw new IncompatibleClassChangeError();
+            case 0 -> InventoryUtil.method536(module, n, n2);
+            case 1 -> InventoryUtil.method537(module, n, n2);
+        };
     }
 
-    public static void method396(Module var0) {
-        if (var0 == field1249) {
-            method1416();
+    public static void method396(Module module) {
+        if (module != field1249) {
+            return;
         }
+        InventoryUtil.method1416();
     }
 
     private static void method2142() {
-        if (field1250 != -1) {
-            method1416();
+        if (field1250 == -1) {
+            return;
         }
+        InventoryUtil.method1416();
     }
 
     private static void method1416() {
-        // $VF: Couldn't be decompiled
-        // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-        // java.lang.NullPointerException: Cannot read field "classStruct" because "classNode" is null
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifyNewEnumSwitch(SwitchHelper.java:319)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplify(SwitchHelper.java:41)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:30)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:376)
-        //
-        // Bytecode:
-        // 00: getstatic dev/boze/client/utils/InventoryUtil.field1251 Ldev/boze/client/enums/SlotSwapMode;
-        // 03: ifnonnull 07
-        // 06: return
-        // 07: getstatic dev/boze/client/utils/InventoryUtil.field1251 Ldev/boze/client/enums/SlotSwapMode;
-        // 0a: invokevirtual dev/boze/client/enums/SlotSwapMode.ordinal ()I
-        // 0d: lookupswitch 36 2 0 27 1 33
-        // 28: invokestatic dev/boze/client/utils/InventoryUtil.method1198 ()V
-        // 2b: goto 31
-        // 2e: invokestatic dev/boze/client/utils/InventoryUtil.method1904 ()V
-        // 31: aconst_null
-        // 32: putstatic dev/boze/client/utils/InventoryUtil.field1249 Ldev/boze/client/systems/modules/Module;
-        // 35: bipush -1
-        // 36: putstatic dev/boze/client/utils/InventoryUtil.field1250 I
-        // 39: aconst_null
-        // 3a: putstatic dev/boze/client/utils/InventoryUtil.field1251 Ldev/boze/client/enums/SlotSwapMode;
-        // 3d: bipush -1
-        // 3e: putstatic dev/boze/client/utils/InventoryUtil.field1252 I
-        // 41: return
+        if (field1251 == null) {
+            return;
+        }
+        switch (field1251.ordinal()) {
+            case 0: {
+                InventoryUtil.method1198();
+                break;
+            }
+            case 1: {
+                InventoryUtil.method1904();
+            }
+        }
+        field1249 = null;
+        field1250 = -1;
+        field1251 = null;
+        field1252 = -1;
     }
 
-    private static boolean method536(Module var0, int var1, int var2) {
-        if (var2 >= 0) {
-            field1253 = mc.player.getInventory().selectedSlot;
-            field1249 = var0;
-            field1250 = var1;
-            field1252 = var2;
+    private static boolean method536(Module module, int n, int n2) {
+        if (n2 >= 0) {
+            field1253 = InventoryUtil.mc.player.getInventory().selectedSlot;
+            field1249 = module;
+            field1250 = n;
+            field1252 = n2;
             field1251 = SlotSwapMode.Normal;
-            mc.getNetworkHandler().sendPacket(new UpdateSelectedSlotC2SPacket(var2));
+            mc.getNetworkHandler().sendPacket((Packet)new UpdateSelectedSlotC2SPacket(n2));
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     private static void method1198() {
         if (field1253 >= 0) {
-            Class2839.field111 = mc.player.getInventory().selectedSlot;
-            if (AntiCheat.INSTANCE.field2320.method419()) {
-                ((ClientPlayerInteractionManagerAccessor) mc.interactionManager).callSyncSelectedSlot();
+            Class2839.field111 = InventoryUtil.mc.player.getInventory().selectedSlot;
+            if (AntiCheat.INSTANCE.field2320.method419().booleanValue()) {
+                ((ClientPlayerInteractionManagerAccessor)InventoryUtil.mc.interactionManager).callSyncSelectedSlot();
             }
-
             field1253 = -1;
         }
     }
 
-    private static boolean method537(Module var0, int var1, int var2) {
-        if (var2 >= 0) {
-            field1249 = var0;
-            field1250 = var1;
-            field1252 = var2;
+    private static boolean method537(Module module, int n, int n2) {
+        if (n2 >= 0) {
+            field1249 = module;
+            field1250 = n;
+            field1252 = n2;
             field1251 = SlotSwapMode.Alt;
-            ScreenHandler var6 = mc.player.currentScreenHandler;
-            Int2ObjectArrayMap var7 = new Int2ObjectArrayMap();
-            int var8 = ((ClientPlayerInteractionManagerAccessor) mc.interactionManager).getLastSelectedSlot();
-            ItemStack var9 = var6.getSlot(var2).getStack();
-            ItemStack var10 = var6.getSlot(var8).getStack();
-            var7.put(var2, var9);
-            if (var2 > 8) {
-                ItemTracker.method1964(var2, var8);
-                mc.getNetworkHandler().sendPacket(new ClickSlotC2SPacket(var6.syncId, var6.getRevision(), var2, var8, SlotActionType.SWAP, var9, var7));
+            ScreenHandler screenHandler = InventoryUtil.mc.player.currentScreenHandler;
+            Int2ObjectArrayMap<ItemStack> int2ObjectArrayMap = new Int2ObjectArrayMap<ItemStack>();
+            int n3 = ((ClientPlayerInteractionManagerAccessor)InventoryUtil.mc.interactionManager).getLastSelectedSlot();
+            ItemStack itemStack = screenHandler.getSlot(n2).getStack();
+            ItemStack itemStack2 = screenHandler.getSlot(n3).getStack();
+            int2ObjectArrayMap.put(n2, itemStack);
+            if (n2 > 8) {
+                int n4 = n2;
+                int n5 = n3;
+                ItemTracker.method1964(n4, n5);
+                mc.getNetworkHandler().sendPacket((Packet)new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), n4, n5, SlotActionType.SWAP, itemStack, int2ObjectArrayMap));
             } else {
-                int var11 = 36 + var8;
-                ItemTracker.method1964(var11, var2);
-                mc.getNetworkHandler().sendPacket(new ClickSlotC2SPacket(var6.syncId, var6.getRevision(), var11, var2, SlotActionType.SWAP, var9, var7));
+                int n6 = 36 + n3;
+                int n7 = n2;
+                ItemTracker.method1964(n6, n7);
+                mc.getNetworkHandler().sendPacket((Packet)new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), n6, n7, SlotActionType.SWAP, itemStack, int2ObjectArrayMap));
             }
-
-            ((ClientPlayerInteractionManagerAccessor) mc.interactionManager).callSyncSelectedSlot();
-            field1254 = new int[]{var2, var8};
+            ((ClientPlayerInteractionManagerAccessor)InventoryUtil.mc.interactionManager).callSyncSelectedSlot();
+            field1254 = new int[]{n2, n3};
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     private static void method1904() {
         ItemTracker.method2142();
         if (field1254 != null) {
-            ScreenHandler var3 = mc.player.currentScreenHandler;
-            Int2ObjectArrayMap var4 = new Int2ObjectArrayMap();
-            ItemStack var5 = var3.getSlot(field1254[0]).getStack();
-            ItemStack var6 = var3.getSlot(field1254[1]).getStack();
+            ScreenHandler screenHandler = InventoryUtil.mc.player.currentScreenHandler;
+            Int2ObjectArrayMap<ItemStack> int2ObjectArrayMap = new Int2ObjectArrayMap<ItemStack>();
+            ItemStack itemStack = screenHandler.getSlot(field1254[0]).getStack();
+            ItemStack itemStack2 = screenHandler.getSlot(field1254[1]).getStack();
             if (field1254[0] > 8) {
-                var4.put(field1254[1], var6);
-                mc.getNetworkHandler()
-                        .sendPacket(new ClickSlotC2SPacket(var3.syncId, var3.getRevision(), field1254[0], field1254[1], SlotActionType.SWAP, var6.copy(), var4));
+                int2ObjectArrayMap.put(field1254[1], itemStack2);
+                mc.getNetworkHandler().sendPacket((Packet)new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), field1254[0], field1254[1], SlotActionType.SWAP, itemStack2.copy(), int2ObjectArrayMap));
             } else {
-                var4.put(field1254[0], var5);
-                int var7 = 36 + field1254[1];
-                mc.getNetworkHandler()
-                        .sendPacket(new ClickSlotC2SPacket(var3.syncId, var3.getRevision(), var7, field1254[0], SlotActionType.SWAP, var5.copy(), var4));
+                int2ObjectArrayMap.put(field1254[0], itemStack);
+                int n = 36 + field1254[1];
+                mc.getNetworkHandler().sendPacket((Packet)new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), n, field1254[0], SlotActionType.SWAP, itemStack.copy(), int2ObjectArrayMap));
             }
-
             field1254 = null;
         }
     }
 
-    public static boolean method159(int var0) {
-        return field1254 != null && (field1254[0] == var0 || field1254[1] == var0) || OffHand.INSTANCE.isEnabled() && OffHand.INSTANCE.ab != null && (var0 == 45 || var0 == OffHand.INSTANCE.ac);
+    public static boolean method159(int n) {
+        if (field1254 != null && (field1254[0] == n || field1254[1] == n)) {
+            return true;
+        }
+        return OffHand.INSTANCE.isEnabled() && OffHand.INSTANCE.ab != null && (n == 45 || n == OffHand.INSTANCE.ac);
     }
 }
