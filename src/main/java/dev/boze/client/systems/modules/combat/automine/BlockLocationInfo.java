@@ -13,7 +13,7 @@ import net.minecraft.util.math.Vec3d;
 import java.util.function.Function;
 
 public final class BlockLocationInfo {
-    private final BlockPos field2528;
+    final BlockPos field2528;
     private final boolean field2529;
 
     public BlockLocationInfo(BlockPos pos, boolean burrow) {

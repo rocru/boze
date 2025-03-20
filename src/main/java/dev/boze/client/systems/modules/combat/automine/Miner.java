@@ -85,7 +85,7 @@ public class Miner implements IMinecraft, SettingsGroup {
     private boolean field203;
     public final List<TaskLogger> field204 = new ArrayList();
 
-    private static void method1800(String var0) {
+    static void method1800(String var0) {
         if (AutoMine.field2518 && mc.player != null) {
             System.out.println("[AutoMine.Miner @" + mc.player.age + "] " + var0);
         }

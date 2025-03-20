@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AutoSelectMode {
+public enum AutoSelectMode {
     Smart,
     Always,
     Bind;

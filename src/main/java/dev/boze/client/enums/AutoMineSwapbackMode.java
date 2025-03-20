@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AutoMineSwapbackMode {
+public enum AutoMineSwapbackMode {
     Off,
     Dynamic,
     Always;

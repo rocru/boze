@@ -17,31 +17,31 @@ public class TaskLogger {
         this.field2532 = var2;
     }
 
-    private void start() {
+    void start() {
         Miner.method1800("Starting task at " + this.field2532.field2523.toShortString());
     }
 
-    private void finish() {
+    void finish() {
         Miner.method1800("Task at " + this.field2532.field2523.toShortString() + " has been instant mined");
     }
 
-    private void fail() {
+    void fail() {
         Miner.method1800("Failed to start task at " + this.field2532.field2523.toShortString());
     }
 
-    private void pause() {
+    void pause() {
         Miner.method1800("Left range of task at " + this.field2532.field2523.toShortString());
     }
 
-    private void complete() {
+    void complete() {
         Miner.method1800("Task at " + this.field2532.field2523.toShortString() + " has been completed");
     }
 
-    private void swap() {
+    void swap() {
         Miner.method1800("Swapping for task at " + this.field2532.field2523.toShortString());
     }
 
-    private void init() {
+    void init() {
         Miner.method1800("Task at " + this.field2532.field2523.toShortString() + " has been initialized");
     }
 }

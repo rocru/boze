@@ -30,11 +30,11 @@ import java.util.ArrayList;
 public class AutoMine extends Module {
     public static AutoMine INSTANCE = new AutoMine();
     public static boolean field2518 = false;
-    final Render render = new Render();
+    public final Render render = new Render();
     public final AutoSelect autoSelect = new AutoSelect();
     public final Miner miner = new Miner(this);
     private final SettingCategory remineSettings = new SettingCategory("ReMine", "Re-mine options");
-    final BooleanSetting instantRemine = new BooleanSetting("Instant", true, "Instantly re-mine blocks", this.remineSettings);
+    public final BooleanSetting instantRemine = new BooleanSetting("Instant", true, "Instantly re-mine blocks", this.remineSettings);
     private final BooleanSetting autoRemine = new BooleanSetting("Auto", false, "Automatically always re-mine blocks", this.remineSettings);
     private final BindSetting remineBind = new BindSetting("Bind", Bind.create(), "Re-mine keybind", () -> !this.autoRemine.getValue(), this.remineSettings);
     private final FloatSetting remineDelay = new FloatSetting(
@@ -43,26 +43,26 @@ public class AutoMine extends Module {
     private final BooleanSetting ignoreSelf = new BooleanSetting(
             "IgnoreSelf", false, "Don't re-mine self-placed blocks", () -> this.autoRemine.getValue() || this.remineBind.getValue().isValid(), this.remineSettings
     );
-    final EnumSetting<AutoMineSwapMode> swapMode = new EnumSetting<AutoMineSwapMode>(
+    public final EnumSetting<AutoMineSwapMode> swapMode = new EnumSetting<AutoMineSwapMode>(
             "Swap",
             AutoMineSwapMode.Silent,
             "Mode for swapping to pickaxe/tool\nHot-bar only modes:\n - Normal: Vanilla swap, hot-bar only\n - Silent: Instantaneously swap to tool and back\nWhole inventory modes (you don't need to keep the tool in your hot-bar):\n - Alt: Alternative silent swap mode, may work where mode silent is patched\nNote: Whole inventory modes may not work on some servers\n"
     );
-    final IntSetting swapDelay = new IntSetting("Delay", 0, 0, 20, 1, "Swap tick delay", this.swapMode);
+    public final IntSetting swapDelay = new IntSetting("Delay", 0, 0, 20, 1, "Swap tick delay", this.swapMode);
     private final BooleanSetting onlyPickaxe = new BooleanSetting("OnlyPickaxe", false, "Only Packet Mine when holding a pickaxe", () -> this.swapMode.getValue() == AutoMineSwapMode.Off);
     public final StringModeSetting blocks = new StringModeSetting("Blocks", "Blocks to filter");
-    final EnumSetting<FilterMode> filter = new EnumSetting<FilterMode>(
+    public final EnumSetting<FilterMode> filter = new EnumSetting<FilterMode>(
             "Filter",
             FilterMode.Off,
             "Block filter\nOnly mine blocks in the list or mine all blocks except the ones in the list\nUse '.set automine blocks add <block>' to add blocks to the list\nUse '.set automine blocks remove <block>' to remove blocks from the list\nUse '.set automine blocks list to list all blocks in the list"
     );
     public final BooleanSetting advanced = new BooleanSetting("Advanced", false, "Enable advanced features and settings");
-    final Queue queue = new Queue(this);
+    public final Queue queue = new Queue(this);
     private final AntiRegear antiRegear = new AntiRegear(this);
     private final ProneEscape proneEscape = new ProneEscape(this);
-    final BooleanSetting rangeAbort = new BooleanSetting("RangeAbort", true, "Abort mining if block goes out of range", this.advanced::getValue);
-    BlockPos field2519 = null;
-    boolean field2520 = false;
+    public final BooleanSetting rangeAbort = new BooleanSetting("RangeAbort", true, "Abort mining if block goes out of range", this.advanced::getValue);
+    public BlockPos field2519 = null;
+    public boolean field2520 = false;
     private final Timer timer = new Timer();
     private boolean field2521 = false;
     private boolean field2522 = false;

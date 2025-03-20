@@ -383,7 +383,7 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
 
         for (AbstractClientPlayerEntity var8 : this.method1144()) {
             if (!this.field66.getValue() || Class5924.method77(false, var8)) {
-                List var9 = Class5924.method348(var8.getPos());
+                List<BlockPos> var9 = Class5924.method348(var8.getPos());
                 BlockLocationInfo var10 = null;
                 double var11 = Double.MAX_VALUE;
 

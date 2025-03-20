@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AutoMineItemResetMode {
+public enum AutoMineItemResetMode {
     Off,
     On,
     Delay;

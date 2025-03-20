@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AutoSelectSortingMode {
+public enum AutoSelectSortingMode {
     Distance,
     Health;
 
