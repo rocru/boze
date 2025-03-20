@@ -15,7 +15,7 @@ import dev.boze.client.systems.modules.misc.FastUse;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.InventoryUtil;
-import dev.boze.client.utils.TargetTracker;
+import dev.boze.client.utils.trackers.TargetTracker;
 import dev.boze.client.utils.Timer;
 import java.util.HashMap;
 import java.util.Map.Entry;

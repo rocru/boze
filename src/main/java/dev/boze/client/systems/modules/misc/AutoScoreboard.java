@@ -8,7 +8,7 @@ import dev.boze.client.instances.impl.ChatInstance;
 import dev.boze.client.settings.BooleanSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.utils.TargetTracker;
+import dev.boze.client.utils.trackers.TargetTracker;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.DeathScreen;
 import net.minecraft.entity.Entity;

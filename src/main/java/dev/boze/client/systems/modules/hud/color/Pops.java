@@ -1,7 +1,7 @@
 package dev.boze.client.systems.modules.hud.color;
 
 import dev.boze.client.systems.modules.hud.ColorHUDModule;
-import dev.boze.client.utils.TargetTracker;
+import dev.boze.client.utils.trackers.TargetTracker;
 
 public class Pops extends ColorHUDModule {
    public static final Pops INSTANCE = new Pops();

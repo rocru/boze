@@ -15,40 +15,40 @@ import java.util.Optional;
 import java.util.Set;
 
 public class BozeResourcePack implements ResourcePack {
-   @Nullable
-   public InputSupplier<InputStream> openRoot(String... segments) {
-      return null;
-   }
+    @Nullable
+    public InputSupplier<InputStream> openRoot(String... segments) {
+        return null;
+    }
 
-   @Nullable
-   public InputSupplier<InputStream> open(ResourceType type, Identifier id) {
-      return null;
-   }
+    @Nullable
+    public InputSupplier<InputStream> open(ResourceType type, Identifier id) {
+        return null;
+    }
 
-   public void findResources(ResourceType type, String namespace, String prefix, ResultConsumer consumer) {
-   }
+    public void findResources(ResourceType type, String namespace, String prefix, ResultConsumer consumer) {
+    }
 
-   public Set<String> getNamespaces(ResourceType type) {
-      return null;
-   }
+    public Set<String> getNamespaces(ResourceType type) {
+        return null;
+    }
 
-   @Nullable
-   public <T> T parseMetadata(ResourceMetadataReader<T> metaReader) throws IOException {
-      return null;
-   }
+    @Nullable
+    public <T> T parseMetadata(ResourceMetadataReader<T> metaReader) throws IOException {
+        return null;
+    }
 
-   public ResourcePackInfo getInfo() {
-      return null;
-   }
+    public ResourcePackInfo getInfo() {
+        return null;
+    }
 
-   public String getId() {
-      return "Boze";
-   }
+    public String getId() {
+        return "Boze";
+    }
 
-   public Optional<VersionedIdentifier> getKnownPackInfo() {
-      return super.getKnownPackInfo();
-   }
+    public Optional<VersionedIdentifier> getKnownPackInfo() {
+        return ResourcePack.super.getKnownPackInfo();
+    }
 
-   public void close() {
-   }
+    public void close() {
+    }
 }

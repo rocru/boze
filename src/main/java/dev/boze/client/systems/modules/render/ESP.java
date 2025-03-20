@@ -11,7 +11,7 @@ import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.Friends;
-import dev.boze.client.utils.TargetTracker;
+import dev.boze.client.utils.trackers.TargetTracker;
 import dev.boze.client.utils.render.RenderUtil;
 import mapped.Class5922;
 import mapped.Class5923;

@@ -7,26 +7,26 @@ import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 
 public class NetworkHandlerWrapper extends ClientPlayNetworkHandler implements IMinecraft {
-   private NetworkHandlerWrapper() {
-      super(null, null, null);
-   }
+    private NetworkHandlerWrapper() {
+        super(null, null, null);
+    }
 
-   public void sendPacket(Packet<?> packet) {
-   }
+    public void sendPacket(Packet<?> packet) {
+    }
 
-   public GameProfile getProfile() {
-      return mc.getGameProfile();
-   }
+    public GameProfile getProfile() {
+        return mc.getGameProfile();
+    }
 
-   public FeatureSet getEnabledFeatures() {
-      return FeatureFlags.DEFAULT_ENABLED_FEATURES;
-   }
+    public FeatureSet getEnabledFeatures() {
+        return FeatureFlags.DEFAULT_ENABLED_FEATURES;
+    }
 
-   public static NetworkHandlerWrapper method739() {
-      try {
-         return (NetworkHandlerWrapper)UnsafeProvider.get().allocateInstance(NetworkHandlerWrapper.class);
-      } catch (Exception var3) {
-         throw new RuntimeException("Error creating dummy class", var3);
-      }
-   }
+    public static NetworkHandlerWrapper method739() {
+        try {
+            return (NetworkHandlerWrapper) UnsafeProvider.get().allocateInstance(NetworkHandlerWrapper.class);
+        } catch (Exception var3) {
+            throw new RuntimeException("Error creating dummy class", var3);
+        }
+    }
 }

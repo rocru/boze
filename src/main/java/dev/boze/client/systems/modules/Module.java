@@ -403,7 +403,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
    @Override
    public void method233(NbtCompound tag) {
       if (tag.contains("bind")) {
-         this.bind.method180(tag.getCompound("bind"));
+         this.bind.fromTag(tag.getCompound("bind"));
       }
 
       if (tag.contains("onlyWhenHolding")) {

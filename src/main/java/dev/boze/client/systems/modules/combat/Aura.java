@@ -42,7 +42,7 @@ import dev.boze.client.utils.EntityUtil;
 import dev.boze.client.utils.PiglinAggressiveness;
 import dev.boze.client.utils.PositionUtils;
 import dev.boze.client.utils.RaycastUtil;
-import dev.boze.client.utils.TargetTracker;
+import dev.boze.client.utils.trackers.TargetTracker;
 import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import dev.boze.client.utils.player.RotationHandler;

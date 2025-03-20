@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum InteractionAwaitMode {
+public enum InteractionAwaitMode {
     Off,
     Semi,
     Strict;

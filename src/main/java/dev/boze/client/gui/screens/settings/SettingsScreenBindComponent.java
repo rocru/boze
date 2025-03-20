@@ -17,7 +17,7 @@ public class SettingsScreenBindComponent extends BindComponent {
 
    @Override
    protected void setBind(Bind value) {
-      this.field2086.bind.copy(value);
+      this.field2086.bind.set(value);
    }
 
    @Override

@@ -32,7 +32,7 @@ public class BindSelectorScreen extends Screen implements IMinecraft {
 
    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
       if (keyCode == 256) {
-         this.field2081.bind.copy(Bind.create());
+         this.field2081.bind.set(Bind.create());
       } else {
          this.field2081.bind.set(true, keyCode);
       }

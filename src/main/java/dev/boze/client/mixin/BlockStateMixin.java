@@ -1,7 +1,7 @@
 package dev.boze.client.mixin;
 
 import com.mojang.serialization.MapCodec;
-import dev.boze.client.utils.InventoryTracker;
+import dev.boze.client.utils.trackers.InventoryTracker;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 import net.minecraft.block.AbstractBlock.AbstractBlockState;
 import net.minecraft.block.Block;

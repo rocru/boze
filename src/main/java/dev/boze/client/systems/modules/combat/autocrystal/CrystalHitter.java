@@ -14,6 +14,7 @@ import dev.boze.client.mixininterfaces.IClientPlayerEntity;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.systems.modules.misc.AirPlace;
 import dev.boze.client.utils.*;
+import dev.boze.client.utils.trackers.EntityTracker;
 import mapped.Class2811;
 import mapped.Class2923;
 import mapped.Class5912;

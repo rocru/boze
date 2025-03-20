@@ -20,7 +20,7 @@ import java.util.Map.Entry;
 
 public class AutoCrystalTracker implements IMinecraft {
    private final AutoCrystal field1524;
-   float field1525 = 1.0F;
+   public float field1525 = 1.0F;
    private final float[] field1526 = new float[20];
    private int field1527 = 0;
    private long field1528;
@@ -183,7 +183,7 @@ public class AutoCrystalTracker implements IMinecraft {
       }
    }
 
-   float method1385() {
+   public float method1385() {
       return this.method685(this.field1544);
    }
 

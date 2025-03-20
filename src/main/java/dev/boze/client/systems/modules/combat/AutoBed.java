@@ -25,6 +25,8 @@ import dev.boze.client.utils.player.InvUtils;
 import dev.boze.client.utils.player.InventoryUtil;
 import dev.boze.client.utils.player.RotationHandler;
 import dev.boze.client.utils.player.SlotUtils;
+import dev.boze.client.utils.trackers.LatencyTracker;
+import dev.boze.client.utils.trackers.TargetTracker;
 import mapped.*;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.BedBlock;
@@ -471,7 +473,7 @@ public class AutoBed extends Module {
                   }
                }
             }
-         } else if (this.openTable.method419() && this.ao.hasElapsed(this.strictAutoCraft.method419() ? 350.0 : (double)LatencyTracker.INSTANCE.field1308)) {
+         } else if (this.openTable.method419() && this.ao.hasElapsed(this.strictAutoCraft.method419() ? 350.0 : (double) LatencyTracker.INSTANCE.field1308)) {
             BlockPos var6 = mc.player.getBlockPos();
             int var7 = (int)Math.ceil(this.placeRange.method423());
             int var8 = (int)Math.ceil(this.placeRange.method423());

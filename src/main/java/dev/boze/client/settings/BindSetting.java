@@ -40,12 +40,12 @@ public class BindSetting extends Setting<Bind> {
 
    @Override
    public Bind resetValue() {
-      return this.bind.copy(this.defaultBind);
+      return this.bind.set(this.defaultBind);
    }
 
    @Override
    public Bind setValue(Bind newVal) {
-      return this.bind.copy(newVal);
+      return this.bind.set(newVal);
    }
 
    @Override
@@ -57,7 +57,7 @@ public class BindSetting extends Setting<Bind> {
    @Override
    public Bind load(NbtCompound tag) {
       if (tag.contains("Keybind")) {
-         this.bind.method180(tag.getCompound("Keybind"));
+         this.bind.fromTag(tag.getCompound("Keybind"));
       }
 
       return this.bind;

@@ -3,10 +3,10 @@ package mapped;
 import dev.boze.client.utils.render.color.GradientColor;
 import dev.boze.client.utils.render.color.StaticColor;
 
-class Class3003 extends StaticColor {
+public class Class3003 extends StaticColor {
    private final GradientColor field128;
 
-   private Class3003(GradientColor var1) {
+   public Class3003(GradientColor var1) {
       super(-1, -1, -1);
       this.field128 = var1;
    }

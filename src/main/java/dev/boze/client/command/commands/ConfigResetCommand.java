@@ -99,7 +99,7 @@ public class ConfigResetCommand extends Command {
             } else if (var1 == HUD.INSTANCE) {
                 var1.bind.set(true, 259);
             } else {
-                var1.bind.copy(Bind.create());
+                var1.bind.set(Bind.create());
             }
 
             if (var1 instanceof HUDModule var13) {
@@ -192,7 +192,7 @@ public class ConfigResetCommand extends Command {
             } else if (var5 == HUD.INSTANCE) {
                 var5.bind.set(true, 259);
             } else {
-                var5.bind.copy(Bind.create());
+                var5.bind.set(Bind.create());
             }
         }
 

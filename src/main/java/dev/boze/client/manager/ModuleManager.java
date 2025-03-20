@@ -36,6 +36,7 @@ import dev.boze.client.systems.modules.render.*;
 import dev.boze.client.utils.*;
 import dev.boze.client.utils.misc.IJsonSerializable2;
 import dev.boze.client.utils.misc.ISerializable;
+import dev.boze.client.utils.trackers.LatencyTracker;
 import mapped.Class2779;
 import mapped.Class2782;
 import mapped.Class5925;
@@ -687,7 +688,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
                   var7.fromTag(tag.getCompound(var7.internalName));
 
                   try {
-                     var7.bind.method180(tag.getCompound(var7.internalName).getCompound("Keybind"));
+                     var7.bind.fromTag(tag.getCompound(var7.internalName).getCompound("Keybind"));
                   } catch (Exception var12) {
                      ErrorLogger.log(var12);
                      Boze.LOG.warn("Unable to load module " + var7.internalName + "'s keybind from config");

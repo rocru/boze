@@ -20,7 +20,7 @@ import dev.boze.client.systems.modules.misc.BetterTab;
 import dev.boze.client.systems.modules.render.logoutspots.LogoutPlayerEntity;
 import dev.boze.client.systems.waypoints.WayPoint;
 import dev.boze.client.utils.RGBAColor;
-import dev.boze.client.utils.TargetTracker;
+import dev.boze.client.utils.trackers.TargetTracker;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import dev.boze.client.utils.math.NumberUtils;
 import dev.boze.client.utils.render.RenderUtil;

@@ -88,7 +88,7 @@ public class AutoCrystal extends Module {
    final AutoCrystalDisplayInfo ab = new AutoCrystalDisplayInfo(this);
    public final AutoCrystalPrediction ac = new AutoCrystalPrediction(this);
    private CrystalProcessor ad = new CrystalProcessor(this);
-   final AutoCrystalTracker autoCrystalTracker = new AutoCrystalTracker(this);
+   public final AutoCrystalTracker autoCrystalTracker = new AutoCrystalTracker(this);
 
    private static void method1750(String var0) {
       if (field1038 && mc.player != null) {

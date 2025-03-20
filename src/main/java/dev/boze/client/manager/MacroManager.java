@@ -58,7 +58,7 @@ public class MacroManager implements IJsonSerializable<MacroManager>, IMinecraft
             Macro var8 = new Macro();
 
             try {
-               var8.method491(var7.getAsJsonObject());
+               var8.deserialize(var7.getAsJsonObject());
                this.field2140.add(var8);
             } catch (Exception var10) {
             }

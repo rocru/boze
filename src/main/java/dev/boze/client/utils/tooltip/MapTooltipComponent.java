@@ -15,46 +15,46 @@ import net.minecraft.item.map.MapState;
 import net.minecraft.util.Identifier;
 
 public class MapTooltipComponent implements TooltipComponent, BozeTooltipData, IMinecraft {
-   private static final Identifier field1060 = Identifier.of("textures/map/map_background.png");
-   private final int field1061;
+    private static final Identifier field1060 = Identifier.of("textures/map/map_background.png");
+    private final int field1061;
 
-   public MapTooltipComponent(int mapId) {
-      this.field1061 = mapId;
-   }
+    public MapTooltipComponent(int mapId) {
+        this.field1061 = mapId;
+    }
 
-   @Override
-   public TooltipComponent method498() {
-      return this;
-   }
+    @Override
+    public TooltipComponent method498() {
+        return this;
+    }
 
-   public int getHeight() {
-      return (int)(72.0 * Tooltips.INSTANCE.field3760.getValue()) + 2;
-   }
+    public int getHeight() {
+        return (int) (72.0 * Tooltips.INSTANCE.field3760.getValue()) + 2;
+    }
 
-   public int getWidth(TextRenderer textRenderer) {
-      return (int)(72.0 * Tooltips.INSTANCE.field3760.getValue());
-   }
+    public int getWidth(TextRenderer textRenderer) {
+        return (int) (72.0 * Tooltips.INSTANCE.field3760.getValue());
+    }
 
-   public void drawItems(TextRenderer textRenderer, int x, int y, DrawContext context) {
-      double var8 = Tooltips.INSTANCE.field3760.getValue();
-      MatrixStack var10 = context.getMatrices();
-      var10.push();
-      var10.translate((float)x, (float)y, 0.0F);
-      var10.scale((float)var8 * 2.0F, (float)var8 * 2.0F, 0.0F);
-      var10.scale(1.125F, 1.125F, 0.0F);
-      RenderSystem.setShader(GameRenderer::method_34542);
-      context.drawTexture(field1060, 0, 0, 0, 0.0F, 0.0F, 64, 64, 64, 64);
-      var10.pop();
-      Immediate var11 = mc.getBufferBuilders().getEntityVertexConsumers();
-      MapState var12 = FilledMapItem.getMapState(new MapIdComponent(this.field1061), mc.world);
-      if (var12 != null) {
-         var10.push();
-         var10.translate((float)x, (float)y, 0.0F);
-         var10.scale((float)var8, (float)var8, 0.0F);
-         var10.translate(8.0F, 8.0F, 0.0F);
-         mc.gameRenderer.getMapRenderer().draw(var10, var11, new MapIdComponent(this.field1061), var12, false, 15728880);
-         var11.draw();
-         var10.pop();
-      }
-   }
+    public void drawItems(TextRenderer textRenderer, int x, int y, DrawContext context) {
+        double var8 = Tooltips.INSTANCE.field3760.getValue();
+        MatrixStack var10 = context.getMatrices();
+        var10.push();
+        var10.translate((float) x, (float) y, 0.0F);
+        var10.scale((float) var8 * 2.0F, (float) var8 * 2.0F, 0.0F);
+        var10.scale(1.125F, 1.125F, 0.0F);
+        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
+        context.drawTexture(field1060, 0, 0, 0, 0.0F, 0.0F, 64, 64, 64, 64);
+        var10.pop();
+        Immediate var11 = mc.getBufferBuilders().getEntityVertexConsumers();
+        MapState var12 = FilledMapItem.getMapState(new MapIdComponent(this.field1061), mc.world);
+        if (var12 != null) {
+            var10.push();
+            var10.translate((float) x, (float) y, 0.0F);
+            var10.scale((float) var8, (float) var8, 0.0F);
+            var10.translate(8.0F, 8.0F, 0.0F);
+            mc.gameRenderer.getMapRenderer().draw(var10, var11, new MapIdComponent(this.field1061), var12, false, 15728880);
+            var11.draw();
+            var10.pop();
+        }
+    }
 }

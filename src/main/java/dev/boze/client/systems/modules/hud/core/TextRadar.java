@@ -11,7 +11,7 @@ import dev.boze.client.systems.modules.HUDModule;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.systems.modules.hud.core.TextRadar.pt;
 import dev.boze.client.utils.RGBAColor;
-import dev.boze.client.utils.TargetTracker;
+import dev.boze.client.utils.trackers.TargetTracker;
 import mapped.Class2894;
 import mapped.Class2895;
 import mapped.Class5926;

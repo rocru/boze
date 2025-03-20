@@ -25,7 +25,7 @@ import dev.boze.client.systems.modules.movement.GrimDisabler;
 import dev.boze.client.systems.modules.movement.NoSlow;
 import dev.boze.client.systems.modules.movement.TickShift;
 import dev.boze.client.utils.ActionWrapper;
-import dev.boze.client.utils.EntityTracker;
+import dev.boze.client.utils.trackers.EntityTracker;
 import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.player.InvUtils;
 import dev.boze.client.utils.player.RotationHandler;

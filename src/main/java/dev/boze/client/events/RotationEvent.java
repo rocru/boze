@@ -6,7 +6,7 @@ import dev.boze.client.enums.RotationMode;
 import dev.boze.client.enums.SwapMode;
 import dev.boze.client.mixin.ClientPlayerEntityAccessor;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.utils.EntityTracker;
+import dev.boze.client.utils.trackers.EntityTracker;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.InventoryUtil;
 import mapped.Class2812;

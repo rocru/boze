@@ -2,7 +2,7 @@ package dev.boze.client.systems.modules.misc;
 
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import dev.boze.client.utils.LatencyTracker;
+import dev.boze.client.utils.trackers.LatencyTracker;
 
 public class FastLatency extends Module {
    public static final FastLatency INSTANCE = new FastLatency();

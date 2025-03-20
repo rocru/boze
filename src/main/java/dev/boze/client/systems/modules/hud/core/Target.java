@@ -10,7 +10,7 @@ import dev.boze.client.settings.RGBASetting;
 import dev.boze.client.systems.modules.HUDModule;
 import dev.boze.client.systems.modules.client.HUD;
 import dev.boze.client.utils.RGBAColor;
-import dev.boze.client.utils.TargetTracker;
+import dev.boze.client.utils.trackers.TargetTracker;
 import dev.boze.client.utils.render.RenderUtil;
 import mapped.Class5929;
 import net.minecraft.client.gui.DrawContext;

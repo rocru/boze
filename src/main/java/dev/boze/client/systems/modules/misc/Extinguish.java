@@ -17,6 +17,7 @@ import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.legit.Reach;
 import dev.boze.client.systems.render.PlacementRenderer;
 import dev.boze.client.utils.*;
+import dev.boze.client.utils.trackers.EntityTracker;
 import mapped.Class1202;
 import mapped.Class2784;
 import meteordevelopment.orbit.EventHandler;

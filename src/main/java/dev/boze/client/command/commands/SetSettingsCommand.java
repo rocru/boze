@@ -35,7 +35,7 @@ public class SetSettingsCommand extends Command {
         for (Setting<?> var6 : var0.method1144()) {
             var6.resetValue();
             var6.setExpanded(false);
-            var0.bind.copy(Bind.create());
+            var0.bind.set(Bind.create());
             var0.setHoldBind(false);
             var0.setNotify(false);
             var0.setVisibility(true);

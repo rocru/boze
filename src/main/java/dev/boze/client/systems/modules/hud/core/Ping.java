@@ -6,7 +6,7 @@ import dev.boze.client.settings.BooleanSetting;
 import dev.boze.client.settings.ColorSetting;
 import dev.boze.client.systems.modules.HUDModule;
 import dev.boze.client.systems.modules.client.HUD;
-import dev.boze.client.utils.LatencyTracker;
+import dev.boze.client.utils.trackers.LatencyTracker;
 import net.minecraft.client.gui.DrawContext;
 
 public class Ping extends HUDModule {

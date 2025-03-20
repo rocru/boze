@@ -3,8 +3,8 @@ package dev.boze.client.systems.accounts;
 import com.google.gson.annotations.SerializedName;
 
 public class TexturesJson {
-   class Textures {
-      class Texture {
+   public class Textures {
+      public class Texture {
          @SerializedName("url")
          public String field2294;
       }
