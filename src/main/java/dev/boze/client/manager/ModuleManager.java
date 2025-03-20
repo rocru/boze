@@ -19,7 +19,7 @@ import dev.boze.client.systems.modules.HUDModule;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.*;
 import dev.boze.client.systems.modules.combat.*;
-import dev.boze.client.systems.modules.graph.ServerPackets;
+import dev.boze.client.systems.modules.hud.graph.ServerPackets;
 import dev.boze.client.systems.modules.hud.ColorHUDModule;
 import dev.boze.client.systems.modules.hud.TextHUDModule;
 import dev.boze.client.systems.modules.hud.color.*;

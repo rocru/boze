@@ -1,5 +1,6 @@
 package dev.boze.client.systems.modules.client;
 
+import dev.boze.client.Boze;
 import dev.boze.client.enums.ModuleState;
 import dev.boze.client.enums.PacketRenderMode;
 import dev.boze.client.events.MovementEvent;
@@ -11,9 +12,9 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.ConfigCategory;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.Timer;
-import java.io.File;
-import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
+
+import java.io.File;
 
 public class Options extends Module {
    public static final Options INSTANCE = new Options();

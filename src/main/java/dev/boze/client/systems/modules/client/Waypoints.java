@@ -13,14 +13,7 @@ import dev.boze.client.manager.NotificationManager;
 import dev.boze.client.mixin.WorldRendererAccessor;
 import dev.boze.client.renderer.Renderer3D;
 import dev.boze.client.renderer.packer.ByteTexturePacker;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.ColorSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntArraySetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.StringSetting;
-import dev.boze.client.settings.WaypointSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.settings.generic.ScalingSetting;
 import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.modules.Category;
@@ -30,15 +23,16 @@ import dev.boze.client.systems.waypoints.WayPoint;
 import dev.boze.client.utils.EntityUtil;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.render.ByteTexture;
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.ArrayList;
 import mapped.Class5922;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.render.Frustum;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Vector3d;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.ArrayList;
 
 public class Waypoints extends Module {
    public static final Waypoints INSTANCE = new Waypoints();
@@ -168,7 +162,7 @@ public class Waypoints extends Module {
 
             if (this.field2445.getValue()) {
                ChamsShaderRenderer.method1310(
-                  this::lambda$onRender3D$2,
+                  () -> lambda$onRender3D$2(var1),
                   this.method1393(),
                   this.field2447.getValue(),
                   this.field2443,

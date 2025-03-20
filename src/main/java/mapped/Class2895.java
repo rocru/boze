@@ -36,7 +36,7 @@ public class Class2895 extends Class2894 {
       TextRadar.INSTANCE.ac.add(this);
    }
 
-   void method5663(DrawContext var1) {
+   public void method5663(DrawContext var1) {
       if (this.field119 != null) {
          Identifier var5 = this.field119.getSkinTextures().texture();
          var1.drawTexture(var5, (int)this.field120 + 1, (int)this.field121 + 1, this.field122, this.field122, 8.0F, 8.0F, 8, 8, 64, 64);

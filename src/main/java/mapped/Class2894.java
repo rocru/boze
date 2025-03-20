@@ -14,7 +14,7 @@ public class Class2894 {
       this.field118 = color;
    }
 
-   void method5661(double var1, double var3) {
+   public void method5661(double var1, double var3) {
       IFontRender.method499()
          .drawShadowedText(
             this.field117,
@@ -25,7 +25,7 @@ public class Class2894 {
          );
    }
 
-   double method5662() {
+   public double method5662() {
       double var4 = IFontRender.method499()
          .measureTextHeight(
             this.field117, TextRadar.INSTANCE.field634.getValue() ? TextRadar.INSTANCE.field639.getValue() : HUD.INSTANCE.field2384.getValue()

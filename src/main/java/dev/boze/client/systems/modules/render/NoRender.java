@@ -1,7 +1,8 @@
 package dev.boze.client.systems.modules.render;
 
 import dev.boze.client.events.*;
-import dev.boze.client.settings.*;
+import dev.boze.client.settings.BlockEntitySetting;
+import dev.boze.client.settings.StringListSetting;
 import dev.boze.client.settings.impl.EntitySettings;
 import dev.boze.client.settings.impl.MiscSettings;
 import dev.boze.client.settings.impl.ParticleSettings;

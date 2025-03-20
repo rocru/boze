@@ -10,34 +10,34 @@ import net.minecraft.util.math.Vec3d;
 import java.util.LinkedList;
 
 class CrystalEntityTracker implements IMinecraft {
-   private LinkedList<Runnable> field1238 = new LinkedList();
+    private final LinkedList<Runnable> field1238 = new LinkedList();
 
-   void method2142() {
-      while (!this.field1238.isEmpty()) {
-         ((Runnable)this.field1238.poll()).run();
-      }
-   }
+    void method2142() {
+        while (!this.field1238.isEmpty()) {
+            this.field1238.poll().run();
+        }
+    }
 
-   void markAsDeadOnTick(Vec3d var1) {
-      this.field1238.add(this::lambda$markAsDeadOnTick$0);
-   }
+    void markAsDeadOnTick(Vec3d var1) {
+        this.field1238.add(this::lambda$markAsDeadOnTick$0);
+    }
 
-   void method530(Vec3d var1) {
-      for (Entity var6 : mc.world.getEntities()) {
-         if (var6 instanceof EndCrystalEntity && var6.getPos().distanceTo(var1) <= 6.0 && var6 != null) {
-            IEndCrystalEntity var7 = (IEndCrystalEntity)var6;
-            if ((double)(System.currentTimeMillis() - var7.boze$getLastAttackTime()) > Boze.getModules().field905.field1519) {
-               var7.boze$setHitsSinceLastAttack(1);
-            } else {
-               var7.boze$setHitsSinceLastAttack(var7.boze$getHitsSinceLastAttack() + 1);
+    void method530(Vec3d var1) {
+        for (Entity var6 : mc.world.getEntities()) {
+            if (var6 instanceof EndCrystalEntity && var6.getPos().distanceTo(var1) <= 6.0 && var6 != null) {
+                IEndCrystalEntity var7 = (IEndCrystalEntity) var6;
+                if ((double) (System.currentTimeMillis() - var7.boze$getLastAttackTime()) > Boze.getModules().field905.field1519) {
+                    var7.boze$setHitsSinceLastAttack(1);
+                } else {
+                    var7.boze$setHitsSinceLastAttack(var7.boze$getHitsSinceLastAttack() + 1);
+                }
+
+                var7.boze$setLastAttackTime(System.currentTimeMillis());
             }
+        }
+    }
 
-            var7.boze$setLastAttackTime(System.currentTimeMillis());
-         }
-      }
-   }
-
-   private void lambda$markAsDeadOnTick$0(Vec3d var1) {
-      this.method530(var1);
-   }
+    private void lambda$markAsDeadOnTick$0(Vec3d var1) {
+        this.method530(var1);
+    }
 }

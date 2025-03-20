@@ -1,5 +1,6 @@
 package dev.boze.client.systems.modules.client;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.PrePacketSendEvent;
 import dev.boze.client.events.PreTickEvent;
 import dev.boze.client.instances.impl.ChatInstance;
@@ -9,6 +10,16 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.network.BozeExecutor;
+import meteordevelopment.orbit.EventHandler;
+import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -23,16 +34,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicBoolean;
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.GCMParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import dev.boze.client.Boze;
-import meteordevelopment.orbit.EventHandler;
-import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 
 public class Chat extends Module {
    public static final Chat INSTANCE = new Chat();

@@ -7,11 +7,12 @@ import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.render.color.ChangingColor;
 import dev.boze.client.utils.render.color.GradientColor;
 import dev.boze.client.utils.render.color.StaticColor;
-import java.util.HashMap;
-import java.util.Map.Entry;
 import mapped.Class5903;
 import mapped.Class5916;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class Colors extends Module {
    public static final Colors INSTANCE = new Colors();
@@ -51,6 +52,7 @@ public class Colors extends Module {
       return var4;
    }
 
+   @Override
    public Module fromTag(NbtCompound tag) {
       if (tag.contains("colors")) {
          NbtCompound var5 = tag.getCompound("colors");
@@ -73,10 +75,10 @@ public class Colors extends Module {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object fromTag(NbtCompound nbtCompound) {
-      return this.fromTag(nbtCompound);
-   }
+ //  @Override
+   //public Object fromTag(NbtCompound nbtCompound) {
+   //   return this.fromTag(nbtCompound);
+   //}
 
    private ScaledBaseComponent lambda$new$0() {
       return new Class5916("Manage Colors", this.field2343);

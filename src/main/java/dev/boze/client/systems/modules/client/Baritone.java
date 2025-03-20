@@ -2,11 +2,7 @@ package dev.boze.client.systems.modules.client;
 
 import baritone.api.BaritoneAPI;
 import baritone.api.Settings;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxSetting;
-import dev.boze.client.settings.SettingCategory;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 

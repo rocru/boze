@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AnchorTriggerDefaultItem {
+public enum AnchorTriggerDefaultItem {
     Any,
     Anchor,
     Totem,

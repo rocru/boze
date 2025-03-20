@@ -2,19 +2,8 @@ package dev.boze.client.systems.modules.client;
 
 import dev.boze.api.BozeInstance;
 import dev.boze.client.api.BozeDrawColor;
-import dev.boze.client.enums.AlignMode;
-import dev.boze.client.enums.GUILayout;
-import dev.boze.client.enums.LetterMode;
-import dev.boze.client.enums.LetterStyle;
-import dev.boze.client.enums.ModuleDisplayMode;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.ColorSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxSetting;
-import dev.boze.client.settings.RGBASetting;
-import dev.boze.client.settings.SettingCategory;
+import dev.boze.client.enums.*;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.ConfigCategory;
 import dev.boze.client.systems.modules.Module;
@@ -285,29 +274,18 @@ public class Theme extends Module {
    }
 
    public static String method1392(LetterStyle style, String text) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot read field "classStruct" because "classNode" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifyNewEnumSwitch(SwitchHelper.java:319)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplify(SwitchHelper.java:41)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:30)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-      //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:376)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: invokevirtual dev/boze/client/enums/LetterStyle.ordinal ()I
-      // 04: tableswitch 40 0 2 28 35 30
-      // 20: aload 1
-      // 21: areturn
-      // 22: aload 1
-      // 23: invokevirtual java/lang/String.toUpperCase ()Ljava/lang/String;
-      // 26: areturn
-      // 27: aload 1
-      // 28: invokevirtual java/lang/String.toLowerCase ()Ljava/lang/String;
-      // 2b: areturn
-      // 2c: aload 1
-      // 2d: areturn
+      switch (style.ordinal()) {
+         case 0: {
+            return text;
+         }
+         case 2: {
+            return text.toUpperCase();
+         }
+         case 1: {
+            return text.toLowerCase();
+         }
+      }
+      return text;
    }
 
    private boolean lambda$new$2() {

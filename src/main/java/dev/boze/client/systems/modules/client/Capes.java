@@ -14,11 +14,14 @@ import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.MinecraftUtils;
 import dev.boze.client.utils.http.HttpUtil;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import meteordevelopment.orbit.EventHandler;
+import net.minecraft.client.texture.NativeImage;
+import net.minecraft.client.texture.NativeImageBackedTexture;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.random.Random;
+
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -28,12 +31,6 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import meteordevelopment.orbit.EventHandler;
-import net.minecraft.client.texture.NativeImage;
-import net.minecraft.client.texture.NativeImageBackedTexture;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.random.Random;
 
 public class Capes extends Module implements IMinecraft {
    public static final Capes INSTANCE = new Capes();

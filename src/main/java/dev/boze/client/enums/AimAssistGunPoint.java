@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AimAssistGunPoint {
+public enum AimAssistGunPoint {
     Off,
     LeftClick,
     RightClick;

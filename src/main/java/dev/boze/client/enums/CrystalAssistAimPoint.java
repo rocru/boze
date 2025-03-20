@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum CrystalAssistAimPoint {
+public enum CrystalAssistAimPoint {
     MinAngle,
     Closest,
     Clamped,

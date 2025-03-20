@@ -15,54 +15,54 @@ import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket.Inter
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.PositionAndOnGround;
 
 public class Criticals extends Module {
-   public static Criticals INSTANCE = new Criticals();
-   private final BooleanSetting ncpStrict = new BooleanSetting("NCPStrict", true, "NCP Strict mode");
-   private final BooleanSetting still = new BooleanSetting("Still", true, "Only crit when you're still");
-   private final IntSetting ticks = new IntSetting("Ticks", 0, 0, 5, 1, "Additional crit ticks");
-   private final BooleanSetting onlyAura = new BooleanSetting("OnlyAura", false, "Only do crits when aura is enabled");
-   private boolean field444 = false;
+    public static Criticals INSTANCE = new Criticals();
+    private final BooleanSetting ncpStrict = new BooleanSetting("NCPStrict", true, "NCP Strict mode");
+    private final BooleanSetting still = new BooleanSetting("Still", true, "Only crit when you're still");
+    private final IntSetting ticks = new IntSetting("Ticks", 0, 0, 5, 1, "Additional crit ticks");
+    private final BooleanSetting onlyAura = new BooleanSetting("OnlyAura", false, "Only do crits when aura is enabled");
+    private boolean field444 = false;
 
-   public Criticals() {
-      super("Criticals", "Always crit enemies", Category.Combat);
-   }
+    public Criticals() {
+        super("Criticals", "Always crit enemies", Category.Combat);
+    }
 
-   @EventHandler
-   public void method1853(PrePacketSendEvent event) {
-      if (event.packet instanceof IPlayerInteractEntityC2SPacket var5
-         && var5.boze$getType() == InteractType.ATTACK
-         && var5.boze$getEntity() instanceof LivingEntity
-         && mc.player.isOnGround()
-         && !mc.player.isInLava()
-         && !mc.player.isSubmergedInWater()) {
-         if (this.still.getValue() && Class5924.method2115()) {
-            return;
-         }
+    @EventHandler
+    public void method1853(PrePacketSendEvent event) {
+        if (event.packet instanceof IPlayerInteractEntityC2SPacket var5
+                && var5.boze$getType() == InteractType.ATTACK
+                && var5.boze$getEntity() instanceof LivingEntity
+                && mc.player.isOnGround()
+                && !mc.player.isInLava()
+                && !mc.player.isSubmergedInWater()) {
+            if (this.still.getValue() && Class5924.method2115()) {
+                return;
+            }
 
-         if (this.onlyAura.getValue() && !Aura.INSTANCE.isEnabled()) {
-            return;
-         }
+            if (this.onlyAura.getValue() && !Aura.INSTANCE.isEnabled()) {
+                return;
+            }
 
-         if (this.ncpStrict.getValue() && mc.world.getBlockState(mc.player.getBlockPos()).getBlock() != Blocks.COBWEB) {
-            mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + 0.062602401692772, mc.player.getZ(), false));
-            mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + 0.0726023996066094, mc.player.getZ(), false));
-            mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), false));
-         } else {
-            mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + 0.3, mc.player.getZ(), false));
-            mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), false));
-         }
+            if (this.ncpStrict.getValue() && mc.world.getBlockState(mc.player.getBlockPos()).getBlock() != Blocks.COBWEB) {
+                mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + 0.062602401692772, mc.player.getZ(), false));
+                mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + 0.0726023996066094, mc.player.getZ(), false));
+                mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), false));
+            } else {
+                mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + 0.3, mc.player.getZ(), false));
+                mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), false));
+            }
 
-         this.field444 = true;
-      }
-   }
+            this.field444 = true;
+        }
+    }
 
-   @EventHandler
-   public void method240(PostPacketSendEvent event) {
-      if (this.field444) {
-         this.field444 = false;
+    @EventHandler
+    public void method240(PostPacketSendEvent event) {
+        if (this.field444) {
+            this.field444 = false;
 
-         for (int var5 = 0; var5 < this.ticks.getValue(); var5++) {
-            mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), true));
-         }
-      }
-   }
+            for (int var5 = 0; var5 < this.ticks.getValue(); var5++) {
+                mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), true));
+            }
+        }
+    }
 }

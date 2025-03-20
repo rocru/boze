@@ -3,9 +3,10 @@ package dev.boze.client.systems.modules.client;
 import dev.boze.client.core.Version;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import java.time.Instant;
 import meteordevelopment.discordipc.DiscordIPC;
 import meteordevelopment.discordipc.RichPresence;
+
+import java.time.Instant;
 
 public class DiscordPresence extends Module {
    public static DiscordPresence INSTANCE = new DiscordPresence();

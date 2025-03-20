@@ -9,25 +9,25 @@ import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.DrawContext;
 
 public class CrystalSpeed extends GraphHUDModule {
-   public static final CrystalSpeed INSTANCE = new CrystalSpeed();
-   private BooleanSetting field2670 = new BooleanSetting("OnlyWhenAC", true, "Only graph when AutoCrystal is enabled");
+    public static final CrystalSpeed INSTANCE = new CrystalSpeed();
+    private final BooleanSetting field2670 = new BooleanSetting("OnlyWhenAC", true, "Only graph when AutoCrystal is enabled");
 
-   public CrystalSpeed() {
-      super("CrystalSpeed", "Graphs your crystal place speed");
-      this.field2300.setValue(true);
-   }
+    public CrystalSpeed() {
+        super("CrystalSpeed", "Graphs your crystal place speed");
+        this.field2300.setValue(true);
+    }
 
-   @EventHandler
-   public void method1566(MovementEvent event) {
-      if (AutoCrystal.INSTANCE.isEnabled()) {
-         this.method1324((double)AutoCrystal.INSTANCE.method1384());
-      }
-   }
+    @EventHandler
+    public void method1566(MovementEvent event) {
+        if (AutoCrystal.INSTANCE.isEnabled()) {
+            this.method1324(AutoCrystal.INSTANCE.method1384());
+        }
+    }
 
-   @Override
-   public void method295(DrawContext context) {
-      if (!this.field2670.getValue() || AutoCrystal.INSTANCE.isEnabled() || mc.currentScreen instanceof ClickGUI && ClickGUI.field1335.field1336) {
-         super.method295(context);
-      }
-   }
+    @Override
+    public void method295(DrawContext context) {
+        if (!this.field2670.getValue() || AutoCrystal.INSTANCE.isEnabled() || mc.currentScreen instanceof ClickGUI && ClickGUI.field1335.field1336) {
+            super.method295(context);
+        }
+    }
 }

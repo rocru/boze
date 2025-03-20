@@ -1,22 +1,18 @@
 package dev.boze.client.systems.modules.client;
 
+import dev.boze.client.Boze;
 import dev.boze.client.enums.AnticheatMode;
 import dev.boze.client.events.ACRotationEvent;
 import dev.boze.client.events.PacketBundleEvent;
 import dev.boze.client.events.PrePacketSendEvent;
 import dev.boze.client.events.eJ;
 import dev.boze.client.mixin.PlayerMoveC2SPacketAccessor;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxDoubleSetting;
-import dev.boze.client.settings.MinMaxSetting;
-import dev.boze.client.settings.SettingCategory;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.ConfigCategory;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.RotationHelper;
 import dev.boze.client.utils.Timer;
-import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.DownloadingTerrainScreen;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;

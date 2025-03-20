@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AntiBotTabList {
+public enum AntiBotTabList {
     Off,
     On,
     ZeroPing;

@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AimAssistPriority {
+public enum AimAssistPriority {
     Distance,
     FOV,
     Health;

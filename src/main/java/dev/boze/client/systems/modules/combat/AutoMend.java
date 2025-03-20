@@ -31,141 +31,141 @@ import net.minecraft.network.packet.c2s.play.CloseHandledScreenC2SPacket;
 import net.minecraft.util.Hand;
 
 public class AutoMend extends Module {
-   public static final AutoMend INSTANCE = new AutoMend();
-   private final EnumSetting<AnticheatMode> interactionMode = new EnumSetting<AnticheatMode>("Mode", AnticheatMode.NCP, "Interaction mode");
-   private final BooleanSetting swing = new BooleanSetting("Swing", true, "Swing");
-   private final EnumSetting<SwapMode> swapMode = new EnumSetting<SwapMode>("Swap", SwapMode.Silent, "Auto swap mode");
-   private final IntSetting delay = new IntSetting("Delay", 1, 0, 4, 1, "Delay for throwing XP");
-   public final BooleanSetting mendRemove = new BooleanSetting("MendRemove", true, "Remove armor when mending using AutoArmor");
-   private final BooleanSetting damageDisable = new BooleanSetting("DamageDisable", true, "Disable on damage");
-   private final BooleanSetting crystalDisable = new BooleanSetting("CrystalDisable", true, "Disable when crystals placed nearby");
-   private float field684;
-   private int field685;
+    public static final AutoMend INSTANCE = new AutoMend();
+    private final EnumSetting<AnticheatMode> interactionMode = new EnumSetting<AnticheatMode>("Mode", AnticheatMode.NCP, "Interaction mode");
+    private final BooleanSetting swing = new BooleanSetting("Swing", true, "Swing");
+    private final EnumSetting<SwapMode> swapMode = new EnumSetting<SwapMode>("Swap", SwapMode.Silent, "Auto swap mode");
+    private final IntSetting delay = new IntSetting("Delay", 1, 0, 4, 1, "Delay for throwing XP");
+    public final BooleanSetting mendRemove = new BooleanSetting("MendRemove", true, "Remove armor when mending using AutoArmor");
+    private final BooleanSetting damageDisable = new BooleanSetting("DamageDisable", true, "Disable on damage");
+    private final BooleanSetting crystalDisable = new BooleanSetting("CrystalDisable", true, "Disable when crystals placed nearby");
+    private float field684;
+    private int field685;
 
-   public AutoMend() {
-      super("AutoMend", "Automatically mends your armor", Category.Combat);
-   }
+    public AutoMend() {
+        super("AutoMend", "Automatically mends your armor", Category.Combat);
+    }
 
-   @Override
-   public void onEnable() {
-      if (!MinecraftUtils.isClientActive()) {
-         this.setEnabled(false);
-      } else {
-         this.field684 = mc.player.getHealth() + mc.player.getAbsorptionAmount();
-      }
-   }
-
-   @Override
-   public boolean setEnabled(boolean newState) {
-      if (newState && MinecraftUtils.isClientActive()) {
-         boolean var5 = false;
-
-         for (int var6 = 0; var6 <= 3; var6++) {
-            ItemStack var7 = mc.player.getInventory().getArmorStack(var6);
-            if (!var7.isEmpty() && var7.isDamaged()) {
-               var5 = true;
-               break;
-            }
-         }
-
-         if (!var5) {
+    @Override
+    public void onEnable() {
+        if (!MinecraftUtils.isClientActive()) {
             this.setEnabled(false);
+        } else {
+            this.field684 = mc.player.getHealth() + mc.player.getAbsorptionAmount();
+        }
+    }
+
+    @Override
+    public boolean setEnabled(boolean newState) {
+        if (newState && MinecraftUtils.isClientActive()) {
+            boolean var5 = false;
+
+            for (int var6 = 0; var6 <= 3; var6++) {
+                ItemStack var7 = mc.player.getInventory().getArmorStack(var6);
+                if (!var7.isEmpty() && var7.isDamaged()) {
+                    var5 = true;
+                    break;
+                }
+            }
+
+            if (!var5) {
+                this.setEnabled(false);
+                return false;
+            }
+        }
+
+        return super.setEnabled(newState);
+    }
+
+    @EventHandler(
+            priority = 5
+    )
+    public void method1885(ACRotationEvent event) {
+        if (event.method1017() == this.interactionMode.getValue()) {
+            if (this.field685 >= this.delay.getValue()) {
+                if (!ElytraRecast.INSTANCE.isEnabled()) {
+                    if (!this.method1971()) {
+                        this.setEnabled(false);
+                    } else {
+                        event.pitch = 90.0F;
+                        event.method1021(true);
+                    }
+                }
+            }
+        }
+    }
+
+    @EventHandler(
+            priority = 5
+    )
+    public void method1883(RotationEvent event) {
+        if (!event.method554(RotationMode.Sequential)) {
+            if (this.field685 < this.delay.getValue()) {
+                this.field685++;
+            } else if (this.method1971()) {
+                int var5 = this.method2010();
+                if (var5 == -1) {
+                    NotificationManager.method1151(new Notification(this.getName(), "No XP bottles found", Notifications.WARNING, NotificationPriority.Yellow));
+                    this.setEnabled(false);
+                } else if (InventoryUtil.method534(this, 5, this.swapMode.getValue(), var5)) {
+                    Class5913.method16(var5 == -2 ? Hand.OFF_HAND : Hand.MAIN_HAND);
+                    if (this.swing.getValue()) {
+                        mc.player.swingHand(var5 == -2 ? Hand.OFF_HAND : Hand.MAIN_HAND);
+                    }
+
+                    this.field685 = 0;
+                    InventoryUtil.method396(this);
+                    if (AntiCheat.INSTANCE.field2322.getValue() && !dev.boze.client.utils.player.InventoryUtil.isInventoryOpen()) {
+                        mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
+                    }
+                }
+            }
+        }
+    }
+
+    private boolean method1971() {
+        if (!MinecraftUtils.isClientActive()) {
             return false;
-         }
-      }
+        } else {
+            boolean var4 = false;
 
-      return super.setEnabled(newState);
-   }
-
-   @EventHandler(
-      priority = 5
-   )
-   public void method1885(ACRotationEvent event) {
-      if (event.method1017() == this.interactionMode.getValue()) {
-         if (this.field685 >= this.delay.getValue()) {
-            if (!ElytraRecast.INSTANCE.isEnabled()) {
-               if (!this.method1971()) {
-                  this.setEnabled(false);
-               } else {
-                  event.pitch = 90.0F;
-                  event.method1021(true);
-               }
+            for (int var5 = 0; var5 <= 3; var5++) {
+                ItemStack var6 = mc.player.getInventory().getArmorStack(var5);
+                if (!var6.isEmpty() && var6.isDamaged()) {
+                    var4 = true;
+                    break;
+                }
             }
-         }
-      }
-   }
 
-   @EventHandler(
-      priority = 5
-   )
-   public void method1883(RotationEvent event) {
-      if (!event.method554(RotationMode.Sequential)) {
-         if (this.field685 < this.delay.getValue()) {
-            this.field685++;
-         } else if (this.method1971()) {
-            int var5 = this.method2010();
-            if (var5 == -1) {
-               NotificationManager.method1151(new Notification(this.getName(), "No XP bottles found", Notifications.WARNING, NotificationPriority.Yellow));
-               this.setEnabled(false);
-            } else if (InventoryUtil.method534(this, 5, this.swapMode.getValue(), var5)) {
-               Class5913.method16(var5 == -2 ? Hand.OFF_HAND : Hand.MAIN_HAND);
-               if (this.swing.getValue()) {
-                  mc.player.swingHand(var5 == -2 ? Hand.OFF_HAND : Hand.MAIN_HAND);
-               }
+            return var4;
+        }
+    }
 
-               this.field685 = 0;
-               InventoryUtil.method396(this);
-               if (AntiCheat.INSTANCE.field2322.getValue() && !dev.boze.client.utils.player.InventoryUtil.isInventoryOpen()) {
-                  mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
-               }
+    public int method2010() {
+        return InventoryHelper.method166(AutoMend::lambda$getSlot$0, this.swapMode.getValue());
+    }
+
+    @EventHandler
+    private void method1942(PostPlayerTickEvent var1) {
+        float var5 = mc.player.getHealth() + mc.player.getAbsorptionAmount();
+        if (this.damageDisable.getValue() && var5 < this.field684) {
+            this.setEnabled(false);
+        } else {
+            if (this.crystalDisable.getValue()) {
+                for (Entity var7 : mc.world.getEntities()) {
+                    if (var7 instanceof EndCrystalEntity
+                            && var7.distanceTo(mc.player) < 6.0F
+                            && Class3069.method6004(mc.player, var7.getPos()) >= (double) Math.min(2.0F, var5)) {
+                        this.setEnabled(false);
+                    }
+                }
             }
-         }
-      }
-   }
 
-   private boolean method1971() {
-      if (!MinecraftUtils.isClientActive()) {
-         return false;
-      } else {
-         boolean var4 = false;
+            this.field684 = var5;
+        }
+    }
 
-         for (int var5 = 0; var5 <= 3; var5++) {
-            ItemStack var6 = mc.player.getInventory().getArmorStack(var5);
-            if (!var6.isEmpty() && var6.isDamaged()) {
-               var4 = true;
-               break;
-            }
-         }
-
-         return var4;
-      }
-   }
-
-   public int method2010() {
-      return InventoryHelper.method166(AutoMend::lambda$getSlot$0, this.swapMode.getValue());
-   }
-
-   @EventHandler
-   private void method1942(PostPlayerTickEvent var1) {
-      float var5 = mc.player.getHealth() + mc.player.getAbsorptionAmount();
-      if (this.damageDisable.getValue() && var5 < this.field684) {
-         this.setEnabled(false);
-      } else {
-         if (this.crystalDisable.getValue()) {
-            for (Entity var7 : mc.world.getEntities()) {
-               if (var7 instanceof EndCrystalEntity
-                  && var7.distanceTo(mc.player) < 6.0F
-                  && Class3069.method6004(mc.player, var7.getPos()) >= (double)Math.min(2.0F, var5)) {
-                  this.setEnabled(false);
-               }
-            }
-         }
-
-         this.field684 = var5;
-      }
-   }
-
-   private static boolean lambda$getSlot$0(ItemStack var0) {
-      return var0.getItem() == Items.EXPERIENCE_BOTTLE;
-   }
+    private static boolean lambda$getSlot$0(ItemStack var0) {
+        return var0.getItem() == Items.EXPERIENCE_BOTTLE;
+    }
 }

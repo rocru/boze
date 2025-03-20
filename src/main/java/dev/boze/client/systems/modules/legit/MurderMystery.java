@@ -11,18 +11,12 @@ import dev.boze.client.settings.IntSetting;
 import dev.boze.client.settings.ItemSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import java.util.HashSet;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ArmorStandItem;
-import net.minecraft.item.BedItem;
-import net.minecraft.item.EmptyMapItem;
-import net.minecraft.item.FilledMapItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.SwordItem;
+import net.minecraft.item.*;
+
+import java.util.HashSet;
 
 public class MurderMystery extends Module {
    public static final MurderMystery INSTANCE = new MurderMystery();

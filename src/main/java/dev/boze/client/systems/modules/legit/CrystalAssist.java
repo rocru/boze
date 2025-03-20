@@ -5,19 +5,11 @@ import dev.boze.client.enums.CrystalAssistPriority;
 import dev.boze.client.events.MouseUpdateEvent;
 import dev.boze.client.events.MovementEvent;
 import dev.boze.client.events.PrePacketSendEvent;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxDoubleSetting;
-import dev.boze.client.settings.MinMaxSetting;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.RotationHelper;
 import dev.boze.client.utils.Timer;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
 import mapped.Class3069;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.Entity;
@@ -25,6 +17,11 @@ import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.c2s.play.PlayerInteractBlockC2SPacket;
 import net.minecraft.util.math.BlockPos;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class CrystalAssist extends Module {
    public static final CrystalAssist INSTANCE = new CrystalAssist();

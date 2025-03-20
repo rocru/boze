@@ -7,22 +7,18 @@ import dev.boze.client.gui.notification.NotificationPriority;
 import dev.boze.client.gui.notification.NotificationType;
 import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.manager.NotificationManager;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.RGBASetting;
-import dev.boze.client.settings.SettingCategory;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.misc.SoundFX;
 import dev.boze.client.utils.RGBAColor;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import dev.boze.client.utils.fakeplayer.FakeClientPlayerEntity;
-import java.io.File;
 import mapped.Class1204;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.player.PlayerEntity;
+
+import java.io.File;
 
 public class Notifications extends Module {
    public static final Notifications INSTANCE = new Notifications();

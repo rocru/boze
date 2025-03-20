@@ -36,7 +36,7 @@ public abstract class GraphHUDModule extends HUDModule {
    protected void method1324(double value) {
       this.field2311.add(value);
 
-      while (this.field2311.size() > this.field2301.getValue() ? this.field2302.getValue() : HUD.INSTANCE.field2387.getValue()) {
+      while (this.field2311.size() > (this.field2301.getValue() ? this.field2302.getValue() : HUD.INSTANCE.field2387.getValue())) {
          this.field2311.remove(0);
       }
    }
@@ -44,12 +44,7 @@ public abstract class GraphHUDModule extends HUDModule {
    @Override
    public void method295(DrawContext context) {
       this.method314((double)(100 + HUD.INSTANCE.field2377.getValue() * 2) * this.method1327());
-      this.method316(
-         (double)(
-               60 + HUD.INSTANCE.field2378.getValue() * (this.field2301.getValue() ? this.field2305.getValue() : HUD.INSTANCE.field2390.getValue() ? 2 : 3)
-            )
-            * this.method1327()
-      );
+      this.method316((double)(60 + HUD.INSTANCE.field2378.getValue() * ((this.field2301.getValue() ? this.field2305.getValue() : HUD.INSTANCE.field2390.getValue()) ? 2 : 3)) * this.method1327());
       double var13 = this.method1325();
       double var15 = this.method1326();
       double var17 = var15 - var13;

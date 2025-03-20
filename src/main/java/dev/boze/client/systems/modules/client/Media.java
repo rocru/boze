@@ -4,6 +4,7 @@ import dev.boze.client.settings.BooleanSetting;
 import dev.boze.client.settings.ProtectedNamesSetting;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
+
 import java.util.Locale;
 
 public class Media extends Module {

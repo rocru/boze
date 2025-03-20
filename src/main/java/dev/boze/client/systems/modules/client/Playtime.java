@@ -2,19 +2,20 @@ package dev.boze.client.systems.modules.client;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import dev.boze.client.Boze;
 import dev.boze.client.events.GameJoinEvent;
 import dev.boze.client.events.MovementEvent;
 import dev.boze.client.manager.ConfigManager;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
-import java.util.HashMap;
-import java.util.Map.Entry;
-import dev.boze.client.Boze;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket;
 import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket.Mode;
 import net.minecraft.stat.Stats;
+
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class Playtime extends Module {
    public static final Playtime INSTANCE = new Playtime();

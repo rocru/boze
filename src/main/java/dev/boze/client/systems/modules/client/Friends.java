@@ -6,10 +6,11 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.legit.Teams;
 import dev.boze.client.systems.modules.misc.ExtraChat;
-import java.util.ArrayList;
 import mapped.Class3063;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+
+import java.util.ArrayList;
 
 public class Friends extends Module {
    public static final Friends INSTANCE = new Friends();
@@ -47,9 +48,8 @@ public class Friends extends Module {
    }
 
    public static void method1750(String name) {
-      INSTANCE.field683.getValue().removeIf(Friends::lambda$delFriend$0);
+      Friends.INSTANCE.field683.getValue().removeIf(arg_0 -> Friends.lambda$delFriend$0(name, arg_0));
    }
-
    public static boolean method345(Class3063 friend) {
       return INSTANCE.field683.getValue().remove(friend);
    }

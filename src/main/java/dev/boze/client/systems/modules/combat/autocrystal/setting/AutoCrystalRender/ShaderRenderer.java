@@ -11,49 +11,50 @@ import dev.boze.client.renderer.packer.ByteTexturePacker;
 import dev.boze.client.settings.EnumSetting;
 import dev.boze.client.settings.StringSetting;
 import dev.boze.client.utils.render.ByteTexture;
+
 import java.io.File;
 import java.io.FileInputStream;
 
 public class ShaderRenderer {
-   private final EnumSetting<AutoCrystalShaderMode> field2514;
-   private final StringSetting field2515;
-   private ByteTexture field2516;
-   private String field2517;
+    private final EnumSetting<AutoCrystalShaderMode> field2514;
+    private final StringSetting field2515;
+    private ByteTexture field2516;
+    private String field2517;
 
-   public ShaderRenderer(EnumSetting<AutoCrystalShaderMode> setting, StringSetting image) {
-      this.field2514 = setting;
-      this.field2515 = image;
-   }
+    public ShaderRenderer(EnumSetting<AutoCrystalShaderMode> setting, StringSetting image) {
+        this.field2514 = setting;
+        this.field2515 = image;
+    }
 
-   public ByteTexture method1453() {
-      return this.field2516;
-   }
+    public ByteTexture method1453() {
+        return this.field2516;
+    }
 
-   public ShaderMode method1454() {
-      if (this.field2514.getValue() == AutoCrystalShaderMode.Image) {
-         if (!this.field2515.getValue().isEmpty() && (!this.field2515.getValue().equals(this.field2517) || this.field2516 == null)) {
-            File var4 = new File(ConfigManager.images, this.field2515.getValue() + ".png");
+    public ShaderMode method1454() {
+        if (this.field2514.getValue() == AutoCrystalShaderMode.Image) {
+            if (!this.field2515.getValue().isEmpty() && (!this.field2515.getValue().equals(this.field2517) || this.field2516 == null)) {
+                File var4 = new File(ConfigManager.images, this.field2515.getValue() + ".png");
 
-            try {
-               FileInputStream var5 = new FileInputStream(var4);
-               this.field2516 = ByteTexturePacker.method493(var5);
-               if (this.field2516 != null) {
-                  this.field2517 = this.field2515.getValue();
-               } else {
-                  this.field2517 = "";
-               }
-            } catch (Exception var6) {
-               NotificationManager.method1151(new Notification("Shaders", "Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field2515.setValue("");
-               this.field2517 = "";
+                try {
+                    FileInputStream var5 = new FileInputStream(var4);
+                    this.field2516 = ByteTexturePacker.method493(var5);
+                    if (this.field2516 != null) {
+                        this.field2517 = this.field2515.getValue();
+                    } else {
+                        this.field2517 = "";
+                    }
+                } catch (Exception var6) {
+                    NotificationManager.method1151(new Notification("Shaders", "Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
+                    this.field2515.setValue("");
+                    this.field2517 = "";
+                }
             }
-         }
 
-         if (this.field2516 != null) {
-            return ShaderMode.Image;
-         }
-      }
+            if (this.field2516 != null) {
+                return ShaderMode.Image;
+            }
+        }
 
-      return ShaderMode.Rainbow;
-   }
+        return ShaderMode.Rainbow;
+    }
 }

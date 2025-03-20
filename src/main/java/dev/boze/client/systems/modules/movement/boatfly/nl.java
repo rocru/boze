@@ -19,7 +19,7 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-class nl extends nj {
+public class nl extends nj {
    private static final int field1581 = 20;
    private static final int field1582 = 4;
    private static final int field1583 = 2;

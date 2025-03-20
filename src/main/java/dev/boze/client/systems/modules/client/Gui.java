@@ -1,17 +1,8 @@
 package dev.boze.client.systems.modules.client;
 
-import dev.boze.client.enums.AAMode;
-import dev.boze.client.enums.GUILayout;
-import dev.boze.client.enums.GUIMenu;
-import dev.boze.client.enums.MaxHeight;
-import dev.boze.client.enums.ToggleStyle;
+import dev.boze.client.enums.*;
 import dev.boze.client.gui.screens.ClickGUI;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.IntSetting;
-import dev.boze.client.settings.MinMaxSetting;
-import dev.boze.client.settings.RGBASetting;
-import dev.boze.client.settings.SettingCategory;
+import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.ConfigCategory;
 import dev.boze.client.systems.modules.Module;

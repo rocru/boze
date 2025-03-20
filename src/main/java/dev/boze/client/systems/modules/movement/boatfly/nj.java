@@ -5,7 +5,7 @@ import dev.boze.client.systems.modules.movement.BoatFly;
 import dev.boze.client.utils.IMinecraft;
 import net.minecraft.network.packet.s2c.play.VehicleMoveS2CPacket;
 
-abstract class nj implements IMinecraft {
+public abstract class nj implements IMinecraft {
    protected final BoatFly field1556;
 
    public nj(BoatFly module) {

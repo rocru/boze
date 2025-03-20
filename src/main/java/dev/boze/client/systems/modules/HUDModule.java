@@ -57,8 +57,8 @@ public abstract class HUDModule extends Module {
    }
 
    @Override
-   public void isFriend(NbtCompound tag) {
-      super.isFriend(tag);
+   public void method394(NbtCompound tag) {
+      super.method394(tag);
       if (tag.contains("settings")) {
          NbtCompound var5 = tag.getCompound("settings");
          this.fromTag(var5);

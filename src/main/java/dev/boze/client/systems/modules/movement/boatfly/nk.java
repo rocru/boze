@@ -30,7 +30,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.NotNull;
 
-class nk extends nj {
+public class nk extends nj {
    private static final double field1557 = Math.sqrt(2.0);
    private static final double field1558 = -0.03125;
    private static final int field1559 = 60;

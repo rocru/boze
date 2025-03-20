@@ -6,10 +6,11 @@ import dev.boze.client.enums.AnticheatMode;
 import dev.boze.client.enums.AutoMineMode;
 import dev.boze.client.systems.modules.combat.AutoMine;
 import dev.boze.client.utils.IMinecraft;
-import java.util.function.Function;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+
+import java.util.function.Function;
 
 public final class BlockLocationInfo {
     private final BlockPos field2528;
