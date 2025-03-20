@@ -28,7 +28,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Vector3d;
 
-class AutoCrystalRender implements IMinecraft, SettingsGroup {
+public class AutoCrystalRender implements IMinecraft, SettingsGroup {
     private final AutoCrystal field146;
     final BooleanSetting field147 = new BooleanSetting("Render", true, "Render placements");
     private final ColorSetting field148 = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill");
@@ -89,7 +89,7 @@ class AutoCrystalRender implements IMinecraft, SettingsGroup {
     Box field173 = null;
     Box field174 = null;
     final Timer field175 = new Timer();
-    Vec3d field176 = null;
+    public Vec3d field176 = null;
 
     AutoCrystalRender(AutoCrystal var1) {
         this.field146 = var1;
@@ -192,7 +192,7 @@ class AutoCrystalRender implements IMinecraft, SettingsGroup {
                 this.field170.method1217();
                 this.field170.method1273(var11, var13, var14, ShapeMode.Full, 0);
                 ChamsShaderRenderer.method1311(
-                        this::lambda$onRender3D$4,
+                        () -> lambda$onRender3D$4(event),
                         this.field169.method1454(),
                         this.field154.getValue(),
                         var13,

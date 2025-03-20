@@ -39,7 +39,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
     private final SettingCategory field177 = new SettingCategory("Break", "Break settings\nDelays, ranges, etc.\n");
     final FloatSetting field178 = new FloatSetting("Range", 3.0F, 1.0F, 6.0F, 0.1F, "Break range for breaking visible crystals", this.field177);
     final FloatSetting field179 = new FloatSetting("WallsRange", 3.0F, 0.0F, 6.0F, 0.1F, "Break range for breaking crystals through walls", this.field177);
-    final FloatSetting field180 = new FloatSetting("BreakDelay", 0.0F, 0.0F, 10.0F, 0.05F, "Break delay (in ticks)", this.field177);
+    public final FloatSetting field180 = new FloatSetting("BreakDelay", 0.0F, 0.0F, 10.0F, 0.05F, "Break delay (in ticks)", this.field177);
     final EnumSetting<InhibitMode> field181 = new EnumSetting<InhibitMode>(
             "Inhibit",
             InhibitMode.On,
@@ -48,13 +48,13 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
     );
     private final Setting<?>[] field182;
     private final AutoCrystal field183;
-    final Timer timer = new Timer();
+    public final Timer timer = new Timer();
     private boolean field184 = false;
 
     AutoCrystalBreak(AutoCrystal var1) {
         this.field183 = var1;
-        this.field178.setVisibility(AutoCrystalBreak::lambda$new$0);
-        this.field179.setVisibility(AutoCrystalBreak::lambda$new$1);
+        this.field178.setVisibility(() -> lambda$new$0(var1));
+        this.field179.setVisibility(() -> lambda$new$1(var1));
         this.field182 = new Setting[]{this.field177, this.field178, this.field179, this.field180, this.field181};
     }
 
@@ -79,7 +79,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
         }
     }
 
-    void method2142() {
+    public void method2142() {
         float var4 = this.field180.getValue() * 50.0F;
         if (this.field183.autoCrystalTracker.field1529 != null
                 && this.timer.hasElapsed(var4)
@@ -89,7 +89,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
         }
     }
 
-    Vec3d method1954() {
+    public Vec3d method1954() {
         if (this.field183.autoCrystalTracker.field1529 != null) {
             if (this.field183.field1041.field205.getValue() == AnticheatMode.NCP) {
                 return this.field183.autoCrystalTracker.field1529.getPos();
@@ -102,7 +102,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
         }
     }
 
-    void method1416() {
+    public void method1416() {
         this.field184 = true;
     }
 
@@ -150,7 +150,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
         }
     }
 
-    boolean method94(Vec3d var1, int var2, Entity[] var3) {
+    public boolean method94(Vec3d var1, int var2, Entity[] var3) {
         if (this.method2116()) {
             this.method2115();
             return false;
@@ -201,7 +201,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
             var5 = new LivingEntity[4];
         }
 
-        List var6 = this.method1144();
+        List<EndCrystalEntity> var6 = this.method1144();
         if (var6.isEmpty()) {
             return null;
         } else {
@@ -320,7 +320,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
         }
     }
 
-    boolean method2116() {
+    public boolean method2116() {
         return this.method2117()
                 && !Boze.getModules()
                 .field906

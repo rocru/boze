@@ -24,15 +24,15 @@ public class AutoCrystalTracker implements IMinecraft {
     private final float[] field1526 = new float[20];
     private int field1527 = 0;
     private long field1528;
-    EndCrystalEntity field1529 = null;
+    public EndCrystalEntity field1529 = null;
     Entity[] field1530 = null;
-    boolean field1531 = false;
+    public boolean field1531 = false;
     private final Timer field1532 = new Timer();
     BlockPos field1533 = null;
-    Class3087 field1534 = null;
+    public Class3087 field1534 = null;
     boolean field1535 = false;
     public double field1536 = 0.0;
-    double field1537 = 0.0;
+    public double field1537 = 0.0;
     public LivingEntity field1538 = null;
     private final HashMap<BlockPos, Long> field1539 = new HashMap();
     private final int[] field1540 = new int[10];
@@ -48,7 +48,7 @@ public class AutoCrystalTracker implements IMinecraft {
         }
     }
 
-    AutoCrystalTracker(AutoCrystal var1) {
+    public AutoCrystalTracker(AutoCrystal var1) {
         this.field1524 = var1;
     }
 

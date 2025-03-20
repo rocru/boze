@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum CrystalAuraYawStep {
+public enum CrystalAuraYawStep {
     Off,
     Break,
     Full;

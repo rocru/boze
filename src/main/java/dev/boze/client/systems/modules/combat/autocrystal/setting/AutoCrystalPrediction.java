@@ -26,7 +26,7 @@ public class AutoCrystalPrediction implements IMinecraft {
         }
     }
 
-    AutoCrystalPrediction(AutoCrystal var1) {
+    public AutoCrystalPrediction(AutoCrystal var1) {
         this.field1091 = var1;
     }
 

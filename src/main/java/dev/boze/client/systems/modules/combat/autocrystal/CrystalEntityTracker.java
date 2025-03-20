@@ -9,7 +9,7 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.LinkedList;
 
-class CrystalEntityTracker implements IMinecraft {
+public class CrystalEntityTracker implements IMinecraft {
     private final LinkedList<Runnable> field1238 = new LinkedList();
 
     void method2142() {
@@ -19,10 +19,10 @@ class CrystalEntityTracker implements IMinecraft {
     }
 
     void markAsDeadOnTick(Vec3d var1) {
-        this.field1238.add(this::lambda$markAsDeadOnTick$0);
+        this.field1238.add(() -> lambda$markAsDeadOnTick$0(var1));
     }
 
-    void method530(Vec3d var1) {
+    public void method530(Vec3d var1) {
         for (Entity var6 : mc.world.getEntities()) {
             if (var6 instanceof EndCrystalEntity && var6.getPos().distanceTo(var1) <= 6.0 && var6 != null) {
                 IEndCrystalEntity var7 = (IEndCrystalEntity) var6;

@@ -4,24 +4,21 @@ import dev.boze.client.enums.AutoCrystalMaxDamage;
 import dev.boze.client.enums.AutoCrystalTargetingMode;
 import dev.boze.client.enums.ServerType;
 import dev.boze.client.mixininterfaces.ILivingEntity;
-import dev.boze.client.settings.BindSetting;
-import dev.boze.client.settings.BooleanSetting;
-import dev.boze.client.settings.EnumSetting;
-import dev.boze.client.settings.FloatSetting;
-import dev.boze.client.settings.Setting;
+import dev.boze.client.settings.*;
 import dev.boze.client.settings.generic.SettingsGroup;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.utils.Bind;
 import dev.boze.client.utils.IMinecraft;
+import mapped.Class5924;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import mapped.Class5924;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
 
 public class AutoCrystalTargeting
         implements IMinecraft,
@@ -33,7 +30,7 @@ public class AutoCrystalTargeting
     final FloatSetting field111 = new FloatSetting("TradeOff", 0.0f, 0.0f, 10.0f, 0.1f, "Max amount of damage to sacrifice to maintain max speed\nAt 0, higher damage placements are always prioritized\n0 is recommended if you don't care about CPS, but only DPS\nThis is not ping dependent\n");
     final BindSetting field112 = new BindSetting("Override", Bind.create(), "Bind to override ignore min damage", this.field107);
     final FloatSetting field113 = new FloatSetting("OverrideMinDmg", 0.1f, 0.0f, 4.0f, 0.1f, "Minimum amount of damage for ignore mode, when:\n - Health below LethalHP\n - Armor below ArmorPct\n - Override bind pressed\n", this.field107);
-    final BooleanSetting field114 = new BooleanSetting("Economize", false, "Economize on crystals when face-placing", this.field107);
+    public final BooleanSetting field114 = new BooleanSetting("Economize", false, "Economize on crystals when face-placing", this.field107);
     public final EnumSetting<AutoCrystalMaxDamage> field115 = new EnumSetting<AutoCrystalMaxDamage>("Safety", AutoCrystalMaxDamage.Combined, "Safety mode for placing and breaking crystals\n - MaxSelfDmg: Don't place/break if self damage is above max self damage\n - Balance: Don't place/break if self damage is above target damage * balance\n - Combined: Use both\n");
     public final FloatSetting field116 = new FloatSetting("MaxSelfDmg", 12.0f, 0.0f, 20.0f, 0.1f, "Maximum amount of self damage for placing/breaking crystals", this::lambda$new$0, this.field115);
     public final FloatSetting field117 = new FloatSetting("Balance", 0.5f, 0.0f, 1.0f, 0.05f, "Balance between self and target damage", this::lambda$new$1, this.field115);

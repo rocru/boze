@@ -25,7 +25,7 @@ import java.util.Set;
 public class CrystalHelper implements IMinecraft {
     private final AutoCrystal field1626;
 
-    CrystalHelper(AutoCrystal var1) {
+    public CrystalHelper(AutoCrystal var1) {
         this.field1626 = var1;
     }
 
@@ -80,11 +80,11 @@ public class CrystalHelper implements IMinecraft {
         return var5 == Blocks.BEDROCK || var5 == Blocks.OBSIDIAN;
     }
 
-    boolean method2102(BlockPos var1) {
+    public boolean method2102(BlockPos var1) {
         return mc.world.getBlockState(var1).isAir();
     }
 
-    Vec3d method725(BlockPos var1) {
+    public Vec3d method725(BlockPos var1) {
         if (this.field1626.field1041.field205.getValue() == AnticheatMode.Grim) {
             Set var5 = this.field1626.field1041.grim.method121(var1);
             if (!var5.isEmpty()) {
@@ -98,7 +98,7 @@ public class CrystalHelper implements IMinecraft {
         return new Vec3d((double) var1.getX() + 0.5, (double) var1.getY() + 1.0, (double) var1.getZ() + 0.5);
     }
 
-    boolean method726(Box var1) {
+    public boolean method726(Box var1) {
         try {
             for (Entity var6 : mc.world.getEntities()) {
                 if (var6 != null) {
@@ -121,7 +121,7 @@ public class CrystalHelper implements IMinecraft {
         return false;
     }
 
-    boolean method727(double var1) {
+    public boolean method727(double var1) {
         return this.field1626.field1042.field118.getValue()
                 || this.field1626.field1042.field115.getValue() == AutoCrystalMaxDamage.Balance
                 || !(var1 > (double) this.field1626.field1042.field116.getValue().floatValue());

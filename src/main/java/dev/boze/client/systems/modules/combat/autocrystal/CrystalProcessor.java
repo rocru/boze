@@ -8,10 +8,10 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-class CrystalProcessor implements IMinecraft {
+public class CrystalProcessor implements IMinecraft {
     private final AutoCrystal field1365;
 
-    CrystalProcessor(AutoCrystal var1) {
+    public CrystalProcessor(AutoCrystal var1) {
         this.field1365 = var1;
     }
 

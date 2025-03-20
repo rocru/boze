@@ -30,14 +30,14 @@ import net.minecraft.util.math.Vec3d;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-class CrystalHitter implements IMinecraft {
+public class CrystalHitter implements IMinecraft {
     private final AutoCrystal field1093;
     private final SwapHandler field1094;
     private final Class5912[] field1095;
     Vec3d field1096;
     HitResult[] field1097 = null;
 
-    CrystalHitter(AutoCrystal var1) {
+    public CrystalHitter(AutoCrystal var1) {
         this.field1093 = var1;
         this.field1094 = new SwapHandler(var1, 25);
         this.field1095 = new Class5912[]{var1.field1044, var1.autoCrystalBasePlace};
@@ -128,7 +128,7 @@ class CrystalHitter implements IMinecraft {
         }
     }
 
-    HitResult method150(HashSet<BlockPos> var1, BlockPos var2) {
+    public HitResult method150(HashSet<BlockPos> var1, BlockPos var2) {
         NCP var6 = NCP.field1836;
         ArrayList<Direction> var7 = new ArrayList<>(6);
         this.method513(var1, var2, var7, false, var6);

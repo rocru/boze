@@ -47,9 +47,9 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
             AutoMineSwapMode.Alt,
             "Auto Swap mode\n - Off: Don't auto swap\nHot-bar only modes:\n - Normal: Vanilla swap\n - Silent: Instantaneously swap to crystal/sword and back\nWhole inventory modes (you don't need to keep the tool in your hot-bar):\n - Alt: Alternative silent swap mode, may work where mode silent is patched\nNote: Whole inventory modes may not work on some servers\n"
     );
-    final BooleanSetting field214 = new BooleanSetting("AntiWeakness", false, "Auto swap to sword to break crystals when weak", this.field213);
-    final IntSetting field215 = new IntSetting("Penalty", 10, 0, 20, 1, "Tick penalty for swapping\n10 on most NCP servers", this::lambda$new$3, this.field213);
-    final BooleanSetting field216 = new BooleanSetting("GrimBypass", true, "Bypass 2b2t/Grim's swap patch", this::lambda$new$4, this.field213);
+    public final BooleanSetting field214 = new BooleanSetting("AntiWeakness", false, "Auto swap to sword to break crystals when weak", this.field213);
+    public final IntSetting field215 = new IntSetting("Penalty", 10, 0, 20, 1, "Tick penalty for swapping\n10 on most NCP servers", this::lambda$new$3, this.field213);
+    public final BooleanSetting field216 = new BooleanSetting("GrimBypass", true, "Bypass 2b2t/Grim's swap patch", this::lambda$new$4, this.field213);
     private final Setting<?>[] field217;
     private final AutoCrystal field218;
     final GrimPlace grim = new GrimPlace();

@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGroup {
-    final EnumSetting<BasePlace> field122 = new EnumSetting<BasePlace>(
+    final EnumSetting<BasePlace> field122 = new EnumSetting<>(
             "BasePlace",
             BasePlace.Bind,
             "Place obsidian\nOnly works when no valid place positions found\n - Off: Don't place obsidian\n - Bind: Place Obsidian on bind press\n - Auto: Automatically place obsidian - not recommended\n"

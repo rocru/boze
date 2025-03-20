@@ -57,7 +57,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
 
     AutoCrystalPlace(AutoCrystal var1) {
         this.field143 = var1;
-        this.field139.setVisibility(AutoCrystalPlace::lambda$new$0);
+        this.field139.setVisibility(() -> lambda$new$0(var1));
         this.field142 = new Setting[]{this.field137, this.field138, this.field139, this.field140, this.field141};
     }
 
@@ -66,7 +66,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
         return this.field142;
     }
 
-    boolean method2114() {
+    public boolean method2114() {
         this.field143.autoCrystalTracker.method1198();
         if (Class2923.method2114()
                 || mc.player.getInventory().getMainHandStack().getItem() instanceof EndCrystalItem
@@ -110,21 +110,21 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
         }
     }
 
-    Vec3d method1954() {
+    public Vec3d method1954() {
         return this.field143.autoCrystalTracker.field1534 != null ? this.field143.autoCrystalTracker.field1534.method6062().getPos() : null;
     }
 
-    void method2142() {
+    public void method2142() {
         if (this.field141.getValue()) {
             this.field145 = true;
         }
     }
 
-    void method1416() {
+    public void method1416() {
         this.field145 = true;
     }
 
-    void method1198() {
+    public void method1198() {
         if (this.field145) {
             this.field145 = false;
         } else {

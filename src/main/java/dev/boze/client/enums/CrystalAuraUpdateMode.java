@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum CrystalAuraUpdateMode {
+public enum CrystalAuraUpdateMode {
     Tick,
     Spawn,
     Packet;

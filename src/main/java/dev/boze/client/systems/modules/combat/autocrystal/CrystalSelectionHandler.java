@@ -17,7 +17,7 @@ import java.util.HashSet;
 public class CrystalSelectionHandler implements Class5912, IMinecraft {
     private final AutoCrystal field130;
 
-    CrystalSelectionHandler(AutoCrystal var1) {
+    public CrystalSelectionHandler(AutoCrystal var1) {
         this.field130 = var1;
     }
 

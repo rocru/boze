@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum BasePlace {
+public enum BasePlace {
     Off,
     Bind,
     Auto;

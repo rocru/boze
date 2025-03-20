@@ -15,16 +15,16 @@ public enum AutoCrystalAction {
     Break;
 
     public int ticks;
-    private int field1775;
-    private final HashMap<LivingEntity, Vec3d> field1776 = new HashMap();
-    private final HashMap<LivingEntity, Box> field1777 = new HashMap();
+    public int field1775;
+    public final HashMap<LivingEntity, Vec3d> field1776 = new HashMap();
+    public final HashMap<LivingEntity, Box> field1777 = new HashMap();
     private static final AutoCrystalAction[] field1778 = method889();
 
-    private int method886(LivingEntity var1) {
+    public int method886(LivingEntity var1) {
         return var1.equals(IMinecraft.mc.player) ? this.field1775 : this.ticks;
     }
 
-    private Vec3d method887(PlayerEntity var1) {
+    public Vec3d method887(PlayerEntity var1) {
         if (this.field1776.containsKey(var1)) {
             return this.field1776.get(var1);
         } else {
@@ -34,7 +34,7 @@ public enum AutoCrystalAction {
         }
     }
 
-    private Box method888(PlayerEntity var1) {
+    public Box method888(PlayerEntity var1) {
         if (this.field1777.containsKey(var1)) {
             return this.field1777.get(var1);
         } else {

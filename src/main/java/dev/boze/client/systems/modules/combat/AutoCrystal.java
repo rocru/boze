@@ -26,7 +26,7 @@ public class AutoCrystal extends Module {
     public static final AutoCrystal INSTANCE = new AutoCrystal();
     public static boolean field1038 = false;
     public static boolean field1039 = false;
-    final AutoCrystalRender field1040 = new AutoCrystalRender(this);
+    public final AutoCrystalRender field1040 = new AutoCrystalRender(this);
     public final PlaceHelper field1041 = new PlaceHelper(this);
     public final AutoCrystalTargeting field1042 = new AutoCrystalTargeting(this);
     public final TargetSetting field1043 = new TargetSetting();
@@ -44,7 +44,7 @@ public class AutoCrystal extends Module {
             "Sync placements to once a cycle\nFor context; cycle = targeting calculation to damage applied time\nImproves performance and consistency\n",
             this.advancedSettings
     );
-    final IntSetting hitTicks = new IntSetting(
+    public final IntSetting hitTicks = new IntSetting(
             "EnemyHitTicks",
             0,
             0,
@@ -53,15 +53,15 @@ public class AutoCrystal extends Module {
             "Amount of ticks to assume the enemy hit their (new) crystal for\nWhen a crystal spawns, even if you don't hit it, it will be considered dead\n",
             this.advancedSettings
     );
-    final BooleanSetting dontPredict = new BooleanSetting("DontPredict", false, "Don't predict enemy movement");
-    final BooleanSetting protocol = new BooleanSetting("Protocol", false, "1.12 Placement", this.advancedSettings);
-    final BooleanSetting damageSync = new BooleanSetting("DamageSync", false, "Sync damage calculations to server damage ticks", this.advancedSettings);
-    final IntSetting extraLimit = new IntSetting("ExtraLimit", 0, 0, 3, 1, "Additional attack limit", this.advancedSettings);
-    final FloatSetting ticksExisted = new FloatSetting(
+    public final BooleanSetting dontPredict = new BooleanSetting("DontPredict", false, "Don't predict enemy movement");
+    public final BooleanSetting protocol = new BooleanSetting("Protocol", false, "1.12 Placement", this.advancedSettings);
+    public final BooleanSetting damageSync = new BooleanSetting("DamageSync", false, "Sync damage calculations to server damage ticks", this.advancedSettings);
+    public final IntSetting extraLimit = new IntSetting("ExtraLimit", 0, 0, 3, 1, "Additional attack limit", this.advancedSettings);
+    public final FloatSetting ticksExisted = new FloatSetting(
             "TicksExisted", 0.0F, 0.0F, 25.0F, 0.1F, "Min ticks to wait after a crystal's spawn before attacking it", this.advancedSettings
     );
     public final FloatSetting targetRange = new FloatSetting("TargetRange", 8.0F, 4.0F, 16.0F, 0.5F, "Range from which to select targets", this.advancedSettings);
-    final FloatSetting crystalRange = new FloatSetting(
+    public final FloatSetting crystalRange = new FloatSetting(
             "CrystalRange",
             6.0F,
             1.0F,
@@ -81,10 +81,10 @@ public class AutoCrystal extends Module {
             "MovingMinDmg", 7.0F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for moving players", this.minDamage::getValue, this.advancedSettings
     );
     public final CrystalSelectionHandler field1044 = new CrystalSelectionHandler(this);
-    final CrystalHelper field1045 = new CrystalHelper(this);
-    final CrystalHitter field1046 = new CrystalHitter(this);
+    public final CrystalHelper field1045 = new CrystalHelper(this);
+    public final CrystalHitter field1046 = new CrystalHitter(this);
     public final DamageCalculator field1047 = new DamageCalculator(this);
-    CrystalEntityTracker aa = new CrystalEntityTracker();
+    public CrystalEntityTracker aa = new CrystalEntityTracker();
     final AutoCrystalDisplayInfo ab = new AutoCrystalDisplayInfo(this);
     public final AutoCrystalPrediction ac = new AutoCrystalPrediction(this);
     private final CrystalProcessor ad = new CrystalProcessor(this);

@@ -8,7 +8,7 @@ public class Class3087 {
    private final BlockHitResult field212;
    private final boolean field213;
 
-   Class3087(BlockPos var1, BlockHitResult var2, boolean var3) {
+   public Class3087(BlockPos var1, BlockHitResult var2, boolean var3) {
       this.field211 = var1;
       this.field212 = var2;
       this.field213 = var3;

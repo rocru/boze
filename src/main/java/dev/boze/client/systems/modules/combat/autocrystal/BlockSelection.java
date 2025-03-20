@@ -1,6 +1,5 @@
 package dev.boze.client.systems.modules.combat.autocrystal;
 
-import dev.boze.client.jumptable.A;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
@@ -20,43 +19,43 @@ public class BlockSelection {
         double var14 = var8 + 1.0 - offset;
         double var16 = var10 + 1.0 - offset;
         double var18 = var12 + 1.0 - offset;
-        switch (A.field2093[direction.ordinal()]) {
-            case 1:
+        switch (direction) {
+            case Direction.NORTH:
                 var7[0] = new Vec3d(var8, var10, var12);
                 var7[1] = new Vec3d(var14, var10, var12);
                 var7[2] = new Vec3d(var8, var16, var12);
                 var7[3] = new Vec3d(var14, var16, var12);
                 var7[4] = new Vec3d((var8 + var14) / 2.0, (var10 + var16) / 2.0, var12);
                 break;
-            case 2:
+            case Direction.SOUTH:
                 var7[0] = new Vec3d(var8, var10, var18);
                 var7[1] = new Vec3d(var14, var10, var18);
                 var7[2] = new Vec3d(var8, var16, var18);
                 var7[3] = new Vec3d(var14, var16, var18);
                 var7[4] = new Vec3d((var8 + var14) / 2.0, (var10 + var16) / 2.0, var18);
                 break;
-            case 3:
+            case Direction.EAST:
                 var7[0] = new Vec3d(var14, var10, var12);
                 var7[1] = new Vec3d(var14, var10, var18);
                 var7[2] = new Vec3d(var14, var16, var12);
                 var7[3] = new Vec3d(var14, var16, var18);
                 var7[4] = new Vec3d(var14, (var10 + var16) / 2.0, (var12 + var18) / 2.0);
                 break;
-            case 4:
+            case Direction.WEST:
                 var7[0] = new Vec3d(var8, var10, var12);
                 var7[1] = new Vec3d(var8, var10, var18);
                 var7[2] = new Vec3d(var8, var16, var12);
                 var7[3] = new Vec3d(var8, var16, var18);
                 var7[4] = new Vec3d(var8, (var10 + var16) / 2.0, (var12 + var18) / 2.0);
                 break;
-            case 5:
+            case Direction.UP:
                 var7[0] = new Vec3d(var8, var16, var12);
                 var7[1] = new Vec3d(var14, var16, var12);
                 var7[2] = new Vec3d(var8, var16, var18);
                 var7[3] = new Vec3d(var14, var16, var18);
                 var7[4] = new Vec3d((var8 + var14) / 2.0, var16, (var12 + var18) / 2.0);
                 break;
-            case 6:
+            case Direction.DOWN:
                 var7[0] = new Vec3d(var8, var10, var12);
                 var7[1] = new Vec3d(var14, var10, var12);
                 var7[2] = new Vec3d(var8, var10, var18);

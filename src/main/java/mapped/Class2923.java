@@ -12,13 +12,13 @@ import net.minecraft.item.SwordItem;
 
 public class Class2923 implements IMinecraft {
    public static final Predicate<ItemStack> field126 = Class2923::lambda$static$0;
-   static final Predicate<ItemStack> field127 = Class2923::lambda$static$1;
+   public static final Predicate<ItemStack> field127 = Class2923::lambda$static$1;
 
    public static boolean method2114() {
       return mc.player.getOffHandStack().getItem() == Items.END_CRYSTAL || OffHand.INSTANCE.isEnabled() && OffHand.INSTANCE.ab == Items.END_CRYSTAL;
    }
 
-   static void method2142() {
+   public static void method2142() {
       if (InventoryUtil.method2114() && InventoryUtil.method532() == AutoCrystal.INSTANCE) {
          InventoryUtil.method396(AutoCrystal.INSTANCE);
       }
