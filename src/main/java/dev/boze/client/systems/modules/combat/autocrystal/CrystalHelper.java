@@ -39,10 +39,10 @@ public class CrystalHelper implements IMinecraft {
             return null;
          } else {
             BlockPos var7 = blockPos.up(2);
-            if (!var5 && this.field1626.protocol.method419() && !this.method2102(var7)) {
+            if (!var5 && this.field1626.protocol.getValue() && !this.method2102(var7)) {
                return null;
             } else {
-               double var8 = this.field1626.protocol.method419() ? 2.0 : 1.0;
+               double var8 = this.field1626.protocol.getValue() ? 2.0 : 1.0;
                Box var10 = new Box(blockPos).stretch(0.0, var8, 0.0);
                if (this.method726(var10)) {
                   return null;
@@ -85,7 +85,7 @@ public class CrystalHelper implements IMinecraft {
    }
 
    Vec3d method725(BlockPos var1) {
-      if (this.field1626.field1041.field205.method461() == AnticheatMode.Grim) {
+      if (this.field1626.field1041.field205.getValue() == AnticheatMode.Grim) {
          Set var5 = this.field1626.field1041.grim.method121(var1);
          if (!var5.isEmpty()) {
             BlockHitResult var6 = this.field1626.field1041.grim.method122(var1, var5);
@@ -122,13 +122,13 @@ public class CrystalHelper implements IMinecraft {
    }
 
    boolean method727(double var1) {
-      return this.field1626.field1042.field118.method419()
-         || this.field1626.field1042.field115.method461() == AutoCrystalMaxDamage.Balance
-         || !(var1 > (double)this.field1626.field1042.field116.method423().floatValue());
+      return this.field1626.field1042.field118.getValue()
+         || this.field1626.field1042.field115.getValue() == AutoCrystalMaxDamage.Balance
+         || !(var1 > (double)this.field1626.field1042.field116.getValue().floatValue());
    }
 
    private boolean method728(EndCrystalEntity var1) {
-      if ((float)var1.age < this.field1626.ticksExisted.method423()) {
+      if ((float)var1.age < this.field1626.ticksExisted.getValue()) {
          return false;
       } else if (((IEndCrystalEntity)var1).boze$isAbandoned()) {
          return true;

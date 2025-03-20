@@ -439,26 +439,26 @@ public class AntiAim extends Module {
    }
 
    private boolean lambda$new$5() {
-      return this.pitch.method461() == AntiAimYaw.Offset || this.pitch.method461() == AntiAimYaw.Stare || this.pitch.method461() == AntiAimYaw.Spin;
+      return this.pitch.getValue() == AntiAimYaw.Offset || this.pitch.getValue() == AntiAimYaw.Stare || this.pitch.getValue() == AntiAimYaw.Spin;
    }
 
    private boolean lambda$new$4() {
-      return this.pitch.method461() == AntiAimYaw.Lock;
+      return this.pitch.getValue() == AntiAimYaw.Lock;
    }
 
    private boolean lambda$new$3() {
-      return this.pitch.method461() == AntiAimYaw.Jitter || this.pitch.method461() == AntiAimYaw.Random || this.pitch.method461() == AntiAimYaw.FOVJitter;
+      return this.pitch.getValue() == AntiAimYaw.Jitter || this.pitch.getValue() == AntiAimYaw.Random || this.pitch.getValue() == AntiAimYaw.FOVJitter;
    }
 
    private boolean lambda$new$2() {
-      return this.yaw.method461() == AntiAimYaw.Offset || this.yaw.method461() == AntiAimYaw.Stare || this.yaw.method461() == AntiAimYaw.Spin;
+      return this.yaw.getValue() == AntiAimYaw.Offset || this.yaw.getValue() == AntiAimYaw.Stare || this.yaw.getValue() == AntiAimYaw.Spin;
    }
 
    private boolean lambda$new$1() {
-      return this.yaw.method461() == AntiAimYaw.Lock;
+      return this.yaw.getValue() == AntiAimYaw.Lock;
    }
 
    private boolean lambda$new$0() {
-      return this.yaw.method461() == AntiAimYaw.Jitter || this.yaw.method461() == AntiAimYaw.Random || this.yaw.method461() == AntiAimYaw.FOVJitter;
+      return this.yaw.getValue() == AntiAimYaw.Jitter || this.yaw.getValue() == AntiAimYaw.Random || this.yaw.getValue() == AntiAimYaw.FOVJitter;
    }
 }

@@ -66,7 +66,7 @@ public class ElytraAutoPilot extends Module {
    }
 
    private void lambda$new$1(Double var1) {
-      if (this.field3203.method419()) {
+      if (this.field3203.getValue()) {
          this.field3206.elytraFireworkSpeed.value = var1;
       } else {
          this.field3206.elytraFireworkSpeed.value = 1.2;

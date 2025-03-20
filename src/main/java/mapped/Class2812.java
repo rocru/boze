@@ -174,7 +174,7 @@ public class Class2812 implements IMinecraft {
    public static boolean method2102(BlockPos pos) {
       if (Class2811.field106
          && !Options.INSTANCE.method1971()
-         && AntiCheat.INSTANCE.field2318.method419()
+         && AntiCheat.INSTANCE.field2318.getValue()
          && field110.containsKey(var2926)
          && System.currentTimeMillis() - (Long)field110.get(var2926) > 500L) {
          field110.remove(var2926);

@@ -99,7 +99,7 @@ public class Surround extends Module {
       } else {
          this.field2574 = null;
          this.field2571.field230.method1296();
-         if (this.autoCenter.method419() && this.field2571.method147() == Anticheat.NCP) {
+         if (this.autoCenter.getValue() && this.field2571.method147() == Anticheat.NCP) {
             Class5924.method2142();
          }
       }
@@ -107,19 +107,19 @@ public class Surround extends Module {
 
    @EventHandler
    public void method1531(PlayerPositionEvent event) {
-      if (this.onStep.method419() && Step.INSTANCE.isEnabled()) {
+      if (this.onStep.getValue() && Step.INSTANCE.isEnabled()) {
          this.setEnabled(false);
       }
    }
 
    @EventHandler
    public void method1532(PacketBundleEvent event) {
-      if (!(event.packet instanceof PlayerPositionLookS2CPacket) || !this.onTP.method419()) {
-         if (event.packet instanceof BlockUpdateS2CPacket var5 && this.react.method461() == SurroundReactMode.Packet && this.field2571.method2114()) {
+      if (!(event.packet instanceof PlayerPositionLookS2CPacket) || !this.onTP.getValue()) {
+         if (event.packet instanceof BlockUpdateS2CPacket var5 && this.react.getValue() == SurroundReactMode.Packet && this.field2571.method2114()) {
             try {
                if (var5.getState().isAir()) {
                   int var10 = InventoryHelper.method174(
-                     BlastResistanceCalculator.method2130(this.field2571.field249.method461(), this.field2571.field250), this.field2571.method149()
+                     BlastResistanceCalculator.method2130(this.field2571.field249.getValue(), this.field2571.field250), this.field2571.method149()
                   );
                   if (var10 == -1) {
                      return;
@@ -153,7 +153,7 @@ public class Surround extends Module {
    public void method1533(HandleInputEvent event) {
       if (!this.field2571.method2114()) {
          if (this.field2576 != null) {
-            int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field2571.field249.method461(), this.field2571.field250));
+            int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field2571.field249.getValue(), this.field2571.field250));
             if (this.field2577.hasElapsed(this.field2571.field232.method1295() * 50.0) && var5 != -1 && mc.player.getInventory().selectedSlot != var5) {
                ((KeyBindingAccessor)mc.options.hotbarKeys[var5]).setTimesPressed(1);
                this.field2577.reset();
@@ -166,14 +166,14 @@ public class Surround extends Module {
    }
 
    private boolean method1534() {
-      if (this.onJump.method419() && mc.player.getVelocity().y > 0.0 && !mc.player.isOnGround()) {
+      if (this.onJump.getValue() && mc.player.getVelocity().y > 0.0 && !mc.player.isOnGround()) {
          this.setEnabled(false);
          return false;
-      } else if (Options.method477(this.multiTask.method419())) {
+      } else if (Options.method477(this.multiTask.getValue())) {
          return false;
       } else {
          int var4 = InventoryHelper.method174(
-            BlastResistanceCalculator.method2130(this.field2571.field249.method461(), this.field2571.field250), this.field2571.method149()
+            BlastResistanceCalculator.method2130(this.field2571.field249.getValue(), this.field2571.field250), this.field2571.method149()
          );
          if (var4 == -1) {
             return false;
@@ -181,7 +181,7 @@ public class Surround extends Module {
             Box var5 = this.field2571.method1953();
             this.field2574 = TrapUtil.method584(this.field2571, var5, TrapMode.Flat);
             if (this.field2574.length == 0) {
-               if (this.whenDone.method419()) {
+               if (this.whenDone.getValue()) {
                   this.setEnabled(false);
                }
 
@@ -202,7 +202,7 @@ public class Surround extends Module {
          this.field2575 = (BlockHitResult)this.field2574[0];
          RotationHelper var4 = GhostRotations.INSTANCE.field760 == null ? new RotationHelper(mc.player) : GhostRotations.INSTANCE.field760;
          RotationHelper var5 = Class1202.method2391(mc.player.getEyePos(), this.field2575.getPos());
-         this.field2576 = var4.method603(var5, this.field2571.field229.method1287());
+         this.field2576 = var4.method603(var5, this.field2571.field229.getValue());
          return true;
       } else {
          this.field2576 = null;
@@ -214,7 +214,7 @@ public class Surround extends Module {
       priority = 150
    )
    public void method1536(eJ event) {
-      if (!this.field2571.method2114() && this.field2571.field227.method461() != BlockPlaceMode.Mouse && !event.method1101()) {
+      if (!this.field2571.method2114() && this.field2571.field227.getValue() != BlockPlaceMode.Mouse && !event.method1101()) {
          if (this.method1535()) {
             event.method1099(this.field2576.method600(this::lambda$onGhostRotate$1));
          }
@@ -227,7 +227,7 @@ public class Surround extends Module {
    public void method1537(MouseUpdateEvent event) {
       if (MinecraftUtils.isClientActive() && !event.method1022()) {
          if (mc.currentScreen == null || mc.currentScreen instanceof ClickGUI) {
-            if (!this.field2571.method2114() && this.field2571.field227.method461() != BlockPlaceMode.Normal) {
+            if (!this.field2571.method2114() && this.field2571.field227.getValue() != BlockPlaceMode.Normal) {
                if (this.method1535()) {
                   RotationHelper var5 = new RotationHelper(mc.player);
                   RotationHelper var6 = this.field2576.method1600();
@@ -272,20 +272,20 @@ public class Surround extends Module {
       priority = 150
    )
    public void method1539(RotationEvent event) {
-      if (!Options.method477(this.multiTask.method419()) && !event.method555(this.field2571.method147().type, this.field2571.method2116())) {
+      if (!Options.method477(this.multiTask.getValue()) && !event.method555(this.field2571.method147().type, this.field2571.method2116())) {
          if (this.field2574 != null) {
             if (!this.field2571.method2115()) {
                byte var15 = 0;
                HashMap var16 = null;
-               if (this.field2571.field247.method419()) {
-                  var16 = BlockBreakingTracker.field1511.method666(this.field2571.field248.method419());
+               if (this.field2571.field247.getValue()) {
+                  var16 = BlockBreakingTracker.field1511.method666(this.field2571.field248.getValue());
                }
 
                for (int var17 = 0; var17 < this.field2574.length; var17++) {
                   HitResult var8 = this.field2574[var17];
                   if (var8.getType() == Type.BLOCK) {
                      int var9 = InventoryHelper.method174(
-                        BlastResistanceCalculator.method2130(this.field2571.field249.method461(), this.field2571.field250), this.field2571.method149()
+                        BlastResistanceCalculator.method2130(this.field2571.field249.getValue(), this.field2571.field250), this.field2571.method149()
                      );
                      if (var9 == -1) {
                         method1530("No valid blocks found in inventory");
@@ -304,9 +304,9 @@ public class Surround extends Module {
                            break;
                         }
 
-                        AttackMode var12 = var15 > 0 ? AttackMode.Packet : this.field2571.field234.method461();
+                        AttackMode var12 = var15 > 0 ? AttackMode.Packet : this.field2571.field234.getValue();
                         boolean var13 = false;
-                        if (this.field2571.field247.method419() && var16.containsKey(var11)) {
+                        if (this.field2571.field247.getValue() && var16.containsKey(var11)) {
                            var12 = AttackMode.Packet;
                            var13 = true;
                         }
@@ -365,7 +365,7 @@ public class Surround extends Module {
                this.field2572.method1416();
                this.field2574 = null;
             } else if (this.field2575 != null && this.field2576 != null) {
-               int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field2571.field249.method461(), this.field2571.field250));
+               int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field2571.field249.getValue(), this.field2571.field250));
                if (var5 != -1 && mc.player.getInventory().selectedSlot == var5) {
                   RotationHelper var6 = GhostRotations.INSTANCE.field760 == null ? new RotationHelper(mc.player) : GhostRotations.INSTANCE.field760;
                   BlockHitResult var7 = RaycastUtil.method575(Reach.method1614(), var6, true);

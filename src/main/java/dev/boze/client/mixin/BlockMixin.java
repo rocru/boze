@@ -29,7 +29,7 @@ public abstract class BlockMixin extends AbstractBlock implements ItemConvertibl
    public void onGetSlipperiness(CallbackInfoReturnable<Float> cir) {
       Block var4 = (Block)this;
       if (IceSpeed.INSTANCE.isEnabled() && (var4 == Blocks.ICE || var4 == Blocks.BLUE_ICE || var4 == Blocks.FROSTED_ICE || var4 == Blocks.PACKED_ICE)) {
-         cir.setReturnValue(this.slipperiness * IceSpeed.INSTANCE.field3283.method423());
+         cir.setReturnValue(this.slipperiness * IceSpeed.INSTANCE.field3283.getValue());
       }
    }
 

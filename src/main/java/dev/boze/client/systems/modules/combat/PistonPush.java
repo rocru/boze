@@ -273,7 +273,7 @@ public class PistonPush extends Module {
 
    private boolean method1508(int var1, BlockPos var2, MovementEvent var3) {
       if (var2 != null && var1 != -1) {
-         PlaceAction var7 = Class2812.method5501(var2, true, this.swing.method419(), false, Hand.MAIN_HAND, var1);
+         PlaceAction var7 = Class2812.method5501(var2, true, this.swing.getValue(), false, Hand.MAIN_HAND, var1);
          if (var7 == null) {
             return false;
          } else {

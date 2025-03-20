@@ -45,17 +45,17 @@ class nx {
             float var9 = 0.0F;
             if (this.field3776 != -1) {
                if (this.field3775.size() > var7) {
-                  if ((float)(System.currentTimeMillis() - (Long)this.field3775.get(var7 - 1)) / (this.field3777.field3767.method423() * 1000.0F) > 1.0F) {
+                  if ((float)(System.currentTimeMillis() - (Long)this.field3775.get(var7 - 1)) / (this.field3777.field3767.getValue() * 1000.0F) > 1.0F) {
                      this.field3774.remove(var7 - 1);
                      this.field3775.remove(var7 - 1);
                      continue;
                   }
 
                   var8 = MathHelper.clamp(
-                     (float)(System.currentTimeMillis() - (Long)this.field3775.get(var7 - 1)) / (this.field3777.field3767.method423() * 1000.0F), 0.0F, 1.0F
+                     (float)(System.currentTimeMillis() - (Long)this.field3775.get(var7 - 1)) / (this.field3777.field3767.getValue() * 1000.0F), 0.0F, 1.0F
                   );
                   var9 = MathHelper.clamp(
-                     (float)(System.currentTimeMillis() - (Long)this.field3775.get(var7)) / (this.field3777.field3767.method423() * 1000.0F), 0.0F, 1.0F
+                     (float)(System.currentTimeMillis() - (Long)this.field3775.get(var7)) / (this.field3777.field3767.getValue() * 1000.0F), 0.0F, 1.0F
                   );
                }
             } else {

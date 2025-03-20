@@ -236,7 +236,7 @@ public class PathFinder implements IMinecraft {
     }
 
     private boolean method2105(BlockPos var1, Direction var2, Direction var3) {
-        if (this.field3887.shouldBoat() && !BoatFly.INSTANCE.field3172.method419()) {
+        if (this.field3887.shouldBoat() && !BoatFly.INSTANCE.field3172.getValue()) {
             return false;
         } else {
             BlockPos var7 = var1.offset(var2);

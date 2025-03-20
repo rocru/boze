@@ -332,7 +332,7 @@ public class FontRenderer implements IFontRender, IMinecraft {
             var8 = var8.scale((float) var7.field154, (float) var7.field154, 1.0F);
             int var9 = var7.field150;
             if (var1 != 0.0F) {
-                var9 = this.method504(var7.field150, Fonts.INSTANCE.field2348.method423(), Fonts.INSTANCE.field2347.method423());
+                var9 = this.method504(var7.field150, Fonts.INSTANCE.field2348.getValue(), Fonts.INSTANCE.field2347.getValue());
             }
 
             mc.textRenderer

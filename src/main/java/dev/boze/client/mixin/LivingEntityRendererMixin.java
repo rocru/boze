@@ -107,7 +107,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
          var7.cancel();
       } else {
          if (Chams.INSTANCE.isEnabled()
-            && Chams.INSTANCE.field3463.method461() == ChamsMode.Both
+            && Chams.INSTANCE.field3463.getValue() == ChamsMode.Both
             && Chams.INSTANCE.method1924(var1)
             && !ChamsShaderRenderer.field2248
             && !ChamsShaderRenderer.field2247) {
@@ -124,7 +124,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
       )
    )
    private void modifyColor(Args var1, T var2, float var3, float var4, MatrixStack var5, VertexConsumerProvider var6, int var7) {
-      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.field3462.method419() && Chams.INSTANCE.method1924(var2)) {
+      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.field3462.getValue() && Chams.INSTANCE.method1924(var2)) {
          RGBAColor var10 = Chams.INSTANCE.method1925(var2);
          var1.set(4, var10.method2010());
       }

@@ -69,11 +69,11 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
       this.field143.autoCrystalTracker.method1198();
       if (Class2923.method2114()
          || mc.player.getInventory().getMainHandStack().getItem() instanceof EndCrystalItem
-         || this.field143.field1041.field213.method461() != AutoMineSwapMode.Off
-            && InventoryHelper.method165(Class2923.field126, this.field143.field1041.field213.method461()) != -1) {
+         || this.field143.field1041.field213.getValue() != AutoMineSwapMode.Off
+            && InventoryHelper.method165(Class2923.field126, this.field143.field1041.field213.getValue()) != -1) {
          AutoMine var4 = AutoMine.INSTANCE;
-         if (var4.isEnabled() && var4.autoSelect.field60.method419()) {
-            if (var4.autoSelect.field76.method419() && var4.autoSelect.field80 != null) {
+         if (var4.isEnabled() && var4.autoSelect.field60.getValue()) {
+            if (var4.autoSelect.field76.getValue() && var4.autoSelect.field80 != null) {
                BlockState var8 = mc.world.getBlockState(var4.autoSelect.field80.method1471());
                if (var8.getBlock() == Blocks.OBSIDIAN || var8.getBlock() == Blocks.ENDER_CHEST) {
                   BlockPos var10 = var4.autoSelect.field80.method1471().offset(var4.autoSelect.field80.method1470()).down();
@@ -84,7 +84,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
                      return true;
                   }
                }
-            } else if (var4.autoSelect.field68.method419() && var4.autoSelect.field79 != null) {
+            } else if (var4.autoSelect.field68.getValue() && var4.autoSelect.field79 != null) {
                BlockState var5 = mc.world.getBlockState(var4.autoSelect.field79.method1471());
                if (var5.getBlock() == Blocks.OBSIDIAN) {
                   Pair var6 = this.field143.field1045.method724(var4.autoSelect.field79.method1471());
@@ -114,7 +114,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
    }
 
    void method2142() {
-      if (this.field141.method419()) {
+      if (this.field141.getValue()) {
          this.field145 = true;
       }
    }
@@ -127,7 +127,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
       if (this.field145) {
          this.field145 = false;
       } else {
-         float var4 = this.field140.method423() * 50.0F;
+         float var4 = this.field140.getValue() * 50.0F;
          if (this.field143.autoCrystalTracker.field1534 != null
             && this.field144.hasElapsed((double)var4)
             && this.method86(this.field143.autoCrystalTracker.field1534.method6062(), !this.field143.autoCrystalTracker.field1535)) {
@@ -142,18 +142,18 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
       } else {
          boolean var6 = false;
          if (!Class2923.method2114() && InventoryUtil.method1774().getItem() != Items.END_CRYSTAL) {
-            int var7 = InventoryHelper.method165(Class2923.field126, this.field143.field1041.field213.method461());
-            if (!InventoryUtil.method533(this.field143, 25, this.field143.field1041.field213.method461(), var7)) {
+            int var7 = InventoryHelper.method165(Class2923.field126, this.field143.field1041.field213.getValue());
+            if (!InventoryUtil.method533(this.field143, 25, this.field143.field1041.field213.getValue(), var7)) {
                return false;
             }
 
             var6 = true;
-            if (this.field143.field1041.field216.method419()
+            if (this.field143.field1041.field216.getValue()
                && (
-                  this.field143.field1041.field213.method461() == AutoMineSwapMode.Normal
-                     || this.field143.field1041.field213.method461() == AutoMineSwapMode.Silent
+                  this.field143.field1041.field213.getValue() == AutoMineSwapMode.Normal
+                     || this.field143.field1041.field213.getValue() == AutoMineSwapMode.Silent
                )
-               && this.field143.field1041.field205.method461() == AnticheatMode.Grim) {
+               && this.field143.field1041.field205.getValue() == AnticheatMode.Grim) {
                Class5913.method16(Hand.MAIN_HAND);
             }
          }
@@ -161,7 +161,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
          FastUse.field2960 = true;
          Class5913.method17(Class2923.method2114() ? Hand.OFF_HAND : Hand.MAIN_HAND, result);
          mc.player.networkHandler.sendPacket(new HandSwingC2SPacket(Class2923.method2114() ? Hand.OFF_HAND : Hand.MAIN_HAND));
-         if (var6 && this.field143.field1041.field213.method461() == AutoMineSwapMode.Alt) {
+         if (var6 && this.field143.field1041.field213.getValue() == AutoMineSwapMode.Alt) {
             InventoryUtil.method396(this.field143);
          }
 
@@ -169,7 +169,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
             this.field143.autoCrystalTracker.method683(result.getBlockPos());
          }
 
-         if (this.field143.field1040.field147.method419()) {
+         if (this.field143.field1040.field147.getValue()) {
             this.field143.field1040.field175.reset();
             this.field143.field1040.field171 = new Box(result.getBlockPos());
             this.field143.field1040.field172 = this.field143.autoCrystalTracker.field1536;
@@ -183,7 +183,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
       Class3087 var6 = null;
       LivingEntity var7 = null;
       double var8 = 0.0;
-      double var10 = (double)this.field143.field1042.field108.method423().floatValue();
+      double var10 = (double)this.field143.field1042.field108.getValue().floatValue();
 
       for (LivingEntity var13 : this.field143.field1042.method1144()) {
          if (var13 != null) {
@@ -204,9 +204,9 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
                   if (this.field143.field1042.method65((Double)var15.getValue(), var16)
                      && var16 > var8
                      && (
-                        !this.field143.field1042.field118.method419()
-                           || this.field143.field1042.field115.method461() == AutoCrystalMaxDamage.Balance
-                           || !((Double)var15.getValue() > (double)this.field143.field1042.field116.method423().floatValue())
+                        !this.field143.field1042.field118.getValue()
+                           || this.field143.field1042.field115.getValue() == AutoCrystalMaxDamage.Balance
+                           || !((Double)var15.getValue() > (double)this.field143.field1042.field116.getValue().floatValue())
                            || !(var16 < (double)(var13.getHealth() + var13.getAbsorptionAmount()))
                      )) {
                      var8 = var16;
@@ -233,11 +233,11 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
                      }
 
                      if (this.field143.field1042.method65((Double)var28.getValue(), var29)
-                        && var29 - (var6 != null && var6.method6063() ? (double)this.field143.field1042.field111.method423().floatValue() : 0.0) > var8
+                        && var29 - (var6 != null && var6.method6063() ? (double)this.field143.field1042.field111.getValue().floatValue() : 0.0) > var8
                         && (
-                           !this.field143.field1042.field118.method419()
-                              || this.field143.field1042.field115.method461() == AutoCrystalMaxDamage.Balance
-                              || !((Double)var28.getValue() > (double)this.field143.field1042.field116.method423().floatValue())
+                           !this.field143.field1042.field118.getValue()
+                              || this.field143.field1042.field115.getValue() == AutoCrystalMaxDamage.Balance
+                              || !((Double)var28.getValue() > (double)this.field143.field1042.field116.getValue().floatValue())
                               || !(var29 < (double)(var13.getHealth() + var13.getAbsorptionAmount()))
                         )) {
                         var8 = var29;
@@ -281,8 +281,8 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
 
       boolean var16 = false;
       BlockPos var6 = mc.player.getBlockPos();
-      int var7 = (int)Math.ceil((double)(this.field143.autoCrystalPlace.field138.method423() + 1.0F));
-      int var8 = (int)Math.ceil((double)(this.field143.autoCrystalPlace.field138.method423() + 1.0F));
+      int var7 = (int)Math.ceil((double)(this.field143.autoCrystalPlace.field138.getValue() + 1.0F));
+      int var8 = (int)Math.ceil((double)(this.field143.autoCrystalPlace.field138.getValue() + 1.0F));
 
       for (int var9 = var6.getX() - var7; var9 < var6.getX() + var7; var9++) {
          for (int var10 = var6.getY() - var8; var10 < var6.getY() + var8 + 1; var10++) {
@@ -291,7 +291,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
                boolean var13 = false;
 
                for (LivingEntity var15 : this.field143.field1042.method1144()) {
-                  if (var15 != null && var15.getPos().distanceTo(var12) <= (double)this.field143.crystalRange.method423().floatValue() + 0.71) {
+                  if (var15 != null && var15.getPos().distanceTo(var12) <= (double)this.field143.crystalRange.getValue().floatValue() + 0.71) {
                      var13 = true;
                      break;
                   }
@@ -315,6 +315,6 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
    }
 
    private static boolean lambda$new$0(AutoCrystal var0) {
-      return var0.field1041.field205.method461() == AnticheatMode.NCP;
+      return var0.field1041.field205.getValue() == AnticheatMode.NCP;
    }
 }

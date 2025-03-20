@@ -36,8 +36,8 @@ public class ElytraBoost extends Module {
    private final BooleanSetting field1007 = new BooleanSetting(
       "YControl", false, "Control Y level with keys, not mouse\nUseful for AFK flight in Overworld/End\nAutoBoost is highly recommended for this\n"
    );
-   private final FloatSetting field1008 = new FloatSetting("UpSpeed", 1.0F, 0.1F, 3.0F, 0.1F, "Upwards speed", this.field1007::method419);
-   private final FloatSetting field1009 = new FloatSetting("DownSpeed", 1.0F, 0.1F, 3.0F, 0.1F, "Downwards speed", this.field1007::method419);
+   private final FloatSetting field1008 = new FloatSetting("UpSpeed", 1.0F, 0.1F, 3.0F, 0.1F, "Upwards speed", this.field1007::getValue);
+   private final FloatSetting field1009 = new FloatSetting("DownSpeed", 1.0F, 0.1F, 3.0F, 0.1F, "Downwards speed", this.field1007::getValue);
    private final FloatSetting field1010 = new FloatSetting(
       "Glide",
       0.5F,
@@ -45,7 +45,7 @@ public class ElytraBoost extends Module {
       5.0F,
       0.1F,
       "Glide speed\nAt higher values, makes you go down over time\nIn exchange for higher cruise speed\n",
-      this.field1007::method419
+      this.field1007::getValue
    );
    public final nh field1011 = new nh(this);
    private Timer field1012 = new Timer();
@@ -59,11 +59,11 @@ public class ElytraBoost extends Module {
 
    @Override
    public void onEnable() {
-      if (MinecraftUtils.isClientActive() && mc.player.isOnGround() && this.field1001.method419()) {
+      if (MinecraftUtils.isClientActive() && mc.player.isOnGround() && this.field1001.getValue()) {
          mc.player.jump();
       }
 
-      this.field1011.field3209 = this.field1000.method419();
+      this.field1011.field3209 = this.field1000.getValue();
       this.field1011.field3210 = false;
       this.field1011.method1819();
    }
@@ -78,7 +78,7 @@ public class ElytraBoost extends Module {
    @EventHandler
    public void method1942(PostPlayerTickEvent event) {
       if (MinecraftUtils.isClientActive()) {
-         this.field1011.field3209 = this.field1000.method419();
+         this.field1011.field3209 = this.field1000.getValue();
          this.field1011.field3210 = false;
          if (!this.field1011.field3212) {
             this.field1011.method1819();
@@ -88,7 +88,7 @@ public class ElytraBoost extends Module {
          if (!var5 || this.field1011.field3209 && this.field1011.method1822() != -1) {
             if (mc.player.isFallFlying()) {
                Class3076.method6025(this);
-               if (this.field1004.method419() || mc.options.forwardKey.isPressed()) {
+               if (this.field1004.getValue() || mc.options.forwardKey.isPressed()) {
                   if (!mc.player.isUsingItem()) {
                      this.field1011.method1821();
                   }
@@ -113,7 +113,7 @@ public class ElytraBoost extends Module {
          && !mc.player.isOnGround()
          && mc.player.getEquippedStack(EquipmentSlot.CHEST).getItem() != Items.ELYTRA
          && this.field1011.method1822() != -1
-         && this.field1000.method419()) {
+         && this.field1000.getValue()) {
          this.field1011.field3208 = true;
       }
    }
@@ -122,7 +122,7 @@ public class ElytraBoost extends Module {
       priority = 35
    )
    public void method1695(MouseUpdateEvent event) {
-      if (this.field1007.method419() && MinecraftUtils.isClientActive() && mc.player.isFallFlying()) {
+      if (this.field1007.getValue() && MinecraftUtils.isClientActive() && mc.player.isFallFlying()) {
          float var5 = 0.0F;
          double var6 = Double.MAX_VALUE;
 
@@ -139,15 +139,15 @@ public class ElytraBoost extends Module {
             }
          }
 
-         var5 += this.field1010.method423();
+         var5 += this.field1010.getValue();
          if (mc.options.sneakKey.isPressed()) {
-            var5 = 25.0F * this.field1009.method423();
-         } else if (mc.options.forwardKey.isPressed() && this.field1004.method419()) {
-            var5 += 5.0F * this.field1009.method423();
+            var5 = 25.0F * this.field1009.getValue();
+         } else if (mc.options.forwardKey.isPressed() && this.field1004.getValue()) {
+            var5 += 5.0F * this.field1009.getValue();
          } else if (mc.options.backKey.isPressed()) {
-            var5 -= 5.0F * this.field1008.method423();
+            var5 -= 5.0F * this.field1008.getValue();
          } else if (mc.options.jumpKey.isPressed()) {
-            var5 = -25.0F * this.field1008.method423();
+            var5 = -25.0F * this.field1008.getValue();
          }
 
          RotationHelper var23 = new RotationHelper(mc.player);
@@ -180,7 +180,7 @@ public class ElytraBoost extends Module {
 
    public void method1854() {
       if (this.isEnabled()
-         && this.field1001.method419()
+         && this.field1001.getValue()
          && !mc.player.isFallFlying()
          && !mc.player.isOnGround()
          && mc.world.isSpaceEmpty(mc.player.getBoundingBox().offset(0.0, -1.09, 0.0))) {
@@ -189,7 +189,7 @@ public class ElytraBoost extends Module {
                return;
             }
 
-            if (this.field1002.method419()) {
+            if (this.field1002.getValue()) {
                Class3076.method6024(this, 12, 0.125F);
             }
 
@@ -206,7 +206,7 @@ public class ElytraBoost extends Module {
                this.field1013++;
                this.field1012.reset();
             }
-         } else if (this.field1000.method419()) {
+         } else if (this.field1000.getValue()) {
             this.field1011.field3208 = true;
          }
       }

@@ -36,8 +36,8 @@ public class LightningEntityRendererMixin {
       boolean var15,
       CallbackInfo var16
    ) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3751.method419()) {
-         RGBAColor var19 = Tint.INSTANCE.field3752.method1347();
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3751.getValue()) {
+         RGBAColor var19 = Tint.INSTANCE.field3752.getValue();
          var1.vertex(var0, var2 + (var12 ? var11 : -var11), (float)(var4 * 16), var3 + (var13 ? var11 : -var11))
             .color((float)var19.field408 / 255.0F, (float)var19.field409 / 255.0F, (float)var19.field410 / 255.0F, (float)var19.field411 / 255.0F);
          var1.vertex(var0, var5 + (var12 ? var10 : -var10), (float)((var4 + 1) * 16), var6 + (var13 ? var10 : -var10))

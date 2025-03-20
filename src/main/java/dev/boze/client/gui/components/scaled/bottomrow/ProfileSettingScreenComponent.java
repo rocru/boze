@@ -39,7 +39,7 @@ public class ProfileSettingScreenComponent extends BottomRowScaledComponent {
    @Override
    protected void method639(DrawContext context, int index, double itemX, double itemY, double itemWidth, double itemHeight) {
       String var13 = (String)this.field1457.get(index);
-      boolean var14 = var13.equals(this.field1456.method1322());
+      boolean var14 = var13.equals(this.field1456.getValue());
       RenderUtil.field3963
          .method2257(
             itemX,
@@ -72,15 +72,15 @@ public class ProfileSettingScreenComponent extends BottomRowScaledComponent {
          Notifications.DELETE.method1614()
       )) {
          return this.method1701(var18);
-      } else if (!var18.equals(this.field1456.method1322())) {
+      } else if (!var18.equals(this.field1456.getValue())) {
          String var21 = "v2.main." + var18;
          String var22 = "v2.visuals." + var18;
          String var23 = "v2.binds." + var18;
          String var24 = "v2.client." + var18;
-         Profiles.INSTANCE.field762.method1341(var21);
-         Profiles.INSTANCE.field763.method1341(var22);
-         Profiles.INSTANCE.field764.method1341(var23);
-         Profiles.INSTANCE.field765.method1341(var24);
+         Profiles.INSTANCE.field762.setValue(var21);
+         Profiles.INSTANCE.field763.setValue(var22);
+         Profiles.INSTANCE.field764.setValue(var23);
+         Profiles.INSTANCE.field765.setValue(var24);
          Boze.getModules().method398(ConfigManager.downloadConfig(var18, ConfigType.PROFILE), true);
          Class1201.method2384(true, var21, var22, var23, var24);
          return true;
@@ -90,7 +90,7 @@ public class ProfileSettingScreenComponent extends BottomRowScaledComponent {
    }
 
    private boolean method1701(String var1) {
-      if (var1.equals(this.field1456.method1322())) {
+      if (var1.equals(this.field1456.getValue())) {
          return false;
       } else {
          this.field1457.remove(var1);

@@ -29,7 +29,7 @@ public class BowSpam extends Module {
    private int field2551 = 0;
 
    private boolean method1493() {
-      return Options.INSTANCE.method1971() || this.mode.method461() == BowspamMode.Ghost;
+      return Options.INSTANCE.method1971() || this.mode.getValue() == BowspamMode.Ghost;
    }
 
    private boolean method1494() {
@@ -64,7 +64,7 @@ public class BowSpam extends Module {
                      this.method1497(false);
                      this.releaseDelay.method1376();
                   }
-               } else if (this.pull.method419()) {
+               } else if (this.pull.getValue()) {
                   if (this.field2551 > 0) {
                      this.field2551--;
                   } else {

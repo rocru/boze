@@ -8,6 +8,8 @@ import dev.boze.client.command.arguments.ColorArgument;
 import dev.boze.client.enums.ColorTypes;
 import dev.boze.client.systems.modules.client.Colors;
 import dev.boze.client.utils.ColorWrapper;
+import dev.boze.client.utils.render.color.ChangingColor;
+import dev.boze.client.utils.render.color.StaticColor;
 import mapped.Class5903;
 import net.minecraft.command.CommandSource;
 import net.minecraft.nbt.NbtCompound;
@@ -58,37 +60,18 @@ public class WeirdColorSetting extends Setting<ColorWrapper> {
    }
 
    public boolean method429(Class5903<?> color) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot read field "classStruct" because "classNode" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifyNewEnumSwitch(SwitchHelper.java:319)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplify(SwitchHelper.java:41)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:30)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-      //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:376)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: getfield dev/boze/client/settings/WeirdColorSetting.field934 Ldev/boze/client/enums/ColorTypes;
-      // 04: invokevirtual dev/boze/client/enums/ColorTypes.ordinal ()I
-      // 07: tableswitch 52 0 2 25 27 47
-      // 20: bipush 1
-      // 21: ireturn
-      // 22: aload 1
-      // 23: instanceof dev/boze/client/utils/render/color/StaticColor
-      // 26: ifne 30
-      // 29: aload 1
-      // 2a: instanceof dev/boze/client/utils/render/color/ChangingColor
-      // 2d: ifeq 34
-      // 30: bipush 1
-      // 31: goto 35
-      // 34: bipush 0
-      // 35: ireturn
-      // 36: aload 1
-      // 37: instanceof dev/boze/client/utils/render/color/StaticColor
-      // 3a: ireturn
-      // 3b: bipush 1
-      // 3c: ireturn
+      switch (this.field934.ordinal()) {
+         case 0: {
+            return true;
+         }
+         case 1: {
+            return color instanceof StaticColor || color instanceof ChangingColor;
+         }
+         case 2: {
+            return color instanceof StaticColor;
+         }
+      }
+      return true;
    }
 
    @Override
@@ -116,18 +99,21 @@ public class WeirdColorSetting extends Setting<ColorWrapper> {
       }
    }
 
-   public ColorWrapper method430() {
+   @Override
+   public ColorWrapper getValue() {
       return this.field935;
    }
 
-   public ColorWrapper method431() {
+   @Override
+   public ColorWrapper resetValue() {
       this.field935.field3910.method5876(this);
       this.field936.method5875(this);
       this.field935 = new ColorWrapper("_default", this.field936, this.field935.field3911, this.field935.field3912);
       return this.field935;
    }
 
-   public ColorWrapper method432(ColorWrapper newVal) {
+   @Override
+   public ColorWrapper setValue(ColorWrapper newVal) {
       this.field935.field3910.method5876(this);
       this.field935 = newVal;
       this.field935.field3910.method5875(this);
@@ -142,17 +128,18 @@ public class WeirdColorSetting extends Setting<ColorWrapper> {
       return tag;
    }
 
-   public ColorWrapper method433(NbtCompound tag) {
+   @Override
+   public ColorWrapper load(NbtCompound tag) {
       if (tag.contains("color")) {
          String var5 = tag.getString("color");
          if (var5.equals("_default")) {
-            this.method431();
+            this.resetValue();
             return this.field935;
          }
 
          Class5903 var6 = (Class5903)Colors.INSTANCE.field2343.get(var5);
          if (var6 != null) {
-            this.method432(new ColorWrapper(var5, var6, this.field935.field3911, this.field935.field3912));
+            this.setValue(new ColorWrapper(var5, var6, this.field935.field3911, this.field935.field3912));
          }
       }
 
@@ -169,54 +156,54 @@ public class WeirdColorSetting extends Setting<ColorWrapper> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method433(nbtCompound);
-   }
+   //@Override
+  // public Object load(NbtCompound nbtCompound) {
+   //   return this.method433(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method432((ColorWrapper)object);
-   }
+  // @Override
+   //public Object setValue(Object object) {
+   //   return this.method432((ColorWrapper)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method431();
-   }
+  // @Override
+   //public Object resetValue() {
+  //    return this.method431();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method430();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method430();
+  // }
 
    private int lambda$build$3(CommandContext var1) throws CommandSyntaxException {
       float var4 = FloatArgumentType.getFloat(var1, "outline");
-      this.method430().field3912 = var4;
+      this.getValue().field3912 = var4;
       return 1;
    }
 
    private int lambda$build$2(CommandContext var1) throws CommandSyntaxException {
       float var4 = FloatArgumentType.getFloat(var1, "fill");
-      this.method430().field3911 = var4;
+      this.getValue().field3911 = var4;
       return 1;
    }
 
    private int lambda$build$1(CommandContext var1) throws CommandSyntaxException {
       float var4 = FloatArgumentType.getFloat(var1, "opacity");
-      this.method430().field3911 = var4;
+      this.getValue().field3911 = var4;
       return 1;
    }
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
       String var4 = (String)var1.getArgument("color", String.class);
       Class5903 var5 = (Class5903)Colors.INSTANCE.field2343.get(var4);
-      this.method432(new ColorWrapper(var4, var5, this.method430().field3911, this.method430().field3912));
+      this.setValue(new ColorWrapper(var4, var5, this.getValue().field3911, this.getValue().field3912));
       return 1;
    }
 }

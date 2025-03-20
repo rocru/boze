@@ -110,7 +110,7 @@ public class AutoTrap extends Module {
 
    @EventHandler
    public void method1479(PlayerPositionEvent event) {
-      if (this.onStep.method419() && Step.INSTANCE.isEnabled()) {
+      if (this.onStep.getValue() && Step.INSTANCE.isEnabled()) {
          this.setEnabled(false);
       }
    }
@@ -118,7 +118,7 @@ public class AutoTrap extends Module {
    @EventHandler
    public void method1480(PacketBundleEvent event) {
       if (event.packet instanceof PlayerPositionLookS2CPacket
-         && this.onTP.method419()
+         && this.onTP.getValue()
          && MinecraftUtils.isClientActive()
          && mc.player
                .getPos()
@@ -138,7 +138,7 @@ public class AutoTrap extends Module {
    public void method1481(HandleInputEvent event) {
       if (!this.field2538.method2114()) {
          if (this.field2542 != null) {
-            int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field2538.field249.method461(), this.field2538.field250));
+            int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field2538.field249.getValue(), this.field2538.field250));
             if (this.field2543.hasElapsed(this.field2538.field232.method1295() * 50.0) && var5 != -1 && mc.player.getInventory().selectedSlot != var5) {
                ((KeyBindingAccessor)mc.options.hotbarKeys[var5]).setTimesPressed(1);
                this.field2543.reset();
@@ -151,21 +151,21 @@ public class AutoTrap extends Module {
    }
 
    private boolean method1482() {
-      if (this.onJump.method419() && mc.player.getVelocity().y > 0.0 && !mc.player.isOnGround()) {
+      if (this.onJump.getValue() && mc.player.getVelocity().y > 0.0 && !mc.player.isOnGround()) {
          this.setEnabled(false);
          return false;
-      } else if (Options.method477(this.multiTask.method419())) {
+      } else if (Options.method477(this.multiTask.getValue())) {
          return false;
       } else {
          int var4 = InventoryHelper.method174(
-            BlastResistanceCalculator.method2130(this.field2538.field249.method461(), this.field2538.field250), this.field2538.method149()
+            BlastResistanceCalculator.method2130(this.field2538.field249.getValue(), this.field2538.field250), this.field2538.method149()
          );
          if (var4 == -1) {
             return false;
          } else {
             List var5 = this.method1488();
             this.field2547 = null;
-            if (this.noFeetReplace.method419()) {
+            if (this.noFeetReplace.getValue()) {
                for (BlockPos var7 : this.field2545) {
                   if (!this.field2546.contains(var7) && !mc.world.getBlockState(var7).isAir()) {
                      this.field2546.add(var7);
@@ -178,7 +178,7 @@ public class AutoTrap extends Module {
                this.field2540 = TrapUtil.method585(
                   this.field2538,
                   var8,
-                  this.feetOnly.method419() ? TrapMode.Flat : (this.coverHead.method419() ? TrapMode.Top : TrapMode.Tall),
+                  this.feetOnly.getValue() ? TrapMode.Flat : (this.coverHead.getValue() ? TrapMode.Top : TrapMode.Tall),
                   this::lambda$calculate$1
                );
                this.field2547 = var10;
@@ -190,7 +190,7 @@ public class AutoTrap extends Module {
             if (this.field2540 != null && this.field2540.length != 0) {
                return true;
             } else {
-               if (this.whenDone.method419()) {
+               if (this.whenDone.getValue()) {
                   this.setEnabled(false);
                }
 
@@ -209,7 +209,7 @@ public class AutoTrap extends Module {
          this.field2541 = (BlockHitResult)this.field2540[0];
          RotationHelper var4 = GhostRotations.INSTANCE.field760 == null ? new RotationHelper(mc.player) : GhostRotations.INSTANCE.field760;
          RotationHelper var5 = Class1202.method2391(mc.player.getEyePos(), this.field2541.getPos());
-         this.field2542 = var4.method603(var5, this.field2538.field229.method1287());
+         this.field2542 = var4.method603(var5, this.field2538.field229.getValue());
          return true;
       } else {
          this.field2542 = null;
@@ -221,7 +221,7 @@ public class AutoTrap extends Module {
       priority = 76
    )
    public void method1484(eJ event) {
-      if (!this.field2538.method2114() && this.field2538.field227.method461() != BlockPlaceMode.Mouse && !event.method1101()) {
+      if (!this.field2538.method2114() && this.field2538.field227.getValue() != BlockPlaceMode.Mouse && !event.method1101()) {
          if (this.method1483()) {
             event.method1099(this.field2542.method600(this::lambda$onGhostRotate$2));
          }
@@ -234,7 +234,7 @@ public class AutoTrap extends Module {
    public void method1485(MouseUpdateEvent event) {
       if (MinecraftUtils.isClientActive() && !event.method1022()) {
          if (mc.currentScreen == null || mc.currentScreen instanceof ClickGUI) {
-            if (!this.field2538.method2114() && this.field2538.field227.method461() != BlockPlaceMode.Normal) {
+            if (!this.field2538.method2114() && this.field2538.field227.getValue() != BlockPlaceMode.Normal) {
                if (this.method1483()) {
                   RotationHelper var5 = new RotationHelper(mc.player);
                   RotationHelper var6 = this.field2542.method1600();
@@ -279,20 +279,20 @@ public class AutoTrap extends Module {
       priority = 76
    )
    public void method1487(RotationEvent event) {
-      if (!Options.method477(this.multiTask.method419()) && !event.method555(this.field2538.method147().type, this.field2538.method2116())) {
+      if (!Options.method477(this.multiTask.getValue()) && !event.method555(this.field2538.method147().type, this.field2538.method2116())) {
          if (this.field2540 != null) {
             if (!this.field2538.method2115()) {
                byte var15 = 0;
                HashMap var16 = null;
-               if (this.field2538.field247.method419()) {
-                  var16 = BlockBreakingTracker.field1511.method666(this.field2538.field248.method419());
+               if (this.field2538.field247.getValue()) {
+                  var16 = BlockBreakingTracker.field1511.method666(this.field2538.field248.getValue());
                }
 
                for (int var17 = 0; var17 < this.field2540.length; var17++) {
                   HitResult var18 = this.field2540[var17];
                   if (var18.getType() == Type.BLOCK) {
                      int var9 = InventoryHelper.method174(
-                        BlastResistanceCalculator.method2130(this.field2538.field249.method461(), this.field2538.field250), this.field2538.method149()
+                        BlastResistanceCalculator.method2130(this.field2538.field249.getValue(), this.field2538.field250), this.field2538.method149()
                      );
                      if (var9 == -1) {
                         this.field2540 = null;
@@ -307,9 +307,9 @@ public class AutoTrap extends Module {
                            break;
                         }
 
-                        AttackMode var12 = var15 > 0 ? AttackMode.Packet : this.field2538.field234.method461();
+                        AttackMode var12 = var15 > 0 ? AttackMode.Packet : this.field2538.field234.getValue();
                         boolean var13 = false;
-                        if (this.field2538.field247.method419() && var16.containsKey(var11)) {
+                        if (this.field2538.field247.getValue() && var16.containsKey(var11)) {
                            var12 = AttackMode.Packet;
                            var13 = true;
                         }
@@ -342,7 +342,7 @@ public class AutoTrap extends Module {
                            }
                         }
 
-                        if (this.field2547 != null && this.noFeetReplace.method419() && var11.getY() == (int)Math.floor(this.field2547.getY())) {
+                        if (this.field2547 != null && this.noFeetReplace.getValue() && var11.getY() == (int)Math.floor(this.field2547.getY())) {
                            this.field2545.add(var11);
                         }
                      }
@@ -370,7 +370,7 @@ public class AutoTrap extends Module {
                this.field2539.method1416();
                this.field2540 = null;
             } else if (this.field2541 != null && this.field2542 != null) {
-               int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field2538.field249.method461(), this.field2538.field250));
+               int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field2538.field249.getValue(), this.field2538.field250));
                if (var5 != -1 && mc.player.getInventory().selectedSlot == var5) {
                   RotationHelper var6 = GhostRotations.INSTANCE.field760 == null ? new RotationHelper(mc.player) : GhostRotations.INSTANCE.field760;
                   BlockHitResult var7 = RaycastUtil.method575(Reach.method1614(), var6, true);
@@ -381,7 +381,7 @@ public class AutoTrap extends Module {
                         this.field2538.field233.method1296();
                         this.field2537.method146(this.field2541);
                         BlockPos var8 = this.field2541.getBlockPos().offset(this.field2541.getSide());
-                        if (this.field2547 != null && this.noFeetReplace.method419() && var8.getY() == (int)Math.floor(this.field2547.getY())) {
+                        if (this.field2547 != null && this.noFeetReplace.getValue() && var8.getY() == (int)Math.floor(this.field2547.getY())) {
                            this.field2545.add(var8);
                         }
                      }
@@ -426,7 +426,7 @@ public class AutoTrap extends Module {
          } else if (var1 instanceof FakePlayerEntity) {
             return false;
          } else {
-            return Friends.method2055(var1) ? this.friends.method419() : this.players.method419();
+            return Friends.method2055(var1) ? this.friends.getValue() : this.players.getValue();
          }
       } else {
          switch (mv.field2112[var1.getType().getSpawnGroup().ordinal()]) {
@@ -434,9 +434,9 @@ public class AutoTrap extends Module {
             case 2:
             case 3:
             case 4:
-               return this.animals.method419();
+               return this.animals.getValue();
             case 5:
-               return this.monsters.method419();
+               return this.monsters.getValue();
             default:
                return false;
          }
@@ -457,10 +457,10 @@ public class AutoTrap extends Module {
    }
 
    private boolean lambda$calculate$1(LivingEntity var1, BlockPos var2) {
-      return this.noFeetReplace.method419() && var2.getY() == (int)Math.floor(var1.getY()) ? !this.field2546.contains(var2) : true;
+      return this.noFeetReplace.getValue() && var2.getY() == (int)Math.floor(var1.getY()) ? !this.field2546.contains(var2) : true;
    }
 
    private boolean lambda$new$0() {
-      return !this.feetOnly.method419();
+      return !this.feetOnly.getValue();
    }
 }

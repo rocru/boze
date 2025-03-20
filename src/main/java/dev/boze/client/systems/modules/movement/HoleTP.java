@@ -70,7 +70,7 @@ public class HoleTP extends Module {
       int var6 = (int)Math.floor(mc.player.getY());
       int var7 = (int)Math.floor(mc.player.getZ());
       Class3076.method6025(this);
-      if (this.field445.method461() == HoleTPMode.Baritone) {
+      if (this.field445.getValue() == HoleTPMode.Baritone) {
          if (this.field459) {
             if (BaritoneAPI.getProvider().getPrimaryBaritone().getPathingBehavior().getGoal() == null) {
                this.field459 = false;
@@ -95,7 +95,7 @@ public class HoleTP extends Module {
             NotificationManager.method1151(new Notification(this.getName(), "No holes found", Notifications.WARNING, NotificationPriority.Red));
             this.setEnabled(false);
          }
-      } else if (this.field445.method461() == HoleTPMode.Path) {
+      } else if (this.field445.getValue() == HoleTPMode.Path) {
          if (this.field457 != null) {
             this.field457.method2098();
             if (this.field457.method2118()) {
@@ -136,7 +136,7 @@ public class HoleTP extends Module {
          }
       } else {
          if (mc.player.getY() - (double)var6 == 0.0 && this.method244(var5, var6, var7)) {
-            if (this.field453.method419()) {
+            if (this.field453.getValue()) {
                Speed.INSTANCE.setEnabled(false);
             }
 
@@ -156,7 +156,7 @@ public class HoleTP extends Module {
          }
 
          if (var15) {
-            if (this.field453.method419()) {
+            if (this.field453.getValue()) {
                Speed.INSTANCE.setEnabled(false);
             }
 
@@ -185,7 +185,7 @@ public class HoleTP extends Module {
                         || !mc.world.getBlockState(var13.add(0, 1, 0)).blocksMovement()
                         || !mc.world.getBlockState(var13.add(0, 2, 0)).blocksMovement()
                   )
-                  && (HoleESP.method2101(var13) || this.field446.method461() == HoleTPHoles.All && HoleESP.method2102(var13))) {
+                  && (HoleESP.method2101(var13) || this.field446.getValue() == HoleTPHoles.All && HoleESP.method2102(var13))) {
                   double var14 = mc.player.squaredDistanceTo((double)var13.getX() + 0.5, (double)var13.getY(), (double)var13.getZ() + 0.5);
                   if (var14 < var8) {
                      var7 = var13;
@@ -201,7 +201,7 @@ public class HoleTP extends Module {
 
    @EventHandler
    public void method2042(PacketBundleEvent event) {
-      if (event.packet instanceof PlayerPositionLookS2CPacket && this.field454.method419()) {
+      if (event.packet instanceof PlayerPositionLookS2CPacket && this.field454.getValue()) {
          if (this.field458 != null) {
             this.field458 = null;
          }
@@ -235,34 +235,34 @@ public class HoleTP extends Module {
    }
 
    private boolean lambda$new$7() {
-      return this.field445.method461() == HoleTPMode.Normal;
+      return this.field445.getValue() == HoleTPMode.Normal;
    }
 
    private boolean lambda$new$6() {
-      return this.field445.method461() == HoleTPMode.Normal;
+      return this.field445.getValue() == HoleTPMode.Normal;
    }
 
    private boolean lambda$new$5() {
-      return this.field445.method461() == HoleTPMode.Normal;
+      return this.field445.getValue() == HoleTPMode.Normal;
    }
 
    private boolean lambda$new$4() {
-      return this.field445.method461() == HoleTPMode.Baritone;
+      return this.field445.getValue() == HoleTPMode.Baritone;
    }
 
    private boolean lambda$new$3() {
-      return this.field445.method461() == HoleTPMode.Baritone;
+      return this.field445.getValue() == HoleTPMode.Baritone;
    }
 
    private boolean lambda$new$2() {
-      return this.field445.method461() == HoleTPMode.Path;
+      return this.field445.getValue() == HoleTPMode.Path;
    }
 
    private boolean lambda$new$1() {
-      return this.field445.method461() != HoleTPMode.Normal;
+      return this.field445.getValue() != HoleTPMode.Normal;
    }
 
    private boolean lambda$new$0() {
-      return this.field445.method461() != HoleTPMode.Normal;
+      return this.field445.getValue() != HoleTPMode.Normal;
    }
 }

@@ -79,7 +79,7 @@ public abstract class EntityMixin implements IEntity {
          RotationHelper var5 = GhostRotations.INSTANCE.field760;
          if (var5 != null) {
             cir.setReturnValue(this.getRotationVector(var5.method1385(), var5.method1384()));
-         } else if (!Options.INSTANCE.method1971() && AntiCheat.INSTANCE.field2314.method419() && !Options.field994.hasElapsed(100.0)) {
+         } else if (!Options.INSTANCE.method1971() && AntiCheat.INSTANCE.field2314.getValue() && !Options.field994.hasElapsed(100.0)) {
             cir.setReturnValue(this.getRotationVector(((ClientPlayerEntityAccessor)this).getLastPitch(), ((ClientPlayerEntityAccessor)this).getLastYaw()));
          }
       }

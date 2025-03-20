@@ -23,7 +23,7 @@ public class MiscSettings implements SettingsGroup {
    }
 
    void method1298(SoundPlayEvent var1) {
-      if (var1.sound.getId().getPath().equals("item.totem.use") && this.field2207.method419()) {
+      if (var1.sound.getId().getPath().equals("item.totem.use") && this.field2207.getValue()) {
          var1.method1020();
       }
    }

@@ -78,7 +78,7 @@ public class TextRadar extends HUDModule implements Class5929 {
       boolean var7 = this.method2010() == 1 || this.method2010() == 2;
       boolean var8 = this.method2010() == 2 || this.method2010() == 4;
       List var9;
-      if (this.field627.method419()) {
+      if (this.field627.getValue()) {
          var9 = (List)this.ab
             .stream()
             .filter(TextRadar::lambda$onRender$1)
@@ -98,25 +98,25 @@ public class TextRadar extends HUDModule implements Class5929 {
 
    private java.util.ArrayList<Class2894> method337(PlayerEntity var1) {
       java.util.ArrayList var5 = new java.util.ArrayList();
-      if (this.field629.method419()) {
+      if (this.field629.getValue()) {
          PlayerListEntry var6 = mc.getNetworkHandler().getPlayerListEntry(var1.getUuid());
          if (var6 != null) {
             var5.add(new Class2895(var6));
          }
       }
 
-      var5.add(new Class2894(var1.getNameForScoreboard(), this.field634.method419() ? this.field635.method1362() : HUD.INSTANCE.field2383.method1362()));
-      var5.add(new Class2894("- [", this.field634.method419() ? this.field638.method1362() : HUD.INSTANCE.field2383.method1362()));
+      var5.add(new Class2894(var1.getNameForScoreboard(), this.field634.getValue() ? this.field635.getValue() : HUD.INSTANCE.field2383.getValue()));
+      var5.add(new Class2894("- [", this.field634.getValue() ? this.field638.getValue() : HUD.INSTANCE.field2383.getValue()));
       var5.add(
          new Class2894(
-            String.format("%.1f", mc.player.distanceTo(var1)), this.field634.method419() ? this.field636.method1362() : HUD.INSTANCE.field2383.method1362()
+            String.format("%.1f", mc.player.distanceTo(var1)), this.field634.getValue() ? this.field636.getValue() : HUD.INSTANCE.field2383.getValue()
          )
       );
-      if (this.field630.method419()) {
-         var5.add(new Class2894("|", this.field634.method419() ? this.field638.method1362() : HUD.INSTANCE.field2383.method1362()));
-         BozeDrawColor var9 = this.field634.method419() ? this.field636.method1362() : HUD.INSTANCE.field2383.method1362();
+      if (this.field630.getValue()) {
+         var5.add(new Class2894("|", this.field634.getValue() ? this.field638.getValue() : HUD.INSTANCE.field2383.getValue()));
+         BozeDrawColor var9 = this.field634.getValue() ? this.field636.getValue() : HUD.INSTANCE.field2383.getValue();
          double var7 = (double)var1.getHealth();
-         if (this.field631.method419()) {
+         if (this.field631.getValue()) {
             if (var7 < 5.0) {
                var9 = (BozeDrawColor)this.field641.method196(var9.field411);
             } else if (var7 < 20.0) {
@@ -127,36 +127,36 @@ public class TextRadar extends HUDModule implements Class5929 {
          }
 
          var5.add(new Class2894(String.format("%.1f", var7), var9));
-         var5.add(new Class2894("hp", this.field634.method419() ? this.field637.method1362() : HUD.INSTANCE.field2383.method1362()));
+         var5.add(new Class2894("hp", this.field634.getValue() ? this.field637.getValue() : HUD.INSTANCE.field2383.getValue()));
       }
 
-      if (this.field632.method419()) {
-         var5.add(new Class2894("|", this.field634.method419() ? this.field638.method1362() : HUD.INSTANCE.field2383.method1362()));
+      if (this.field632.getValue()) {
+         var5.add(new Class2894("|", this.field634.getValue() ? this.field638.getValue() : HUD.INSTANCE.field2383.getValue()));
          var5.add(
             new Class2894(
-               Integer.toString(Class5926.method100(var1)), this.field634.method419() ? this.field636.method1362() : HUD.INSTANCE.field2383.method1362()
+               Integer.toString(Class5926.method100(var1)), this.field634.getValue() ? this.field636.getValue() : HUD.INSTANCE.field2383.getValue()
             )
          );
-         var5.add(new Class2894("ms", this.field634.method419() ? this.field637.method1362() : HUD.INSTANCE.field2383.method1362()));
+         var5.add(new Class2894("ms", this.field634.getValue() ? this.field637.getValue() : HUD.INSTANCE.field2383.getValue()));
       }
 
-      if (this.field633.method419() && TargetTracker.field1359.containsKey(var1.getNameForScoreboard())) {
-         var5.add(new Class2894("|", this.field634.method419() ? this.field638.method1362() : HUD.INSTANCE.field2383.method1362()));
+      if (this.field633.getValue() && TargetTracker.field1359.containsKey(var1.getNameForScoreboard())) {
+         var5.add(new Class2894("|", this.field634.getValue() ? this.field638.getValue() : HUD.INSTANCE.field2383.getValue()));
          var5.add(
             new Class2894(
                "-" + TargetTracker.field1359.get(var1.getNameForScoreboard()),
-               this.field634.method419() ? this.field636.method1362() : HUD.INSTANCE.field2383.method1362()
+               this.field634.getValue() ? this.field636.getValue() : HUD.INSTANCE.field2383.getValue()
             )
          );
-         var5.add(new Class2894("pops", this.field634.method419() ? this.field637.method1362() : HUD.INSTANCE.field2383.method1362()));
+         var5.add(new Class2894("pops", this.field634.getValue() ? this.field637.getValue() : HUD.INSTANCE.field2383.getValue()));
       }
 
-      var5.add(new Class2894("]", this.field634.method419() ? this.field638.method1362() : HUD.INSTANCE.field2383.method1362()));
+      var5.add(new Class2894("]", this.field634.getValue() ? this.field638.getValue() : HUD.INSTANCE.field2383.getValue()));
       return var5;
    }
 
    private double method338(List<Class2894> var1) {
-      double var5 = -IFontRender.method499().measureTextHeight(" ", this.field634.method419() ? this.field639.method419() : HUD.INSTANCE.field2384.method419());
+      double var5 = -IFontRender.method499().measureTextHeight(" ", this.field634.getValue() ? this.field639.getValue() : HUD.INSTANCE.field2384.getValue());
 
       for (Class2894 var8 : var1) {
          var5 += var8.method5662();
@@ -167,7 +167,7 @@ public class TextRadar extends HUDModule implements Class5929 {
 
    @Override
    public void method332(DrawContext context) {
-      if (this.field629.method419()) {
+      if (this.field629.getValue()) {
          while (!this.ac.isEmpty()) {
             Class2895 var5 = (Class2895)this.ac.poll();
             var5.method5663(context);
@@ -177,15 +177,15 @@ public class TextRadar extends HUDModule implements Class5929 {
 
    private void lambda$onRender$4(boolean var1, int[] var2, int[] var3, List var4) {
       double var8 = this.method338(var4);
-      if (HUD.INSTANCE.field2394.method419()) {
+      if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE
             .field2397
             .method2252(
                this.method1391() + (var1 ? this.method313() - var8 - 4.0 : 0.0),
                this.method305() + (double)var2[0],
                var8 + 4.0,
-               IFontRender.method499().method502(this.field634.method419() ? this.field639.method419() : HUD.INSTANCE.field2384.method419())
-                  + this.field634.method419() ? this.field640.getValue() : HUD.INSTANCE.field2385.getValue(),
+               IFontRender.method499().method502(this.field634.getValue() ? this.field639.getValue() : HUD.INSTANCE.field2384.getValue())
+                  + this.field634.getValue() ? this.field640.getValue() : HUD.INSTANCE.field2385.getValue(),
                RGBAColor.field402
             );
       }
@@ -200,8 +200,8 @@ public class TextRadar extends HUDModule implements Class5929 {
 
       var2[0] = (int)(
          (double)var2[0]
-            + IFontRender.method499().method502(this.field634.method419() ? this.field639.method419() : HUD.INSTANCE.field2384.method419())
-            + this.field634.method419() ? this.field640.getValue() : HUD.INSTANCE.field2385.getValue()
+            + IFontRender.method499().method502(this.field634.getValue() ? this.field639.getValue() : HUD.INSTANCE.field2384.getValue())
+            + this.field634.getValue() ? this.field640.getValue() : HUD.INSTANCE.field2385.getValue()
       );
       var3[0]++;
    }

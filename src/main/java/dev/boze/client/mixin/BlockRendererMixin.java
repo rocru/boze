@@ -38,7 +38,7 @@ public class BlockRendererMixin {
          var5.cancel();
       }
 
-      if (NewChunks.INSTANCE.isEnabled() && NewChunks.INSTANCE.field3598.method419()) {
+      if (NewChunks.INSTANCE.isEnabled() && NewChunks.INSTANCE.field3598.getValue()) {
          NewChunks.INSTANCE.method1967(var3, var2, true);
       }
    }
@@ -51,10 +51,10 @@ public class BlockRendererMixin {
       )
    )
    private int setColor(int var1) {
-      boolean var4 = Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3753.method419();
+      boolean var4 = Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3753.getValue();
       if (var4) {
          int var5 = ColorARGB.unpackAlpha(var1);
-         RGBAColor var6 = Tint.INSTANCE.field3754.method1347();
+         RGBAColor var6 = Tint.INSTANCE.field3754.getValue();
          return ColorABGR.pack(var6.field408, var6.field409, var6.field410, var5);
       } else {
          return ColorARGB.toABGR(var1);

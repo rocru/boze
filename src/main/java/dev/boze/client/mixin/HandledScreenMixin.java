@@ -31,7 +31,7 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
       cancellable = true
    )
    private void onOnMouseClick(Slot var1, int var2, int var3, SlotActionType var4, CallbackInfo var5) {
-      if (var4 == SlotActionType.SWAP && var3 != 40 && Options.INSTANCE.field992.method419()) {
+      if (var4 == SlotActionType.SWAP && var3 != 40 && Options.INSTANCE.field992.getValue()) {
          var5.cancel();
       }
    }
@@ -45,7 +45,7 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
    )
    private void onInit(CallbackInfo var1) {
       if (InventoryTweaks.INSTANCE.isEnabled()
-         && InventoryTweaks.INSTANCE.field2961.method419()
+         && InventoryTweaks.INSTANCE.field2961.getValue()
          && this.getScreenHandler() instanceof GenericContainerScreenHandler) {
          this.addDrawableChild(new Builder(Text.literal("Steal"), this::lambda$onInit$0).position(this.width - 120, 10).size(50, 20).build());
          this.addDrawableChild(new Builder(Text.literal("Dump"), this::lambda$onInit$1).position(this.width - 60, 10).size(50, 20).build());

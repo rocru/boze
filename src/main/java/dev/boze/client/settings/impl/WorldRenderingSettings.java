@@ -1,6 +1,10 @@
-package dev.boze.client.settings;
+package dev.boze.client.settings.impl;
 
 import dev.boze.client.enums.WorldRenderingFog;
+import dev.boze.client.settings.BooleanSetting;
+import dev.boze.client.settings.EnumSetting;
+import dev.boze.client.settings.Setting;
+import dev.boze.client.settings.SettingBlock;
 import dev.boze.client.settings.generic.SettingsGroup;
 import net.minecraft.client.render.BackgroundRenderer.FogType;
 
@@ -40,8 +44,8 @@ class WorldRenderingSettings implements SettingsGroup {
    }
 
    boolean method1302(FogType var1) {
-      return this.field2225.method461() == WorldRenderingFog.Both
-         || var1 == FogType.FOG_TERRAIN && this.field2225.method461() == WorldRenderingFog.Terrain
-         || var1 == FogType.FOG_SKY && this.field2225.method461() == WorldRenderingFog.Sky;
+      return this.field2225.getValue() == WorldRenderingFog.Both
+         || var1 == FogType.FOG_TERRAIN && this.field2225.getValue() == WorldRenderingFog.Terrain
+         || var1 == FogType.FOG_SKY && this.field2225.getValue() == WorldRenderingFog.Sky;
    }
 }

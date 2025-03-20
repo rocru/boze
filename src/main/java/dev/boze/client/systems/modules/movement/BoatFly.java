@@ -40,7 +40,7 @@ public class BoatFly extends Module {
    );
    final BooleanSetting field3170 = new BooleanSetting("LockOn", false, "Lock onto initial direction when enabled", this.field3169);
    final IntSetting field3171 = new IntSetting(
-      "MaxBlocks", 5, 1, 20, 1, "Max blocks to steer off course for lock on", this.field3170::method419, this.field3169
+      "MaxBlocks", 5, 1, 20, 1, "Max blocks to steer off course for lock on", this.field3170::getValue, this.field3169
    );
    public final BooleanSetting field3172 = new BooleanSetting(
       "AllowDiagonal", false, "Allow diagonal movement\nReduces consistency\nNeeded for diagonal highways\n", this.field3169
@@ -66,7 +66,7 @@ public class BoatFly extends Module {
       this.field3169
    );
    final BooleanSetting field3178 = new BooleanSetting("Render", true, "Render the path", this.field3169);
-   final ColorSetting field3179 = new ColorSetting("Color", new BozeDrawColor(-7046189), "Color for path", this.field3178::method419, this.field3169);
+   final ColorSetting field3179 = new ColorSetting("Color", new BozeDrawColor(-7046189), "Color for path", this.field3178::getValue, this.field3169);
 
    public BoatFly() {
       super(
@@ -79,49 +79,49 @@ public class BoatFly extends Module {
 
    @Override
    public void onEnable() {
-      this.field3151.method461().method903(this).method2142();
+      this.field3151.getValue().method903(this).method2142();
    }
 
    @Override
    public void onDisable() {
-      this.field3151.method461().method903(this).method1416();
+      this.field3151.getValue().method903(this).method1416();
    }
 
    @EventHandler
    private void method1791(PrePacketSendEvent var1) {
-      this.field3151.method461().method903(this).method1853(var1);
+      this.field3151.getValue().method903(this).method1853(var1);
    }
 
    public boolean method1792() {
-      return !this.isEnabled() ? false : this.field3151.method461().method903(this).method2115();
+      return !this.isEnabled() ? false : this.field3151.getValue().method903(this).method2115();
    }
 
    @EventHandler
    private void method1793(PreTickEvent var1) {
-      this.field3151.method461().method903(this).method2072(var1);
+      this.field3151.getValue().method903(this).method2072(var1);
    }
 
    @EventHandler
    private void method1794(PlayerTravelEvent var1) {
-      this.field3151.method461().method903(this).method1794(var1);
+      this.field3151.getValue().method903(this).method1794(var1);
    }
 
    @EventHandler
    private void method1795(PacketBundleEvent var1) {
-      this.field3151.method461().method903(this).method2042(var1);
+      this.field3151.getValue().method903(this).method2042(var1);
    }
 
    @EventHandler
    private void method1796(Render3DEvent var1) {
-      this.field3151.method461().method903(this).method2071(var1);
+      this.field3151.getValue().method903(this).method2071(var1);
    }
 
    public boolean method1797() {
-      return !this.isEnabled() ? false : this.field3151.method461().method903(this).method2114();
+      return !this.isEnabled() ? false : this.field3151.getValue().method903(this).method2114();
    }
 
    public boolean method1798(VehicleMoveS2CPacket packet) {
-      return !this.isEnabled() ? false : this.field3151.method461().method903(this).method1798(packet);
+      return !this.isEnabled() ? false : this.field3151.getValue().method903(this).method1798(packet);
    }
 
    private void lambda$new$17(Boolean var1) {
@@ -129,70 +129,70 @@ public class BoatFly extends Module {
    }
 
    private boolean lambda$new$16() {
-      return this.field3151.method461() == BoatFlyMode.Grim;
+      return this.field3151.getValue() == BoatFlyMode.Grim;
    }
 
    private boolean lambda$new$15() {
-      return this.field3151.method461() == BoatFlyMode.Grim;
+      return this.field3151.getValue() == BoatFlyMode.Grim;
    }
 
    private boolean lambda$new$14() {
-      return this.field3151.method461() == BoatFlyMode.Grim;
+      return this.field3151.getValue() == BoatFlyMode.Grim;
    }
 
    private boolean lambda$new$13() {
-      return this.field3151.method461() == BoatFlyMode.Grim;
+      return this.field3151.getValue() == BoatFlyMode.Grim;
    }
 
    private boolean lambda$new$12() {
-      return this.field3151.method461() == BoatFlyMode.Grim;
+      return this.field3151.getValue() == BoatFlyMode.Grim;
    }
 
    private boolean lambda$new$11() {
-      return this.field3151.method461() == BoatFlyMode.Grim;
+      return this.field3151.getValue() == BoatFlyMode.Grim;
    }
 
    private boolean lambda$new$10() {
-      return this.field3151.method461() == BoatFlyMode.Grim;
+      return this.field3151.getValue() == BoatFlyMode.Grim;
    }
 
    private boolean lambda$new$9() {
-      return this.field3151.method461() == BoatFlyMode.NCP;
+      return this.field3151.getValue() == BoatFlyMode.NCP;
    }
 
    private boolean lambda$new$8() {
-      return this.field3151.method461() == BoatFlyMode.NCP;
+      return this.field3151.getValue() == BoatFlyMode.NCP;
    }
 
    private boolean lambda$new$7() {
-      return this.field3151.method461() == BoatFlyMode.NCP;
+      return this.field3151.getValue() == BoatFlyMode.NCP;
    }
 
    private boolean lambda$new$6() {
-      return this.field3151.method461() == BoatFlyMode.NCP;
+      return this.field3151.getValue() == BoatFlyMode.NCP;
    }
 
    private boolean lambda$new$5() {
-      return this.field3151.method461() == BoatFlyMode.NCP;
+      return this.field3151.getValue() == BoatFlyMode.NCP;
    }
 
    private boolean lambda$new$4() {
-      return this.field3151.method461() == BoatFlyMode.NCP;
+      return this.field3151.getValue() == BoatFlyMode.NCP;
    }
 
    private boolean lambda$new$3() {
-      return this.field3151.method461() == BoatFlyMode.NCP;
+      return this.field3151.getValue() == BoatFlyMode.NCP;
    }
 
    private boolean lambda$new$2() {
-      return this.field3151.method461() == BoatFlyMode.NCP;
+      return this.field3151.getValue() == BoatFlyMode.NCP;
    }
 
    private boolean lambda$new$1() {
-      return this.field3151.method461() == BoatFlyMode.NCP;
+      return this.field3151.getValue() == BoatFlyMode.NCP;
    }
 
    private boolean lambda$new$0() {
-      return this.field3151.method461() == BoatFlyMode.NCP;
+      return this.field3151.getValue() == BoatFlyMode.NCP;
    }
 }

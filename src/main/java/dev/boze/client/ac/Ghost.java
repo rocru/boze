@@ -29,7 +29,7 @@ public class Ghost implements Anticheat {
     private int field1316;
 
     public void method569(EnumSetting<PlayerAimPoint> aimPoint, MinMaxDoubleSetting scale, IntSetting resolution) {
-        this.field1314 = aimPoint.method461();
+        this.field1314 = aimPoint.getValue();
         this.field1315 = scale.method1295();
         this.field1316 = resolution.method434();
     }
@@ -45,12 +45,12 @@ public class Ghost implements Anticheat {
         );
         var11 = var11.add(
                 (var12.x - var11.x) * var14,
-                (var12.y - var11.y) * (GhostRotations.INSTANCE.field758.method419() ? 1.0 - var14 : 1.0) * GhostRotations.INSTANCE.field757.getValue(),
+                (var12.y - var11.y) * (GhostRotations.INSTANCE.field758.getValue() ? 1.0 - var14 : 1.0) * GhostRotations.INSTANCE.field757.getValue(),
                 (var12.z - var11.z) * var14
         );
         Vec3d var16 = new Vec3d(mc.player.prevX - mc.player.getX(), mc.player.prevY - mc.player.getY(), mc.player.prevZ - mc.player.getZ());
         if (var16.lengthSquared() > 0.0) {
-            double var17 = GhostRotations.INSTANCE.field752.method419() ? var16.horizontalLength() : 1.0;
+            double var17 = GhostRotations.INSTANCE.field752.getValue() ? var16.horizontalLength() : 1.0;
             var11 = var11.add(
                     Math.sin((double) System.currentTimeMillis() * GhostRotations.INSTANCE.field755.getValue() * 0.01) * var17,
                     Math.cos((double) System.currentTimeMillis() * GhostRotations.INSTANCE.field756.getValue() * 0.01)

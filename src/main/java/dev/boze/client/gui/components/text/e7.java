@@ -20,7 +20,7 @@ public class e7 extends TextBaseComponent {
    protected void method1649(int button) {
       if (button == 0) {
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-         this.field1169.method1349();
+         this.field1169.resetValue();
       }
    }
 }

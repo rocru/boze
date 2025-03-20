@@ -39,7 +39,7 @@ public class MiddleClickAction extends Module {
    private dev.boze.client.utils.Timer field498 = new dev.boze.client.utils.Timer();
 
    private boolean method1971() {
-      return Options.INSTANCE.method1971() || this.field490.method461() == MiddleClickMode.Ghost;
+      return Options.INSTANCE.method1971() || this.field490.getValue() == MiddleClickMode.Ghost;
    }
 
    private boolean method1972() {
@@ -57,14 +57,14 @@ public class MiddleClickAction extends Module {
          if (event.action == KeyAction.Press && !(mc.currentScreen instanceof ClickGUI)) {
             if (event.button == 2) {
                if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.ENTITY && mc.targetedEntity instanceof PlayerEntity) {
-                  this.method267(this.method1971() ? MiddleClick.Friend : this.field494.method461());
+                  this.method267(this.method1971() ? MiddleClick.Friend : this.field494.getValue());
                } else if (this.method1972()) {
                   if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.BLOCK) {
-                     this.method267(this.field495.method461());
+                     this.method267(this.field495.getValue());
                   } else if (mc.player.isFallFlying()) {
-                     this.method267(this.field496.method461());
+                     this.method267(this.field496.getValue());
                   } else {
-                     this.method267(this.field493.method461());
+                     this.method267(this.field493.getValue());
                   }
                }
             }
@@ -77,13 +77,13 @@ public class MiddleClickAction extends Module {
       if (!(mc.currentScreen instanceof ClickGUI) && !this.method1971() && MinecraftUtils.isClientActive()) {
          if (mc.options.pickItemKey.isPressed()) {
             if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.ENTITY && mc.targetedEntity instanceof PlayerEntity) {
-               this.method266(this.field494.method461());
+               this.method266(this.field494.getValue());
             } else if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.BLOCK) {
-               this.method266(this.field495.method461());
+               this.method266(this.field495.getValue());
             } else if (mc.player.isFallFlying()) {
-               this.method266(this.field496.method461());
+               this.method266(this.field496.getValue());
             } else {
-               this.method266(this.field493.method461());
+               this.method266(this.field493.getValue());
             }
          }
       }
@@ -95,9 +95,9 @@ public class MiddleClickAction extends Module {
             return;
          }
 
-         int var5 = InventoryHelper.method166(MiddleClickAction::lambda$doActionIfXp$2, this.field497.method461());
+         int var5 = InventoryHelper.method166(MiddleClickAction::lambda$doActionIfXp$2, this.field497.getValue());
          if (var5 != -1) {
-            InventoryUtil.method534(this, 350, this.field497.method461(), var5);
+            InventoryUtil.method534(this, 350, this.field497.getValue(), var5);
             Class5913.method16(Hand.MAIN_HAND);
             this.field498.reset();
             InventoryUtil.method396(this);
@@ -300,10 +300,10 @@ public class MiddleClickAction extends Module {
    private boolean lambda$new$1() {
       return this.method1972()
          && (
-            this.field493.method461().field1797
-               || this.field494.method461().field1797
-               || this.field495.method461().field1797
-               || this.field496.method461().field1797
+            this.field493.getValue().field1797
+               || this.field494.getValue().field1797
+               || this.field495.getValue().field1797
+               || this.field496.getValue().field1797
          );
    }
 

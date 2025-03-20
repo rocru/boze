@@ -209,7 +209,7 @@ public class Capes extends Module implements IMinecraft {
 
    @EventHandler
    public void method1966(GameJoinEvent event) {
-      if (this.field1289.method419()) {
+      if (this.field1289.getValue()) {
          HttpUtil.get("https://config.boze.dev/ping")
             .method2179("Token", ConfigManager.field2138)
             .method2179("Uuid", MathHelper.randomUuid(Random.createLocal()).toString())

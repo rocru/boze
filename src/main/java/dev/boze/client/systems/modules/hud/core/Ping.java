@@ -30,23 +30,23 @@ public class Ping extends HUDModule {
 
     @Override
     public void method295(DrawContext context) {
-        if (this.field2638.method419()) {
+        if (this.field2638.getValue()) {
             this.method298(
                     "Ping",
                     Integer.toString(LatencyTracker.INSTANCE.field1308),
                     "ms",
-                    this.field2639.method419() ? this.field2640.method1362() : HUD.INSTANCE.field2383.method1362(),
-                    this.field2639.method419() ? this.field2641.method1362() : HUD.INSTANCE.field2383.method1362(),
-                    this.field2639.method419() ? this.field2642.method1362() : HUD.INSTANCE.field2383.method1362(),
-                    this.field2639.method419() ? this.field2643.method419() : HUD.INSTANCE.field2384.method419()
+                    this.field2639.getValue() ? this.field2640.getValue() : HUD.INSTANCE.field2383.getValue(),
+                    this.field2639.getValue() ? this.field2641.getValue() : HUD.INSTANCE.field2383.getValue(),
+                    this.field2639.getValue() ? this.field2642.getValue() : HUD.INSTANCE.field2383.getValue(),
+                    this.field2639.getValue() ? this.field2643.getValue() : HUD.INSTANCE.field2384.getValue()
             );
         } else {
             this.method297(
                     Integer.toString(LatencyTracker.INSTANCE.field1308),
                     "ms",
-                    this.field2639.method419() ? this.field2641.method1362() : HUD.INSTANCE.field2383.method1362(),
-                    this.field2639.method419() ? this.field2642.method1362() : HUD.INSTANCE.field2383.method1362(),
-                    this.field2639.method419() ? this.field2643.method419() : HUD.INSTANCE.field2384.method419()
+                    this.field2639.getValue() ? this.field2641.getValue() : HUD.INSTANCE.field2383.getValue(),
+                    this.field2639.getValue() ? this.field2642.getValue() : HUD.INSTANCE.field2383.getValue(),
+                    this.field2639.getValue() ? this.field2643.getValue() : HUD.INSTANCE.field2384.getValue()
             );
         }
     }

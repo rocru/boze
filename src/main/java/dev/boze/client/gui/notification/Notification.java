@@ -23,8 +23,8 @@ public class Notification implements INotification {
    @Override
    public void renderNotification(float progress, double y) {
       RenderUtil.field3963.method2233();
-      IFontRender.method499().startBuilding((double)dev.boze.client.systems.modules.client.Notifications.INSTANCE.field844.method423().floatValue());
-      IconManager.setScale((double)dev.boze.client.systems.modules.client.Notifications.INSTANCE.field844.method423().floatValue());
+      IFontRender.method499().startBuilding((double)dev.boze.client.systems.modules.client.Notifications.INSTANCE.field844.getValue().floatValue());
+      IconManager.setScale((double)dev.boze.client.systems.modules.client.Notifications.INSTANCE.field844.getValue().floatValue());
       String var7 = this.field1244 != null ? this.field1244 + (this.field1245.startsWith(" ") ? "" : " - ") + this.field1245 : this.field1245;
       double var8 = IFontRender.method499().method501(var7) + IFontRender.method499().method1390() + 25.0;
       this.field1248 = IFontRender.method499().method1390() + 10.0;
@@ -35,7 +35,7 @@ public class Notification implements INotification {
                y,
                var8,
                this.field1248,
-               dev.boze.client.systems.modules.client.Notifications.INSTANCE.field839.method1347()
+               dev.boze.client.systems.modules.client.Notifications.INSTANCE.field839.getValue()
             );
       } else {
          RenderUtil.field3963
@@ -47,7 +47,7 @@ public class Notification implements INotification {
                15,
                24,
                (double)dev.boze.client.systems.modules.client.Notifications.INSTANCE.field841.method434().intValue(),
-               dev.boze.client.systems.modules.client.Notifications.INSTANCE.field839.method1347()
+               dev.boze.client.systems.modules.client.Notifications.INSTANCE.field839.getValue()
             );
       }
 
@@ -57,14 +57,14 @@ public class Notification implements INotification {
             var7,
             (double)mc.getWindow().getScaledWidth() - (var8 + 10.0) * (double)progress + 15.0 + this.field1246.method2091(),
             y + 5.0,
-            dev.boze.client.systems.modules.client.Notifications.INSTANCE.field840.method1347()
+            dev.boze.client.systems.modules.client.Notifications.INSTANCE.field840.getValue()
          );
       this.field1246
          .render(
             (double)mc.getWindow().getScaledWidth() - (var8 + 10.0) * (double)progress + 10.0,
             y + 5.0,
             this.field1247 == NotificationPriority.Normal
-               ? dev.boze.client.systems.modules.client.Notifications.INSTANCE.field840.method1347()
+               ? dev.boze.client.systems.modules.client.Notifications.INSTANCE.field840.getValue()
                : (this.field1247 == NotificationPriority.Yellow ? RGBAColor.field404 : RGBAColor.field403)
          );
       IFontRender.method499().endBuilding();

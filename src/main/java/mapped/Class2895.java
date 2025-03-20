@@ -22,7 +22,7 @@ public class Class2895 extends Class2894 {
    void method5661(double var1, double var3) {
       this.field120 = var1;
       double var8 = IFontRender.method499()
-         .method502(TextRadar.INSTANCE.field634.method419() ? TextRadar.INSTANCE.field639.method419() : HUD.INSTANCE.field2384.method419());
+         .method502(TextRadar.INSTANCE.field634.getValue() ? TextRadar.INSTANCE.field639.getValue() : HUD.INSTANCE.field2384.getValue());
       if (this.field122 == 0) {
          this.field122 = (int)var8;
          if (this.field122 % 2 == 0) {
@@ -48,7 +48,7 @@ public class Class2895 extends Class2894 {
    double method5662() {
       if (this.field122 == 0) {
          double var4 = IFontRender.method499()
-            .method502(TextRadar.INSTANCE.field634.method419() ? TextRadar.INSTANCE.field639.method419() : HUD.INSTANCE.field2384.method419());
+            .method502(TextRadar.INSTANCE.field634.getValue() ? TextRadar.INSTANCE.field639.getValue() : HUD.INSTANCE.field2384.getValue());
          this.field122 = (int)var4;
          if (this.field122 % 2 == 0) {
             this.field122 -= 2;

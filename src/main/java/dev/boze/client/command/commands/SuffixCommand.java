@@ -20,7 +20,7 @@ public class SuffixCommand extends Command {
 
     private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
         String var4 = (String) var1.getArgument("text", String.class);
-        ExtraChat.INSTANCE.field2931.method1341(var4);
+        ExtraChat.INSTANCE.field2931.setValue(var4);
         this.method624("Suffix set to: " + var4);
         return 1;
     }

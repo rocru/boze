@@ -21,7 +21,7 @@ public class BlockHighlightDev extends Module {
    public void method2071(Render3DEvent event) {
       if (mc.crosshairTarget instanceof BlockHitResult var5 && var5.getBlockPos() != null) {
          Box var7 = new Box(var5.getBlockPos());
-         event.field1950.method1220(var7, this.field470.method430());
+         event.field1950.method1220(var7, this.field470.getValue());
       }
    }
 }

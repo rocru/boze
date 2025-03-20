@@ -55,8 +55,8 @@ public class CurrentProfileSettingComponent extends ScaledSettingBaseComponent i
                this.field319 + this.field321 * 0.5 - Notifications.VIEW_LIST.method1614() * 0.5,
                Theme.method1350()
             );
-         if (!this.field1996.method1322().isEmpty()) {
-            String var14 = this.field1996.method1322().substring(this.field1996.method1322().lastIndexOf(".") + 1);
+         if (!this.field1996.getValue().isEmpty()) {
+            String var14 = this.field1996.getValue().substring(this.field1996.getValue().lastIndexOf(".") + 1);
             IFontRender.method499()
                .drawShadowedText(
                   var14,

@@ -231,14 +231,14 @@ public class AutoCrystalTargeting implements IMinecraft, SettingsGroup {
    }
 
    double method75(LivingEntity var1) {
-      double var5 = (double)this.field108.method423().floatValue();
-      if (this.field120.minDamage.method419()) {
+      double var5 = (double)this.field108.getValue().floatValue();
+      if (this.field120.minDamage.getValue()) {
          if (Class5924.method77(true, var1)) {
-            var5 = (double)this.field120.holeMinDamage.method423().floatValue();
+            var5 = (double)this.field120.holeMinDamage.getValue().floatValue();
          } else if (Class5924.method1934(var1)) {
-            var5 = (double)this.field120.stillMinDamage.method423().floatValue();
+            var5 = (double)this.field120.stillMinDamage.getValue().floatValue();
          } else {
-            var5 = (double)this.field120.movingMinDamage.method423().floatValue();
+            var5 = (double)this.field120.movingMinDamage.getValue().floatValue();
          }
       }
 
@@ -246,11 +246,11 @@ public class AutoCrystalTargeting implements IMinecraft, SettingsGroup {
    }
 
    double method76(LivingEntity var1, double var2) {
-      return this.method77(var1, var2) ? (double)this.field113.method423().floatValue() : this.method75(var1);
+      return this.method77(var1, var2) ? (double)this.field113.getValue().floatValue() : this.method75(var1);
    }
 
    boolean method65(double var1, double var3) {
-      return this.field115.method461() == AutoCrystalMaxDamage.MaxSelfDmg || var1 <= var3 * (double)this.field117.method423().floatValue();
+      return this.field115.getValue() == AutoCrystalMaxDamage.MaxSelfDmg || var1 <= var3 * (double)this.field117.getValue().floatValue();
    }
 
    boolean method77(LivingEntity var1, double var2) {
@@ -259,13 +259,13 @@ public class AutoCrystalTargeting implements IMinecraft, SettingsGroup {
       } else if (!(var2 >= 0.5)
          || ServerType.method2114()
          || !((double)(var1.getHealth() + var1.getAbsorptionAmount()) - var2 <= 0.0)
-            && !(var1.getHealth() + var1.getAbsorptionAmount() < this.field120.field1042.field109.method423())) {
-         if (this.field110.method423() > 0.0F && var1 != null && var1.getArmorItems() != null) {
+            && !(var1.getHealth() + var1.getAbsorptionAmount() < this.field120.field1042.field109.getValue())) {
+         if (this.field110.getValue() > 0.0F && var1 != null && var1.getArmorItems() != null) {
             for (ItemStack var8 : var1.getArmorItems()) {
                int var9 = var8.getMaxDamage();
                int var10 = var9 - var8.getDamage();
                float var11 = (float)var10 / (float)var9;
-               if (var11 <= this.field110.method423()) {
+               if (var11 <= this.field110.getValue()) {
                   return true;
                }
             }
@@ -278,7 +278,7 @@ public class AutoCrystalTargeting implements IMinecraft, SettingsGroup {
    }
 
    private double method78(LivingEntity var1) {
-      return Class5924.method77(true, var1) ? 0.0 : (double)(this.field120.targetRange.method423() - var1.distanceTo(mc.player));
+      return Class5924.method77(true, var1) ? 0.0 : (double)(this.field120.targetRange.getValue() - var1.distanceTo(mc.player));
    }
 
    private static Float lambda$updateTargets$4(LivingEntity var0) {
@@ -294,10 +294,10 @@ public class AutoCrystalTargeting implements IMinecraft, SettingsGroup {
    }
 
    private boolean lambda$new$1() {
-      return this.field115.method461() != AutoCrystalMaxDamage.MaxSelfDmg;
+      return this.field115.getValue() != AutoCrystalMaxDamage.MaxSelfDmg;
    }
 
    private boolean lambda$new$0() {
-      return this.field115.method461() != AutoCrystalMaxDamage.Balance;
+      return this.field115.getValue() != AutoCrystalMaxDamage.Balance;
    }
 }

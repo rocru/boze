@@ -635,11 +635,11 @@ public class PacketFly extends Module {
       PositionAndOnGround var13 = new PositionAndOnGround(var11.x, var11.y, var11.z, mc.player.isOnGround());
       this.field513.add(var13);
       mc.player.networkHandler.sendPacket(var13);
-      if (this.field505.method461() != PacketFlyLimit.Tick && this.field505.method461() != PacketFlyLimit.Both || this.field519 != 0) {
+      if (this.field505.getValue() != PacketFlyLimit.Tick && this.field505.getValue() != PacketFlyLimit.Both || this.field519 != 0) {
          PositionAndOnGround var14 = new PositionAndOnGround(var12.x, var12.y, var12.z, mc.player.isOnGround());
          this.field513.add(var14);
          mc.player.networkHandler.sendPacket(var14);
-         if (this.field509.method419()) {
+         if (this.field509.getValue()) {
             for (int var15 = 0; var15 <= 6; var15++) {
                var13 = new PositionAndOnGround(var11.x, var11.y, var11.z, mc.player.isOnGround());
                this.field513.add(var13);
@@ -826,8 +826,8 @@ public class PacketFly extends Module {
    }
 
    private double method2091() {
-      int var4 = this.field526.nextInt(this.field503.method461() != PacketFlyBounds.Normal ? 80 : 29000000)
-         + (this.field503.method461() != PacketFlyBounds.Normal ? 5 : 500);
+      int var4 = this.field526.nextInt(this.field503.getValue() != PacketFlyBounds.Normal ? 80 : 29000000)
+         + (this.field503.getValue() != PacketFlyBounds.Normal ? 5 : 500);
       return this.field526.nextBoolean() ? (double)var4 : (double)(-var4);
    }
 
@@ -898,14 +898,14 @@ public class PacketFly extends Module {
             if (mc.player.isAlive()) {
                if (this.field510 <= 0) {
                   this.field510 = var5.getTeleportId();
-               } else if (this.field500.method461() != PacketFlyMode.Setback
+               } else if (this.field500.getValue() != PacketFlyMode.Setback
                   && mc.world.isChunkLoaded(ChunkSectionPos.getSectionCoord(var5.getX()), ChunkSectionPos.getSectionCoord(var5.getZ()))
                   && this.field514.containsKey(var5.getTeleportId())) {
                   Vec3d var6 = (Vec3d)this.field514.get(var5.getTeleportId());
                   if (var6.x == var5.getX() && var6.y == var5.getY() && var6.z == var5.getZ()) {
                      this.field514.remove(var5.getTeleportId());
                      var1.method1020();
-                     if (this.field506.method419()) {
+                     if (this.field506.getValue()) {
                         mc.player.setPosition(var5.getX(), var5.getY(), var5.getZ());
                      }
 
@@ -925,7 +925,7 @@ public class PacketFly extends Module {
 
    @EventHandler
    public void method1893(PlayerMoveEvent event) {
-      if (this.field500.method461() == PacketFlyMode.Slow) {
+      if (this.field500.getValue() == PacketFlyMode.Slow) {
          double var5 = this.field501.getValue();
          int var7 = (int)Math.floor(var5);
          double var8 = var5 - (double)var7;
@@ -933,17 +933,17 @@ public class PacketFly extends Module {
             var7++;
          }
 
-         if (this.field502.method419() && this.field519 == 1) {
+         if (this.field502.getValue() && this.field519 == 1) {
             var7++;
          }
 
          for (int var10 = 1; var10 <= var7; var10++) {
-            if (!this.field506.method419()) {
+            if (!this.field506.getValue()) {
                mc.player.setVelocity(this.field523, this.field524, this.field525);
             }
 
             this.method270(this.field523, this.field524, this.field525, true);
-            if ((this.field505.method461() == PacketFlyLimit.Tick || this.field505.method461() == PacketFlyLimit.Both) && this.field519 == 0) {
+            if ((this.field505.getValue() == PacketFlyLimit.Tick || this.field505.getValue() == PacketFlyLimit.Both) && this.field519 == 0) {
                break;
             }
          }
@@ -953,17 +953,17 @@ public class PacketFly extends Module {
          this.field525 = mc.player.getVelocity().getZ();
          event.vec3 = new Vec3d(0.0, mc.options.jumpKey.isPressed() ? 0.05 : 0.0, 0.0);
       } else {
-         if (this.field500.method461() != PacketFlyMode.Setback && this.field510 <= 0) {
+         if (this.field500.getValue() != PacketFlyMode.Setback && this.field510 <= 0) {
             return;
          }
 
-         if (this.field506.method419()) {
+         if (this.field506.getValue()) {
             event.vec3 = Vec3d.ZERO;
          } else {
             event.vec3 = new Vec3d(this.field523, this.field524, this.field525);
          }
 
-         if (this.field508.method461() != PacketFlyPhase.Off && this.method1972()) {
+         if (this.field508.getValue() != PacketFlyPhase.Off && this.method1972()) {
             mc.player.noClip = true;
          }
       }
@@ -997,6 +997,6 @@ public class PacketFly extends Module {
    }
 
    private boolean lambda$new$0() {
-      return this.field500.method461() == PacketFlyMode.Factor || this.field500.method461() == PacketFlyMode.Slow;
+      return this.field500.getValue() == PacketFlyMode.Factor || this.field500.getValue() == PacketFlyMode.Slow;
    }
 }

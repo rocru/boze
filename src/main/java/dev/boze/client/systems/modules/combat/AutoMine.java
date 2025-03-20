@@ -36,12 +36,12 @@ public class AutoMine extends Module {
    private final SettingCategory remineSettings = new SettingCategory("ReMine", "Re-mine options");
    final BooleanSetting instantRemine = new BooleanSetting("Instant", true, "Instantly re-mine blocks", this.remineSettings);
    private final BooleanSetting autoRemine = new BooleanSetting("Auto", false, "Automatically always re-mine blocks", this.remineSettings);
-   private final BindSetting remineBind = new BindSetting("Bind", Bind.create(), "Re-mine keybind", () -> !this.autoRemine.method419(), this.remineSettings);
+   private final BindSetting remineBind = new BindSetting("Bind", Bind.create(), "Re-mine keybind", () -> !this.autoRemine.getValue(), this.remineSettings);
    private final FloatSetting remineDelay = new FloatSetting(
-      "Delay", 0.05F, 0.0F, 1.0F, 0.01F, "Re-mine delay in seconds", () -> this.autoRemine.method419() || this.remineBind.method476().isValid(), this.remineSettings
+      "Delay", 0.05F, 0.0F, 1.0F, 0.01F, "Re-mine delay in seconds", () -> this.autoRemine.getValue() || this.remineBind.method476().isValid(), this.remineSettings
    );
    private final BooleanSetting ignoreSelf = new BooleanSetting(
-      "IgnoreSelf", false, "Don't re-mine self-placed blocks", () -> this.autoRemine.method419() || this.remineBind.method476().isValid(), this.remineSettings
+      "IgnoreSelf", false, "Don't re-mine self-placed blocks", () -> this.autoRemine.getValue() || this.remineBind.method476().isValid(), this.remineSettings
    );
    final EnumSetting<AutoMineSwapMode> swapMode = new EnumSetting<AutoMineSwapMode>(
       "Swap",
@@ -49,7 +49,7 @@ public class AutoMine extends Module {
       "Mode for swapping to pickaxe/tool\nHot-bar only modes:\n - Normal: Vanilla swap, hot-bar only\n - Silent: Instantaneously swap to tool and back\nWhole inventory modes (you don't need to keep the tool in your hot-bar):\n - Alt: Alternative silent swap mode, may work where mode silent is patched\nNote: Whole inventory modes may not work on some servers\n"
    );
    final IntSetting swapDelay = new IntSetting("Delay", 0, 0, 20, 1, "Swap tick delay", this.swapMode);
-   private final BooleanSetting onlyPickaxe = new BooleanSetting("OnlyPickaxe", false, "Only Packet Mine when holding a pickaxe", () -> this.swapMode.method461() == AutoMineSwapMode.Off);
+   private final BooleanSetting onlyPickaxe = new BooleanSetting("OnlyPickaxe", false, "Only Packet Mine when holding a pickaxe", () -> this.swapMode.getValue() == AutoMineSwapMode.Off);
    public final StringModeSetting blocks = new StringModeSetting("Blocks", "Blocks to filter");
    final EnumSetting<FilterMode> filter = new EnumSetting<FilterMode>(
       "Filter",
@@ -60,7 +60,7 @@ public class AutoMine extends Module {
    final Queue queue = new Queue(this);
    private final AntiRegear antiRegear = new AntiRegear(this);
    private final ProneEscape proneEscape = new ProneEscape(this);
-   final BooleanSetting rangeAbort = new BooleanSetting("RangeAbort", true, "Abort mining if block goes out of range", this.advanced::method419);
+   final BooleanSetting rangeAbort = new BooleanSetting("RangeAbort", true, "Abort mining if block goes out of range", this.advanced::getValue);
    BlockPos field2519 = null;
    boolean field2520 = false;
    private final Timer timer = new Timer();
@@ -104,7 +104,7 @@ public class AutoMine extends Module {
             this.timer.reset();
          }
       } else if (event.packet instanceof PlayerInteractBlockC2SPacket var6
-         && this.ignoreSelf.method419()
+         && this.ignoreSelf.getValue()
          && this.field2519 != null
          && this.field2519.equals(var6.getBlockHitResult().getBlockPos().offset(var6.getBlockHitResult().getSide()))) {
          this.field2522 = true;
@@ -142,14 +142,14 @@ public class AutoMine extends Module {
    @EventHandler
    public void method1459(PreBlockBreakEvent event) {
       if (event.method1024() != null && !qG.field1631) {
-         if (!this.onlyPickaxe.method419()
-            || this.swapMode.method461() != AutoMineSwapMode.Off
+         if (!this.onlyPickaxe.getValue()
+            || this.swapMode.getValue() != AutoMineSwapMode.Off
             || mc.player.getMainHandStack().getItem() instanceof PickaxeItem) {
             BlockPos var5 = event.method1024();
             Direction var6 = event.method1026();
             if (BlockUtil.method2101(var5) && !this.miner.method2101(event.method1024())) {
                event.method1021(true);
-               if (event.field1890 || this.queue.field90.method419() && this.queue.field88.method434() > 0) {
+               if (event.field1890 || this.queue.field90.getValue() && this.queue.field88.method434() > 0) {
                   if (this.queue.field88.method434() == 0) {
                      if (!this.miner.field204.isEmpty()) {
                         return;
@@ -158,12 +158,12 @@ public class AutoMine extends Module {
                      if (this.miner.method2114()) {
                         this.miner.method99(new BlockDirectionInfo(var5, var6, AutoMineMode.Manual));
                      } else {
-                        if (this.miner.field187.method461() == AnticheatMode.NCP && !this.miner.field188.method419()) {
+                        if (this.miner.field187.getValue() == AnticheatMode.NCP && !this.miner.field188.getValue()) {
                            return;
                         }
 
                         TaskLogger var7 = null;
-                        if (this.miner.field197.method419() && !this.miner.field201.isEmpty()) {
+                        if (this.miner.field197.getValue() && !this.miner.field201.isEmpty()) {
                            for (TaskLogger var9 : this.miner.field201) {
                               if (var7 == null || var9.field2533 > var7.field2533) {
                                  var7 = var9;
@@ -217,21 +217,21 @@ public class AutoMine extends Module {
    }
 
    private BlockDirectionInfo method1462() {
-      if (this.queue.field89.method461() != AutoMineManualPriorityMode.Off && !this.queue.method2114()) {
+      if (this.queue.field89.getValue() != AutoMineManualPriorityMode.Off && !this.queue.method2114()) {
          BlockDirectionInfo var4 = this.queue.method1462();
          if (var4 != null && BlockUtil.method2101(var4.field2523) && !this.miner.method2101(var4.field2523)) {
             return var4;
          }
       }
 
-      if (this.proneEscape.field1632.method419()) {
+      if (this.proneEscape.field1632.getValue()) {
          BlockDirectionInfo var7 = this.proneEscape.method1462();
          if (var7 != null && BlockUtil.method2101(var7.field2523) && !this.miner.method2101(var7.field2523)) {
             return var7;
          }
       }
 
-      if (this.antiRegear.field131.method419()) {
+      if (this.antiRegear.field131.getValue()) {
          BlockDirectionInfo var8 = this.antiRegear.method1462();
          if (var8 != null && BlockUtil.method2101(var8.field2523) && !this.miner.method2101(var8.field2523)) {
             return var8;
@@ -244,7 +244,7 @@ public class AutoMine extends Module {
          return var9;
       } else {
          BlockDirectionInfo var5 = null;
-         if (this.autoSelect.field71.method461() == AutoSelectPriority.Bomber && this.autoSelect.method2114()) {
+         if (this.autoSelect.field71.getValue() == AutoSelectPriority.Bomber && this.autoSelect.method2114()) {
             int var10 = this.autoSelect.method2010();
             if (var10 == 0) {
                var5 = this.autoSelect.method60();
@@ -272,12 +272,12 @@ public class AutoMine extends Module {
             return var5;
          } else {
             this.autoSelect.field85 = false;
-            if ((this.autoRemine.method419() || this.field2521)
+            if ((this.autoRemine.getValue() || this.field2521)
                && this.queue.method2114()
                && this.field2519 != null
                && BlockUtil.method2101(this.field2519)
                && !this.field2522) {
-               if (this.timer.hasElapsed((double)this.remineDelay.method423().floatValue()) && !this.miner.method2101(this.field2519)) {
+               if (this.timer.hasElapsed((double)this.remineDelay.getValue().floatValue()) && !this.miner.method2101(this.field2519)) {
                   BlockDirectionInfo var11 = new BlockLocationInfo(this.field2519, false).method1467();
                   if (BlockUtil.method2101(var11.field2523) && !this.miner.method2101(var11.field2523)) {
                      return var11;
@@ -303,7 +303,7 @@ public class AutoMine extends Module {
       priority = 150
    )
    public void method1463(ACRotationEvent event) {
-      if (!event.method1018(this.miner.field187.method461(), true)) {
+      if (!event.method1018(this.miner.field187.getValue(), true)) {
          Vec3d var5 = this.miner.method1954();
          if (var5 != null) {
             float[] var6 = EntityUtil.method2146(var5);
@@ -317,7 +317,7 @@ public class AutoMine extends Module {
    @Override
    public String method1322() {
       String var4 = String.valueOf(this.queue.method2010());
-      if (this.autoSelect.field60.method419()) {
+      if (this.autoSelect.field60.getValue()) {
          if (this.autoSelect.field79 != null) {
             var4 = var4 + "(CB)";
          } else {
@@ -334,16 +334,16 @@ public class AutoMine extends Module {
          if (this.autoSelect.field64.method476().matches(false, var1.button)) {
             this.autoSelect.field85 = true;
          } else if (this.autoSelect.field63.method476().matches(false, var1.button)) {
-            this.autoSelect.field60.method421(!this.autoSelect.field60.method419());
+            this.autoSelect.field60.setValue(!this.autoSelect.field60.getValue());
          } else if (this.autoSelect.field69.method476().matches(false, var1.button)) {
-            this.autoSelect.field68.method421(!this.autoSelect.field68.method419());
+            this.autoSelect.field68.setValue(!this.autoSelect.field68.getValue());
          } else if (this.antiRegear.field132.method476().matches(false, var1.button)) {
-            this.antiRegear.field131.method421(!this.antiRegear.field131.method419());
-            if (this.antiRegear.field131.method419()) {
+            this.antiRegear.field131.setValue(!this.antiRegear.field131.getValue());
+            if (this.antiRegear.field131.getValue()) {
                this.antiRegear.method2142();
             }
          } else if (this.proneEscape.field1633.method476().matches(false, var1.button)) {
-            this.proneEscape.field1632.method421(!this.proneEscape.field1632.method419());
+            this.proneEscape.field1632.setValue(!this.proneEscape.field1632.getValue());
          } else if (this.remineBind.method476().matches(false, var1.button)) {
             this.field2521 = true;
          }
@@ -356,16 +356,16 @@ public class AutoMine extends Module {
          if (this.autoSelect.field64.method476().matches(true, var1.key)) {
             this.autoSelect.field85 = true;
          } else if (this.autoSelect.field63.method476().matches(true, var1.key)) {
-            this.autoSelect.field60.method421(!this.autoSelect.field60.method419());
+            this.autoSelect.field60.setValue(!this.autoSelect.field60.getValue());
          } else if (this.autoSelect.field69.method476().matches(true, var1.key)) {
-            this.autoSelect.field68.method421(!this.autoSelect.field68.method419());
+            this.autoSelect.field68.setValue(!this.autoSelect.field68.getValue());
          } else if (this.antiRegear.field132.method476().matches(true, var1.key)) {
-            this.antiRegear.field131.method421(!this.antiRegear.field131.method419());
-            if (this.antiRegear.field131.method419()) {
+            this.antiRegear.field131.setValue(!this.antiRegear.field131.getValue());
+            if (this.antiRegear.field131.getValue()) {
                this.antiRegear.method2142();
             }
          } else if (this.proneEscape.field1633.method476().matches(true, var1.key)) {
-            this.proneEscape.field1632.method421(!this.proneEscape.field1632.method419());
+            this.proneEscape.field1632.setValue(!this.proneEscape.field1632.getValue());
          } else if (this.remineBind.method476().matches(true, var1.key)) {
             this.field2521 = true;
          }

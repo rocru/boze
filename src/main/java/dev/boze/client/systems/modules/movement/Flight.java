@@ -59,20 +59,20 @@ public class Flight extends Module {
    )
    public void method1836(PlayerMoveEvent event) {
       if (!event.field1892) {
-         if (this.field3276.method419() || !Class5924.method91(FluidBlock.class)) {
+         if (this.field3276.getValue() || !Class5924.method91(FluidBlock.class)) {
             if (BaritoneAPI.getProvider().getPrimaryBaritone().getPathingBehavior().getGoal() == null) {
                Vec3d var5 = Class5924.method93(Class5924.method2091() * this.field3271.getValue());
                double var6 = mc.options.jumpKey.isPressed()
                   ? 0.4 * this.field3272.getValue()
                   : (mc.options.sneakKey.isPressed() ? -0.4 * this.field3273.getValue() : 0.0);
-               if (this.field3275.method461() != AntiKickMode.Off
+               if (this.field3275.getValue() != AntiKickMode.Off
                   && this.field3280.hasElapsed(1000.0)
                   && !mc.world.getBlockCollisions(mc.player, mc.player.getBoundingBox().offset(var5.x, -0.1, var5.z)).iterator().hasNext()) {
                   this.field3280.reset();
-                  if (this.field3275.method461() == AntiKickMode.Strict) {
+                  if (this.field3275.getValue() == AntiKickMode.Strict) {
                      var6 -= 0.0313;
                   } else {
-                     if (this.field3275.method461() == AntiKickMode.Toggle) {
+                     if (this.field3275.getValue() == AntiKickMode.Toggle) {
                         return;
                      }
 
@@ -82,7 +82,7 @@ public class Flight extends Module {
 
                Vec3d var8 = new Vec3d(mc.player.getVelocity().x, mc.player.getY() - mc.player.prevY, mc.player.getVelocity().z);
                Vector3d var9 = new Vector3d(var5.x, var6, var5.z);
-               if (this.field3277.method419()) {
+               if (this.field3277.getValue()) {
                   int var10 = ChunkSectionPos.getSectionCoord(mc.player.getX() + var9.x * (double)this.field3278.method434().intValue());
                   int var11 = ChunkSectionPos.getSectionCoord(mc.player.getZ() + var9.z * (double)this.field3278.method434().intValue());
                   boolean var12 = mc.world.getChunkManager().isChunkLoaded(var10, var11);

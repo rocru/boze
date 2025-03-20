@@ -35,7 +35,7 @@ public class AutoCrystal extends Module {
    public final AutoCrystalBasePlace autoCrystalBasePlace = new AutoCrystalBasePlace(this);
    final BooleanSetting proMode = new BooleanSetting("ProMode", false, "Show advanced options", AutoCrystal::lambda$new$0);
    final SettingCategory advancedSettings = new SettingCategory(
-      "Advanced", "Advanced options\nDon't touch them unless you know what you're doing\n.set autocrystal promode false to hide\n", this.proMode::method419
+      "Advanced", "Advanced options\nDon't touch them unless you know what you're doing\n.set autocrystal promode false to hide\n", this.proMode::getValue
    );
    final BooleanSetting delaySync = new BooleanSetting("DelaySync", false, "Sync delays to server TPS", this.advancedSettings);
    final BooleanSetting placeSync = new BooleanSetting(
@@ -72,13 +72,13 @@ public class AutoCrystal extends Module {
    );
    final BooleanSetting minDamage = new BooleanSetting("AutoMinDmg", false, "Automatically choose min damage", this.advancedSettings);
    final FloatSetting holeMinDamage = new FloatSetting(
-      "HoleMinDmg", 1.2F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for players in holes", this.minDamage::method419, this.advancedSettings
+      "HoleMinDmg", 1.2F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for players in holes", this.minDamage::getValue, this.advancedSettings
    );
    final FloatSetting stillMinDamage = new FloatSetting(
-      "StillMinDmg", 6.3F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for still players", this.minDamage::method419, this.advancedSettings
+      "StillMinDmg", 6.3F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for still players", this.minDamage::getValue, this.advancedSettings
    );
    final FloatSetting movingMinDamage = new FloatSetting(
-      "MovingMinDmg", 7.0F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for moving players", this.minDamage::method419, this.advancedSettings
+      "MovingMinDmg", 7.0F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for moving players", this.minDamage::getValue, this.advancedSettings
    );
    public final CrystalSelectionHandler field1044 = new CrystalSelectionHandler(this);
    final CrystalHelper field1045 = new CrystalHelper(this);
@@ -126,7 +126,7 @@ public class AutoCrystal extends Module {
    }
 
    public void method488(Entity entity) {
-      if (this.isEnabled() && this.autoCrystalBreak.field181.method461() != InhibitMode.Off) {
+      if (this.isEnabled() && this.autoCrystalBreak.field181.getValue() != InhibitMode.Off) {
          long var5 = System.nanoTime();
          if (entity instanceof EndCrystalEntity) {
             BlockPos var7 = BlockPos.ofFloored(entity.getPos()).down();
@@ -144,7 +144,7 @@ public class AutoCrystal extends Module {
    public void method2042(PacketBundleEvent event) {
       if (event.packet instanceof EntitySpawnS2CPacket var5
          && var5.getEntityType() == EntityType.END_CRYSTAL
-         && this.autoCrystalBreak.field181.method461() == InhibitMode.Off) {
+         && this.autoCrystalBreak.field181.getValue() == InhibitMode.Off) {
          long var15 = System.nanoTime();
          Vec3d var16 = new Vec3d(var5.getX(), var5.getY(), var5.getZ());
          BlockPos var17 = BlockPos.ofFloored(var16).down();

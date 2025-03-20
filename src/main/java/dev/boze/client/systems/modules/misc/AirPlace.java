@@ -39,7 +39,7 @@ public class AirPlace extends Module {
          boolean var5 = mc.player.getMainHandStack().getItem() instanceof BlockItem;
          boolean var6 = mc.player.getOffHandStack().getItem() instanceof BlockItem;
          if (var5 || var6) {
-            if (!this.twobeetwotee.method419()) {
+            if (!this.twobeetwotee.getValue()) {
                if (mc.crosshairTarget instanceof BlockHitResult var9 && this.method392(var9) && mc.options.useKey.isPressed()) {
                   BlockHitResult var11 = new BlockHitResult(var9.getPos(), var9.getSide(), var9.getBlockPos(), var9.isInsideBlock());
                   Class5913.method17(var5 ? Hand.MAIN_HAND : Hand.OFF_HAND, var11);

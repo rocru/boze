@@ -23,7 +23,7 @@ public class Class5915 extends BottomRowScaledComponent {
       super(setting.name, BottomRow.TextAddClose, 0.1, 0.4);
       this.field5 = setting;
       this.field6 = "";
-      this.field7 = new ArrayList(setting.method2120());
+      this.field7 = new ArrayList(setting.getValue());
    }
 
    @Override
@@ -58,7 +58,7 @@ public class Class5915 extends BottomRowScaledComponent {
          Notifications.PLAYERS_REMOVE.method1614()
       )) {
          this.field7.remove(index);
-         this.field5.method2120().remove(index);
+         this.field5.getValue().remove(index);
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
          return true;
       } else {
@@ -76,7 +76,7 @@ public class Class5915 extends BottomRowScaledComponent {
          Class3063 var5 = new Class3063(var1);
          if (!this.field7.contains(var5)) {
             this.field7.add(var5);
-            this.field5.method2120().add(var5);
+            this.field5.getValue().add(var5);
             this.field6 = "";
             mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
          }

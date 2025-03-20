@@ -39,11 +39,11 @@ public class BlockUtil implements IMinecraft {
    }
 
    static boolean method519(AutoMine var0, Block var1) {
-      if (var0.filter.method461() == FilterMode.Blacklist) {
+      if (var0.filter.getValue() == FilterMode.Blacklist) {
          if (var0.blocks.method2032().contains(var1)) {
             return false;
          }
-      } else if (var0.filter.method461() == FilterMode.Whitelist && !var0.blocks.method2032().contains(var1)) {
+      } else if (var0.filter.getValue() == FilterMode.Whitelist && !var0.blocks.method2032().contains(var1)) {
          return false;
       }
 

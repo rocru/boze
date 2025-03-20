@@ -28,7 +28,7 @@ public class AutoRespawn extends Module {
 
    @EventHandler
    public void method1672(MovementEvent event) {
-      if (this.field2896 != null && this.timer.hasElapsed((double)(this.macroDelay.method423() * 1000.0F))) {
+      if (this.field2896 != null && this.timer.hasElapsed((double)(this.macroDelay.getValue() * 1000.0F))) {
          this.field2896.method2142();
          this.field2896 = null;
       }
@@ -39,10 +39,10 @@ public class AutoRespawn extends Module {
       if (var1.screen instanceof DeathScreen) {
          mc.player.requestRespawn();
          var1.method1020();
-         if (!this.macro.method1322().isEmpty()) {
+         if (!this.macro.getValue().isEmpty()) {
             Macro var5 = this.macro.method467();
             if (var5 != null) {
-               if (this.macroDelay.method423() > 0.0F) {
+               if (this.macroDelay.getValue() > 0.0F) {
                   this.timer.reset();
                   this.field2896 = var5;
                } else {
@@ -54,6 +54,6 @@ public class AutoRespawn extends Module {
    }
 
    private boolean lambda$new$0() {
-      return !this.macro.method1322().isEmpty();
+      return !this.macro.getValue().isEmpty();
    }
 }

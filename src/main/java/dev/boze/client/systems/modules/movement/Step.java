@@ -48,7 +48,7 @@ public class Step extends Module {
    @EventHandler
    public void method1876(MovementEvent event) {
       if (mc.player != null) {
-         if (this.field3356.method419() && Surround.INSTANCE.isEnabled()) {
+         if (this.field3356.getValue() && Surround.INSTANCE.isEnabled()) {
             this.setEnabled(false);
          }
       }
@@ -57,23 +57,23 @@ public class Step extends Module {
    @EventHandler
    public void method1877(PlayerPositionEvent event) {
       if (mc.player != null) {
-         if (this.field3356.method419() && Surround.INSTANCE.isEnabled()) {
+         if (this.field3356.getValue() && Surround.INSTANCE.isEnabled()) {
             this.setEnabled(false);
-         } else if (this.field3352.method419()) {
-            if (this.field3351.method461() != StepMode.Vanilla) {
+         } else if (this.field3352.getValue()) {
+            if (this.field3351.getValue() != StepMode.Vanilla) {
                if (!mc.player.isInsideWaterOrBubbleColumn() && (double)mc.player.fallDistance < 0.1 && mc.player.getVelocity().y < 0.5) {
-                  if (event.method1082() > (double)this.field3353.method423().floatValue() || event.method1082() < 0.0 || event.method1082() < 0.6) {
+                  if (event.method1082() > (double)this.field3353.getValue().floatValue() || event.method1082() < 0.0 || event.method1082() < 0.6) {
                      return;
                   }
 
-                  if (this.field3351.method461() == StepMode.NCPStrict && event.method1082() > 1.0) {
+                  if (this.field3351.getValue() == StepMode.NCPStrict && event.method1082() > 1.0) {
                      return;
                   }
 
                   LinkedHashMap var5 = null;
-                  if (this.field3351.method461() == StepMode.NCP) {
+                  if (this.field3351.getValue() == StepMode.NCP) {
                      var5 = this.field3349;
-                  } else if (this.field3351.method461() == StepMode.NCPStrict) {
+                  } else if (this.field3351.getValue() == StepMode.NCPStrict) {
                      var5 = this.field3350;
                   }
 
@@ -82,9 +82,9 @@ public class Step extends Module {
                   }
 
                   double[] var6 = this.method1880(var5, this.method1882(var5, event.method1082()));
-                  if (this.field3355.method419()) {
+                  if (this.field3355.getValue()) {
                      Class3076.method6024(
-                        this, 15, 1.0F / (1.0F * (float)var6.length + 1.0F + (float)(this.field3351.method461() == StepMode.NCPStrict ? 1 : 0))
+                        this, 15, 1.0F / (1.0F * (float)var6.length + 1.0F + (float)(this.field3351.getValue() == StepMode.NCPStrict ? 1 : 0))
                      );
                   }
 
@@ -100,7 +100,7 @@ public class Step extends Module {
                         );
                   }
 
-                  if (this.field3351.method461() == StepMode.NCPStrict) {
+                  if (this.field3351.getValue() == StepMode.NCPStrict) {
                      mc.player
                         .networkHandler
                         .sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + event.method1082(), mc.player.getZ(), true));
@@ -114,27 +114,27 @@ public class Step extends Module {
    @EventHandler
    public void method1878(PreTickEvent event) {
       if (mc.player != null) {
-         if (this.field3356.method419() && Surround.INSTANCE.isEnabled()) {
+         if (this.field3356.getValue() && Surround.INSTANCE.isEnabled()) {
             this.setEnabled(false);
          } else {
-            float var5 = this.field3353.method423();
-            if (this.field3351.method461() == StepMode.NCPStrict) {
+            float var5 = this.field3353.getValue();
+            if (this.field3351.getValue() == StepMode.NCPStrict) {
                var5 = 1.0F;
             }
 
             boolean var6 = this.field3354.method434() == 0 || this.field3359.hasElapsed((double)this.field3354.method434().intValue());
             boolean var7 = !mc.player.isInsideWaterOrBubbleColumn() && (double)mc.player.fallDistance < 0.1 && mc.player.getVelocity().y < 0.5;
-            if ((this.field3358.hasElapsed(80.0) || this.field3351.method461() == StepMode.Vanilla) && var6 && this.field3352.method419() && var7) {
+            if ((this.field3358.hasElapsed(80.0) || this.field3351.getValue() == StepMode.Vanilla) && var6 && this.field3352.getValue() && var7) {
                mc.player.getAttributeInstance(EntityAttributes.GENERIC_STEP_HEIGHT).setBaseValue((double)var5);
             } else {
                mc.player.getAttributeInstance(EntityAttributes.GENERIC_STEP_HEIGHT).setBaseValue(0.6F);
             }
 
-            if (this.field3351.method461() != StepMode.Vanilla) {
+            if (this.field3351.getValue() != StepMode.Vanilla) {
                if (mc.player.isOnGround() && this.field3357) {
                   this.field3357 = false;
                   this.field3359.reset();
-                  if (this.field3355.method419()) {
+                  if (this.field3355.getValue()) {
                      Class3076.method6025(this);
                   }
                }

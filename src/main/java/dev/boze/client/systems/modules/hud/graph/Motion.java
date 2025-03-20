@@ -18,7 +18,7 @@ public class Motion extends GraphHUDModule {
       double var5 = mc.player.getX() - mc.player.prevX;
       double var7 = mc.player.getY() - mc.player.prevY;
       double var9 = mc.player.getZ() - mc.player.prevZ;
-      if (this.field2675.method419()) {
+      if (this.field2675.getValue()) {
          this.method1324(Math.sqrt(var5 * var5 + var7 * var7 + var9 * var9));
       } else {
          this.method1324(Math.sqrt(var5 * var5 + var9 * var9));

@@ -81,7 +81,7 @@ public class AutoMend extends Module {
       priority = 5
    )
    public void method1885(ACRotationEvent event) {
-      if (event.method1017() == this.interactionMode.method461()) {
+      if (event.method1017() == this.interactionMode.getValue()) {
          if (this.field685 >= this.delay.method434()) {
             if (!ElytraRecast.INSTANCE.isEnabled()) {
                if (!this.method1971()) {
@@ -107,15 +107,15 @@ public class AutoMend extends Module {
             if (var5 == -1) {
                NotificationManager.method1151(new Notification(this.getName(), "No XP bottles found", Notifications.WARNING, NotificationPriority.Yellow));
                this.setEnabled(false);
-            } else if (InventoryUtil.method534(this, 5, this.swapMode.method461(), var5)) {
+            } else if (InventoryUtil.method534(this, 5, this.swapMode.getValue(), var5)) {
                Class5913.method16(var5 == -2 ? Hand.OFF_HAND : Hand.MAIN_HAND);
-               if (this.swing.method419()) {
+               if (this.swing.getValue()) {
                   mc.player.swingHand(var5 == -2 ? Hand.OFF_HAND : Hand.MAIN_HAND);
                }
 
                this.field685 = 0;
                InventoryUtil.method396(this);
-               if (AntiCheat.INSTANCE.field2322.method419() && !dev.boze.client.utils.player.InventoryUtil.isInventoryOpen()) {
+               if (AntiCheat.INSTANCE.field2322.getValue() && !dev.boze.client.utils.player.InventoryUtil.isInventoryOpen()) {
                   mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
                }
             }
@@ -142,16 +142,16 @@ public class AutoMend extends Module {
    }
 
    public int method2010() {
-      return InventoryHelper.method166(AutoMend::lambda$getSlot$0, this.swapMode.method461());
+      return InventoryHelper.method166(AutoMend::lambda$getSlot$0, this.swapMode.getValue());
    }
 
    @EventHandler
    private void method1942(PostPlayerTickEvent var1) {
       float var5 = mc.player.getHealth() + mc.player.getAbsorptionAmount();
-      if (this.damageDisable.method419() && var5 < this.field684) {
+      if (this.damageDisable.getValue() && var5 < this.field684) {
          this.setEnabled(false);
       } else {
-         if (this.crystalDisable.method419()) {
+         if (this.crystalDisable.getValue()) {
             for (Entity var7 : mc.world.getEntities()) {
                if (var7 instanceof EndCrystalEntity
                   && var7.distanceTo(mc.player) < 6.0F

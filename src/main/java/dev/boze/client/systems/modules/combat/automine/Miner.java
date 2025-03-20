@@ -119,7 +119,7 @@ public class Miner implements IMinecraft, SettingsGroup {
    }
 
    public void method2142() {
-      if (this.field186.method461() == AutoMineItemResetMode.On && mc.player.isUsingItem()) {
+      if (this.field186.getValue() == AutoMineItemResetMode.On && mc.player.isUsingItem()) {
          for (TaskLogger var10 : this.field201) {
             var10.field2533 = 0.0F;
             var10.field2534 = -1;
@@ -143,7 +143,7 @@ public class Miner implements IMinecraft, SettingsGroup {
                   var6.fail();
                }
             } else if (var6.field2533 < 1.0F) {
-               if (this.field200.rangeAbort.method419() && !BlockUtil.method2102(var6.field2532.field2523)) {
+               if (this.field200.rangeAbort.getValue() && !BlockUtil.method2102(var6.field2532.field2523)) {
                   var4.add(var6);
                   this.method101(var6);
                   var6.pause();
@@ -151,7 +151,7 @@ public class Miner implements IMinecraft, SettingsGroup {
 
                this.method102(var6);
             } else {
-               if (this.field186.method461() == AutoMineItemResetMode.Delay && mc.player.isUsingItem()) {
+               if (this.field186.getValue() == AutoMineItemResetMode.Delay && mc.player.isUsingItem()) {
                   return;
                }
 
@@ -185,7 +185,7 @@ public class Miner implements IMinecraft, SettingsGroup {
                   var9 = false;
                }
 
-               if (mc.world.getBlockState(var12.field2532.field2523).isAir() && this.field200.render.field257.method419()) {
+               if (mc.world.getBlockState(var12.field2532.field2523).isAir() && this.field200.render.field257.getValue()) {
                   this.field200.render.field268.putIfAbsent(var12.field2532.field2523, System.currentTimeMillis());
                }
             }
@@ -205,7 +205,7 @@ public class Miner implements IMinecraft, SettingsGroup {
       if (!this.field204.isEmpty()) {
          return false;
       } else if (!this.field201.isEmpty()) {
-         return !this.field197.method419() ? false : this.field201.size() == 1 && ((TaskLogger)this.field201.get(0)).field2533 <= 0.5F;
+         return !this.field197.getValue() ? false : this.field201.size() == 1 && ((TaskLogger)this.field201.get(0)).field2533 <= 0.5F;
       } else {
          return true;
       }
@@ -229,19 +229,19 @@ public class Miner implements IMinecraft, SettingsGroup {
 
    private AutoMineSuccessMode method100(TaskLogger var1) {
       BlockDirectionInfo var5 = var1.field2532;
-      if (!this.field185.method419() && mc.player.isUsingItem()) {
+      if (!this.field185.getValue() && mc.player.isUsingItem()) {
          return AutoMineSuccessMode.Fail;
       } else if (!BlockUtil.method2101(var5.field2523)) {
          return AutoMineSuccessMode.Fail;
       } else if (this.method2102(var5.field2523)) {
          var1.field2533 = 1.0F;
-         int var6 = BlockMiningUtils.method590(var5.field2523, this.field200.swapMode.method461());
+         int var6 = BlockMiningUtils.method590(var5.field2523, this.field200.swapMode.getValue());
          if (var6 != -1
             && (var6 != mc.player.getInventory().selectedSlot || var6 != ((ClientPlayerInteractionManagerAccessor)mc.interactionManager).getLastSelectedSlot())
             )
           {
-            InventoryUtil.method533(this.field200, 125, this.field200.swapMode.method461(), var6);
-            if (this.field200.swapMode.method461().swapBack) {
+            InventoryUtil.method533(this.field200, 125, this.field200.swapMode.getValue(), var6);
+            if (this.field200.swapMode.getValue().swapBack) {
                var1.field2534 = this.field200.swapDelay.method434();
             }
          }
@@ -249,12 +249,12 @@ public class Miner implements IMinecraft, SettingsGroup {
          mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.STOP_DESTROY_BLOCK, var5.field2523, var5.field2524));
          return AutoMineSuccessMode.Instant;
       } else {
-         if (this.field192.method419()) {
+         if (this.field192.getValue()) {
             mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.STOP_DESTROY_BLOCK, var5.field2523, var5.field2524));
          }
 
          mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.START_DESTROY_BLOCK, var5.field2523, var5.field2524));
-         if (this.field190.method419() || this.field187.method461() == AnticheatMode.Grim) {
+         if (this.field190.getValue() || this.field187.getValue() == AnticheatMode.Grim) {
             mc.player.swingHand(Hand.MAIN_HAND);
          }
 
@@ -273,13 +273,13 @@ public class Miner implements IMinecraft, SettingsGroup {
       if (var6.isAir()) {
          var1.field2533 = 1.0F;
       } else {
-         int var7 = BlockMiningUtils.method591(var6, this.field200.swapMode.method461());
-         float var8 = BlockBreakingUtil.method507(var5.field2523, mc.player.getInventory().getStack(var7), this.field196.method419());
-         if (this.field195.method461() == AutoMineTpsSync.Avg) {
+         int var7 = BlockMiningUtils.method591(var6, this.field200.swapMode.getValue());
+         float var8 = BlockBreakingUtil.method507(var5.field2523, mc.player.getInventory().getStack(var7), this.field196.getValue());
+         if (this.field195.getValue() == AutoMineTpsSync.Avg) {
             var8 *= TickRateTracker.getAverageTickRate() / 20.0F;
-         } else if (this.field195.method461() == AutoMineTpsSync.Min) {
+         } else if (this.field195.getValue() == AutoMineTpsSync.Min) {
             var8 *= TickRateTracker.getMinTickRate() / 20.0F;
-         } else if (this.field195.method461() == AutoMineTpsSync.Last) {
+         } else if (this.field195.getValue() == AutoMineTpsSync.Last) {
             var8 *= TickRateTracker.getLastTickRate() / 20.0F;
          }
 
@@ -289,20 +289,20 @@ public class Miner implements IMinecraft, SettingsGroup {
 
    private void method103(TaskLogger var1) {
       BlockDirectionInfo var5 = var1.field2532;
-      int var6 = BlockMiningUtils.method590(var5.field2523, this.field200.swapMode.method461());
+      int var6 = BlockMiningUtils.method590(var5.field2523, this.field200.swapMode.getValue());
       if (var6 != -1
          && (var6 != mc.player.getInventory().selectedSlot || var6 != ((ClientPlayerInteractionManagerAccessor)mc.interactionManager).getLastSelectedSlot())) {
          if (InventoryUtil.method532() != AutoMine.INSTANCE) {
-            InventoryUtil.method533(this.field200, 125, this.field200.swapMode.method461(), var6);
+            InventoryUtil.method533(this.field200, 125, this.field200.swapMode.getValue(), var6);
             var1.swap();
          }
 
-         if (this.field200.swapMode.method461().swapBack) {
+         if (this.field200.swapMode.getValue().swapBack) {
             var1.field2534 = this.field200.swapDelay.method434();
          }
       }
 
-      if (this.field192.method419()) {
+      if (this.field192.getValue()) {
          mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.STOP_DESTROY_BLOCK, var5.field2523, var5.field2524));
       }
 
@@ -325,10 +325,10 @@ public class Miner implements IMinecraft, SettingsGroup {
    }
 
    private boolean method2115() {
-      if (this.field198.method461() == AutoMineSwapbackMode.Always) {
+      if (this.field198.getValue() == AutoMineSwapbackMode.Always) {
          return true;
       } else {
-         return this.field198.method461() == AutoMineSwapbackMode.Dynamic ? this.field203 : false;
+         return this.field198.getValue() == AutoMineSwapbackMode.Dynamic ? this.field203 : false;
       }
    }
 
@@ -353,13 +353,13 @@ public class Miner implements IMinecraft, SettingsGroup {
    }
 
    private boolean method106(BlockPos var1) {
-      return this.field200.instantRemine.method419() && var1.equals(this.field200.field2519) && this.field200.field2520;
+      return this.field200.instantRemine.getValue() && var1.equals(this.field200.field2519) && this.field200.field2520;
    }
 
    public Vec3d method1954() {
       if (!this.field201.isEmpty()) {
          TaskLogger var4 = (TaskLogger)this.field201.get(0);
-         if (this.field189.method419() && this.field187.method461() == AnticheatMode.NCP && var4.field2533 > 0.9F) {
+         if (this.field189.getValue() && this.field187.getValue() == AnticheatMode.NCP && var4.field2533 > 0.9F) {
             return var4.field2532.field2525;
          }
       }
@@ -368,14 +368,14 @@ public class Miner implements IMinecraft, SettingsGroup {
    }
 
    private boolean lambda$new$2() {
-      return this.field187.method461() == AnticheatMode.NCP;
+      return this.field187.getValue() == AnticheatMode.NCP;
    }
 
    private boolean lambda$new$1() {
-      return this.field187.method461() == AnticheatMode.NCP;
+      return this.field187.getValue() == AnticheatMode.NCP;
    }
 
    private boolean lambda$new$0() {
-      return this.field187.method461() == AnticheatMode.NCP;
+      return this.field187.getValue() == AnticheatMode.NCP;
    }
 }

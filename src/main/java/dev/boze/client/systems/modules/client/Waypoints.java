@@ -79,7 +79,7 @@ public class Waypoints extends Module {
          this.field2444,
          this.field2445
       );
-      this.field2439.field2234.setVisibility(this.field2438::method419);
+      this.field2439.field2234.setVisibility(this.field2438::getValue);
    }
 
    @EventHandler
@@ -88,14 +88,14 @@ public class Waypoints extends Module {
          )
        {
          Vec3d var5 = EntityUtil.method2144(mc.player);
-         if (this.field2438.method419()) {
-            for (WayPoint var7 : this.field2437.method2120()) {
+         if (this.field2438.getValue()) {
+            for (WayPoint var7 : this.field2437.getValue()) {
                if (var7.field912.equals(mc.world.getRegistryKey().getValue().getPath()) && var7.field913.equalsIgnoreCase(mc.getCurrentServerEntry().address)) {
                   Vec3d var8 = new Vec3d((double)var7.field909, (double)var7.field910, (double)var7.field911);
                   double var9 = var8.distanceTo(var5);
-                  if (!this.field2441.method419()
-                     || !(var9 < (double)this.field2442.method410()[this.field2442.method1365()])
-                        && !(var9 > (double)this.field2442.method410()[this.field2442.method1366()])) {
+                  if (!this.field2441.getValue()
+                     || !(var9 < (double)this.field2442.getValue()[this.field2442.method1365()])
+                        && !(var9 > (double)this.field2442.getValue()[this.field2442.method1366()])) {
                      Vec3d var11 = var8.subtract(var5).normalize();
                      Vec3d var12 = var9 > 255.0 ? var5.add(var11.multiply(255.0)) : var8;
                      Frustum var13 = ((WorldRendererAccessor)mc.worldRenderer).getFrustum();
@@ -120,12 +120,12 @@ public class Waypoints extends Module {
 
    @EventHandler
    private void onRender3D(Render3DEvent var1) {
-      if (this.field2440.method419() && !this.field2437.method2120().isEmpty()) {
+      if (this.field2440.getValue() && !this.field2437.getValue().isEmpty()) {
          if (mc.getCurrentServerEntry() != null
             && mc.getCurrentServerEntry().address != null
             && !mc.getCurrentServerEntry().address.isEmpty()
             && mc.world != null) {
-            if (this.field2445.method419()) {
+            if (this.field2445.getValue()) {
                if (this.field2454 == null) {
                   this.field2454 = new Renderer3D(false, true);
                }
@@ -135,16 +135,16 @@ public class Waypoints extends Module {
 
             Vec3d var5 = EntityUtil.method2144(mc.player);
 
-            for (WayPoint var7 : this.field2437.method2120()) {
+            for (WayPoint var7 : this.field2437.getValue()) {
                if (var7.field912.equals(mc.world.getRegistryKey().getValue().getPath()) && var7.field913.equalsIgnoreCase(mc.getCurrentServerEntry().address)) {
                   Vec3d var8 = new Vec3d((double)var7.field909, (double)var7.field910, (double)var7.field911);
                   double var9 = var8.distanceTo(var5);
-                  if (!this.field2441.method419()
-                     || !(var9 < (double)this.field2442.method410()[this.field2442.method1365()])
-                        && !(var9 > (double)this.field2442.method410()[this.field2442.method1366()])) {
+                  if (!this.field2441.getValue()
+                     || !(var9 < (double)this.field2442.getValue()[this.field2442.method1365()])
+                        && !(var9 > (double)this.field2442.getValue()[this.field2442.method1366()])) {
                      Vec3d var13 = var8.subtract(var5).normalize();
                      Vec3d var14 = var9 > 255.0 ? var5.add(var13.multiply(255.0)) : var8;
-                     if (this.field2445.method419()) {
+                     if (this.field2445.getValue()) {
                         this.field2454
                            .method1261(var14.x - 0.35, var14.y, var14.z - 0.35, var14.x + 0.35, var14.y + 1.8, var14.z + 0.35, RGBAColor.field402, 0);
                      } else {
@@ -156,8 +156,8 @@ public class Waypoints extends Module {
                               var14.x + 0.35,
                               var14.y + 1.8,
                               var14.z + 0.35,
-                              this.field2443.method1362(),
-                              this.field2444.method1362(),
+                              this.field2443.getValue(),
+                              this.field2444.getValue(),
                               ShapeMode.Full,
                               0
                            );
@@ -166,17 +166,17 @@ public class Waypoints extends Module {
                }
             }
 
-            if (this.field2445.method419()) {
+            if (this.field2445.getValue()) {
                ChamsShaderRenderer.method1310(
                   this::lambda$onRender3D$2,
                   this.method1393(),
-                  this.field2447.method419(),
+                  this.field2447.getValue(),
                   this.field2443,
                   this.field2444,
                   this.field2451.method434(),
-                  this.field2452.method423(),
-                  this.field2449.method423(),
-                  this.field2450.method423(),
+                  this.field2452.getValue(),
+                  this.field2449.getValue(),
+                  this.field2450.getValue(),
                   this.field2448.method434(),
                   this.field2455
                );
@@ -186,15 +186,15 @@ public class Waypoints extends Module {
    }
 
    private ShaderMode method1393() {
-      if (this.field2446.method461() == WaypointShaderMode.Image) {
-         if (!this.field2453.method1322().isEmpty() && (!this.field2453.method1322().equals(this.field2456) || this.field2455 == null)) {
-            File var4 = new File(ConfigManager.images, this.field2453.method1322() + ".png");
+      if (this.field2446.getValue() == WaypointShaderMode.Image) {
+         if (!this.field2453.getValue().isEmpty() && (!this.field2453.getValue().equals(this.field2456) || this.field2455 == null)) {
+            File var4 = new File(ConfigManager.images, this.field2453.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.field2455 = ByteTexturePacker.method493(var5);
                if (this.field2455 != null) {
-                  this.field2456 = this.field2453.method1322();
+                  this.field2456 = this.field2453.getValue();
                } else {
                   this.field2456 = "";
                }
@@ -202,7 +202,7 @@ public class Waypoints extends Module {
                NotificationManager.method1151(
                   new Notification(this.getName(), "Couldn't load image", dev.boze.client.gui.notification.Notifications.WARNING, NotificationPriority.Yellow)
                );
-               this.field2453.method1341("");
+               this.field2453.setValue("");
                this.field2456 = "";
             }
          }
@@ -220,10 +220,10 @@ public class Waypoints extends Module {
    }
 
    private boolean lambda$new$1() {
-      return this.field2446.method461() == WaypointShaderMode.Image;
+      return this.field2446.getValue() == WaypointShaderMode.Image;
    }
 
    private boolean lambda$new$0() {
-      return this.field2449.method423() > 0.0F;
+      return this.field2449.getValue() > 0.0F;
    }
 }

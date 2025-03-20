@@ -27,7 +27,7 @@ public class JumpReset extends Module {
          }
 
          if (Math.random() <= this.field2808.getValue()
-            && (!this.field2807.method419() || mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.ENTITY)) {
+            && (!this.field2807.getValue() || mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.ENTITY)) {
             event.field1955 = true;
          }
 

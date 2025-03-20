@@ -18,7 +18,7 @@ public class ProneEscape implements IMinecraft, SettingsGroup {
    );
 
    public ProneEscape(AutoMine var1) {
-      this.field1634.setVisibility(var1.advanced::method419);
+      this.field1634.setVisibility(var1.advanced::getValue);
    }
 
    @Override
@@ -37,6 +37,6 @@ public class ProneEscape implements IMinecraft, SettingsGroup {
    }
 
    private static boolean lambda$new$0() {
-      return AutoMine.INSTANCE.advanced.method419();
+      return AutoMine.INSTANCE.advanced.getValue();
    }
 }

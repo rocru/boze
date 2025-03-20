@@ -67,7 +67,7 @@ public class ClickTP extends Module {
    public void onEnable() {
       if (MinecraftUtils.isClientActive()) {
          this.field3200 = null;
-         if (this.field3198.method461() == ClickTPMode.Once) {
+         if (this.field3198.getValue() == ClickTPMode.Once) {
             this.method1814();
             this.method1813();
             this.setEnabled(false);
@@ -80,7 +80,7 @@ public class ClickTP extends Module {
       if (MinecraftUtils.isClientActive()) {
          this.method1814();
          if (!mc.player.isUsingItem()) {
-            if (this.field3198.method461() == ClickTPMode.RightClick && mc.options.useKey.isPressed()) {
+            if (this.field3198.getValue() == ClickTPMode.RightClick && mc.options.useKey.isPressed()) {
                this.method1813();
             }
          }
@@ -91,7 +91,7 @@ public class ClickTP extends Module {
    public void method1811(KeyEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
-            if (this.field3198.method461() == ClickTPMode.Bind && this.field3199.method476().matches(true, event.key)) {
+            if (this.field3198.getValue() == ClickTPMode.Bind && this.field3199.method476().matches(true, event.key)) {
                this.method1813();
             }
          }
@@ -102,7 +102,7 @@ public class ClickTP extends Module {
    public void method1812(MouseButtonEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
-            if (this.field3198.method461() == ClickTPMode.Bind && this.field3199.method476().matches(false, event.button)) {
+            if (this.field3198.getValue() == ClickTPMode.Bind && this.field3199.method476().matches(false, event.button)) {
                this.method1813();
             }
          }
@@ -152,10 +152,10 @@ public class ClickTP extends Module {
          }
       }
 
-      var3.method1273(var1, this.field3196.method1362(), this.field3197.method1362(), ShapeMode.Full, 0);
+      var3.method1273(var1, this.field3196.getValue(), this.field3197.getValue(), ShapeMode.Full, 0);
    }
 
    private boolean lambda$new$0() {
-      return this.field3198.method461() == ClickTPMode.Bind;
+      return this.field3198.getValue() == ClickTPMode.Bind;
    }
 }

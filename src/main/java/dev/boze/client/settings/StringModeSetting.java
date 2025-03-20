@@ -68,7 +68,7 @@ public class StringModeSetting extends Setting<List<String>> implements IMinecra
 
    public List<String> method1144() {
       ArrayList var1 = new ArrayList();
-      this.field949.forEach(StringModeSetting::lambda$getBlocksAsString$1);
+      this.field949.forEach(v -> lambda$getBlocksAsString$1(var1, v));
       return var1;
    }
 
@@ -86,17 +86,20 @@ public class StringModeSetting extends Setting<List<String>> implements IMinecra
       return this.field949;
    }
 
-   public List<String> method2033() {
+   @Override
+   public List<String> resetValue() {
       this.field949.clear();
       this.field950.clear();
       return this.field950;
    }
 
-   public List<String> method442() {
+   @Override
+   public List<String> getValue() {
       return this.field950;
    }
 
-   public List<String> method443(List<String> newVal) {
+   @Override
+   public List<String> setValue(List<String> newVal) {
       this.field950 = newVal;
       this.method1416();
       if (this.callback != null) {
@@ -124,12 +127,13 @@ public class StringModeSetting extends Setting<List<String>> implements IMinecra
    @Override
    public NbtCompound save(NbtCompound tag) {
       NbtList var4 = new NbtList();
-      this.field950.forEach(StringModeSetting::lambda$addValueToTag$7);
+      this.field950.forEach(v -> lambda$addValueToTag$7(var4, v));
       tag.put("Blocks", var4);
       return tag;
    }
 
-   public List<String> method444(NbtCompound tag) {
+   @Override
+   public List<String> load(NbtCompound tag) {
       if (tag.contains("Blocks")) {
          NbtList var5 = tag.getList("Blocks", 8);
          this.field950.clear();
@@ -148,31 +152,31 @@ public class StringModeSetting extends Setting<List<String>> implements IMinecra
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method444(nbtCompound);
-   }
+ //  @Override
+  // public Object load(NbtCompound nbtCompound) {
+//      return this.method444(nbtCompound);
+ //  }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method443((List<String>)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+  //    return this.method443((List<String>)object);
+ //  }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method2033();
-   }
-
+   //@Override
+  // public Object resetValue() {
+  //    return this.method2033();
+  // }
+//
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method442();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method442();
+   //}
 
    private static void lambda$addValueToTag$7(NbtList var0, String var1) {
       if (!var0.contains(NbtString.of(var1))) {
@@ -182,7 +186,7 @@ public class StringModeSetting extends Setting<List<String>> implements IMinecra
 
    private int lambda$build$6(CommandContext var1) throws CommandSyntaxException {
       ChatInstance.method624("Clearing all blocks...");
-      this.method2033();
+      this.resetValue();
       if (this.field951) {
          mc.worldRenderer.reload();
       }

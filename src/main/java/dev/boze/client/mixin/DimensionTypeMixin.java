@@ -22,7 +22,7 @@ public class DimensionTypeMixin {
    )
    private void ambientLight(CallbackInfoReturnable<Float> var1) {
       if (FullBright.INSTANCE.isEnabled()) {
-         var1.setReturnValue(Math.max(this.ambientLight, FullBright.INSTANCE.field3567.method423()));
+         var1.setReturnValue(Math.max(this.ambientLight, FullBright.INSTANCE.field3567.getValue()));
       }
    }
 }

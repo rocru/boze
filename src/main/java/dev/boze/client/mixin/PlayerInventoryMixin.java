@@ -16,7 +16,7 @@ public class PlayerInventoryMixin {
    )
    private void onGetBlockBreakingSpeed(CallbackInfoReturnable<Float> var1) {
       if (MiningTweaks.INSTANCE.isEnabled()) {
-         var1.setReturnValue((Float)var1.getReturnValue() * MiningTweaks.INSTANCE.speed.method423());
+         var1.setReturnValue((Float)var1.getReturnValue() * MiningTweaks.INSTANCE.speed.getValue());
       }
    }
 }

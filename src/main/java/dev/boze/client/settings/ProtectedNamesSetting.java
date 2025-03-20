@@ -23,16 +23,19 @@ public class ProtectedNamesSetting extends Setting<HashMap<String, String>> {
       super(name, description);
    }
 
-   public HashMap<String, String> method1282() {
+   @Override
+   public HashMap<String, String> getValue() {
       return this.field976;
    }
 
-   public HashMap<String, String> method469() {
+   @Override
+   public HashMap<String, String> resetValue() {
       this.field976.clear();
       return this.field976;
    }
 
-   public HashMap<String, String> method470(HashMap<String, String> newVal) {
+   @Override
+   public HashMap<String, String> setValue(HashMap<String, String> newVal) {
       return this.field976 = newVal;
    }
 
@@ -55,13 +58,14 @@ public class ProtectedNamesSetting extends Setting<HashMap<String, String>> {
 
    @Override
    public NbtCompound save(NbtCompound tag) {
-      NbtList var4 = new NbtList();
-      this.field976.forEach(ProtectedNamesSetting::lambda$addValueToTag$4);
-      tag.put("Names", var4);
+      NbtList nbtList = new NbtList();
+      this.field976.forEach((arg_0, arg_1) -> ProtectedNamesSetting.lambda$addValueToTag$4(nbtList, arg_0, arg_1));
+      tag.put("Names", nbtList);
       return tag;
    }
 
-   public HashMap<String, String> method471(NbtCompound tag) {
+   @Override
+   public HashMap<String, String> load(NbtCompound tag) {
       if (tag.contains("Names")) {
          NbtList var5 = tag.getList("Names", 8);
          this.field976.clear();
@@ -81,31 +85,31 @@ public class ProtectedNamesSetting extends Setting<HashMap<String, String>> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method471(nbtCompound);
-   }
+  // @Override
+  // public Object load(NbtCompound nbtCompound) {
+   //   return this.method471(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method470((HashMap<String, String>)object);
-   }
+  // @Override
+  // public Object setValue(Object object) {
+  //    return this.method470((HashMap<String, String>)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method469();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method469();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1282();
-   }
+  // @Override
+   //public Object getValue() {
+   //   return this.method1282();
+  // }
 
    private static void lambda$addValueToTag$4(NbtList var0, String var1, String var2) {
       String var3 = var1 + ":" + var2;

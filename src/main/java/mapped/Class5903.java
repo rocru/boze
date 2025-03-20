@@ -19,7 +19,7 @@ public abstract class Class5903<T> implements ISerializable<T> {
 
    public void method2142() {
       for (WeirdColorSetting var5 : this.field129) {
-         var5.method431();
+         var5.resetValue();
       }
    }
 

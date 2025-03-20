@@ -47,7 +47,7 @@ public class SelfBow extends Module {
 
    @Override
    public void onEnable() {
-      if (MinecraftUtils.isClientActive() && !Options.method477(this.multiTask.method419())) {
+      if (MinecraftUtils.isClientActive() && !Options.method477(this.multiTask.getValue())) {
          this.field2564 = -1;
          int var4 = this.method1524();
          if (var4 == -1) {
@@ -72,7 +72,7 @@ public class SelfBow extends Module {
                      Iterator var8 = ((PotionContentsComponent)var7.get(DataComponentTypes.POTION_CONTENTS)).getEffects().iterator();
                      if (var8.hasNext()) {
                         RegistryEntry var9 = ((StatusEffectInstance)var8.next()).getEffectType();
-                        if (this.method1521(var9) && !var5.contains(var9) && (!this.method1522(var9) || this.ignoreEffects.method419())) {
+                        if (this.method1521(var9) && !var5.contains(var9) && (!this.method1522(var9) || this.ignoreEffects.getValue())) {
                            var5.add(var9);
                            this.field2563.add(var6);
                         }
@@ -88,11 +88,11 @@ public class SelfBow extends Module {
 
    private boolean method1521(RegistryEntry<StatusEffect> var1) {
       if (var1 == StatusEffects.SPEED) {
-         return this.swiftness.method419();
+         return this.swiftness.getValue();
       } else if (var1 == StatusEffects.STRENGTH) {
-         return this.strength.method419();
+         return this.strength.getValue();
       } else {
-         return var1 == StatusEffects.REGENERATION ? this.regeneration.method419() : false;
+         return var1 == StatusEffects.REGENERATION ? this.regeneration.getValue() : false;
       }
    }
 

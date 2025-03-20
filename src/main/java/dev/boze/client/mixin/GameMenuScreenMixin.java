@@ -18,7 +18,7 @@ public class GameMenuScreenMixin {
       at = {@At("HEAD")}
    )
    private void onDisconnect(CallbackInfo var1) {
-      if (AntiCheat.INSTANCE.field2321.method419() && !Options.INSTANCE.method1971() && MinecraftUtils.isClientActive()) {
+      if (AntiCheat.INSTANCE.field2321.getValue() && !Options.INSTANCE.method1971() && MinecraftUtils.isClientActive()) {
          MinecraftClient.getInstance().player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(1000));
       }
    }

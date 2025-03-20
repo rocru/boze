@@ -105,28 +105,28 @@ public class Class1201 {
    }
 
    public static void method2383(boolean thread) {
-      String var4 = Profiles.INSTANCE.field762.method1322();
-      String var5 = Profiles.INSTANCE.field763.method1322();
-      String var6 = Profiles.INSTANCE.field764.method1322();
-      String var7 = Profiles.INSTANCE.field765.method1322();
+      String var4 = Profiles.INSTANCE.field762.getValue();
+      String var5 = Profiles.INSTANCE.field763.getValue();
+      String var6 = Profiles.INSTANCE.field764.getValue();
+      String var7 = Profiles.INSTANCE.field765.getValue();
       if (var4.isEmpty()) {
          var4 = "v2.main.default";
-         Profiles.INSTANCE.field762.method1341(var4);
+         Profiles.INSTANCE.field762.setValue(var4);
       }
 
       if (var5.isEmpty()) {
          var5 = "v2.visuals.default";
-         Profiles.INSTANCE.field763.method1341(var5);
+         Profiles.INSTANCE.field763.setValue(var5);
       }
 
       if (var6.isEmpty()) {
          var6 = "v2.binds.default";
-         Profiles.INSTANCE.field764.method1341(var6);
+         Profiles.INSTANCE.field764.setValue(var6);
       }
 
       if (var7.isEmpty()) {
          var7 = "v2.client.default";
-         Profiles.INSTANCE.field765.method1341(var7);
+         Profiles.INSTANCE.field765.setValue(var7);
       }
 
       method2384(var1260, var4, var5, var6, var7);
@@ -173,30 +173,30 @@ public class Class1201 {
       String var7 = null;
       if (var3.contains("main")) {
          var4 = var3.getString("main");
-         Profiles.INSTANCE.field762.method1341(var4);
+         Profiles.INSTANCE.field762.setValue(var4);
       } else {
-         Profiles.INSTANCE.field762.method1341("v2.main.default");
+         Profiles.INSTANCE.field762.setValue("v2.main.default");
       }
 
       if (var3.contains("visuals")) {
          var5 = var3.getString("visuals");
-         Profiles.INSTANCE.field763.method1341(var5);
+         Profiles.INSTANCE.field763.setValue(var5);
       } else {
-         Profiles.INSTANCE.field763.method1341("v2.visuals.default");
+         Profiles.INSTANCE.field763.setValue("v2.visuals.default");
       }
 
       if (var3.contains("binds")) {
          var6 = var3.getString("binds");
-         Profiles.INSTANCE.field764.method1341(var6);
+         Profiles.INSTANCE.field764.setValue(var6);
       } else {
-         Profiles.INSTANCE.field764.method1341("v2.binds.default");
+         Profiles.INSTANCE.field764.setValue("v2.binds.default");
       }
 
       if (var3.contains("client")) {
          var7 = var3.getString("client");
-         Profiles.INSTANCE.field765.method1341(var7);
+         Profiles.INSTANCE.field765.setValue(var7);
       } else {
-         Profiles.INSTANCE.field765.method1341("v2.client.default");
+         Profiles.INSTANCE.field765.setValue("v2.client.default");
       }
 
       method2388(var4, var5, var6, var7);

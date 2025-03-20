@@ -32,15 +32,18 @@ public class StringSetting extends Setting<String> {
       this.field926 = value;
    }
 
-   public String method1322() {
+   @Override
+   public String getValue() {
       return this.field925;
    }
 
-   public String method1562() {
+   @Override
+   public String resetValue() {
       return this.field925 = this.field926;
    }
 
-   public String method1341(String newVal) {
+   @Override
+   public String setValue(String newVal) {
       return this.field925 = newVal;
    }
 
@@ -50,7 +53,8 @@ public class StringSetting extends Setting<String> {
       return tag;
    }
 
-   public String method1286(NbtCompound tag) {
+   @Override
+   public String load(NbtCompound tag) {
       if (tag.contains("Value")) {
          this.field925 = tag.getString("Value");
       }
@@ -60,29 +64,29 @@ public class StringSetting extends Setting<String> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method1286(nbtCompound);
-   }
+  // @Override
+  // public Object load(NbtCompound nbtCompound) {
+  //    return this.method1286(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method1341((String)object);
-   }
+  // @Override
+  // public Object setValue(Object object) {
+   //   return this.method1341((String)object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method1562();
-   }
+   //@Override
+   //public Object resetValue() {
+  //    return this.method1562();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1322();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method1322();
+   //}
 }

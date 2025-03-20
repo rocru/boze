@@ -43,7 +43,7 @@ public class Blur extends Module {
       if (this.field3416) {
          if (!var4) {
             if (this.field3417 == -1L) {
-               this.field3417 = System.currentTimeMillis() + (long)((int)(this.field3410.method423() * 50.0F));
+               this.field3417 = System.currentTimeMillis() + (long)((int)(this.field3410.getValue() * 50.0F));
             }
 
             if (var5 >= this.field3417) {
@@ -53,7 +53,7 @@ public class Blur extends Module {
          }
       } else if (var4) {
          this.field3416 = true;
-         this.field3417 = System.currentTimeMillis() + (long)((int)(this.field3410.method423() * 50.0F));
+         this.field3417 = System.currentTimeMillis() + (long)((int)(this.field3410.getValue() * 50.0F));
       }
 
       if (this.field3416) {
@@ -64,9 +64,9 @@ public class Blur extends Module {
          double var7 = 1.0;
          if (var5 < this.field3417) {
             if (var4) {
-               var7 = 1.0 - (double)(this.field3417 - var5) / ((double)this.field3410.method423().floatValue() * 50.0);
+               var7 = 1.0 - (double)(this.field3417 - var5) / ((double)this.field3410.getValue().floatValue() * 50.0);
             } else {
-               var7 = (double)(this.field3417 - var5) / ((double)this.field3410.method423().floatValue() * 50.0);
+               var7 = (double)(this.field3417 - var5) / ((double)this.field3410.getValue().floatValue() * 50.0);
             }
          } else {
             this.field3417 = -1L;
@@ -78,13 +78,13 @@ public class Blur extends Module {
          ShaderRegistry.field2267
             .method693(
                "u_Color",
-               (double)((float)this.field3411.method1347().field408 / 255.0F),
-               (double)((float)this.field3411.method1347().field409 / 255.0F),
-               (double)((float)this.field3411.method1347().field410 / 255.0F),
-               (double)((float)this.field3411.method1347().field411 / 255.0F)
+               (double)((float)this.field3411.getValue().field408 / 255.0F),
+               (double)((float)this.field3411.getValue().field409 / 255.0F),
+               (double)((float)this.field3411.getValue().field410 / 255.0F),
+               (double)((float)this.field3411.getValue().field411 / 255.0F)
             );
          ShaderRegistry.field2267.method690("u_Passes", this.field3408.method434());
-         ShaderRegistry.field2267.method691("u_Radius", (double)this.field3409.method423().floatValue() * var7);
+         ShaderRegistry.field2267.method691("u_Radius", (double)this.field3409.getValue().floatValue() * var7);
          this.field3418.method1156(false, true);
          QuadRenderer.render();
          GL.method1211(mc.getFramebuffer().getColorAttachment());
@@ -114,13 +114,13 @@ public class Blur extends Module {
       } else {
          Screen var4 = mc.currentScreen;
          if (var4 instanceof ClickGUI) {
-            return this.field3412.method419();
+            return this.field3412.getValue();
          } else if (var4 instanceof HandledScreen) {
-            return this.field3413.method419();
+            return this.field3413.getValue();
          } else if (var4 instanceof ChatScreen) {
-            return this.field3414.method419();
+            return this.field3414.getValue();
          } else {
-            return var4 != null ? this.field3415.method419() : false;
+            return var4 != null ? this.field3415.getValue() : false;
          }
       }
    }

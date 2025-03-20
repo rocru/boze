@@ -44,11 +44,11 @@ public class AutoEat extends Module {
 
    @EventHandler
    public void method1661(PrePlayerTickEvent event) {
-      if (this.timer.hasElapsed((double)(this.delay.method423() * 100.0F)) && this.timer.hasElapsed((double)(this.swapDelay.method423() * 100.0F))) {
+      if (this.timer.hasElapsed((double)(this.delay.getValue() * 100.0F)) && this.timer.hasElapsed((double)(this.swapDelay.getValue() * 100.0F))) {
          if (!mc.player.isCreative()) {
             if (this.method1664()) {
                this.field2887 = true;
-               if (this.autoSwap.method419() && !FoodUtil.isFood(mc.player.getMainHandStack()) && !FoodUtil.isFood(mc.player.getOffHandStack())) {
+               if (this.autoSwap.getValue() && !FoodUtil.isFood(mc.player.getMainHandStack()) && !FoodUtil.isFood(mc.player.getOffHandStack())) {
                   int var5 = this.method1665();
                   if (var5 != -1) {
                      mc.player.getInventory().selectedSlot = var5;
@@ -78,7 +78,7 @@ public class AutoEat extends Module {
                   }
                }
 
-               if (this.pauseBaritone.method419() && BaritoneAPI.getProvider().getPrimaryBaritone().getPathingBehavior().isPathing() && !this.field2889) {
+               if (this.pauseBaritone.getValue() && BaritoneAPI.getProvider().getPrimaryBaritone().getPathingBehavior().isPathing() && !this.field2889) {
                   BaritoneAPI.getProvider().getPrimaryBaritone().getCommandManager().execute("pause");
                   this.field2889 = true;
                }
@@ -114,12 +114,12 @@ public class AutoEat extends Module {
    }
 
    public static boolean method1663() {
-      return INSTANCE.isEnabled() && INSTANCE.pauseAura.method419() && INSTANCE.method1664() && INSTANCE.method1665() != -1;
+      return INSTANCE.isEnabled() && INSTANCE.pauseAura.getValue() && INSTANCE.method1664() && INSTANCE.method1665() != -1;
    }
 
    public boolean method1664() {
-      return mc.player.getHealth() + mc.player.getAbsorptionAmount() <= this.health.method423()
-         || (float)mc.player.getHungerManager().getFoodLevel() <= this.hunger.method423();
+      return mc.player.getHealth() + mc.player.getAbsorptionAmount() <= this.health.getValue()
+         || (float)mc.player.getHungerManager().getFoodLevel() <= this.hunger.getValue();
    }
 
    private int method1665() {
@@ -128,8 +128,8 @@ public class AutoEat extends Module {
 
       for (int var6 = 0; var6 < 9; var6++) {
          ItemStack var7 = mc.player.getInventory().getStack(var6);
-         if (FoodUtil.isFood(var7) && (var7.getItem() != Items.CHORUS_FRUIT || this.eatChorus.method419())) {
-            if (this.preferGap.method419() && var7.getItem() == Items.ENCHANTED_GOLDEN_APPLE) {
+         if (FoodUtil.isFood(var7) && (var7.getItem() != Items.CHORUS_FRUIT || this.eatChorus.getValue())) {
+            if (this.preferGap.getValue() && var7.getItem() == Items.ENCHANTED_GOLDEN_APPLE) {
                var4 = var6;
                break;
             }

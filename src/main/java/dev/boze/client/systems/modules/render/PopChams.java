@@ -73,7 +73,7 @@ public class PopChams extends Module {
                Entity var11 = var5.getEntity(mc.world);
                if (var11 instanceof PlayerEntity var7 && var7 != mc.player) {
                   synchronized (this.field3658) {
-                     if (this.field3641.method419()) {
+                     if (this.field3641.getValue()) {
                         this.field3658.removeIf(PopChams::lambda$onReceivePacket$3);
                      }
 
@@ -88,7 +88,7 @@ public class PopChams extends Module {
 
    public void method2019(FakePlayerEntityWithTotem entity) {
       synchronized (this.field3658) {
-         if (this.field3641.method419()) {
+         if (this.field3641.getValue()) {
             this.field3658.removeIf(PopChams::lambda$onInternalPop$4);
          }
 
@@ -104,7 +104,7 @@ public class PopChams extends Module {
          }
       }
 
-      if (this.field3645.method419()) {
+      if (this.field3645.getValue()) {
          if (this.field3659 == null) {
             this.field3659 = new Renderer3D(false, true);
          }
@@ -116,17 +116,17 @@ public class PopChams extends Module {
          this.field3658.removeIf(this::lambda$onRender3D$5);
       }
 
-      if (this.field3645.method419()) {
+      if (this.field3645.getValue()) {
          ChamsShaderRenderer.method1310(
             this::lambda$onRender3D$6,
             this.method2021(),
-            this.field3649.method419(),
+            this.field3649.getValue(),
             this.field3646,
             this.field3647,
             this.field3653.method434(),
-            this.field3654.method423(),
-            this.field3651.method423(),
-            this.field3652.method423(),
+            this.field3654.getValue(),
+            this.field3651.getValue(),
+            this.field3652.getValue(),
             this.field3650.method434(),
             this.field3660
          );
@@ -134,21 +134,21 @@ public class PopChams extends Module {
    }
 
    private ShaderMode method2021() {
-      if (this.field3648.method461() == ShaderMode.Image) {
-         if (!this.field3655.method1322().isEmpty() && (!this.field3655.method1322().equals(this.field3661) || this.field3660 == null)) {
-            File var4 = new File(ConfigManager.images, this.field3655.method1322() + ".png");
+      if (this.field3648.getValue() == ShaderMode.Image) {
+         if (!this.field3655.getValue().isEmpty() && (!this.field3655.getValue().equals(this.field3661) || this.field3660 == null)) {
+            File var4 = new File(ConfigManager.images, this.field3655.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.field3660 = ByteTexturePacker.method493(var5);
                if (this.field3660 != null) {
-                  this.field3661 = this.field3655.method1322();
+                  this.field3661 = this.field3655.getValue();
                } else {
                   this.field3661 = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field3655.method1341("");
+               this.field3655.setValue("");
                this.field3661 = "";
             }
          }
@@ -158,7 +158,7 @@ public class PopChams extends Module {
          }
       }
 
-      return this.field3648.method461() == ShaderMode.Rainbow ? ShaderMode.Rainbow : ShaderMode.Colored;
+      return this.field3648.getValue() == ShaderMode.Rainbow ? ShaderMode.Rainbow : ShaderMode.Colored;
    }
 
    private void lambda$onRender3D$6(Render3DEvent var1) {
@@ -166,7 +166,7 @@ public class PopChams extends Module {
    }
 
    private boolean lambda$onRender3D$5(Render3DEvent var1, PoppedPlayerEntity var2) {
-      return var2.method550(this.field3645.method419() ? this.field3659 : var1.field1950, var1.field1951);
+      return var2.method550(this.field3645.getValue() ? this.field3659 : var1.field1950, var1.field1951);
    }
 
    private static boolean lambda$onInternalPop$4(FakePlayerEntityWithTotem var0, PoppedPlayerEntity var1) {
@@ -178,14 +178,14 @@ public class PopChams extends Module {
    }
 
    private boolean lambda$new$2() {
-      return !this.field3645.method419();
+      return !this.field3645.getValue();
    }
 
    private boolean lambda$new$1() {
-      return this.field3648.method461() == ShaderMode.Image;
+      return this.field3648.getValue() == ShaderMode.Image;
    }
 
    private boolean lambda$new$0() {
-      return this.field3651.method423() > 0.0F;
+      return this.field3651.getValue() > 0.0F;
    }
 }

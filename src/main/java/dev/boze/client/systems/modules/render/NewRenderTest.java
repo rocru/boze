@@ -25,17 +25,17 @@ public class NewRenderTest extends Module {
    @EventHandler
    private void method1969(Render2DEvent var1) {
       IFontRender.method500(true).startBuilding();
-      IFontRender.method500(true).drawText("Hello world!", 10.0, 10.0, this.field3607.method430());
+      IFontRender.method500(true).drawText("Hello world!", 10.0, 10.0, this.field3607.getValue());
       IFontRender.method500(true).endBuilding();
       IFontRender.method500(false).startBuilding();
-      IFontRender.method500(false).drawText("Hello world!", 10.0, 100.0, this.field3607.method430());
+      IFontRender.method500(false).drawText("Hello world!", 10.0, 100.0, this.field3607.getValue());
       IFontRender.method500(false).endBuilding();
    }
 
    @EventHandler
    private void method1970(Render3DEvent var1) {
       if (mc.crosshairTarget != null && mc.crosshairTarget instanceof BlockHitResult var5 && var5.getType() == Type.BLOCK) {
-         var1.field1950.method1220(new Box(var5.getBlockPos()), this.field3607.method430());
+         var1.field1950.method1220(new Box(var5.getBlockPos()), this.field3607.getValue());
       }
    }
 }

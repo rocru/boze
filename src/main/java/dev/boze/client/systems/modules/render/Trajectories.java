@@ -46,7 +46,7 @@ public class Trajectories extends Module {
    private final BooleanSetting field3790 = new BooleanSetting("Trails", true, "Draw trails behind projectiles");
    private final FloatSetting field3791 = new FloatSetting("Duration", 0.5F, 0.1F, 60.0F, 0.1F, "Trail duration", this.field3790);
    private final BooleanSetting field3792 = new BooleanSetting("Fade", true, "Fade trails", this.field3790);
-   private final RGBASetting field3793 = new RGBASetting("TrailFade", new RGBAColor(53503), "Color for trail fade", this.field3792::method419, this.field3790);
+   private final RGBASetting field3793 = new RGBASetting("TrailFade", new RGBAColor(53503), "Color for trail fade", this.field3792::getValue, this.field3790);
    private final BooleanSetting field3794 = new BooleanSetting("Arrows", true, "Predict arrow trajectories");
    private final BooleanSetting field3795 = new BooleanSetting("Pearls", true, "Predict pearl trajectories");
    private final BooleanSetting field3796 = new BooleanSetting("Tridents", true, "Predict trident trajectories");
@@ -75,11 +75,11 @@ public class Trajectories extends Module {
             this.ac = new Renderer3D(false, false);
          }
 
-         this.ac.field2166.field1594 = this.field3785.method423();
+         this.ac.field2166.field1594 = this.field3785.getValue();
          this.ac.method1217();
-         if (this.field3790.method419()) {
+         if (this.field3790.getValue()) {
             for (nz var6 : this.ab) {
-               if (mc.world.getEntityById(var6.field3813) == null && var6.field3810.hasElapsed((double)(this.field3786.method423() * 1000.0F))) {
+               if (mc.world.getEntityById(var6.field3813) == null && var6.field3810.hasElapsed((double)(this.field3786.getValue() * 1000.0F))) {
                   var6.method2061();
                }
             }
@@ -91,29 +91,29 @@ public class Trajectories extends Module {
             }
 
             for (nz var14 : this.ab) {
-               var14.method2066(var1, this.field3782.method1347(), this.field3793.method1347());
+               var14.method2066(var1, this.field3782.getValue(), this.field3793.getValue());
             }
          }
 
-         if (this.field3788.method419()) {
+         if (this.field3788.getValue()) {
             for (PlayerEntity var15 : mc.world.getPlayers()) {
-               if (this.field3787.method419() || var15 == mc.player) {
+               if (this.field3787.getValue() || var15 == mc.player) {
                   this.method2059(var15, (double)var1.field1951);
 
                   for (nz var8 : this.aa) {
-                     var8.method2066(var1, this.field3778.method1347(), this.field3779.method1347());
+                     var8.method2066(var1, this.field3778.getValue(), this.field3779.getValue());
                   }
                }
             }
          }
 
-         if (this.field3789.method419()) {
+         if (this.field3789.getValue()) {
             for (Entity var16 : mc.world.getEntities()) {
                if (var16 instanceof ProjectileEntity && this.method2055(var16)) {
                   this.method2060(var16, (double)var1.field1951);
 
                   for (nz var18 : this.aa) {
-                     var18.method2066(var1, this.field3780.method1347(), this.field3781.method1347());
+                     var18.method2066(var1, this.field3780.getValue(), this.field3781.getValue());
                   }
                }
             }
@@ -125,45 +125,45 @@ public class Trajectories extends Module {
 
    private boolean method2054(Item var1) {
       if (var1 instanceof BowItem || var1 instanceof CrossbowItem) {
-         return this.field3794.method419();
+         return this.field3794.getValue();
       } else if (var1 instanceof EnderPearlItem) {
-         return this.field3795.method419();
+         return this.field3795.getValue();
       } else if (var1 instanceof TridentItem) {
-         return this.field3796.method419();
+         return this.field3796.getValue();
       } else if (var1 instanceof ExperienceBottleItem) {
-         return this.field3797.method419();
+         return this.field3797.getValue();
       } else if (var1 instanceof SplashPotionItem) {
-         return this.field3798.method419();
+         return this.field3798.getValue();
       } else if (var1 instanceof EggItem) {
-         return this.field3799.method419();
+         return this.field3799.getValue();
       } else if (var1 instanceof SnowballItem) {
-         return this.field3800.method419();
+         return this.field3800.getValue();
       } else {
-         return var1 instanceof FishingRodItem ? this.field3801.method419() : false;
+         return var1 instanceof FishingRodItem ? this.field3801.getValue() : false;
       }
    }
 
    private boolean method2055(Entity var1) {
       if (var1 instanceof ArrowEntity) {
-         return this.field3794.method419();
+         return this.field3794.getValue();
       } else if (var1 instanceof EnderPearlEntity) {
-         return this.field3795.method419();
+         return this.field3795.getValue();
       } else if (var1 instanceof TridentEntity) {
-         return this.field3796.method419();
+         return this.field3796.getValue();
       } else if (var1 instanceof ExperienceBottleEntity) {
-         return this.field3797.method419();
+         return this.field3797.getValue();
       } else if (var1 instanceof PotionEntity) {
-         return this.field3798.method419();
+         return this.field3798.getValue();
       } else if (var1 instanceof EggEntity) {
-         return this.field3799.method419();
+         return this.field3799.getValue();
       } else if (var1 instanceof SnowballEntity) {
-         return this.field3800.method419();
+         return this.field3800.getValue();
       } else if (var1 instanceof FishingBobberEntity) {
-         return this.field3801.method419();
+         return this.field3801.getValue();
       } else if (var1 instanceof FireballEntity || var1 instanceof DragonFireballEntity) {
-         return this.field3802.method419();
+         return this.field3802.getValue();
       } else {
-         return var1 instanceof WitherSkullEntity ? this.field3803.method419() : false;
+         return var1 instanceof WitherSkullEntity ? this.field3803.getValue() : false;
       }
    }
 

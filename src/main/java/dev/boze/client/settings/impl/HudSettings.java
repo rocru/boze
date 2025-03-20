@@ -53,14 +53,14 @@ class HudSettings implements SettingsGroup {
    }
 
    boolean method1280(RegistryEntry<StatusEffect> var1) {
-      return var1 == StatusEffects.BLINDNESS && this.field2191.method419();
+      return var1 == StatusEffects.BLINDNESS && this.field2191.getValue();
    }
 
    void method1281(PlayerOverlayEvent var1) {
-      if (var1.overlay == PlayerOverlay.Fire && this.field2188.method419()
-         || var1.overlay == PlayerOverlay.Pumpkin && this.field2190.method419()
-         || var1.overlay == PlayerOverlay.Liquid && this.field2189.method419()
-         || var1.overlay == PlayerOverlay.Wall && this.field2193.method419()) {
+      if (var1.overlay == PlayerOverlay.Fire && this.field2188.getValue()
+         || var1.overlay == PlayerOverlay.Pumpkin && this.field2190.getValue()
+         || var1.overlay == PlayerOverlay.Liquid && this.field2189.getValue()
+         || var1.overlay == PlayerOverlay.Wall && this.field2193.getValue()) {
          var1.method1020();
       }
    }

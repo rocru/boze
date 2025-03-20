@@ -35,9 +35,10 @@ public class ColorSetting extends Setting<BozeDrawColor> {
       this.field980 = value.copy();
    }
 
-   public BozeDrawColor method1362() {
+   @Override
+   public BozeDrawColor getValue() {
       if (this.sync) {
-         BozeDrawColor var4 = OldColors.INSTANCE.clientGradient.method1362();
+         BozeDrawColor var4 = OldColors.INSTANCE.clientGradient.getValue();
          return new BozeDrawColor(
             var4.field408, var4.field409, var4.field410, this.field979.field411, var4.field1842, var4.field1843, var4.field1844, var4.field1845, var4.field1846
          );
@@ -50,11 +51,13 @@ public class ColorSetting extends Setting<BozeDrawColor> {
       return this.field979;
    }
 
-   public BozeDrawColor method1375() {
+   @Override
+   public BozeDrawColor resetValue() {
       return this.field979 = this.field980;
    }
 
-   public BozeDrawColor method474(BozeDrawColor newVal) {
+   @Override
+   public BozeDrawColor setValue(BozeDrawColor newVal) {
       return this.field979 = newVal;
    }
 
@@ -73,7 +76,8 @@ public class ColorSetting extends Setting<BozeDrawColor> {
       return tag;
    }
 
-   public BozeDrawColor method966(NbtCompound tag) {
+   @Override
+   public BozeDrawColor load(NbtCompound tag) {
       if (tag.contains("Color")) {
          this.field979.fromTag(tag.getCompound("Color"));
       }
@@ -87,29 +91,29 @@ public class ColorSetting extends Setting<BozeDrawColor> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method966(nbtCompound);
-   }
+   //@Override
+   //public Object load(NbtCompound nbtCompound) {
+    //  return this.method966(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method474((BozeDrawColor)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+   //   return this.method474((BozeDrawColor)object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method1375();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method1375();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1362();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method1362();
+   //}
 }

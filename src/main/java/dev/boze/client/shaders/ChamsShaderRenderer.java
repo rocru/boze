@@ -53,12 +53,12 @@ public class ChamsShaderRenderer implements IMinecraft {
 
    public static void method1306() {
       if (Chams.INSTANCE.isEnabled()) {
-         if (Chams.INSTANCE.field3463.method461() != ChamsMode.Normal) {
+         if (Chams.INSTANCE.field3463.getValue() != ChamsMode.Normal) {
             field2244.clear(false);
             field2245.clear(false);
          }
 
-         if (Chams.INSTANCE.field3463.method461() == ChamsMode.Normal || Chams.INSTANCE.field3463.method461() == ChamsMode.Both) {
+         if (Chams.INSTANCE.field3463.getValue() == ChamsMode.Normal || Chams.INSTANCE.field3463.getValue() == ChamsMode.Both) {
             field2243.clear(false);
          }
       }
@@ -68,7 +68,7 @@ public class ChamsShaderRenderer implements IMinecraft {
 
    public static void method1307(float tickDelta, MatrixStack matrices, Camera camera) {
       if (Chams.INSTANCE.isEnabled()) {
-         if (Chams.INSTANCE.field3463.method461() == ChamsMode.Normal || Chams.INSTANCE.field3463.method461() == ChamsMode.Both) {
+         if (Chams.INSTANCE.field3463.getValue() == ChamsMode.Normal || Chams.INSTANCE.field3463.getValue() == ChamsMode.Both) {
             field2243.beginWrite(false);
             WorldRenderer var6 = mc.worldRenderer;
             field2248 = true;
@@ -78,11 +78,11 @@ public class ChamsShaderRenderer implements IMinecraft {
             ShaderRegistry.field2265.method2142();
             ShaderRegistry.field2265.method581("u_Size", (double)mc.getWindow().getFramebufferWidth(), (double)mc.getWindow().getFramebufferHeight());
             ShaderRegistry.field2265.method690("u_Src_Texture", 0);
-            ShaderRegistry.field2265.method691("u_Opacity", (double)Chams.INSTANCE.field3464.method423().floatValue());
+            ShaderRegistry.field2265.method691("u_Opacity", (double)Chams.INSTANCE.field3464.getValue().floatValue());
             GL.method1211(field2243.getColorAttachment());
             QuadRenderer.method1215();
             ShaderRegistry.field2265.method1416();
-            if (Chams.INSTANCE.field3463.method461() == ChamsMode.Normal) {
+            if (Chams.INSTANCE.field3463.getValue() == ChamsMode.Normal) {
                return;
             }
          }
@@ -101,44 +101,44 @@ public class ChamsShaderRenderer implements IMinecraft {
          var9.method690("u_Src_Texture", 0);
          var9.method690("u_Img_Texture", 1);
          var9.method690("u_Dst_Texture", 2);
-         var9.method689("u_FastRender", Chams.INSTANCE.field3466.method419());
+         var9.method689("u_FastRender", Chams.INSTANCE.field3466.getValue());
          var9.method693(
             "u_Fill",
-            (double)((float)Chams.INSTANCE.field3473.method1362().field408 / 255.0F),
-            (double)((float)Chams.INSTANCE.field3473.method1362().field409 / 255.0F),
-            (double)((float)Chams.INSTANCE.field3473.method1362().field410 / 255.0F),
-            (double)((float)Chams.INSTANCE.field3473.method1362().field411 / 255.0F)
+            (double)((float)Chams.INSTANCE.field3473.getValue().field408 / 255.0F),
+            (double)((float)Chams.INSTANCE.field3473.getValue().field409 / 255.0F),
+            (double)((float)Chams.INSTANCE.field3473.getValue().field410 / 255.0F),
+            (double)((float)Chams.INSTANCE.field3473.getValue().field411 / 255.0F)
          );
-         var9.method691("u_Fill_Offset", Chams.INSTANCE.field3473.method1362().method958());
-         var9.method581("u_Fill_Strength", Chams.INSTANCE.field3473.method1362().method959()[0], Chams.INSTANCE.field3473.method1362().method959()[1]);
-         var9.method691("u_Fill_Mod", Chams.INSTANCE.field3473.method1362().method960());
-         var9.method581("u_Fill_Hues", Chams.INSTANCE.field3473.method1362().getMinHue(), Chams.INSTANCE.field3473.method1362().getMaxHue());
+         var9.method691("u_Fill_Offset", Chams.INSTANCE.field3473.getValue().method958());
+         var9.method581("u_Fill_Strength", Chams.INSTANCE.field3473.getValue().method959()[0], Chams.INSTANCE.field3473.getValue().method959()[1]);
+         var9.method691("u_Fill_Mod", Chams.INSTANCE.field3473.getValue().method960());
+         var9.method581("u_Fill_Hues", Chams.INSTANCE.field3473.getValue().getMinHue(), Chams.INSTANCE.field3473.getValue().getMaxHue());
          var9.method693(
             "u_Hidden",
-            (double)((float)Chams.INSTANCE.field3474.method1362().field408 / 255.0F),
-            (double)((float)Chams.INSTANCE.field3474.method1362().field409 / 255.0F),
-            (double)((float)Chams.INSTANCE.field3474.method1362().field410 / 255.0F),
+            (double)((float)Chams.INSTANCE.field3474.getValue().field408 / 255.0F),
+            (double)((float)Chams.INSTANCE.field3474.getValue().field409 / 255.0F),
+            (double)((float)Chams.INSTANCE.field3474.getValue().field410 / 255.0F),
             0.0
          );
-         var9.method691("u_Hidden_Offset", Chams.INSTANCE.field3474.method1362().method958());
-         var9.method581("u_Hidden_Strength", Chams.INSTANCE.field3474.method1362().method959()[0], Chams.INSTANCE.field3474.method1362().method959()[1]);
-         var9.method691("u_Hidden_Mod", Chams.INSTANCE.field3474.method1362().method960());
-         var9.method581("u_Hidden_Hues", Chams.INSTANCE.field3474.method1362().getMinHue(), Chams.INSTANCE.field3474.method1362().getMaxHue());
+         var9.method691("u_Hidden_Offset", Chams.INSTANCE.field3474.getValue().method958());
+         var9.method581("u_Hidden_Strength", Chams.INSTANCE.field3474.getValue().method959()[0], Chams.INSTANCE.field3474.getValue().method959()[1]);
+         var9.method691("u_Hidden_Mod", Chams.INSTANCE.field3474.getValue().method960());
+         var9.method581("u_Hidden_Hues", Chams.INSTANCE.field3474.getValue().getMinHue(), Chams.INSTANCE.field3474.getValue().getMaxHue());
          var9.method693(
             "u_Outline",
-            (double)((float)Chams.INSTANCE.field3475.method1362().field408 / 255.0F),
-            (double)((float)Chams.INSTANCE.field3475.method1362().field409 / 255.0F),
-            (double)((float)Chams.INSTANCE.field3475.method1362().field410 / 255.0F),
-            (double)((float)Chams.INSTANCE.field3475.method1362().field411 / 255.0F)
+            (double)((float)Chams.INSTANCE.field3475.getValue().field408 / 255.0F),
+            (double)((float)Chams.INSTANCE.field3475.getValue().field409 / 255.0F),
+            (double)((float)Chams.INSTANCE.field3475.getValue().field410 / 255.0F),
+            (double)((float)Chams.INSTANCE.field3475.getValue().field411 / 255.0F)
          );
-         var9.method691("u_Outline_Offset", Chams.INSTANCE.field3475.method1362().method958());
-         var9.method581("u_Outline_Strength", Chams.INSTANCE.field3475.method1362().method959()[0], Chams.INSTANCE.field3475.method1362().method959()[1]);
-         var9.method691("u_Outline_Mod", Chams.INSTANCE.field3475.method1362().method960());
-         var9.method581("u_Outline_Hues", Chams.INSTANCE.field3475.method1362().getMinHue(), Chams.INSTANCE.field3475.method1362().getMaxHue());
+         var9.method691("u_Outline_Offset", Chams.INSTANCE.field3475.getValue().method958());
+         var9.method581("u_Outline_Strength", Chams.INSTANCE.field3475.getValue().method959()[0], Chams.INSTANCE.field3475.getValue().method959()[1]);
+         var9.method691("u_Outline_Mod", Chams.INSTANCE.field3475.getValue().method960());
+         var9.method581("u_Outline_Hues", Chams.INSTANCE.field3475.getValue().getMinHue(), Chams.INSTANCE.field3475.getValue().getMaxHue());
          var9.method690("u_Radius", Chams.INSTANCE.field3468.method434());
          var9.method691("u_Opacity", (double)((float)Chams.INSTANCE.field3471.method434().intValue() / 255.0F));
-         var9.method691("u_Glow", (double)Chams.INSTANCE.field3469.method423().floatValue());
-         var9.method691("u_Glow_Strength", (double)Chams.INSTANCE.field3470.method423().floatValue());
+         var9.method691("u_Glow", (double)Chams.INSTANCE.field3469.getValue().floatValue());
+         var9.method691("u_Glow_Strength", (double)Chams.INSTANCE.field3470.getValue().floatValue());
          var9.method690("u_Passes", Chams.INSTANCE.field3467.method434());
          if (Chams.INSTANCE.method1923() == ShaderMode.Image && Chams.INSTANCE.aJ != null) {
             GL.method1210(Chams.INSTANCE.aJ.getGlId(), 1);
@@ -160,21 +160,21 @@ public class ChamsShaderRenderer implements IMinecraft {
 
    private static ShaderProgram method1309() {
       if (Chams.INSTANCE.method1923() == ShaderMode.Image) {
-         if (!Chams.INSTANCE.field3472.method1322().isEmpty()
-            && (!Chams.INSTANCE.field3472.method1322().equals(Chams.INSTANCE.aK) || Chams.INSTANCE.aJ == null)) {
-            File var3 = new File(ConfigManager.images, Chams.INSTANCE.field3472.method1322() + ".png");
+         if (!Chams.INSTANCE.field3472.getValue().isEmpty()
+            && (!Chams.INSTANCE.field3472.getValue().equals(Chams.INSTANCE.aK) || Chams.INSTANCE.aJ == null)) {
+            File var3 = new File(ConfigManager.images, Chams.INSTANCE.field3472.getValue() + ".png");
 
             try {
                FileInputStream var4 = new FileInputStream(var3);
                Chams.INSTANCE.aJ = ByteTexturePacker.method493(var4);
                if (Chams.INSTANCE.aJ != null) {
-                  Chams.INSTANCE.aK = Chams.INSTANCE.field3472.method1322();
+                  Chams.INSTANCE.aK = Chams.INSTANCE.field3472.getValue();
                } else {
                   Chams.INSTANCE.aK = "";
                }
             } catch (Exception var5) {
                NotificationManager.method1151(new Notification("Chams", "Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               Chams.INSTANCE.field3472.method1341("");
+               Chams.INSTANCE.field3472.setValue("");
                Chams.INSTANCE.aK = "";
             }
          }
@@ -200,7 +200,7 @@ public class ChamsShaderRenderer implements IMinecraft {
       int blur,
       ByteTexture image
    ) {
-      method1311(draw, shaderMode, fastRender, fill.method1362(), outline.method1362(), radius, opacity, glow, glowStrength, blur, image);
+      method1311(draw, shaderMode, fastRender, fill.getValue(), outline.getValue(), radius, opacity, glow, glowStrength, blur, image);
    }
 
    public static void method1311(

@@ -55,11 +55,11 @@ public class ElytraRecast extends Module {
       "KeepY",
       false,
       "Keep Y-level the same as when you enable module\nPrevents Baritone from going off-track if you fall through a hole\n",
-      this.field571::method419
+      this.field571::getValue
    );
    private final BooleanSetting field573 = new BooleanSetting("LockOn", false, "Lock onto initial direction when enabled", this.field571);
    private final IntSetting field574 = new IntSetting(
-      "MaxBlocks", 5, 1, 20, 1, "Max blocks to steer off course for lock on", this.field573::method419, this.field571
+      "MaxBlocks", 5, 1, 20, 1, "Max blocks to steer off course for lock on", this.field573::getValue, this.field571
    );
    private final BooleanSetting field575 = new BooleanSetting("AutoTakeoff", true, "Automatically takeoff");
    private final BooleanSetting field576 = new BooleanSetting("UseTimer", false, "Use timer while taking off", this.field575);
@@ -112,7 +112,7 @@ public class ElytraRecast extends Module {
          this.field585 = 0.0;
          this.field590 = false;
          this.field591 = Math.floor(mc.player.getY());
-         if (this.field573.method419() && this.field571.method419()) {
+         if (this.field573.getValue() && this.field571.getValue()) {
             this.field594 = mc.player.getPos();
             Vec3d var4 = mc.player.getRotationVec(1.0F);
             this.aa = new Vec3d(var4.x, 0.0, var4.z).normalize();
@@ -161,7 +161,7 @@ public class ElytraRecast extends Module {
                this.field584 = 0;
             }
          } else if (this.field582 && mc.player.isFallFlying()) {
-            if (this.field571.method419() && (mc.player.horizontalCollision || method286(this.field592, this.field593, 15.0))) {
+            if (this.field571.getValue() && (mc.player.horizontalCollision || method286(this.field592, this.field593, 15.0))) {
                this.field582 = false;
                this.field589.reset();
                ChatInstance.method740(this.getName(), "Using baritone to walk around obstructions");
@@ -173,7 +173,7 @@ public class ElytraRecast extends Module {
                double var14 = 25.0;
                int var7;
                int var8;
-               if (this.field573.method419() && this.field594 != null && this.aa != null) {
+               if (this.field573.getValue() && this.field594 != null && this.aa != null) {
                   Vec3d var15 = mc.player.getPos().add(this.aa.multiply(var14));
                   var7 = (int)Math.floor(var15.x);
                   var8 = (int)Math.floor(var15.z);
@@ -185,7 +185,7 @@ public class ElytraRecast extends Module {
 
                while ((!method286(new Vec3d((double)var7, this.field592.y, (double)var8), this.field593, 15.0) || var14 > 50.0) && !(var14 > 50.0)) {
                   var14 += 5.0;
-                  if (this.field573.method419() && this.field594 != null && this.aa != null) {
+                  if (this.field573.getValue() && this.field594 != null && this.aa != null) {
                      Vec3d var17 = mc.player.getPos().add(this.aa.multiply(var14));
                      var7 = (int)Math.floor(var17.x);
                      var8 = (int)Math.floor(var17.z);
@@ -210,7 +210,7 @@ public class ElytraRecast extends Module {
                ChatInstance.method740(this.getName(), "Stuck, stopping e-fly");
                mc.player.stopFallFlying();
                this.method288(mc.options.forwardKey, false);
-            } else if (this.field578.method419()) {
+            } else if (this.field578.getValue()) {
                ItemStack var5 = mc.player.getEquippedStack(EquipmentSlot.CHEST);
                if (var5.getDamage() > 10 && AutoMend.INSTANCE.method2010() != -1) {
                   AutoMend.INSTANCE.setEnabled(true);
@@ -229,7 +229,7 @@ public class ElytraRecast extends Module {
 
    public void method1854() {
       if (INSTANCE.isEnabled()
-         && this.field575.method419()
+         && this.field575.getValue()
          && !this.field590
          && !this.field582
          && mc.player.getEquippedStack(EquipmentSlot.CHEST).getItem() == Items.ELYTRA
@@ -240,7 +240,7 @@ public class ElytraRecast extends Module {
             return;
          }
 
-         if (this.field576.method419()) {
+         if (this.field576.getValue()) {
             Class3076.method6024(this, 12, 0.125F);
          }
 
@@ -272,8 +272,8 @@ public class ElytraRecast extends Module {
                this.method288(mc.options.forwardKey, true);
                this.method288(mc.options.jumpKey, true);
                mc.player.setPitch((float)this.field566.method434().intValue());
-               if (this.field567.method461() != ElytraRecastDirection.Off) {
-                  mc.player.setYaw(this.field567.method461().field1766);
+               if (this.field567.getValue() != ElytraRecastDirection.Off) {
+                  mc.player.setYaw(this.field567.getValue().field1766);
                }
 
                mc.player.setSprinting(true);
@@ -327,13 +327,13 @@ public class ElytraRecast extends Module {
                event.method1020();
                this.field591 = Math.floor(mc.player.getY());
                if (var6.getY(mc.player.getY()) - this.field591 <= 0.0) {
-                  if (this.field572.method419() && Math.floor(mc.player.getY()) < Math.floor(this.field592.getY())) {
+                  if (this.field572.getValue() && Math.floor(mc.player.getY()) < Math.floor(this.field592.getY())) {
                      this.field592 = new Vec3d(mc.player.getX(), this.field592.getY(), mc.player.getZ());
                   } else {
                      this.field592 = mc.player.getPos();
                   }
 
-                  this.field593 = this.field567.method461() != ElytraRecastDirection.Off ? this.field567.method461().field1766 : mc.player.getYaw();
+                  this.field593 = this.field567.getValue() != ElytraRecastDirection.Off ? this.field567.getValue().field1766 : mc.player.getYaw();
                }
             }
 
@@ -481,7 +481,7 @@ public class ElytraRecast extends Module {
    }
 
    public static boolean method1974() {
-      return INSTANCE.isEnabled() && INSTANCE.field579.method419() && mc.player != null && mc.player.isFallFlying();
+      return INSTANCE.isEnabled() && INSTANCE.field579.getValue() && mc.player != null && mc.player.isFallFlying();
    }
 
    private void lambda$new$0(Boolean var1) {

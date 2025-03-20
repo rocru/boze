@@ -209,7 +209,7 @@ public class AddonComponent extends BaseComponent implements IMinecraft {
             ClickGUI.field1335.field1337 = CursorType.IBeam;
          }
       } else if (Theme.method1370() == ModuleDisplayMode.State) {
-         switch (hM.field2098[Gui.INSTANCE.field2371.method461().ordinal()]) {
+         switch (hM.field2098[Gui.INSTANCE.field2371.getValue().ordinal()]) {
             case 1:
                RenderUtil.field3963
                   .method2257(

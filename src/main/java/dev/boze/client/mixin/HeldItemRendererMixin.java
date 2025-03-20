@@ -58,10 +58,10 @@ public class HeldItemRendererMixin {
       CallbackInfo ci
    ) {
       if (HandTweaks.INSTANCE.isEnabled()
-         && HandTweaks.INSTANCE.field3572.method419()
+         && HandTweaks.INSTANCE.field3572.getValue()
          && (
-            HandTweaks.INSTANCE.field3573.method461() == HandTweaksHideShield.Always && stack.getItem() instanceof ShieldItem
-               || HandTweaks.INSTANCE.field3573.method461() == HandTweaksHideShield.On
+            HandTweaks.INSTANCE.field3573.getValue() == HandTweaksHideShield.Always && stack.getItem() instanceof ShieldItem
+               || HandTweaks.INSTANCE.field3573.getValue() == HandTweaksHideShield.On
                   && stack.getItem() instanceof ShieldItem
                   && HandTweaks.method1961(entity)
          )) {
@@ -112,18 +112,18 @@ public class HeldItemRendererMixin {
          var4.cancel();
          int var7 = var2 == Arm.RIGHT ? 1 : -1;
          float var8 = MathHelper.sin(var3 * var3 * (float) Math.PI);
-         if (HandTweaks.INSTANCE.field3583.method419()) {
+         if (HandTweaks.INSTANCE.field3583.getValue()) {
             var1.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float)var7 * 45.0F));
          } else {
             var1.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float)var7 * (45.0F + var8 * -20.0F)));
          }
 
          float var9 = MathHelper.sin(MathHelper.sqrt(var3) * (float) Math.PI);
-         if (!HandTweaks.INSTANCE.field3584.method419()) {
+         if (!HandTweaks.INSTANCE.field3584.getValue()) {
             var1.multiply(RotationAxis.POSITIVE_Z.rotationDegrees((float)var7 * var9 * -20.0F));
          }
 
-         if (!HandTweaks.INSTANCE.field3582.method419()) {
+         if (!HandTweaks.INSTANCE.field3582.getValue()) {
             var1.multiply(RotationAxis.POSITIVE_X.rotationDegrees(var9 * -80.0F));
          }
 
@@ -140,7 +140,7 @@ public class HeldItemRendererMixin {
       )
    )
    private void onItemSwayY(MatrixStack var1, Quaternionf var2) {
-      if (!HandTweaks.INSTANCE.isEnabled() || !HandTweaks.INSTANCE.field3581.method419()) {
+      if (!HandTweaks.INSTANCE.isEnabled() || !HandTweaks.INSTANCE.field3581.getValue()) {
          var1.multiply(var2);
       }
    }
@@ -154,7 +154,7 @@ public class HeldItemRendererMixin {
       )
    )
    private void onItemSwayX(MatrixStack var1, Quaternionf var2) {
-      if (!HandTweaks.INSTANCE.isEnabled() || !HandTweaks.INSTANCE.field3580.method419()) {
+      if (!HandTweaks.INSTANCE.isEnabled() || !HandTweaks.INSTANCE.field3580.getValue()) {
          var1.multiply(var2);
       }
    }
@@ -167,11 +167,11 @@ public class HeldItemRendererMixin {
       )
    )
    private void modifyRenderItem(Args var1) {
-      if (FullBright.INSTANCE.isEnabled() && FullBright.INSTANCE.field3568.method419()) {
+      if (FullBright.INSTANCE.isEnabled() && FullBright.INSTANCE.field3568.getValue()) {
          var1.set(9, LightmapTextureManager.pack(15, 15));
       }
 
-      if (HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3579.method419()) {
+      if (HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3579.getValue()) {
          var1.set(6, 0.0F);
       }
    }
@@ -181,7 +181,7 @@ public class HeldItemRendererMixin {
       at = {@At("TAIL")}
    )
    private void onUpdateHeldItems(CallbackInfo var1) {
-      if (HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3579.method419()) {
+      if (HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3579.getValue()) {
          this.mainHand = this.client.player.getMainHandStack();
          this.offHand = this.client.player.getOffHandStack();
       }
@@ -195,7 +195,7 @@ public class HeldItemRendererMixin {
       )
    )
    private Arm onGetMainArm(AbstractClientPlayerEntity var1) {
-      return HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3570.method419() ? var1.getMainArm().getOpposite() : var1.getMainArm();
+      return HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3570.getValue() ? var1.getMainArm().getOpposite() : var1.getMainArm();
    }
 
    @Inject(
@@ -217,24 +217,24 @@ public class HeldItemRendererMixin {
    ) {
       if (ViewModel.INSTANCE.isEnabled()) {
          var8.push();
-         if (ViewModel.INSTANCE.field3838.method419()) {
-            var8.translate(ViewModel.INSTANCE.field3839.method423(), ViewModel.INSTANCE.field3840.method423(), ViewModel.INSTANCE.field3841.method423());
-            var8.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ViewModel.INSTANCE.field3843.method423()));
-            var8.multiply(RotationAxis.POSITIVE_X.rotationDegrees(ViewModel.INSTANCE.field3842.method423()));
-            var8.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(ViewModel.INSTANCE.field3844.method423()));
-            var8.scale(ViewModel.INSTANCE.field3845.method423(), ViewModel.INSTANCE.field3846.method423(), ViewModel.INSTANCE.field3847.method423());
-         } else if (var4 == Hand.MAIN_HAND && ViewModel.INSTANCE.field3848.method419()) {
-            var8.translate(ViewModel.INSTANCE.field3849.method423(), ViewModel.INSTANCE.field3850.method423(), ViewModel.INSTANCE.field3851.method423());
-            var8.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ViewModel.INSTANCE.field3853.method423()));
-            var8.multiply(RotationAxis.POSITIVE_X.rotationDegrees(ViewModel.INSTANCE.field3852.method423()));
-            var8.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(ViewModel.INSTANCE.field3854.method423()));
-            var8.scale(ViewModel.INSTANCE.field3855.method423(), ViewModel.INSTANCE.field3856.method423(), ViewModel.INSTANCE.field3857.method423());
-         } else if (var4 == Hand.OFF_HAND && ViewModel.INSTANCE.field3858.method419()) {
-            var8.translate(ViewModel.INSTANCE.field3859.method423(), ViewModel.INSTANCE.field3860.method423(), ViewModel.INSTANCE.field3861.method423());
-            var8.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ViewModel.INSTANCE.field3863.method423()));
-            var8.multiply(RotationAxis.POSITIVE_X.rotationDegrees(ViewModel.INSTANCE.field3862.method423()));
-            var8.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(ViewModel.INSTANCE.field3864.method423()));
-            var8.scale(ViewModel.INSTANCE.field3865.method423(), ViewModel.INSTANCE.field3866.method423(), ViewModel.INSTANCE.aa.method423());
+         if (ViewModel.INSTANCE.field3838.getValue()) {
+            var8.translate(ViewModel.INSTANCE.field3839.getValue(), ViewModel.INSTANCE.field3840.getValue(), ViewModel.INSTANCE.field3841.getValue());
+            var8.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ViewModel.INSTANCE.field3843.getValue()));
+            var8.multiply(RotationAxis.POSITIVE_X.rotationDegrees(ViewModel.INSTANCE.field3842.getValue()));
+            var8.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(ViewModel.INSTANCE.field3844.getValue()));
+            var8.scale(ViewModel.INSTANCE.field3845.getValue(), ViewModel.INSTANCE.field3846.getValue(), ViewModel.INSTANCE.field3847.getValue());
+         } else if (var4 == Hand.MAIN_HAND && ViewModel.INSTANCE.field3848.getValue()) {
+            var8.translate(ViewModel.INSTANCE.field3849.getValue(), ViewModel.INSTANCE.field3850.getValue(), ViewModel.INSTANCE.field3851.getValue());
+            var8.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ViewModel.INSTANCE.field3853.getValue()));
+            var8.multiply(RotationAxis.POSITIVE_X.rotationDegrees(ViewModel.INSTANCE.field3852.getValue()));
+            var8.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(ViewModel.INSTANCE.field3854.getValue()));
+            var8.scale(ViewModel.INSTANCE.field3855.getValue(), ViewModel.INSTANCE.field3856.getValue(), ViewModel.INSTANCE.field3857.getValue());
+         } else if (var4 == Hand.OFF_HAND && ViewModel.INSTANCE.field3858.getValue()) {
+            var8.translate(ViewModel.INSTANCE.field3859.getValue(), ViewModel.INSTANCE.field3860.getValue(), ViewModel.INSTANCE.field3861.getValue());
+            var8.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(ViewModel.INSTANCE.field3863.getValue()));
+            var8.multiply(RotationAxis.POSITIVE_X.rotationDegrees(ViewModel.INSTANCE.field3862.getValue()));
+            var8.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(ViewModel.INSTANCE.field3864.getValue()));
+            var8.scale(ViewModel.INSTANCE.field3865.getValue(), ViewModel.INSTANCE.field3866.getValue(), ViewModel.INSTANCE.aa.getValue());
          }
       }
    }
@@ -245,16 +245,16 @@ public class HeldItemRendererMixin {
       cancellable = true
    )
    private void onApplyEatOrDrinkTransformation(MatrixStack var1, float var2, Arm var3, ItemStack var4, PlayerEntity var5, CallbackInfo var6) {
-      if (HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3575.method419()) {
+      if (HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3575.getValue()) {
          var6.cancel();
          float var10 = (float)this.client.player.getItemUseTimeLeft() - var2 + 1.0F;
          float var11 = var10 / (float)var4.getMaxUseTime(var5);
          if (var11 < 0.8F) {
             float var9 = MathHelper.abs(
                MathHelper.cos(var10 / (float)HandTweaks.INSTANCE.field3576.method434().intValue() * (float) Math.PI)
-                  * HandTweaks.INSTANCE.field3577.method423()
+                  * HandTweaks.INSTANCE.field3577.getValue()
             );
-            if (HandTweaks.INSTANCE.field3578.method419()) {
+            if (HandTweaks.INSTANCE.field3578.getValue()) {
                var9 *= -1.0F;
             }
 
@@ -300,6 +300,6 @@ public class HeldItemRendererMixin {
       )
    )
    public float onGetAttackCooldownProgress(ClientPlayerEntity clientPlayerEntity, float baseTime) {
-      return HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3571.method419() ? 1.0F : clientPlayerEntity.getAttackCooldownProgress(baseTime);
+      return HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3571.getValue() ? 1.0F : clientPlayerEntity.getAttackCooldownProgress(baseTime);
    }
 }

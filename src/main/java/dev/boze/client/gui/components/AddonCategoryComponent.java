@@ -81,9 +81,9 @@ public class AddonCategoryComponent extends BaseComponent implements IMinecraft 
       Class2779.field87 = this.field319;
       Class2779.field89 = this.field357;
       this.field355 = 0.0;
-      if (Gui.INSTANCE.field2366.method461() == MaxHeight.Absolute) {
+      if (Gui.INSTANCE.field2366.getValue() == MaxHeight.Absolute) {
          this.field355 = Gui.INSTANCE.field2367.getValue() * scaleFactor;
-      } else if (Gui.INSTANCE.field2366.method461() == MaxHeight.Relative) {
+      } else if (Gui.INSTANCE.field2366.getValue() == MaxHeight.Relative) {
          this.field355 = (double)mc.getWindow().getScaledHeight() * Gui.INSTANCE.field2368.getValue();
       }
 
@@ -109,7 +109,7 @@ public class AddonCategoryComponent extends BaseComponent implements IMinecraft 
          double var10 = var8;
          double var12 = var8 + this.field355;
          double var14 = var8 - this.field357;
-         if (Gui.INSTANCE.field2364.method419()) {
+         if (Gui.INSTANCE.field2364.getValue()) {
             for (BaseComponent var17 : this.field352) {
                if (var17 instanceof AddonComponent var18 && var18.field366) {
                   this.field354 = var18;
@@ -453,7 +453,7 @@ public class AddonCategoryComponent extends BaseComponent implements IMinecraft 
    @Override
    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
       if (Class2779.field90) {
-         if (Gui.INSTANCE.field2365.method419() && keyCode == 256 && this.field354 != null) {
+         if (Gui.INSTANCE.field2365.getValue() && keyCode == 256 && this.field354 != null) {
             this.field354.field366 = false;
             this.field354 = null;
             return true;

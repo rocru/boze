@@ -55,7 +55,7 @@ public class FontSelectComponent extends BottomRowScaledComponent {
             15,
             24,
             Theme.method1387() ? BaseComponent.scaleFactor * 2.0 : 0.0,
-            var13.field1964.equals(this.field1428.method1276()) ? Theme.method1347().method2025(Theme.method1391()) : Theme.method1347()
+            var13.field1964.equals(this.field1428.getValue()) ? Theme.method1347().method2025(Theme.method1391()) : Theme.method1347()
          );
       IFontRender.method499()
          .drawShadowedText(
@@ -79,8 +79,8 @@ public class FontSelectComponent extends BottomRowScaledComponent {
       if (var18.field1965 != null
          && !this.method1701(var18.field1964)
          && isMouseWithinBounds(mouseX, mouseY, var19, var21, Notifications.DELETE.method2091(), IconManager.method1116())) {
-         if (var18.field1964.equals(this.field1428.method1276())) {
-            this.field1428.method1278("vanilla");
+         if (var18.field1964.equals(this.field1428.getValue())) {
+            this.field1428.setValue("vanilla");
          }
 
          var18.field1965.delete();
@@ -88,7 +88,7 @@ public class FontSelectComponent extends BottomRowScaledComponent {
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
          return true;
       } else {
-         this.field1428.method1278(var18.field1964);
+         this.field1428.setValue(var18.field1964);
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
          return true;
       }

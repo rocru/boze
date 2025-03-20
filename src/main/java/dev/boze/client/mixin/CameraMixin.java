@@ -36,7 +36,7 @@ public abstract class CameraMixin {
       )
    )
    private void onUpdateMoveBy(Args var1) {
-      var1.set(0, -this.clipToSpace(CameraClip.INSTANCE.isEnabled() ? CameraClip.INSTANCE.field3458.method423() : 4.0F));
+      var1.set(0, -this.clipToSpace(CameraClip.INSTANCE.isEnabled() ? CameraClip.INSTANCE.field3458.getValue() : 4.0F));
    }
 
    @Inject(
@@ -45,7 +45,7 @@ public abstract class CameraMixin {
       cancellable = true
    )
    private void onClipToSpace(float var1, CallbackInfoReturnable<Float> var2) {
-      if (CameraClip.INSTANCE.field3457.method419()) {
+      if (CameraClip.INSTANCE.field3457.getValue()) {
          var2.setReturnValue(var1);
       }
    }

@@ -67,7 +67,7 @@ public abstract class DisconnectedScreenMixin extends Screen {
             .add(new Builder(Text.literal((AutoReconnect.INSTANCE.isEnabled() ? "Disable " : "Enable ") + "AutoReconnect"), this::lambda$onInitPre$1).build());
       }
 
-      if (Options.INSTANCE.field986.method419()) {
+      if (Options.INSTANCE.field986.getValue()) {
          this.addDrawableChild(new Builder(Text.literal("Accounts"), this::lambda$onInitPre$2).position(this.width - 106, 6).size(100, 20).build());
       }
    }

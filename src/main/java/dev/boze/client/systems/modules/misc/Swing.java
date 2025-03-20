@@ -24,7 +24,7 @@ public class Swing extends Module {
    private boolean field3135 = false;
 
    private boolean method1777() {
-      return Options.INSTANCE.method1971() || this.field3131.method461() == SwingMode.Ghost;
+      return Options.INSTANCE.method1971() || this.field3131.getValue() == SwingMode.Ghost;
    }
 
    private boolean method1778() {
@@ -40,20 +40,20 @@ public class Swing extends Module {
    public void method1779(PrePacketSendEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (event.packet instanceof HandSwingC2SPacket var5) {
-            if (this.field3134.method461() != SwingCancel.Off
+            if (this.field3134.getValue() != SwingCancel.Off
                && this.method1778()
-               && (this.field3134.method461() == SwingCancel.Normal || mc.interactionManager.isBreakingBlock())) {
+               && (this.field3134.getValue() == SwingCancel.Normal || mc.interactionManager.isBreakingBlock())) {
                event.method1020();
             }
 
             Hand var6 = var5.getHand();
-            if (this.field3133.method461() == SwingModeMode.Offhand) {
+            if (this.field3133.getValue() == SwingModeMode.Offhand) {
                var6 = Hand.OFF_HAND;
-            } else if (this.field3133.method461() == SwingModeMode.Mainhand) {
+            } else if (this.field3133.getValue() == SwingModeMode.Mainhand) {
                var6 = Hand.MAIN_HAND;
-            } else if (this.field3133.method461() == SwingModeMode.Opposite) {
+            } else if (this.field3133.getValue() == SwingModeMode.Opposite) {
                var6 = var5.getHand() == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
-            } else if (this.field3133.method461() == SwingModeMode.Shuffle) {
+            } else if (this.field3133.getValue() == SwingModeMode.Shuffle) {
                var6 = this.field3135 ? Hand.OFF_HAND : Hand.MAIN_HAND;
                this.field3135 = !this.field3135;
             }
@@ -62,7 +62,7 @@ public class Swing extends Module {
                ((HandSwingC2SPacketAccessor)var5).setHand(var6);
             }
 
-            if (this.field3132.method419()) {
+            if (this.field3132.getValue()) {
                mc.player.swingHand(var6, false);
             }
          }

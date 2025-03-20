@@ -42,24 +42,24 @@ public class Tooltips extends Module {
    @EventHandler
    private void method2043(TooltipDataEvent var1) {
       if (!this.field3758.method476().isValid() || this.field3758.method476().isPressed()) {
-         if (var1.field1959.getItem() == Items.FILLED_MAP && this.field3759.method419()) {
+         if (var1.field1959.getItem() == Items.FILLED_MAP && this.field3759.getValue()) {
             MapIdComponent var8 = (MapIdComponent)var1.field1959.get(DataComponentTypes.MAP_ID);
             if (var8 != null) {
                var1.field1958 = new MapTooltipComponent(var8.id());
             }
-         } else if (var1.field1959.getItem() instanceof BannerItem && this.field3761.method419()) {
+         } else if (var1.field1959.getItem() instanceof BannerItem && this.field3761.getValue()) {
             var1.field1958 = new BannerTooltipComponent(var1.field1959);
-         } else if (var1.field1959.getItem() instanceof BannerPatternItem && this.field3761.method419()) {
+         } else if (var1.field1959.getItem() instanceof BannerPatternItem && this.field3761.getValue()) {
             BannerPatternsComponent var7 = (BannerPatternsComponent)var1.field1959.get(DataComponentTypes.BANNER_PATTERNS);
             if (var7 != null) {
                var1.field1958 = new BannerTooltipComponent(this.method2044(var7.layers()));
             }
-         } else if (var1.field1959.getItem() == Items.SHIELD && this.field3761.method419()) {
+         } else if (var1.field1959.getItem() == Items.SHIELD && this.field3761.getValue()) {
             ItemStack var6 = this.method2045(var1.field1959);
             if (var6 != null) {
                var1.field1958 = new BannerTooltipComponent(var6);
             }
-         } else if (this.field3763.method419() && StackDeserializer.method1756(var1.field1959)) {
+         } else if (this.field3763.getValue() && StackDeserializer.method1756(var1.field1959)) {
             ItemStack[] var5 = new ItemStack[27];
             StackDeserializer.method670(var1.field1959, var5);
             var1.field1958 = new ItemStackTooltipComponent(var5);

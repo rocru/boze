@@ -70,7 +70,7 @@ public class Replenish extends Module {
    }
 
    private ReplenishMode method1751() {
-      return Options.INSTANCE.method1971() ? ReplenishMode.Ghost : this.field3059.method461();
+      return Options.INSTANCE.method1971() ? ReplenishMode.Ghost : this.field3059.getValue();
    }
 
    public Replenish() {
@@ -103,7 +103,7 @@ public class Replenish extends Module {
             if (!(mc.currentScreen instanceof DownloadingTerrainScreen)) {
                if (!(mc.currentScreen instanceof AbstractInventoryScreen) || !(mc.currentScreen instanceof HandledScreen)) {
                   this.method1759();
-                  if (this.field3061.method419()) {
+                  if (this.field3061.getValue()) {
                      this.field3078.reset();
                      this.field3079 = true;
                      this.field3080 = null;
@@ -121,7 +121,7 @@ public class Replenish extends Module {
                   }
 
                   Pair var6 = this.method1754();
-                  if (this.field3078.hasElapsed(this.field3079 && !this.field3061.method419() ? this.field3064.getValue() * 50.0 : (double)this.field3081)) {
+                  if (this.field3078.hasElapsed(this.field3079 && !this.field3061.getValue() ? this.field3064.getValue() * 50.0 : (double)this.field3081)) {
                      this.field3079 = false;
                      this.field3078.reset();
                      if (var6 != null) {
@@ -163,17 +163,17 @@ public class Replenish extends Module {
          this.field3076 = mc.currentScreen != null;
          if (mc.player.currentScreenHandler.getStacks().size() == 46 && mc.currentScreen == null) {
             this.field3075 = false;
-            if (this.field3065.method419()) {
+            if (this.field3065.getValue()) {
                ItemStack var5 = mc.player.getMainHandStack();
                this.method1755(mc.player.getInventory().selectedSlot, var5);
             }
 
-            if (this.field3066.method419()) {
+            if (this.field3066.getValue()) {
                ItemStack var7 = mc.player.getOffHandStack();
                this.method1755(45, var7);
             }
 
-            if (this.field3067.method419()) {
+            if (this.field3067.getValue()) {
                for (int var8 = 0; var8 < 9; var8++) {
                   if (var8 != mc.player.getInventory().selectedSlot) {
                      ItemStack var6 = mc.player.getInventory().getStack(var8);
@@ -182,7 +182,7 @@ public class Replenish extends Module {
                }
             }
 
-            if (this.field3075 && AntiCheat.INSTANCE.field2322.method419() && !InventoryUtil.isInventoryOpen()) {
+            if (this.field3075 && AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
                mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
             }
          }
@@ -191,7 +191,7 @@ public class Replenish extends Module {
 
    private Pair<Slot, Slot> method1754() {
       for (int var4 = 0; var4 < 9; var4++) {
-         if (var4 == mc.player.getInventory().selectedSlot ? this.field3065.method419() : this.field3067.method419()) {
+         if (var4 == mc.player.getInventory().selectedSlot ? this.field3065.getValue() : this.field3067.getValue()) {
             ItemStack var5 = this.method1760(var4);
             ItemStack var6 = mc.player.getInventory().getStack(var4);
             if (var6.isEmpty() && this.method1756(var5)) {
@@ -241,15 +241,15 @@ public class Replenish extends Module {
    private boolean method1756(ItemStack var1) {
       Item var5 = var1.getItem();
       if (FoodUtil.isFood(var1)) {
-         return this.field3069.method419();
+         return this.field3069.getValue();
       } else if (var5 instanceof EndCrystalItem) {
-         return this.field3068.method419();
+         return this.field3068.getValue();
       } else if (var5 instanceof ExperienceBottleItem) {
-         return this.field3070.method419();
+         return this.field3070.getValue();
       } else if (var5 == Items.TOTEM_OF_UNDYING) {
-         return this.field3071.method419();
+         return this.field3071.getValue();
       } else {
-         return var1.isStackable() ? this.field3072.method419() : this.field3073.method419();
+         return var1.isStackable() ? this.field3072.getValue() : this.field3073.getValue();
       }
    }
 

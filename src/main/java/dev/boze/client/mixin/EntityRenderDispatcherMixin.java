@@ -83,10 +83,10 @@ public class EntityRenderDispatcherMixin {
             var7.cancel();
          }
 
-         if (Chams.INSTANCE.field3461.method419()
+         if (Chams.INSTANCE.field3461.getValue()
             && Chams.INSTANCE.isEnabled()
             && Chams.INSTANCE.method1924(var2)
-            && Chams.INSTANCE.field3463.method461() != ChamsMode.Shader) {
+            && Chams.INSTANCE.field3463.getValue() != ChamsMode.Shader) {
             var7.cancel();
          }
       }

@@ -141,15 +141,15 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
    }
 
    private AutoCrystalMaxDamage method54() {
-      return this.field72.method461() == AutoSelectSafetyMode.Custom ? this.field73.method461() : AutoCrystal.INSTANCE.field1042.field115.method461();
+      return this.field72.getValue() == AutoSelectSafetyMode.Custom ? this.field73.getValue() : AutoCrystal.INSTANCE.field1042.field115.getValue();
    }
 
    private float method1384() {
-      return this.field72.method461() == AutoSelectSafetyMode.Custom ? this.field74.method423() : AutoCrystal.INSTANCE.field1042.field116.method423();
+      return this.field72.getValue() == AutoSelectSafetyMode.Custom ? this.field74.getValue() : AutoCrystal.INSTANCE.field1042.field116.getValue();
    }
 
    private float method1385() {
-      return this.field72.method461() == AutoSelectSafetyMode.Custom ? this.field75.method423() : AutoCrystal.INSTANCE.field1042.field117.method423();
+      return this.field72.getValue() == AutoSelectSafetyMode.Custom ? this.field75.getValue() : AutoCrystal.INSTANCE.field1042.field117.getValue();
    }
 
    @Override
@@ -165,7 +165,7 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
    }
 
    public int method2010() {
-      if (this.field60.method419() && this.method2114()) {
+      if (this.field60.getValue() && this.method2114()) {
          if (this.field82 != null) {
             Entity var4 = mc.world.getEntityById(this.field83);
             if (var4 == null) {
@@ -198,7 +198,7 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
                method1800("Can't bomb target");
                this.method1416();
                return 0;
-            } else if (this.field79 == null && this.field61.method461() == AutoSelectMode.Bind && !this.field85) {
+            } else if (this.field79 == null && this.field61.getValue() == AutoSelectMode.Bind && !this.field85) {
                return 0;
             } else {
                BlockPos var10 = this.field82.up(2);
@@ -235,17 +235,17 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
    }
 
    public BlockDirectionInfo method60() {
-      if (!this.field60.method419()) {
+      if (!this.field60.getValue()) {
          this.method2142();
          this.field80 = null;
          return null;
       } else {
-         if (this.field85 && this.field61.method461() == AutoSelectMode.Bind) {
+         if (this.field85 && this.field61.getValue() == AutoSelectMode.Bind) {
             this.method1198();
          }
 
          if (this.field80 == null) {
-            if (this.field61.method461() != AutoSelectMode.Always && this.field61.method461() != AutoSelectMode.Smart) {
+            if (this.field61.getValue() != AutoSelectMode.Always && this.field61.getValue() != AutoSelectMode.Smart) {
                return null;
             }
 
@@ -253,18 +253,18 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
             if (this.field80 == null) {
                return null;
             }
-         } else if (this.field61.method461() == AutoSelectMode.Always
-            && AutoMine.INSTANCE.miner.field197.method419()
-            && (!this.field62.method419() || this.field84 < 2)) {
+         } else if (this.field61.getValue() == AutoSelectMode.Always
+            && AutoMine.INSTANCE.miner.field197.getValue()
+            && (!this.field62.getValue() || this.field84 < 2)) {
             this.method67(true);
          }
 
          boolean var4 = this.field80 != null && this.field80.field2528 != null && BlockUtil.method2101(this.field80.field2528);
          boolean var5 = this.method62(false);
          if (!var4 || var5) {
-            if (this.field61.method461() != AutoSelectMode.Always || this.field62.method419() && this.field84 >= 2) {
-               if (this.field61.method461() != AutoSelectMode.Smart
-                     && (this.field61.method461() != AutoSelectMode.Always || !this.field62.method419() || this.field84 <= 1)
+            if (this.field61.getValue() != AutoSelectMode.Always || this.field62.getValue() && this.field84 >= 2) {
+               if (this.field61.getValue() != AutoSelectMode.Smart
+                     && (this.field61.getValue() != AutoSelectMode.Always || !this.field62.getValue() || this.field84 <= 1)
                   || !var5) {
                   return null;
                }
@@ -285,10 +285,10 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
    }
 
    public BlockDirectionInfo method61() {
-      if (this.field60.method419() && this.field67.method419()) {
-         if (this.field85 && this.field61.method461() == AutoSelectMode.Bind) {
+      if (this.field60.getValue() && this.field67.getValue()) {
+         if (this.field85 && this.field61.getValue() == AutoSelectMode.Bind) {
             this.method1904();
-         } else if (this.field61.method461() != AutoSelectMode.Bind) {
+         } else if (this.field61.getValue() != AutoSelectMode.Bind) {
             this.method1904();
          }
 
@@ -299,7 +299,7 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
             return null;
          }
       } else {
-         if (!this.field60.method419()) {
+         if (!this.field60.getValue()) {
             this.method2142();
          }
 
@@ -339,7 +339,7 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
    }
 
    public boolean method2114() {
-      return this.field68.method419() && AutoCrystal.INSTANCE.isEnabled();
+      return this.field68.getValue() && AutoCrystal.INSTANCE.isEnabled();
    }
 
    private boolean method1617(PlayerEntity var1) {
@@ -397,7 +397,7 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
       HashSet var6 = new HashSet(Arrays.asList(var5.north(), var5.south(), var5.east(), var5.west()));
 
       for (AbstractClientPlayerEntity var8 : this.method1144()) {
-         if (!this.field66.method419() || Class5924.method77(false, var8)) {
+         if (!this.field66.getValue() || Class5924.method77(false, var8)) {
             List var9 = Class5924.method348(var8.getPos());
             BlockLocationInfo var10 = null;
             double var11 = Double.MAX_VALUE;
@@ -434,7 +434,7 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
                return;
             }
 
-            if (!this.method1617(var8) || this.field71.method461() != AutoSelectPriority.SurroundPP) {
+            if (!this.method1617(var8) || this.field71.getValue() != AutoSelectPriority.SurroundPP) {
                for (BlockPos var25 : var9) {
                   if (this.method70(var25, var6) && (!var1 || this.field80 == null || !var25.equals(this.field80.field2528))) {
                      BlockPos var27 = var25.down();
@@ -528,11 +528,11 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
    }
 
    private boolean method70(BlockPos var1, Set<BlockPos> var2) {
-      return this.field77.method419() && var2.contains(var1) ? false : BlockUtil.method2101(var1);
+      return this.field77.getValue() && var2.contains(var1) ? false : BlockUtil.method2101(var1);
    }
 
    private double lambda$getPlayers$10(AbstractClientPlayerEntity var1) {
-      return this.field65.method461() == AutoSelectSortingMode.Distance ? (double)var1.distanceTo(mc.player) : (double)var1.getHealth();
+      return this.field65.getValue() == AutoSelectSortingMode.Distance ? (double)var1.distanceTo(mc.player) : (double)var1.getHealth();
    }
 
    private static boolean lambda$getPlayers$9(AbstractClientPlayerEntity var0) {
@@ -559,22 +559,22 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
    }
 
    private boolean lambda$new$4() {
-      return this.field72.method461() == AutoSelectSafetyMode.Custom && this.field73.method461() != AutoCrystalMaxDamage.MaxSelfDmg;
+      return this.field72.getValue() == AutoSelectSafetyMode.Custom && this.field73.getValue() != AutoCrystalMaxDamage.MaxSelfDmg;
    }
 
    private boolean lambda$new$3() {
-      return this.field72.method461() == AutoSelectSafetyMode.Custom && this.field73.method461() != AutoCrystalMaxDamage.Balance;
+      return this.field72.getValue() == AutoSelectSafetyMode.Custom && this.field73.getValue() != AutoCrystalMaxDamage.Balance;
    }
 
    private boolean lambda$new$2() {
-      return this.field72.method461() == AutoSelectSafetyMode.Custom;
+      return this.field72.getValue() == AutoSelectSafetyMode.Custom;
    }
 
    private boolean lambda$new$1() {
-      return this.field61.method461() == AutoSelectMode.Bind;
+      return this.field61.getValue() == AutoSelectMode.Bind;
    }
 
    private boolean lambda$new$0() {
-      return this.field61.method461() == AutoSelectMode.Always && AutoMine.INSTANCE.miner.field197.method419();
+      return this.field61.getValue() == AutoSelectMode.Always && AutoMine.INSTANCE.miner.field197.getValue();
    }
 }

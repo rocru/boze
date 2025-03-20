@@ -50,7 +50,7 @@ public class WaypointCommand extends Command {
         this.method624("Clearing all waypoints for the current server/dimension...");
         String string = WaypointCommand.mc.world.getRegistryKey().getValue().getPath();
         String string2 = WaypointCommand.mc.getCurrentServerEntry().address;
-        Waypoints.INSTANCE.field2437.method2120().removeIf(arg_0 -> WaypointCommand.lambda$build$8(string, string2, arg_0));
+        Waypoints.INSTANCE.field2437.getValue().removeIf(arg_0 -> WaypointCommand.lambda$build$8(string, string2, arg_0));
         return 1;
     }
 
@@ -62,7 +62,7 @@ public class WaypointCommand extends Command {
         if (mc.getCurrentServerEntry() != null && mc.getCurrentServerEntry().address != null && !mc.getCurrentServerEntry().address.isEmpty() && mc.world != null
         ) {
             this.method624("Waypoints: ");
-            Waypoints.INSTANCE.field2437.method2120().forEach(this::lambda$build$6);
+            Waypoints.INSTANCE.field2437.getValue().forEach(this::lambda$build$6);
             return 1;
         } else {
             return 0;
@@ -83,7 +83,7 @@ public class WaypointCommand extends Command {
         PlayerListEntry var3 = PlayerListArgument.method679(var0);
         String var4 = var3.getProfile().getName();
         String var5 = (String) var0.getArgument("name", String.class);
-        WayPoint var6 = Waypoints.INSTANCE.field2437.method2120().stream().filter(arg_0 -> WaypointCommand.lambda$build$4(var5, arg_0)).findFirst().orElse(null);
+        WayPoint var6 = Waypoints.INSTANCE.field2437.getValue().stream().filter(arg_0 -> WaypointCommand.lambda$build$4(var5, arg_0)).findFirst().orElse(null);
         if (var6 != null) {
             int var10001 = var6.field909;
             int var10002 = var6.field910;
@@ -104,7 +104,7 @@ public class WaypointCommand extends Command {
 
     private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
         String var3 = (String) var0.getArgument("name", String.class);
-        Waypoints.INSTANCE.field2437.method2120().removeIf(arg_0 -> WaypointCommand.lambda$build$2(var3, arg_0));
+        Waypoints.INSTANCE.field2437.getValue().removeIf(arg_0 -> WaypointCommand.lambda$build$2(var3, arg_0));
         return 1;
     }
 
@@ -120,7 +120,7 @@ public class WaypointCommand extends Command {
                 && mc.world != null) {
             Waypoints.INSTANCE
                     .field2437
-                    .method2120()
+                    .getValue()
                     .add(
                             new WayPoint(
                                     (String) var0.getArgument("name", String.class),
@@ -142,7 +142,7 @@ public class WaypointCommand extends Command {
         ) {
             Waypoints.INSTANCE
                     .field2437
-                    .method2120()
+                    .getValue()
                     .add(
                             new WayPoint(
                                     (String) var0.getArgument("name", String.class),

@@ -60,12 +60,12 @@ public class Velocity extends Module {
 
    @Override
    public String method1322() {
-      return this.field3366.method461().toString();
+      return this.field3366.getValue().toString();
    }
 
    @EventHandler
    public void method1884(PreTickEvent event) {
-      if (this.field3366.method461() == AnticheatMode.Grim && this.field3378 && MinecraftUtils.isClientActive()) {
+      if (this.field3366.getValue() == AnticheatMode.Grim && this.field3378 && MinecraftUtils.isClientActive()) {
          this.field3378 = false;
          if (this.field3379 <= 0) {
             Box var5 = mc.player.getBoundingBox();
@@ -79,7 +79,7 @@ public class Velocity extends Module {
                      mc.player.getY(),
                      mc.player.getZ(),
                      ((ClientPlayerEntityAccessor)mc.player).getLastYaw(),
-                     this.field3370.method419() ? 89.0F : ((ClientPlayerEntityAccessor)mc.player).getLastPitch(),
+                     this.field3370.getValue() ? 89.0F : ((ClientPlayerEntityAccessor)mc.player).getLastPitch(),
                      mc.player.isOnGround()
                   ),
                   null
@@ -93,7 +93,7 @@ public class Velocity extends Module {
       priority = 10000
    )
    public void method1885(ACRotationEvent event) {
-      if (!this.field3371.method419()) {
+      if (!this.field3371.getValue()) {
          this.method1887(event);
       }
    }
@@ -102,13 +102,13 @@ public class Velocity extends Module {
       priority = 21
    )
    public void method1886(ACRotationEvent event) {
-      if (this.field3371.method419()) {
+      if (this.field3371.getValue()) {
          this.method1887(event);
       }
    }
 
    private void method1887(ACRotationEvent var1) {
-      if (var1.method1017() == AnticheatMode.Grim && this.field3366.method461() == AnticheatMode.Grim && this.field3370.method419() && this.method1895()) {
+      if (var1.method1017() == AnticheatMode.Grim && this.field3366.getValue() == AnticheatMode.Grim && this.field3370.getValue() && this.method1895()) {
          var1.yaw = mc.player.getYaw();
          var1.pitch = 89.0F;
          var1.method1020();
@@ -136,8 +136,8 @@ public class Velocity extends Module {
    public void method1890(PlayerVelocityEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (mc.player.age >= 5) {
-            if (this.field3372.method419() && this.method1892()) {
-               if (this.field3366.method461() == AnticheatMode.Grim && event.field1898) {
+            if (this.field3372.getValue() && this.method1892()) {
+               if (this.field3366.getValue() == AnticheatMode.Grim && event.field1898) {
                   return;
                }
 
@@ -151,7 +151,7 @@ public class Velocity extends Module {
    public void method1891(PlayerPushEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (mc.player.age >= 5) {
-            if (this.field3368.method461().method2114()) {
+            if (this.field3368.getValue().method2114()) {
                event.method1020();
             }
          }
@@ -162,15 +162,15 @@ public class Velocity extends Module {
       if (!MinecraftUtils.isClientActive()) {
          return false;
       } else if (mc.player.isTouchingWater() || mc.player.isSubmergedInWater()) {
-         return this.field3374.method419();
+         return this.field3374.getValue();
       } else {
-         return mc.player.isInLava() ? this.field3375.method419() : true;
+         return mc.player.isInLava() ? this.field3375.getValue() : true;
       }
    }
 
    @EventHandler
    public void method1893(PlayerMoveEvent event) {
-      if (event.movementType == MovementType.PISTON && this.field3373.method419() && this.method1892()) {
+      if (event.movementType == MovementType.PISTON && this.field3373.getValue() && this.method1892()) {
          if (mc.world.getBlockState(BlockPos.ofFloored(mc.player.getPos()).down()).getBlock() == Blocks.SLIME_BLOCK) {
             return;
          }
@@ -191,11 +191,11 @@ public class Velocity extends Module {
             } else {
                if (event.packet instanceof EntityVelocityUpdateS2CPacket
                   && ((EntityVelocityUpdateS2CPacket)event.packet).getEntityId() == mc.player.getId()
-                  && this.field3367.method461().method2114()) {
+                  && this.field3367.getValue().method2114()) {
                   this.field3378 = true;
                   event.method1020();
                } else if (event.packet instanceof PlayerPositionLookS2CPacket && MinecraftUtils.isClientActive()) {
-                  if (this.field3366.method461() == AnticheatMode.Grim) {
+                  if (this.field3366.getValue() == AnticheatMode.Grim) {
                      this.field3379 = 5;
                   }
 
@@ -213,7 +213,7 @@ public class Velocity extends Module {
    }
 
    public boolean method1895() {
-      if (this.field3366.method461() == AnticheatMode.Grim && this.field3370.method419()) {
+      if (this.field3366.getValue() == AnticheatMode.Grim && this.field3370.getValue()) {
          if (mc.world.isSpaceEmpty(mc.player.getBoundingBox())) {
             return false;
          } else {
@@ -231,10 +231,10 @@ public class Velocity extends Module {
    }
 
    private boolean lambda$new$1() {
-      return this.field3366.method461() == AnticheatMode.Grim && this.field3370.method419();
+      return this.field3366.getValue() == AnticheatMode.Grim && this.field3370.getValue();
    }
 
    private boolean lambda$new$0() {
-      return this.field3366.method461() == AnticheatMode.Grim;
+      return this.field3366.getValue() == AnticheatMode.Grim;
    }
 }

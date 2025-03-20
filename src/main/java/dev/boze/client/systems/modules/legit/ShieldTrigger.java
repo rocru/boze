@@ -33,7 +33,7 @@ public class ShieldTrigger extends Module {
 
    @EventHandler
    public void method1615(HandleInputEvent event) {
-      if (this.field2821.method419() && this.field2825 != -1 && this.field2823.hasElapsed((double)this.field2824)) {
+      if (this.field2821.getValue() && this.field2825 != -1 && this.field2823.hasElapsed((double)this.field2824)) {
          ((KeyBindingAccessor)mc.options.hotbarKeys[this.field2825]).setTimesPressed(1);
          this.field2825 = -1;
       }

@@ -21,8 +21,8 @@ public class CameraClip extends Module {
 
    @EventHandler
    private void method1920(MouseScrollEvent var1) {
-      if (this.field3459.method419() && mc.currentScreen == null && !mc.options.getPerspective().isFirstPerson()) {
-         this.field3458.method425(MathHelper.clamp(this.field3458.method423() - this.field3460.method423() * (float)var1.vertical, 1.0F, 20.0F));
+      if (this.field3459.getValue() && mc.currentScreen == null && !mc.options.getPerspective().isFirstPerson()) {
+         this.field3458.setValue(MathHelper.clamp(this.field3458.getValue() - this.field3460.getValue() * (float)var1.vertical, 1.0F, 20.0F));
          var1.method1020();
       }
    }

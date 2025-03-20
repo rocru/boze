@@ -62,7 +62,8 @@ public class RGBASetting extends Setting<RGBAColor> {
       this.field958 = value.copy();
    }
 
-   public RGBAColor method1347() {
+   @Override
+   public RGBAColor getValue() {
       if (this.field959) {
          RGBAColor var13 = OldColors.method1342();
          return new RGBAColor(var13.field408, var13.field409, var13.field410, this.field957.field411);
@@ -86,11 +87,13 @@ public class RGBASetting extends Setting<RGBAColor> {
       return this.field957;
    }
 
-   public RGBAColor method1349() {
+   @Override
+   public RGBAColor resetValue() {
       return this.field957 = this.field958.copy();
    }
 
-   public RGBAColor method198(RGBAColor newVal) {
+   @Override
+   public RGBAColor setValue(RGBAColor newVal) {
       return this.field957 = newVal;
    }
 
@@ -127,7 +130,8 @@ public class RGBASetting extends Setting<RGBAColor> {
       return tag;
    }
 
-   public RGBAColor method201(NbtCompound tag) {
+   @Override
+   public RGBAColor load(NbtCompound tag) {
       if (tag.contains("Color")) {
          this.field957.fromTag(tag.getCompound("Color"));
       }
@@ -149,29 +153,29 @@ public class RGBASetting extends Setting<RGBAColor> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method201(nbtCompound);
-   }
+   //@Override
+   //public Object load(NbtCompound nbtCompound) {
+  //    return this.method201(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method198((RGBAColor)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+   //   return this.method198((RGBAColor)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method1349();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method1349();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1347();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method1347();
+   //}
 }

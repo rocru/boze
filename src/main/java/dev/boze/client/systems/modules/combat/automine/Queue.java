@@ -32,7 +32,7 @@ public class Queue implements IMinecraft, SettingsGroup {
    }
 
    public Queue(AutoMine var1) {
-      this.field91.setVisibility(var1.advanced::method419);
+      this.field91.setVisibility(var1.advanced::getValue);
    }
 
    @Override
@@ -57,7 +57,7 @@ public class Queue implements IMinecraft, SettingsGroup {
             method1800("Task " + var1.field2523.toShortString() + " was not added to queue");
             return false;
          } else {
-            if (!this.field87.isEmpty() && this.field89.method461() == AutoMineManualPriorityMode.Force) {
+            if (!this.field87.isEmpty() && this.field89.getValue() == AutoMineManualPriorityMode.Force) {
                this.field87.addFirst(var1);
             } else {
                this.field87.add(var1);

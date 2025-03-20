@@ -13,9 +13,9 @@ public class NotificationManager {
 
     public static void method1151(INotification var0) {
         if (Notifications.INSTANCE.isEnabled()) {
-            if (Notifications.INSTANCE.field837.method461() == NotificationType.Chat) {
+            if (Notifications.INSTANCE.field837.getValue() == NotificationType.Chat) {
                 try {
-                    var0.sendToChat(Notifications.INSTANCE.field838.method419());
+                    var0.sendToChat(Notifications.INSTANCE.field838.getValue());
                 } catch (Exception var5) {
                 }
             } else {
@@ -50,11 +50,11 @@ public class NotificationManager {
     }
 
     private static int method1153() {
-        return (int) (Notifications.INSTANCE.field842.method423() * 1000.0F);
+        return (int) (Notifications.INSTANCE.field842.getValue() * 1000.0F);
     }
 
     private static int method1154() {
-        return (int) (Notifications.INSTANCE.field843.method423() * 1000.0F);
+        return (int) (Notifications.INSTANCE.field843.getValue() * 1000.0F);
     }
 
     private static int method1155() {

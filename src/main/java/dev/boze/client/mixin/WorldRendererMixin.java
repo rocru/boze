@@ -158,7 +158,7 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
 
             if (Chams.INSTANCE.isEnabled()
                && Chams.INSTANCE.method1924(var1)
-               && Chams.INSTANCE.field3463.method461() != ChamsMode.Normal
+               && Chams.INSTANCE.field3463.getValue() != ChamsMode.Normal
                && var10 != ChamsShaderRenderer.field2246) {
                Framebuffer var14 = this.entityOutlinesFramebuffer;
                this.entityOutlinesFramebuffer = ChamsShaderRenderer.field2244;

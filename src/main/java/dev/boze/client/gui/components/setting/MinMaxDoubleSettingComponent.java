@@ -55,13 +55,13 @@ public class MinMaxDoubleSettingComponent extends ScaledSettingBaseComponent imp
          }
 
          DecimalFormat var17 = new DecimalFormat("#.###");
-         String var9 = var17.format(this.field307.method1287()[this.field307.method1291()]);
-         if (this.field307.method1287()[this.field307.method1291()] >= 0.0 && var9.startsWith("-")) {
+         String var9 = var17.format(this.field307.getValue()[this.field307.method1291()]);
+         if (this.field307.getValue()[this.field307.method1291()] >= 0.0 && var9.startsWith("-")) {
             var9 = var9.substring(1);
          }
 
-         String var18 = var17.format(this.field307.method1287()[this.field307.method1292()]);
-         if (this.field307.method1287()[this.field307.method1292()] >= 0.0 && var18.startsWith("-")) {
+         String var18 = var17.format(this.field307.getValue()[this.field307.method1292()]);
+         if (this.field307.getValue()[this.field307.method1292()] >= 0.0 && var18.startsWith("-")) {
             var18 = var18.substring(1);
          }
 
@@ -97,10 +97,10 @@ public class MinMaxDoubleSettingComponent extends ScaledSettingBaseComponent imp
                var12.method2025(Theme.method1391())
             );
          double var13 = MathHelper.clamp(
-            (this.field307.method1287()[this.field307.method1291()] - this.field307.field2201) / (this.field307.field2202 - this.field307.field2201), 0.0, 1.0
+            (this.field307.getValue()[this.field307.method1291()] - this.field307.field2201) / (this.field307.field2202 - this.field307.field2201), 0.0, 1.0
          );
          double var15 = MathHelper.clamp(
-            (this.field307.method1287()[this.field307.method1292()] - this.field307.field2201) / (this.field307.field2202 - this.field307.field2201), 0.0, 1.0
+            (this.field307.getValue()[this.field307.method1292()] - this.field307.field2201) / (this.field307.field2202 - this.field307.field2201), 0.0, 1.0
          );
          RenderUtil.field3963
             .method2257(
@@ -134,8 +134,8 @@ public class MinMaxDoubleSettingComponent extends ScaledSettingBaseComponent imp
                double var9 = mouseX - (this.field318 + 12.0 * scaleFactor);
                double var11 = var9 / (this.field320 - 24.0 * scaleFactor);
                double var13 = this.field307.field2202 - this.field307.field2201;
-               double var15 = (this.field307.method1287()[this.field307.method1291()] - this.field307.field2201) / var13;
-               double var17 = (this.field307.method1287()[this.field307.method1292()] - this.field307.field2201) / var13;
+               double var15 = (this.field307.getValue()[this.field307.method1291()] - this.field307.field2201) / var13;
+               double var17 = (this.field307.getValue()[this.field307.method1292()] - this.field307.field2201) / var13;
                double var19 = var17 - var15;
                if (var11 <= var15 + var19 * 0.15 && var11 < var17 - var19 * 0.15) {
                   this.field308 = this.field307.method1291();
@@ -161,9 +161,9 @@ public class MinMaxDoubleSettingComponent extends ScaledSettingBaseComponent imp
                IFontRender.method499().method1390() + 2.0 * scaleFactor
             )) {
                this.field307
-                  .method1290(0, MathHelper.clamp(this.field307.method1287()[0] - this.field307.field2203, this.field307.field2201, this.field307.field2202));
+                  .method1290(0, MathHelper.clamp(this.field307.getValue()[0] - this.field307.field2203, this.field307.field2201, this.field307.field2202));
                this.field307
-                  .method1290(1, MathHelper.clamp(this.field307.method1287()[1] - this.field307.field2203, this.field307.field2201, this.field307.field2202));
+                  .method1290(1, MathHelper.clamp(this.field307.getValue()[1] - this.field307.field2203, this.field307.field2201, this.field307.field2202));
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             } else if (isMouseWithinBounds(
                mouseX,
@@ -174,9 +174,9 @@ public class MinMaxDoubleSettingComponent extends ScaledSettingBaseComponent imp
                IFontRender.method499().method1390() + 2.0 * scaleFactor
             )) {
                this.field307
-                  .method1290(0, MathHelper.clamp(this.field307.method1287()[0] + this.field307.field2203, this.field307.field2201, this.field307.field2202));
+                  .method1290(0, MathHelper.clamp(this.field307.getValue()[0] + this.field307.field2203, this.field307.field2201, this.field307.field2202));
                this.field307
-                  .method1290(1, MathHelper.clamp(this.field307.method1287()[1] + this.field307.field2203, this.field307.field2201, this.field307.field2202));
+                  .method1290(1, MathHelper.clamp(this.field307.getValue()[1] + this.field307.field2203, this.field307.field2201, this.field307.field2202));
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             }
          } else if (button == 1 && this.field307.hasChildren()) {
@@ -205,8 +205,8 @@ public class MinMaxDoubleSettingComponent extends ScaledSettingBaseComponent imp
          if (this.field308 == -2) {
             double var13 = deltaX / (this.field320 - 24.0 * scaleFactor);
             var13 *= this.field307.field2202 - this.field307.field2201;
-            this.field307.method1290(0, NumberUtils.method2196(this.field307.method1287()[0] + var13, this.field307.field2203));
-            this.field307.method1290(1, NumberUtils.method2196(this.field307.method1287()[1] + var13, this.field307.field2203));
+            this.field307.method1290(0, NumberUtils.method2196(this.field307.getValue()[0] + var13, this.field307.field2203));
+            this.field307.method1290(1, NumberUtils.method2196(this.field307.getValue()[1] + var13, this.field307.field2203));
          } else {
             double var18 = mouseX - (this.field318 + 12.0 * scaleFactor);
             double var15 = var18 / (this.field320 - 24.0 * scaleFactor);

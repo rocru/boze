@@ -56,8 +56,8 @@ public class ProfileSettingComponent extends ScaledSettingBaseComponent implemen
                this.field319 + this.field321 * 0.5 - Notifications.VIEW_LIST.method1614() * 0.5,
                Theme.method1350()
             );
-         if (!this.field306.method1322().isEmpty()) {
-            String var14 = this.field306.method1322().substring(this.field306.method1322().lastIndexOf(".") + 1);
+         if (!this.field306.getValue().isEmpty()) {
+            String var14 = this.field306.getValue().substring(this.field306.getValue().lastIndexOf(".") + 1);
             IFontRender.method499()
                .drawShadowedText(
                   var14,

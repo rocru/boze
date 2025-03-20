@@ -48,7 +48,7 @@ public class AimAssist extends Module {
    );
    private final BooleanSetting field2680 = new BooleanSetting("OnlyWeapon", false, "Only assist when holding weapon");
    private final BooleanSetting field2681 = new BooleanSetting("OnlyWhenClicking", true, "Only assist when clicking attack key");
-   private final IntSetting field2682 = new IntSetting("Ticks", 5, 1, 40, 1, "Ticks to assist for after clicking", this.field2681::method419);
+   private final IntSetting field2682 = new IntSetting("Ticks", 5, 1, 40, 1, "Ticks to assist for after clicking", this.field2681::getValue);
    private final EnumSetting<AimAssistGunPoint> field2683 = new EnumSetting<AimAssistGunPoint>(
       "GunMode",
       AimAssistGunPoint.Off,
@@ -94,8 +94,8 @@ public class AimAssist extends Module {
    public void method1572(MouseUpdateEvent event) {
       if (MinecraftUtils.isClientActive() && !event.method1022()) {
          if (mc.currentScreen == null || mc.currentScreen instanceof ClickGUI) {
-            if (this.field2680.method419()) {
-               if (this.field2683.method461() != AimAssistGunPoint.Off) {
+            if (this.field2680.getValue()) {
+               if (this.field2683.getValue() != AimAssistGunPoint.Off) {
                   if (mc.player.getMainHandStack().getItem() != this.field2676.method447()) {
                      return;
                   }
@@ -106,7 +106,7 @@ public class AimAssist extends Module {
                }
             }
 
-            if (this.field2683.method461() == AimAssistGunPoint.RightClick) {
+            if (this.field2683.getValue() == AimAssistGunPoint.RightClick) {
                if (mc.options.useKey.isPressed()) {
                   this.field2703.reset();
                }
@@ -114,23 +114,23 @@ public class AimAssist extends Module {
                this.field2703.reset();
             }
 
-            if (!this.field2681.method419() || !this.field2703.hasElapsed((double)(this.field2682.method434() * 50))) {
+            if (!this.field2681.getValue() || !this.field2703.hasElapsed((double)(this.field2682.method434() * 50))) {
                RotationHelper var5 = new RotationHelper(mc.player);
                Entity var6 = this.method1574();
                if (var6 != null) {
-                  if (!this.field2679.method419() || !(mc.crosshairTarget instanceof EntityHitResult var7) || var7.getEntity() != var6) {
+                  if (!this.field2679.getValue() || !(mc.crosshairTarget instanceof EntityHitResult var7) || var7.getEntity() != var6) {
                      Box var18 = var6.getBoundingBox().expand((double)var6.getTargetingMargin()).contract(1.0 - this.field2687.getValue());
                      Vec3d var19 = this.method1573(var18, var6, var5);
                      RotationHelper var9 = Class1202.method2391(mc.player.getEyePos(), var19);
                      if (!((double)var9.method605(var5) > (double)this.field2692.method434().intValue() * 1.417)) {
-                        RotationHelper var10 = var5.method603(var9, this.field2688.method1287()).method1600();
+                        RotationHelper var10 = var5.method603(var9, this.field2688.getValue()).method1600();
                         RotationHelper var11 = var10.method606(var5);
                         Pair[] var12 = RotationHelper.method614(var11);
                         Pair var13 = var12[0];
 
                         for (Pair var17 : var12) {
                            if (Class5924.method73(
-                                 this.field2683.method461() != AimAssistGunPoint.Off ? this.field2685.getValue() : this.field2684.getValue(),
+                                 this.field2683.getValue() != AimAssistGunPoint.Off ? this.field2685.getValue() : this.field2684.getValue(),
                                  RotationHelper.method613(var5, var17),
                                  false
                               )
@@ -141,14 +141,14 @@ public class AimAssist extends Module {
                         }
 
                         double var20 = MathHelper.clamp((Double)var13.getLeft(), -this.field2689.method1294() * 10.0, this.field2689.method1294() * 10.0);
-                        if ((!this.field2690.method419() || event.deltaX * var20 >= 0.0) && Math.abs(var20) > this.field2689.method1293() * 10.0) {
+                        if ((!this.field2690.getValue() || event.deltaX * var20 >= 0.0) && Math.abs(var20) > this.field2689.method1293() * 10.0) {
                            event.deltaX += var20;
                            event.method1021(true);
                         }
 
-                        if (this.field2691.method419()) {
+                        if (this.field2691.getValue()) {
                            double var21 = MathHelper.clamp((Double)var13.getRight(), -this.field2689.method1294() * 10.0, this.field2689.method1294() * 10.0);
-                           if ((!this.field2690.method419() || event.deltaY * var21 >= 0.0) && Math.abs(var21) > this.field2689.method1293() * 10.0) {
+                           if ((!this.field2690.getValue() || event.deltaY * var21 >= 0.0) && Math.abs(var21) > this.field2689.method1293() * 10.0) {
                               event.deltaY += var21;
                               event.method1021(true);
                            }
@@ -611,11 +611,11 @@ public class AimAssist extends Module {
             && this.method1576(var6)
             && !(
                (double)var6.distanceTo(mc.player)
-                  > this.field2683.method461() != AimAssistGunPoint.Off ? this.field2685.getValue() : this.field2684.getValue() + 1.0
+                  > this.field2683.getValue() != AimAssistGunPoint.Off ? this.field2685.getValue() : this.field2684.getValue() + 1.0
             )
             && !((LivingEntity)var6).isDead()
             && !(((LivingEntity)var6).getHealth() + ((LivingEntity)var6).getAbsorptionAmount() <= 0.0F)
-            && (this.field2686.method419() || mc.player.canSee(var6))) {
+            && (this.field2686.getValue() || mc.player.canSee(var6))) {
             var4.add((LivingEntity)var6);
          }
       }
@@ -630,7 +630,7 @@ public class AimAssist extends Module {
    // $VF: Unable to simplify switch on enum
    // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
    private boolean method1576(Entity var1) {
-      if ((var1.isInvisible() || var1.isInvisibleTo(mc.player)) && !this.field2696.method419()) {
+      if ((var1.isInvisible() || var1.isInvisibleTo(mc.player)) && !this.field2696.getValue()) {
          return false;
       } else if (var1 instanceof PlayerEntity) {
          if (var1 == mc.player) {
@@ -638,9 +638,9 @@ public class AimAssist extends Module {
          } else if (var1 instanceof FakePlayerEntity) {
             return false;
          } else if (Friends.method2055(var1)) {
-            return this.field2698.method419();
+            return this.field2698.getValue();
          } else {
-            return AntiBots.method2055(var1) ? false : this.field2697.method419();
+            return AntiBots.method2055(var1) ? false : this.field2697.getValue();
          }
       } else {
          switch (m_.field2108[var1.getType().getSpawnGroup().ordinal()]) {
@@ -648,9 +648,9 @@ public class AimAssist extends Module {
             case 2:
             case 3:
             case 4:
-               return this.field2699.method419();
+               return this.field2699.getValue();
             case 5:
-               return this.field2700.method419();
+               return this.field2700.getValue();
             default:
                return false;
          }
@@ -731,10 +731,10 @@ public class AimAssist extends Module {
    }
 
    private boolean lambda$new$1() {
-      return this.field2683.method461() != AimAssistGunPoint.Off;
+      return this.field2683.getValue() != AimAssistGunPoint.Off;
    }
 
    private boolean lambda$new$0() {
-      return this.field2683.method461() == AimAssistGunPoint.Off;
+      return this.field2683.getValue() == AimAssistGunPoint.Off;
    }
 }

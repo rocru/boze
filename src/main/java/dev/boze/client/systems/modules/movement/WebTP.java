@@ -27,10 +27,10 @@ public class WebTP extends Module {
    )
    public void method1893(PlayerMoveEvent event) {
       if (Class5924.method87(Blocks.COBWEB) && Math.floor(mc.player.getPos().y) != mc.player.getPos().y) {
-         if (this.field540.method461() == WebTPMode.Strict) {
+         if (this.field540.getValue() == WebTPMode.Strict) {
             event.vec3 = new Vec3d(event.vec3.x, Math.min(event.vec3.y, 0.0), event.vec3.z);
             event.field1892 = true;
-         } else if (this.field540.method461() == WebTPMode.Horizontal) {
+         } else if (this.field540.getValue() == WebTPMode.Horizontal) {
             event.vec3 = event.vec3.multiply(4.0, 1.0, 4.0);
             event.field1892 = true;
          } else {

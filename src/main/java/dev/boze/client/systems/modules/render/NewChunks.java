@@ -68,7 +68,7 @@ public class NewChunks extends Module {
 
    @EventHandler
    private void method1965(Render3DEvent var1) {
-      if (this.field3597.method461() != NewChunksScan.Old) {
+      if (this.field3597.getValue() != NewChunksScan.Old) {
          ArrayList var5 = new ArrayList();
          synchronized (this.field3605) {
             for (ChunkPos var8 : this.field3605) {
@@ -87,11 +87,11 @@ public class NewChunks extends Module {
          }
 
          for (Box var18 : var5) {
-            var1.field1950.method1273(var18, this.field3599.method1362(), this.field3600.method1362(), ShapeMode.Full, 0);
+            var1.field1950.method1273(var18, this.field3599.getValue(), this.field3600.getValue(), ShapeMode.Full, 0);
          }
       }
 
-      if (this.field3597.method461() != NewChunksScan.New) {
+      if (this.field3597.getValue() != NewChunksScan.New) {
          ArrayList var14 = new ArrayList();
          synchronized (this.field3606) {
             for (ChunkPos var21 : this.field3606) {
@@ -110,7 +110,7 @@ public class NewChunks extends Module {
          }
 
          for (Box var20 : var14) {
-            var1.field1950.method1273(var20, this.field3601.method1362(), this.field3602.method1362(), ShapeMode.Full, 0);
+            var1.field1950.method1273(var20, this.field3601.getValue(), this.field3602.getValue(), ShapeMode.Full, 0);
          }
       }
    }
@@ -122,8 +122,8 @@ public class NewChunks extends Module {
    }
 
    public void method1967(BlockPos pos, BlockState state, boolean onlyOre) {
-      if (!this.field3603.method419() || pos.getY() >= 0) {
-         if (this.field3598.method419() && state.getBlock() == Blocks.COPPER_ORE
+      if (!this.field3603.getValue() || pos.getY() >= 0) {
+         if (this.field3598.getValue() && state.getBlock() == Blocks.COPPER_ORE
             || state.getBlock() == Blocks.DEEPSLATE_COPPER_ORE
             || state.getBlock() == Blocks.NETHER_GOLD_ORE
             || state.getBlock() == Blocks.ANCIENT_DEBRIS) {
@@ -207,7 +207,7 @@ public class NewChunks extends Module {
    private void lambda$onPacketReceive$0(ChunkPos var1, WorldChunk var2) {
       if (!this.field3605.contains(var1) && mc.world.getChunkManager().getChunk(var1.x, var1.z) == null) {
          for (int var6 = 0; var6 < 16; var6++) {
-            for (int var7 = this.field3603.method419() ? 0 : mc.world.getBottomY(); var7 < mc.world.getTopY(); var7++) {
+            for (int var7 = this.field3603.getValue() ? 0 : mc.world.getBottomY(); var7 < mc.world.getTopY(); var7++) {
                for (int var8 = 0; var8 < 16; var8++) {
                   FluidState var9 = var2.getFluidState(var6, var7, var8);
                   if (!var9.isEmpty() && !var9.isStill()) {

@@ -17,8 +17,8 @@ public class BiomeColorsMixin {
       cancellable = true
    )
    private static void onGetWaterColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3755.method419()) {
-         var2.setReturnValue(Tint.INSTANCE.field3756.method1347().method2010());
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3755.getValue()) {
+         var2.setReturnValue(Tint.INSTANCE.field3756.getValue().method2010());
       }
    }
 
@@ -28,8 +28,8 @@ public class BiomeColorsMixin {
       cancellable = true
    )
    private static void onGetGrassColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ac.method419()) {
-         var2.setReturnValue(Tint.INSTANCE.ad.method1347().method2010());
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ac.getValue()) {
+         var2.setReturnValue(Tint.INSTANCE.ad.getValue().method2010());
       }
    }
 
@@ -39,8 +39,8 @@ public class BiomeColorsMixin {
       cancellable = true
    )
    private static void onGetFoliageColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.method419()) {
-         var2.setReturnValue(Tint.INSTANCE.af.method1347().method2010());
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.getValue()) {
+         var2.setReturnValue(Tint.INSTANCE.af.getValue().method2010());
       }
    }
 }

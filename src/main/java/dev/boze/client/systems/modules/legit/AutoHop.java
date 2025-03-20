@@ -23,7 +23,7 @@ public class AutoHop extends Module {
             return;
          }
 
-         if (this.field2752.method419() && mc.world.getBlockState(mc.player.getBlockPos()).getBlock() instanceof SlabBlock) {
+         if (this.field2752.getValue() && mc.world.getBlockState(mc.player.getBlockPos()).getBlock() instanceof SlabBlock) {
             return;
          }
 

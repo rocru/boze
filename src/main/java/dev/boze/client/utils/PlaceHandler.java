@@ -92,15 +92,15 @@ public class PlaceHandler extends InteractionHandler {
     public boolean method153(BlockPos pos, BlockPos placement, Entity target) {
         if (target == null) {
             return false;
-        } else if (this.field244.method461() == InteractionAwaitMode.Off) {
+        } else if (this.field244.getValue() == InteractionAwaitMode.Off) {
             return false;
         } else {
             if (EntityTracker.field3914.containsKey(pos)) {
-                if (this.field244.method461() == InteractionAwaitMode.Strict) {
+                if (this.field244.getValue() == InteractionAwaitMode.Strict) {
                     return true;
                 }
 
-                if (this.field244.method461() == InteractionAwaitMode.Semi) {
+                if (this.field244.getValue() == InteractionAwaitMode.Semi) {
                     Box var7 = target.getBoundingBox();
                     return var7.contains((double) placement.getX() + 0.5, placement.getY() - 1, (double) placement.getZ() + 0.5);
                 }

@@ -51,7 +51,7 @@ public class SelectFileComponent extends BottomRowScaledComponent {
             15,
             24,
             Theme.method1387() ? BaseComponent.scaleFactor * 2.0 : 0.0,
-            this.field1461.method2120().contains(var13) ? Theme.method1347().method2025(Theme.method1391()) : Theme.method1347()
+            this.field1461.getValue().contains(var13) ? Theme.method1347().method2025(Theme.method1391()) : Theme.method1347()
          );
       IFontRender.method499()
          .drawShadowedText(
@@ -71,8 +71,8 @@ public class SelectFileComponent extends BottomRowScaledComponent {
       double var19 = itemX + itemWidth - Notifications.DELETE.method2091() - BaseComponent.scaleFactor * 6.0;
       double var21 = itemY + itemHeight * 0.5 - IconManager.method1116() * 0.5;
       if (isMouseWithinBounds(mouseX, mouseY, var19, var21, Notifications.DELETE.method2091(), IconManager.method1116())) {
-         if (this.field1461.method2120().contains(var18)) {
-            this.field1461.method2120().remove(var18);
+         if (this.field1461.getValue().contains(var18)) {
+            this.field1461.getValue().remove(var18);
          }
 
          ((File)this.field1462.get(index)).delete();
@@ -81,10 +81,10 @@ public class SelectFileComponent extends BottomRowScaledComponent {
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
          return true;
       } else {
-         if (this.field1461.method2120().contains(var18)) {
-            this.field1461.method2120().remove(var18);
+         if (this.field1461.getValue().contains(var18)) {
+            this.field1461.getValue().remove(var18);
          } else {
-            this.field1461.method2120().add(var18);
+            this.field1461.getValue().add(var18);
          }
 
          this.field1461.method206(true);

@@ -34,7 +34,7 @@ public class Zoom extends Module {
 
    @EventHandler
    public void method2089(MouseScrollEvent event) {
-      if (this.field3871.method419() && mc.currentScreen == null) {
+      if (this.field3871.getValue() && mc.currentScreen == null) {
          this.field3873 = this.field3873 + event.vertical * 0.25 * this.field3872.getValue() * this.field3873;
          if (this.field3873 < 1.0) {
             this.field3873 = 1.0;

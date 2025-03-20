@@ -78,7 +78,7 @@ public class BlockHighlight extends Module {
          Box var10 = null;
          if (var9.isEmpty()) {
             if (!(var8.getBlock() instanceof AirBlock) || !AirPlace.INSTANCE.isEnabled()) {
-               if (this.field3399.method419() && !this.field3390.method419()) {
+               if (this.field3399.getValue() && !this.field3390.getValue()) {
                   this.field3402.forEach(this::lambda$onRender3D$6);
                }
 
@@ -88,7 +88,7 @@ public class BlockHighlight extends Module {
             var10 = new Box(var13);
          }
 
-         if (this.field3390.method419()) {
+         if (this.field3390.getValue()) {
             if (this.field3404 == null) {
                this.field3404 = new Renderer3D(false, true);
             }
@@ -99,63 +99,63 @@ public class BlockHighlight extends Module {
          this.field3403.clear();
          if (var9.isEmpty() && var10 != null) {
             this.method1903(
-               var10, this.field3387.method461() == BlockHighlightMode.Flat ? var7 : null, this.field3390.method419() ? this.field3404 : event.field1950
+               var10, this.field3387.getValue() == BlockHighlightMode.Flat ? var7 : null, this.field3390.getValue() ? this.field3404 : event.field1950
             );
-         } else if (this.field3387.method461() == BlockHighlightMode.Complex) {
+         } else if (this.field3387.getValue() == BlockHighlightMode.Complex) {
             for (Box var12 : var9.getBoundingBoxes()) {
-               this.method1903(var12.offset(var13), null, this.field3390.method419() ? this.field3404 : event.field1950);
+               this.method1903(var12.offset(var13), null, this.field3390.getValue() ? this.field3404 : event.field1950);
             }
          } else {
             Box var14 = var9.getBoundingBox();
             this.method1903(
                var14.offset(var13),
-               this.field3387.method461() == BlockHighlightMode.Flat ? var7 : null,
-               this.field3390.method419() ? this.field3404 : event.field1950
+               this.field3387.getValue() == BlockHighlightMode.Flat ? var7 : null,
+               this.field3390.getValue() ? this.field3404 : event.field1950
             );
          }
 
-         if (this.field3399.method419() && !this.field3390.method419() && !this.field3400.method419()) {
+         if (this.field3399.getValue() && !this.field3390.getValue() && !this.field3400.getValue()) {
             this.field3402.forEach(this::lambda$onRender3D$7);
          }
 
-         if (this.field3390.method419()) {
+         if (this.field3390.getValue()) {
             ChamsShaderRenderer.method1310(
                this::lambda$onRender3D$8,
                this.method1900(),
-               this.field3392.method419(),
+               this.field3392.getValue(),
                this.field3388,
                this.field3389,
                this.field3396.method434(),
-               this.field3397.method423(),
-               this.field3394.method423(),
-               this.field3395.method423(),
+               this.field3397.getValue(),
+               this.field3394.getValue(),
+               this.field3395.getValue(),
                this.field3393.method434(),
                this.field3405
             );
          }
       } else {
-         if (this.field3399.method419() && !this.field3390.method419()) {
+         if (this.field3399.getValue() && !this.field3390.getValue()) {
             this.field3402.forEach(this::lambda$onRender3D$5);
          }
       }
    }
 
    private ShaderMode method1900() {
-      if (this.field3391.method461() == BlockHighlightShader.Image) {
-         if (!this.field3398.method1322().isEmpty() && (!this.field3398.method1322().equals(this.field3406) || this.field3405 == null)) {
-            File var4 = new File(ConfigManager.images, this.field3398.method1322() + ".png");
+      if (this.field3391.getValue() == BlockHighlightShader.Image) {
+         if (!this.field3398.getValue().isEmpty() && (!this.field3398.getValue().equals(this.field3406) || this.field3405 == null)) {
+            File var4 = new File(ConfigManager.images, this.field3398.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.field3405 = ByteTexturePacker.method493(var5);
                if (this.field3405 != null) {
-                  this.field3406 = this.field3398.method1322();
+                  this.field3406 = this.field3398.getValue();
                } else {
                   this.field3406 = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field3398.method1341("");
+               this.field3398.setValue("");
                this.field3406 = "";
             }
          }
@@ -170,8 +170,8 @@ public class BlockHighlight extends Module {
 
    private void method1901(Box var1, long var2, Renderer3D var4) {
       float var7 = MathHelper.clamp(1.0F - (float)(System.currentTimeMillis() - var2) / (float)this.method1902(), 0.0F, 1.0F);
-      BozeDrawColor var8 = (BozeDrawColor)this.field3388.method1362().copy().method197(var7);
-      BozeDrawColor var9 = (BozeDrawColor)this.field3389.method1362().copy().method197(var7);
+      BozeDrawColor var8 = (BozeDrawColor)this.field3388.getValue().copy().method197(var7);
+      BozeDrawColor var9 = (BozeDrawColor)this.field3389.getValue().copy().method197(var7);
       var4.method1273(var1, var8, var9, ShapeMode.Full, 0);
    }
 
@@ -204,15 +204,15 @@ public class BlockHighlight extends Module {
          }
       }
 
-      if (this.field3399.method419()) {
+      if (this.field3399.getValue()) {
          this.field3402.put(var1, System.currentTimeMillis());
          this.field3403.add(var1);
       }
 
-      if (this.field3390.method419()) {
-         var3.method1268(var1.minX, var1.minY, var1.minZ, var1.maxX, var1.maxY, var1.maxZ, this.field3389.method1362(), 0);
+      if (this.field3390.getValue()) {
+         var3.method1268(var1.minX, var1.minY, var1.minZ, var1.maxX, var1.maxY, var1.maxZ, this.field3389.getValue(), 0);
       } else {
-         var3.method1273(var1, this.field3388.method1362(), this.field3389.method1362(), ShapeMode.Full, 0);
+         var3.method1273(var1, this.field3388.getValue(), this.field3389.getValue(), ShapeMode.Full, 0);
       }
    }
 
@@ -231,7 +231,7 @@ public class BlockHighlight extends Module {
    private void lambda$onRender3D$6(Render3DEvent var1, Box var2, Long var3) {
       if (System.currentTimeMillis() - var3 > (long)this.method1902()) {
          this.field3402.remove(var2);
-      } else if (!this.field3400.method419() || this.field3403.contains(var2)) {
+      } else if (!this.field3400.getValue() || this.field3403.contains(var2)) {
          this.method1901(var2, var3, var1.field1950);
       }
    }
@@ -239,28 +239,28 @@ public class BlockHighlight extends Module {
    private void lambda$onRender3D$5(Render3DEvent var1, Box var2, Long var3) {
       if (System.currentTimeMillis() - var3 > (long)this.method1902()) {
          this.field3402.remove(var2);
-      } else if (!this.field3400.method419() || this.field3403.contains(var2)) {
+      } else if (!this.field3400.getValue() || this.field3403.contains(var2)) {
          this.method1901(var2, var3, var1.field1950);
       }
    }
 
    private boolean lambda$new$4() {
-      return !this.field3390.method419();
+      return !this.field3390.getValue();
    }
 
    private boolean lambda$new$3() {
-      return !this.field3390.method419();
+      return !this.field3390.getValue();
    }
 
    private boolean lambda$new$2() {
-      return !this.field3390.method419();
+      return !this.field3390.getValue();
    }
 
    private boolean lambda$new$1() {
-      return this.field3391.method461() == BlockHighlightShader.Image;
+      return this.field3391.getValue() == BlockHighlightShader.Image;
    }
 
    private boolean lambda$new$0() {
-      return this.field3394.method423() > 0.0F;
+      return this.field3394.getValue() > 0.0F;
    }
 }

@@ -68,7 +68,7 @@ public class PlaceRender extends Module {
       priority = 4000
    )
    public void method2011(Render3DEvent event) {
-      if (this.field3619.method461() == PlaceRenderMode.Shader) {
+      if (this.field3619.getValue() == PlaceRenderMode.Shader) {
          if (this.field3637 == null) {
             this.field3637 = new Renderer3D(false, true);
          }
@@ -81,21 +81,21 @@ public class PlaceRender extends Module {
       priority = -4000
    )
    public void method2012(Render3DEvent event) {
-      if (this.field3619.method461() == PlaceRenderMode.Shader) {
+      if (this.field3619.getValue() == PlaceRenderMode.Shader) {
          ChamsShaderRenderer.method1311(
             this::lambda$onRender3DPost$6,
             this.method2016(),
-            this.field3621.method419(),
-            this.field3630.method419()
-               ? (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(this.field3628.method1362().field411)
-               : this.field3628.method1362(),
-            this.field3630.method419()
-               ? (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(this.field3629.method1362().field411)
-               : this.field3629.method1362(),
+            this.field3621.getValue(),
+            this.field3630.getValue()
+               ? (BozeDrawColor)OldColors.INSTANCE.clientGradient.getValue().copy().method196(this.field3628.getValue().field411)
+               : this.field3628.getValue(),
+            this.field3630.getValue()
+               ? (BozeDrawColor)OldColors.INSTANCE.clientGradient.getValue().copy().method196(this.field3629.getValue().field411)
+               : this.field3629.getValue(),
             this.field3625.method434(),
-            this.field3626.method423(),
-            this.field3623.method423(),
-            this.field3624.method423(),
+            this.field3626.getValue(),
+            this.field3623.getValue(),
+            this.field3624.getValue(),
             this.field3622.method434(),
             this.field3638
          );
@@ -108,8 +108,8 @@ public class PlaceRender extends Module {
 
    public void method2014(Render3DEvent event, Box bb, long time, BozeDrawColor color, BozeDrawColor outline) {
       if (this.isEnabled()) {
-         if (this.field3619.method461() == PlaceRenderMode.Simple
-            && this.field3631.method419()
+         if (this.field3619.getValue() == PlaceRenderMode.Simple
+            && this.field3631.getValue()
             && System.currentTimeMillis() - time > (long)((int)((float)method2010() / 2.0F))) {
             float var10 = MathHelper.clamp(
                1.0F - ((float)(System.currentTimeMillis() - time) - (float)method2010() / 2.0F) / ((float)method2010() / 2.0F), 0.0F, 1.0F
@@ -118,17 +118,17 @@ public class PlaceRender extends Module {
             outline = (BozeDrawColor)outline.copy().method197((float)outline.field411 * var10);
          }
 
-         if (this.field3630.method419()) {
-            color = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(color.field411);
-            outline = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(outline.field411);
+         if (this.field3630.getValue()) {
+            color = (BozeDrawColor)OldColors.INSTANCE.clientGradient.getValue().copy().method196(color.field411);
+            outline = (BozeDrawColor)OldColors.INSTANCE.clientGradient.getValue().copy().method196(outline.field411);
          }
 
-         if (this.field3633.method419() && (double)(System.currentTimeMillis() - time) < (double)method2010() * this.field3634.getValue()) {
+         if (this.field3633.getValue() && (double)(System.currentTimeMillis() - time) < (double)method2010() * this.field3634.getValue()) {
             double var12 = MathHelper.clamp((double)(System.currentTimeMillis() - time) / ((double)method2010() * this.field3634.getValue()), 0.0, 1.0);
             bb = bb.expand(var12 * -0.5);
          }
 
-         if (this.field3635.method419() && (double)(System.currentTimeMillis() - time) > (double)method2010() * (1.0 - this.field3636.getValue())) {
+         if (this.field3635.getValue() && (double)(System.currentTimeMillis() - time) > (double)method2010() * (1.0 - this.field3636.getValue())) {
             double var13 = MathHelper.clamp(
                ((double)(System.currentTimeMillis() - time) - (double)method2010() * (1.0 - this.field3636.getValue()))
                   / ((double)method2010() * this.field3636.getValue()),
@@ -138,16 +138,16 @@ public class PlaceRender extends Module {
             bb = bb.expand(var13 * -0.5);
          }
 
-         Renderer3D var14 = this.field3619.method461() == PlaceRenderMode.Shader ? this.field3637 : event.field1950;
-         var14.method1273(bb, color, this.field3619.method461() == PlaceRenderMode.Shader ? color : outline, ShapeMode.Full, 0);
+         Renderer3D var14 = this.field3619.getValue() == PlaceRenderMode.Shader ? this.field3637 : event.field1950;
+         var14.method1273(bb, color, this.field3619.getValue() == PlaceRenderMode.Shader ? color : outline, ShapeMode.Full, 0);
       }
    }
 
    public void method2015(Render3DEvent event, Placement renderPos, BozeDrawColor color, BozeDrawColor outline) {
       if (this.isEnabled()) {
          if (System.currentTimeMillis() - renderPos.method1159() <= (long)method2010()) {
-            if (this.field3619.method461() == PlaceRenderMode.Simple
-               && this.field3631.method419()
+            if (this.field3619.getValue() == PlaceRenderMode.Simple
+               && this.field3631.getValue()
                && System.currentTimeMillis() - renderPos.method1159() > (long)((int)((float)method2010() / 2.0F))) {
                float var8 = MathHelper.clamp(
                   1.0F - ((float)(System.currentTimeMillis() - renderPos.method1159()) - (float)method2010() / 2.0F) / ((float)method2010() / 2.0F), 0.0F, 1.0F
@@ -156,9 +156,9 @@ public class PlaceRender extends Module {
                outline = (BozeDrawColor)outline.copy().method196((int)((float)outline.field411 * var8));
             }
 
-            if (this.field3630.method419()) {
-               color = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(color.field411);
-               outline = (BozeDrawColor)OldColors.INSTANCE.clientGradient.method1362().copy().method196(outline.field411);
+            if (this.field3630.getValue()) {
+               color = (BozeDrawColor)OldColors.INSTANCE.clientGradient.getValue().copy().method196(color.field411);
+               outline = (BozeDrawColor)OldColors.INSTANCE.clientGradient.getValue().copy().method196(outline.field411);
             }
 
             Box var11 = new Box(
@@ -169,13 +169,13 @@ public class PlaceRender extends Module {
                (double)(renderPos.field2151[1] + 1),
                (double)(renderPos.field2151[2] + 1)
             );
-            if (this.field3633.method419() && (double)(System.currentTimeMillis() - renderPos.field2152) < (double)method2010() * this.field3634.getValue()) {
+            if (this.field3633.getValue() && (double)(System.currentTimeMillis() - renderPos.field2152) < (double)method2010() * this.field3634.getValue()) {
                double var9 = 1.0
                   - MathHelper.clamp((double)(System.currentTimeMillis() - renderPos.field2152) / ((double)method2010() * this.field3634.getValue()), 0.0, 1.0);
                var11 = var11.expand(var9 * -0.5);
             }
 
-            if (this.field3635.method419()
+            if (this.field3635.getValue()
                && (double)(System.currentTimeMillis() - renderPos.field2152) > (double)method2010() * (1.0 - this.field3636.getValue())) {
                double var12 = MathHelper.clamp(
                   ((double)(System.currentTimeMillis() - renderPos.field2152) - (double)method2010() * (1.0 - this.field3636.getValue()))
@@ -186,28 +186,28 @@ public class PlaceRender extends Module {
                var11 = var11.expand(var12 * -0.5);
             }
 
-            Renderer3D var13 = this.field3619.method461() == PlaceRenderMode.Shader ? this.field3637 : event.field1950;
-            var13.method1273(var11, color, this.field3619.method461() == PlaceRenderMode.Shader ? color : outline, ShapeMode.Full, 0);
+            Renderer3D var13 = this.field3619.getValue() == PlaceRenderMode.Shader ? this.field3637 : event.field1950;
+            var13.method1273(var11, color, this.field3619.getValue() == PlaceRenderMode.Shader ? color : outline, ShapeMode.Full, 0);
          }
       }
    }
 
    private ShaderMode method2016() {
-      if (this.field3620.method461() == ShaderMode.Image) {
-         if (!this.field3627.method1322().isEmpty() && (!this.field3627.method1322().equals(this.field3639) || this.field3638 == null)) {
-            File var4 = new File(ConfigManager.images, this.field3627.method1322() + ".png");
+      if (this.field3620.getValue() == ShaderMode.Image) {
+         if (!this.field3627.getValue().isEmpty() && (!this.field3627.getValue().equals(this.field3639) || this.field3638 == null)) {
+            File var4 = new File(ConfigManager.images, this.field3627.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.field3638 = ByteTexturePacker.method493(var5);
                if (this.field3638 != null) {
-                  this.field3639 = this.field3627.method1322();
+                  this.field3639 = this.field3627.getValue();
                } else {
                   this.field3639 = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field3627.method1341("");
+               this.field3627.setValue("");
                this.field3639 = "";
             }
          }
@@ -217,7 +217,7 @@ public class PlaceRender extends Module {
          }
       }
 
-      return this.field3620.method461() == ShaderMode.Rainbow ? ShaderMode.Rainbow : ShaderMode.Colored;
+      return this.field3620.getValue() == ShaderMode.Rainbow ? ShaderMode.Rainbow : ShaderMode.Colored;
    }
 
    public Placement method2017(BlockPos pos) {
@@ -231,26 +231,26 @@ public class PlaceRender extends Module {
    }
 
    private boolean lambda$new$5() {
-      return this.field3619.method461() == PlaceRenderMode.Simple;
+      return this.field3619.getValue() == PlaceRenderMode.Simple;
    }
 
    private boolean lambda$new$4() {
-      return this.field3620.method461() != ShaderMode.Colored;
+      return this.field3620.getValue() != ShaderMode.Colored;
    }
 
    private boolean lambda$new$3() {
-      return this.field3620.method461() == ShaderMode.Rainbow;
+      return this.field3620.getValue() == ShaderMode.Rainbow;
    }
 
    private boolean lambda$new$2() {
-      return this.field3620.method461() == ShaderMode.Image;
+      return this.field3620.getValue() == ShaderMode.Image;
    }
 
    private boolean lambda$new$1() {
-      return this.field3623.method423() > 0.0F;
+      return this.field3623.getValue() > 0.0F;
    }
 
    private boolean lambda$new$0() {
-      return this.field3619.method461() == PlaceRenderMode.Shader;
+      return this.field3619.getValue() == PlaceRenderMode.Shader;
    }
 }

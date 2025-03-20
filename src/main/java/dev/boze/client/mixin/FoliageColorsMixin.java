@@ -15,8 +15,8 @@ public class FoliageColorsMixin {
       cancellable = true
    )
    private static void onGetBirchColor(CallbackInfoReturnable<Integer> var0) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.method419()) {
-         var0.setReturnValue(Tint.INSTANCE.af.method1347().method2010());
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.getValue()) {
+         var0.setReturnValue(Tint.INSTANCE.af.getValue().method2010());
          var0.cancel();
       }
    }
@@ -27,8 +27,8 @@ public class FoliageColorsMixin {
       cancellable = true
    )
    private static void onGetSpruceColor(CallbackInfoReturnable<Integer> var0) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.method419()) {
-         var0.setReturnValue(Tint.INSTANCE.af.method1347().method2010());
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.getValue()) {
+         var0.setReturnValue(Tint.INSTANCE.af.getValue().method2010());
          var0.cancel();
       }
    }

@@ -28,7 +28,7 @@ public class AutoUpgrade extends Module {
    private final dev.boze.client.utils.Timer field2913 = new dev.boze.client.utils.Timer();
 
    private boolean method1685() {
-      return Options.INSTANCE.method1971() || this.field2911.method461() == AutoUpgradeMode.Ghost;
+      return Options.INSTANCE.method1971() || this.field2911.getValue() == AutoUpgradeMode.Ghost;
    }
 
    private AutoUpgrade() {

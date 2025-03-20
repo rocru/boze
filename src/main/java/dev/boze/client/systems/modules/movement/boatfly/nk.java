@@ -98,7 +98,7 @@ class nk extends nj {
       this.field1576 = null;
       this.field1577 = null;
       this.field1578 = null;
-      if (MinecraftUtils.isClientActive() && this.field1556.field3170.method419() && this.field1556.field3169.method419()) {
+      if (MinecraftUtils.isClientActive() && this.field1556.field3170.getValue() && this.field1556.field3169.getValue()) {
          this.field1579 = mc.player.getPos();
          Vec3d var4 = mc.player.getRotationVec(1.0F);
          this.field1580 = new Vec3d(var4.x, 0.0, var4.z).normalize();
@@ -166,12 +166,12 @@ class nk extends nj {
    }
 
    private Path method699() {
-      if (this.field1556.field3169.method419()
+      if (this.field1556.field3169.getValue()
          && MinecraftUtils.isClientActive()
          && this.field1566 != null
          && this.field1575.hasElapsed(this.field1556.field3175.getValue() * 1000.0)) {
          boolean var4 = false;
-         if (this.field1556.field3177.method419()
+         if (this.field1556.field3177.getValue()
             && this.field1576 != null
             && this.field1576.method2096()
             && (double)this.field1576.field3878 / (double)this.field1576.field3877.size() < 0.5) {
@@ -192,7 +192,7 @@ class nk extends nj {
 
          Vec3d var10 = this.field1566.getPos();
          Vec3d var11;
-         if (this.field1556.field3170.method419() && this.field1579 != null && this.field1580 != null) {
+         if (this.field1556.field3170.getValue() && this.field1579 != null && this.field1580 != null) {
             Vec3d var14 = this.method697(var10, this.field1579, this.field1580);
             var11 = var14.add(this.field1580.multiply((double)this.field1556.field3173.method434().intValue() * this.field1556.field3163.getValue() * 19.9));
          } else {
@@ -204,7 +204,7 @@ class nk extends nj {
          }
 
          PathFinder var15 = new PathFinder(BlockPos.ofFloored(var10), BlockPos.ofFloored(var11.x, var10.y, var11.z), new PathRules(true, true, true, true));
-         if (this.field1556.field3170.method419() && this.field1579 != null && this.field1580 != null) {
+         if (this.field1556.field3170.getValue() && this.field1579 != null && this.field1580 != null) {
             var15.method2121(this.field1579, this.field1580, (double)BoatFly.INSTANCE.field3171.method434().intValue());
          }
 
@@ -220,7 +220,7 @@ class nk extends nj {
             if (var15.method2118()) {
                this.field1574++;
                if (this.field1574 >= this.field1556.field3174.method434()) {
-                  this.field1556.field3169.method421(false);
+                  this.field1556.field3169.setValue(false);
                   ChatInstance.method625("Failed to find path, disabling auto-pilot");
                   return null;
                }
@@ -309,7 +309,7 @@ class nk extends nj {
          }
 
          Vec3d var4;
-         if (this.field1556.field3169.method419() && !Class5924.method2116()) {
+         if (this.field1556.field3169.getValue() && !Class5924.method2116()) {
             var4 = this.method1954();
          } else {
             float var5 = MathHelper.wrapDegrees(mc.player.getYaw());
@@ -330,11 +330,11 @@ class nk extends nj {
 
    @Override
    void method2071(Render3DEvent var1) {
-      if (this.field1576 != null && this.field1556.field3178.method419() && this.field1556.field3169.method419()) {
-         this.field1576.method2097(var1, this.field1556.field3179.method1362());
+      if (this.field1576 != null && this.field1556.field3178.getValue() && this.field1556.field3169.getValue()) {
+         this.field1576.method2097(var1, this.field1556.field3179.getValue());
       }
 
-      if (this.field1577 != null && this.field1556.field3178.method419() && this.field1556.field3169.method419()) {
+      if (this.field1577 != null && this.field1556.field3178.getValue() && this.field1556.field3169.getValue()) {
          var1.field1950
             .method1236(
                this.field1577.x, this.field1577.y + 0.1, this.field1577.z, this.field1578.x, this.field1578.y + 0.1, this.field1578.z, RGBAColor.field403
@@ -389,7 +389,7 @@ class nk extends nj {
       }
 
       Vec3d var28 = new Vec3d(var13, var17, var15);
-      if (this.field1556.field3168.method419()) {
+      if (this.field1556.field3168.getValue()) {
          if (mc.world.getRegistryKey().getValue().getPath().equals("the_nether") && mc.player.getY() + var28.y > 125.0) {
             var28 = new Vec3d(var28.x, 125.0 - mc.player.getY(), var28.z);
             if (mc.player.getY() + var28.y > 125.0) {

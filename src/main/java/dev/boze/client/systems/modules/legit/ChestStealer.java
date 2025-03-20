@@ -251,7 +251,7 @@ public class ChestStealer extends Module {
    private boolean lambda$onScreenInput$0(GenericContainerScreenHandler var1, Slot var2, List var3) {
       return var2.hasStack()
          && var2.id < var1.getInventory().size()
-         && (!this.field2760.method419() || !method1591(var2, var3, this.field2761.method419()))
+         && (!this.field2760.getValue() || !method1591(var2, var3, this.field2761.getValue()))
          && method1592(var2);
    }
 }

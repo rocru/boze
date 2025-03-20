@@ -54,7 +54,7 @@ public class WTap extends Module {
    )
    public void method1628(TickInputPostEvent event) {
       if (this.field2861) {
-         if (this.field2858.method461() == WTapMode.field1761) {
+         if (this.field2858.getValue() == WTapMode.field1761) {
             event.field1954 = 0.0F;
             event.field1953 = 0.0F;
          } else {

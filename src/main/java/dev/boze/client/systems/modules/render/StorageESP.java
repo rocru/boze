@@ -86,7 +86,7 @@ public class StorageESP extends Module {
    @EventHandler
    private void method2030(Render3DEvent var1) {
       this.af = 0;
-      if (this.field3699.method461() == ESPMode.Shader) {
+      if (this.field3699.getValue() == ESPMode.Shader) {
          if (this.ag == null) {
             this.ag = new Renderer3D(false, true);
          }
@@ -101,7 +101,7 @@ public class StorageESP extends Module {
             RGBAColor var10 = this.method2037(var6).copy();
             var9.field411 = (int)((double)var9.field411 * var7);
             var10.field411 = (int)((double)var10.field411 * var7);
-            if (this.field3710.method419()) {
+            if (this.field3710.getValue()) {
                var1.field1950
                   .method1236(
                      RotationHelper.field3956.x,
@@ -114,9 +114,9 @@ public class StorageESP extends Module {
                   );
             }
 
-            if (this.field3699.method461() == ESPMode.Simple) {
+            if (this.field3699.getValue() == ESPMode.Simple) {
                this.method2038(var1.field1950, var6, var9, var10);
-            } else if (this.field3699.method461() == ESPMode.Shader) {
+            } else if (this.field3699.getValue() == ESPMode.Shader) {
                this.method2038(this.ag, var6, var9, var10);
             }
 
@@ -124,17 +124,17 @@ public class StorageESP extends Module {
          }
       }
 
-      if (this.field3699.method461() == ESPMode.Shader) {
+      if (this.field3699.getValue() == ESPMode.Shader) {
          ChamsShaderRenderer.method1310(
             this::lambda$onRender$12,
             this.method2031(),
-            this.field3701.method419(),
+            this.field3701.getValue(),
             this.field3708,
             this.field3709,
             this.field3705.method434(),
-            this.field3706.method423(),
-            this.field3703.method423(),
-            this.field3704.method423(),
+            this.field3706.getValue(),
+            this.field3703.getValue(),
+            this.field3704.getValue(),
             this.field3702.method434(),
             this.ah
          );
@@ -142,21 +142,21 @@ public class StorageESP extends Module {
    }
 
    private ShaderMode method2031() {
-      if (this.field3700.method461() == ShaderMode.Image) {
-         if (!this.field3707.method1322().isEmpty() && (!this.field3707.method1322().equals(this.ai) || this.ah == null)) {
-            File var4 = new File(ConfigManager.images, this.field3707.method1322() + ".png");
+      if (this.field3700.getValue() == ShaderMode.Image) {
+         if (!this.field3707.getValue().isEmpty() && (!this.field3707.getValue().equals(this.ai) || this.ah == null)) {
+            File var4 = new File(ConfigManager.images, this.field3707.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.ah = ByteTexturePacker.method493(var5);
                if (this.ah != null) {
-                  this.ai = this.field3707.method1322();
+                  this.ai = this.field3707.getValue();
                } else {
                   this.ai = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field3707.method1341("");
+               this.field3707.setValue("");
                this.ai = "";
             }
          }
@@ -166,7 +166,7 @@ public class StorageESP extends Module {
          }
       }
 
-      return this.field3700.method461() == ShaderMode.Rainbow ? ShaderMode.Rainbow : ShaderMode.Colored;
+      return this.field3700.getValue() == ShaderMode.Rainbow ? ShaderMode.Rainbow : ShaderMode.Colored;
    }
 
    private List<BlockEntity> method2032() {
@@ -196,71 +196,71 @@ public class StorageESP extends Module {
    }
 
    private double method2034(BlockEntity var1) {
-      if (!this.field3711.method419()) {
+      if (!this.field3711.getValue()) {
          return 1.0;
       } else {
          double var5 = new Vec3d((double)var1.getPos().getX() + 0.5, (double)var1.getPos().getY() + 0.5, (double)var1.getPos().getZ() + 0.5)
             .distanceTo(mc.player.getEyePos());
-         if (var5 <= (double)this.field3712.method423().floatValue()) {
+         if (var5 <= (double)this.field3712.getValue().floatValue()) {
             return 1.0;
          } else {
-            var5 -= (double)this.field3712.method423().floatValue();
-            return 1.0 - MathHelper.clamp(var5 / (1.0 / (double)this.field3713.method423().floatValue()), 0.0, 1.0);
+            var5 -= (double)this.field3712.getValue().floatValue();
+            return 1.0 - MathHelper.clamp(var5 / (1.0 / (double)this.field3713.getValue().floatValue()), 0.0, 1.0);
          }
       }
    }
 
    private boolean method2035(BlockEntity var1) {
       if (var1 instanceof TrappedChestBlockEntity) {
-         return this.field3717.method419();
+         return this.field3717.getValue();
       } else if (var1 instanceof EnderChestBlockEntity) {
-         return this.field3723.method419();
+         return this.field3723.getValue();
       } else if (var1 instanceof ChestBlockEntity) {
-         return this.field3714.method419();
+         return this.field3714.getValue();
       } else if (var1 instanceof BarrelBlockEntity) {
-         return this.field3720.method419();
+         return this.field3720.getValue();
       } else if (var1 instanceof ShulkerBoxBlockEntity) {
-         return this.field3726.method419();
+         return this.field3726.getValue();
       } else {
          return !(var1 instanceof AbstractFurnaceBlockEntity) && !(var1 instanceof DispenserBlockEntity) && !(var1 instanceof HopperBlockEntity)
             ? false
-            : this.ac.method419();
+            : this.ac.getValue();
       }
    }
 
    private RGBAColor method2036(BlockEntity var1) {
       if (var1 instanceof TrappedChestBlockEntity) {
-         return this.field3718.method1347();
+         return this.field3718.getValue();
       } else if (var1 instanceof EnderChestBlockEntity) {
-         return this.field3724.method1347();
+         return this.field3724.getValue();
       } else if (var1 instanceof ChestBlockEntity) {
-         return this.field3715.method1347();
+         return this.field3715.getValue();
       } else if (var1 instanceof BarrelBlockEntity) {
-         return this.field3721.method1347();
+         return this.field3721.getValue();
       } else if (var1 instanceof ShulkerBoxBlockEntity var5) {
-         return this.field3727.method419() && var5.getColor() != null
+         return this.field3727.getValue() && var5.getColor() != null
             ? new RGBAColor(ColorARGB.withAlpha(var5.getColor().getEntityColor(), 64))
-            : this.aa.method1347();
+            : this.aa.getValue();
       } else {
-         return this.ad.method1347();
+         return this.ad.getValue();
       }
    }
 
    private RGBAColor method2037(BlockEntity var1) {
       if (var1 instanceof TrappedChestBlockEntity) {
-         return this.field3719.method1347();
+         return this.field3719.getValue();
       } else if (var1 instanceof EnderChestBlockEntity) {
-         return this.field3725.method1347();
+         return this.field3725.getValue();
       } else if (var1 instanceof ChestBlockEntity) {
-         return this.field3716.method1347();
+         return this.field3716.getValue();
       } else if (var1 instanceof BarrelBlockEntity) {
-         return this.field3722.method1347();
+         return this.field3722.getValue();
       } else if (var1 instanceof ShulkerBoxBlockEntity var5) {
-         return this.field3727.method419() && var5.getColor() != null
+         return this.field3727.getValue() && var5.getColor() != null
             ? new RGBAColor(ColorARGB.withAlpha(var5.getColor().getEntityColor(), 255))
-            : this.ab.method1347();
+            : this.ab.getValue();
       } else {
-         return this.ae.method1347();
+         return this.ae.getValue();
       }
    }
 
@@ -312,50 +312,50 @@ public class StorageESP extends Module {
    }
 
    private boolean lambda$new$11() {
-      return this.field3699.method461() != ESPMode.Shader;
+      return this.field3699.getValue() != ESPMode.Shader;
    }
 
    private boolean lambda$new$10() {
-      return !this.field3727.method419();
+      return !this.field3727.getValue();
    }
 
    private boolean lambda$new$9() {
-      return this.field3699.method461() != ESPMode.Shader && !this.field3727.method419();
+      return this.field3699.getValue() != ESPMode.Shader && !this.field3727.getValue();
    }
 
    private boolean lambda$new$8() {
-      return this.field3699.method461() != ESPMode.Shader;
+      return this.field3699.getValue() != ESPMode.Shader;
    }
 
    private boolean lambda$new$7() {
-      return this.field3699.method461() != ESPMode.Shader;
+      return this.field3699.getValue() != ESPMode.Shader;
    }
 
    private boolean lambda$new$6() {
-      return this.field3699.method461() != ESPMode.Shader;
+      return this.field3699.getValue() != ESPMode.Shader;
    }
 
    private boolean lambda$new$5() {
-      return this.field3699.method461() != ESPMode.Shader;
+      return this.field3699.getValue() != ESPMode.Shader;
    }
 
    private boolean lambda$new$4() {
-      return this.field3700.method461() != ShaderMode.Colored;
+      return this.field3700.getValue() != ShaderMode.Colored;
    }
 
    private boolean lambda$new$3() {
-      return this.field3700.method461() == ShaderMode.Rainbow;
+      return this.field3700.getValue() == ShaderMode.Rainbow;
    }
 
    private boolean lambda$new$2() {
-      return this.field3700.method461() == ShaderMode.Image;
+      return this.field3700.getValue() == ShaderMode.Image;
    }
 
    private boolean lambda$new$1() {
-      return this.field3703.method423() > 0.0F;
+      return this.field3703.getValue() > 0.0F;
    }
 
    private boolean lambda$new$0() {
-      return this.field3699.method461() == ESPMode.Shader;
+      return this.field3699.getValue() == ESPMode.Shader;
    }
 }

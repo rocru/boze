@@ -34,15 +34,15 @@ public class Criticals extends Module {
          && mc.player.isOnGround()
          && !mc.player.isInLava()
          && !mc.player.isSubmergedInWater()) {
-         if (this.still.method419() && Class5924.method2115()) {
+         if (this.still.getValue() && Class5924.method2115()) {
             return;
          }
 
-         if (this.onlyAura.method419() && !Aura.INSTANCE.isEnabled()) {
+         if (this.onlyAura.getValue() && !Aura.INSTANCE.isEnabled()) {
             return;
          }
 
-         if (this.ncpStrict.method419() && mc.world.getBlockState(mc.player.getBlockPos()).getBlock() != Blocks.COBWEB) {
+         if (this.ncpStrict.getValue() && mc.world.getBlockState(mc.player.getBlockPos()).getBlock() != Blocks.COBWEB) {
             mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + 0.062602401692772, mc.player.getZ(), false));
             mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + 0.0726023996066094, mc.player.getZ(), false));
             mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), false));

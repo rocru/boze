@@ -49,7 +49,7 @@ public class NoFall extends Module {
    private final Timer field539 = new Timer();
 
    private NoFallMode method275() {
-      return Options.INSTANCE.method1971() ? NoFallMode.Ghost : this.field527.method461();
+      return Options.INSTANCE.method1971() ? NoFallMode.Ghost : this.field527.getValue();
    }
 
    private boolean method1971() {
@@ -77,10 +77,10 @@ public class NoFall extends Module {
                int var5 = InventoryHelper.method176(BlastResistanceCalculator.field3905);
                if (var5 != -1 && mc.player.getInventory().selectedSlot == var5) {
                   RotationHelper var6 = new RotationHelper(mc.player.getYaw(), 90.0F);
-                  BlockHitResult var7 = RaycastUtil.method574(this.field533.method419() ? this.field534.getValue() : 20.0, var6);
+                  BlockHitResult var7 = RaycastUtil.method574(this.field533.getValue() ? this.field534.getValue() : 20.0, var6);
                   if (var7 != null && var7.getType() != Type.MISS) {
                      RotationHelper var8 = Class1202.method2391(mc.player.getEyePos(), var7.getPos());
-                     var6 = var6.method603(var8, this.field528.method1287());
+                     var6 = var6.method603(var8, this.field528.getValue());
                      RotationHelper var9 = new RotationHelper(mc.player);
                      RotationHelper var10 = var6.method1600();
                      RotationHelper var11 = var10.method606(var9);
@@ -89,7 +89,7 @@ public class NoFall extends Module {
 
                      for (Pair var17 : var12) {
                         BlockHitResult var18 = RaycastUtil.method574(
-                           this.field533.method419() ? this.field534.getValue() : 20.0, RotationHelper.method613(var9, var17)
+                           this.field533.getValue() ? this.field534.getValue() : 20.0, RotationHelper.method613(var9, var17)
                         );
                         if (var18.getType() != Type.MISS && var18.getBlockPos() == var7.getBlockPos() && var18.getSide() == var7.getSide()) {
                            var13 = var17;
@@ -127,7 +127,7 @@ public class NoFall extends Module {
       priority = 76
    )
    public void method1883(RotationEvent event) {
-      if (!Options.method477(this.field531.method419()) && !event.method554(RotationMode.Vanilla)) {
+      if (!Options.method477(this.field531.getValue()) && !event.method554(RotationMode.Vanilla)) {
          if (this.method1971() && this.method1972()) {
             int var5 = InventoryHelper.method176(BlastResistanceCalculator.field3905);
             if (var5 != -1 && mc.player.getInventory().selectedSlot == var5) {
@@ -152,7 +152,7 @@ public class NoFall extends Module {
    private boolean method1972() {
       if ((double)mc.player.fallDistance >= this.field532.getValue()
          && (
-            !this.field533.method419()
+            !this.field533.getValue()
                || !mc.world
                   .isSpaceEmpty(
                      new Box(

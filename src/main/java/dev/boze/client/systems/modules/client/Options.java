@@ -38,7 +38,7 @@ public class Options extends Module {
    public Options() {
       super("Options", "Change client options", Category.Client, ConfigCategory.Main);
       if (!new File(System.getProperty("user.home"), "Boze").exists() && !new File(mc.runDirectory, "cache").exists()) {
-         this.field989.method1341("qwertyuiop[]");
+         this.field989.setValue("qwertyuiop[]");
       }
 
       this.field984.method401(Options::lambda$new$0);
@@ -46,11 +46,11 @@ public class Options extends Module {
    }
 
    public static String method1562() {
-      return field995 ? "Bozo" : INSTANCE.field988.method1322();
+      return field995 ? "Bozo" : INSTANCE.field988.getValue();
    }
 
    public static String method1563() {
-      return INSTANCE.field989.method1322();
+      return INSTANCE.field989.getValue();
    }
 
    @EventHandler(
@@ -100,13 +100,13 @@ public class Options extends Module {
          if (multitask) {
             return false;
          } else {
-            return mc.player.isUsingItem() ? true : AntiCheat.INSTANCE.field2319.method419() && mc.interactionManager.isBreakingBlock();
+            return mc.player.isUsingItem() ? true : AntiCheat.INSTANCE.field2319.getValue() && mc.interactionManager.isBreakingBlock();
          }
       }
    }
 
    public boolean method1971() {
-      return this.field984.method419();
+      return this.field984.getValue();
    }
 
    public BooleanSetting method478() {

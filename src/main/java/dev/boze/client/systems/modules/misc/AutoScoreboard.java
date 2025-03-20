@@ -43,7 +43,7 @@ public class AutoScoreboard extends Module {
                   ChatInstance.method624(this.method1676(var7.getName().getString(), 1, 0));
                }
 
-               if (this.taunt.method419()) {
+               if (this.taunt.getValue()) {
                   Pair var9 = (Pair)this.field2897.get(var7.getName().getString());
                   mc.player.sendMessage(Text.literal(var9.getRight() + "-" + var9.getLeft() + " " + var7.getName().getString()));
                }

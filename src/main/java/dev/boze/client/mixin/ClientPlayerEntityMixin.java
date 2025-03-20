@@ -154,12 +154,12 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
 
       if (this.isCamera()) {
          if (!Options.INSTANCE.method1971() && !hardRotate) {
-            if (AntiCheat.INSTANCE.field2316.method419()) {
+            if (AntiCheat.INSTANCE.field2316.getValue()) {
                yaw += (float)(Math.sin((double)System.currentTimeMillis() / 1000.0) * 0.1);
                pitch += (float)(Math.sin((double)System.currentTimeMillis() / 2000.0) * 0.1);
             }
 
-            if (AntiCheat.INSTANCE.field2315.method419()) {
+            if (AntiCheat.INSTANCE.field2315.getValue()) {
                double var30 = Math.pow((Double)this.client.options.getMouseSensitivity().getValue() * 0.6 + 0.2, 3.0) * 1.2;
                yaw = (float)((double)yaw - (double)(yaw - ((ClientPlayerEntityAccessor)this.client.player).getLastYaw()) % var30);
                pitch = (float)((double)pitch - (double)(pitch - ((ClientPlayerEntityAccessor)this.client.player).getLastPitch()) % var30);
@@ -298,7 +298,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
 
       EntityTracker.method2142();
       if (NoSlow.INSTANCE.isEnabled()
-         && NoSlow.INSTANCE.field3304.method461() == NoSlowItems.GrimV2Old
+         && NoSlow.INSTANCE.field3304.getValue() == NoSlowItems.GrimV2Old
          && this.isUsingItem()
          && this.getActiveItem().getItem() != Items.BOW) {
          this.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(this.getInventory().selectedSlot % 8 + 1));
@@ -307,7 +307,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
 
       Class2839.field111 = this.getInventory().selectedSlot;
       boolean var11 = NoSlow.INSTANCE.isEnabled()
-         && NoSlow.INSTANCE.field3304.method461() == NoSlowItems.GrimV2Old
+         && NoSlow.INSTANCE.field3304.getValue() == NoSlowItems.GrimV2Old
          && this.isUsingItem()
          && this.getActiveItem().getItem() != Items.BOW;
       if (!RotationHandler.field1546.method2114() && !var11 && !ElytraBoost.INSTANCE.field1011.field3208 && !ElytraBoost.INSTANCE.field1011.field3211) {
@@ -400,7 +400,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
             }
 
             if (NoSlow.INSTANCE.isEnabled()
-               && NoSlow.INSTANCE.field3304.method461() == NoSlowItems.GrimV2Old
+               && NoSlow.INSTANCE.field3304.getValue() == NoSlowItems.GrimV2Old
                && this.isUsingItem()
                && this.getActiveItem().getItem() != Items.BOW) {
                BlockHitResult var18 = new BlockHitResult(
@@ -480,7 +480,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
    )
    public void onIsSneaking(CallbackInfoReturnable<Boolean> cir) {
       if (((ClientPlayerEntity)this).equals(this.client.player)) {
-         if (Scaffold.INSTANCE.isEnabled() && Scaffold.INSTANCE.field3112 && Scaffold.INSTANCE.field3093.method461() == AnticheatMode.Grim) {
+         if (Scaffold.INSTANCE.isEnabled() && Scaffold.INSTANCE.field3112 && Scaffold.INSTANCE.field3093.getValue() == AnticheatMode.Grim) {
             cir.setReturnValue(true);
          }
       }
@@ -565,7 +565,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
       if (!((ClientPlayerEntity)this).equals(var1.player)) {
          return var1.currentScreen;
       } else {
-         return ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.method1699() && ExtraChat.INSTANCE.field2940.method419() ? null : var1.currentScreen;
+         return ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.method1699() && ExtraChat.INSTANCE.field2940.getValue() ? null : var1.currentScreen;
       }
    }
 
@@ -629,11 +629,11 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
    private void onShouldSlowDown(CallbackInfoReturnable<Boolean> var1) {
       if (((ClientPlayerEntity)this).equals(this.client.player)) {
          if (NoSlow.INSTANCE.isEnabled()) {
-            if (NoSlow.INSTANCE.field3316.method419() && this.isSneaking()) {
+            if (NoSlow.INSTANCE.field3316.getValue() && this.isSneaking()) {
                var1.setReturnValue(false);
             }
 
-            if (NoSlow.INSTANCE.field3317.method419() && this.isCrawling()) {
+            if (NoSlow.INSTANCE.field3317.getValue() && this.isCrawling()) {
                var1.setReturnValue(false);
             }
          }

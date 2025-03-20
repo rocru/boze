@@ -36,15 +36,18 @@ public class SettingBlock extends Setting<Boolean> {
       return this.field978;
    }
 
-   public Boolean method419() {
+   @Override
+   public Boolean getValue() {
       return this.field977;
    }
 
-   public Boolean method420() {
+   @Override
+   public Boolean resetValue() {
       return this.field977 = false;
    }
 
-   public Boolean method421(Boolean newVal) {
+   @Override
+   public Boolean setValue(Boolean newVal) {
       return this.field977 = newVal;
    }
 
@@ -53,35 +56,36 @@ public class SettingBlock extends Setting<Boolean> {
       return tag;
    }
 
-   public Boolean method422(NbtCompound tag) {
+   @Override
+   public Boolean load(NbtCompound tag) {
       return false;
    }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method422(nbtCompound);
-   }
+   //@Override
+   //public Object load(NbtCompound nbtCompound) {
+   //   return this.method422(nbtCompound);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method421((Boolean)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+   //   return this.method421((Boolean)object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method420();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method420();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method419();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method419();
+   //}
 }

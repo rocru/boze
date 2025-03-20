@@ -11,7 +11,7 @@ public class DebugHandler {
                 String var5 = var4[1];
                 switch (var5) {
                     case "resetprefix":
-                        Options.INSTANCE.field989.method1341(".");
+                        Options.INSTANCE.field989.setValue(".");
                         break;
                     case "printversion":
                         System.out.println(Version.tag);

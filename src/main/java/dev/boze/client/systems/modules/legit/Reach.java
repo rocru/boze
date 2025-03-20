@@ -22,6 +22,6 @@ public class Reach extends Module {
    public static double method1614() {
       return !INSTANCE.isEnabled()
          ? mc.player.getAttributeValue(EntityAttributes.PLAYER_BLOCK_INTERACTION_RANGE)
-         : (double)INSTANCE.field2820.method423().floatValue();
+         : (double)INSTANCE.field2820.getValue().floatValue();
    }
 }

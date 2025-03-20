@@ -16,12 +16,12 @@ class fs extends FloatSliderComponent {
 
    @Override
    protected void method207(float value) {
-      this.field1145.method430().field3911 = value;
+      this.field1145.getValue().field3911 = value;
    }
 
    @Override
    protected float method1384() {
-      return this.field1145.method430().field3911;
+      return this.field1145.getValue().field3911;
    }
 
    @Override
@@ -41,6 +41,6 @@ class fs extends FloatSliderComponent {
 
    @Override
    protected void method2142() {
-      this.field1145.method430().field3911 = 1.0F;
+      this.field1145.getValue().field3911 = 1.0F;
    }
 }

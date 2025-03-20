@@ -84,8 +84,8 @@ public class Speed extends Module {
       priority = 25
    )
    public void method1871(PlayerGrimV3BypassEvent event) {
-      if (this.field715.method461() == SpeedMode.Grim
-         || (this.field715.method461() == SpeedMode.Strafe || this.field715.method461() == SpeedMode.BHop)
+      if (this.field715.getValue() == SpeedMode.Grim
+         || (this.field715.getValue() == SpeedMode.Strafe || this.field715.getValue() == SpeedMode.BHop)
             && this.method1971()
             && (this.field743 != 0.0F || this.aa != 0.0F)) {
          if (!mc.player.isSneaking()) {
@@ -131,7 +131,7 @@ public class Speed extends Module {
 
    @EventHandler
    public void method2041(MovementEvent event) {
-      if (this.field715.method461() == SpeedMode.Grim && this.field716.getValue() > 0.0) {
+      if (this.field715.getValue() == SpeedMode.Grim && this.field716.getValue() > 0.0) {
          for (Entity var6 : mc.world.getEntities()) {
             if (var6 instanceof LivingEntity
                && var6 != mc.player
@@ -154,7 +154,7 @@ public class Speed extends Module {
    @EventHandler
    private void method1810(PostTickEvent var1) {
       if (MinecraftUtils.isClientActive()) {
-         if ((this.field715.method461() == SpeedMode.Strafe || this.field715.method461() == SpeedMode.BHop) && this.method1971()) {
+         if ((this.field715.getValue() == SpeedMode.Strafe || this.field715.getValue() == SpeedMode.BHop) && this.method1971()) {
             ((LivingEntityAccessor)mc.player).setJumpCooldown(0);
             this.field741.reset();
             this.ac = true;
@@ -168,15 +168,15 @@ public class Speed extends Module {
    public void method1872(TickInputPostEvent event) {
       if (!RotationHandler.field1546.method2114()) {
          if (!mc.player.isSneaking()) {
-            if (this.field715.method461() == SpeedMode.Grim
-               || (this.field715.method461() == SpeedMode.Strafe || this.field715.method461() == SpeedMode.BHop)
+            if (this.field715.getValue() == SpeedMode.Grim
+               || (this.field715.getValue() == SpeedMode.Strafe || this.field715.getValue() == SpeedMode.BHop)
                   && this.method1971()
                   && (event.field1954 != 0.0F || event.field1953 != 0.0F)) {
                this.field743 = event.field1954;
                this.aa = event.field1953;
                if (event.field1954 != 0.0F || event.field1953 != 0.0F) {
                   event.field1954 = 1.0F;
-                  if (!this.field725.method419() || this.field715.method461() != SpeedMode.Grim) {
+                  if (!this.field725.getValue() || this.field715.getValue() != SpeedMode.Grim) {
                      event.field1955 = true;
                   }
                }
@@ -1588,7 +1588,7 @@ public class Speed extends Module {
    }
 
    public void method1710(ExplosionS2CPacket velocity) {
-      if (this.field719.method419()) {
+      if (this.field719.getValue()) {
          double var5 = mc.player.getX() - mc.player.prevX;
          double var7 = mc.player.getZ() - mc.player.prevZ;
          if (velocity.getPlayerVelocityX() > 0.0F && var5 > 0.0 && velocity.getPlayerVelocityZ() > 0.0F && var7 > 0.0
@@ -1614,7 +1614,7 @@ public class Speed extends Module {
 
    @Override
    public String method1322() {
-      return this.field715.method461().name();
+      return this.field715.getValue().name();
    }
 
    private double method1389(double var1) {
@@ -1642,14 +1642,14 @@ public class Speed extends Module {
    public void method1633(MovementEvent event) {
       if (!Class5924.method2116()) {
          this.field731 = 0.0;
-         if (this.field715.method461() != SpeedMode.Grim) {
+         if (this.field715.getValue() != SpeedMode.Grim) {
             mc.player.setVelocity(0.0, mc.player.getVelocity().y, 0.0);
          }
 
          Class3076.method6025(this);
-      } else if (this.field722.method419()
-         && (this.field715.method461() != SpeedMode.Strafe || !this.field719.method419())
-         && this.field715.method461() != SpeedMode.Grim) {
+      } else if (this.field722.getValue()
+         && (this.field715.getValue() != SpeedMode.Strafe || !this.field719.getValue())
+         && this.field715.getValue() != SpeedMode.Grim) {
          Class3076.method6024(this, 69, 1.0875F);
       } else {
          Class3076.method6025(this);
@@ -1659,7 +1659,7 @@ public class Speed extends Module {
       double var7 = mc.player.getZ() - mc.player.prevZ;
       field742 = false;
       this.field732 = Math.sqrt(var5 * var5 + var7 * var7);
-      if (this.field715.method461() == SpeedMode.Grim && this.ab != -420.0F && !mc.player.isSneaking()) {
+      if (this.field715.getValue() == SpeedMode.Grim && this.ab != -420.0F && !mc.player.isSneaking()) {
          mc.player.setSprinting(true);
          event.method1074(new ActionWrapper(this.ab, mc.player.getPitch()));
       }
@@ -1694,50 +1694,50 @@ public class Speed extends Module {
    }
 
    private boolean lambda$new$11() {
-      return this.field715.method461() == SpeedMode.Vanilla;
+      return this.field715.getValue() == SpeedMode.Vanilla;
    }
 
    private boolean lambda$new$10() {
-      return this.field715.method461() == SpeedMode.Vanilla;
+      return this.field715.getValue() == SpeedMode.Vanilla;
    }
 
    private boolean lambda$new$9() {
-      return this.field715.method461() != SpeedMode.Grim;
+      return this.field715.getValue() != SpeedMode.Grim;
    }
 
    private boolean lambda$new$8() {
-      return this.field715.method461() == SpeedMode.Grim;
+      return this.field715.getValue() == SpeedMode.Grim;
    }
 
    private boolean lambda$new$7() {
-      return this.field715.method461() != SpeedMode.Grim;
+      return this.field715.getValue() != SpeedMode.Grim;
    }
 
    private boolean lambda$new$6() {
-      return this.field715.method461() != SpeedMode.Grim;
+      return this.field715.getValue() != SpeedMode.Grim;
    }
 
    private boolean lambda$new$5() {
-      return this.field715.method461() == SpeedMode.BHop;
+      return this.field715.getValue() == SpeedMode.BHop;
    }
 
    private boolean lambda$new$4() {
-      return this.field715.method461() == SpeedMode.BHop;
+      return this.field715.getValue() == SpeedMode.BHop;
    }
 
    private boolean lambda$new$3() {
-      return this.field715.method461() == SpeedMode.Strafe;
+      return this.field715.getValue() == SpeedMode.Strafe;
    }
 
    private boolean lambda$new$2() {
-      return this.field715.method461() == SpeedMode.Vanilla;
+      return this.field715.getValue() == SpeedMode.Vanilla;
    }
 
    private boolean lambda$new$1() {
-      return this.field715.method461() != SpeedMode.Grim;
+      return this.field715.getValue() != SpeedMode.Grim;
    }
 
    private boolean lambda$new$0() {
-      return this.field715.method461() == SpeedMode.Grim;
+      return this.field715.getValue() == SpeedMode.Grim;
    }
 }

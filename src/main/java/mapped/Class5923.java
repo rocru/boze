@@ -395,13 +395,13 @@ public class Class5923 implements IMinecraft {
 
       if (var10 instanceof EndCrystalEntityRenderer var26) {
          EndCrystalEntity var28 = (EndCrystalEntity)var100;
-         boolean var33 = Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.method419();
+         boolean var33 = Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.getValue();
          field31.push();
          float var36;
          if (var33) {
             float var41 = (float)var28.endCrystalAge + var99;
             float var46 = MathHelper.sin(var41 * 0.2F) / 2.0F + 0.5F;
-            var46 = (var46 * var46 + var46) * 0.4F * Chams.INSTANCE.ah.method423();
+            var46 = (var46 * var46 + var46) * 0.4F * Chams.INSTANCE.ah.getValue();
             var36 = var46 - 1.4F;
          } else {
             var36 = EndCrystalEntityRenderer.getYOffset(var28, var99);
@@ -410,7 +410,7 @@ public class Class5923 implements IMinecraft {
          float var42 = ((float)var28.endCrystalAge + var99) * 3.0F;
          field31.push();
          if (var33) {
-            field31.scale(2.0F * Chams.INSTANCE.ae.method423(), 2.0F * Chams.INSTANCE.af.method423(), 2.0F * Chams.INSTANCE.ae.method423());
+            field31.scale(2.0F * Chams.INSTANCE.ae.getValue(), 2.0F * Chams.INSTANCE.af.getValue(), 2.0F * Chams.INSTANCE.ae.getValue());
          } else {
             field31.scale(2.0F, 2.0F, 2.0F);
          }
@@ -421,7 +421,7 @@ public class Class5923 implements IMinecraft {
          }
 
          if (var33) {
-            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42 * Chams.INSTANCE.ag.method423()));
+            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42 * Chams.INSTANCE.ag.getValue()));
          } else {
             field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42));
          }
@@ -436,7 +436,7 @@ public class Class5923 implements IMinecraft {
             new Quaternionf().setAngleAxis((float) (Math.PI / 3), EndCrystalEntityRenderer.SINE_45_DEGREES, 0.0F, EndCrystalEntityRenderer.SINE_45_DEGREES)
          );
          if (var33) {
-            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42 * Chams.INSTANCE.ag.method423()));
+            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42 * Chams.INSTANCE.ag.getValue()));
          } else {
             field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42));
          }
@@ -447,7 +447,7 @@ public class Class5923 implements IMinecraft {
             new Quaternionf().setAngleAxis((float) (Math.PI / 3), EndCrystalEntityRenderer.SINE_45_DEGREES, 0.0F, EndCrystalEntityRenderer.SINE_45_DEGREES)
          );
          if (var33) {
-            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42 * Chams.INSTANCE.ag.method423()));
+            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42 * Chams.INSTANCE.ag.getValue()));
          } else {
             field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42));
          }

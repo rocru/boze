@@ -41,7 +41,7 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
       )}
    )
    private void noClipHook(CallbackInfo var1) {
-      if (!this.noClip && Flight.INSTANCE.isEnabled() && Flight.INSTANCE.field3279.method419()) {
+      if (!this.noClip && Flight.INSTANCE.isEnabled() && Flight.INSTANCE.field3279.getValue()) {
          this.noClip = true;
       }
    }

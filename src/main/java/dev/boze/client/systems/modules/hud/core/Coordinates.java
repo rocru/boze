@@ -33,35 +33,35 @@ public class Coordinates extends HUDModule {
 
    @Override
    public void method295(DrawContext context) {
-      String var5 = this.field2608.method419() ? "%.0f" : "%.1f";
+      String var5 = this.field2608.getValue() ? "%.0f" : "%.1f";
       Object var6 = mc.player;
       if (mc.player.getVehicle() != null) {
          var6 = mc.player.getVehicle();
       }
 
-      String var7 = String.format(var5, this.field2606.method419() && FreeCam.INSTANCE.isEnabled() ? FreeCam.INSTANCE.field3540 : var6.getX());
-      String var8 = String.format(var5, this.field2606.method419() && FreeCam.INSTANCE.isEnabled() ? FreeCam.INSTANCE.field3541 : var6.getY());
-      String var9 = String.format(var5, this.field2606.method419() && FreeCam.INSTANCE.isEnabled() ? FreeCam.INSTANCE.field3542 : var6.getZ());
+      String var7 = String.format(var5, this.field2606.getValue() && FreeCam.INSTANCE.isEnabled() ? FreeCam.INSTANCE.field3540 : var6.getX());
+      String var8 = String.format(var5, this.field2606.getValue() && FreeCam.INSTANCE.isEnabled() ? FreeCam.INSTANCE.field3541 : var6.getY());
+      String var9 = String.format(var5, this.field2606.getValue() && FreeCam.INSTANCE.isEnabled() ? FreeCam.INSTANCE.field3542 : var6.getZ());
       String var10 = " " + var7 + ", " + var8 + ", " + var9;
-      if (this.field2607.method419()) {
+      if (this.field2607.getValue()) {
          String var11 = !this.method1552() ? String.format(var5, var6.getX() / 8.0) : String.format(var5, var6.getX() * 8.0);
          String var12 = !this.method1552() ? String.format(var5, var6.getZ() / 8.0) : String.format(var5, var6.getZ() * 8.0);
          this.method298(
             "XYZ",
             var10,
             "[" + var11 + ", " + var12 + "]",
-            this.field2609.method419() ? this.field2610.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2609.method419() ? this.field2611.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2609.method419() ? this.field2612.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2609.method419() ? this.field2613.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2609.getValue() ? this.field2610.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2609.getValue() ? this.field2611.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2609.getValue() ? this.field2612.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2609.getValue() ? this.field2613.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       } else {
          this.method297(
             "XYZ",
             var10,
-            this.field2609.method419() ? this.field2610.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2609.method419() ? this.field2611.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2609.method419() ? this.field2613.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2609.getValue() ? this.field2610.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2609.getValue() ? this.field2611.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2609.getValue() ? this.field2613.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       }
    }

@@ -122,7 +122,7 @@ public class Chat extends Module {
 
    @EventHandler
    private void method1853(PrePacketSendEvent var1) {
-      if (var1.packet instanceof ChatMessageC2SPacket var5 && var5.chatMessage().startsWith(this.field773.method1322())) {
+      if (var1.packet instanceof ChatMessageC2SPacket var5 && var5.chatMessage().startsWith(this.field773.getValue())) {
          if (var5.chatMessage().length() > 1) {
             this.field774.add(var5.chatMessage().substring(1));
          }

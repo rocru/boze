@@ -133,8 +133,8 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
       )
    )
    private void onOnExplosion(ClientPlayerEntity var1, Vec3d var2) {
-      if (Velocity.INSTANCE.isEnabled() && Velocity.INSTANCE.field3369.method461().method2114()) {
-         if (Velocity.INSTANCE.field3366.method461() == AnticheatMode.Grim) {
+      if (Velocity.INSTANCE.isEnabled() && Velocity.INSTANCE.field3369.getValue().method2114()) {
+         if (Velocity.INSTANCE.field3366.getValue() == AnticheatMode.Grim) {
             Velocity.INSTANCE.field3378 = true;
          }
       } else {
@@ -198,7 +198,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
             }
 
             MinecraftClient.getInstance().inGameHud.getChatHud().addToMessageHistory(var1);
-         } else if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.field2942.method419()) {
+         } else if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.field2942.getValue()) {
             String[] var12 = var1.split(" ");
 
             for (String var16 : var12) {
@@ -241,12 +241,12 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
    private String getModifiedMessage(String var1) {
       if (ExtraChat.INSTANCE.isEnabled()
          && ExtraChat.INSTANCE.method1699()
-         && (!Chat.INSTANCE.isEnabled() || !var1.startsWith(Chat.INSTANCE.field773.method1322()))) {
-         if (ExtraChat.INSTANCE.field2930.method419()) {
-            var1 = var1 + ExtraChat.INSTANCE.field2931.method1322();
+         && (!Chat.INSTANCE.isEnabled() || !var1.startsWith(Chat.INSTANCE.field773.getValue()))) {
+         if (ExtraChat.INSTANCE.field2930.getValue()) {
+            var1 = var1 + ExtraChat.INSTANCE.field2931.getValue();
          }
 
-         if (ExtraChat.INSTANCE.field2932.method419()) {
+         if (ExtraChat.INSTANCE.field2932.getValue()) {
             var1 = "> " + var1;
          }
       }

@@ -52,7 +52,7 @@ public class FastSwim extends Module {
    )
    public void method1833(PlayerMoveEvent event) {
       if (!event.field1892) {
-         if (this.field3264.method419()) {
+         if (this.field3264.getValue()) {
             if (this.field3269 >= this.field3265.method434()) {
                this.field3270++;
                if (this.field3270 >= this.field3266.method434()) {

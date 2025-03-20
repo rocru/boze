@@ -95,7 +95,7 @@ public class DamageCalculator implements IMinecraft {
 
    private double method5667(LivingEntity var1, double var2, Explosion var4) {
       int var8 = 0;
-      if (this.field123.field1041.field211.method419() && this.field123.field1041.field205.method461() == AnticheatMode.Grim) {
+      if (this.field123.field1041.field211.getValue() && this.field123.field1041.field205.getValue() == AnticheatMode.Grim) {
          for (ItemStack var10 : var1.getArmorItems()) {
             if (!var10.getEnchantments().isEmpty()) {
                var8 += 4;

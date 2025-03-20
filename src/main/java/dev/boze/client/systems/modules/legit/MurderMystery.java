@@ -67,31 +67,31 @@ public class MurderMystery extends Module {
    }
 
    private boolean method1609(PlayerEntity var1) {
-      return this.field2810.method461() == MurderMysteryWeapon.Hypixel ? this.field2815.contains(var1) : var1.equals(this.field2814);
+      return this.field2810.getValue() == MurderMysteryWeapon.Hypixel ? this.field2815.contains(var1) : var1.equals(this.field2814);
    }
 
    private boolean method1610(ItemStack var1) {
       Item var5 = var1.getItem();
       if (var1.isEmpty()) {
          return false;
-      } else if (this.field2810.method461() == MurderMysteryWeapon.Hypixel) {
+      } else if (this.field2810.getValue() == MurderMysteryWeapon.Hypixel) {
          return !(var5 instanceof EmptyMapItem)
             && !(var5 instanceof FilledMapItem)
             && !(var5 instanceof ArmorStandItem)
             && !(var5 instanceof BedItem)
             && !(var5 instanceof SwordItem);
       } else {
-         return this.field2810.method461() == MurderMysteryWeapon.Sword ? var5 instanceof SwordItem : var5.equals(this.field2811.method447());
+         return this.field2810.getValue() == MurderMysteryWeapon.Sword ? var5 instanceof SwordItem : var5.equals(this.field2811.method447());
       }
    }
 
    private void lambda$onRotate$1(AbstractClientPlayerEntity var1) {
       if (var1.distanceTo(mc.player) <= (float)this.field2812.method434().intValue()) {
          if (!this.method1610(var1.getMainHandStack()) && !this.method1610(var1.getOffHandStack())) {
-            if (var1.equals(this.field2814) && this.field2810.method461() != MurderMysteryWeapon.Hypixel) {
+            if (var1.equals(this.field2814) && this.field2810.getValue() != MurderMysteryWeapon.Hypixel) {
                this.field2814 = null;
-            } else if (this.field2810.method461() == MurderMysteryWeapon.Hypixel
-               && this.field2813.method419()
+            } else if (this.field2810.getValue() == MurderMysteryWeapon.Hypixel
+               && this.field2813.getValue()
                && !var1.equals(mc.player)
                && this.method1609(mc.player)
                && var1.getMainHandStack().getItem() == Items.BOW
@@ -107,7 +107,7 @@ public class MurderMystery extends Module {
                ChatInstance.method742(this.getName(), "(highlight)%s(default) is the murderer", var1.getName().getString());
             }
 
-            if (this.field2810.method461() == MurderMysteryWeapon.Hypixel) {
+            if (this.field2810.getValue() == MurderMysteryWeapon.Hypixel) {
                this.field2815.add(var1);
             } else {
                this.field2814 = var1;
@@ -117,6 +117,6 @@ public class MurderMystery extends Module {
    }
 
    private boolean lambda$new$0() {
-      return this.field2810.method461() == MurderMysteryWeapon.Hypixel;
+      return this.field2810.getValue() == MurderMysteryWeapon.Hypixel;
    }
 }

@@ -97,7 +97,7 @@ public class EditableComponent extends BaseComponent implements IMinecraft {
    @Override
    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
       if (keyCode != 257 && (keyCode != 70 || (modifiers & 2) == 0)) {
-         if (!this.field388 && Gui.INSTANCE.field2359.method419() && keyCode != 256 && keyCode != 261) {
+         if (!this.field388 && Gui.INSTANCE.field2359.getValue() && keyCode != 256 && keyCode != 261) {
             if (this.field389) {
                this.field389 = false;
                if (Gui.INSTANCE.bind.matches(true, keyCode)) {
@@ -118,7 +118,7 @@ public class EditableComponent extends BaseComponent implements IMinecraft {
                }
             } else if (keyCode == 256) {
                this.field388 = false;
-               if (!Gui.INSTANCE.field2360.method419()) {
+               if (!Gui.INSTANCE.field2360.getValue()) {
                   return false;
                }
             } else if (keyCode == 261) {

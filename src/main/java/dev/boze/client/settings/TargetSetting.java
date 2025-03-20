@@ -20,7 +20,7 @@ public class TargetSetting implements IMinecraft, SettingsGroup {
    // $VF: Unable to simplify switch on enum
    // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
    public boolean method2055(Entity entity) {
-      if (!this.field1322.method419() && entity.isInvisibleTo(mc.player)) {
+      if (!this.field1322.getValue() && entity.isInvisibleTo(mc.player)) {
          return false;
       } else if (entity instanceof PlayerEntity) {
          if (entity == mc.player) {
@@ -28,12 +28,12 @@ public class TargetSetting implements IMinecraft, SettingsGroup {
          } else if (entity instanceof FakePlayerEntity) {
             return false;
          } else {
-            return Friends.method2055(entity) ? this.field1319.method419() : this.field1318.method419();
+            return Friends.method2055(entity) ? this.field1319.getValue() : this.field1318.getValue();
          }
       } else {
           return switch (al.field2094[entity.getType().getSpawnGroup().ordinal()]) {
-              case 1, 2, 3, 4 -> this.field1320.method419();
-              case 5 -> this.field1321.method419();
+              case 1, 2, 3, 4 -> this.field1320.getValue();
+              case 5 -> this.field1321.getValue();
               default -> false;
           };
       }

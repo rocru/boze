@@ -32,23 +32,23 @@ public class Ticks extends HUDModule {
    @Override
    public void method295(DrawContext context) {
       DecimalFormat var5 = new DecimalFormat("#.#");
-      if (this.field2656.method419()) {
+      if (this.field2656.getValue()) {
          this.method298(
             "TickRate",
             var5.format((double)TickRateTracker.getLastTickRate()),
             "tps",
-            this.field2657.method419() ? this.field2658.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2657.method419() ? this.field2659.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2657.method419() ? this.field2660.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2657.method419() ? this.field2661.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2657.getValue() ? this.field2658.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2657.getValue() ? this.field2659.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2657.getValue() ? this.field2660.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2657.getValue() ? this.field2661.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       } else {
          this.method297(
             var5.format((double)TickRateTracker.getLastTickRate()),
             "tps",
-            this.field2657.method419() ? this.field2659.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2657.method419() ? this.field2660.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2657.method419() ? this.field2661.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2657.getValue() ? this.field2659.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2657.getValue() ? this.field2660.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2657.getValue() ? this.field2661.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       }
    }

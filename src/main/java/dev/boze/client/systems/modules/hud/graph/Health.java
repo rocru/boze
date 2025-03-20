@@ -9,7 +9,7 @@ public class Health extends GraphHUDModule {
 
    public Health() {
       super("Health", "Graphs your health");
-      this.field2300.method421(true);
+      this.field2300.setValue(true);
    }
 
    @EventHandler

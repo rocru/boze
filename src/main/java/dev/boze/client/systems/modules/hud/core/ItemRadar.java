@@ -72,27 +72,27 @@ public class ItemRadar extends HUDModule {
       var4.add(
          new Class2893(
             var1.getStack().getName().getString() + " x" + var1.getStack().getCount(),
-            this.field2630.method419() ? this.field2631.method1362() : HUD.INSTANCE.field2383.method1362()
+            this.field2630.getValue() ? this.field2631.getValue() : HUD.INSTANCE.field2383.getValue()
          )
       );
-      var4.add(new Class2893("- [", this.field2630.method419() ? this.field2633.method1362() : HUD.INSTANCE.field2383.method1362()));
+      var4.add(new Class2893("- [", this.field2630.getValue() ? this.field2633.getValue() : HUD.INSTANCE.field2383.getValue()));
       var4.add(
          new Class2893(
-            String.format("%.1f", mc.player.distanceTo(var1)), this.field2630.method419() ? this.field2632.method1362() : HUD.INSTANCE.field2383.method1362()
+            String.format("%.1f", mc.player.distanceTo(var1)), this.field2630.getValue() ? this.field2632.getValue() : HUD.INSTANCE.field2383.getValue()
          )
       );
-      var4.add(new Class2893("]", this.field2630.method419() ? this.field2633.method1362() : HUD.INSTANCE.field2383.method1362()));
+      var4.add(new Class2893("]", this.field2630.getValue() ? this.field2633.getValue() : HUD.INSTANCE.field2383.getValue()));
       return var4;
    }
 
    private double method1558(List<Class2893> var1) {
       double var5 = -IFontRender.method499()
-         .measureTextHeight(" ", this.field2630.method419() ? this.field2634.method419() : HUD.INSTANCE.field2384.method419());
+         .measureTextHeight(" ", this.field2630.getValue() ? this.field2634.getValue() : HUD.INSTANCE.field2384.getValue());
 
       for (Class2893 var8 : var1) {
          var5 += IFontRender.method499()
-            .measureTextHeight(var8.field115, this.field2630.method419() ? this.field2634.method419() : HUD.INSTANCE.field2384.method419());
-         var5 += IFontRender.method499().measureTextHeight(" ", this.field2630.method419() ? this.field2634.method419() : HUD.INSTANCE.field2384.method419());
+            .measureTextHeight(var8.field115, this.field2630.getValue() ? this.field2634.getValue() : HUD.INSTANCE.field2384.getValue());
+         var5 += IFontRender.method499().measureTextHeight(" ", this.field2630.getValue() ? this.field2634.getValue() : HUD.INSTANCE.field2384.getValue());
       }
 
       return var5;
@@ -100,15 +100,15 @@ public class ItemRadar extends HUDModule {
 
    private void lambda$onRender$5(boolean var1, int[] var2, int[] var3, List var4) {
       double var8 = this.method1558(var4);
-      if (HUD.INSTANCE.field2394.method419()) {
+      if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE
             .field2397
             .method2252(
                this.method1391() + (var1 ? this.method313() - var8 - 4.0 : 0.0),
                this.method305() + (double)var2[0],
                var8 + 4.0,
-               IFontRender.method499().method502(this.field2630.method419() ? this.field2634.method419() : HUD.INSTANCE.field2384.method419())
-                  + this.field2630.method419() ? this.field2635.getValue() : HUD.INSTANCE.field2385.getValue(),
+               IFontRender.method499().method502(this.field2630.getValue() ? this.field2634.getValue() : HUD.INSTANCE.field2384.getValue())
+                  + this.field2630.getValue() ? this.field2635.getValue() : HUD.INSTANCE.field2385.getValue(),
                RGBAColor.field402
             );
       }
@@ -123,16 +123,16 @@ public class ItemRadar extends HUDModule {
                this.method1391() + var12,
                var10,
                var15.field116,
-               this.field2630.method419() ? this.field2634.method419() : HUD.INSTANCE.field2384.method419()
+               this.field2630.getValue() ? this.field2634.getValue() : HUD.INSTANCE.field2384.getValue()
             );
          var12 += IFontRender.method499()
-            .measureTextHeight(var15.field115 + " ", this.field2630.method419() ? this.field2634.method419() : HUD.INSTANCE.field2384.method419());
+            .measureTextHeight(var15.field115 + " ", this.field2630.getValue() ? this.field2634.getValue() : HUD.INSTANCE.field2384.getValue());
       }
 
       var2[0] = (int)(
          (double)var2[0]
-            + IFontRender.method499().method502(this.field2630.method419() ? this.field2634.method419() : HUD.INSTANCE.field2384.method419())
-            + this.field2630.method419() ? this.field2635.getValue() : HUD.INSTANCE.field2385.getValue()
+            + IFontRender.method499().method502(this.field2630.getValue() ? this.field2634.getValue() : HUD.INSTANCE.field2384.getValue())
+            + this.field2630.getValue() ? this.field2635.getValue() : HUD.INSTANCE.field2385.getValue()
       );
       var3[0]++;
    }

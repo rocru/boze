@@ -29,9 +29,9 @@ public class PlacementRenderer implements SettingsGroup {
 
    @EventHandler
    public void method2071(Render3DEvent event) {
-      if (this.field221.method419()) {
+      if (this.field221.getValue()) {
          for (Placement var6 : this.field225) {
-            PlaceRender.INSTANCE.method2015(event, var6, this.field222.method1362(), this.field223.method1362());
+            PlaceRender.INSTANCE.method2015(event, var6, this.field222.getValue(), this.field223.getValue());
          }
       }
    }
@@ -42,7 +42,7 @@ public class PlacementRenderer implements SettingsGroup {
    }
 
    public void method146(BlockHitResult result) {
-      if (this.field221.method419()) {
+      if (this.field221.getValue()) {
          this.field225.add(PlaceRender.INSTANCE.method2017(result.getBlockPos().offset(result.getSide())));
       }
    }

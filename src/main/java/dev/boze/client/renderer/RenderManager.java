@@ -83,7 +83,7 @@ public class RenderManager implements IMinecraft {
     }
 
     private boolean isClickGUIOpen() {
-        return mc.currentScreen instanceof ClickGUI && Gui.INSTANCE.field2351.method419();
+        return mc.currentScreen instanceof ClickGUI && Gui.INSTANCE.field2351.getValue();
     }
 
     public void resizeFramebuffers(int width, int height) {

@@ -21,17 +21,17 @@ public class Class2894 {
             var1,
             var3,
             this.field118,
-            TextRadar.INSTANCE.field634.method419() ? TextRadar.INSTANCE.field639.method419() : HUD.INSTANCE.field2384.method419()
+            TextRadar.INSTANCE.field634.getValue() ? TextRadar.INSTANCE.field639.getValue() : HUD.INSTANCE.field2384.getValue()
          );
    }
 
    double method5662() {
       double var4 = IFontRender.method499()
          .measureTextHeight(
-            this.field117, TextRadar.INSTANCE.field634.method419() ? TextRadar.INSTANCE.field639.method419() : HUD.INSTANCE.field2384.method419()
+            this.field117, TextRadar.INSTANCE.field634.getValue() ? TextRadar.INSTANCE.field639.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       return var4
          + IFontRender.method499()
-            .measureTextHeight(" ", TextRadar.INSTANCE.field634.method419() ? TextRadar.INSTANCE.field639.method419() : HUD.INSTANCE.field2384.method419());
+            .measureTextHeight(" ", TextRadar.INSTANCE.field634.getValue() ? TextRadar.INSTANCE.field639.getValue() : HUD.INSTANCE.field2384.getValue());
    }
 }

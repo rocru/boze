@@ -75,7 +75,7 @@ public class AntiSpam extends Module {
    }
 
    private boolean method1636(String var1) {
-      if (this.discord.method419()) {
+      if (this.discord.getValue()) {
          for (String var8 : discordLinks) {
             if (var1.contains(var8)) {
                return true;
@@ -83,7 +83,7 @@ public class AntiSpam extends Module {
          }
       }
 
-      if (this.accouncer.method419()) {
+      if (this.accouncer.getValue()) {
          for (String var15 : announcerLinks) {
             if (var1.contains(var15)) {
                return true;
@@ -91,7 +91,7 @@ public class AntiSpam extends Module {
          }
       }
 
-      if (this.hideUrls.method419()) {
+      if (this.hideUrls.getValue()) {
          for (String var16 : domainLinks) {
             if (var1.contains(var16)) {
                return true;

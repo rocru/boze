@@ -16,7 +16,7 @@ public class PowderSnowBlockMixin {
       cancellable = true
    )
    private static void onCanWalkOnPowderSnow(Entity var0, CallbackInfoReturnable<Boolean> var1) {
-      if (Jesus.INSTANCE.isEnabled() && Jesus.INSTANCE.field3291.method419()) {
+      if (Jesus.INSTANCE.isEnabled() && Jesus.INSTANCE.field3291.getValue()) {
          var1.setReturnValue(true);
       }
    }

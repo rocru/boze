@@ -49,7 +49,7 @@ public class TridentItemMixin {
       )
    )
    private boolean isInWaterUse(PlayerEntity var1) {
-      return TridentPlus.INSTANCE.isEnabled() && TridentPlus.INSTANCE.field3361.method419() || var1.isTouchingWaterOrRain();
+      return TridentPlus.INSTANCE.isEnabled() && TridentPlus.INSTANCE.field3361.getValue() || var1.isTouchingWaterOrRain();
    }
 
    @Redirect(
@@ -60,6 +60,6 @@ public class TridentItemMixin {
       )
    )
    private boolean isInWaterPostUse(PlayerEntity var1) {
-      return TridentPlus.INSTANCE.isEnabled() && TridentPlus.INSTANCE.field3361.method419() || var1.isTouchingWaterOrRain();
+      return TridentPlus.INSTANCE.isEnabled() && TridentPlus.INSTANCE.field3361.getValue() || var1.isTouchingWaterOrRain();
    }
 }

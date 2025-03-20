@@ -70,7 +70,7 @@ public class ClickFly extends Module {
    @Override
    public void onEnable() {
       this.field3191 = null;
-      if (this.field3188.method461() == ClickFlyMode.Once) {
+      if (this.field3188.getValue() == ClickFlyMode.Once) {
          this.field3192 = true;
       } else {
          this.field3192 = false;
@@ -83,10 +83,10 @@ public class ClickFly extends Module {
    @EventHandler
    public void method1802(Render3DEvent event) {
       if (this.field3194 != null) {
-         if (this.field3183.method419() && this.field3193 != null) {
-            event.field1950.method1273(new Box(this.field3193), this.field3184.method1362(), this.field3185.method1362(), ShapeMode.Full, 0);
+         if (this.field3183.getValue() && this.field3193 != null) {
+            event.field1950.method1273(new Box(this.field3193), this.field3184.getValue(), this.field3185.getValue(), ShapeMode.Full, 0);
          }
-      } else if (this.field3180.method419()) {
+      } else if (this.field3180.getValue()) {
          HitResult var5 = this.method1807();
          if (var5 != null && var5 instanceof BlockHitResult var6) {
             this.method1808(new Box(var6.getBlockPos()), var6.getSide(), event.field1950);
@@ -108,7 +108,7 @@ public class ClickFly extends Module {
          }
 
          if (this.field3191 == null) {
-            if (this.field3188.method461() == ClickFlyMode.Once) {
+            if (this.field3188.getValue() == ClickFlyMode.Once) {
                this.setEnabled(false);
             }
 
@@ -119,7 +119,7 @@ public class ClickFly extends Module {
          if (this.field3191.method2118()) {
             ChatInstance.method743(this.getName(), "Unable to find path");
             this.field3191 = null;
-            if (this.field3188.method461() == ClickFlyMode.Once) {
+            if (this.field3188.getValue() == ClickFlyMode.Once) {
                this.setEnabled(false);
             }
 
@@ -136,7 +136,7 @@ public class ClickFly extends Module {
          Vec3d var8 = this.field3194.method2094();
          if (var8 == null) {
             this.field3194 = null;
-            if (this.field3188.method461() == ClickFlyMode.Once) {
+            if (this.field3188.getValue() == ClickFlyMode.Once) {
                this.setEnabled(false);
             }
          } else {
@@ -151,7 +151,7 @@ public class ClickFly extends Module {
    public void method1804(PacketBundleEvent event) {
       if (event.packet instanceof PlayerPositionLookS2CPacket && this.field3194 != null) {
          this.field3194 = null;
-         if (this.field3188.method461() == ClickFlyMode.Once) {
+         if (this.field3188.getValue() == ClickFlyMode.Once) {
             this.setEnabled(false);
          }
       }
@@ -161,7 +161,7 @@ public class ClickFly extends Module {
    public void method1805(KeyEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
-            if (this.field3188.method461() == ClickFlyMode.Bind && this.field3189.method476().matches(true, event.key)) {
+            if (this.field3188.getValue() == ClickFlyMode.Bind && this.field3189.method476().matches(true, event.key)) {
                this.field3192 = true;
             }
          }
@@ -172,9 +172,9 @@ public class ClickFly extends Module {
    public void method1806(MouseButtonEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
-            if (this.field3188.method461() == ClickFlyMode.Bind && this.field3189.method476().matches(true, event.button)) {
+            if (this.field3188.getValue() == ClickFlyMode.Bind && this.field3189.method476().matches(true, event.button)) {
                this.field3192 = true;
-            } else if (this.field3188.method461() == ClickFlyMode.RightClick && event.button == 1) {
+            } else if (this.field3188.getValue() == ClickFlyMode.RightClick && event.button == 1) {
                try {
                   if (mc.player.getMainHandStack().getItem() instanceof BlockItem) {
                      return;
@@ -234,10 +234,10 @@ public class ClickFly extends Module {
          }
       }
 
-      var3.method1273(var1, this.field3181.method1362(), this.field3182.method1362(), ShapeMode.Full, 0);
+      var3.method1273(var1, this.field3181.getValue(), this.field3182.getValue(), ShapeMode.Full, 0);
    }
 
    private boolean lambda$new$0() {
-      return this.field3188.method461() == ClickFlyMode.Bind;
+      return this.field3188.getValue() == ClickFlyMode.Bind;
    }
 }

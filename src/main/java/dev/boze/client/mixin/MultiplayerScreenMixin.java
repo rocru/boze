@@ -27,7 +27,7 @@ public class MultiplayerScreenMixin extends Screen {
       at = {@At("TAIL")}
    )
    public void onInit(CallbackInfo ci) {
-      if (Options.INSTANCE.field986.method419()) {
+      if (Options.INSTANCE.field986.getValue()) {
          boolean var2 = FabricLoaderImpl.INSTANCE.isModLoaded("viafabricplus");
          this.addDrawableChild(new Builder(Text.literal("Accounts"), this::lambda$onInit$0).position(this.width - (var2 ? 212 : 106), 6).size(100, 20).build());
       }
@@ -38,7 +38,7 @@ public class MultiplayerScreenMixin extends Screen {
       at = {@At("TAIL")}
    )
    public void onRender(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
-      if (Options.INSTANCE.field986.method419()) {
+      if (Options.INSTANCE.field986.getValue()) {
          context.drawText(this.client.textRenderer, Text.translatable("Logged in as " + this.client.getSession().getUsername()), 6, 11, -1, true);
       }
    }

@@ -49,15 +49,15 @@ public class Sprint extends Module {
    private boolean field3348 = false;
 
    private boolean method1867() {
-      return Options.INSTANCE.method1971() || this.field3334.method461() == SprintMode.Ghost;
+      return Options.INSTANCE.method1971() || this.field3334.getValue() == SprintMode.Ghost;
    }
 
    private boolean method1868() {
-      return !this.method1867() && this.field3334.method461() == SprintMode.NCP;
+      return !this.method1867() && this.field3334.getValue() == SprintMode.NCP;
    }
 
    public boolean method1869() {
-      return !this.method1867() && this.field3334.method461() == SprintMode.Grim && this.isEnabled();
+      return !this.method1867() && this.field3334.getValue() == SprintMode.Grim && this.isEnabled();
    }
 
    public Sprint() {
@@ -145,7 +145,7 @@ public class Sprint extends Module {
             this.field3345++;
             this.field3346 = 0;
          } else {
-            if (this.field3337.method419()
+            if (this.field3337.getValue()
                && this.field3335.method434() == 0
                && !Speed.INSTANCE.isEnabled()
                && mc.player.getHungerManager().getFoodLevel() > 6
@@ -157,7 +157,7 @@ public class Sprint extends Module {
                Vec3d var5 = Class5924.method93(Class5924.method2091());
                event.vec3 = new Vec3d(var5.x, event.vec3.y, var5.z);
                event.field1892 = true;
-               if (this.field3338.method419()) {
+               if (this.field3338.getValue()) {
                   this.field3346++;
                   if (this.field3346 >= this.field3339.method434()) {
                      this.field3346 = 0;
@@ -200,7 +200,7 @@ public class Sprint extends Module {
             }
 
             if (!(event.field1941.forwardSpeed > 0.0F) && (mc.currentScreen == null || !this.field3348)) {
-               if (this.field3336.method419() && (event.field1941.forwardSpeed != 0.0F || event.field1941.sidewaysSpeed != 0.0F)) {
+               if (this.field3336.getValue() && (event.field1941.forwardSpeed != 0.0F || event.field1941.sidewaysSpeed != 0.0F)) {
                   event.field1941.setSprinting(true);
                }
             } else {
@@ -216,15 +216,15 @@ public class Sprint extends Module {
    }
 
    private boolean lambda$new$5() {
-      return this.field3337.method419() && this.method1868();
+      return this.field3337.getValue() && this.method1868();
    }
 
    private boolean lambda$new$4() {
-      return this.field3337.method419() && this.method1868();
+      return this.field3337.getValue() && this.method1868();
    }
 
    private boolean lambda$new$3() {
-      return this.field3337.method419() && this.method1868() && this.field3335.method434() == 0;
+      return this.field3337.getValue() && this.method1868() && this.field3335.method434() == 0;
    }
 
    private boolean lambda$new$2() {

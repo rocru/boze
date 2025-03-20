@@ -43,7 +43,7 @@ class TunnelRenderer {
 
             var7 += this.field3833 * 16;
             var9 += this.field3834 * 16;
-            if (this.field3837.field3818.method419()) {
+            if (this.field3837.field3818.getValue()) {
                renderer.method1268(
                   (double)var7,
                   (double)var8,
@@ -51,7 +51,7 @@ class TunnelRenderer {
                   (double)(var7 + 1),
                   (double)var8 + this.field3837.field3817.getValue(),
                   (double)(var9 + 1),
-                  this.field3837.field3815.method1362(),
+                  this.field3837.field3815.getValue(),
                   var10
                );
             } else {
@@ -62,8 +62,8 @@ class TunnelRenderer {
                   (double)(var7 + 1),
                   (double)var8 + this.field3837.field3817.getValue(),
                   (double)(var9 + 1),
-                  this.field3837.field3815.method1362(),
-                  this.field3837.field3816.method1362(),
+                  this.field3837.field3815.getValue(),
+                  this.field3837.field3816.getValue(),
                   ShapeMode.Full,
                   var10
                );

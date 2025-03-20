@@ -17,11 +17,11 @@ public class AntiHunger extends Module {
 
    @EventHandler
    public void method1634(MovementEvent event) {
-      if (this.sprint.method419()) {
+      if (this.sprint.getValue()) {
          event.isSprinting = false;
       }
 
-      if (mc.player.prevY <= mc.player.getY() && this.ground.method419()) {
+      if (mc.player.prevY <= mc.player.getY() && this.ground.getValue()) {
          event.isOnGround = false;
       }
    }

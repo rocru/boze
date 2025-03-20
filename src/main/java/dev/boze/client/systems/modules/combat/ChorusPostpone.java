@@ -72,7 +72,7 @@ public class ChorusPostpone extends Module {
 
    @EventHandler
    private void method1501(PreTickEvent var1) {
-      if (this.field2553 && this.itemSwap.method419() && this.field2552 != mc.player.getInventory().selectedSlot) {
+      if (this.field2553 && this.itemSwap.getValue() && this.field2552 != mc.player.getInventory().selectedSlot) {
          this.method1503();
       }
    }

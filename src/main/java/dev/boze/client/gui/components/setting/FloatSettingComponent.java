@@ -56,8 +56,8 @@ public class FloatSettingComponent extends ScaledSettingBaseComponent implements
          }
 
          DecimalFormat var12 = new DecimalFormat("#.###");
-         String var9 = var12.format(this.field302.method423());
-         if (this.field302.method423() >= 0.0F && var9.startsWith("-")) {
+         String var9 = var12.format(this.field302.getValue());
+         if (this.field302.getValue() >= 0.0F && var9.startsWith("-")) {
             var9 = var9.substring(1);
          }
 
@@ -97,7 +97,7 @@ public class FloatSettingComponent extends ScaledSettingBaseComponent implements
                this.field319 + this.field321 * 0.75 - scaleFactor,
                (this.field320 - 26.0 * scaleFactor)
                      * (double)MathHelper.clamp(
-                        (this.field302.method423() - this.field302.field930) / (this.field302.field931 - this.field302.field930), 0.0F, 1.0F
+                        (this.field302.getValue() - this.field302.field930) / (this.field302.field931 - this.field302.field930), 0.0F, 1.0F
                      )
                   + scaleFactor * 2.0,
                scaleFactor * 2.0,
@@ -128,7 +128,7 @@ public class FloatSettingComponent extends ScaledSettingBaseComponent implements
                double var11 = var9 / (this.field320 - 24.0 * scaleFactor - this.field303);
                var11 *= (double)(this.field302.field931 - this.field302.field930);
                var11 += (double)this.field302.field930;
-               this.field302.method425(NumberUtils.method2198((float)var11, this.field302.field932));
+               this.field302.setValue(NumberUtils.method2198((float)var11, this.field302.field932));
             } else if (isMouseWithinBounds(
                mouseX,
                mouseY,
@@ -137,7 +137,7 @@ public class FloatSettingComponent extends ScaledSettingBaseComponent implements
                IFontRender.method499().method501("-") + 2.0 * scaleFactor,
                IFontRender.method499().method1390() + 2.0 * scaleFactor
             )) {
-               this.field302.method425(MathHelper.clamp(this.field302.method423() - this.field302.field932, this.field302.field930, this.field302.field931));
+               this.field302.setValue(MathHelper.clamp(this.field302.getValue() - this.field302.field932, this.field302.field930, this.field302.field931));
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             } else if (isMouseWithinBounds(
                mouseX,
@@ -147,7 +147,7 @@ public class FloatSettingComponent extends ScaledSettingBaseComponent implements
                IFontRender.method499().method501("+") + 2.0 * scaleFactor,
                IFontRender.method499().method1390() + 2.0 * scaleFactor
             )) {
-               this.field302.method425(MathHelper.clamp(this.field302.method423() + this.field302.field932, this.field302.field930, this.field302.field931));
+               this.field302.setValue(MathHelper.clamp(this.field302.getValue() + this.field302.field932, this.field302.field930, this.field302.field931));
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             }
 
@@ -184,7 +184,7 @@ public class FloatSettingComponent extends ScaledSettingBaseComponent implements
          double var15 = var13 / (this.field320 - 24.0 * scaleFactor - this.field303);
          var15 *= (double)(this.field302.field931 - this.field302.field930);
          var15 += (double)this.field302.field930;
-         this.field302.method425(NumberUtils.method2198((float)var15, this.field302.field932));
+         this.field302.setValue(NumberUtils.method2198((float)var15, this.field302.field932));
          this.field273.reset();
          return true;
       } else {

@@ -175,17 +175,17 @@ class nd {
    }
 
    public int method1653() {
-      return this.field2883.preserve.method419() && this.field2882 <= 15 ? -1 : this.field2880;
+      return this.field2883.preserve.getValue() && this.field2882 <= 15 ? -1 : this.field2880;
    }
 
    public void method1654() {
       if (!this.field2883.method1647() && this.field2881 != Integer.MAX_VALUE) {
          ItemStack var4 = IMinecraft.mc.player.getInventory().getArmorStack(this.field2878);
-         if (AutoMend.INSTANCE.isEnabled() && AutoMend.INSTANCE.mendRemove.method419() && !var4.isEmpty() && var4.isDamageable() && !var4.isDamaged()) {
+         if (AutoMend.INSTANCE.isEnabled() && AutoMend.INSTANCE.mendRemove.getValue() && !var4.isEmpty() && var4.isDamageable() && !var4.isDamaged()) {
             this.field2883.method1649(this.field2878);
          } else if (this.field2880 > this.field2881) {
             this.field2883.method1648(this.field2879, this.field2878);
-         } else if (this.field2883.preserve.method419() && this.field2882 <= 15) {
+         } else if (this.field2883.preserve.getValue() && this.field2882 <= 15) {
             this.field2883.method1649(this.field2878);
          }
       }
@@ -202,7 +202,7 @@ class nd {
    }
 
    private int method1656(int var1) {
-      if (this.field2883.avoidBinding.method419() && this.field2883.field2871.containsKey(Enchantments.BINDING_CURSE)) {
+      if (this.field2883.avoidBinding.getValue() && this.field2883.field2871.containsKey(Enchantments.BINDING_CURSE)) {
          var1 -= 2;
       }
 
@@ -210,6 +210,6 @@ class nd {
    }
 
    private int method1657(int var1, ItemStack var2) {
-      return this.field2883.preserve.method419() && var2.isDamageable() && var2.getMaxDamage() - var2.getDamage() <= 15 ? -1 : var1;
+      return this.field2883.preserve.getValue() && var2.isDamageable() && var2.getMaxDamage() - var2.getDamage() <= 15 ? -1 : var1;
    }
 }

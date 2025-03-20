@@ -89,7 +89,7 @@ public class TunnelESP extends Module {
 
    @EventHandler
    private void method2071(Render3DEvent var1) {
-      if (this.field3818.method419()) {
+      if (this.field3818.getValue()) {
          if (this.field3827 == null) {
             this.field3827 = new Renderer3D(false, true);
          }
@@ -102,21 +102,21 @@ public class TunnelESP extends Module {
 
          while (var6.hasNext()) {
             TunnelRenderer var7 = (TunnelRenderer)var6.next();
-            var7.method2082(this.field3818.method419() ? this.field3827 : var1.field1950);
+            var7.method2082(this.field3818.getValue() ? this.field3827 : var1.field1950);
          }
       }
 
-      if (this.field3818.method419()) {
+      if (this.field3818.getValue()) {
          ChamsShaderRenderer.method1310(
             this::lambda$onRender3D$2,
             this.method2081(),
-            this.field3820.method419(),
+            this.field3820.getValue(),
             this.field3815,
             this.field3816,
             this.field3824.method434(),
-            this.field3825.method423(),
-            this.field3822.method423(),
-            this.field3823.method423(),
+            this.field3825.getValue(),
+            this.field3822.getValue(),
+            this.field3823.getValue(),
             this.field3821.method434(),
             this.field3828
          );
@@ -312,21 +312,21 @@ public class TunnelESP extends Module {
    }
 
    private ShaderMode method2081() {
-      if (this.field3819.method461() == TunnelShader.Image) {
-         if (!this.field3826.method1322().isEmpty() && (!this.field3826.method1322().equals(this.field3829) || this.field3828 == null)) {
-            File var4 = new File(ConfigManager.images, this.field3826.method1322() + ".png");
+      if (this.field3819.getValue() == TunnelShader.Image) {
+         if (!this.field3826.getValue().isEmpty() && (!this.field3826.getValue().equals(this.field3829) || this.field3828 == null)) {
+            File var4 = new File(ConfigManager.images, this.field3826.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.field3828 = ByteTexturePacker.method493(var5);
                if (this.field3828 != null) {
-                  this.field3829 = this.field3826.method1322();
+                  this.field3829 = this.field3826.getValue();
                } else {
                   this.field3829 = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field3826.method1341("");
+               this.field3826.setValue("");
                this.field3829 = "";
             }
          }
@@ -352,10 +352,10 @@ public class TunnelESP extends Module {
    }
 
    private boolean lambda$new$1() {
-      return this.field3819.method461() == TunnelShader.Image;
+      return this.field3819.getValue() == TunnelShader.Image;
    }
 
    private boolean lambda$new$0() {
-      return this.field3822.method423() > 0.0F;
+      return this.field3822.getValue() > 0.0F;
    }
 }

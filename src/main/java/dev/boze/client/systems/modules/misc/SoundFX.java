@@ -36,31 +36,31 @@ public class SoundFX extends Module {
    public void method1771(boolean state) {
       if (mc.player != null) {
          if (state) {
-            if (this.field3119.method1322().isEmpty()) {
+            if (this.field3119.getValue().isEmpty()) {
                return;
             }
 
-            this.method1775(new File(ConfigManager.sounds, this.field3119.method1322() + ".wav"));
+            this.method1775(new File(ConfigManager.sounds, this.field3119.getValue() + ".wav"));
          } else {
-            if (this.field3120.method1322().isEmpty()) {
+            if (this.field3120.getValue().isEmpty()) {
                return;
             }
 
-            this.method1775(new File(ConfigManager.sounds, this.field3120.method1322() + ".wav"));
+            this.method1775(new File(ConfigManager.sounds, this.field3120.getValue() + ".wav"));
          }
       }
    }
 
    public void method1772(float health, LivingEntity entity) {
-      if (!this.field3117.method1322().isEmpty() && mc.world != null && health <= 0.0F && entity != null && TargetTracker.method2055(entity)) {
-         this.method1775(new File(ConfigManager.sounds, this.field3117.method1322() + ".wav"));
+      if (!this.field3117.getValue().isEmpty() && mc.world != null && health <= 0.0F && entity != null && TargetTracker.method2055(entity)) {
+         this.method1775(new File(ConfigManager.sounds, this.field3117.getValue() + ".wav"));
       }
    }
 
    public void method1773(ItemStack stack, int remainingUseTicks) {
-      if (!this.field3118.method1322().isEmpty()) {
+      if (!this.field3118.getValue().isEmpty()) {
          if (!((double)BowItem.getPullProgress(Items.BOW.getMaxUseTime(stack, mc.player) - remainingUseTicks) < 0.1)) {
-            this.method1775(new File(ConfigManager.sounds, this.field3118.method1322() + ".wav"));
+            this.method1775(new File(ConfigManager.sounds, this.field3118.getValue() + ".wav"));
          }
       }
    }
@@ -80,7 +80,7 @@ public class SoundFX extends Module {
             Clip var5 = AudioSystem.getClip();
             var5.open(var4);
             FloatControl var6 = (FloatControl)var5.getControl(Type.MASTER_GAIN);
-            var6.setValue(-50.0F + this.field3116.method423() * 10.0F);
+            var6.setValue(-50.0F + this.field3116.getValue() * 10.0F);
             var5.start();
          } catch (Exception var7) {
          }
@@ -88,10 +88,10 @@ public class SoundFX extends Module {
    }
 
    private static boolean lambda$new$1() {
-      return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field847.method419();
+      return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field847.getValue();
    }
 
    private static boolean lambda$new$0() {
-      return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field846.method419();
+      return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field846.getValue();
    }
 }

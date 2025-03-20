@@ -38,15 +38,18 @@ public class EnumSetting<T extends Enum> extends Setting<T> {
       this.field973 = (T)value;
    }
 
-   public T method461() {
+   @Override
+   public T getValue() {
       return this.field972;
    }
 
-   public T method462() {
+   @Override
+   public T resetValue() {
       return this.field972 = this.field973;
    }
 
-   public T method463(T newVal) {
+   @Override
+   public T setValue(T newVal) {
       this.field972 = (T)newVal;
       if (this.callback != null) {
          this.callback.accept(this.field972);
@@ -94,7 +97,8 @@ public class EnumSetting<T extends Enum> extends Setting<T> {
       return tag;
    }
 
-   public T method466(NbtCompound tag) {
+   @Override
+   public T load(NbtCompound tag) {
       if (tag.contains("Value")) {
          this.method1800(tag.getString("Value"));
       }
@@ -104,34 +108,34 @@ public class EnumSetting<T extends Enum> extends Setting<T> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method466(nbtCompound);
-   }
+   //@Override
+   //public Object load(NbtCompound nbtCompound) {
+   //   return this.method466(nbtCompound);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method463((T)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+   //   return this.method463((T)object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method462();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method462();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method461();
-   }
+   //@//Override
+   //public Object getValue() {
+   //   return this.method461();
+   //}
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
-      this.method463((T)var1.getArgument("value", Enum.class));
+      this.setValue((T)var1.getArgument("value", Enum.class));
       return 1;
    }
 }

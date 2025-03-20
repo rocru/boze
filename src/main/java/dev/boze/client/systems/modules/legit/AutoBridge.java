@@ -38,7 +38,7 @@ public class AutoBridge extends Module {
 
    @Override
    public void onDisable() {
-      if (MinecraftUtils.isClientActive() && this.field2726.method419()) {
+      if (MinecraftUtils.isClientActive() && this.field2726.getValue()) {
          mc.options.sneakKey.setPressed(false);
       }
    }
@@ -46,14 +46,14 @@ public class AutoBridge extends Module {
    @EventHandler
    public void method1584(RotationEvent event) {
       if (!Options.method477(false) && !event.method554(RotationMode.Vanilla)) {
-         if (this.field2726.method419()) {
+         if (this.field2726.getValue()) {
             Vec3d var5 = mc.player.getPos();
             Vec3d var6 = new Vec3d(mc.player.getX() - mc.player.prevX, mc.player.getY() - mc.player.prevY, mc.player.getZ() - mc.player.prevZ);
             var5 = var5.add(var6.multiply((double)this.field2727.method434().intValue()));
             mc.options.sneakKey.setPressed(mc.player.isOnGround() && mc.world.getBlockState(BlockPos.ofFloored(var5).down()).isAir());
          }
 
-         if (this.field2728.method419()
+         if (this.field2728.getValue()
             && mc.player.getMainHandStack().getItem() instanceof BlockItem
             && this.field2730.hasElapsed(this.field2729.method1295() * 50.0)
             && mc.crosshairTarget != null

@@ -17,8 +17,8 @@ public class Media extends Module {
    }
 
    public static String method1341(String s) {
-      return INSTANCE.isEnabled() && INSTANCE.field2401.method419() && INSTANCE.field2403.method1282().containsKey(s.toLowerCase(Locale.ROOT))
-         ? (String)INSTANCE.field2403.method1282().get(s.toLowerCase(Locale.ROOT))
+      return INSTANCE.isEnabled() && INSTANCE.field2401.getValue() && INSTANCE.field2403.getValue().containsKey(s.toLowerCase(Locale.ROOT))
+         ? (String)INSTANCE.field2403.getValue().get(s.toLowerCase(Locale.ROOT))
          : s;
    }
 }

@@ -34,7 +34,7 @@ public abstract class BoatEntityMixin extends Entity {
       if (!this.ignore) {
          if (AutoWalk.INSTANCE.isEnabled()) {
             this.ignore = true;
-            this.setInputs(var1, var2, var3 || !AutoWalk.INSTANCE.field3147.method419(), var4 || AutoWalk.INSTANCE.field3147.method419());
+            this.setInputs(var1, var2, var3 || !AutoWalk.INSTANCE.field3147.getValue(), var4 || AutoWalk.INSTANCE.field3147.getValue());
             var5.cancel();
             this.ignore = false;
          }

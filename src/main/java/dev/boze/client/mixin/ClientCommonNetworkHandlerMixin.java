@@ -17,7 +17,7 @@ public class ClientCommonNetworkHandlerMixin {
       cancellable = true
    )
    public void onSendPacket(Packet<?> packet, CallbackInfo ci) {
-      if (packet instanceof PlayerMoveC2SPacket && FastUse.field2947 && FastUse.INSTANCE.isEnabled() && FastUse.INSTANCE.field2948.method419()) {
+      if (packet instanceof PlayerMoveC2SPacket && FastUse.field2947 && FastUse.INSTANCE.isEnabled() && FastUse.INSTANCE.field2948.getValue()) {
          ci.cancel();
       }
    }

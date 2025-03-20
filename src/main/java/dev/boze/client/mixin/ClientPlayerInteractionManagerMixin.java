@@ -120,7 +120,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
    private void onStoppedUsingItemInject(PlayerEntity var1, CallbackInfo var2) {
       if (var1.equals(MinecraftClient.getInstance().player)
          && FastUse.INSTANCE.isEnabled()
-         && FastUse.INSTANCE.field2957.method419()
+         && FastUse.INSTANCE.field2957.getValue()
          && FoodUtil.isFood(var1.getStackInHand(var1.getActiveHand()))) {
          this.syncSelectedSlot();
          var1.stopUsingItem();
@@ -151,7 +151,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
       )
    )
    private boolean onBreakBlockIsAir(BlockState var1) {
-      return MiningTweaks.INSTANCE.isEnabled() && MiningTweaks.INSTANCE.noDesync.method419() ? true : var1.isAir();
+      return MiningTweaks.INSTANCE.isEnabled() && MiningTweaks.INSTANCE.noDesync.getValue() ? true : var1.isAir();
    }
 
    @Inject(
@@ -187,8 +187,8 @@ public abstract class ClientPlayerInteractionManagerMixin {
       if (NoMissDelay.INSTANCE.isEnabled()
          && NoMissDelay.INSTANCE.method1611()
          && AutoClicker.INSTANCE.isEnabled()
-         && AutoClicker.INSTANCE.field2732.method419()
-         && AutoClicker.INSTANCE.field2734.method419()
+         && AutoClicker.INSTANCE.field2732.getValue()
+         && AutoClicker.INSTANCE.field2734.getValue()
          && this.client.options.attackKey.isPressed()) {
          var1.setReturnValue(false);
       }

@@ -45,16 +45,16 @@ public class PlayerEntityRendererMixin {
       cancellable = true
    )
    private static void onGetArmPose(AbstractClientPlayerEntity var0, Hand var1, CallbackInfoReturnable<ArmPose> var2) {
-      if (HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3572.method419()) {
+      if (HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3572.getValue()) {
          ItemStack var5 = var0.getStackInHand(var1);
          ItemStack var6 = var0.getStackInHand(var1.equals(Hand.MAIN_HAND) ? Hand.OFF_HAND : Hand.MAIN_HAND);
-         if (HandTweaks.INSTANCE.field3573.method461() == HandTweaksHideShield.Always || !(var5.getItem() instanceof ShieldItem) || HandTweaks.method1961(var0)
+         if (HandTweaks.INSTANCE.field3573.getValue() == HandTweaksHideShield.Always || !(var5.getItem() instanceof ShieldItem) || HandTweaks.method1961(var0)
             )
           {
             if (var6.getItem() instanceof ShieldItem && HandTweaks.method1960(var0)) {
                var2.setReturnValue(ArmPose.BLOCK);
             } else if (var5.getItem() instanceof ShieldItem
-               && HandTweaks.INSTANCE.field3573.method461() != HandTweaksHideShield.Off
+               && HandTweaks.INSTANCE.field3573.getValue() != HandTweaksHideShield.Off
                && (var2.getReturnValue() == ArmPose.ITEM || var2.getReturnValue() == ArmPose.BLOCK)) {
                var2.setReturnValue(ArmPose.EMPTY);
             }

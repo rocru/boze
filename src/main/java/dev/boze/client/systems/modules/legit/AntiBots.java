@@ -31,12 +31,12 @@ public class AntiBots extends Module {
    public static boolean method1617(PlayerEntity player) {
       if (!INSTANCE.isEnabled()) {
          return false;
-      } else if (INSTANCE.field996.method419() && player.age < INSTANCE.field997.method434()) {
+      } else if (INSTANCE.field996.getValue() && player.age < INSTANCE.field997.method434()) {
          return true;
-      } else if (INSTANCE.field998.method419() && player instanceof OtherClientPlayerEntity var4) {
+      } else if (INSTANCE.field998.getValue() && player instanceof OtherClientPlayerEntity var4) {
          return !((IOtherClientPlayerEntity)var4).boze$hasMoved();
-      } else if (INSTANCE.field999.method461() != AntiBotTabList.On) {
-         return INSTANCE.field999.method461() == AntiBotTabList.ZeroPing ? Class5926.method100(player) == 0 : false;
+      } else if (INSTANCE.field999.getValue() != AntiBotTabList.On) {
+         return INSTANCE.field999.getValue() == AntiBotTabList.ZeroPing ? Class5926.method100(player) == 0 : false;
       } else {
          return player instanceof OtherClientPlayerEntity
             && (FakePlayer.INSTANCE.fakePlayer == null || player.getId() != FakePlayer.INSTANCE.fakePlayer.getId())

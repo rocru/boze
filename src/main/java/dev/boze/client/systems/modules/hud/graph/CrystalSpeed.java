@@ -14,7 +14,7 @@ public class CrystalSpeed extends GraphHUDModule {
 
    public CrystalSpeed() {
       super("CrystalSpeed", "Graphs your crystal place speed");
-      this.field2300.method421(true);
+      this.field2300.setValue(true);
    }
 
    @EventHandler
@@ -26,7 +26,7 @@ public class CrystalSpeed extends GraphHUDModule {
 
    @Override
    public void method295(DrawContext context) {
-      if (!this.field2670.method419() || AutoCrystal.INSTANCE.isEnabled() || mc.currentScreen instanceof ClickGUI && ClickGUI.field1335.field1336) {
+      if (!this.field2670.getValue() || AutoCrystal.INSTANCE.isEnabled() || mc.currentScreen instanceof ClickGUI && ClickGUI.field1335.field1336) {
          super.method295(context);
       }
    }

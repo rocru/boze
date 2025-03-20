@@ -31,8 +31,8 @@ public class Lag extends TextHUDModule {
          String var8 = "Server not responding for " + var7 + " ms";
          this.method296(
             var8,
-            this.field2581.method419() ? this.field2582.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2581.method419() ? this.field2583.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2581.getValue() ? this.field2582.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2581.getValue() ? this.field2583.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       }
    }

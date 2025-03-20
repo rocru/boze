@@ -49,13 +49,13 @@ public class Notifications extends Module {
    @EventHandler
    private void method382(EntityAddedEvent var1) {
       if (mc.player != null) {
-         if (!this.field849.method419() || mc.player.age >= 100) {
+         if (!this.field849.getValue() || mc.player.age >= 100) {
             if (var1.field1913 instanceof PlayerEntity
                && !(var1.field1913 instanceof FakePlayerEntity)
                && !(var1.field1913 instanceof FakeClientPlayerEntity)
                && !var1.field1913.getUuid().equals(mc.player.getUuid())
-               && this.field846.method419()) {
-               if (!this.field848.method419() || !Friends.method346(var1.field1913.getNameForScoreboard())) {
+               && this.field846.getValue()) {
+               if (!this.field848.getValue() || !Friends.method346(var1.field1913.getNameForScoreboard())) {
                   NotificationManager.method1151(
                      new Notification(
                         null,
@@ -66,8 +66,8 @@ public class Notifications extends Module {
                   );
                }
 
-               if (SoundFX.INSTANCE.isEnabled() && !SoundFX.INSTANCE.field3121.method1322().isEmpty()) {
-                  SoundFX.INSTANCE.method1775(new File(ConfigManager.sounds, SoundFX.INSTANCE.field3121.method1322() + ".wav"));
+               if (SoundFX.INSTANCE.isEnabled() && !SoundFX.INSTANCE.field3121.getValue().isEmpty()) {
+                  SoundFX.INSTANCE.method1775(new File(ConfigManager.sounds, SoundFX.INSTANCE.field3121.getValue() + ".wav"));
                }
             }
          }
@@ -77,13 +77,13 @@ public class Notifications extends Module {
    @EventHandler
    private void method383(EntityRemovedEvent var1) {
       if (mc.player != null) {
-         if (!this.field849.method419() || mc.player.age >= 100) {
+         if (!this.field849.getValue() || mc.player.age >= 100) {
             if (var1.field1915 instanceof PlayerEntity
                && !(var1.field1915 instanceof FakePlayerEntity)
                && !(var1.field1915 instanceof FakeClientPlayerEntity)
                && !var1.field1915.getUuid().equals(mc.player.getUuid())
-               && this.field847.method419()
-               && (!this.field848.method419() || !Friends.method346(var1.field1915.getNameForScoreboard()))) {
+               && this.field847.getValue()
+               && (!this.field848.getValue() || !Friends.method346(var1.field1915.getNameForScoreboard()))) {
                NotificationManager.method1151(
                   new Notification(
                      null,
@@ -92,8 +92,8 @@ public class Notifications extends Module {
                      NotificationPriority.Normal
                   )
                );
-               if (SoundFX.INSTANCE.isEnabled() && !SoundFX.INSTANCE.field3122.method1322().isEmpty()) {
-                  SoundFX.INSTANCE.method1775(new File(ConfigManager.sounds, SoundFX.INSTANCE.field3122.method1322() + ".wav"));
+               if (SoundFX.INSTANCE.isEnabled() && !SoundFX.INSTANCE.field3122.getValue().isEmpty()) {
+                  SoundFX.INSTANCE.method1775(new File(ConfigManager.sounds, SoundFX.INSTANCE.field3122.getValue() + ".wav"));
                }
             }
          }
@@ -102,7 +102,7 @@ public class Notifications extends Module {
 
    @EventHandler
    public void method384(Class1204 event) {
-      if (this.field850.method419() && event.field65 != mc.player) {
+      if (this.field850.getValue() && event.field65 != mc.player) {
          String var5 = "th";
          if (event.field66 != 3 && (event.field66 <= 22 || !Integer.toString(event.field66).endsWith("3"))) {
             if (event.field66 != 2 && (event.field66 <= 21 || !Integer.toString(event.field66).endsWith("2"))) {
@@ -127,6 +127,6 @@ public class Notifications extends Module {
    }
 
    private boolean lambda$new$0() {
-      return this.field837.method461() == NotificationType.Chat;
+      return this.field837.getValue() == NotificationType.Chat;
    }
 }

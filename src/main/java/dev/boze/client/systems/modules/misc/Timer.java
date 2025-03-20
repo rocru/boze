@@ -37,19 +37,19 @@ public class Timer extends Module {
 
    @EventHandler
    public void method1831(PrePlayerTickEvent event) {
-      float var5 = this.field1029.method423();
-      if (this.field1036.method419() && mc.interactionManager.isBreakingBlock()) {
+      float var5 = this.field1029.getValue();
+      if (this.field1036.getValue() && mc.interactionManager.isBreakingBlock()) {
          Class3076.method6025(this);
-      } else if (!this.field1035.method419()
+      } else if (!this.field1035.getValue()
          || (!mc.player.isUsingItem() || !FoodUtil.isFood(mc.player.getActiveItem()))
             && (!mc.options.useKey.isPressed() || !FoodUtil.isFood(mc.player.getInventory().getMainHandStack()))) {
-         if (this.field1030.method419()) {
+         if (this.field1030.getValue()) {
             if (this.field1037 > this.field1031.method434() + this.field1032.method434()) {
                this.field1037 = 0;
             }
 
             if (this.field1037 > this.field1031.method434()) {
-               var5 = this.field1033.method423();
+               var5 = this.field1033.getValue();
             }
          }
 

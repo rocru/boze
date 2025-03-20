@@ -90,11 +90,11 @@ public class AutoArmor extends Module {
    private int field2877 = 0;
 
    private AutoArmorMode method1637() {
-      return Options.INSTANCE.method1971() ? AutoArmorMode.Ghost : this.mode.method461();
+      return Options.INSTANCE.method1971() ? AutoArmorMode.Ghost : this.mode.getValue();
    }
 
    private AutoArmorElytra method1638() {
-      return this.elytra.method461();
+      return this.elytra.getValue();
    }
 
    public AutoArmor() {
@@ -127,7 +127,7 @@ public class AutoArmor extends Module {
          && this.swap.method476().matches(true, var1.key)
          && var1.action == KeyAction.Press
          && mc.currentScreen == null) {
-         this.bindState.method421(!this.bindState.method419());
+         this.bindState.setValue(!this.bindState.getValue());
       }
    }
 
@@ -137,7 +137,7 @@ public class AutoArmor extends Module {
          && this.swap.method476().matches(false, var1.button)
          && var1.action == KeyAction.Press
          && mc.currentScreen == null) {
-         this.bindState.method421(!this.bindState.method419());
+         this.bindState.setValue(!this.bindState.getValue());
       }
    }
 
@@ -146,7 +146,7 @@ public class AutoArmor extends Module {
       if (MinecraftUtils.isClientActive() && this.method1637() != AutoArmorMode.Anarchy) {
          if (!event.method1022()) {
             if (!(mc.currentScreen instanceof DownloadingTerrainScreen)) {
-               if ((!(mc.currentScreen instanceof AbstractInventoryScreen) || !(mc.currentScreen instanceof HandledScreen)) && this.awaitInventory.method419()) {
+               if ((!(mc.currentScreen instanceof AbstractInventoryScreen) || !(mc.currentScreen instanceof HandledScreen)) && this.awaitInventory.getValue()) {
                   this.timer.reset();
                   this.field2867 = true;
                   this.field2868 = null;
@@ -160,7 +160,7 @@ public class AutoArmor extends Module {
 
                      Slot var6 = null;
                      if (this.timer
-                        .hasElapsed(this.field2867 && !this.awaitInventory.method419() ? this.initialDelay.getValue() * 50.0 : (double)this.field2869)) {
+                        .hasElapsed(this.field2867 && !this.awaitInventory.getValue() ? this.initialDelay.getValue() * 50.0 : (double)this.field2869)) {
                         this.field2867 = false;
                         this.timer.reset();
 
@@ -173,7 +173,7 @@ public class AutoArmor extends Module {
                            if (!var15.isEmpty()
                               && !(var15.getItem() instanceof AnimalArmorItem)
                               && (var15.getItem() instanceof ArmorItem || var15.getItem() instanceof ElytraItem && ElytraItem.isUsable(var15))
-                              && (!this.preserve.method419() || !var15.isDamageable() || var15.getMaxDamage() - var15.getDamage() > 15)) {
+                              && (!this.preserve.getValue() || !var15.isDamageable() || var15.getMaxDamage() - var15.getDamage() > 15)) {
                               ItemEnchantmentUtils.populateEnchantments(var15, this.field2871);
                               if (!this.method1643()) {
                                  switch (this.method1644(var15)) {
@@ -248,7 +248,7 @@ public class AutoArmor extends Module {
                if (!var13.isEmpty()
                   && !(var13.getItem() instanceof AnimalArmorItem)
                   && (var13.getItem() instanceof ArmorItem || var13.getItem() instanceof ElytraItem && ElytraItem.isUsable(var13))
-                  && (!this.preserve.method419() || !var13.isDamageable() || var13.getMaxDamage() - var13.getDamage() > 15)) {
+                  && (!this.preserve.getValue() || !var13.isDamageable() || var13.getMaxDamage() - var13.getDamage() > 15)) {
                   ItemEnchantmentUtils.populateEnchantments(var13, this.field2871);
                   if (!this.method1643()) {
                      switch (this.method1644(var13)) {
@@ -275,7 +275,7 @@ public class AutoArmor extends Module {
                   if (!var17.isEmpty()
                      && !(var17.getItem() instanceof AnimalArmorItem)
                      && (var17.getItem() instanceof ArmorItem || var17.getItem() instanceof ElytraItem && ElytraItem.isUsable(var17))
-                     && (!this.preserve.method419() || !var17.isDamageable() || var17.getMaxDamage() - var17.getDamage() > 15)) {
+                     && (!this.preserve.getValue() || !var17.isDamageable() || var17.getMaxDamage() - var17.getDamage() > 15)) {
                      ItemEnchantmentUtils.populateEnchantments(var17, this.field2871);
                      if (!this.method1643()) {
                         switch (this.method1644(var17)) {
@@ -310,7 +310,7 @@ public class AutoArmor extends Module {
    }
 
    private boolean method1643() {
-      return this.avoidBinding.method419() && this.field2871.containsKey(Enchantments.BINDING_CURSE);
+      return this.avoidBinding.getValue() && this.field2871.containsKey(Enchantments.BINDING_CURSE);
    }
 
    private int method1644(ItemStack var1) {
@@ -502,10 +502,10 @@ public class AutoArmor extends Module {
 
    private RegistryKey<Enchantment> method1646(ItemStack var1) {
       return switch (this.method1644(var1)) {
-         case 0 -> this.preferFeet.method461().field1809;
-         case 1 -> this.preferLegs.method461().field1809;
-         case 2 -> this.preferChest.method461().field1809;
-         case 3 -> this.preferHead.method461().field1809;
+         case 0 -> this.preferFeet.getValue().field1809;
+         case 1 -> this.preferLegs.getValue().field1809;
+         case 2 -> this.preferChest.getValue().field1809;
+         case 3 -> this.preferHead.getValue().field1809;
          default -> ArmorEnchantMode.Prot.field1809;
       };
    }
@@ -522,7 +522,7 @@ public class AutoArmor extends Module {
       }
 
       this.field2877 = this.interval.method434();
-      if (AntiCheat.INSTANCE.field2322.method419() && !InventoryUtil.isInventoryOpen()) {
+      if (AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
          mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
       }
    }
@@ -562,11 +562,11 @@ public class AutoArmor extends Module {
    }
 
    private boolean lambda$new$3() {
-      return this.elytra.method461() == AutoArmorElytra.Bind;
+      return this.elytra.getValue() == AutoArmorElytra.Bind;
    }
 
    private boolean lambda$new$2() {
-      return this.elytra.method461() == AutoArmorElytra.ElytraFly;
+      return this.elytra.getValue() == AutoArmorElytra.ElytraFly;
    }
 
    private static boolean lambda$new$1() {

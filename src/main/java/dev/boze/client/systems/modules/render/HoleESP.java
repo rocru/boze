@@ -105,7 +105,7 @@ public class HoleESP extends Module {
 
    @EventHandler
    private void method1831(PrePlayerTickEvent var1) {
-      if (this.field851.method461() == HoleESPOptimization.Thread) {
+      if (this.field851.getValue() == HoleESPOptimization.Thread) {
          new Thread(new HoleESPRunnable(this)).start();
       } else {
          this.method1904();
@@ -117,9 +117,9 @@ public class HoleESP extends Module {
       this.ay = true;
       this.aB = 0;
       if (this.ap == null) {
-         this.ap = new Renderer3D(false, !this.field860.method419());
-      } else if (this.ap.field2174 == this.field860.method419()) {
-         this.ap = new Renderer3D(false, !this.field860.method419());
+         this.ap = new Renderer3D(false, !this.field860.getValue());
+      } else if (this.ap.field2174 == this.field860.getValue()) {
+         this.ap = new Renderer3D(false, !this.field860.getValue());
       }
 
       this.ap.method1217();
@@ -134,13 +134,13 @@ public class HoleESP extends Module {
                (double)var6.getY(),
                (double)var6.getZ(),
                (double)(var6.getX() + 1),
-               (double)var6.getY() + (double)this.field878.method423().floatValue() * this.method388(var6),
+               (double)var6.getY() + (double)this.field878.getValue().floatValue() * this.method388(var6),
                (double)(var6.getZ() + 1)
             ),
-            this.field879.method1347(),
-            this.aa.method1347(),
-            this.ab.method1347(),
-            this.ac.method1347()
+            this.field879.getValue(),
+            this.aa.getValue(),
+            this.ab.getValue(),
+            this.ac.getValue()
          );
       }
 
@@ -152,13 +152,13 @@ public class HoleESP extends Module {
                (double)var11.getY(),
                (double)var11.getZ(),
                (double)(var11.getX() + 1),
-               (double)var11.getY() + (double)this.ae.method423().floatValue() * this.method388(var11),
+               (double)var11.getY() + (double)this.ae.getValue().floatValue() * this.method388(var11),
                (double)(var11.getZ() + 1)
             ),
-            this.af.method1347(),
-            this.ag.method1347(),
-            this.ah.method1347(),
-            this.ai.method1347()
+            this.af.getValue(),
+            this.ag.getValue(),
+            this.ah.getValue(),
+            this.ai.getValue()
          );
       }
 
@@ -170,13 +170,13 @@ public class HoleESP extends Module {
                (double)var12.field206.getY(),
                (double)var12.field206.getZ(),
                (double)(var12.field207.getX() + 1),
-               (double)var12.field206.getY() + (double)this.field878.method423().floatValue() * this.method389(var12),
+               (double)var12.field206.getY() + (double)this.field878.getValue().floatValue() * this.method389(var12),
                (double)(var12.field207.getZ() + 1)
             ),
-            this.field879.method1347(),
-            this.aa.method1347(),
-            this.ab.method1347(),
-            this.ac.method1347()
+            this.field879.getValue(),
+            this.aa.getValue(),
+            this.ab.getValue(),
+            this.ac.getValue()
          );
       }
 
@@ -188,13 +188,13 @@ public class HoleESP extends Module {
                (double)var13.field206.getY(),
                (double)var13.field206.getZ(),
                (double)(var13.field207.getX() + 1),
-               (double)var13.field206.getY() + (double)this.ae.method423().floatValue() * this.method389(var13),
+               (double)var13.field206.getY() + (double)this.ae.getValue().floatValue() * this.method389(var13),
                (double)(var13.field207.getZ() + 1)
             ),
-            this.af.method1347(),
-            this.ag.method1347(),
-            this.ah.method1347(),
-            this.ai.method1347()
+            this.af.getValue(),
+            this.ag.getValue(),
+            this.ah.getValue(),
+            this.ai.getValue()
          );
       }
 
@@ -206,27 +206,27 @@ public class HoleESP extends Module {
                (double)var14.getY(),
                (double)var14.getZ(),
                (double)(var14.getX() + 1),
-               (double)((float)var14.getY() + this.ak.method423()),
+               (double)((float)var14.getY() + this.ak.getValue()),
                (double)(var14.getZ() + 1)
             ),
-            this.al.method1347(),
-            this.am.method1347(),
-            this.an.method1347(),
-            this.ao.method1347()
+            this.al.getValue(),
+            this.am.getValue(),
+            this.an.getValue(),
+            this.ao.getValue()
          );
       }
 
-      if (this.field859.method461() == HoleESPMode.Shader) {
+      if (this.field859.getValue() == HoleESPMode.Shader) {
          ChamsShaderRenderer.method1310(
             this::lambda$onRender3D$13,
             this.method1921(),
-            this.field862.method419(),
+            this.field862.getValue(),
             this.field869,
             this.field870,
             this.field866.method434(),
-            this.field867.method423(),
-            this.field864.method423(),
-            this.field865.method423(),
+            this.field867.getValue(),
+            this.field864.getValue(),
+            this.field865.getValue(),
             this.field863.method434(),
             this.aq
          );
@@ -238,21 +238,21 @@ public class HoleESP extends Module {
    }
 
    private ShaderMode method1921() {
-      if (this.field861.method461() == ShaderMode.Image) {
-         if (!this.field868.method1322().isEmpty() && (!this.field868.method1322().equals(this.ar) || this.aq == null)) {
-            File var4 = new File(ConfigManager.images, this.field868.method1322() + ".png");
+      if (this.field861.getValue() == ShaderMode.Image) {
+         if (!this.field868.getValue().isEmpty() && (!this.field868.getValue().equals(this.ar) || this.aq == null)) {
+            File var4 = new File(ConfigManager.images, this.field868.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.aq = ByteTexturePacker.method493(var5);
                if (this.aq != null) {
-                  this.ar = this.field868.method1322();
+                  this.ar = this.field868.getValue();
                } else {
                   this.ar = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field868.method1341("");
+               this.field868.setValue("");
                this.ar = "";
             }
          }
@@ -262,12 +262,12 @@ public class HoleESP extends Module {
          }
       }
 
-      return this.field861.method461() == ShaderMode.Rainbow ? ShaderMode.Rainbow : ShaderMode.Colored;
+      return this.field861.getValue() == ShaderMode.Rainbow ? ShaderMode.Rainbow : ShaderMode.Colored;
    }
 
    private void method386(Render3DEvent var1, Box var2, RGBAColor var3, RGBAColor var4, RGBAColor var5, RGBAColor var6) {
-      if (this.field855.method461() != HoleESPIgnoreOwn.Off && var2.intersects(mc.player.getBoundingBox())) {
-         if (this.field855.method461() == HoleESPIgnoreOwn.Eye) {
+      if (this.field855.getValue() != HoleESPIgnoreOwn.Off && var2.intersects(mc.player.getBoundingBox())) {
+         if (this.field855.getValue() == HoleESPIgnoreOwn.Eye) {
             if (var2.maxY > this.az - 0.25) {
                if (!(var2.minY < this.az - 0.25)) {
                   return;
@@ -276,7 +276,7 @@ public class HoleESP extends Module {
                var2 = var2.withMaxY(this.az - 0.25);
             }
          } else {
-            if (this.field855.method461() != HoleESPIgnoreOwn.Feet) {
+            if (this.field855.getValue() != HoleESPIgnoreOwn.Feet) {
                return;
             }
 
@@ -291,8 +291,8 @@ public class HoleESP extends Module {
       }
 
       this.aB++;
-      boolean var10 = this.field859.method461() == HoleESPMode.Shader;
-      if (!var10 && this.field874.method419()) {
+      boolean var10 = this.field859.getValue() == HoleESPMode.Shader;
+      if (!var10 && this.field874.getValue()) {
          double var11 = this.method387(var2);
          var3 = var3.copy().method196((int)((double)var3.field411 * var11));
          var4 = var3.copy().method196((int)((double)var4.field411 * var11));
@@ -302,14 +302,14 @@ public class HoleESP extends Module {
 
       this.ap
          .method1267(
-            var2, var10 ? var4 : var3, var4, var10 ? var6 : var5, var6, var10 ? ShapeMode.Triangles : ShapeMode.Full, this.field860.method419() ? 6 : 0
+            var2, var10 ? var4 : var3, var4, var10 ? var6 : var5, var6, var10 ? ShapeMode.Triangles : ShapeMode.Full, this.field860.getValue() ? 6 : 0
          );
    }
 
    private void method1904() {
       if (this.ax < this.field852.method434()) {
          this.ax++;
-         if (this.field851.method461() != HoleESPOptimization.Off) {
+         if (this.field851.getValue() != HoleESPOptimization.Off) {
             return;
          }
       }
@@ -338,14 +338,14 @@ public class HoleESP extends Module {
                            || !mc.world.getBlockState(var16.add(0, 1, 0)).blocksMovement()
                            || !mc.world.getBlockState(var16.add(0, 2, 0)).blocksMovement()
                      )
-                     && (!this.field853.method419() || var4 == null || var4.isVisible(new Box(var16).expand(1.0)))) {
-                     if (this.aj.method419() && var16.getY() == mc.world.getBottomY() && mc.world.getBlockState(var16).getBlock() != Blocks.BEDROCK) {
+                     && (!this.field853.getValue() || var4 == null || var4.isVisible(new Box(var16).expand(1.0)))) {
+                     if (this.aj.getValue() && var16.getY() == mc.world.getBottomY() && mc.world.getBlockState(var16).getBlock() != Blocks.BEDROCK) {
                         var9.add(var16);
                      } else if (method2101(var16)) {
                         var5.add(var16);
                      } else if (method2102(var16)) {
                         var6.add(var16);
-                     } else if (this.field854.method419()) {
+                     } else if (this.field854.getValue()) {
                         BlockPos var17;
                         if ((var17 = this.method1511(var16)) != null) {
                            var7.add(new Class3085(var16, var17));
@@ -367,43 +367,43 @@ public class HoleESP extends Module {
    }
 
    private double method387(Box var1) {
-      if (!this.field874.method419()) {
+      if (!this.field874.getValue()) {
          return 1.0;
       } else {
          double var5 = var1.getCenter().distanceTo(mc.player.getEyePos());
-         if (var5 <= (double)this.field875.method423().floatValue()) {
+         if (var5 <= (double)this.field875.getValue().floatValue()) {
             return 1.0;
          } else {
-            var5 -= (double)this.field875.method423().floatValue();
-            return 1.0 - MathHelper.clamp(var5 / (1.0 / (double)this.field876.method423().floatValue()), 0.0, 1.0);
+            var5 -= (double)this.field875.getValue().floatValue();
+            return 1.0 - MathHelper.clamp(var5 / (1.0 / (double)this.field876.getValue().floatValue()), 0.0, 1.0);
          }
       }
    }
 
    private double method388(BlockPos var1) {
-      if (!this.field871.method419()) {
+      if (!this.field871.getValue()) {
          return 1.0;
       } else {
          double var5 = new Vec3d((double)var1.getX() + 0.5, (double)var1.getY(), (double)var1.getZ() + 0.5).distanceTo(mc.player.getEyePos());
-         if (var5 <= (double)this.field872.method423().floatValue()) {
+         if (var5 <= (double)this.field872.getValue().floatValue()) {
             return 1.0;
          } else {
-            var5 -= (double)this.field872.method423().floatValue();
-            return 1.0 - MathHelper.clamp(var5 / (1.0 / (double)this.field873.method423().floatValue()), 0.0, 1.0);
+            var5 -= (double)this.field872.getValue().floatValue();
+            return 1.0 - MathHelper.clamp(var5 / (1.0 / (double)this.field873.getValue().floatValue()), 0.0, 1.0);
          }
       }
    }
 
    private double method389(Class3085 var1) {
-      if (!this.field871.method419()) {
+      if (!this.field871.getValue()) {
          return 1.0;
       } else {
          double var5 = new Box(var1.field206).union(new Box(var1.field207)).getCenter().distanceTo(mc.player.getEyePos());
-         if (var5 <= (double)this.field872.method423().floatValue()) {
+         if (var5 <= (double)this.field872.getValue().floatValue()) {
             return 1.0;
          } else {
-            var5 -= (double)this.field872.method423().floatValue();
-            return 1.0 - MathHelper.clamp(var5 / (1.0 / (double)this.field873.method423().floatValue()), 0.0, 1.0);
+            var5 -= (double)this.field872.getValue().floatValue();
+            return 1.0 - MathHelper.clamp(var5 / (1.0 / (double)this.field873.getValue().floatValue()), 0.0, 1.0);
          }
       }
    }
@@ -580,54 +580,54 @@ public class HoleESP extends Module {
    }
 
    private boolean lambda$new$12() {
-      return this.field859.method461() != HoleESPMode.Shader;
+      return this.field859.getValue() != HoleESPMode.Shader;
    }
 
    private boolean lambda$new$11() {
-      return this.field859.method461() != HoleESPMode.Shader;
+      return this.field859.getValue() != HoleESPMode.Shader;
    }
 
    private boolean lambda$new$10() {
-      return this.field859.method461() != HoleESPMode.Shader;
+      return this.field859.getValue() != HoleESPMode.Shader;
    }
 
    private boolean lambda$new$9() {
-      return this.field859.method461() != HoleESPMode.Shader;
+      return this.field859.getValue() != HoleESPMode.Shader;
    }
 
    private boolean lambda$new$8() {
-      return this.field859.method461() != HoleESPMode.Shader;
+      return this.field859.getValue() != HoleESPMode.Shader;
    }
 
    private boolean lambda$new$7() {
-      return this.field859.method461() != HoleESPMode.Shader;
+      return this.field859.getValue() != HoleESPMode.Shader;
    }
 
    private boolean lambda$new$6() {
-      return this.field859.method461() != HoleESPMode.Shader;
+      return this.field859.getValue() != HoleESPMode.Shader;
    }
 
    private boolean lambda$new$5() {
-      return this.field861.method461() != ShaderMode.Colored;
+      return this.field861.getValue() != ShaderMode.Colored;
    }
 
    private boolean lambda$new$4() {
-      return this.field861.method461() == ShaderMode.Rainbow;
+      return this.field861.getValue() == ShaderMode.Rainbow;
    }
 
    private boolean lambda$new$3() {
-      return this.field861.method461() == ShaderMode.Image;
+      return this.field861.getValue() == ShaderMode.Image;
    }
 
    private boolean lambda$new$2() {
-      return this.field864.method423() > 0.0F;
+      return this.field864.getValue() > 0.0F;
    }
 
    private boolean lambda$new$1() {
-      return this.field859.method461() == HoleESPMode.Shader;
+      return this.field859.getValue() == HoleESPMode.Shader;
    }
 
    private boolean lambda$new$0() {
-      return this.field851.method461() != HoleESPOptimization.Off;
+      return this.field851.getValue() != HoleESPOptimization.Off;
    }
 }

@@ -40,7 +40,7 @@ public class CrystalSelectionHandler implements Class5912, IMinecraft {
                   if (var10.getAxis() != Axis.Y) {
                      BlockPos var11 = var4.offset(var10);
                      if (mc.world.getBlockState(var11).isAir()) {
-                        if (AutoMine.INSTANCE.autoSelect.field70.method419()) {
+                        if (AutoMine.INSTANCE.autoSelect.field70.getValue()) {
                            Class2811.field101 = true;
                         }
 
@@ -54,7 +54,7 @@ public class CrystalSelectionHandler implements Class5912, IMinecraft {
                               var5 = new HitResult[]{var12, var14};
                               break;
                            }
-                        } else if (!AutoMine.INSTANCE.autoSelect.field70.method419()) {
+                        } else if (!AutoMine.INSTANCE.autoSelect.field70.getValue()) {
                            BlockPos var18 = var11.down();
                            if (mc.world.getBlockState(var18).isAir()) {
                               HitResult var19 = this.field130.field1046.method150(null, var18);
@@ -86,8 +86,8 @@ public class CrystalSelectionHandler implements Class5912, IMinecraft {
    public boolean method2114() {
       return AutoCrystal.INSTANCE.isEnabled()
          && AutoMine.INSTANCE.isEnabled()
-         && AutoMine.INSTANCE.autoSelect.field60.method419()
-         && AutoMine.INSTANCE.autoSelect.field68.method419()
+         && AutoMine.INSTANCE.autoSelect.field60.getValue()
+         && AutoMine.INSTANCE.autoSelect.field68.getValue()
          && AutoMine.INSTANCE.autoSelect.field79 != null;
    }
 

@@ -25,7 +25,7 @@ class BlockRenderer {
    }
 
    public void method2029(Render3DEvent event) {
-      BozeDrawColor var5 = this.field3697 ? this.field3698.field769.method1362() : this.field3698.field768.method1362();
+      BozeDrawColor var5 = this.field3697 ? this.field3698.field769.getValue() : this.field3698.field768.getValue();
       int var6 = event.field1950
          .field2170
          .method710((double)this.field3694, (double)this.field3695 + 0.05, (double)this.field3696)

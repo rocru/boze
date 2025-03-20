@@ -33,13 +33,13 @@ public final class BlockLocationInfo {
     }
 
     public Direction method1470() {
-        if (AutoMine.INSTANCE.miner.field191.method419()) {
+        if (AutoMine.INSTANCE.miner.field191.getValue()) {
             Direction var4 = null;
             double var5 = Double.MAX_VALUE;
 
             for (Direction var10 : Direction.values()) {
-                if (AutoMine.INSTANCE.miner.field187.method461() == AnticheatMode.Grim && Grim.field1831.method568(this.field2528, var10)
-                        || AutoMine.INSTANCE.miner.field187.method461() == AnticheatMode.NCP && NCP.field1836.method568(this.field2528, var10)) {
+                if (AutoMine.INSTANCE.miner.field187.getValue() == AnticheatMode.Grim && Grim.field1831.method568(this.field2528, var10)
+                        || AutoMine.INSTANCE.miner.field187.getValue() == AnticheatMode.NCP && NCP.field1836.method568(this.field2528, var10)) {
                     double var11 = this.field2528.toCenterPos().add(Vec3d.of(var10.getVector()).multiply(0.5)).squaredDistanceTo(IMinecraft.mc.player.getPos());
                     if (var11 < var5) {
                         var4 = var10;

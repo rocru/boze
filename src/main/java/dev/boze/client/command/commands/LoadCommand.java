@@ -146,10 +146,10 @@ public class LoadCommand extends Command {
                     String var21 = "v2.visuals." + var17;
                     String var22 = "v2.binds." + var17;
                     String var23 = "v2.client." + var17;
-                    Profiles.INSTANCE.field762.method1341(var19);
-                    Profiles.INSTANCE.field763.method1341(var21);
-                    Profiles.INSTANCE.field764.method1341(var22);
-                    Profiles.INSTANCE.field765.method1341(var23);
+                    Profiles.INSTANCE.field762.setValue(var19);
+                    Profiles.INSTANCE.field763.setValue(var21);
+                    Profiles.INSTANCE.field764.setValue(var22);
+                    Profiles.INSTANCE.field765.setValue(var23);
                     Boze.getModules().method398(var15, true);
                     Class1201.method2384(true, var19, var21, var22, var23);
                     this.method624("Loaded profile (highlight)" + var17);
@@ -170,7 +170,7 @@ public class LoadCommand extends Command {
                                 var11 = var20 + var5;
                             }
 
-                            var14.method1341(var11);
+                            var14.setValue(var11);
                             var14.field968.add(var11);
                             Class1201.method2380(var20, var15.getCompound("v2.profile"));
                             Class1201.method2382(true, var14, var11);

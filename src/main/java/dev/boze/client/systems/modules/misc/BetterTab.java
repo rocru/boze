@@ -31,7 +31,7 @@ public class BetterTab extends Module {
    private RGBAColor method1689(GameProfile var1, String var2) {
       if (Capes.INSTANCE.isEnabled() && Capes.field1290.containsKey(var1.getId().toString())) {
          if (((String)Capes.field1290.get(var1.getId().toString())).equals("default")) {
-            return this.field2918.method1347();
+            return this.field2918.getValue();
          }
 
          if (((String)Capes.field1290.get(var1.getId().toString())).equals("beta")) {
@@ -39,7 +39,7 @@ public class BetterTab extends Module {
          }
       }
 
-      return Friends.INSTANCE.isEnabled() && Friends.method346(var2) ? this.field2917.method1347() : null;
+      return Friends.INSTANCE.isEnabled() && Friends.method346(var2) ? this.field2917.getValue() : null;
    }
 
    public Text method1690(PlayerListEntry playerListEntry) {

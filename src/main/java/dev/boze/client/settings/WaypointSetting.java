@@ -44,16 +44,19 @@ public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMi
       this.field924 = value;
    }
 
-   public ArrayList<WayPoint> method2120() {
+   @Override
+   public ArrayList<WayPoint> getValue() {
       return this.field924;
    }
 
-   public ArrayList<WayPoint> method405() {
+   @Override
+   public ArrayList<WayPoint> resetValue() {
       this.field924.clear();
       return this.field924;
    }
 
-   public ArrayList<WayPoint> method406(ArrayList<WayPoint> newVal) {
+   @Override
+   public ArrayList<WayPoint> setValue(ArrayList<WayPoint> newVal) {
       return this.field924 = newVal;
    }
 
@@ -100,7 +103,8 @@ public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMi
       return tag;
    }
 
-   public ArrayList<WayPoint> method407(NbtCompound tag) {
+   @Override
+   public ArrayList<WayPoint> load(NbtCompound tag) {
       if (tag.contains("Waypoints")) {
          for (NbtElement var7 : tag.getList("Waypoints", 10)) {
             if (var7 instanceof NbtCompound) {
@@ -117,11 +121,11 @@ public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMi
 
    @Override
    public JsonObject serialize() {
-      JsonObject var3 = super.serialize();
-      JsonArray var4 = new JsonArray();
-      this.field924.forEach(WaypointSetting::lambda$saveLocalData$9);
-      var3.add("waypoints", var4);
-      return var3;
+      JsonObject jsonObject = super.serialize();
+      JsonArray jsonArray = new JsonArray();
+      this.field924.forEach(arg_0 -> WaypointSetting.lambda$saveLocalData$9(jsonArray, arg_0));
+      jsonObject.add("waypoints", jsonArray);
+      return jsonObject;
    }
 
    @Override
@@ -136,38 +140,38 @@ public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMi
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method407(nbtCompound);
-   }
+ // @Override
+ //  public Object load(NbtCompound nbtCompound) {
+  //    return this.method407(nbtCompound);
+  // }
+//
+   // $VF: synthetic method
+ //  // $VF: bridge method
+ //  @Override
+ //  public Object setValue(Object object) {
+  //    return this.method406((ArrayList<WayPoint>)object);
+  // }
+//
+   // $VF: synthetic method
+   // $VF: bridge method
+  // @Override
+   //public Object resetValue() {
+  //    return this.method405();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method406((ArrayList<WayPoint>)object);
-   }
+  // @Override
+  // public Object getValue() {
+  //    return this.method2120();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method405();
-   }
-
-   // $VF: synthetic method
-   // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method2120();
-   }
-
-   // $VF: synthetic method
-   // $VF: bridge method
-   @Override
-   public Object deserialize(JsonObject jsonObject) {
-      return this.deserialize(jsonObject);
-   }
+  // @Override
+   //public Object deserialize(JsonObject jsonObject) {
+  //    return this.deserialize(jsonObject);
+  // }
 
    private void lambda$loadLocalData$10(JsonElement var1) {
       WayPoint var5 = new WayPoint().deserialize(var1.getAsJsonObject());
@@ -234,9 +238,9 @@ public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMi
       return 1;
    }
 
-   private int lambda$build$3(CommandContext var1) throws CommandSyntaxException {
-      String var4 = (String)var1.getArgument("name", String.class);
-      this.field924.removeIf(WaypointSetting::lambda$build$2);
+   private int lambda$build$3(CommandContext commandContext) throws CommandSyntaxException {
+      String string = (String)commandContext.getArgument("name", String.class);
+      this.field924.removeIf(arg_0 -> WaypointSetting.lambda$build$2(string, arg_0));
       return 1;
    }
 

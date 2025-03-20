@@ -61,8 +61,8 @@ public class Tracers extends Module {
             this.field682 = new Renderer3D();
          }
 
-         this.field682.field2166.field1594 = this.field663.method423();
-         this.field682.field2170.field1594 = this.field663.method423();
+         this.field682.field2166.field1594 = this.field663.getValue();
+         this.field682.field2170.field1594 = this.field663.getValue();
          this.field682.method1217();
 
          for (Entity var6 : mc.world.getEntities()) {
@@ -70,16 +70,16 @@ public class Tracers extends Module {
                Vec3d var7 = Class3071.method6019(var6)
                   .add(
                      0.0,
-                     this.field662.method461() == PositionMode.Feet
+                     this.field662.getValue() == PositionMode.Feet
                         ? 0.0
-                        : (this.field662.method461() == PositionMode.Body ? (double)var6.getHeight() * 0.5 : (double)var6.getEyeHeight(var6.getPose())),
+                        : (this.field662.getValue() == PositionMode.Body ? (double)var6.getHeight() * 0.5 : (double)var6.getEyeHeight(var6.getPose())),
                      0.0
                   );
                double var8 = var7.distanceTo(RotationHelper.field3956);
                if (!(var8 > (double)this.field664.method1547()) && !(var8 < (double)this.field664.method2010())) {
                   this.field681++;
                   RGBAColor var10 = this.method342(var6, var8);
-                  if (this.field668.method419()) {
+                  if (this.field668.getValue()) {
                      double var11 = this.method1389(var8);
                      var10 = var10.copy().method196((int)((double)var10.field411 * var11));
                   }
@@ -102,11 +102,11 @@ public class Tracers extends Module {
    }
 
    private double method1389(double var1) {
-      if (var1 <= (double)this.field669.method423().floatValue()) {
+      if (var1 <= (double)this.field669.getValue().floatValue()) {
          return 1.0;
       } else {
-         var1 -= (double)this.field669.method423().floatValue();
-         return 1.0 - MathHelper.clamp(var1 / (1.0 / (double)this.field670.method423().floatValue()), 0.0, 1.0);
+         var1 -= (double)this.field669.getValue().floatValue();
+         return 1.0 - MathHelper.clamp(var1 / (1.0 / (double)this.field670.getValue().floatValue()), 0.0, 1.0);
       }
    }
 
@@ -117,14 +117,14 @@ public class Tracers extends Module {
          if (var1 == mc.player) {
             return false;
          } else {
-            return Friends.method2055(var1) ? this.field673.method419() : true;
+            return Friends.method2055(var1) ? this.field673.getValue() : true;
          }
       } else if (var1 instanceof EndCrystalEntity) {
-         return this.field679.method419();
+         return this.field679.getValue();
       } else {
          return switch (nw.field2125[var1.getType().getSpawnGroup().ordinal()]) {
-            case 1, 2, 3, 4, 5, 6 -> this.field675.method419();
-            case 7 -> this.field677.method419();
+            case 1, 2, 3, 4, 5, 6 -> this.field675.getValue();
+            case 7 -> this.field677.getValue();
             default -> false;
          };
       }
@@ -133,18 +133,18 @@ public class Tracers extends Module {
    // $VF: Unable to simplify switch on enum
    // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
    private RGBAColor method342(Entity var1, double var2) {
-      if (this.field665.method419()) {
+      if (this.field665.getValue()) {
          return Class3071.method6016(
-            this.field666.method1347(), this.field667.method1347(), (var2 - (double)this.field664.method2010()) / (double)this.field664.method1547()
+            this.field666.getValue(), this.field667.getValue(), (var2 - (double)this.field664.method2010()) / (double)this.field664.method1547()
          );
       } else if (var1 instanceof PlayerEntity) {
-         return Friends.method2055(var1) ? this.field674.method1362() : this.field672.method1362();
+         return Friends.method2055(var1) ? this.field674.getValue() : this.field672.getValue();
       } else if (var1 instanceof EndCrystalEntity) {
-         return this.field680.method1362();
+         return this.field680.getValue();
       } else {
          return (RGBAColor)(switch (nw.field2125[var1.getType().getSpawnGroup().ordinal()]) {
-            case 1, 2, 3, 4, 5, 6 -> this.field676.method1362();
-            case 7 -> this.field678.method1362();
+            case 1, 2, 3, 4, 5, 6 -> this.field676.getValue();
+            case 7 -> this.field678.getValue();
             default -> RGBAColor.field402;
          });
       }

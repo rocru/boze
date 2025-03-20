@@ -78,7 +78,7 @@ public class XRay extends Module {
    }
 
    public boolean method2088(Block block) {
-      return this.field3868.method419() ? !this.field3867.method2032().contains(block) : this.field3867.method2032().contains(block);
+      return this.field3868.getValue() ? !this.field3867.method2032().contains(block) : this.field3867.method2032().contains(block);
    }
 
    private static void lambda$new$0(List var0) {

@@ -50,7 +50,7 @@ public class AutoTool extends Module {
    private final dev.boze.client.utils.Timer field2910 = new dev.boze.client.utils.Timer();
 
    private boolean method1678() {
-      return Options.INSTANCE.method1971() || this.field2898.method461() == AutoToolMode.Ghost;
+      return Options.INSTANCE.method1971() || this.field2898.getValue() == AutoToolMode.Ghost;
    }
 
    private boolean method1679() {
@@ -80,7 +80,7 @@ public class AutoTool extends Module {
             this.field2910.reset();
             int var6 = InventoryHelper.method174(AutoTool::lambda$handleHotbar$1, SwapMode.Normal);
             if (var6 != mc.player.getInventory().selectedSlot && var6 != -1) {
-               if (this.field2899.method419()) {
+               if (this.field2899.getValue()) {
                   this.field2908 = mc.player.getInventory().selectedSlot;
                }
 
@@ -98,14 +98,14 @@ public class AutoTool extends Module {
    @EventHandler
    private void method1681(PreBlockBreakEvent var1) {
       if (!this.method1678()) {
-         int var5 = InventoryHelper.method174(AutoTool::lambda$onMinePre$2, this.field2901.method461());
+         int var5 = InventoryHelper.method174(AutoTool::lambda$onMinePre$2, this.field2901.getValue());
          if (var5 != -1) {
             this.field2910.reset();
          }
 
          if (var5 != mc.player.getInventory().selectedSlot && var5 != -1 && var5 != this.field2907) {
-            InventoryUtil.method534(this, 7, this.field2901.method461(), var5);
-            if (this.field2901.method461() != SwapMode.Normal) {
+            InventoryUtil.method534(this, 7, this.field2901.getValue(), var5);
+            if (this.field2901.getValue() != SwapMode.Normal) {
                this.field2907 = var5;
             }
          }
@@ -127,7 +127,7 @@ public class AutoTool extends Module {
    public static float method1683(ItemStack itemStack, BlockState state) {
       if (!(itemStack.getItem() instanceof ToolItem) && !(itemStack.getItem() instanceof ShearsItem)) {
          return -1.0F;
-      } else if (INSTANCE.field2906.method419() && itemStack.getMaxDamage() - itemStack.getDamage() <= 15) {
+      } else if (INSTANCE.field2906.getValue() && itemStack.getMaxDamage() - itemStack.getDamage() <= 15) {
          return -1.0F;
       } else {
          float var5 = 0.0F;
@@ -155,11 +155,11 @@ public class AutoTool extends Module {
 
    private static AutoToolPrefer method1684(Block var0) {
       if (var0 instanceof ExperienceDroppingBlock || var0 instanceof RedstoneOreBlock || var0 == Blocks.NETHER_QUARTZ_ORE) {
-         return INSTANCE.field2903.method461();
+         return INSTANCE.field2903.getValue();
       } else if (var0 == Blocks.GLOWSTONE) {
-         return INSTANCE.field2904.method461();
+         return INSTANCE.field2904.getValue();
       } else {
-         return var0 == Blocks.ENDER_CHEST ? INSTANCE.field2905.method461() : INSTANCE.field2902.method461();
+         return var0 == Blocks.ENDER_CHEST ? INSTANCE.field2905.getValue() : INSTANCE.field2902.getValue();
       }
    }
 

@@ -73,7 +73,7 @@ public class RGBASettingComponent extends ScaledSettingBaseComponent implements 
                this.field319 + this.field276 * 0.5 - scaleFactor * 3.0,
                scaleFactor * 6.0,
                scaleFactor * 6.0,
-               this.field274.method1347()
+               this.field274.getValue()
             );
          if (!this.field274.equals(OldColors.INSTANCE.field2404)) {
             Notifications.SYNC

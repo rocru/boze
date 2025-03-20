@@ -87,7 +87,7 @@ public class Tint extends Module {
          mc.worldRenderer.reload();
       }
 
-      if (mc.world != null && this.field3728.method419()) {
+      if (mc.world != null && this.field3728.getValue()) {
          mc.world.setTimeOfDay(this.am);
       }
    }
@@ -95,13 +95,13 @@ public class Tint extends Module {
    @EventHandler
    private void method2039(Render3DEvent var1) {
       if (mc.worldRenderer != null && this.al.hasElapsed(1000.0)) {
-         if (this.aj != this.field3753.method419() || this.ak != this.field3754.method1347().method2010()) {
+         if (this.aj != this.field3753.getValue() || this.ak != this.field3754.getValue().method2010()) {
             mc.worldRenderer.reload();
             this.al.reset();
          }
 
-         this.aj = this.field3753.method419();
-         this.ak = this.field3754.method1347().method2010();
+         this.aj = this.field3753.getValue();
+         this.ak = this.field3754.getValue().method2010();
       }
    }
 
@@ -109,16 +109,16 @@ public class Tint extends Module {
       priority = -190
    )
    private void method2040(Render2DEvent var1) {
-      if (this.ag.method419()) {
+      if (this.ag.getValue()) {
          RenderUtil.field3963.method2233();
-         RenderUtil.field3963.method2252(0.0, 0.0, (double)mc.getWindow().getScaledWidth(), (double)mc.getWindow().getScaledHeight(), this.ah.method1347());
+         RenderUtil.field3963.method2252(0.0, 0.0, (double)mc.getWindow().getScaledWidth(), (double)mc.getWindow().getScaledHeight(), this.ah.getValue());
          RenderUtil.field3963.method2235(null);
       }
    }
 
    @EventHandler
    private void method2041(MovementEvent var1) {
-      if (this.field3728.method419()) {
+      if (this.field3728.getValue()) {
          mc.world.setTimeOfDay((long)this.field3729.method434().intValue());
       }
    }
@@ -127,7 +127,7 @@ public class Tint extends Module {
    private void method2042(PacketBundleEvent var1) {
       if (var1.packet instanceof WorldTimeUpdateS2CPacket) {
          this.am = ((WorldTimeUpdateS2CPacket)var1.packet).getTime();
-         if (this.field3728.method419()) {
+         if (this.field3728.getValue()) {
             var1.method1021(true);
          }
       }

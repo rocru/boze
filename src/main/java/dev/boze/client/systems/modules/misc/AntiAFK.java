@@ -42,7 +42,7 @@ public class AntiAFK extends Module {
    public void method1631(TickInputPostEvent event) {
       if ((double)event.field1954 == 0.0 && (double)event.field1953 == 0.0) {
          if (this.timer.hasElapsed(this.delay.method1295() * 60000.0)) {
-            if (this.mode.method461() == AntiAFKMode.Jump) {
+            if (this.mode.getValue() == AntiAFKMode.Jump) {
                event.field1955 = true;
             } else {
                event.field1956 = true;

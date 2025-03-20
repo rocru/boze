@@ -79,19 +79,19 @@ public class PearlPhase extends Module {
    public void method1885(ACRotationEvent event) {
       if (this.field564.hasElapsed(350.0)) {
          if (this.method1971()) {
-            if (this.awaitMode.method461() == AwaitMode.Off) {
+            if (this.awaitMode.getValue() == AwaitMode.Off) {
                this.setEnabled(false);
             }
 
             this.field563 = false;
-         } else if (!this.zeroTick.method419()) {
-            if (this.swap.method419() && !this.field563) {
+         } else if (!this.zeroTick.getValue()) {
+            if (this.swap.getValue() && !this.field563) {
                event.yaw = mc.player.getYaw();
                event.pitch = 90.0F;
                event.method1021(true);
             } else {
                event.yaw = (float)this.method2010();
-               event.pitch = this.pitch.method423();
+               event.pitch = this.pitch.getValue();
                event.method1021(true);
             }
          }
@@ -105,17 +105,17 @@ public class PearlPhase extends Module {
       if (!event.method554(RotationMode.Sequential)) {
          if (this.field564.hasElapsed(350.0)) {
             if (!this.method1971()) {
-               if (this.swap.method419() && !this.field563) {
-                  int var8 = InventoryHelper.method166(PearlPhase::lambda$onInteract$0, this.swapMode.method461());
+               if (this.swap.getValue() && !this.field563) {
+                  int var8 = InventoryHelper.method166(PearlPhase::lambda$onInteract$0, this.swapMode.getValue());
                   if (var8 == -1) {
                      ChatInstance.method625("No blocks found for strict bypass! Attempting to pearl without bypassing");
                      this.field563 = true;
-                  } else if (InventoryUtil.method534(this, 400, this.swapMode.method461(), var8)) {
+                  } else if (InventoryUtil.method534(this, 400, this.swapMode.getValue(), var8)) {
                      BlockPos var6 = BlockPos.ofFloored(mc.player.getPos()).down();
                      BlockHitResult var7 = new BlockHitResult(
                         new Vec3d((double)var6.getX() + 0.5, (double)var6.getY() + 1.0, (double)var6.getZ() + 0.5), Direction.UP, var6, false
                      );
-                     if (this.zeroTick.method419()) {
+                     if (this.zeroTick.getValue()) {
                         ((IClientPlayerEntity)mc.player).boze$sendMovementPackets((float)this.method2010(), 90.0F);
                      } else if (((ClientPlayerEntityAccessor)mc.player).getLastPitch() < 89.0F
                         || Math.abs(((ClientPlayerEntityAccessor)mc.player).getLastYaw() - (float)this.method2010()) > 5.0F) {
@@ -127,15 +127,15 @@ public class PearlPhase extends Module {
                      InventoryUtil.method396(this);
                   }
                } else {
-                  int var5 = InventoryHelper.method166(PearlPhase::lambda$onInteract$1, this.swapMode.method461());
+                  int var5 = InventoryHelper.method166(PearlPhase::lambda$onInteract$1, this.swapMode.getValue());
                   if (var5 == -1) {
                      ChatInstance.method626("No pearls found");
                      this.setEnabled(false);
-                  } else if (InventoryUtil.method534(this, 400, this.swapMode.method461(), var5)) {
+                  } else if (InventoryUtil.method534(this, 400, this.swapMode.getValue(), var5)) {
                      Boze.EVENT_BUS.subscribe(Class3002.class);
-                     if (this.zeroTick.method419()) {
-                        ((IClientPlayerEntity)mc.player).boze$sendMovementPackets((float)this.method2010(), this.pitch.method423());
-                     } else if (((ClientPlayerEntityAccessor)mc.player).getLastPitch() < this.pitch.method423() - 2.0F
+                     if (this.zeroTick.getValue()) {
+                        ((IClientPlayerEntity)mc.player).boze$sendMovementPackets((float)this.method2010(), this.pitch.getValue());
+                     } else if (((ClientPlayerEntityAccessor)mc.player).getLastPitch() < this.pitch.getValue() - 2.0F
                         || Math.abs(((ClientPlayerEntityAccessor)mc.player).getLastYaw() - (float)this.method2010()) > 5.0F) {
                         return;
                      }
@@ -143,7 +143,7 @@ public class PearlPhase extends Module {
                      Class5913.method16(Hand.MAIN_HAND);
                      mc.player.swingHand(Hand.MAIN_HAND);
                      InventoryUtil.method396(this);
-                     if (this.awaitMode.method461() != AwaitMode.Repeat) {
+                     if (this.awaitMode.getValue() != AwaitMode.Repeat) {
                         this.setEnabled(false);
                      } else {
                         this.field563 = false;
@@ -163,12 +163,12 @@ public class PearlPhase extends Module {
          Box var4 = mc.player.getBoundingBox(mc.player.getPose()).offset(mc.player.getPos());
          if (!mc.world.isSpaceEmpty(var4)) {
             return true;
-         } else if (this.pearlMode.method461() != PearlMode.Collision && !mc.player.horizontalCollision) {
+         } else if (this.pearlMode.getValue() != PearlMode.Collision && !mc.player.horizontalCollision) {
             return true;
-         } else if (this.pearlMode.method461() == PearlMode.Forward) {
+         } else if (this.pearlMode.getValue() == PearlMode.Forward) {
             return !mc.options.forwardKey.isPressed();
          } else {
-            return this.pearlMode.method461() == PearlMode.Omni ? !Class5924.method2116() : this.method1954() == null;
+            return this.pearlMode.getValue() == PearlMode.Omni ? !Class5924.method2116() : this.method1954() == null;
          }
       }
    }

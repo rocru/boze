@@ -71,11 +71,11 @@ public class ThrowPot extends Module {
          if (var5 != null && var5.hasNext()) {
             while (var5.hasNext()) {
                StatusEffectInstance var6 = (StatusEffectInstance)var5.next();
-               if (((StatusEffect)var6.getEffectType().value()).isBeneficial() && this.field2830.method461() == ThrowPotMode.DeBuff) {
+               if (((StatusEffect)var6.getEffectType().value()).isBeneficial() && this.field2830.getValue() == ThrowPotMode.DeBuff) {
                   return false;
                }
 
-               if (!((StatusEffect)var6.getEffectType().value()).isBeneficial() && this.field2830.method461() == ThrowPotMode.Buff) {
+               if (!((StatusEffect)var6.getEffectType().value()).isBeneficial() && this.field2830.getValue() == ThrowPotMode.Buff) {
                   return false;
                }
             }

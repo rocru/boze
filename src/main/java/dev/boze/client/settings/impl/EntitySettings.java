@@ -58,13 +58,13 @@ public class EntitySettings implements SettingsGroup, IMinecraft {
 
    public boolean method2055(Entity entity) {
       if (!(entity instanceof WardenEntity)
-         || !this.field92.method419()
-         || this.field94.method434() != 0 && !this.field93.method419() && !(entity.distanceTo(mc.player) > (float)this.field94.method434().intValue())) {
-         if (entity instanceof PlayerEntity && this.field97.method419()) {
+         || !this.field92.getValue()
+         || this.field94.method434() != 0 && !this.field93.getValue() && !(entity.distanceTo(mc.player) > (float)this.field94.method434().intValue())) {
+         if (entity instanceof PlayerEntity && this.field97.getValue()) {
             ((LimbAnimatorAccessor)((PlayerEntity)entity).limbAnimator).setPos(0.0F);
             ((LimbAnimatorAccessor)((PlayerEntity)entity).limbAnimator).setSpeed(0.0F);
             ((LimbAnimatorAccessor)((PlayerEntity)entity).limbAnimator).setPrevSpeed(0.0F);
-         } else if (entity instanceof ItemEntity && this.field105.method419()) {
+         } else if (entity instanceof ItemEntity && this.field105.getValue()) {
             return true;
          }
 
@@ -75,15 +75,15 @@ public class EntitySettings implements SettingsGroup, IMinecraft {
    }
 
    boolean method1993(LivingEntity var1, EquipmentSlot var2) {
-      return var1 instanceof ArmorStandEntity && !this.field100.method419()
+      return var1 instanceof ArmorStandEntity && !this.field100.getValue()
          ? false
-         : var2 == EquipmentSlot.HEAD && this.field101.method419()
-            || var2 == EquipmentSlot.CHEST && this.field102.method419()
-            || var2 == EquipmentSlot.LEGS && this.field103.method419()
-            || var2 == EquipmentSlot.FEET && this.field104.method419();
+         : var2 == EquipmentSlot.HEAD && this.field101.getValue()
+            || var2 == EquipmentSlot.CHEST && this.field102.getValue()
+            || var2 == EquipmentSlot.LEGS && this.field103.getValue()
+            || var2 == EquipmentSlot.FEET && this.field104.getValue();
    }
 
    private boolean lambda$new$0() {
-      return !this.field93.method419();
+      return !this.field93.getValue();
    }
 }

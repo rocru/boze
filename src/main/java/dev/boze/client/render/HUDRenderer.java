@@ -18,7 +18,7 @@ import net.minecraft.client.gui.DrawContext;
 
 public class HUDRenderer implements IMinecraft {
     public static void renderHud(DrawContext context) {
-        if (mc.currentScreen instanceof ClickGUI && ClickGUI.field1335.field1336 || HUD.INSTANCE.field2373.method419()) {
+        if (mc.currentScreen instanceof ClickGUI && ClickGUI.field1335.field1336 || HUD.INSTANCE.field2373.getValue()) {
             boolean var4 = false;
 
             for (Module var6 : Boze.getModules().modules) {
@@ -33,10 +33,10 @@ public class HUDRenderer implements IMinecraft {
                 RenderUtil.field3963.method2233();
                 RGBAColor var7 = FontLoader.field1063.copy();
                 BozeDrawColor var8 = FontLoader.field1064.copy();
-                FontLoader.field1063.set(HUD.INSTANCE.field2395.method1347());
-                FontLoader.field1064.set(HUD.INSTANCE.field2396.method1362());
+                FontLoader.field1063.set(HUD.INSTANCE.field2395.getValue());
+                FontLoader.field1064.set(HUD.INSTANCE.field2396.getValue());
                 IFontRender.method499().startBuilding(HUD.INSTANCE.field2375.getValue());
-                boolean var9 = HUD.INSTANCE.field2394.method419();
+                boolean var9 = HUD.INSTANCE.field2394.getValue();
                 if (HUD.INSTANCE.field2397 == null) {
                     HUD.INSTANCE.field2397 = new RenderUtil(RenderMode.COLOR);
                 }

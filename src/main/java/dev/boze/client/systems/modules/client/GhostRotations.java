@@ -38,7 +38,7 @@ public class GhostRotations extends Module {
    public final MinMaxSetting field751 = new MinMaxSetting("Lag", 0.5, 0.0, 1.0, 0.01, "Tracking lag", this.field747);
    public final BooleanSetting field752 = new BooleanSetting("AccuracyGradient", false, "Tracking accuracy gradient based on distance", this.field747);
    public final MinMaxSetting field753 = new MinMaxSetting(
-      "VerticalFactor", 0.2, 0.0, 1.0, 0.01, "Vertical distance scale factor for accuracy gradient", this.field752::method419, this.field747
+      "VerticalFactor", 0.2, 0.0, 1.0, 0.01, "Vertical distance scale factor for accuracy gradient", this.field752::getValue, this.field747
    );
    public final SettingCategory field754 = new SettingCategory("Noise", "Noise options");
    public final MinMaxSetting field755 = new MinMaxSetting("Horizontal", 0.5, 0.0, 1.0, 0.01, "Horizontal noise", this.field754);
@@ -88,7 +88,7 @@ public class GhostRotations extends Module {
             this.method358(var4);
          }
 
-         if (!this.field744.method419() && this.field760 != null && !var5.field1963) {
+         if (!this.field744.getValue() && this.field760 != null && !var5.field1963) {
             this.field760.method488(mc.player);
          }
       }
@@ -98,7 +98,7 @@ public class GhostRotations extends Module {
       priority = 9999
    )
    public void method1885(ACRotationEvent event) {
-      if (this.field760 != null && this.field744.method419()) {
+      if (this.field760 != null && this.field744.getValue()) {
          if (event.method1017() == AnticheatMode.Grim) {
             event.yaw = this.field760.method1384();
             event.pitch = this.field760.method1385();
@@ -111,7 +111,7 @@ public class GhostRotations extends Module {
       priority = -9999
    )
    public void method1886(ACRotationEvent event) {
-      if (this.field760 != null && this.field744.method419()) {
+      if (this.field760 != null && this.field744.getValue()) {
          if (event.method1017() == AnticheatMode.Grim) {
             event.yaw = this.field760.method1384();
             event.pitch = this.field760.method1385();
@@ -122,7 +122,7 @@ public class GhostRotations extends Module {
 
    @EventHandler
    public void method1853(PrePacketSendEvent event) {
-      if (this.field760 != null && this.field744.method419()) {
+      if (this.field760 != null && this.field744.getValue()) {
          if (event.packet instanceof PlayerMoveC2SPacket var5) {
             ((PlayerMoveC2SPacketAccessor)var5).setYaw(this.field760.method1384());
             ((PlayerMoveC2SPacketAccessor)var5).setPitch(this.field760.method1385());
@@ -160,7 +160,7 @@ public class GhostRotations extends Module {
 
    private void method358(RotationHelper var1) {
       if (this.field760 != null) {
-         RotationHelper var5 = this.field760.method603(var1, this.field745.method1287()).method1600();
+         RotationHelper var5 = this.field760.method603(var1, this.field745.getValue()).method1600();
          if (this.field760.equals(var5)) {
             RotationHelper var6 = var1.method1600();
             this.field760 = null;

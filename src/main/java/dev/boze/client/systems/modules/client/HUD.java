@@ -106,14 +106,14 @@ public class HUD extends Module {
    }
 
    private boolean lambda$new$2() {
-      return !this.field2390.method419();
+      return !this.field2390.getValue();
    }
 
    private boolean lambda$new$1() {
-      return !this.field2390.method419();
+      return !this.field2390.getValue();
    }
 
    private boolean lambda$new$0() {
-      return !this.field2390.method419();
+      return !this.field2390.getValue();
    }
 }

@@ -65,27 +65,27 @@ public class Effects extends HUDModule {
       if (var7.size() == 0) {
          this.method314(20.0);
          this.method316(20.0);
-         if (mc.currentScreen instanceof ClickGUI && ClickGUI.field1335.field1336 && HUD.INSTANCE.field2394.method419()) {
+         if (mc.currentScreen instanceof ClickGUI && ClickGUI.field1335.field1336 && HUD.INSTANCE.field2394.getValue()) {
             HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
          }
       } else {
          double var17 = IFontRender.method499()
-            .measureTextHeight((String)var7.get(var7.size() - 1), this.field2615.method419() ? this.field2617.method419() : HUD.INSTANCE.field2384.method419());
+            .measureTextHeight((String)var7.get(var7.size() - 1), this.field2615.getValue() ? this.field2617.getValue() : HUD.INSTANCE.field2384.getValue());
          this.method314(var17);
          int[] var18 = new int[]{0};
 
          for (int var20 = 0; var20 < var7.size(); var20++) {
             String var14 = (String)var7.get(var20);
             double var15 = IFontRender.method499()
-               .measureTextHeight(var14, this.field2615.method419() ? this.field2617.method419() : HUD.INSTANCE.field2384.method419());
-            if (HUD.INSTANCE.field2394.method419()) {
+               .measureTextHeight(var14, this.field2615.getValue() ? this.field2617.getValue() : HUD.INSTANCE.field2384.getValue());
+            if (HUD.INSTANCE.field2394.getValue()) {
                HUD.INSTANCE
                   .field2397
                   .method2252(
                      this.method1391() + (var6 ? this.method313() - var15 - 4.0 : 0.0),
                      this.method305() + (double)var18[0],
                      var15 + 4.0,
-                     IFontRender.method499().method502(this.field2615.method419() ? this.field2617.method419() : HUD.INSTANCE.field2384.method419()) + 1.5,
+                     IFontRender.method499().method502(this.field2615.getValue() ? this.field2617.getValue() : HUD.INSTANCE.field2384.getValue()) + 1.5,
                      RGBAColor.field402
                   );
             }
@@ -95,14 +95,14 @@ public class Effects extends HUDModule {
                   var14,
                   this.method1391() + (var6 ? this.method313() - var15 - 2.0 : 2.0),
                   this.method305() + (double)var18[0] + 0.5,
-                  (RGBAColor)(this.field2614.method419()
+                  (RGBAColor)(this.field2614.getValue()
                      ? new RGBAColor(0xFF000000 | (Integer)var8.get(var20))
-                     : (this.field2615.method419() ? this.field2616.method1362() : HUD.INSTANCE.field2383.method1362())),
-                  this.field2615.method419() ? this.field2617.method419() : HUD.INSTANCE.field2384.method419()
+                     : (this.field2615.getValue() ? this.field2616.getValue() : HUD.INSTANCE.field2383.getValue())),
+                  this.field2615.getValue() ? this.field2617.getValue() : HUD.INSTANCE.field2384.getValue()
                );
             var18[0] = (int)(
                (double)var18[0]
-                  + IFontRender.method499().method502(this.field2615.method419() ? this.field2617.method419() : HUD.INSTANCE.field2384.method419())
+                  + IFontRender.method499().method502(this.field2615.getValue() ? this.field2617.getValue() : HUD.INSTANCE.field2384.getValue())
                   + 1.5
             );
          }
@@ -129,15 +129,15 @@ public class Effects extends HUDModule {
 
    private int lambda$new$1(String var1, String var2) {
       double var6 = IFontRender.method499()
-            .measureTextHeight(var1, this.field2615.method419() ? this.field2617.method419() : HUD.INSTANCE.field2384.method419())
-         - IFontRender.method499().measureTextHeight(var2, this.field2615.method419() ? this.field2617.method419() : HUD.INSTANCE.field2384.method419());
+            .measureTextHeight(var1, this.field2615.getValue() ? this.field2617.getValue() : HUD.INSTANCE.field2384.getValue())
+         - IFontRender.method499().measureTextHeight(var2, this.field2615.getValue() ? this.field2617.getValue() : HUD.INSTANCE.field2384.getValue());
       return var6 != 0.0 ? (int)var6 : var1.compareTo(var2);
    }
 
    private int lambda$new$0(String var1, String var2) {
       double var6 = IFontRender.method499()
-            .measureTextHeight(var2, this.field2615.method419() ? this.field2617.method419() : HUD.INSTANCE.field2384.method419())
-         - IFontRender.method499().measureTextHeight(var1, this.field2615.method419() ? this.field2617.method419() : HUD.INSTANCE.field2384.method419());
+            .measureTextHeight(var2, this.field2615.getValue() ? this.field2617.getValue() : HUD.INSTANCE.field2384.getValue())
+         - IFontRender.method499().measureTextHeight(var1, this.field2615.getValue() ? this.field2617.getValue() : HUD.INSTANCE.field2384.getValue());
       return var6 != 0.0 ? (int)var6 : var2.compareTo(var1);
    }
 }

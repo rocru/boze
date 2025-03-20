@@ -55,13 +55,13 @@ public class IntArraySettingComponent extends ScaledSettingBaseComponent impleme
          }
 
          DecimalFormat var17 = new DecimalFormat("#.###");
-         String var9 = var17.format((long)this.field287.method410()[this.field287.method1365()]);
-         if ((double)this.field287.method410()[this.field287.method1365()] >= 0.0 && var9.startsWith("-")) {
+         String var9 = var17.format((long)this.field287.getValue()[this.field287.method1365()]);
+         if ((double)this.field287.getValue()[this.field287.method1365()] >= 0.0 && var9.startsWith("-")) {
             var9 = var9.substring(1);
          }
 
-         String var18 = var17.format((long)this.field287.method410()[this.field287.method1366()]);
-         if ((double)this.field287.method410()[this.field287.method1366()] >= 0.0 && var18.startsWith("-")) {
+         String var18 = var17.format((long)this.field287.getValue()[this.field287.method1366()]);
+         if ((double)this.field287.getValue()[this.field287.method1366()] >= 0.0 && var18.startsWith("-")) {
             var18 = var18.substring(1);
          }
 
@@ -97,13 +97,13 @@ public class IntArraySettingComponent extends ScaledSettingBaseComponent impleme
                var12.method2025(Theme.method1391())
             );
          double var13 = MathHelper.clamp(
-            (double)(this.field287.method410()[this.field287.method1365()] - this.field287.field920)
+            (double)(this.field287.getValue()[this.field287.method1365()] - this.field287.field920)
                / (double)(this.field287.field921 - this.field287.field920),
             0.0,
             1.0
          );
          double var15 = MathHelper.clamp(
-            (double)(this.field287.method410()[this.field287.method1366()] - this.field287.field920)
+            (double)(this.field287.getValue()[this.field287.method1366()] - this.field287.field920)
                / (double)(this.field287.field921 - this.field287.field920),
             0.0,
             1.0
@@ -140,8 +140,8 @@ public class IntArraySettingComponent extends ScaledSettingBaseComponent impleme
                double var9 = mouseX - (this.field318 + 12.0 * scaleFactor);
                double var11 = var9 / (this.field320 - 24.0 * scaleFactor);
                double var13 = (double)(this.field287.field921 - this.field287.field920);
-               double var15 = (double)(this.field287.method410()[this.field287.method1365()] - this.field287.field920) / var13;
-               double var17 = (double)(this.field287.method410()[this.field287.method1366()] - this.field287.field920) / var13;
+               double var15 = (double)(this.field287.getValue()[this.field287.method1365()] - this.field287.field920) / var13;
+               double var17 = (double)(this.field287.getValue()[this.field287.method1366()] - this.field287.field920) / var13;
                double var19 = var17 - var15;
                if (var11 <= var15 + var19 * 0.15 && var11 < var17 - var19 * 0.15) {
                   this.field288 = this.field287.method1365();
@@ -151,7 +151,7 @@ public class IntArraySettingComponent extends ScaledSettingBaseComponent impleme
                   this.field287.method413(this.field287.method1366(), (int)(var11 * var13 + (double)this.field287.field920));
                } else {
                   this.field288 = -2;
-                  this.field289 = new double[]{(double)this.field287.method410()[0], (double)this.field287.method410()[1]};
+                  this.field289 = new double[]{(double)this.field287.getValue()[0], (double)this.field287.getValue()[1]};
                }
 
                return true;
@@ -166,9 +166,9 @@ public class IntArraySettingComponent extends ScaledSettingBaseComponent impleme
                IFontRender.method499().method1390() + 2.0 * scaleFactor
             )) {
                this.field287
-                  .method413(0, MathHelper.clamp(this.field287.method410()[0] - this.field287.field922, this.field287.field920, this.field287.field921));
+                  .method413(0, MathHelper.clamp(this.field287.getValue()[0] - this.field287.field922, this.field287.field920, this.field287.field921));
                this.field287
-                  .method413(1, MathHelper.clamp(this.field287.method410()[1] - this.field287.field922, this.field287.field920, this.field287.field921));
+                  .method413(1, MathHelper.clamp(this.field287.getValue()[1] - this.field287.field922, this.field287.field920, this.field287.field921));
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             } else if (isMouseWithinBounds(
                mouseX,
@@ -179,9 +179,9 @@ public class IntArraySettingComponent extends ScaledSettingBaseComponent impleme
                IFontRender.method499().method1390() + 2.0 * scaleFactor
             )) {
                this.field287
-                  .method413(0, MathHelper.clamp(this.field287.method410()[0] + this.field287.field922, this.field287.field920, this.field287.field921));
+                  .method413(0, MathHelper.clamp(this.field287.getValue()[0] + this.field287.field922, this.field287.field920, this.field287.field921));
                this.field287
-                  .method413(1, MathHelper.clamp(this.field287.method410()[1] + this.field287.field922, this.field287.field920, this.field287.field921));
+                  .method413(1, MathHelper.clamp(this.field287.getValue()[1] + this.field287.field922, this.field287.field920, this.field287.field921));
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             }
          } else if (button == 1 && this.field287.hasChildren()) {

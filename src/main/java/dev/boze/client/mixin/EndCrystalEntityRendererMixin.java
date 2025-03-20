@@ -44,7 +44,7 @@ public class EndCrystalEntityRendererMixin {
       }
 
       if (Chams.INSTANCE.isEnabled()
-         && (Chams.INSTANCE.field3463.method461() == ChamsMode.Normal || Chams.INSTANCE.field3463.method461() == ChamsMode.Both)
+         && (Chams.INSTANCE.field3463.getValue() == ChamsMode.Normal || Chams.INSTANCE.field3463.getValue() == ChamsMode.Both)
          && Chams.INSTANCE.method1924(var1)
          && !ChamsShaderRenderer.field2248
          && !ChamsShaderRenderer.field2247) {
@@ -67,10 +67,10 @@ public class EndCrystalEntityRendererMixin {
       )
    )
    private void modifyScale(Args var1) {
-      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.method419() && Class2839.field114) {
-         var1.set(0, 2.0F * Chams.INSTANCE.ae.method423());
-         var1.set(1, 2.0F * Chams.INSTANCE.af.method423());
-         var1.set(2, 2.0F * Chams.INSTANCE.ae.method423());
+      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.getValue() && Class2839.field114) {
+         var1.set(0, 2.0F * Chams.INSTANCE.ae.getValue());
+         var1.set(1, 2.0F * Chams.INSTANCE.af.getValue());
+         var1.set(2, 2.0F * Chams.INSTANCE.ae.getValue());
       }
    }
 
@@ -82,8 +82,8 @@ public class EndCrystalEntityRendererMixin {
       )
    )
    private void modifySpin(Args var1) {
-      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.method419() && Class2839.field114) {
-         var1.set(0, (Float)var1.get(0) * Chams.INSTANCE.ag.method423());
+      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.getValue() && Class2839.field114) {
+         var1.set(0, (Float)var1.get(0) * Chams.INSTANCE.ag.getValue());
       }
    }
 
@@ -93,11 +93,11 @@ public class EndCrystalEntityRendererMixin {
       cancellable = true
    )
    private static void onGetYOffset(EndCrystalEntity var0, float var1, CallbackInfoReturnable<Float> var2) {
-      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.method419() && Class2839.field114) {
+      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.getValue() && Class2839.field114) {
          var2.cancel();
          float var5 = (float)var0.endCrystalAge + var1;
          float var6 = MathHelper.sin(var5 * 0.2F) / 2.0F + 0.5F;
-         var6 = (var6 * var6 + var6) * 0.4F * Chams.INSTANCE.ah.method423();
+         var6 = (var6 * var6 + var6) * 0.4F * Chams.INSTANCE.ah.getValue();
          var2.setReturnValue(var6 - 1.4F);
       }
    }
@@ -111,8 +111,8 @@ public class EndCrystalEntityRendererMixin {
       )
    )
    public void redirectCoreRender(ModelPart modelPart, MatrixStack matrices, VertexConsumer vertices, int light, int overlay) {
-      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.method419() && Class2839.field114) {
-         RGBAColor var8 = Chams.INSTANCE.ai.method1347();
+      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.getValue() && Class2839.field114) {
+         RGBAColor var8 = Chams.INSTANCE.ai.getValue();
          this.core.render(matrices, vertices, light, overlay, var8.method2010());
       } else {
          this.core.render(matrices, vertices, light, overlay);
@@ -128,8 +128,8 @@ public class EndCrystalEntityRendererMixin {
       )
    )
    private void redirectFrame1(ModelPart var1, MatrixStack var2, VertexConsumer var3, int var4, int var5) {
-      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.method419() && Class2839.field114) {
-         RGBAColor var8 = Chams.INSTANCE.aj.method1347();
+      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.getValue() && Class2839.field114) {
+         RGBAColor var8 = Chams.INSTANCE.aj.getValue();
          this.frame.render(var2, var3, var4, var5, var8.method2010());
       } else {
          this.frame.render(var2, var3, var4, var5);
@@ -145,8 +145,8 @@ public class EndCrystalEntityRendererMixin {
       )
    )
    private void redirectFrame2(ModelPart var1, MatrixStack var2, VertexConsumer var3, int var4, int var5) {
-      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.method419() && Class2839.field114) {
-         RGBAColor var8 = Chams.INSTANCE.aj.method1347();
+      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.getValue() && Class2839.field114) {
+         RGBAColor var8 = Chams.INSTANCE.aj.getValue();
          this.frame.render(var2, var3, var4, var5, var8.method2010());
       } else {
          this.frame.render(var2, var3, var4, var5);

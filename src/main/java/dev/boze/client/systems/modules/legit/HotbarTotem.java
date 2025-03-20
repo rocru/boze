@@ -67,10 +67,10 @@ public class HotbarTotem extends Module {
             }
          }
 
-         boolean var6 = !this.field2801.method419() && mc.player.getOffHandStack().getItem() == Items.TOTEM_OF_UNDYING;
+         boolean var6 = !this.field2801.getValue() && mc.player.getOffHandStack().getItem() == Items.TOTEM_OF_UNDYING;
          if (mc.player.getMainHandStack().getItem() == Items.TOTEM_OF_UNDYING) {
-            if (var5 > this.field2797.method423() || var6) {
-               if (this.field2800.method419() && this.field2805 != -1) {
+            if (var5 > this.field2797.getValue() || var6) {
+               if (this.field2800.getValue() && this.field2805 != -1) {
                   ((KeyBindingAccessor)mc.options.hotbarKeys[this.field2805]).setTimesPressed(1);
                   this.field2805 = -1;
                   this.field2803.reset();
@@ -80,24 +80,24 @@ public class HotbarTotem extends Module {
                this.field2804 = false;
             }
          } else {
-            if (var5 > this.field2797.method423() || var6) {
+            if (var5 > this.field2797.getValue() || var6) {
                this.field2805 = -1;
             }
 
             if (!var6) {
                boolean var7 = false;
-               if ((double)this.field2798.method423().floatValue() > 0.0 && var5 <= this.field2798.method423()) {
+               if ((double)this.field2798.getValue().floatValue() > 0.0 && var5 <= this.field2798.getValue()) {
                   var7 = true;
-               } else if (var5 <= this.field2797.method423() && !this.field2804) {
+               } else if (var5 <= this.field2797.getValue() && !this.field2804) {
                   var7 = true;
-               } else if (var5 > this.field2797.method423() && this.field2804) {
+               } else if (var5 > this.field2797.getValue() && this.field2804) {
                   this.field2804 = false;
                }
 
                if (var7) {
                   for (int var8 = 0; var8 < 9; var8++) {
                      if (mc.player.getInventory().getStack(var8).getItem() == Items.TOTEM_OF_UNDYING) {
-                        if (this.field2800.method419()) {
+                        if (this.field2800.getValue()) {
                            this.field2805 = mc.player.getInventory().selectedSlot;
                         }
 
@@ -117,8 +117,8 @@ public class HotbarTotem extends Module {
    @EventHandler
    public void method1606(PacketBundleEvent event) {
       if (event.packet instanceof EntityStatusS2CPacket var5
-         && this.field2802.method419()
-         && !this.field2801.method419()
+         && this.field2802.getValue()
+         && !this.field2801.getValue()
          && OffHand.INSTANCE.method1971()
          && OffHand.INSTANCE.isEnabled()
          && var5.getStatus() == 35) {
@@ -132,6 +132,6 @@ public class HotbarTotem extends Module {
    }
 
    private boolean lambda$new$0() {
-      return !this.field2801.method419() && OffHand.INSTANCE.method1971();
+      return !this.field2801.getValue() && OffHand.INSTANCE.method1971();
    }
 }

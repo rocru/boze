@@ -158,7 +158,7 @@ public class ChooseMacroComponent extends ScaledBaseComponent {
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
                Macro var11 = new Macro();
                var11.field1048 = this.field1410;
-               this.field1409.method449().field2140.add(var11);
+               this.field1409.getValue().field2140.add(var11);
                ClickGUI.field1335.method580(new BindComponent(var11, this.field1409));
             } catch (Exception var12) {
                ChatInstance.method626("Error creating macro");
@@ -183,7 +183,7 @@ public class ChooseMacroComponent extends ScaledBaseComponent {
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
                Macro var10 = new Macro();
                var10.field1048 = this.field1410;
-               this.field1409.method449().field2140.add(var10);
+               this.field1409.getValue().field2140.add(var10);
                ClickGUI.field1335.method580(new BindComponent(var10, this.field1409));
             } catch (Exception var8) {
                ChatInstance.method626("Error creating macro");

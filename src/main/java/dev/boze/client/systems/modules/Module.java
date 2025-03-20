@@ -130,7 +130,7 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
 
          if (dev.boze.client.systems.modules.hud.core.ArrayList.INSTANCE != null
             && dev.boze.client.systems.modules.hud.core.ArrayList.INSTANCE.isEnabled()
-            && dev.boze.client.systems.modules.hud.core.ArrayList.INSTANCE.field651.method419()) {
+            && dev.boze.client.systems.modules.hud.core.ArrayList.INSTANCE.field651.getValue()) {
             dev.boze.client.systems.modules.hud.core.ArrayList.INSTANCE
                .field659
                .put(new ArrayListModuleInfo(this.internalName, this.method1322(), this.enabled), System.currentTimeMillis());

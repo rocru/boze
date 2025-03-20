@@ -38,7 +38,7 @@ class PoppedPlayerEntity extends FakePlayerEntity {
    }
 
    public boolean method550(Renderer3D renderer, float tickDelta) {
-      if (this.field1279.field3642.method419()) {
+      if (this.field1279.field3642.getValue()) {
          PlayerEntity var6 = mc.world.getPlayerByUuid(this.field1273);
          if (var6 != null) {
             this.method548(var6);
@@ -56,11 +56,11 @@ class PoppedPlayerEntity extends FakePlayerEntity {
       if (var10 <= 0.0) {
          return true;
       } else {
-         BozeDrawColor var8 = this.field1279.field3643.method1362().copy();
-         BozeDrawColor var9 = this.field1279.field3644.method1362().copy();
+         BozeDrawColor var8 = this.field1279.field3643.getValue().copy();
+         BozeDrawColor var9 = this.field1279.field3644.getValue().copy();
          var8.field411 = (int)((double)var8.field411 * var10);
          var9.field411 = (int)((double)var9.field411 * var10);
-         if (this.field1279.field3642.method419()) {
+         if (this.field1279.field3642.getValue()) {
             Class5923.method68(renderer, tickDelta, this, var8, var9, ShapeMode.Full);
          } else {
             Class5923.method67(renderer, tickDelta, this, var8, var9, ShapeMode.Full, this.field1276, this.field1277, this.field1278);

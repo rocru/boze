@@ -94,7 +94,7 @@ public class BlockBreakingTracker implements IMinecraft {
             BlockState var5 = mc.world.getBlockState(var1);
             int var6 = BlockMiningUtils.method593(var5, SwapMode.Alt);
             float var7 = BlockBreakingUtil.method506(var1, mc.player.getInventory().getStack(var6));
-            return Math.min(1.0F, var2 + var7 * (1.0F / Options.INSTANCE.field990.method423()));
+            return Math.min(1.0F, var2 + var7 * (1.0F / Options.INSTANCE.field990.getValue()));
         }
     }
 

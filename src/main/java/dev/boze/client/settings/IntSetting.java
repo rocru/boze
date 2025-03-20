@@ -98,15 +98,18 @@ public class IntSetting extends Setting<Integer> {
       this.field937 = true;
    }
 
-   public Integer method434() {
+   @Override
+   public Integer getValue() {
       return this.value;
    }
 
-   public Integer method435() {
+   @Override
+   public Integer resetValue() {
       return this.value = this.defaultValue;
    }
 
-   public Integer method436(Integer newVal) {
+   @Override
+   public Integer setValue(Integer newVal) {
       this.value = newVal;
       if (this.callback != null) {
          this.callback.accept(this.value);
@@ -127,7 +130,8 @@ public class IntSetting extends Setting<Integer> {
       return tag;
    }
 
-   public Integer method437(NbtCompound tag) {
+   @Override
+   public Integer load(NbtCompound tag) {
       if (tag.contains("Value")) {
          this.value = tag.getInt("Value");
       }
@@ -137,34 +141,34 @@ public class IntSetting extends Setting<Integer> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method437(nbtCompound);
-   }
+  // @Override
+  // public Object load(NbtCompound nbtCompound) {
+ ///     return this.method437(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method436((Integer)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+  //    return this.method436((Integer)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method435();
-   }
+   //@Override
+  // p//ublic Object resetValue() {
+   //   return this.method435();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method434();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method434();
+   //}
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
-      this.method436((Integer)var1.getArgument("value", Integer.class));
+      this.setValue((Integer)var1.getArgument("value", Integer.class));
       return 1;
    }
 }

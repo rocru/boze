@@ -26,7 +26,7 @@ public class ScalingSetting implements SettingsGroup {
    }
 
    public double method1303() {
-      return this.field2234.method461() == ScalingMode.Const ? this.field2238.getValue() * 0.5 : this.field2235.getValue();
+      return this.field2234.getValue() == ScalingMode.Const ? this.field2238.getValue() * 0.5 : this.field2235.getValue();
    }
 
    public double getMinValue() {
@@ -38,22 +38,22 @@ public class ScalingSetting implements SettingsGroup {
    }
 
    public ScalingMode method1304() {
-      return this.field2234.method461();
+      return this.field2234.getValue();
    }
 
    private boolean lambda$new$3() {
-      return this.field2234.method461() == ScalingMode.Const;
+      return this.field2234.getValue() == ScalingMode.Const;
    }
 
    private boolean lambda$new$2() {
-      return this.field2234.method461() == ScalingMode.Dist;
+      return this.field2234.getValue() == ScalingMode.Dist;
    }
 
    private boolean lambda$new$1() {
-      return this.field2234.method461() == ScalingMode.Dist;
+      return this.field2234.getValue() == ScalingMode.Dist;
    }
 
    private boolean lambda$new$0() {
-      return this.field2234.method461() == ScalingMode.Dist;
+      return this.field2234.getValue() == ScalingMode.Dist;
    }
 }

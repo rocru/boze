@@ -91,7 +91,7 @@ public class Aura extends Module {
    private final BooleanSetting infinite = new BooleanSetting(
       "Infinite", false, "Infinite mode\nUses paper clip exploit to tp to entities and attack them\nThis won't work on most servers with anti-cheats\n"
    );
-   private final MinMaxSetting clipRange = new MinMaxSetting("ClipRange", 20.0, 8.0, 200.0, 0.1, "Range for paper clip exploit", this.infinite::method419);
+   private final MinMaxSetting clipRange = new MinMaxSetting("ClipRange", 20.0, 8.0, 200.0, 0.1, "Range for paper clip exploit", this.infinite::getValue);
    private final MinMaxSetting range = new MinMaxSetting("Range", 4.5, 0.5, 6.0, 0.1, "Max range");
    private final MinMaxSetting wallsRange = new MinMaxSetting("WallsRange", 1.5, 0.5, 6.0, 0.1, "Max range through walls", this::lambda$new$2);
    private final BooleanSetting raycast = new BooleanSetting("RayCast", true, "Ray cast look to check if looking at target entity", this::lambda$new$3);
@@ -136,15 +136,15 @@ public class Aura extends Module {
    }
 
    private double method1397() {
-      return this.infinite.method419() ? this.clipRange.getValue() : this.range.getValue();
+      return this.infinite.getValue() ? this.clipRange.getValue() : this.range.getValue();
    }
 
    private double method1398() {
-      return this.infinite.method419() ? this.clipRange.getValue() : this.wallsRange.getValue();
+      return this.infinite.getValue() ? this.clipRange.getValue() : this.wallsRange.getValue();
    }
 
    private boolean method1399() {
-      return this.infinite.method419() ? false : this.raycast.method419();
+      return this.infinite.getValue() ? false : this.raycast.getValue();
    }
 
    public Aura() {
@@ -162,23 +162,23 @@ public class Aura extends Module {
    )
    public void method1400(ACRotationEvent event) {
       if (!this.field2459.isGhostMode()) {
-         if (!event.method1018(this.mode.method461().interactMode, this.rotate.method419())) {
+         if (!event.method1018(this.mode.getValue().interactMode, this.rotate.getValue())) {
             if (!AutoEat.method1663()) {
                this.method1407();
-               if (this.rotate.method419()
+               if (this.rotate.getValue()
                   && this.an != null
                   && (
                      this.method1413(mc.player.getMainHandStack().getItem())
-                        || this.swap.method461() != AuraSwapMode.Off && this.swap.method461() != AuraSwapMode.OnlyWeapon && this.method1412() != -1
+                        || this.swap.getValue() != AuraSwapMode.Off && this.swap.getValue() != AuraSwapMode.OnlyWeapon && this.method1412() != -1
                   )) {
-                  if (this.mode.method461() == InteractionMode.Grim && this.grimSilent.method419() && !this.method1409()) {
+                  if (this.mode.getValue() == InteractionMode.Grim && this.grimSilent.getValue() && !this.method1409()) {
                      return;
                   }
 
-                  if (this.yawStep.method419()) {
+                  if (this.yawStep.getValue()) {
                      float var5 = MathHelper.wrapDegrees(this.an[0] - ((ClientPlayerEntityAccessor)mc.player).getLastYaw());
-                     if (Math.abs(var5) > 180.0F * this.yawAngle.method423()) {
-                        this.an[0] = ((ClientPlayerEntityAccessor)mc.player).getLastYaw() + var5 * (180.0F * this.yawAngle.method423() / Math.abs(var5));
+                     if (Math.abs(var5) > 180.0F * this.yawAngle.getValue()) {
+                        this.an[0] = ((ClientPlayerEntityAccessor)mc.player).getLastYaw() + var5 * (180.0F * this.yawAngle.getValue() / Math.abs(var5));
                      }
                   }
 
@@ -216,7 +216,7 @@ public class Aura extends Module {
             if (event.field1284 == RotationMode.Vanilla) {
                this.field2459.method1421(event);
             }
-         } else if (!event.method555(RotationMode.Sequential, this.rotate.method419())) {
+         } else if (!event.method555(RotationMode.Sequential, this.rotate.getValue())) {
             this.method1408();
          }
       }
@@ -227,7 +227,7 @@ public class Aura extends Module {
       if (this.field2459.isGhostMode()) {
          this.field2459.method1422(var1);
       } else {
-         if (this.render.method419() && this.al != null && !this.am.hasElapsed(2500.0)) {
+         if (this.render.getValue() && this.al != null && !this.am.hasElapsed(2500.0)) {
             double var5 = MathHelper.lerp((double)var1.field1951, this.al.lastRenderX, this.al.getX()) - this.al.getX();
             double var7 = MathHelper.lerp((double)var1.field1951, this.al.lastRenderY, this.al.getY()) - this.al.getY();
             double var9 = MathHelper.lerp((double)var1.field1951, this.al.lastRenderZ, this.al.getZ()) - this.al.getZ();
@@ -241,8 +241,8 @@ public class Aura extends Module {
                      var5 + var11.maxX,
                      var7 + var11.maxY,
                      var9 + var11.maxZ,
-                     this.color.method1362(),
-                     this.outline.method1362(),
+                     this.color.getValue(),
+                     this.outline.getValue(),
                      ShapeMode.Full,
                      0
                   );
@@ -282,7 +282,7 @@ public class Aura extends Module {
       if (this.field2459.isGhostMode()) {
          this.field2459.method1418(event);
       } else {
-         if (event.screen instanceof DeathScreen && this.disableOnDeath.method419()) {
+         if (event.screen instanceof DeathScreen && this.disableOnDeath.getValue()) {
             this.setEnabled(false);
          }
       }
@@ -305,14 +305,14 @@ public class Aura extends Module {
    }
 
    private boolean method1408() {
-      if (Options.method477(this.multitask.method419())) {
+      if (Options.method477(this.multitask.getValue())) {
          return false;
       } else if (this.al == null) {
          return false;
       } else {
          Vec3d var4 = mc.player.getEyePos();
          double var5 = var4.distanceTo(this.al.getEyePos());
-         if (this.mode.method461().interactMode == AnticheatMode.Grim && this.rotate.method419() && this.method1399()) {
+         if (this.mode.getValue().interactMode == AnticheatMode.Grim && this.rotate.getValue() && this.method1399()) {
             Vec3d var7 = RotationHandler.method1954().multiply(this.method1397());
             Vec3d var8 = var4.add(var7);
             if (var5 > this.method1398()) {
@@ -334,10 +334,10 @@ public class Aura extends Module {
          }
 
          int var14 = -1;
-         if (this.swap.method461() != AuraSwapMode.Off && this.swap.method461() != AuraSwapMode.OnlyWeapon) {
+         if (this.swap.getValue() != AuraSwapMode.Off && this.swap.getValue() != AuraSwapMode.OnlyWeapon) {
             var14 = this.method1412();
-            if (mc.player.getInventory().selectedSlot != var14 && var14 != -1 && this.swap.method461() != AuraSwapMode.Silent) {
-               if (this.swap.method461() == AuraSwapMode.Normal) {
+            if (mc.player.getInventory().selectedSlot != var14 && var14 != -1 && this.swap.getValue() != AuraSwapMode.Silent) {
+               if (this.swap.getValue() == AuraSwapMode.Normal) {
                   Class2839.field111 = var14;
                }
 
@@ -350,13 +350,13 @@ public class Aura extends Module {
          if (!this.method1409()) {
             return false;
          } else {
-            if (this.pauseBaritone.method419() && BaritoneAPI.getProvider().getPrimaryBaritone().getPathingBehavior().isPathing() && !this.ak) {
+            if (this.pauseBaritone.getValue() && BaritoneAPI.getProvider().getPrimaryBaritone().getPathingBehavior().isPathing() && !this.ak) {
                BaritoneAPI.getProvider().getPrimaryBaritone().getCommandManager().execute("pause");
                this.ak = true;
             }
 
             int var16 = -1;
-            if (var14 != -1 && this.swap.method461() == AuraSwapMode.Silent) {
+            if (var14 != -1 && this.swap.getValue() == AuraSwapMode.Silent) {
                var16 = mc.player.getInventory().selectedSlot;
                mc.player.getInventory().selectedSlot = var14;
                ((ClientPlayerInteractionManagerAccessor)mc.interactionManager).callSyncSelectedSlot();
@@ -365,7 +365,7 @@ public class Aura extends Module {
 
             BlockPos var18 = mc.player.getBlockPos();
             Vec3d var19 = mc.player.getPos();
-            if (this.infinite.method419() && var5 > this.range.getValue()) {
+            if (this.infinite.getValue() && var5 > this.range.getValue()) {
                BlockPos var11 = BlockPos.ofFloored(this.al.getPos()).down();
                Vec3d var12 = new Vec3d((double)var11.getX() + 0.5, (double)var11.getY() + 1.0, (double)var11.getZ() + 0.5);
                BlockHitResult var13 = new BlockHitResult(var12, Direction.UP, var11, false);
@@ -378,14 +378,14 @@ public class Aura extends Module {
                mc.player.networkHandler.sendPacket(PlayerInteractEntityC2SPacket.attack(this.al, mc.player.isSneaking()));
             }
 
-            if (this.infinite.method419() && var5 > this.range.getValue()) {
+            if (this.infinite.getValue() && var5 > this.range.getValue()) {
                BlockHitResult var20 = new BlockHitResult(var19, Direction.UP, var18, false);
                PositionUtils.method393(var20, true);
             }
 
             this.aj.reset();
             this.am.reset();
-            if (this.swing.method419()) {
+            if (this.swing.getValue()) {
                mc.player.swingHand(Hand.MAIN_HAND);
             }
 
@@ -400,20 +400,20 @@ public class Aura extends Module {
    }
 
    private boolean method1409() {
-      if (!this.ai.hasElapsed((double)(this.swapDelay.method423() * 50.0F))) {
+      if (!this.ai.hasElapsed((double)(this.swapDelay.getValue() * 50.0F))) {
          return false;
       } else if (!this.method1413(mc.player.getMainHandStack().getItem())) {
          return false;
-      } else if (this.delay.method461() == DelayMode.Tick && !this.aj.hasElapsed((double)((float)this.ticks.method434().intValue() * 50.0F))) {
+      } else if (this.delay.getValue() == DelayMode.Tick && !this.aj.hasElapsed((double)((float)this.ticks.method434().intValue() * 50.0F))) {
          return false;
       } else {
-         if (this.delay.method461() == DelayMode.Dynamic) {
+         if (this.delay.getValue() == DelayMode.Dynamic) {
             float var4 = 0.0F;
-            if (this.tpsSync.method461() == TpsSyncMode.Avg) {
+            if (this.tpsSync.getValue() == TpsSyncMode.Avg) {
                var4 = 20.0F - TickRateTracker.getAverageTickRate();
-            } else if (this.tpsSync.method461() == TpsSyncMode.Min) {
+            } else if (this.tpsSync.getValue() == TpsSyncMode.Min) {
                var4 = 20.0F - TickRateTracker.getMinTickRate();
-            } else if (this.tpsSync.method461() == TpsSyncMode.Last) {
+            } else if (this.tpsSync.getValue() == TpsSyncMode.Last) {
                var4 = 20.0F - TickRateTracker.getLastTickRate();
             }
 
@@ -422,7 +422,7 @@ public class Aura extends Module {
             }
          }
 
-         return !this.awaitCrits.method461().method2114();
+         return !this.awaitCrits.getValue().method2114();
       }
    }
 
@@ -433,7 +433,7 @@ public class Aura extends Module {
 
       for (Entity var8 : mc.world.getEntities()) {
          if (!(var8 instanceof LivingEntity)
-            && (this.minecarts.method419() && var8 instanceof MinecartEntity || this.boots.method419() && var8 instanceof BoatEntity)) {
+            && (this.minecarts.getValue() && var8 instanceof MinecartEntity || this.boots.getValue() && var8 instanceof BoatEntity)) {
             if (var8.getEyePos().distanceTo(mc.player.getEyePos()) > this.method1397()
                || var8.getEyePos().distanceTo(mc.player.getEyePos()) > this.method1398() && !RaycastUtil.method2055(var8)) {
                continue;
@@ -453,12 +453,12 @@ public class Aura extends Module {
          }
       }
 
-      if (this.priority.method461() == TargetPriority.Highest) {
-         return this.target.method461() == TargetMode.Health && var6
+      if (this.priority.getValue() == TargetPriority.Highest) {
+         return this.target.getValue() == TargetMode.Health && var6
             ? (Entity)var4.stream().max(Comparator.comparing(Aura::lambda$getTarget$7)).orElse(null)
             : (Entity)var5.stream().max(Comparator.comparing(Aura::lambda$getTarget$8)).orElse(null);
       } else {
-         return this.target.method461() == TargetMode.Health && var6
+         return this.target.getValue() == TargetMode.Health && var6
             ? (Entity)var4.stream().min(Comparator.comparing(Aura::lambda$getTarget$9)).orElse(null)
             : (Entity)var5.stream().min(Comparator.comparing(Aura::lambda$getTarget$10)).orElse(null);
       }
@@ -475,10 +475,10 @@ public class Aura extends Module {
          } else if (var1 instanceof FakePlayerEntity) {
             return false;
          } else {
-            return Friends.method2055(var1) ? this.friends.method419() : this.players.method419();
+            return Friends.method2055(var1) ? this.friends.getValue() : this.players.getValue();
          }
       } else {
-         if (this.checkAggression.method419()) {
+         if (this.checkAggression.getValue()) {
             if (var1 instanceof EndermanEntity var5 && !var5.isAngryAt(mc.player)) {
                return false;
             }
@@ -496,12 +496,12 @@ public class Aura extends Module {
             }
          }
 
-         if (var1 instanceof ArmorStandEntity && this.armorStands.method419()) {
+         if (var1 instanceof ArmorStandEntity && this.armorStands.getValue()) {
             return true;
          } else {
              return switch (ms.field2109[var1.getType().getSpawnGroup().ordinal()]) {
-                 case 1, 2, 3, 4 -> this.animals.method419();
-                 case 5 -> this.monsters.method419();
+                 case 1, 2, 3, 4 -> this.animals.getValue();
+                 case 5 -> this.monsters.getValue();
                  default -> false;
              };
          }
@@ -529,14 +529,14 @@ public class Aura extends Module {
    }
 
    private boolean method1413(Item var1) {
-      return this.swap.method461() != AuraSwapMode.OnlyWeapon
-         || var1 instanceof SwordItem && this.swapWeapon.method461() != AutoSwapMode.Axe
-         || var1 instanceof AxeItem && this.swapWeapon.method461() != AutoSwapMode.Sword;
+      return this.swap.getValue() != AuraSwapMode.OnlyWeapon
+         || var1 instanceof SwordItem && this.swapWeapon.getValue() != AutoSwapMode.Axe
+         || var1 instanceof AxeItem && this.swapWeapon.getValue() != AutoSwapMode.Sword;
    }
 
    private boolean method1414(Item var1) {
-      return var1 instanceof SwordItem && this.swapWeapon.method461() != AutoSwapMode.Axe
-         || var1 instanceof AxeItem && this.swapWeapon.method461() != AutoSwapMode.Sword;
+      return var1 instanceof SwordItem && this.swapWeapon.getValue() != AutoSwapMode.Axe
+         || var1 instanceof AxeItem && this.swapWeapon.getValue() != AutoSwapMode.Sword;
    }
 
    private static Float lambda$getTarget$10(Entity var0) {
@@ -560,23 +560,23 @@ public class Aura extends Module {
    }
 
    private boolean lambda$new$5() {
-      return this.swap.method461() != AuraSwapMode.Silent;
+      return this.swap.getValue() != AuraSwapMode.Silent;
    }
 
    private boolean lambda$new$4() {
-      return this.delay.method461() == DelayMode.Tick;
+      return this.delay.getValue() == DelayMode.Tick;
    }
 
    private boolean lambda$new$3() {
-      return !this.infinite.method419();
+      return !this.infinite.getValue();
    }
 
    private boolean lambda$new$2() {
-      return !this.infinite.method419();
+      return !this.infinite.getValue();
    }
 
    private boolean lambda$new$1() {
-      return this.rotate.method419() && this.mode.method461() == InteractionMode.Grim;
+      return this.rotate.getValue() && this.mode.getValue() == InteractionMode.Grim;
    }
 
    private static boolean lambda$new$0() {

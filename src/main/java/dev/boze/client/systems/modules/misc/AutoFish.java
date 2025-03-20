@@ -71,7 +71,7 @@ public class AutoFish extends Module {
 
          if (this.field2893 <= 0) {
             this.field2893 = 30;
-            if (this.autoCast.method419()
+            if (this.autoCast.getValue()
                && !this.field2890
                && !this.field2891
                && mc.player.fishHook == null

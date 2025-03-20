@@ -53,7 +53,7 @@ public class Extinguish extends Module {
    }
 
    private boolean method1691() {
-      if (Options.method477(this.field2921.method419())) {
+      if (Options.method477(this.field2921.getValue())) {
          return false;
       } else {
          int var4 = InventoryHelper.method174(BlastResistanceCalculator.field3905, this.field2920.method149());
@@ -86,7 +86,7 @@ public class Extinguish extends Module {
          this.field2924 = (BlockHitResult)this.field2923[0];
          RotationHelper var4 = GhostRotations.INSTANCE.field760 == null ? new RotationHelper(mc.player) : GhostRotations.INSTANCE.field760;
          RotationHelper var5 = Class1202.method2391(mc.player.getEyePos(), this.field2924.getPos());
-         RotationHelper var6 = var4.method603(var5, this.field2920.field229.method1287());
+         RotationHelper var6 = var4.method603(var5, this.field2920.field229.getValue());
          this.field2925 = new RotationHelper(var4.method1384(), var6.method1385());
          return true;
       } else {
@@ -131,7 +131,7 @@ public class Extinguish extends Module {
       priority = 78
    )
    public void method1694(eJ event) {
-      if (!this.field2920.method2114() && this.field2920.field227.method461() != BlockPlaceMode.Mouse && !event.method1101()) {
+      if (!this.field2920.method2114() && this.field2920.field227.getValue() != BlockPlaceMode.Mouse && !event.method1101()) {
          if (this.method1692()) {
             event.method1099(this.field2925.method600(this::lambda$onGhostRotate$0));
          }
@@ -144,7 +144,7 @@ public class Extinguish extends Module {
    public void method1695(MouseUpdateEvent event) {
       if (MinecraftUtils.isClientActive() && !event.method1022()) {
          if (mc.currentScreen == null || mc.currentScreen instanceof ClickGUI) {
-            if (!this.field2920.method2114() && this.field2920.field227.method461() != BlockPlaceMode.Normal) {
+            if (!this.field2920.method2114() && this.field2920.field227.getValue() != BlockPlaceMode.Normal) {
                if (this.method1692()) {
                   RotationHelper var5 = new RotationHelper(mc.player);
                   RotationHelper var6 = this.field2925.method1600();
@@ -188,7 +188,7 @@ public class Extinguish extends Module {
       priority = 76
    )
    public void method1697(RotationEvent event) {
-      if (!Options.method477(this.field2921.method419()) && !event.method554(this.field2920.method147().type)) {
+      if (!Options.method477(this.field2921.getValue()) && !event.method554(this.field2920.method147().type)) {
          if (this.field2923 != null) {
             if (!this.field2920.method2115()) {
                byte var14 = 0;
@@ -208,7 +208,7 @@ public class Extinguish extends Module {
                         break;
                      }
 
-                     AttackMode var10 = var14 > 0 ? AttackMode.Packet : this.field2920.field234.method461();
+                     AttackMode var10 = var14 > 0 ? AttackMode.Packet : this.field2920.field234.getValue();
                      BlockPos var12 = var9.getBlockPos().offset(var9.getSide());
                      if (var15 > 0 && this.field2920.method2116()) {
                         if (this.field2920.method2117()) {

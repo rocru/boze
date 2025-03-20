@@ -56,7 +56,7 @@ public class AutoCrystalPrediction implements IMinecraft {
    }
 
    void method1416() {
-      if (this.field1091.dontPredict.method419()) {
+      if (this.field1091.dontPredict.getValue()) {
          AutoCrystalAction.Place.ticks = 0;
          AutoCrystalAction.Place.field1775 = 0;
          AutoCrystalAction.Full.ticks = 0;

@@ -33,14 +33,14 @@ public class OldColors extends Module {
    }
 
    public static RGBAColor method1342() {
-      return INSTANCE.field2404.method1347();
+      return INSTANCE.field2404.getValue();
    }
 
    public static BozeDrawColor method1343() {
-      return INSTANCE.clientGradient.method1362();
+      return INSTANCE.clientGradient.getValue();
    }
 
    public static ModuleColors method1344() {
-      return INSTANCE.field2405.method461();
+      return INSTANCE.field2405.getValue();
    }
 }

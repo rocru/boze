@@ -24,7 +24,7 @@ public class PrefixCommand extends Command {
             this.method625("Prefix not changed, prefix cannot contain spaces");
             return 1;
         } else {
-            Options.INSTANCE.field989.method1341(var5);
+            Options.INSTANCE.field989.setValue(var5);
             this.method624("Prefix set to: " + var5);
             return 1;
         }

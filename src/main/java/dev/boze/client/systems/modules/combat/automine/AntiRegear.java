@@ -24,7 +24,7 @@ public class AntiRegear implements IMinecraft, SettingsGroup {
 
    public AntiRegear(AutoMine var1) {
       this.field134 = new SettingBlock("AntiRegear", "Anti regear settings", this.field131, this.field132, this.field133);
-      this.field134.setVisibility(var1.advanced::method419);
+      this.field134.setVisibility(var1.advanced::getValue);
    }
 
    @Override
@@ -76,6 +76,6 @@ public class AntiRegear implements IMinecraft, SettingsGroup {
    }
 
    private static boolean lambda$new$0() {
-      return AutoMine.INSTANCE.advanced.method419();
+      return AutoMine.INSTANCE.advanced.getValue();
    }
 }

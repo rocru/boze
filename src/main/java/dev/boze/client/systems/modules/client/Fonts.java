@@ -43,14 +43,14 @@ public class Fonts extends Module {
    }
 
    private boolean lambda$new$2() {
-      return this.field2346.method461() == FontShadowMode.Color;
+      return this.field2346.getValue() == FontShadowMode.Color;
    }
 
    private boolean lambda$new$1() {
-      return this.field2346.method461() == FontShadowMode.Mod;
+      return this.field2346.getValue() == FontShadowMode.Mod;
    }
 
    private boolean lambda$new$0() {
-      return this.field2346.method461() == FontShadowMode.Mod;
+      return this.field2346.getValue() == FontShadowMode.Mod;
    }
 }

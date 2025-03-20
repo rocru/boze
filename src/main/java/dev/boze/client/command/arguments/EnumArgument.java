@@ -14,10 +14,10 @@ import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
-class EnumArgument implements ArgumentType<Enum> {
+public class EnumArgument implements ArgumentType<Enum> {
     final EnumSetting field1858;
 
-    private EnumArgument(EnumSetting var1) {
+    public EnumArgument(EnumSetting var1) {
         this.field1858 = var1;
     }
 

@@ -34,11 +34,11 @@ public class NoRender extends Module {
    private final MiscSettings field3615 = new MiscSettings();
 
    public static boolean method1971() {
-      return INSTANCE.isEnabled() && INSTANCE.field3608.field2218.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3608.field2218.getValue();
    }
 
    public static boolean method1972() {
-      return INSTANCE.isEnabled() && INSTANCE.field3608.field2219.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3608.field2219.getValue();
    }
 
    public static boolean method1973() {
@@ -86,39 +86,39 @@ public class NoRender extends Module {
    }
 
    public static boolean method1984() {
-      return INSTANCE.isEnabled() && INSTANCE.field3610.field2226.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3610.field2226.getValue();
    }
 
    public static boolean method1985() {
-      return INSTANCE.isEnabled() && INSTANCE.field3610.field2227.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3610.field2227.getValue();
    }
 
    public static boolean method1986() {
-      return INSTANCE.isEnabled() && INSTANCE.field3610.field2228.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3610.field2228.getValue();
    }
 
    public static boolean method1987() {
-      return INSTANCE.isEnabled() && INSTANCE.field3610.field2230.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3610.field2230.getValue();
    }
 
    public static boolean method1988() {
-      return INSTANCE.isEnabled() && INSTANCE.field3610.field2231.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3610.field2231.getValue();
    }
 
    public static boolean method1989() {
-      return INSTANCE.isEnabled() && INSTANCE.field3610.field2232.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3610.field2232.getValue();
    }
 
    public static boolean method1990() {
-      return INSTANCE.isEnabled() && INSTANCE.field3612.field95.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3612.field95.getValue();
    }
 
    public static boolean method1991() {
-      return INSTANCE.isEnabled() && INSTANCE.field3612.field96.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3612.field96.getValue();
    }
 
    public static boolean method1992() {
-      return INSTANCE.isEnabled() && INSTANCE.field3612.field98.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3612.field98.getValue();
    }
 
    public static boolean method1993(LivingEntity entity, EquipmentSlot equipmentSlot) {
@@ -126,23 +126,23 @@ public class NoRender extends Module {
    }
 
    public static boolean method1994() {
-      return INSTANCE.isEnabled() && INSTANCE.field3615.field2205.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3615.field2205.getValue();
    }
 
    public static boolean method1995() {
-      return INSTANCE.isEnabled() && INSTANCE.field3615.field2206.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3615.field2206.getValue();
    }
 
    public static boolean method1996() {
-      return INSTANCE.isEnabled() && INSTANCE.field3615.field2209.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3615.field2209.getValue();
    }
 
    public static boolean method1997() {
-      return INSTANCE.isEnabled() && INSTANCE.field3615.field2208.method419();
+      return INSTANCE.isEnabled() && INSTANCE.field3615.field2208.getValue();
    }
 
    public static boolean method1998(ParticleEffect parameters) {
-      if (INSTANCE.isEnabled() && INSTANCE.field3613.field2216.method419()) {
+      if (INSTANCE.isEnabled() && INSTANCE.field3613.field2216.getValue()) {
          ParticleType var4 = parameters.getType();
          if (INSTANCE.field3614.method2032().contains(var4)) {
             return true;
@@ -168,8 +168,8 @@ public class NoRender extends Module {
    public void method2001(PacketBundleEvent event) {
       if (event.packet instanceof EntitySpawnS2CPacket var5
          && var5.getEntityType() == EntityType.WARDEN
-         && this.field3612.field92.method419()
-         && this.field3612.field93.method419()) {
+         && this.field3612.field92.getValue()
+         && this.field3612.field93.getValue()) {
          event.method1020();
       }
    }
@@ -181,7 +181,7 @@ public class NoRender extends Module {
 
    @EventHandler
    public void method2003(PreRenderEvent event) {
-      if (this.field3610.field2229.method419() && this.field3611.method2032().contains(event.blockEntity.getType())) {
+      if (this.field3610.field2229.getValue() && this.field3611.method2032().contains(event.blockEntity.getType())) {
          event.method1020();
       }
    }
@@ -193,7 +193,7 @@ public class NoRender extends Module {
 
    @EventHandler
    public void method2005(PreTickEvent event) {
-      if (this.field3615.field2210.method419() && mc.options.getNarrator().getValue() != NarratorMode.OFF) {
+      if (this.field3615.field2210.getValue() && mc.options.getNarrator().getValue() != NarratorMode.OFF) {
          mc.options.getNarrator().setValue(NarratorMode.OFF);
       }
    }

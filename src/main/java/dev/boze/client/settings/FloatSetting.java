@@ -98,15 +98,18 @@ public class FloatSetting extends Setting<Float> {
       this.field933 = true;
    }
 
-   public Float method423() {
+   @Override
+   public Float getValue() {
       return this.field928;
    }
 
-   public Float method424() {
+   @Override
+   public Float resetValue() {
       return this.field928 = this.field929;
    }
 
-   public Float method425(Float newVal) {
+   @Override
+   public Float setValue(Float newVal) {
       return this.field928 = newVal;
    }
 
@@ -122,7 +125,8 @@ public class FloatSetting extends Setting<Float> {
       return tag;
    }
 
-   public Float method426(NbtCompound tag) {
+   @Override
+   public Float load(NbtCompound tag) {
       if (tag.contains("Value")) {
          this.field928 = tag.getFloat("Value");
       }
@@ -132,34 +136,34 @@ public class FloatSetting extends Setting<Float> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method426(nbtCompound);
-   }
+   //@Override
+   //public Object load(NbtCompound nbtCompound) {
+  //    return this.method426(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method425((Float)object);
-   }
+   //@Override
+  // public Object setValue(Object object) {
+  //    return this.method425((Float)object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method424();
-   }
-
+   //@Override
+   //public Object resetValue() {
+   //   return this.method424();
+  // }
+//
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method423();
-   }
+   //@Override
+   //public Object getValue() {
+    //  return this.method423();
+  // }
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
-      this.method425((Float)var1.getArgument("value", Float.class));
+      this.setValue((Float)var1.getArgument("value", Float.class));
       return 1;
    }
 }

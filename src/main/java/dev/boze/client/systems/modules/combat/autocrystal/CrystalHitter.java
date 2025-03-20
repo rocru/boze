@@ -50,8 +50,8 @@ class CrystalHitter implements IMinecraft {
    void method2142() {
       if (Class2923.method2114()
          || mc.player.getInventory().getMainHandStack().getItem() instanceof EndCrystalItem
-         || this.field1093.field1041.field213.method461() != AutoMineSwapMode.Off
-            && InventoryHelper.method165(Class2923.field126, this.field1093.field1041.field213.method461()) != -1) {
+         || this.field1093.field1041.field213.getValue() != AutoMineSwapMode.Off
+            && InventoryHelper.method165(Class2923.field126, this.field1093.field1041.field213.getValue()) != -1) {
          HitResult[] var4 = null;
 
          for (Class5912 var8 : this.field1095) {
@@ -98,7 +98,7 @@ class CrystalHitter implements IMinecraft {
                ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(var9[0], var9[1]);
             }
 
-            if (this.field1093.field1041.field205.method461() == AnticheatMode.Grim && mc.world.getBlockState(var8.getBlockPos()).isAir()) {
+            if (this.field1093.field1041.field205.getValue() == AnticheatMode.Grim && mc.world.getBlockState(var8.getBlockPos()).isAir()) {
                AirPlace.method393(var8, var7 == -2);
             } else {
                var1.method557(AutoCrystal.INSTANCE, AttackMode.Packet, var8, var7 == -2 ? Hand.OFF_HAND : Hand.MAIN_HAND);
@@ -137,15 +137,15 @@ class CrystalHitter implements IMinecraft {
       }
 
       ArrayList<BlockHitResult> var8 = new ArrayList<>(var7.size());
-      if (this.field1093.field1041.field205.method461() == AnticheatMode.NCP) {
+      if (this.field1093.field1041.field205.getValue() == AnticheatMode.NCP) {
          var6.method941(
-                 this.field1093.autoCrystalPlace.field138.method423(),
-                 this.field1093.autoCrystalPlace.field139.method423()
+                 this.field1093.autoCrystalPlace.field138.getValue(),
+                 this.field1093.autoCrystalPlace.field139.getValue()
          );
       } else {
          var6.method941(
-                 this.field1093.autoCrystalPlace.field138.method423(),
-                 this.field1093.autoCrystalPlace.field138.method423()
+                 this.field1093.autoCrystalPlace.field138.getValue(),
+                 this.field1093.autoCrystalPlace.field138.getValue()
          );
       }
 
@@ -166,7 +166,7 @@ class CrystalHitter implements IMinecraft {
       for (Direction var12 : Direction.values()) {
          BlockPos var13 = var2.offset(var12);
          if (this.method514(var1, var13, var4)
-            && var5.method567(var13, var12.getOpposite(), this.field1093.field1041.field210.method419(), this.field1093.field1041.field210.method419())) {
+            && var5.method567(var13, var12.getOpposite(), this.field1093.field1041.field210.getValue(), this.field1093.field1041.field210.getValue())) {
             var3.add(var12);
          }
       }
@@ -182,11 +182,11 @@ class CrystalHitter implements IMinecraft {
    }
 
    private Anticheat method515() {
-      return this.field1093.field1041.field205.method461() == AnticheatMode.NCP ? NCP.field1836 : Grim.field1831;
+      return this.field1093.field1041.field205.getValue() == AnticheatMode.NCP ? NCP.field1836 : Grim.field1831;
    }
 
    private SwapMode method149() {
-      return this.field1093.field1041.field213.method461() == AutoMineSwapMode.Off ? SwapMode.Silent : this.field1093.field1041.field213.method461().swapMode;
+      return this.field1093.field1041.field213.getValue() == AutoMineSwapMode.Off ? SwapMode.Silent : this.field1093.field1041.field213.getValue().swapMode;
    }
 
    private boolean method2114() {

@@ -53,7 +53,7 @@ public class AutoCrystalTracker implements IMinecraft {
    }
 
    void update() {
-      if (this.field1524.delaySync.method419()) {
+      if (this.field1524.delaySync.getValue()) {
          this.field1525 = 20.0F / MathHelper.clamp(TickRateTracker.getLastTickRate(), 10.0F, 20.0F);
       } else {
          this.field1525 = 1.0F;
@@ -125,7 +125,7 @@ public class AutoCrystalTracker implements IMinecraft {
 
    void method683(BlockPos var1) {
       this.field1524.autoCrystalTracker.field1539.putIfAbsent(var1, System.currentTimeMillis());
-      if (this.field1524.placeSync.method419() && !var1.equals(this.field1533)) {
+      if (this.field1524.placeSync.getValue() && !var1.equals(this.field1533)) {
          this.field1533 = var1;
          this.field1532.reset();
       }
@@ -207,7 +207,7 @@ public class AutoCrystalTracker implements IMinecraft {
 
    private boolean lambda$update$1(Entry var1) {
       if (System.currentTimeMillis() - (Long)var1.getValue() > 1000L) {
-         if (this.field1524.autoCrystalBreak.field181.method461() == InhibitMode.Strict) {
+         if (this.field1524.autoCrystalBreak.field181.getValue() == InhibitMode.Strict) {
             Integer var5 = (Integer)this.field1543.remove(var1.getKey());
             if (var5 != null) {
                Entity var6 = mc.world.getEntityById(var5);

@@ -41,8 +41,8 @@ public class BlockModelRendererMixin {
       int var15,
       CallbackInfo var16
    ) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3753.method419()) {
-         RGBAColor var19 = Tint.INSTANCE.field3754.method1347();
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3753.getValue()) {
+         RGBAColor var19 = Tint.INSTANCE.field3754.getValue();
          this.modifyBuffer(var4, (float)var19.field408 / 255.0F, (float)var19.field409 / 255.0F, (float)var19.field410 / 255.0F, 255);
       }
    }

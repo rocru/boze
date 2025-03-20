@@ -37,7 +37,7 @@ public class GhostModeComponent extends BaseComponent implements IMinecraft {
          ClickGUI.field1335.field1333.method2252(this.field318, this.field319, this.field320, this.field321, RGBAColor.field402);
       }
 
-      switch (hR.field2102[Gui.INSTANCE.field2371.method461().ordinal()]) {
+      switch (hR.field2102[Gui.INSTANCE.field2371.getValue().ordinal()]) {
          case 1:
             RenderUtil.field3963
                .method2257(
@@ -102,7 +102,7 @@ public class GhostModeComponent extends BaseComponent implements IMinecraft {
    @Override
    public boolean mouseClicked(double mouseX, double mouseY, int button) {
       if (isMouseWithinBounds(mouseX, mouseY, this.field318, this.field319, this.field320, this.field321) && button == 0) {
-         Options.INSTANCE.method478().method421(!Options.INSTANCE.method478().method419());
+         Options.INSTANCE.method478().setValue(!Options.INSTANCE.method478().getValue());
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
          return true;
       } else {

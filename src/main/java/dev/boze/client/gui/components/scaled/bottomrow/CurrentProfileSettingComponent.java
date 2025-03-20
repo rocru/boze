@@ -44,7 +44,7 @@ public class CurrentProfileSettingComponent extends BottomRowScaledComponent {
    protected void method639(DrawContext context, int index, double itemX, double itemY, double itemWidth, double itemHeight) {
       String var13 = (String)this.field1465.get(index);
       String var14 = var13.substring(var13.lastIndexOf(46) + 1);
-      boolean var15 = var13.equals(this.field1463.method1322());
+      boolean var15 = var13.equals(this.field1463.getValue());
       RenderUtil.field3963
          .method2257(
             itemX,
@@ -94,9 +94,9 @@ public class CurrentProfileSettingComponent extends BottomRowScaledComponent {
       )) {
          this.method1800(var18);
          return true;
-      } else if (!var18.equals(this.field1463.method1322())) {
+      } else if (!var18.equals(this.field1463.getValue())) {
          Class1201.method2381(this.field1463, var18);
-         this.field1463.method1341(var18);
+         this.field1463.setValue(var18);
          return true;
       } else {
          return false;
@@ -104,7 +104,7 @@ public class CurrentProfileSettingComponent extends BottomRowScaledComponent {
    }
 
    private boolean method1701(String var1) {
-      if (var1.equals(this.field1463.method1322())) {
+      if (var1.equals(this.field1463.getValue())) {
          return false;
       } else {
          this.field1465.remove(var1);
@@ -125,7 +125,7 @@ public class CurrentProfileSettingComponent extends BottomRowScaledComponent {
          if (!this.field1465.contains(var5)) {
             this.field1465.add(var5);
             this.field1463.field968.add(var5);
-            this.field1463.method1341(var5);
+            this.field1463.setValue(var5);
             this.field1427 = "";
             BozeExecutor.method2200(this::lambda$addNewProfile$2);
             mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));

@@ -28,8 +28,8 @@ public abstract class AbstractClientPlayerEntityMixin {
    public void onGetSkinTextures(CallbackInfoReturnable<SkinTextures> info) {
       if (this.getPlayerListEntry() != null
          && Media.INSTANCE.isEnabled()
-         && Media.INSTANCE.field2402.method419()
-         && Media.INSTANCE.field2403.method1282().containsKey(this.getPlayerListEntry().getProfile().getName().toLowerCase(Locale.ROOT))) {
+         && Media.INSTANCE.field2402.getValue()
+         && Media.INSTANCE.field2403.getValue().containsKey(this.getPlayerListEntry().getProfile().getName().toLowerCase(Locale.ROOT))) {
          info.setReturnValue(DefaultSkinHelper.getSkinTextures(this.getPlayerListEntry().getProfile().getId()));
       }
    }

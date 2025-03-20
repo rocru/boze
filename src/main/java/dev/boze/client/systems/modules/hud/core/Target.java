@@ -47,7 +47,7 @@ public class Target extends HUDModule implements Class5929 {
          this.field623 = Math.max(IFontRender.method499().method501(var5.getName().getString()), IFontRender.method499().method501("Example42"));
          this.field624 = IFontRender.method499().method1390();
          this.method1904();
-         if (HUD.INSTANCE.field2394.method419()) {
+         if (HUD.INSTANCE.field2394.getValue()) {
             HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
          }
 
@@ -57,8 +57,8 @@ public class Target extends HUDModule implements Class5929 {
                var5.getName().getString(),
                this.method1391() + var6 + this.method334() * 2.0,
                this.method305() + this.method334(),
-               this.field616.method419() ? this.field617.method1362() : HUD.INSTANCE.field2383.method1362(),
-               this.field616.method419() ? this.field618.method419() : HUD.INSTANCE.field2384.method419()
+               this.field616.getValue() ? this.field617.getValue() : HUD.INSTANCE.field2383.getValue(),
+               this.field616.getValue() ? this.field618.getValue() : HUD.INSTANCE.field2384.getValue()
             );
          float var8 = var5.getHealth();
          float var9 = var5.getAbsorptionAmount();
@@ -86,7 +86,7 @@ public class Target extends HUDModule implements Class5929 {
                this.method305() + this.field624 + this.method334() * 2.0,
                var10,
                this.field624,
-               this.field620.method1347()
+               this.field620.getValue()
             );
          RenderUtil.field3963
             .method2252(
@@ -94,7 +94,7 @@ public class Target extends HUDModule implements Class5929 {
                this.method305() + this.field624 + this.method334() * 2.0,
                var12,
                this.field624,
-               this.field619.method1347()
+               this.field619.getValue()
             );
          if (var14 > 0.0) {
             RenderUtil.field3963
@@ -103,7 +103,7 @@ public class Target extends HUDModule implements Class5929 {
                   this.method305() + this.field624 + this.method334() * 2.0,
                   var14,
                   this.field624,
-                  this.field622.method1347()
+                  this.field622.getValue()
                );
             RenderUtil.field3963
                .method2252(
@@ -111,7 +111,7 @@ public class Target extends HUDModule implements Class5929 {
                   this.method305() + this.field624 + this.method334() * 2.0,
                   var16,
                   this.field624,
-                  this.field621.method1347()
+                  this.field621.getValue()
                );
          }
       } else {
@@ -119,7 +119,7 @@ public class Target extends HUDModule implements Class5929 {
             this.field623 = IFontRender.method499().method501("Example42");
             this.field624 = IFontRender.method499().method1390();
             this.method1904();
-            if (HUD.INSTANCE.field2394.method419()) {
+            if (HUD.INSTANCE.field2394.getValue()) {
                HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
             }
          }

@@ -46,7 +46,7 @@ public class MacroComponent extends BottomRowScaledComponent {
             15,
             24,
             Theme.method1387() ? BaseComponent.scaleFactor * 2.0 : 0.0,
-            var13.equals(this.field1452.method1322()) ? Theme.method1347().method2025(Theme.method1391()) : Theme.method1347()
+            var13.equals(this.field1452.getValue()) ? Theme.method1347().method2025(Theme.method1391()) : Theme.method1347()
          );
       IFontRender.method499()
          .drawShadowedText(
@@ -56,7 +56,7 @@ public class MacroComponent extends BottomRowScaledComponent {
 
    @Override
    protected boolean handleItemClick(int index, int button, double itemX, double itemY, double itemWidth, double itemHeight, double mouseX, double mouseY) {
-      this.field1452.method1341((String)this.field1453.get(index));
+      this.field1452.setValue((String)this.field1453.get(index));
       return true;
    }
 
@@ -66,7 +66,7 @@ public class MacroComponent extends BottomRowScaledComponent {
 
    @Override
    protected void method1198() {
-      if (this.field1452.method1322().isEmpty()) {
+      if (this.field1452.getValue().isEmpty()) {
          double var4 = IFontRender.method499().method501("Close") + BaseComponent.scaleFactor * 6.0;
          double var6 = IFontRender.method499().method1390() + BaseComponent.scaleFactor * 6.0;
          double var8 = this.field1389 + this.field1391 - var6 - BaseComponent.scaleFactor * 6.0;
@@ -110,11 +110,11 @@ public class MacroComponent extends BottomRowScaledComponent {
       double var10 = IFontRender.method499().method1390() + BaseComponent.scaleFactor * 6.0;
       double var12 = this.field1389 + this.field1391 - var10 - BaseComponent.scaleFactor * 6.0;
       double var14 = this.field1388 + this.field1390 * 0.25 - var8 * 0.5;
-      if (isMouseWithinBounds(mouseX, mouseY, var14, var12, var8, var10) && !this.field1452.method1322().isEmpty()) {
+      if (isMouseWithinBounds(mouseX, mouseY, var14, var12, var8, var10) && !this.field1452.getValue().isEmpty()) {
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-         this.field1452.method1341("");
+         this.field1452.setValue("");
       } else {
-         double var16 = this.field1452.method1322().isEmpty()
+         double var16 = this.field1452.getValue().isEmpty()
             ? this.field1388 + this.field1390 * 0.5 - var8 * 0.5
             : this.field1388 + this.field1390 * 0.75 - var8 * 0.5;
          if (isMouseWithinBounds(mouseX, mouseY, var16, var12, var8, var10)) {

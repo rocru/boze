@@ -21,7 +21,7 @@ public class Inventory extends HUDModule implements Class5929 {
    public void method295(DrawContext context) {
       this.method314(164.0 * this.method336());
       this.method316(56.0 * this.method336());
-      if (HUD.INSTANCE.field2394.method419()) {
+      if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
       }
    }

@@ -48,7 +48,7 @@ public class Background extends Module {
       Vec3d var15 = var7.add(var9.add(var11).multiply(42069.0));
       this.field3386.method2142();
       ShaderRegistry.field2266.method2142();
-      this.method1897(var15.x, var15.y, var15.z, var14.x, var14.y, var14.z, var13.x, var13.y, var13.z, var12.x, var12.y, var12.z, this.field3385.method1362());
+      this.method1897(var15.x, var15.y, var15.z, var14.x, var14.y, var14.z, var13.x, var13.y, var13.z, var12.x, var12.y, var12.z, this.field3385.getValue());
       this.field3386.method721(event.matrix, true, true);
    }
 

@@ -24,9 +24,9 @@ public class CrystalOptimizer extends Module {
    @EventHandler
    public void method1602(PostAttackEntityEvent event) {
       if (event.entity instanceof EndCrystalEntity) {
-         if (this.field2789.method461() == CrystalOptimizerMode.SetDead) {
+         if (this.field2789.getValue() == CrystalOptimizerMode.SetDead) {
             event.entity.kill();
-         } else if (this.field2789.method461() == CrystalOptimizerMode.EntityTrace) {
+         } else if (this.field2789.getValue() == CrystalOptimizerMode.EntityTrace) {
             ((IEndCrystalEntity)event.entity).boze$setLastAttackTime(System.currentTimeMillis());
          }
       }

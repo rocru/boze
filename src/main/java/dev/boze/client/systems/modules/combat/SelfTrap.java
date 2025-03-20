@@ -83,7 +83,7 @@ public class SelfTrap extends Module {
       } else {
          this.field545 = null;
          this.field543.field230.method1296();
-         if (this.autoCenter.method419() && this.field543.method147() == Anticheat.NCP) {
+         if (this.autoCenter.getValue() && this.field543.method147() == Anticheat.NCP) {
             Class5924.method2142();
          }
       }
@@ -91,26 +91,26 @@ public class SelfTrap extends Module {
 
    @EventHandler
    public void method1877(PlayerPositionEvent event) {
-      if (this.onStep.method419() && Step.INSTANCE.isEnabled()) {
+      if (this.onStep.getValue() && Step.INSTANCE.isEnabled()) {
          this.setEnabled(false);
       }
    }
 
    @EventHandler
    public void method2042(PacketBundleEvent event) {
-      if (!(event.packet instanceof PlayerPositionLookS2CPacket) || !this.onTP.method419()) {
-         if (event.packet instanceof BlockUpdateS2CPacket var5 && this.react.method461() == WorldReactMode.Packet && this.field543.method2114()) {
+      if (!(event.packet instanceof PlayerPositionLookS2CPacket) || !this.onTP.getValue()) {
+         if (event.packet instanceof BlockUpdateS2CPacket var5 && this.react.getValue() == WorldReactMode.Packet && this.field543.method2114()) {
             try {
                if (var5.getState().isAir()) {
                   int var10 = InventoryHelper.method174(
-                     BlastResistanceCalculator.method2130(this.field543.field249.method461(), this.field543.field250), this.field543.method149()
+                     BlastResistanceCalculator.method2130(this.field543.field249.getValue(), this.field543.field250), this.field543.method149()
                   );
                   if (var10 == -1) {
                      return;
                   }
 
                   Box var7 = this.field543.method1953();
-                  BlockPos[] var8 = TrapUtil.method586(var7, this.coverHead.method419() ? TrapMode.Top : TrapMode.Tall);
+                  BlockPos[] var8 = TrapUtil.method586(var7, this.coverHead.getValue() ? TrapMode.Top : TrapMode.Tall);
                   this.field543.method152(var5, this.field544, var10, var8);
                }
             } catch (Exception var9) {
@@ -135,7 +135,7 @@ public class SelfTrap extends Module {
    public void method1693(HandleInputEvent event) {
       if (!this.field543.method2114()) {
          if (this.field547 != null) {
-            int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field543.field249.method461(), this.field543.field250));
+            int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field543.field249.getValue(), this.field543.field250));
             if (this.field548.hasElapsed(this.field543.field232.method1295() * 50.0) && var5 != -1 && mc.player.getInventory().selectedSlot != var5) {
                ((KeyBindingAccessor)mc.options.hotbarKeys[var5]).setTimesPressed(1);
                this.field548.reset();
@@ -148,22 +148,22 @@ public class SelfTrap extends Module {
    }
 
    private boolean method1971() {
-      if (this.onJump.method419() && mc.player.getVelocity().y > 0.0 && !mc.player.isOnGround()) {
+      if (this.onJump.getValue() && mc.player.getVelocity().y > 0.0 && !mc.player.isOnGround()) {
          this.setEnabled(false);
          return false;
-      } else if (Options.method477(this.multiTask.method419())) {
+      } else if (Options.method477(this.multiTask.getValue())) {
          return false;
       } else {
          int var4 = InventoryHelper.method174(
-            BlastResistanceCalculator.method2130(this.field543.field249.method461(), this.field543.field250), this.field543.method149()
+            BlastResistanceCalculator.method2130(this.field543.field249.getValue(), this.field543.field250), this.field543.method149()
          );
          if (var4 == -1) {
             return false;
          } else {
             Box var5 = this.field543.method1953();
-            this.field545 = TrapUtil.method584(this.field543, var5, this.coverHead.method419() ? TrapMode.Top : TrapMode.Tall);
+            this.field545 = TrapUtil.method584(this.field543, var5, this.coverHead.getValue() ? TrapMode.Top : TrapMode.Tall);
             if (this.field545.length == 0) {
-               if (this.whenDone.method419()) {
+               if (this.whenDone.getValue()) {
                   this.setEnabled(false);
                }
 
@@ -184,7 +184,7 @@ public class SelfTrap extends Module {
          this.field546 = (BlockHitResult)this.field545[0];
          RotationHelper var4 = GhostRotations.INSTANCE.field760 == null ? new RotationHelper(mc.player) : GhostRotations.INSTANCE.field760;
          RotationHelper var5 = Class1202.method2391(mc.player.getEyePos(), this.field546.getPos());
-         this.field547 = var4.method603(var5, this.field543.field229.method1287());
+         this.field547 = var4.method603(var5, this.field543.field229.getValue());
          return true;
       } else {
          this.field547 = null;
@@ -196,7 +196,7 @@ public class SelfTrap extends Module {
       priority = 149
    )
    public void method1694(eJ event) {
-      if (!this.field543.method2114() && this.field543.field227.method461() != BlockPlaceMode.Mouse && !event.method1101()) {
+      if (!this.field543.method2114() && this.field543.field227.getValue() != BlockPlaceMode.Mouse && !event.method1101()) {
          if (this.method1972()) {
             event.method1099(this.field547.method600(this::lambda$onGhostRotate$1));
          }
@@ -209,7 +209,7 @@ public class SelfTrap extends Module {
    public void method1695(MouseUpdateEvent event) {
       if (MinecraftUtils.isClientActive() && !event.method1022()) {
          if (mc.currentScreen == null || mc.currentScreen instanceof ClickGUI) {
-            if (!this.field543.method2114() && this.field543.field227.method461() != BlockPlaceMode.Normal) {
+            if (!this.field543.method2114() && this.field543.field227.getValue() != BlockPlaceMode.Normal) {
                if (this.method1972()) {
                   RotationHelper var5 = new RotationHelper(mc.player);
                   RotationHelper var6 = this.field547.method1600();
@@ -254,20 +254,20 @@ public class SelfTrap extends Module {
       priority = 149
    )
    public void method1883(RotationEvent event) {
-      if (!Options.method477(this.multiTask.method419()) && !event.method555(this.field543.method147().type, this.field543.method2116())) {
+      if (!Options.method477(this.multiTask.getValue()) && !event.method555(this.field543.method147().type, this.field543.method2116())) {
          if (this.field545 != null) {
             if (!this.field543.method2115()) {
                byte var15 = 0;
                HashMap var16 = null;
-               if (this.field543.field247.method419()) {
-                  var16 = BlockBreakingTracker.field1511.method666(this.field543.field248.method419());
+               if (this.field543.field247.getValue()) {
+                  var16 = BlockBreakingTracker.field1511.method666(this.field543.field248.getValue());
                }
 
                for (int var17 = 0; var17 < this.field545.length; var17++) {
                   HitResult var8 = this.field545[var17];
                   if (var8.getType() == Type.BLOCK) {
                      int var9 = InventoryHelper.method174(
-                        BlastResistanceCalculator.method2130(this.field543.field249.method461(), this.field543.field250), this.field543.method149()
+                        BlastResistanceCalculator.method2130(this.field543.field249.getValue(), this.field543.field250), this.field543.method149()
                      );
                      if (var9 == -1) {
                         this.field545 = null;
@@ -282,9 +282,9 @@ public class SelfTrap extends Module {
                            break;
                         }
 
-                        AttackMode var12 = var15 > 0 ? AttackMode.Packet : this.field543.field234.method461();
+                        AttackMode var12 = var15 > 0 ? AttackMode.Packet : this.field543.field234.getValue();
                         boolean var13 = false;
-                        if (this.field543.field247.method419() && var16.containsKey(var11)) {
+                        if (this.field543.field247.getValue() && var16.containsKey(var11)) {
                            var12 = AttackMode.Packet;
                            var13 = true;
                         }
@@ -341,7 +341,7 @@ public class SelfTrap extends Module {
                this.field544.method1416();
                this.field545 = null;
             } else if (this.field546 != null && this.field547 != null) {
-               int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field543.field249.method461(), this.field543.field250));
+               int var5 = InventoryHelper.method176(BlastResistanceCalculator.method2130(this.field543.field249.getValue(), this.field543.field250));
                if (var5 != -1 && mc.player.getInventory().selectedSlot == var5) {
                   RotationHelper var6 = GhostRotations.INSTANCE.field760 == null ? new RotationHelper(mc.player) : GhostRotations.INSTANCE.field760;
                   BlockHitResult var7 = RaycastUtil.method575(Reach.method1614(), var6, true);

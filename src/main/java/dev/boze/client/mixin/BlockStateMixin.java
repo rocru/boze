@@ -20,7 +20,7 @@ public abstract class BlockStateMixin extends AbstractBlockState {
    }
 
    public ActionResult onUse(World world, PlayerEntity player, BlockHitResult hit) {
-      InventoryTracker.method597((BlockState)this);
+      InventoryTracker.method597((BlockState)(Object)this);
       return super.onUse(world, player, hit);
    }
 }

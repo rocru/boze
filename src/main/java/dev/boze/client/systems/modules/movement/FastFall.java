@@ -43,12 +43,12 @@ public class FastFall extends Module {
    @EventHandler
    public void method1830(MovementEvent event) {
       if (mc.player != null) {
-         if (this.field3246.method461() == FastFallMode.Step) {
+         if (this.field3246.getValue() == FastFallMode.Step) {
             if (this.field3254
                && !mc.player.isOnGround()
                && mc.player.getVelocity().y <= 0.0
                && mc.world
-                  .getBlockCollisions(mc.player, mc.player.getBoundingBox().offset(0.0, -((double)this.field3247.method423().floatValue() + 0.01), 0.0))
+                  .getBlockCollisions(mc.player, mc.player.getBoundingBox().offset(0.0, -((double)this.field3247.getValue().floatValue() + 0.01), 0.0))
                   .iterator()
                   .hasNext()
                && !mc.player.isSubmergedInWater()) {
@@ -62,12 +62,12 @@ public class FastFall extends Module {
 
    @EventHandler
    public void method1831(PrePlayerTickEvent event) {
-      if (this.field3246.method461() == FastFallMode.Normal) {
+      if (this.field3246.getValue() == FastFallMode.Normal) {
          if (mc.world.getBlockState(BlockPos.ofFloored(mc.player.getPos())).getBlock() != Blocks.AIR) {
             this.field3253 = false;
          } else {
             if (mc.player.isOnGround()) {
-               mc.player.setVelocity(mc.player.getVelocity().x, -0.0784 * (double)this.field3250.method423().floatValue(), mc.player.getVelocity().z);
+               mc.player.setVelocity(mc.player.getVelocity().x, -0.0784 * (double)this.field3250.getValue().floatValue(), mc.player.getVelocity().z);
                this.field3253 = true;
             }
 
@@ -80,7 +80,7 @@ public class FastFall extends Module {
 
    @EventHandler
    public void method1832(PlayerMoveEvent event) {
-      if (this.field3246.method461() == FastFallMode.Normal) {
+      if (this.field3246.getValue() == FastFallMode.Normal) {
          if (this.field3253 && !mc.player.isOnGround()) {
             if (mc.world
                .isSpaceEmpty(mc.player.getBoundingBox().withMinY(Math.max((double)mc.world.getBottomY(), mc.player.getY() - this.field3252.getValue())))) {
@@ -94,20 +94,20 @@ public class FastFall extends Module {
                      .move(
                         event.movementType,
                         new Vec3d(
-                           this.field3249.method461() == FastFallHorizontal.Boost ? event.vec3.x : 0.0,
+                           this.field3249.getValue() == FastFallHorizontal.Boost ? event.vec3.x : 0.0,
                            event.vec3.y,
-                           this.field3249.method461() == FastFallHorizontal.Boost ? event.vec3.z : 0.0
+                           this.field3249.getValue() == FastFallHorizontal.Boost ? event.vec3.z : 0.0
                         )
                      );
                   Class3091.field217 = false;
                   ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(mc.player.isOnGround());
-                  if (this.field3248.method419()) {
+                  if (this.field3248.getValue()) {
                      event.vec3 = event.vec3.subtract(0.0, 0.08, 0.0);
                      mc.player.setVelocity(mc.player.getVelocity().x, mc.player.getVelocity().y - 0.08, mc.player.getVelocity().z);
                   }
                }
 
-               if (this.field3249.method461() == FastFallHorizontal.Cancel) {
+               if (this.field3249.getValue() == FastFallHorizontal.Cancel) {
                   event.vec3 = event.vec3.subtract(event.vec3.x, 0.0, event.vec3.z);
                }
             }
@@ -116,26 +116,26 @@ public class FastFall extends Module {
    }
 
    private boolean lambda$new$5() {
-      return this.field3246.method461() == FastFallMode.Normal && this.field3251.method434() > 0;
+      return this.field3246.getValue() == FastFallMode.Normal && this.field3251.method434() > 0;
    }
 
    private boolean lambda$new$4() {
-      return this.field3246.method461() == FastFallMode.Normal;
+      return this.field3246.getValue() == FastFallMode.Normal;
    }
 
    private boolean lambda$new$3() {
-      return this.field3246.method461() == FastFallMode.Normal;
+      return this.field3246.getValue() == FastFallMode.Normal;
    }
 
    private boolean lambda$new$2() {
-      return this.field3246.method461() == FastFallMode.Normal;
+      return this.field3246.getValue() == FastFallMode.Normal;
    }
 
    private boolean lambda$new$1() {
-      return this.field3246.method461() == FastFallMode.Normal;
+      return this.field3246.getValue() == FastFallMode.Normal;
    }
 
    private boolean lambda$new$0() {
-      return this.field3246.method461() == FastFallMode.Step;
+      return this.field3246.getValue() == FastFallMode.Step;
    }
 }

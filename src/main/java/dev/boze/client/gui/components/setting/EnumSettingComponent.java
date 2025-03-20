@@ -52,7 +52,7 @@ public class EnumSettingComponent extends ScaledSettingBaseComponent implements 
          byte var16 = 6;
          double var12 = var8 ? this.field318 + 6.0 * scaleFactor + IFontRender.method499().method501(this.field316) : this.field318;
          double var14 = var8 ? this.field320 - (6.0 * scaleFactor + IFontRender.method499().method501(this.field316) + var9) : this.field320;
-         if (Gui.INSTANCE.field2372.method419()) {
+         if (Gui.INSTANCE.field2372.getValue()) {
             RenderUtil.field3963
                .method2257(
                   var12 + 6.0 * scaleFactor,
@@ -76,8 +76,8 @@ public class EnumSettingComponent extends ScaledSettingBaseComponent implements 
             );
          IFontRender.method499()
             .drawShadowedText(
-               this.field311.method461().name(),
-               var12 + var14 * 0.5 - IFontRender.method499().method501(this.field311.method461().name()) * 0.5,
+               this.field311.getValue().name(),
+               var12 + var14 * 0.5 - IFontRender.method499().method501(this.field311.getValue().name()) * 0.5,
                this.field319 + this.field321 * (var8 ? 0.5 : 0.75) - IFontRender.method499().method1390() / 2.0,
                Theme.method1350()
             );
@@ -98,19 +98,19 @@ public class EnumSettingComponent extends ScaledSettingBaseComponent implements 
       if (this.field311.method2116() && isMouseWithinBounds(mouseX, mouseY, this.field318, this.field319, this.field320, this.field321)) {
          if (button == 0) {
             this.field273.reset();
-            int var9 = this.field311.method464(this.field311.method461().toString());
+            int var9 = this.field311.method464(this.field311.getValue().toString());
             if (mouseX >= this.field318 + this.field320 * 0.5) {
                if (this.method159(var9 + 1)) {
-                  this.field311.method463(((Enum[])this.field311.method461().getClass().getEnumConstants())[var9 + 1]);
+                  this.field311.setValue(((Enum[])this.field311.getValue().getClass().getEnumConstants())[var9 + 1]);
                } else {
-                  this.field311.method463(((Enum[])this.field311.method461().getClass().getEnumConstants())[0]);
+                  this.field311.setValue(((Enum[])this.field311.getValue().getClass().getEnumConstants())[0]);
                }
             } else if (this.method159(var9 - 1)) {
-               this.field311.method463(((Enum[])this.field311.method461().getClass().getEnumConstants())[var9 - 1]);
+               this.field311.setValue(((Enum[])this.field311.getValue().getClass().getEnumConstants())[var9 - 1]);
             } else {
                this.field311
-                  .method463(
-                     ((Enum[])this.field311.method461().getClass().getEnumConstants())[((Enum[])this.field311.method461().getClass().getEnumConstants()).length
+                  .setValue(
+                     ((Enum[])this.field311.getValue().getClass().getEnumConstants())[((Enum[])this.field311.getValue().getClass().getEnumConstants()).length
                         - 1]
                   );
             }
@@ -130,6 +130,6 @@ public class EnumSettingComponent extends ScaledSettingBaseComponent implements 
    }
 
    private boolean method159(int var1) {
-      return var1 <= ((Enum[])this.field311.method461().getClass().getEnumConstants()).length - 1 && var1 >= 0;
+      return var1 <= ((Enum[])this.field311.getValue().getClass().getEnumConstants()).length - 1 && var1 >= 0;
    }
 }

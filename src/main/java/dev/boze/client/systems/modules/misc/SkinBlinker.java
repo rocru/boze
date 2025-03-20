@@ -20,12 +20,12 @@ public class SkinBlinker extends Module {
 
    @EventHandler
    public void method1770(Render3DEvent event) {
-      if (this.field3115.hasElapsed((double)(this.field3113.method423() * 1000.0F))) {
+      if (this.field3115.hasElapsed((double)(this.field3113.getValue() * 1000.0F))) {
          PlayerModelPart[] var5 = PlayerModelPart.values();
 
          for (int var6 = 0; var6 < var5.length; var6++) {
             PlayerModelPart var7 = var5[var6];
-            mc.options.togglePlayerModelPart(var7, this.field3114.method419() ? Math.random() < 0.5 : !mc.options.isPlayerModelPartEnabled(var7));
+            mc.options.togglePlayerModelPart(var7, this.field3114.getValue() ? Math.random() < 0.5 : !mc.options.isPlayerModelPartEnabled(var7));
          }
 
          this.field3115.reset();

@@ -41,8 +41,8 @@ public class PhaseESP extends Module {
 
    @EventHandler
    public void method2071(Render3DEvent event) {
-      if (!this.field461.method419() || Class5924.method76(true)) {
-         event.field1950.field2166.field1594 = this.field463.method423();
+      if (!this.field461.getValue() || Class5924.method76(true)) {
+         event.field1950.field2166.field1594 = this.field463.getValue();
          Box var5 = mc.player.getBoundingBox().shrink(1.0E-4, 0.0, 1.0E-4);
          Set var6 = this.method250(var5);
          if (this.field469 == null) {
@@ -60,15 +60,15 @@ public class PhaseESP extends Module {
                      BlockPos var15 = var13.down();
                      BlockState var16 = mc.world.getBlockState(var15);
                      if (var16.isAir() || var16.getBlock() == Blocks.LAVA || var16.getBlock() == Blocks.WATER) {
-                        this.method248(this.field469, var13, var12, this.field466.method1362());
+                        this.method248(this.field469, var13, var12, this.field466.getValue());
                      } else if (var16.getBlock() == Blocks.BEDROCK) {
                         if (var14.getBlock() == Blocks.BEDROCK) {
-                           this.method248(this.field469, var13, var12, this.field464.method1362());
+                           this.method248(this.field469, var13, var12, this.field464.getValue());
                         } else {
-                           this.method248(this.field469, var13, var12, this.field465.method1362());
+                           this.method248(this.field469, var13, var12, this.field465.getValue());
                         }
                      } else {
-                        this.method248(this.field469, var13, var12, this.field465.method1362());
+                        this.method248(this.field469, var13, var12, this.field465.getValue());
                      }
                   }
                }
@@ -76,7 +76,7 @@ public class PhaseESP extends Module {
          }
 
          this.field469.method1219(event.matrix);
-         if (this.field462.method419()) {
+         if (this.field462.getValue()) {
             Map var17 = Map.of(
                BlockPos.ofFloored(var5.minX - 1.0, var5.minY, var5.minZ - 1.0),
                new Vec3i(1, 0, 1),
@@ -97,11 +97,11 @@ public class PhaseESP extends Module {
    private void method247(Render3DEvent var1, BlockPos var2, Vec3i var3, BozeDrawColor var4) {
       Vec3d var8 = new Vec3d((double)(var2.getX() + var3.getX()), (double)var2.getY(), (double)(var2.getZ() + var3.getZ()));
       Vec3d var9 = new Vec3d((double)(var2.getX() + var3.getX()), (double)(var2.getY() + 1), (double)(var2.getZ() + var3.getZ()));
-      if (this.field467.method423() > 0.0F) {
+      if (this.field467.getValue() > 0.0F) {
          Box var10 = new Box(var8, var9);
-         var10 = var10.expand((double)this.field467.method423().floatValue() * 0.5, 0.0, (double)this.field467.method423().floatValue() * 0.5);
+         var10 = var10.expand((double)this.field467.getValue().floatValue() * 0.5, 0.0, (double)this.field467.getValue().floatValue() * 0.5);
          BozeDrawColor var11 = var4.copy();
-         var11.field411 = (int)(this.field468.method423() * 255.0F);
+         var11.field411 = (int)(this.field468.getValue() * 255.0F);
          var1.field1950.method1273(var10, var11, var4, ShapeMode.Full, 0);
       } else {
          var1.field1950.method1235(var8, var9, var4);
@@ -135,11 +135,11 @@ public class PhaseESP extends Module {
    }
 
    private void method249(Renderer3D var1, Vec3d var2, Vec3d var3, BozeDrawColor var4) {
-      if (this.field467.method423() == 0.0F) {
+      if (this.field467.getValue() == 0.0F) {
          var1.method1235(var2, var3, var4);
       } else {
          BozeDrawColor var8 = var4.copy();
-         var8.field411 = (int)(this.field468.method423() * 255.0F);
+         var8.field411 = (int)(this.field468.getValue() * 255.0F);
          var1.method1258(
             var2.x,
             var2.y,
@@ -148,10 +148,10 @@ public class PhaseESP extends Module {
             var3.y,
             var3.z,
             var3.x,
-            var3.y + (double)this.field467.method423().floatValue(),
+            var3.y + (double)this.field467.getValue().floatValue(),
             var3.z,
             var2.x,
-            var2.y + (double)this.field467.method423().floatValue(),
+            var2.y + (double)this.field467.getValue().floatValue(),
             var2.z,
             var8,
             var4,
@@ -177,21 +177,21 @@ public class PhaseESP extends Module {
          BlockPos var8 = var2.down();
          BlockState var9 = mc.world.getBlockState(var8);
          if (var9.isAir() || var9.getBlock() == Blocks.LAVA || var9.getBlock() == Blocks.WATER) {
-            this.method247(var1, var2, var3, this.field466.method1362());
+            this.method247(var1, var2, var3, this.field466.getValue());
          } else if (var9.getBlock() == Blocks.BEDROCK) {
             if (var7.getBlock() == Blocks.BEDROCK) {
-               this.method247(var1, var2, var3, this.field464.method1362());
+               this.method247(var1, var2, var3, this.field464.getValue());
             } else {
-               this.method247(var1, var2, var3, this.field465.method1362());
+               this.method247(var1, var2, var3, this.field465.getValue());
             }
          } else {
-            this.method247(var1, var2, var3, this.field465.method1362());
+            this.method247(var1, var2, var3, this.field465.getValue());
          }
       }
    }
 
    private boolean lambda$new$1() {
-      return this.field467.method423() > 0.0F;
+      return this.field467.getValue() > 0.0F;
    }
 
    private static boolean lambda$new$0() {

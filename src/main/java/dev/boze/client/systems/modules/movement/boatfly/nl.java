@@ -56,7 +56,7 @@ class nl extends nj {
 
             BoatEntity var5 = (BoatEntity)mc.player.getVehicle();
             this.method703(var5);
-            if (!this.field1556.field3158.method419()) {
+            if (!this.field1556.field3158.getValue()) {
                this.method1198();
             }
 
@@ -78,8 +78,8 @@ class nl extends nj {
       var1.setNoGravity(true);
       var1.setYaw(mc.player.getYaw());
       Vec3d var5 = this.method1954();
-      if (!this.field1556.field3158.method419() && (this.field1556.field3160.method419() || mc.player.age % 2 != 0)) {
-         if (this.field1592.get() && this.field1556.field3161.method419()) {
+      if (!this.field1556.field3158.getValue() && (this.field1556.field3160.getValue() || mc.player.age % 2 != 0)) {
+         if (this.field1592.get() && this.field1556.field3161.getValue()) {
             var1.setVelocity(0.0, 0.0, 0.0);
             this.field1592.set(false);
          } else {
@@ -93,7 +93,7 @@ class nl extends nj {
       double var6 = 0.0;
       double var8 = 0.0;
       if (Class5924.method2116()) {
-         Vec3d var10 = Class5924.method93((double)this.field1556.field3152.method423().floatValue());
+         Vec3d var10 = Class5924.method93((double)this.field1556.field3152.getValue().floatValue());
          var4 = var10.x;
          var8 = var10.z;
       }
@@ -109,10 +109,10 @@ class nl extends nj {
             var4.setVelocity(var4.getVelocity().x, -0.04, var4.getVelocity().z);
          }
 
-         return (double)this.field1556.field3153.method423().floatValue();
+         return (double)this.field1556.field3153.getValue().floatValue();
       } else if (this.field1556.field3155.method476().isPressed()) {
-         return (double)(-this.field1556.field3154.method423());
-      } else if (this.field1556.field3157.method419()) {
+         return (double)(-this.field1556.field3154.getValue());
+      } else if (this.field1556.field3157.getValue()) {
          if (mc.player.age % 4 == 0) {
             var4.setVelocity(var4.getVelocity().x, 0.099, var4.getVelocity().z);
          } else {
@@ -133,7 +133,7 @@ class nl extends nj {
    @Override
    void method2042(PacketBundleEvent var1) {
       if (this.method2116()) {
-         if (!this.field1556.field3158.method419()) {
+         if (!this.field1556.field3158.getValue()) {
             this.method704(var1);
          }
 
@@ -150,7 +150,7 @@ class nl extends nj {
          var5.getFlags().remove(PositionFlag.X_ROT);
          var5.getFlags().remove(PositionFlag.Y_ROT);
          this.field1589 = var5.getTeleportId();
-         if (!this.field1556.field3156.method419()) {
+         if (!this.field1556.field3156.getValue()) {
             Vec3d var7 = new Vec3d(var5.getX(), var5.getY(), var5.getZ());
             if (this.field1590 < this.field1556.field3162.method434() && var7.distanceTo(mc.player.getPos()) < 32.0) {
                var1.method1020();
@@ -161,11 +161,11 @@ class nl extends nj {
 
    private void method705(PacketBundleEvent var1) {
       if (var1.packet instanceof VehicleMoveS2CPacket && mc.player.isRiding()) {
-         if (this.field1556.field3158.method419()) {
-            if (!this.field1556.field3156.method419()) {
+         if (this.field1556.field3158.getValue()) {
+            if (!this.field1556.field3156.getValue()) {
                var1.method1020();
             }
-         } else if (this.field1556.field3161.method419()) {
+         } else if (this.field1556.field3161.getValue()) {
             this.field1592.set(true);
          } else {
             this.field1590++;
@@ -180,19 +180,19 @@ class nl extends nj {
 
    @Override
    void method1853(PrePacketSendEvent var1) {
-      if (this.method2116() && mc.player.isRiding() && !this.field1591 && this.field1556.field3159.method419()) {
+      if (this.method2116() && mc.player.isRiding() && !this.field1591 && this.field1556.field3159.getValue()) {
          if (var1.packet instanceof VehicleMoveC2SPacket && !this.field1592.get()) {
             this.method1904();
          } else if (var1.packet instanceof LookAndOnGround && mc.player.isRiding()) {
             var1.method1020();
-         } else if (var1.packet instanceof PlayerInputC2SPacket && !this.field1556.field3160.method419() && mc.player.age % 2 == 0) {
+         } else if (var1.packet instanceof PlayerInputC2SPacket && !this.field1556.field3160.getValue() && mc.player.age % 2 == 0) {
             var1.method1020();
          }
       }
    }
 
    private void method1904() {
-      if (this.field1556.field3160.method419()) {
+      if (this.field1556.field3160.getValue()) {
          this.field1591 = true;
          mc.player.networkHandler.sendPacket(new VehicleMoveC2SPacket(mc.player.getVehicle()));
          this.field1591 = false;

@@ -55,17 +55,17 @@ public class Search extends Module {
    private final BooleanSetting field3682 = new BooleanSetting("DistanceColor", false, "Color code tracers by their distance", this.field3678);
    private final RGBASetting field3683 = new RGBASetting("Color", new RGBAColor(-65536), "Color for tracers", this::lambda$new$3, this.field3678);
    private final RGBASetting field3684 = new RGBASetting(
-      "Minimum", new RGBAColor(-65536), "Color for minimum distance", this.field3682::method419, this.field3678
+      "Minimum", new RGBAColor(-65536), "Color for minimum distance", this.field3682::getValue, this.field3678
    );
    private final RGBASetting field3685 = new RGBASetting(
-      "Maximum", new RGBAColor(-16711936), "Color for maximum distance", this.field3682::method419, this.field3678
+      "Maximum", new RGBAColor(-16711936), "Color for maximum distance", this.field3682::getValue, this.field3678
    );
    private final BooleanSetting field3686 = new BooleanSetting("TracerFade", false, "Fade tracer opacity", this.field3678);
    private final FloatSetting field3687 = new FloatSetting(
-      "MinDist", 8.0F, 0.0F, 50.0F, 0.5F, "Min distance for fading", this.field3686::method419, this.field3678
+      "MinDist", 8.0F, 0.0F, 50.0F, 0.5F, "Min distance for fading", this.field3686::getValue, this.field3678
    );
    private final FloatSetting field3688 = new FloatSetting(
-      "Factor", 0.005F, 0.002F, 0.1F, 0.002F, "Factor for fading", this.field3686::method419, this.field3678
+      "Factor", 0.005F, 0.002F, 0.1F, 0.002F, "Factor for fading", this.field3686::getValue, this.field3678
    );
    private Renderer3D field3689;
    private ByteTexture field3690;
@@ -94,7 +94,7 @@ public class Search extends Module {
 
    @EventHandler
    private void method2024(Render3DEvent var1) {
-      if (this.field3669.method419()) {
+      if (this.field3669.getValue()) {
          if (this.field3689 == null) {
             this.field3689 = new Renderer3D(false, true);
          }
@@ -115,40 +115,40 @@ public class Search extends Module {
          }
 
          if (var8 != null) {
-            if (this.field3669.method419()) {
+            if (this.field3669.getValue()) {
                this.field3689
                   .method1268(
-                     ((Box)var8).minX, ((Box)var8).minY, ((Box)var8).minZ, ((Box)var8).maxX, ((Box)var8).maxY, ((Box)var8).maxZ, this.field3668.method1362(), 0
+                     ((Box)var8).minX, ((Box)var8).minY, ((Box)var8).minZ, ((Box)var8).maxX, ((Box)var8).maxY, ((Box)var8).maxZ, this.field3668.getValue(), 0
                   );
             } else {
-               var1.field1950.method1273((Box)var8, this.field3667.method1362(), this.field3668.method1362(), ShapeMode.Full, 0);
+               var1.field1950.method1273((Box)var8, this.field3667.getValue(), this.field3668.getValue(), ShapeMode.Full, 0);
             }
          }
       }
 
-      if (this.field3669.method419()) {
+      if (this.field3669.getValue()) {
          ChamsShaderRenderer.method1310(
             this::lambda$onRender3D$5,
             this.method2027(),
-            this.field3671.method419(),
+            this.field3671.getValue(),
             this.field3667,
             this.field3668,
             this.field3675.method434(),
-            this.field3676.method423(),
-            this.field3673.method423(),
-            this.field3674.method423(),
+            this.field3676.getValue(),
+            this.field3673.getValue(),
+            this.field3674.getValue(),
             this.field3672.method434(),
             this.field3690
          );
       }
 
-      if (this.field3678.method419()) {
+      if (this.field3678.getValue()) {
          if (this.field3693 == null) {
             this.field3693 = new Renderer3D();
          }
 
-         this.field3693.field2166.field1594 = this.field3679.method423();
-         this.field3693.field2170.field1594 = this.field3679.method423();
+         this.field3693.field2166.field1594 = this.field3679.getValue();
+         this.field3693.field2170.field1594 = this.field3679.getValue();
          this.field3693.method1217();
 
          for (BlockPos var16 : this.field3692) {
@@ -164,7 +164,7 @@ public class Search extends Module {
             double var10 = var17.distanceTo(RotationHelper.field3956);
             if (!(var10 > (double)this.field3680.method434().intValue()) && !(var10 < (double)this.field3681.method434().intValue())) {
                RGBAColor var12 = this.method2025(var10);
-               if (this.field3686.method419()) {
+               if (this.field3686.getValue()) {
                   double var13 = this.method2026(var10);
                   var12 = var12.copy().method196((int)((double)var12.field411 * var13));
                }
@@ -186,40 +186,40 @@ public class Search extends Module {
    }
 
    private RGBAColor method2025(double var1) {
-      return this.field3682.method419()
+      return this.field3682.getValue()
          ? Class3071.method6016(
-            this.field3684.method1347(),
-            this.field3685.method1347(),
+            this.field3684.getValue(),
+            this.field3685.getValue(),
             (var1 - (double)this.field3681.method434().intValue()) / (double)this.field3680.method434().intValue()
          )
-         : this.field3683.method1347();
+         : this.field3683.getValue();
    }
 
    private double method2026(double var1) {
-      if (var1 <= (double)this.field3687.method423().floatValue()) {
+      if (var1 <= (double)this.field3687.getValue().floatValue()) {
          return 1.0;
       } else {
-         var1 -= (double)this.field3687.method423().floatValue();
-         return 1.0 - MathHelper.clamp(var1 / (1.0 / (double)this.field3688.method423().floatValue()), 0.0, 1.0);
+         var1 -= (double)this.field3687.getValue().floatValue();
+         return 1.0 - MathHelper.clamp(var1 / (1.0 / (double)this.field3688.getValue().floatValue()), 0.0, 1.0);
       }
    }
 
    private ShaderMode method2027() {
-      if (this.field3670.method461() == SearchShader.Image) {
-         if (!this.field3677.method1322().isEmpty() && (!this.field3677.method1322().equals(this.field3691) || this.field3690 == null)) {
-            File var4 = new File(ConfigManager.images, this.field3677.method1322() + ".png");
+      if (this.field3670.getValue() == SearchShader.Image) {
+         if (!this.field3677.getValue().isEmpty() && (!this.field3677.getValue().equals(this.field3691) || this.field3690 == null)) {
+            File var4 = new File(ConfigManager.images, this.field3677.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.field3690 = ByteTexturePacker.method493(var5);
                if (this.field3690 != null) {
-                  this.field3691 = this.field3677.method1322();
+                  this.field3691 = this.field3677.getValue();
                } else {
                   this.field3691 = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field3677.method1341("");
+               this.field3677.setValue("");
                this.field3691 = "";
             }
          }
@@ -241,7 +241,7 @@ public class Search extends Module {
    }
 
    private boolean lambda$new$3() {
-      return !this.field3682.method419();
+      return !this.field3682.getValue();
    }
 
    private static boolean lambda$new$2() {
@@ -249,10 +249,10 @@ public class Search extends Module {
    }
 
    private boolean lambda$new$1() {
-      return this.field3670.method461() == SearchShader.Image;
+      return this.field3670.getValue() == SearchShader.Image;
    }
 
    private boolean lambda$new$0() {
-      return this.field3673.method423() > 0.0F;
+      return this.field3673.getValue() > 0.0F;
    }
 }

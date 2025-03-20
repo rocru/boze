@@ -51,7 +51,7 @@ public abstract class PlayerListHudMixin {
       index = 0
    )
    private int modifyWidth(int var1) {
-      return BetterTab.INSTANCE.isEnabled() && BetterTab.INSTANCE.field2916.method419() ? var1 + 30 : var1;
+      return BetterTab.INSTANCE.isEnabled() && BetterTab.INSTANCE.field2916.getValue() ? var1 + 30 : var1;
    }
 
    @ModifyConstant(
@@ -70,7 +70,7 @@ public abstract class PlayerListHudMixin {
       cancellable = true
    )
    private void onRenderLatencyIcon(DrawContext var1, int var2, int var3, int var4, PlayerListEntry var5, CallbackInfo var6) {
-      if (BetterTab.INSTANCE.isEnabled() && BetterTab.INSTANCE.field2916.method419()) {
+      if (BetterTab.INSTANCE.isEnabled() && BetterTab.INSTANCE.field2916.getValue()) {
          MinecraftClient var9 = MinecraftClient.getInstance();
          TextRenderer var10 = var9.textRenderer;
          int var11 = MathHelper.clamp(var5.getLatency(), 0, 9999);

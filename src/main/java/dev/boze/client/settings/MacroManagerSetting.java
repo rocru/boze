@@ -10,15 +10,18 @@ public class MacroManagerSetting extends Setting<MacroManager> implements IMinec
       super(name, description);
    }
 
-   public MacroManager method449() {
+   @Override
+   public MacroManager getValue() {
       return Boze.getMacros();
    }
 
-   public MacroManager method450() {
+   @Override
+   public MacroManager resetValue() {
       return Boze.getMacros();
    }
 
-   public MacroManager method451(MacroManager newVal) {
+   @Override
+   public MacroManager setValue(MacroManager newVal) {
       return Boze.getMacros();
    }
 
@@ -27,35 +30,36 @@ public class MacroManagerSetting extends Setting<MacroManager> implements IMinec
       return tag;
    }
 
-   public MacroManager method452(NbtCompound tag) {
+   @Override
+   public MacroManager load(NbtCompound tag) {
       return Boze.getMacros();
    }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method452(nbtCompound);
-   }
+  // @Override
+  // public Object load(NbtCompound nbtCompound) {
+  //    return this.method452(nbtCompound);
+ //  }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method451((MacroManager)object);
-   }
+   //@Override
+  // public Object setValue(Object object) {
+ //     return this.method451((MacroManager)object);
+ //  }
+//
+   // $VF: synthetic method
+   // $VF: bridge method
+   //@Override
+   //public Object resetValue() {
+   //   return this.method450();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method450();
-   }
-
-   // $VF: synthetic method
-   // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method449();
-   }
+   //@Override
+   //public Object getValue() {
+  //    return this.method449();
+  // }
 }

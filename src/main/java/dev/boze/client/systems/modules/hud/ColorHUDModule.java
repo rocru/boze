@@ -31,9 +31,9 @@ public abstract class ColorHUDModule extends HUDModule {
       this.method297(
          this.method1562(),
          this.method1563(),
-         this.field606.method419() ? this.field607.method1362() : HUD.INSTANCE.field2383.method1362(),
-         this.field606.method419() ? this.field608.method1362() : HUD.INSTANCE.field2383.method1362(),
-         this.field606.method419() ? this.field609.method419() : HUD.INSTANCE.field2384.method419()
+         this.field606.getValue() ? this.field607.getValue() : HUD.INSTANCE.field2383.getValue(),
+         this.field606.getValue() ? this.field608.getValue() : HUD.INSTANCE.field2383.getValue(),
+         this.field606.getValue() ? this.field609.getValue() : HUD.INSTANCE.field2384.getValue()
       );
    }
 

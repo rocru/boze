@@ -67,7 +67,7 @@ public class FakePlayer extends Module {
          GameProfile var4 = new GameProfile(new UUID(1L, 1L), "FakePlayer");
          this.field2946 = 0;
          this.fakePlayer = (FakeClientPlayerEntity)this.method1712(var4, FakePlayerEntityWithTotem::new);
-         this.fakePlayer.method561(this.damage::method419);
+         this.fakePlayer.method561(this.damage::getValue);
       }
    }
 
@@ -106,7 +106,7 @@ public class FakePlayer extends Module {
 
    @EventHandler
    private void method1708(MovementEvent var1) {
-      if (this.gApple.method419() && this.timer.hasElapsed((double)(this.gAppleDelay.method423() * 1000.0F))) {
+      if (this.gApple.getValue() && this.timer.hasElapsed((double)(this.gAppleDelay.getValue() * 1000.0F))) {
          this.fakePlayer.setAbsorptionAmount(16.0F);
          this.fakePlayer.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 400, 1));
          this.fakePlayer.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 6000, 0));
@@ -117,11 +117,11 @@ public class FakePlayer extends Module {
 
       if (this.recordPositions.method476().isPressed() && mc.currentScreen == null) {
          this.positions.add(new FakePositions(mc.player));
-      } else if (this.move.method419() && !this.positions.isEmpty() && (!BackTrack.INSTANCE.isEnabled() || BackTrack.INSTANCE.field1028 < 0)) {
+      } else if (this.move.getValue() && !this.positions.isEmpty() && (!BackTrack.INSTANCE.isEnabled() || BackTrack.INSTANCE.field1028 < 0)) {
          if (this.field2946 >= this.positions.size()) {
             this.field2946 = 0;
-            if (!this.loop.method419()) {
-               this.move.method421(false);
+            if (!this.loop.getValue()) {
+               this.move.setValue(false);
                return;
             }
          }

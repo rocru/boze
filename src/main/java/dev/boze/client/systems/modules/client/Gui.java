@@ -33,8 +33,8 @@ public class Gui extends Module {
       "DoubleEsc", true, "Press escape once to stop searching\nPress escape twice to close the gui\n", this.field2358
    );
    private final BooleanSetting field2361 = new BooleanSetting("Advanced", false, "Advanced settings for the ClickGUI");
-   public final EnumSetting<AAMode> field2362 = new EnumSetting<AAMode>("AA", AAMode.MSAA4x, "Anti-Aliasing mode", this.field2361::method419);
-   private final SettingCategory field2363 = new SettingCategory("Categories", "Options for category gui elements", this.field2361::method419);
+   public final EnumSetting<AAMode> field2362 = new EnumSetting<AAMode>("AA", AAMode.MSAA4x, "Anti-Aliasing mode", this.field2361::getValue);
+   private final SettingCategory field2363 = new SettingCategory("Categories", "Options for category gui elements", this.field2361::getValue);
    public final BooleanSetting field2364 = new BooleanSetting(
       "SingleModule", false, "Hides all other modules when displaying settings for a module", this.field2363
    );
@@ -42,7 +42,7 @@ public class Gui extends Module {
       "DoubleEsc",
       false,
       "Press escape once to close the current module\nPress escape twice to close the entire gui\n",
-      this.field2364::method419,
+      this.field2364::getValue,
       this.field2363
    );
    public final EnumSetting<MaxHeight> field2366 = new EnumSetting<MaxHeight>(
@@ -57,9 +57,9 @@ public class Gui extends Module {
    public final IntSetting field2369 = new IntSetting("ScrollSpeed", 10, -20, 20, 1, "Scroll speed in category elements", this.field2363);
    public final IntSetting field2370 = new IntSetting("AnimTime", 150, 0, 1000, 10, "Opening/closing animation time (ms) for category elements", this.field2363);
    public final EnumSetting<ToggleStyle> field2371 = new EnumSetting<ToggleStyle>(
-      "Toggles", ToggleStyle.Switch, "Render mode for toggle elements", this.field2361::method419
+      "Toggles", ToggleStyle.Switch, "Render mode for toggle elements", this.field2361::getValue
    );
-   public final BooleanSetting field2372 = new BooleanSetting("ModeBox", false, "Draws a box around the mode selector", this.field2361::method419);
+   public final BooleanSetting field2372 = new BooleanSetting("ModeBox", false, "Draws a box around the mode selector", this.field2361::getValue);
 
    public Gui() {
       super("Gui", "Boze Gui", Category.Client, ConfigCategory.Visuals);
@@ -83,10 +83,10 @@ public class Gui extends Module {
    }
 
    private boolean lambda$new$1() {
-      return this.field2366.method461() == MaxHeight.Relative;
+      return this.field2366.getValue() == MaxHeight.Relative;
    }
 
    private boolean lambda$new$0() {
-      return this.field2366.method461() == MaxHeight.Absolute;
+      return this.field2366.getValue() == MaxHeight.Absolute;
    }
 }

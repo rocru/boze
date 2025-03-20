@@ -35,7 +35,7 @@ public class CrystalAssist extends Module {
    );
    private final BooleanSetting field2774 = new BooleanSetting("StopOverCrystal", false, "Stop assisting when looking at crystal");
    private final BooleanSetting field2775 = new BooleanSetting("OnlyWhenClicking", true, "Only assist when clicking attack key");
-   private final IntSetting field2776 = new IntSetting("Ticks", 5, 1, 40, 1, "Ticks to assist for after clicking", this.field2775::method419);
+   private final IntSetting field2776 = new IntSetting("Ticks", 5, 1, 40, 1, "Ticks to assist for after clicking", this.field2775::getValue);
    private final MinMaxSetting field2777 = new MinMaxSetting("Range", 3.0, 1.0, 7.0, 0.1, "Range to target crystals within");
    private final BooleanSetting field2778 = new BooleanSetting("ThroughWalls", false, "Target through walls");
    private final MinMaxSetting field2779 = new MinMaxSetting("BoxScale", 0.8, 0.1, 1.0, 0.1, "Scale of the box to target within");
@@ -57,7 +57,7 @@ public class CrystalAssist extends Module {
 
    @EventHandler
    public void method1596(PrePacketSendEvent event) {
-      if (this.field2772.method419()
+      if (this.field2772.getValue()
          && event.packet instanceof PlayerInteractBlockC2SPacket var5
          && mc.player.getStackInHand(var5.getHand()).getItem() == Items.END_CRYSTAL) {
          this.field2788.put(var5.getBlockHitResult().getBlockPos(), System.currentTimeMillis());
@@ -66,7 +66,7 @@ public class CrystalAssist extends Module {
 
    @EventHandler
    public void method1597(MovementEvent event) {
-      if (this.field2772.method419()) {
+      if (this.field2772.getValue()) {
          this.field2788.entrySet().removeIf(CrystalAssist::lambda$onSendMovementPackets$1);
       }
    }
@@ -366,7 +366,7 @@ public class CrystalAssist extends Module {
       for (Entity var6 : mc.world.getEntities()) {
          if (this.method1601(var6)
             && !((double)var6.distanceTo(mc.player) > this.field2777.getValue() + 1.0)
-            && (this.field2778.method419() || mc.player.canSee(var6))) {
+            && (this.field2778.getValue() || mc.player.canSee(var6))) {
             var4.add(var6);
          }
       }
@@ -380,14 +380,14 @@ public class CrystalAssist extends Module {
 
    private boolean method1601(Entity var1) {
       if (var1 instanceof EndCrystalEntity var5) {
-         if (this.field2771.method419()) {
+         if (this.field2771.getValue()) {
             double var6 = Class3069.method6003(mc.player, var5.getPos(), 0, null, false);
             if (var6 >= (double)(mc.player.getHealth() + mc.player.getAbsorptionAmount())) {
                return false;
             }
          }
 
-         return this.field2772.method419() ? this.field2788.containsKey(var5.getBlockPos().down()) : true;
+         return this.field2772.getValue() ? this.field2788.containsKey(var5.getBlockPos().down()) : true;
       } else {
          return false;
       }

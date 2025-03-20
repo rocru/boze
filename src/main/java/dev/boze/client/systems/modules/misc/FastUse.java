@@ -56,7 +56,7 @@ public class FastUse extends Module {
    @EventHandler
    public void method1716(PrePacketSendEvent event) {
       if (mc.player != null && mc.world != null) {
-         if (this.field2949.method419() && this.method1717(InventoryUtil.method1774().getItem())) {
+         if (this.field2949.getValue() && this.method1717(InventoryUtil.method1774().getItem())) {
             if (event.packet instanceof PlayerInteractBlockC2SPacket var5) {
                if (Class5924.method2101(var5.getBlockHitResult().getBlockPos())) {
                   return;
@@ -64,7 +64,7 @@ public class FastUse extends Module {
 
                event.method1020();
             }
-         } else if (this.field2956.method419()
+         } else if (this.field2956.getValue()
             && event.packet instanceof PlayerInteractBlockC2SPacket
             && mc.player.getStackInHand(((PlayerInteractBlockC2SPacket)event.packet).getHand()).getItem() instanceof EndCrystalItem) {
             if (field2960) {
@@ -83,10 +83,10 @@ public class FastUse extends Module {
    private boolean method1718() {
       Item var4 = mc.player.getMainHandStack().getItem();
       Item var5 = mc.player.getOffHandStack().getItem();
-      if (!this.field2952.method419() || !(var4 instanceof ExperienceBottleItem) && !(var5 instanceof ExperienceBottleItem)) {
-         if (!this.field2953.method419() || !(var4 instanceof BlockItem) && !(var5 instanceof BlockItem)) {
-            if (!this.field2954.method419() || !(var4 instanceof EndCrystalItem) && !(var5 instanceof EndCrystalItem)) {
-               if (this.field2955.method419() && FoodUtil.isFood(mc.player.getMainHandStack())) {
+      if (!this.field2952.getValue() || !(var4 instanceof ExperienceBottleItem) && !(var5 instanceof ExperienceBottleItem)) {
+         if (!this.field2953.getValue() || !(var4 instanceof BlockItem) && !(var5 instanceof BlockItem)) {
+            if (!this.field2954.getValue() || !(var4 instanceof EndCrystalItem) && !(var5 instanceof EndCrystalItem)) {
+               if (this.field2955.getValue() && FoodUtil.isFood(mc.player.getMainHandStack())) {
                   ((MinecraftClientAccessor)mc).setItemUseCooldown(0);
                   return true;
                } else {

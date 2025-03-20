@@ -346,8 +346,8 @@ public class Class5924 implements IMinecraft {
          var10 = 1.0;
       }
 
-      if (AutoWalk.INSTANCE.isEnabled() && AutoWalk.INSTANCE.field3148.method461() != AutoWalkMode.Baritone) {
-         var10 = AutoWalk.INSTANCE.field3147.method419() ? -1.0 : 1.0;
+      if (AutoWalk.INSTANCE.isEnabled() && AutoWalk.INSTANCE.field3148.getValue() != AutoWalkMode.Baritone) {
+         var10 = AutoWalk.INSTANCE.field3147.getValue() ? -1.0 : 1.0;
       }
 
       double var12 = (double)mc.player.input.movementSideways;

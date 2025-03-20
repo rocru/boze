@@ -74,11 +74,11 @@ public class AutoBed extends Module {
    private final BooleanSetting autoCraft = new BooleanSetting("AutoCraft", true, "Automatically craft beds with nearby crafting tables");
    private final BooleanSetting strictAutoCraft = new BooleanSetting("Strict", false, "Strict Auto Craft", this.autoCraft);
    private final BooleanSetting openTable = new BooleanSetting("OpenTable", true, "Automatically open tables", this.autoCraft);
-   private final BooleanSetting placeTable = new BooleanSetting("PlaceTable", true, "Automatically place tables", this.openTable::method419, this.autoCraft);
+   private final BooleanSetting placeTable = new BooleanSetting("PlaceTable", true, "Automatically place tables", this.openTable::getValue, this.autoCraft);
    private final EnumSetting<YPriority> yPriority = new EnumSetting<YPriority>(
-      "YPriority", YPriority.EyeLevel, "Y-Level priority for placing tables", this.openTable::method419, this.autoCraft
+      "YPriority", YPriority.EyeLevel, "Y-Level priority for placing tables", this.openTable::getValue, this.autoCraft
    );
-   private final BooleanSetting airPlace = new BooleanSetting("AirPlace", false, "Air place crafting tables", this.openTable::method419, this.autoCraft);
+   private final BooleanSetting airPlace = new BooleanSetting("AirPlace", false, "Air place crafting tables", this.openTable::getValue, this.autoCraft);
    public final SettingCategory breakSettings = new SettingCategory("Break", "Break settings");
    private final BooleanSetting breakRotate = new BooleanSetting("Rotate", false, "Rotate when breaking beds", this.breakSettings);
    public final FloatSetting breakSpeed = new FloatSetting("Speed", 20.0F, 1.0F, 20.0F, 0.1F, "Bed break speed", this.breakSettings);
@@ -133,7 +133,7 @@ public class AutoBed extends Module {
 
    @EventHandler
    public void method1437(Render3DEvent event) {
-      if (this.renderPlacements.method419()) {
+      if (this.renderPlacements.getValue()) {
          this.aw.forEach(this::lambda$onRender$0);
       }
    }
@@ -147,13 +147,13 @@ public class AutoBed extends Module {
       priority = 49
    )
    private void method1438(ACRotationEvent var1) {
-      if (!var1.method1018(this.interactionMode.method461(), this.breakRotate.method419() || this.placeRotate.method419())) {
+      if (!var1.method1018(this.interactionMode.getValue(), this.breakRotate.getValue() || this.placeRotate.getValue())) {
          this.ax.clear();
          if (!mc.world.getRegistryKey().getValue().getPath().equals("overworld")) {
-            if (!Options.method477(this.multitask.method419())) {
-               if (this.strictAutoCraft.method419() && !this.au.isEmpty()) {
+            if (!Options.method477(this.multitask.getValue())) {
+               if (this.strictAutoCraft.getValue() && !this.au.isEmpty()) {
                   this.au.poll().run();
-                  if (AntiCheat.INSTANCE.field2322.method419() && !InventoryUtil.isInventoryOpen()) {
+                  if (AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
                      mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
                   }
                } else {
@@ -177,7 +177,7 @@ public class AutoBed extends Module {
                      }
                   }
 
-                  if ((var6 == null || this.sequential.method419()) && this.method1444()) {
+                  if ((var6 == null || this.sequential.getValue()) && this.method1444()) {
                      mu var7 = this.method1440(var5);
                      if (var7 != null) {
                         if (this.method1445()) {
@@ -188,14 +188,14 @@ public class AutoBed extends Module {
                         }
 
                         this.ax.add(new ActionWrapper(var7.field2511));
-                        if (!var1.method1022() && this.placeRotate.method419()) {
+                        if (!var1.method1022() && this.placeRotate.getValue()) {
                            var1.method1020();
                            var1.yaw = var7.field2511.method2157();
                            var1.pitch = var7.field2511.method2159();
                         }
 
                         this.av = var7;
-                        if (this.renderPlacements.method419()) {
+                        if (this.renderPlacements.getValue()) {
                            this.aw.put(var7, System.currentTimeMillis());
                         }
 
@@ -231,19 +231,19 @@ public class AutoBed extends Module {
       if (var1.isEmpty()) {
          return null;
       } else {
-         if (this.am.hasElapsed(1000.0 - (double)(this.placeSpeed.method423() * 50.0F))) {
-            ArrayList<mu> var5 = this.targetMode.method461() == BedTargetMode.Full ? null : this.method1447();
+         if (this.am.hasElapsed(1000.0 - (double)(this.placeSpeed.getValue() * 50.0F))) {
+            ArrayList<mu> var5 = this.targetMode.getValue() == BedTargetMode.Full ? null : this.method1447();
             mu var6 = null;
             LivingEntity var7 = null;
             double var8 = 0.0;
 
             label82:
             for (LivingEntity var11 : var1) {
-               for (mu var13 : this.targetMode.method461() == BedTargetMode.Full ? this.method1448(var11) : var5) {
+               for (mu var13 : this.targetMode.getValue() == BedTargetMode.Full ? this.method1448(var11) : var5) {
                   double var14 = 0.0;
                   Vec3d var16 = new Vec3d((double)var13.field2509.getX() + 0.5, var13.field2509.getY(), (double)var13.field2509.getZ() + 0.5);
                   Vec3d var17 = new Vec3d((double)var13.field2510.getX() + 0.5, var13.field2510.getY(), (double)var13.field2510.getZ() + 0.5);
-                  if (!(var11.getPos().distanceTo(var16) > (double)this.bedRange.method423().floatValue())) {
+                  if (!(var11.getPos().distanceTo(var16) > (double)this.bedRange.getValue().floatValue())) {
                      boolean var18 = false;
                      double var19 = Math.max(
                         Class3069.method6005(var11, var16, var13.field2509.down(), true), Class3069.method6005(var11, var17, var13.field2510.down(), true)
@@ -251,7 +251,7 @@ public class AutoBed extends Module {
                      if (var19 >= 0.5
                         && (
                            (double)(var11.getHealth() + var11.getAbsorptionAmount()) - var19 + 2.0 <= 0.0
-                              || var11.getHealth() + var11.getAbsorptionAmount() < this.lethalHP.method423()
+                              || var11.getHealth() + var11.getAbsorptionAmount() < this.lethalHP.getValue()
                         )) {
                         var18 = true;
                      }
@@ -260,7 +260,7 @@ public class AutoBed extends Module {
                         var18 = true;
                      }
 
-                     if (var19 >= (double)this.minDamage.method423().floatValue() || var18) {
+                     if (var19 >= (double)this.minDamage.getValue().floatValue() || var18) {
                         var14 = var19;
                      }
 
@@ -301,7 +301,7 @@ public class AutoBed extends Module {
       for (Entity var6 : mc.world.getEntities()) {
          if (var6 instanceof LivingEntity
             && this.method1442(var6)
-            && !(var6.distanceTo(mc.player) > this.targetRange.method423())
+            && !(var6.distanceTo(mc.player) > this.targetRange.getValue())
             && !((LivingEntity)var6).isDead()
             && !(((LivingEntity)var6).getHealth() + ((LivingEntity)var6).getAbsorptionAmount() <= 0.0F)) {
             var4.add(var6);
@@ -320,19 +320,19 @@ public class AutoBed extends Module {
          } else if (var1 instanceof FakePlayerEntity) {
             return false;
          } else {
-            return Friends.method2055(var1) ? this.friends.method419() : this.players.method419();
+            return Friends.method2055(var1) ? this.friends.getValue() : this.players.getValue();
          }
       } else {
           return switch (mt.field2110[var1.getType().getSpawnGroup().ordinal()]) {
-              case 1, 2, 3, 4 -> this.animals.method419();
-              case 5 -> this.monsters.method419();
+              case 1, 2, 3, 4 -> this.animals.getValue();
+              case 5 -> this.monsters.getValue();
               default -> false;
           };
       }
    }
 
    public ActionWrapper method1443(List<LivingEntity> targets, BlockPos pos) {
-      if (!this.an.hasElapsed(1000.0 - (double)(this.breakSpeed.method423() * 50.0F))) {
+      if (!this.an.hasElapsed(1000.0 - (double)(this.breakSpeed.getValue() * 50.0F))) {
          return null;
       } else {
          BlockPos var6 = null;
@@ -344,9 +344,9 @@ public class AutoBed extends Module {
                if (pos == null || pos.equals(var11)) {
                   Vec3d var12 = new Vec3d((double)var11.getX() + 0.5, var11.getY(), (double)var11.getZ() + 0.5);
                   double var13 = Class3069.method6005(mc.player, var12, var11.down(), true);
-                  if (var12.distanceTo(mc.player.getEyePos()) < (double)this.breakRange.method423().floatValue()
-                     && (!this.antiSuicide.method419() || var13 + 2.0 < (double)(mc.player.getHealth() + mc.player.getAbsorptionAmount()))
-                     && (this.breakSelfDamage.method423() == 0.0F || var13 < (double)this.breakSelfDamage.method423().floatValue())) {
+                  if (var12.distanceTo(mc.player.getEyePos()) < (double)this.breakRange.getValue().floatValue()
+                     && (!this.antiSuicide.getValue() || var13 + 2.0 < (double)(mc.player.getHealth() + mc.player.getAbsorptionAmount()))
+                     && (this.breakSelfDamage.getValue() == 0.0F || var13 < (double)this.breakSelfDamage.getValue().floatValue())) {
                      if (pos != null) {
                         var6 = var11;
                         break;
@@ -355,7 +355,7 @@ public class AutoBed extends Module {
                      double var15 = 0.0;
 
                      for (LivingEntity var18 : targets) {
-                        if (!(var18.getPos().distanceTo(var12) > (double)(this.bedRange.method423() + 1.0F))) {
+                        if (!(var18.getPos().distanceTo(var12) > (double)(this.bedRange.getValue() + 1.0F))) {
                            var15 += Class3069.method6005(var18, var12, var11.down(), true);
                         }
                      }
@@ -369,18 +369,18 @@ public class AutoBed extends Module {
             }
          }
 
-         if (var6 == null && pos == null && this.sequential.method419() && this.av != null && !this.am.hasElapsed(500.0)) {
+         if (var6 == null && pos == null && this.sequential.getValue() && this.av != null && !this.am.hasElapsed(500.0)) {
             for (int var19 = 0; var19 < 2; var19++) {
                BlockPos var20 = var19 == 0 ? this.av.field2509 : this.av.field2510;
                Vec3d var22 = new Vec3d((double)var20.getX() + 0.5, var20.getY(), (double)var20.getZ() + 0.5);
                double var24 = Class3069.method6005(mc.player, var22, var20.down(), true);
-               if (var22.distanceTo(mc.player.getEyePos()) < (double)this.breakRange.method423().floatValue()
-                  && (!this.antiSuicide.method419() || var24 + 2.0 < (double)(mc.player.getHealth() + mc.player.getAbsorptionAmount()))
-                  && (this.breakSelfDamage.method423() == 0.0F || var24 < (double)this.breakSelfDamage.method423().floatValue())) {
+               if (var22.distanceTo(mc.player.getEyePos()) < (double)this.breakRange.getValue().floatValue()
+                  && (!this.antiSuicide.getValue() || var24 + 2.0 < (double)(mc.player.getHealth() + mc.player.getAbsorptionAmount()))
+                  && (this.breakSelfDamage.getValue() == 0.0F || var24 < (double)this.breakSelfDamage.getValue().floatValue())) {
                   double var14 = 0.0;
 
                   for (LivingEntity var25 : targets) {
-                     if (!(var25.getPos().distanceTo(var22) > (double)(this.bedRange.method423() + 1.0F))) {
+                     if (!(var25.getPos().distanceTo(var22) > (double)(this.bedRange.getValue() + 1.0F))) {
                         var14 += Class3069.method6005(var25, var22, var20.down(), true);
                      }
                   }
@@ -396,7 +396,7 @@ public class AutoBed extends Module {
          if (var6 != null) {
             Vec3d var21 = new Vec3d((double)var6.getX() + 0.5, var6.getY(), (double)var6.getZ() + 0.5);
             this.an.reset();
-            if (this.breakRotate.method419()) {
+            if (this.breakRotate.getValue()) {
                float[] var23 = EntityUtil.method2146(var21);
                return new ActionWrapper(this::lambda$generateBreak$3, var23[0], var23[1]);
             } else {
@@ -428,12 +428,12 @@ public class AutoBed extends Module {
             }
          }
 
-         if (this.autoMove.method419()) {
+         if (this.autoMove.getValue()) {
             int var21 = InventoryHelper.method169(AutoBed::lambda$getBedSlot$5);
             int var5 = InventoryHelper.method2010();
             if (var21 != -1 && var5 != -1) {
                InvUtils.method2202().method2207(var21).method2214(var5);
-               if (AntiCheat.INSTANCE.field2322.method419() && !InventoryUtil.isInventoryOpen()) {
+               if (AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
                   mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
                }
 
@@ -442,7 +442,7 @@ public class AutoBed extends Module {
          }
       }
 
-      if (this.autoCraft.method419() && InventoryHelper.method2010() != -1) {
+      if (this.autoCraft.getValue() && InventoryHelper.method2010() != -1) {
          int var22 = InventoryHelper.method169(AutoBed::lambda$getBedSlot$6);
          int var23 = InventoryHelper.method169(AutoBed::lambda$getBedSlot$7);
          if (var22 == -1 || var23 == -1) {
@@ -455,12 +455,12 @@ public class AutoBed extends Module {
                this.au.add(AutoBed::lambda$getBedSlot$8);
                this.au.add(AutoBed::lambda$getBedSlot$9);
                this.au.add(AutoBed::lambda$getBedSlot$10);
-               if (this.strictAutoCraft.method419()) {
+               if (this.strictAutoCraft.getValue()) {
                   if (!this.au.isEmpty()) {
                      this.au.poll().run();
                   }
 
-                  if (AntiCheat.INSTANCE.field2322.method419() && !InventoryUtil.isInventoryOpen()) {
+                  if (AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
                      mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
                   }
                } else {
@@ -468,16 +468,16 @@ public class AutoBed extends Module {
                      this.au.poll().run();
                   }
 
-                  if (AntiCheat.INSTANCE.field2322.method419() && !InventoryUtil.isInventoryOpen()) {
+                  if (AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
                      mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
                   }
                }
             }
-         } else if (this.openTable.method419() && this.ao.hasElapsed(this.strictAutoCraft.method419() ? 350.0 : (double) LatencyTracker.INSTANCE.field1308)) {
+         } else if (this.openTable.getValue() && this.ao.hasElapsed(this.strictAutoCraft.getValue() ? 350.0 : (double) LatencyTracker.INSTANCE.field1308)) {
             BlockPos var6 = mc.player.getBlockPos();
-            int var7 = (int)Math.ceil(this.placeRange.method423());
-            int var8 = (int)Math.ceil(this.placeRange.method423());
-            if (this.strictPlaceRange.method423() == 0.0F) {
+            int var7 = (int)Math.ceil(this.placeRange.getValue());
+            int var8 = (int)Math.ceil(this.placeRange.getValue());
+            if (this.strictPlaceRange.getValue() == 0.0F) {
                var7++;
             }
 
@@ -487,7 +487,7 @@ public class AutoBed extends Module {
                      BlockPos var12 = new BlockPos(var9, var10, var11);
                      if (mc.world.getBlockState(var12).getBlock() == Blocks.CRAFTING_TABLE) {
                         Vec3d var13 = new Vec3d((double)var12.getX() + 0.5, (double)var12.getY() + 1.0, (double)var12.getZ() + 0.5);
-                        if (this.placeRotate.method419()) {
+                        if (this.placeRotate.getValue()) {
                            float[] var14 = EntityUtil.method2146(var13);
                            this.at = new ActionWrapper(this::lambda$getBedSlot$11, var14[0], var14[1]);
                         } else {
@@ -501,7 +501,7 @@ public class AutoBed extends Module {
                }
             }
 
-            if (this.placeTable.method419() && this.ap.hasElapsed(this.strictAutoCraft.method419() ? 350.0 : (double)LatencyTracker.INSTANCE.field1308)) {
+            if (this.placeTable.getValue() && this.ap.hasElapsed(this.strictAutoCraft.getValue() ? 350.0 : (double)LatencyTracker.INSTANCE.field1308)) {
                int var24 = InventoryHelper.method169(AutoBed::lambda$getBedSlot$13);
                if (var24 == -1) {
                   return -1;
@@ -514,7 +514,7 @@ public class AutoBed extends Module {
                   }
 
                   InvUtils.method2202().method2207(var24).method2214(var25);
-                  if (AntiCheat.INSTANCE.field2322.method419() && !InventoryUtil.isInventoryOpen()) {
+                  if (AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
                      mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
                   }
 
@@ -524,17 +524,17 @@ public class AutoBed extends Module {
                PlaceAction var26 = null;
                double var27 = 9999.0;
                boolean var28 = Class2811.field101;
-               Class2811.field101 = this.airPlace.method419();
+               Class2811.field101 = this.airPlace.getValue();
 
                for (int var29 = var6.getX() - var7; var29 < var6.getX() + var7; var29++) {
                   for (int var15 = var6.getY() - var8; var15 < var6.getY() + var8; var15++) {
                      for (int var16 = var6.getZ() - var7; var16 < var6.getZ() + var7; var16++) {
                         BlockPos var17 = new BlockPos(var29, var15, var16);
-                        PlaceAction var18 = Class2812.method5501(var17, this.placeRotate.method419(), this.swing.method419(), false, Hand.MAIN_HAND, var24);
+                        PlaceAction var18 = Class2812.method5501(var17, this.placeRotate.getValue(), this.swing.getValue(), false, Hand.MAIN_HAND, var24);
                         if (var18 != null) {
                            double var19 = mc.player
                               .getPos()
-                              .add(0.0, this.yPriority.method461().field1704, 0.0)
+                              .add(0.0, this.yPriority.getValue().field1704, 0.0)
                               .distanceTo(new Vec3d((double)var17.getX() + 0.5, (double)var17.getY() + 0.5, (double)var17.getZ() + 0.5));
                            if (var26 == null || var19 < var27) {
                               var26 = var18;
@@ -561,9 +561,9 @@ public class AutoBed extends Module {
    private ArrayList<mu> method1447() {
       ArrayList var4 = new ArrayList();
       BlockPos var5 = mc.player.getBlockPos();
-      int var6 = (int)Math.ceil(this.placeRange.method423().floatValue());
-      int var7 = (int)Math.ceil(this.placeRange.method423().floatValue());
-      if (this.strictPlaceRange.method423() == 0.0F) {
+      int var6 = (int)Math.ceil(this.placeRange.getValue().floatValue());
+      int var7 = (int)Math.ceil(this.placeRange.getValue().floatValue());
+      if (this.strictPlaceRange.getValue() == 0.0F) {
          var6++;
       }
 
@@ -630,28 +630,28 @@ public class AutoBed extends Module {
    // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
    public ArrayList<mu> method1449(BlockPos blockPos, Direction filter) {
       Vec3d var6 = EntityUtil.method2144(mc.player);
-      PlaceAction var7 = Class2812.method5501(blockPos, true, true, this.strictDirection.method419(), Hand.MAIN_HAND, -1);
+      PlaceAction var7 = Class2812.method5501(blockPos, true, true, this.strictDirection.getValue(), Hand.MAIN_HAND, -1);
       if (var7 == null) {
          return null;
       } else if (!mc.world.getBlockState(blockPos).isReplaceable() && !(mc.world.getBlockState(blockPos).getBlock() instanceof BedBlock)) {
          return null;
       } else {
          Vec3d var8 = new Vec3d((double)blockPos.getX() + 0.5, blockPos.getY(), (double)blockPos.getZ() + 0.5);
-         if (var6.distanceTo(var8) > (double)this.breakRange.method423().floatValue()) {
+         if (var6.distanceTo(var8) > (double)this.breakRange.getValue().floatValue()) {
             return null;
          } else if (var6.distanceTo(var8) > this.method1450()) {
             return null;
-         } else if (!RaycastUtil.method116(var8) && var6.distanceTo(var8) > (double)this.wallRange.method423().floatValue()) {
+         } else if (!RaycastUtil.method116(var8) && var6.distanceTo(var8) > (double)this.wallRange.getValue().floatValue()) {
             return null;
          } else {
             ArrayList var9 = new ArrayList();
             Direction var10 = Direction.fromRotation(var7.method2157());
 
             for (Direction var14 : Direction.values()) {
-               if ((filter == null || var14 == filter) && var14.getAxis() != Axis.Y && (!this.placeRotate.method419() || var10 == var14)) {
+               if ((filter == null || var14 == filter) && var14.getAxis() != Axis.Y && (!this.placeRotate.getValue() || var10 == var14)) {
                   BlockPos var15 = blockPos.offset(var14);
                   boolean var16 = Class2811.field101;
-                  if (!this.strictPlace.method419()) {
+                  if (!this.strictPlace.getValue()) {
                      Class2811.field101 = true;
                   }
 
@@ -665,9 +665,9 @@ public class AutoBed extends Module {
                         double var19 = Math.max(
                            Class3069.method6005(mc.player, var17, blockPos.down(), true), Class3069.method6005(mc.player, var18, var15.down(), true)
                         );
-                        if ((!this.antiSuicide.method419() || !((double)(mc.player.getHealth() + mc.player.getAbsorptionAmount()) <= var19 + 2.0))
-                           && (!(this.placeSelfDamage.method423() > 0.0F) || !(var19 > (double)this.placeSelfDamage.method423().floatValue()))) {
-                           if (!this.placeRotate.method419()) {
+                        if ((!this.antiSuicide.getValue() || !((double)(mc.player.getHealth() + mc.player.getAbsorptionAmount()) <= var19 + 2.0))
+                           && (!(this.placeSelfDamage.getValue() > 0.0F) || !(var19 > (double)this.placeSelfDamage.getValue().floatValue()))) {
+                           if (!this.placeRotate.getValue()) {
                               float var21 = switch (mt.field2111[var14.ordinal()]) {
                                  case 1 -> -90.0F;
                                  case 2 -> 0.0F;
@@ -690,9 +690,9 @@ public class AutoBed extends Module {
    }
 
    private double method1450() {
-      return (double)this.strictPlaceRange.method423().floatValue() > 0.0
-         ? (double)this.strictPlaceRange.method423().floatValue()
-         : (double)this.placeRange.method423().floatValue();
+      return (double)this.strictPlaceRange.getValue().floatValue() > 0.0
+         ? (double)this.strictPlaceRange.getValue().floatValue()
+         : (double)this.placeRange.getValue().floatValue();
    }
 
    private static boolean lambda$getBedSlot$13(ItemStack var0) {
@@ -701,14 +701,14 @@ public class AutoBed extends Module {
 
    private void lambda$getBedSlot$12(Vec3d var1, BlockPos var2) {
       Class5913.method17(this.method1445() ? Hand.MAIN_HAND : Hand.OFF_HAND, new BlockHitResult(var1, Direction.UP, var2, false));
-      if (this.swing.method419()) {
+      if (this.swing.getValue()) {
          mc.getNetworkHandler().sendPacket(new HandSwingC2SPacket(this.method1445() ? Hand.MAIN_HAND : Hand.OFF_HAND));
       }
    }
 
    private void lambda$getBedSlot$11(Vec3d var1, BlockPos var2) {
       Class5913.method17(this.method1445() ? Hand.MAIN_HAND : Hand.OFF_HAND, new BlockHitResult(var1, Direction.UP, var2, false));
-      if (this.swing.method419()) {
+      if (this.swing.getValue()) {
          mc.getNetworkHandler().sendPacket(new HandSwingC2SPacket(this.method1445() ? Hand.MAIN_HAND : Hand.OFF_HAND));
       }
    }
@@ -777,14 +777,14 @@ public class AutoBed extends Module {
 
    private void lambda$generateBreak$4(Vec3d var1, BlockPos var2) {
       Class5913.method17(this.method1445() ? Hand.MAIN_HAND : Hand.OFF_HAND, new BlockHitResult(var1, Direction.UP, var2, false));
-      if (this.swing.method419()) {
+      if (this.swing.getValue()) {
          mc.getNetworkHandler().sendPacket(new HandSwingC2SPacket(this.method1445() ? Hand.MAIN_HAND : Hand.OFF_HAND));
       }
    }
 
    private void lambda$generateBreak$3(Vec3d var1, BlockPos var2) {
       Class5913.method17(this.method1445() ? Hand.MAIN_HAND : Hand.OFF_HAND, new BlockHitResult(var1, Direction.UP, var2, false));
-      if (this.swing.method419()) {
+      if (this.swing.getValue()) {
          mc.getNetworkHandler().sendPacket(new HandSwingC2SPacket(this.method1445() ? Hand.MAIN_HAND : Hand.OFF_HAND));
       }
    }
@@ -806,8 +806,8 @@ public class AutoBed extends Module {
                var1,
                new Box(var2.field2509).shrink(0.0, 0.5625, 0.0).union(new Box(var2.field2510).shrink(0.0, 0.5625, 0.0)),
                var3,
-               this.fillColor.method1362(),
-               this.outlineColor.method1362()
+               this.fillColor.getValue(),
+               this.outlineColor.getValue()
             );
       }
    }

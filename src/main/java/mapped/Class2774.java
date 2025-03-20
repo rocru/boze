@@ -18,6 +18,6 @@ class Class2774 {
    }
 
    boolean method5428() {
-      return this.field82 != null && this.field82.method419();
+      return this.field82 != null && this.field82.getValue();
    }
 }

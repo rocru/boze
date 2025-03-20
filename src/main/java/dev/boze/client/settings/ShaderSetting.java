@@ -45,11 +45,13 @@ public class ShaderSetting extends Setting<String> {
       return this.field965;
    }
 
-   public String method1322() {
+   @Override
+   public String getValue() {
       return "";
    }
 
-   public String method1562() {
+   @Override
+   public String resetValue() {
       this.field964.method1649(this.field964.field48);
       this.field964.method205(this.field964.field414.copy());
       this.field964.method67(this.field964.field415);
@@ -62,7 +64,8 @@ public class ShaderSetting extends Setting<String> {
       return "";
    }
 
-   public String method1341(String newVal) {
+   @Override
+   public String setValue(String newVal) {
       return "";
    }
 
@@ -90,13 +93,14 @@ public class ShaderSetting extends Setting<String> {
       return var5;
    }
 
-   public String method1286(NbtCompound tag) {
+   @Override
+   public String load(NbtCompound tag) {
       if (this.method2118()) {
          this.field964.method2267(tag.getCompound("fill"));
       }
 
       if (this.method222()) {
-         this.field965.method2327(tag.getCompound("outline"));
+         this.field965.fromTag(tag.getCompound("outline"));
       }
 
       this.field963.setShaderSetting(this);
@@ -105,29 +109,29 @@ public class ShaderSetting extends Setting<String> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method1286(nbtCompound);
-   }
+ //  @Override
+  // public Object load(NbtCompound nbtCompound) {
+  //    return this.method1286(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method1341((String)object);
-   }
+  // @Override
+  // public Object setValue(Object object) {
+  //    return this.method1341((String)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method1562();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method1562();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1322();
-   }
+   //@Override
+   //public Object getValue() {
+  //    return this.method1322();
+  // }
 }

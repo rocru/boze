@@ -30,27 +30,27 @@ public class Totems extends HUDModule implements Class5929 {
 
    @Override
    public void method295(DrawContext context) {
-      if (this.field644.method419()) {
+      if (this.field644.getValue()) {
          double var5 = this.field595.getValue() * HUD.INSTANCE.field2375.getValue();
          this.method314(24.0 * var5);
          this.method316(24.0 * var5);
-         if (HUD.INSTANCE.field2394.method419() && (this.method1547() > 0 || mc.currentScreen == ClickGUI.field1335 && ClickGUI.field1335.field1336)) {
+         if (HUD.INSTANCE.field2394.getValue() && (this.method1547() > 0 || mc.currentScreen == ClickGUI.field1335 && ClickGUI.field1335.field1336)) {
             HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
          }
       } else {
          this.method297(
             "Totems:",
             Integer.toString(this.method1547()),
-            this.field645.method419() ? this.field646.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field645.method419() ? this.field647.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field645.method419() ? this.field648.method419() : HUD.INSTANCE.field2384.method419()
+            this.field645.getValue() ? this.field646.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field645.getValue() ? this.field647.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field645.getValue() ? this.field648.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       }
    }
 
    @Override
    public void method332(DrawContext context) {
-      if (this.field644.method419()) {
+      if (this.field644.getValue()) {
          double var5 = this.field595.getValue() * HUD.INSTANCE.field2375.getValue();
          ItemStack var7 = new ItemStack(Items.TOTEM_OF_UNDYING, this.method1547());
          Inventory.method335(context, var7, (int)(this.method1391() + 4.0 * var5), (int)(this.method305() + 4.0 * var5), var5);
@@ -74,6 +74,6 @@ public class Totems extends HUDModule implements Class5929 {
    }
 
    private boolean lambda$new$0() {
-      return !this.field644.method419();
+      return !this.field644.getValue();
    }
 }

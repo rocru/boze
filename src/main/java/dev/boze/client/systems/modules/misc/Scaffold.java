@@ -118,9 +118,9 @@ public class Scaffold extends Module {
 
    @EventHandler
    public void method1763(Render3DEvent event) {
-      if (this.field3088.method419()) {
+      if (this.field3088.getValue()) {
          for (Placement var6 : this.field3111) {
-            PlaceRender.INSTANCE.method2015(event, var6, this.field3089.method1362(), this.field3090.method1362());
+            PlaceRender.INSTANCE.method2015(event, var6, this.field3089.getValue(), this.field3090.getValue());
          }
       }
    }
@@ -129,11 +129,11 @@ public class Scaffold extends Module {
       if (this.field3105.contains(var1)) {
          return false;
       } else {
-         if (this.field3092.method461() == ScaffoldFilter.Blacklist) {
+         if (this.field3092.getValue() == ScaffoldFilter.Blacklist) {
             if (this.field3091.method2032().contains(var1)) {
                return false;
             }
-         } else if (this.field3092.method461() == ScaffoldFilter.Whitelist && !this.field3091.method2032().contains(var1)) {
+         } else if (this.field3092.getValue() == ScaffoldFilter.Whitelist && !this.field3091.method2032().contains(var1)) {
             return false;
          }
 
@@ -143,7 +143,7 @@ public class Scaffold extends Module {
 
    @EventHandler
    public void method1765(ACRotationEvent event) {
-      if (!event.method1018(this.field3093.method461(), this.field3094.method419())) {
+      if (!event.method1018(this.field3093.getValue(), this.field3094.getValue())) {
          this.field3111.removeIf(Scaffold::lambda$onRotate$0);
          if (this.field3107.hasElapsed(this.field3097.getValue() * 50.0)) {
             byte var5;
@@ -153,7 +153,7 @@ public class Scaffold extends Module {
                var5 = 1;
             }
 
-            if (this.field3103.method419()) {
+            if (this.field3103.getValue()) {
                if (!Class5924.method2116() && mc.options.jumpKey.isPressed() || mc.player.verticalCollision || mc.player.isOnGround()) {
                   this.field3106 = MathHelper.floor(mc.player.getY());
                }
@@ -164,7 +164,7 @@ public class Scaffold extends Module {
             this.field3110 = null;
             double var6 = mc.player.getX();
             double var8 = mc.player.getZ();
-            if (this.field3103.method419()) {
+            if (this.field3103.getValue()) {
                double var10000 = (double)this.field3106;
             } else {
                mc.player.getY();
@@ -176,13 +176,13 @@ public class Scaffold extends Module {
             BlockInteraction var17 = null;
             if (Class2784.method2101(BlockPos.ofFloored(mc.player.getX(), mc.player.getY() - (double)var5, mc.player.getZ()))) {
                var17 = BlockInteraction.method2272(BlockPos.ofFloored(mc.player.getX(), mc.player.getY() - (double)var5, mc.player.getZ()))
-                  .method2275(this.field3095.method419());
+                  .method2275(this.field3095.getValue());
             } else if (!mc.player.horizontalCollision && this.field3098.getValue() > 0.0) {
                var17 = this.method1769(var6, mc.player.getY() - (double)var5, var8, var12, var14, var16);
             }
 
             if (var17 != null && mc.world.getBlockState(var17.method2278()).getBlock() == Blocks.AIR) {
-               if (this.field3096.method419()
+               if (this.field3096.getValue()
                   && (
                      Math.floor(mc.player.getEyePos().x) != (double)var17.method2278().getX()
                         || Math.floor(mc.player.getEyePos().z) != (double)var17.method2278().getZ()
@@ -196,7 +196,7 @@ public class Scaffold extends Module {
                }
 
                this.field3110 = var17;
-               if (this.field3110 != null && this.field3110.method2279() != null && this.field3094.method419()) {
+               if (this.field3110 != null && this.field3110.method2279() != null && this.field3094.getValue()) {
                   float[] var19 = EntityUtil.method2146(this.field3110.method2279().getPos());
                   event.method1021(true);
                   event.yaw = var19[0];
@@ -218,22 +218,22 @@ public class Scaffold extends Module {
                return;
             }
 
-            if (this.field3100.method461() != ScaffoldTower.Off) {
+            if (this.field3100.getValue() != ScaffoldTower.Off) {
                if (mc.options.jumpKey.isPressed()
                   && mc.player.forwardSpeed == 0.0F
                   && mc.player.sidewaysSpeed == 0.0F
                   && !mc.player.hasStatusEffect(StatusEffects.JUMP_BOOST)) {
-                  if (!this.field3108 && this.field3101.method419()) {
+                  if (!this.field3108 && this.field3101.getValue()) {
                      this.field3108 = true;
                      BlockPos var6 = BlockPos.ofFloored(mc.player.getX(), mc.player.getY(), mc.player.getZ());
                      mc.player.setPosition((double)var6.getX() + 0.5, (double)var6.getY(), (double)var6.getZ() + 0.5);
                   }
 
-                  if (this.field3101.method419() && !this.field3108) {
+                  if (this.field3101.getValue() && !this.field3108) {
                      return;
                   }
 
-                  if (this.field3100.method461() == ScaffoldTower.Fast) {
+                  if (this.field3100.getValue() == ScaffoldTower.Fast) {
                      Class3076.method6024(this, 25, mc.player.age % 10 == 0 ? 1.0F : 1.5782F);
                   }
 
@@ -246,7 +246,7 @@ public class Scaffold extends Module {
                } else {
                   Class3076.method6025(this);
                   this.field3109.reset();
-                  if (this.field3108 && this.field3101.method419()) {
+                  if (this.field3108 && this.field3101.getValue()) {
                      this.field3108 = false;
                   }
                }
@@ -256,10 +256,10 @@ public class Scaffold extends Module {
 
             ((ClientPlayerInteractionManagerAccessor)mc.interactionManager).callSyncSelectedSlot();
             event.method556(
-               this, PlaceMode.Vanilla, this.field3099.method461(), 20, var5, this.field3110.method2279(), var5 >= 0 ? Hand.MAIN_HAND : Hand.OFF_HAND
+               this, PlaceMode.Vanilla, this.field3099.getValue(), 20, var5, this.field3110.method2279(), var5 >= 0 ? Hand.MAIN_HAND : Hand.OFF_HAND
             );
             Class2784.method1801(this.field3110.method2278());
-            if (this.field3088.method419()) {
+            if (this.field3088.getValue()) {
                this.field3111.add(PlaceRender.INSTANCE.method2017(this.field3110.method2278()));
             }
 
@@ -308,7 +308,7 @@ public class Scaffold extends Module {
       double var5 = event.vec3.x;
       double var7 = event.vec3.z;
       this.field3112 = false;
-      if (mc.player.isOnGround() && !mc.player.noClip && this.field3102.method419() && !this.field3104.method476().isPressed()) {
+      if (mc.player.isOnGround() && !mc.player.noClip && this.field3102.getValue() && !this.field3104.method476().isPressed()) {
          while (var5 != 0.0 && mc.world.isSpaceEmpty(mc.player, mc.player.getBoundingBox().expand(-0.15, 0.0, -0.15).offset(var5, -1.0, 0.0))) {
             if (var5 < 0.05 && var5 >= -0.05) {
                var5 = 0.0;
@@ -352,7 +352,7 @@ public class Scaffold extends Module {
          this.field3112 = true;
       }
 
-      if (this.field3093.method461() == AnticheatMode.NCP) {
+      if (this.field3093.getValue() == AnticheatMode.NCP) {
          event.vec3 = new Vec3d(var5, event.vec3.y, var7);
       }
    }
@@ -391,7 +391,7 @@ public class Scaffold extends Module {
          }
 
          if (Class2784.method2101(BlockPos.ofFloored(var16, y, var18))) {
-            var15 = BlockInteraction.method2272(BlockPos.ofFloored(var16, y, var18)).method2275(this.field3095.method419());
+            var15 = BlockInteraction.method2272(BlockPos.ofFloored(var16, y, var18)).method2275(this.field3095.getValue());
          }
       }
 

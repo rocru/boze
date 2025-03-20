@@ -48,7 +48,7 @@ public class AutoLoot extends Module {
    public void method1589(FlipFrameEvent event) {
       if (!event.method1022()) {
          if (MinecraftUtils.isClientActive() && !(mc.currentScreen instanceof DownloadingTerrainScreen)) {
-            if (this.field2754.method461() == AutoLootInventory.Await && !(mc.currentScreen instanceof AbstractInventoryScreen)) {
+            if (this.field2754.getValue() == AutoLootInventory.Await && !(mc.currentScreen instanceof AbstractInventoryScreen)) {
                this.field2757.reset();
                this.field2758 = null;
                this.field2759 = this.field2755.method1295() * 50.0;
@@ -89,6 +89,6 @@ public class AutoLoot extends Module {
    }
 
    private boolean lambda$onScreenInput$0(Slot var1, List var2) {
-      return var1.hasStack() && ChestStealer.method1591(var1, var2, this.field2753.method419());
+      return var1.hasStack() && ChestStealer.method1591(var1, var2, this.field2753.getValue());
    }
 }

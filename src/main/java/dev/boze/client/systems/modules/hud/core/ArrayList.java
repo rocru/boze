@@ -30,7 +30,7 @@ public class ArrayList extends HUDModule {
    public final BooleanSetting field651 = new BooleanSetting(
       "Animations", false, "Enables animations\nNote: For this to work, ArrayList has to be on one side of the screen"
    );
-   private final MinMaxSetting field652 = new MinMaxSetting("Duration", 0.25, 0.1, 5.0, 0.1, "Animation duration in seconds", this.field651::method419);
+   private final MinMaxSetting field652 = new MinMaxSetting("Duration", 0.25, 0.1, 5.0, 0.1, "Animation duration in seconds", this.field651::getValue);
    private final BooleanSetting field653 = new BooleanSetting("Custom", false, "Use custom theme settings");
    private final ColorSetting field654 = new ColorSetting(
       "Text", new BozeDrawColor(100, 35, 250, 255, true, 0.3, 0.0, new double[]{0.0, -0.065}, new double[]{0.5, 0.6}), "Text color", this.field653
@@ -56,7 +56,7 @@ public class ArrayList extends HUDModule {
 
    @EventHandler
    public void method2041(MovementEvent event) {
-      if (this.isEnabled() && this.field651.method419() && this.field650.method419()) {
+      if (this.isEnabled() && this.field651.getValue() && this.field650.getValue()) {
          for (ToggleableModule var6 : BozeInstance.INSTANCE.getModules()) {
             if ((Boolean)this.field660.getOrDefault(var6, var6.getState()) != var6.getState()) {
                this.field659.put(new ArrayListModuleInfo(var6.getTitle(), "", var6.getState()), System.currentTimeMillis());
@@ -101,7 +101,7 @@ public class ArrayList extends HUDModule {
          .filter(ArrayList::lambda$getLines$5)
          .map(ArrayList::lambda$getLines$6)
          .collect(Collectors.toCollection(java.util.ArrayList::new));
-      if (this.field650.method419()) {
+      if (this.field650.getValue()) {
          BozeInstance.INSTANCE.getModules().stream().map(ArrayList::lambda$getLines$7).forEach(var4::add);
       }
 
@@ -129,27 +129,27 @@ public class ArrayList extends HUDModule {
    }
 
    private boolean lambda$getLines$4(Module var1) {
-      return !this.field649.method419() || var1.bind.isValid();
+      return !this.field649.getValue() || var1.bind.isValid();
    }
 
    private void lambda$onRender$3(boolean var1, int[] var2, int[] var3, ArrayListModuleInfo var4) {
       String var8 = this.method340(var4);
-      double var9 = IFontRender.method499().measureTextHeight(var8, this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419());
-      if (HUD.INSTANCE.field2394.method419()) {
+      double var9 = IFontRender.method499().measureTextHeight(var8, this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue());
+      if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE
             .field2397
             .method2252(
                this.method1391() + (var1 ? this.method313() - var9 - 4.0 : 0.0),
                this.method305() + (double)var2[0],
                var9 + 4.0,
-               IFontRender.method499().method502(this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419())
-                  + this.field653.method419() ? this.field658.getValue() : HUD.INSTANCE.field2385.getValue(),
+               IFontRender.method499().method502(this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue())
+                  + this.field653.getValue() ? this.field658.getValue() : HUD.INSTANCE.field2385.getValue(),
                RGBAColor.field402
             );
       }
 
       double var11 = 0.0;
-      if (this.field651.method419() && this.field659.containsKey(var4)) {
+      if (this.field651.getValue() && this.field659.containsKey(var4)) {
          long var13 = (Long)this.field659.get(var4);
          long var15 = System.currentTimeMillis();
          long var17 = var15 - var13;
@@ -162,8 +162,8 @@ public class ArrayList extends HUDModule {
             var4.field2593,
             this.method1391() + var11 + (var1 ? this.method313() - var9 - 2.0 : 2.0),
             this.method305() + (double)var2[0] + 0.5,
-            this.field653.method419() ? this.field654.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419()
+            this.field653.getValue() ? this.field654.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       if (!var4.field2594.isEmpty()) {
          IFontRender.method499()
@@ -173,10 +173,10 @@ public class ArrayList extends HUDModule {
                   + var11
                   + (var1 ? this.method313() - var9 - 2.0 : 2.0)
                   + IFontRender.method499()
-                     .measureTextHeight(var4.field2593 + " ", this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419()),
+                     .measureTextHeight(var4.field2593 + " ", this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue()),
                this.method305() + (double)var2[0] + 0.5,
-               this.field653.method419() ? this.field656.method1362() : HUD.INSTANCE.field2383.method1362(),
-               this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419()
+               this.field653.getValue() ? this.field656.getValue() : HUD.INSTANCE.field2383.getValue(),
+               this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue()
             );
          IFontRender.method499()
             .drawShadowedText(
@@ -185,10 +185,10 @@ public class ArrayList extends HUDModule {
                   + var11
                   + (var1 ? this.method313() - var9 - 2.0 : 2.0)
                   + IFontRender.method499()
-                     .measureTextHeight(var4.field2593 + " [", this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419()),
+                     .measureTextHeight(var4.field2593 + " [", this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue()),
                this.method305() + (double)var2[0] + 0.5,
-               this.field653.method419() ? this.field655.method1362() : HUD.INSTANCE.field2383.method1362(),
-               this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419()
+               this.field653.getValue() ? this.field655.getValue() : HUD.INSTANCE.field2383.getValue(),
+               this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue()
             );
          IFontRender.method499()
             .drawShadowedText(
@@ -198,18 +198,18 @@ public class ArrayList extends HUDModule {
                   + (var1 ? this.method313() - var9 - 2.0 : 2.0)
                   + IFontRender.method499()
                      .measureTextHeight(
-                        var4.field2593 + " [" + var4.field2594, this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419()
+                        var4.field2593 + " [" + var4.field2594, this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue()
                      ),
                this.method305() + (double)var2[0] + 0.5,
-               this.field653.method419() ? this.field656.method1362() : HUD.INSTANCE.field2383.method1362(),
-               this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419()
+               this.field653.getValue() ? this.field656.getValue() : HUD.INSTANCE.field2383.getValue(),
+               this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue()
             );
       }
 
       var2[0] = (int)(
          (double)var2[0]
-            + IFontRender.method499().method502(this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419())
-            + this.field653.method419() ? this.field658.getValue() : HUD.INSTANCE.field2385.getValue()
+            + IFontRender.method499().method502(this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue())
+            + this.field653.getValue() ? this.field658.getValue() : HUD.INSTANCE.field2385.getValue()
       );
       var3[0]++;
    }
@@ -217,17 +217,17 @@ public class ArrayList extends HUDModule {
    private double lambda$onRender$2(boolean var1, ArrayListModuleInfo var2) {
       return var1
          ? -IFontRender.method499()
-            .measureTextHeight(this.method340(var2), this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419())
+            .measureTextHeight(this.method340(var2), this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue())
          : IFontRender.method499()
-            .measureTextHeight(this.method340(var2), this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419());
+            .measureTextHeight(this.method340(var2), this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue());
    }
 
    private double lambda$onRender$1(ArrayListModuleInfo var1) {
       return IFontRender.method499()
-         .measureTextHeight(this.method340(var1), this.field653.method419() ? this.field657.method419() : HUD.INSTANCE.field2384.method419());
+         .measureTextHeight(this.method340(var1), this.field653.getValue() ? this.field657.getValue() : HUD.INSTANCE.field2384.getValue());
    }
 
    private boolean lambda$onRender$0(ArrayListModuleInfo var1) {
-      return var1.field2595 || this.field651.method419() && this.field659.containsKey(var1);
+      return var1.field2595 || this.field651.getValue() && this.field659.containsKey(var1);
    }
 }

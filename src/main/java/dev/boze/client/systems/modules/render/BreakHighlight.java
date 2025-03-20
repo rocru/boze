@@ -81,9 +81,9 @@ public class BreakHighlight extends Module {
 
    @EventHandler
    public void method1915(Render2DEvent event) {
-      if (this.field3449.method419() || this.field3450.method419()) {
-         for (Entry var6 : BlockBreakingTracker.field1511.method666(this.field3434.method419()).entrySet()) {
-            if ((!this.field3436.method419() || !this.field3449.method419())
+      if (this.field3449.getValue() || this.field3450.getValue()) {
+         for (Entry var6 : BlockBreakingTracker.field1511.method666(this.field3434.getValue()).entrySet()) {
+            if ((!this.field3436.getValue() || !this.field3449.getValue())
                && ((BlockPos)var6.getKey()).equals(((ClientPlayerInteractionManagerAccessor)mc.interactionManager).getCurrentBreakingPos())) {
                return;
             }
@@ -103,11 +103,11 @@ public class BreakHighlight extends Module {
                if (var13) {
                   double var14 = -1.0;
                   int var16 = -1;
-                  if (this.field3449.method419()) {
+                  if (this.field3449.getValue()) {
                      var14 = (double)((Float)var6.getValue()).floatValue();
                   }
 
-                  if (this.field3450.method419()) {
+                  if (this.field3450.getValue()) {
                      var16 = BlockBreakingTracker.field1511.method667((BlockPos)var6.getKey());
                   }
 
@@ -536,21 +536,21 @@ public class BreakHighlight extends Module {
    }
 
    private ShaderMode method1918() {
-      if (this.field3441.method461() == BreakHighlightShader.Image) {
-         if (!this.field3448.method1322().isEmpty() && (!this.field3448.method1322().equals(this.field3454) || this.field3453 == null)) {
-            File var4 = new File(ConfigManager.images, this.field3448.method1322() + ".png");
+      if (this.field3441.getValue() == BreakHighlightShader.Image) {
+         if (!this.field3448.getValue().isEmpty() && (!this.field3448.getValue().equals(this.field3454) || this.field3453 == null)) {
+            File var4 = new File(ConfigManager.images, this.field3448.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.field3453 = ByteTexturePacker.method493(var5);
                if (this.field3453 != null) {
-                  this.field3454 = this.field3448.method1322();
+                  this.field3454 = this.field3448.getValue();
                } else {
                   this.field3454 = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field3448.method1341("");
+               this.field3448.setValue("");
                this.field3454 = "";
             }
          }
@@ -564,10 +564,10 @@ public class BreakHighlight extends Module {
    }
 
    private void method1919(Box var1, Renderer3D var2) {
-      if (this.field3440.method419()) {
+      if (this.field3440.getValue()) {
          var2.method1261(var1.minX, var1.minY, var1.minZ, var1.maxX, var1.maxY, var1.maxZ, RGBAColor.field402, 0);
       } else {
-         var2.method1273(var1, this.field3438.method1362(), this.field3439.method1362(), ShapeMode.Full, 0);
+         var2.method1273(var1, this.field3438.getValue(), this.field3439.getValue(), ShapeMode.Full, 0);
       }
    }
 
@@ -582,14 +582,14 @@ public class BreakHighlight extends Module {
    }
 
    private boolean lambda$new$2() {
-      return this.field3449.method419() || this.field3450.method419();
+      return this.field3449.getValue() || this.field3450.getValue();
    }
 
    private boolean lambda$new$1() {
-      return this.field3441.method461() == BreakHighlightShader.Image;
+      return this.field3441.getValue() == BreakHighlightShader.Image;
    }
 
    private boolean lambda$new$0() {
-      return this.field3444.method423() > 0.0F;
+      return this.field3444.getValue() > 0.0F;
    }
 }

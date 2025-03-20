@@ -51,7 +51,7 @@ public class AutoMount extends Module {
    @EventHandler
    public void method1670(MovementEvent event) {
       if (!mc.player.isRiding() && mc.player.getVehicle() == null && !(mc.currentScreen instanceof HorseScreen)) {
-         if (this.timer.hasElapsed((double)(this.delay.method423() * 1000.0F))) {
+         if (this.timer.hasElapsed((double)(this.delay.getValue() * 1000.0F))) {
             this.timer.reset();
             ArrayList var5 = new ArrayList();
 
@@ -73,21 +73,21 @@ public class AutoMount extends Module {
    }
 
    private boolean method1671(Entity var1) {
-      if (var1.distanceTo(mc.player) > this.range.method423()) {
+      if (var1.distanceTo(mc.player) > this.range.getValue()) {
          return false;
-      } else if (var1 instanceof HorseEntity && this.horses.method419()) {
+      } else if (var1 instanceof HorseEntity && this.horses.getValue()) {
          return true;
-      } else if (var1 instanceof BoatEntity && this.boats.method419()) {
+      } else if (var1 instanceof BoatEntity && this.boats.getValue()) {
          return true;
-      } else if (var1 instanceof SkeletonHorseEntity && this.skeletonHorse.method419()) {
+      } else if (var1 instanceof SkeletonHorseEntity && this.skeletonHorse.getValue()) {
          return true;
-      } else if (var1 instanceof DonkeyEntity && this.donkeys.method419()) {
+      } else if (var1 instanceof DonkeyEntity && this.donkeys.getValue()) {
          return true;
-      } else if (var1 instanceof PigEntity && this.pigs.method419()) {
+      } else if (var1 instanceof PigEntity && this.pigs.getValue()) {
          PigEntity var5 = (PigEntity)var1;
          return var5.isSaddled();
       } else {
-         return var1 instanceof LlamaEntity && this.llamas.method419();
+         return var1 instanceof LlamaEntity && this.llamas.getValue();
       }
    }
 

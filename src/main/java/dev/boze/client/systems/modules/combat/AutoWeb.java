@@ -82,10 +82,10 @@ public class AutoWeb extends Module {
    }
 
    private boolean method1971() {
-      if (this.onJump.method419() && mc.player.getVelocity().y > 0.0 && !mc.player.isOnGround()) {
+      if (this.onJump.getValue() && mc.player.getVelocity().y > 0.0 && !mc.player.isOnGround()) {
          this.setEnabled(false);
          return false;
-      } else if (Options.method477(this.multiTask.method419())) {
+      } else if (Options.method477(this.multiTask.getValue())) {
          return false;
       } else {
          int var4 = InventoryHelper.method174(BlastResistanceCalculator.field3906, this.field1017.method149());
@@ -98,7 +98,7 @@ public class AutoWeb extends Module {
 
             for (LivingEntity var8 : var5) {
                BlockPos var9 = BlockPos.ofFloored(var8.getPos());
-               if (!this.predictive.method419() || Class5924.method77(true, var8) && !(var8.prevY >= var8.getY())) {
+               if (!this.predictive.getValue() || Class5924.method77(true, var8) && !(var8.prevY >= var8.getY())) {
                   HashSet var10 = new HashSet();
                   if (EntityTracker.method2143(var10, var9, CheckEntityMode.Off)) {
                      HitResult var11 = this.field1017.method150(var10, var9);
@@ -111,7 +111,7 @@ public class AutoWeb extends Module {
                      }
                   }
 
-                  if (this.doubleWeb.method419()) {
+                  if (this.doubleWeb.getValue()) {
                      BlockPos var13 = var9.up();
                      if (EntityTracker.method2143(var10, var13, CheckEntityMode.Off)) {
                         if (this.field1017.method2115()) {
@@ -136,7 +136,7 @@ public class AutoWeb extends Module {
             }
 
             if (var6.isEmpty()) {
-               if (this.whenDone.method419()) {
+               if (this.whenDone.getValue()) {
                   this.setEnabled(false);
                }
 
@@ -158,7 +158,7 @@ public class AutoWeb extends Module {
          this.field1020 = (BlockHitResult)this.field1019[0];
          RotationHelper var4 = GhostRotations.INSTANCE.field760 == null ? new RotationHelper(mc.player) : GhostRotations.INSTANCE.field760;
          RotationHelper var5 = Class1202.method2391(mc.player.getEyePos(), this.field1020.getPos());
-         this.field1021 = var4.method603(var5, this.field1017.field229.method1287());
+         this.field1021 = var4.method603(var5, this.field1017.field229.getValue());
          return true;
       } else {
          this.field1021 = null;
@@ -184,7 +184,7 @@ public class AutoWeb extends Module {
 
    @EventHandler
    public void method1877(PlayerPositionEvent event) {
-      if (this.onStep.method419() && Step.INSTANCE.isEnabled()) {
+      if (this.onStep.getValue() && Step.INSTANCE.isEnabled()) {
          this.setEnabled(false);
       }
    }
@@ -192,7 +192,7 @@ public class AutoWeb extends Module {
    @EventHandler
    public void method2042(PacketBundleEvent event) {
       if (event.packet instanceof PlayerPositionLookS2CPacket
-         && this.onTP.method419()
+         && this.onTP.getValue()
          && MinecraftUtils.isClientActive()
          && mc.player
                .getPos()
@@ -228,7 +228,7 @@ public class AutoWeb extends Module {
       priority = 78
    )
    public void method1694(eJ event) {
-      if (!this.field1017.method2114() && this.field1017.field227.method461() != BlockPlaceMode.Mouse && !event.method1101()) {
+      if (!this.field1017.method2114() && this.field1017.field227.getValue() != BlockPlaceMode.Mouse && !event.method1101()) {
          if (this.method1972()) {
             event.method1099(this.field1021.method600(this::lambda$onGhostRotate$0));
          }
@@ -241,7 +241,7 @@ public class AutoWeb extends Module {
    public void method1695(MouseUpdateEvent event) {
       if (MinecraftUtils.isClientActive() && !event.method1022()) {
          if (mc.currentScreen == null || mc.currentScreen instanceof ClickGUI) {
-            if (!this.field1017.method2114() && this.field1017.field227.method461() != BlockPlaceMode.Normal) {
+            if (!this.field1017.method2114() && this.field1017.field227.getValue() != BlockPlaceMode.Normal) {
                if (this.method1972()) {
                   RotationHelper var5 = new RotationHelper(mc.player);
                   RotationHelper var6 = this.field1021.method1600();
@@ -286,7 +286,7 @@ public class AutoWeb extends Module {
       priority = 76
    )
    public void method1883(RotationEvent event) {
-      if (!Options.method477(this.multiTask.method419()) && !event.method555(this.field1017.method147().type, this.field1017.method2116())) {
+      if (!Options.method477(this.multiTask.getValue()) && !event.method555(this.field1017.method147().type, this.field1017.method2116())) {
          if (this.field1019 != null) {
             if (!this.field1017.method2115()) {
                byte var14 = 0;
@@ -306,7 +306,7 @@ public class AutoWeb extends Module {
                         break;
                      }
 
-                     AttackMode var10 = var14 > 0 ? AttackMode.Packet : this.field1017.field234.method461();
+                     AttackMode var10 = var14 > 0 ? AttackMode.Packet : this.field1017.field234.getValue();
                      BlockPos var12 = var9.getBlockPos().offset(var9.getSide());
                      if (var15 > 0 && this.field1017.method2116()) {
                         if (this.field1017.method2117()) {
@@ -400,7 +400,7 @@ public class AutoWeb extends Module {
          } else if (var1 instanceof FakePlayerEntity) {
             return false;
          } else {
-            return Friends.method2055(var1) ? this.friends.method419() : this.players.method419();
+            return Friends.method2055(var1) ? this.friends.getValue() : this.players.getValue();
          }
       } else {
          switch (mw.field2113[var1.getType().getSpawnGroup().ordinal()]) {
@@ -408,9 +408,9 @@ public class AutoWeb extends Module {
             case 2:
             case 3:
             case 4:
-               return this.animals.method419();
+               return this.animals.getValue();
             case 5:
-               return this.monsters.method419();
+               return this.monsters.getValue();
             default:
                return false;
          }

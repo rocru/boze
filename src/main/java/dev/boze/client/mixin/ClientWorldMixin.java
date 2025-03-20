@@ -75,17 +75,17 @@ public abstract class ClientWorldMixin extends World {
       cancellable = true
    )
    private void onGetSkyColor(Vec3d var1, float var2, CallbackInfoReturnable<Vec3d> var3) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3745.method419()) {
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3745.getValue()) {
          String var6 = this.getRegistryKey().getValue().getPath();
          switch (var6) {
             case "the_nether":
-               var3.setReturnValue(Tint.INSTANCE.field3747.method1347().method1954());
+               var3.setReturnValue(Tint.INSTANCE.field3747.getValue().method1954());
                break;
             case "the_end":
-               var3.setReturnValue(Tint.INSTANCE.field3748.method1347().method1954());
+               var3.setReturnValue(Tint.INSTANCE.field3748.getValue().method1954());
                break;
             default:
-               var3.setReturnValue(Tint.INSTANCE.field3746.method1347().method1954());
+               var3.setReturnValue(Tint.INSTANCE.field3746.getValue().method1954());
          }
       }
    }
@@ -96,8 +96,8 @@ public abstract class ClientWorldMixin extends World {
       cancellable = true
    )
    private void onGetCloudsColor(float var1, CallbackInfoReturnable<Vec3d> var2) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3749.method419()) {
-         var2.setReturnValue(Tint.INSTANCE.field3750.method1347().method1954());
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3749.getValue()) {
+         var2.setReturnValue(Tint.INSTANCE.field3750.getValue().method1954());
       }
    }
 

@@ -45,7 +45,7 @@ public class OldSigns extends Module {
             SignBlockEntity var7 = (SignBlockEntity)var6;
             if (this.method2009(var7)) {
                this.field3618++;
-               var1.field1950.method1272(var7.getPos(), this.field3616.method1362(), this.field3617.method1362(), ShapeMode.Full, 0);
+               var1.field1950.method1272(var7.getPos(), this.field3616.getValue(), this.field3617.getValue(), ShapeMode.Full, 0);
             }
          }
       }

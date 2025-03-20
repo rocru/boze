@@ -25,13 +25,13 @@ public class BossStack extends Module {
 
    @EventHandler
    private void method1907(BossBarNameEvent var1) {
-      if (this.field3420.method419()) {
+      if (this.field3420.getValue()) {
          var1.text = Text.of("");
-      } else if (!field3421.isEmpty() && this.field3419.method419()) {
+      } else if (!field3421.isEmpty() && this.field3419.getValue()) {
          ClientBossBar var5 = var1.field1906;
          Integer var6 = (Integer)field3421.get(var5);
          field3421.remove(var5);
-         if (var6 != null && !this.field3420.method419()) {
+         if (var6 != null && !this.field3420.getValue()) {
             var1.text = var1.text.copyContentOnly().append(" (" + var6 + ")");
          }
       }
@@ -39,14 +39,14 @@ public class BossStack extends Module {
 
    @EventHandler
    private void method1908(BossBarSpacingEvent var1) {
-      if (this.field3420.method419()) {
+      if (this.field3420.getValue()) {
          var1.field1908 = 0;
       }
    }
 
    @EventHandler
    private void method1909(BossBarIteratorEvent var1) {
-      if (this.field3419.method419()) {
+      if (this.field3419.getValue()) {
          HashMap var4 = new HashMap();
          var1.field1904.forEachRemaining(BossStack::lambda$onGetBars$1);
          var1.field1904 = var4.values().iterator();

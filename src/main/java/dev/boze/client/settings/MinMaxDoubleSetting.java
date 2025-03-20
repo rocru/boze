@@ -107,17 +107,20 @@ public class MinMaxDoubleSetting extends Setting<double[]> {
       this.method1296();
    }
 
-   public double[] method1287() {
+   @Override
+   public double[] getValue() {
       return this.field2198;
    }
 
-   public double[] method1288() {
+   @Override
+   public double[] resetValue() {
       this.field2198[0] = this.field2199[0];
       this.field2198[1] = this.field2199[1];
       return this.field2198;
    }
 
-   public double[] method1289(double[] newVal) {
+   @Override
+   public double[] setValue(double[] newVal) {
       this.method1290(0, newVal[0]);
       this.method1290(1, newVal[1]);
       return this.field2198;
@@ -182,7 +185,8 @@ public class MinMaxDoubleSetting extends Setting<double[]> {
       return tag;
    }
 
-   public double[] method1297(NbtCompound tag) {
+   @Override
+   public double[] load(NbtCompound tag) {
       if (tag.contains("Value0")) {
          this.field2198[0] = tag.getDouble("Value0");
       }
@@ -196,31 +200,31 @@ public class MinMaxDoubleSetting extends Setting<double[]> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method1297(nbtCompound);
-   }
+  // @Override
+  // public Object load(NbtCompound nbtCompound) {
+  //    return this.method1297(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method1289((double[])object);
-   }
+  // @Override
+   //public Object setValue(Object object) {
+   //   return this.method1289((double[])object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method1288();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method1288();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1287();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method1287();
+   //}
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
       this.method1290(0, DoubleArgumentType.getDouble(var1, "firstvalue"));

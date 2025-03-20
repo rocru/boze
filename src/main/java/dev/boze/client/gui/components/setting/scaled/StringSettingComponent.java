@@ -56,11 +56,11 @@ public class StringSettingComponent extends ScaledSettingBaseComponent implement
                this.field319 + this.field321 * 0.5 - Notifications.VIEW_LIST.method1614() * 0.5,
                Theme.method1350()
             );
-         if (!this.field314.method1322().isEmpty()) {
+         if (!this.field314.getValue().isEmpty()) {
             IFontRender.method499()
                .drawShadowedText(
-                  this.field314.method1322(),
-                  this.field318 + this.field320 - scaleFactor * 21.0 - var8 - IFontRender.method499().method501(this.field314.method1322()),
+                  this.field314.getValue(),
+                  this.field318 + this.field320 - scaleFactor * 21.0 - var8 - IFontRender.method499().method501(this.field314.getValue()),
                   this.field319 + this.field321 * 0.5 - IFontRender.method499().method1390() * 0.5,
                   Theme.method1350()
                );

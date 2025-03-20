@@ -74,7 +74,7 @@ public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGrou
    @Override
    public HitResult[] method81() {
       if (!this.method2115() && this.method2114()) {
-         if (this.field124.method419()) {
+         if (this.field124.getValue()) {
             Class2811.field101 = true;
          }
 
@@ -138,9 +138,9 @@ public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGrou
 
                   if (var15 > var7
                      && (
-                        !this.field126.field1042.field118.method419()
-                           || this.field126.field1042.field115.method461() == AutoCrystalMaxDamage.Balance
-                           || !(var11 > (double)this.field126.field1042.field116.method423().floatValue())
+                        !this.field126.field1042.field118.getValue()
+                           || this.field126.field1042.field115.getValue() == AutoCrystalMaxDamage.Balance
+                           || !(var11 > (double)this.field126.field1042.field116.getValue().floatValue())
                            || !(var15 < (double)(var14.getHealth() + var14.getAbsorptionAmount()))
                      )) {
                      var5 = var1;
@@ -158,9 +158,9 @@ public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGrou
    private boolean method2114() {
       if (this.field126.field1044.method2114()) {
          return false;
-      } else if (this.field122.method461() == BasePlace.Auto) {
+      } else if (this.field122.getValue() == BasePlace.Auto) {
          return true;
-      } else if (this.field122.method461() == BasePlace.Bind && !this.field129.hasElapsed(250.0)) {
+      } else if (this.field122.getValue() == BasePlace.Bind && !this.field129.hasElapsed(250.0)) {
          this.field129.setLastTime(0L);
          return true;
       } else {
@@ -171,8 +171,8 @@ public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGrou
    private List<BlockPos> method1144() {
       ArrayList var4 = new ArrayList();
       BlockPos var5 = mc.player.getBlockPos();
-      int var6 = (int)Math.ceil((double)(this.field126.autoCrystalPlace.field138.method423() + 1.0F));
-      int var7 = (int)Math.ceil((double)(this.field126.autoCrystalPlace.field138.method423() + 1.0F));
+      int var6 = (int)Math.ceil((double)(this.field126.autoCrystalPlace.field138.getValue() + 1.0F));
+      int var7 = (int)Math.ceil((double)(this.field126.autoCrystalPlace.field138.getValue() + 1.0F));
 
       for (int var8 = var5.getX() - var6; var8 < var5.getX() + var6; var8++) {
          for (int var9 = var5.getY() - var7; var9 < var5.getY() + var7 + 1; var9++) {
@@ -181,7 +181,7 @@ public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGrou
                boolean var12 = false;
 
                for (LivingEntity var14 : this.field126.field1042.method1144()) {
-                  if (var14 != null && var14.getPos().distanceTo(var11) <= (double)this.field126.crystalRange.method423().floatValue() + 0.71) {
+                  if (var14 != null && var14.getPos().distanceTo(var11) <= (double)this.field126.crystalRange.getValue().floatValue() + 0.71) {
                      var12 = true;
                      break;
                   }
@@ -207,10 +207,10 @@ public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGrou
          return false;
       } else {
          BlockPos var7 = var1.up(2);
-         if (!var5 && this.field126.protocol.method419() && !this.field126.field1045.method2102(var7)) {
+         if (!var5 && this.field126.protocol.getValue() && !this.field126.field1045.method2102(var7)) {
             return false;
          } else {
-            double var8 = this.field126.protocol.method419() ? 2.0 : 1.0;
+            double var8 = this.field126.protocol.getValue() ? 2.0 : 1.0;
             Box var10 = new Box(var1).stretch(0.0, var8, 0.0);
             if (this.field126.field1045.method726(var10)) {
                return false;
@@ -231,6 +231,6 @@ public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGrou
    }
 
    private boolean lambda$new$0() {
-      return this.field122.method461() == BasePlace.Bind;
+      return this.field122.getValue() == BasePlace.Bind;
    }
 }

@@ -115,8 +115,8 @@ public class Trigger extends Module {
    )
    public void method1620(MouseUpdateEvent event) {
       if (this.field2854 > 0.0F && !event.method1022()) {
-         double var5 = (double)(this.field2854 * this.field2833.method423()) * Math.random();
-         double var7 = (double)(this.field2854 * this.field2833.method423()) * Math.random();
+         double var5 = (double)(this.field2854 * this.field2833.getValue()) * Math.random();
+         double var7 = (double)(this.field2854 * this.field2833.getValue()) * Math.random();
          if (Math.random() > 0.5) {
             var5 *= -1.0;
          }
@@ -139,7 +139,7 @@ public class Trigger extends Module {
             this.field2853.method2172();
          }
 
-         if (this.field2834.method419()) {
+         if (this.field2834.getValue()) {
             Item var5 = mc.player.getMainHandStack().getItem();
             if (!(var5 instanceof SwordItem) && !(var5 instanceof AxeItem) && !(var5 instanceof TridentItem)) {
                this.field2853.method2172();
@@ -147,11 +147,11 @@ public class Trigger extends Module {
             }
          }
 
-         if (this.field2835.method419() && !mc.options.attackKey.isPressed()) {
+         if (this.field2835.getValue() && !mc.options.attackKey.isPressed()) {
             this.field2853.method2172();
-         } else if (this.field2836.method419() && mc.player.isBlocking()) {
+         } else if (this.field2836.getValue() && mc.player.isBlocking()) {
             this.field2853.method2172();
-         } else if (this.field2837.method461().method2114()) {
+         } else if (this.field2837.getValue().method2114()) {
             this.field2853.method2172();
          } else {
             if (mc.interactionManager.isBreakingBlock()) {
@@ -164,7 +164,7 @@ public class Trigger extends Module {
                }
 
                Vec3d var6 = mc.player.getCameraPosVec(mc.getRenderTickCounter().getTickDelta(true));
-               if (this.field2843.method419()) {
+               if (this.field2843.getValue()) {
                   Pair var7 = Class5918.method38(1, mc.player);
                   if (var7 != null) {
                      Vec3d var8 = ((ClientPlayerEntity)var7.getLeft()).getPos();
@@ -219,7 +219,7 @@ public class Trigger extends Module {
       if (var7 > 0 && ((KeyBindingAccessor)var1).getTimesPressed() == 0) {
          ((KeyBindingAccessor)var1).setTimesPressed(var7);
          var3.method2142();
-         if (this.field2833.method423() > 0.0F) {
+         if (this.field2833.getValue() > 0.0F) {
             this.field2854++;
          }
 
@@ -247,9 +247,9 @@ public class Trigger extends Module {
       for (Entity var8 : mc.world.getEntities()) {
          if (!(var8 instanceof LivingEntity)
             && (
-               this.field2851.method419() && var8 instanceof MinecartEntity
-                  || this.field2852.method419() && var8 instanceof BoatEntity
-                  || this.field2850.method419() && var8 instanceof EndCrystalEntity
+               this.field2851.getValue() && var8 instanceof MinecartEntity
+                  || this.field2852.getValue() && var8 instanceof BoatEntity
+                  || this.field2850.getValue() && var8 instanceof EndCrystalEntity
             )) {
             if (var8.getEyePos().distanceTo(mc.player.getEyePos()) > Reach.method1613() + 1.4) {
                continue;
@@ -282,12 +282,12 @@ public class Trigger extends Module {
          } else if (var1 instanceof FakePlayerEntity) {
             return false;
          } else if (Friends.method2055(var1)) {
-            return this.field2847.method419();
+            return this.field2847.getValue();
          } else {
-            return AntiBots.method2055(var1) ? false : this.field2846.method419();
+            return AntiBots.method2055(var1) ? false : this.field2846.getValue();
          }
       } else {
-         if (this.field2845.method419()) {
+         if (this.field2845.getValue()) {
             if (var1 instanceof EndermanEntity var5 && !var5.isAngryAt(mc.player)) {
                return false;
             }
@@ -310,9 +310,9 @@ public class Trigger extends Module {
             case 2:
             case 3:
             case 4:
-               return this.field2848.method419();
+               return this.field2848.getValue();
             case 5:
-               return this.field2849.method419();
+               return this.field2849.getValue();
             default:
                return false;
          }
@@ -324,6 +324,6 @@ public class Trigger extends Module {
    }
 
    private boolean lambda$new$0() {
-      return this.field2838.method461() == ClickMethod.Vanilla;
+      return this.field2838.getValue() == ClickMethod.Vanilla;
    }
 }

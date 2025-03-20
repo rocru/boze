@@ -61,7 +61,7 @@ public class Render implements SettingsGroup {
    }
 
    public void method2071(Render3DEvent event) {
-      if (this.field252.method419()) {
+      if (this.field252.getValue()) {
          for (TaskLogger var6 : AutoMine.INSTANCE.miner.field201) {
             this.method156(event, var6.field2532.field2523, var6.field2533);
             this.field268.remove(var6.field2532.field2523);
@@ -73,44 +73,44 @@ public class Render implements SettingsGroup {
          }
       }
 
-      if (this.field257.method419()) {
+      if (this.field257.getValue()) {
          Iterator var14 = this.field268.entrySet().iterator();
 
          while (var14.hasNext()) {
             Entry var18 = (Entry)var14.next();
             BlockPos var7 = (BlockPos)var18.getKey();
             long var8 = (Long)var18.getValue();
-            if ((float)(System.currentTimeMillis() - var8) >= 400.0F * this.field258.method423()) {
+            if ((float)(System.currentTimeMillis() - var8) >= 400.0F * this.field258.getValue()) {
                var14.remove();
                return;
             }
 
             Box var10 = new Box(var7);
             BozeDrawColor var11 = Class3071.method6015(
-               this.field255.method1362(),
-               this.field259.method1362(),
-               MathHelper.clamp((double)((float)(System.currentTimeMillis() - var8) / (400.0F * this.field258.method423())), 0.0, 1.0)
+               this.field255.getValue(),
+               this.field259.getValue(),
+               MathHelper.clamp((double)((float)(System.currentTimeMillis() - var8) / (400.0F * this.field258.getValue())), 0.0, 1.0)
             );
             BozeDrawColor var12 = Class3071.method6015(
-               this.field256.method1362(),
-               this.field260.method1362(),
-               MathHelper.clamp((double)((float)(System.currentTimeMillis() - var8) / (400.0F * this.field258.method423())), 0.0, 1.0)
+               this.field256.getValue(),
+               this.field260.getValue(),
+               MathHelper.clamp((double)((float)(System.currentTimeMillis() - var8) / (400.0F * this.field258.getValue())), 0.0, 1.0)
             );
             event.field1950.method1273(var10, var11, var12, ShapeMode.Full, 0);
          }
       }
 
-      if (this.field264.method419()) {
+      if (this.field264.getValue()) {
          for (BlockDirectionInfo var19 : AutoMine.INSTANCE.queue.field87) {
             Box var21 = new Box(var19.field2523);
-            event.field1950.method1273(var21, this.field265.method1362(), this.field266.method1362(), ShapeMode.Full, 0);
+            event.field1950.method1273(var21, this.field265.getValue(), this.field266.getValue(), ShapeMode.Full, 0);
          }
       }
 
-      if (this.field261.method419() && AutoMine.INSTANCE.field2519 != null && AutoMine.INSTANCE.instantRemine.method419()) {
+      if (this.field261.getValue() && AutoMine.INSTANCE.field2519 != null && AutoMine.INSTANCE.instantRemine.getValue()) {
          BlockPos var16 = AutoMine.INSTANCE.field2519;
          Box var20 = new Box(var16);
-         event.field1950.method1273(var20, this.field262.method1362(), this.field263.method1362(), ShapeMode.Full, 0);
+         event.field1950.method1273(var20, this.field262.getValue(), this.field263.getValue(), ShapeMode.Full, 0);
       }
    }
 
@@ -128,8 +128,8 @@ public class Render implements SettingsGroup {
          (double)var2.getY() + 0.5 + var7,
          (double)var2.getZ() + 0.5 + var7
       );
-      BozeDrawColor var10 = Class3071.method6015(this.field253.method1362(), this.field255.method1362(), MathHelper.clamp((double)var3, 0.0, 1.0));
-      BozeDrawColor var11 = Class3071.method6015(this.field254.method1362(), this.field256.method1362(), MathHelper.clamp((double)var3, 0.0, 1.0));
+      BozeDrawColor var10 = Class3071.method6015(this.field253.getValue(), this.field255.getValue(), MathHelper.clamp((double)var3, 0.0, 1.0));
+      BozeDrawColor var11 = Class3071.method6015(this.field254.getValue(), this.field256.getValue(), MathHelper.clamp((double)var3, 0.0, 1.0));
       var1.field1950.method1273(var9, var10, var11, ShapeMode.Full, 0);
    }
 }

@@ -37,7 +37,7 @@ public class ReachCircles extends Module {
                   double var19 = var13 + Math.sin(Math.toRadians(var15)) * this.field3662.getValue();
                   double var21 = var9 + Math.cos(Math.toRadians(var15 + 1.0)) * this.field3662.getValue();
                   double var23 = var13 + Math.sin(Math.toRadians(var15 + 1.0)) * this.field3662.getValue();
-                  event.field1950.method1241(var17, var11, var19, var21, var11, var23, this.field3664.method1362());
+                  event.field1950.method1241(var17, var11, var19, var21, var11, var23, this.field3664.getValue());
                }
             }
          }

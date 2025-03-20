@@ -19,7 +19,7 @@ public class WatermarkCommand extends Command {
     }
 
     private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
-        Options.INSTANCE.field988.method1341((String) var0.getArgument("watermark", String.class));
+        Options.INSTANCE.field988.setValue((String) var0.getArgument("watermark", String.class));
         return 1;
     }
 }

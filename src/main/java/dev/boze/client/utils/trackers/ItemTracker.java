@@ -11,7 +11,7 @@ public class ItemTracker implements IMinecraft {
     private static int field1551 = 0;
 
     private static boolean method2114() {
-        return !Options.INSTANCE.method1971() && AntiCheat.INSTANCE.field2323.method419();
+        return !Options.INSTANCE.method1971() && AntiCheat.INSTANCE.field2323.getValue();
     }
 
     public static boolean method686(int slot, ItemStack stack) {

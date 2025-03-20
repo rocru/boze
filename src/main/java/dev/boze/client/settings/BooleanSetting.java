@@ -40,15 +40,18 @@ public class BooleanSetting extends Setting<Boolean> {
       this.defaultValue = value;
    }
 
-   public Boolean method419() {
+   @Override
+   public Boolean getValue() {
       return this.value;
    }
 
-   public Boolean method420() {
+   @Override
+   public Boolean resetValue() {
       return this.value = this.defaultValue;
    }
 
-   public Boolean method421(Boolean newVal) {
+   @Override
+   public Boolean setValue(Boolean newVal) {
       this.value = newVal;
       if (this.callback != null) {
          this.callback.accept(this.value);
@@ -70,7 +73,8 @@ public class BooleanSetting extends Setting<Boolean> {
       return tag;
    }
 
-   public Boolean method422(NbtCompound tag) {
+   @Override
+   public Boolean load(NbtCompound tag) {
       if (tag.contains("Value")) {
          this.value = tag.getBoolean("Value");
       }
@@ -80,45 +84,45 @@ public class BooleanSetting extends Setting<Boolean> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method422(nbtCompound);
-   }
+   //@Override
+   //public Object load(NbtCompound nbtCompound) {
+   //   return this.method422(nbtCompound);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method421((Boolean)object);
-   }
+  // @Override
+   //public Object setValue(Object object) {
+   //   return this.method421((Boolean)object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method420();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method420();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method419();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method419();
+   //}
 
    private int lambda$build$1(CommandContext var1) throws CommandSyntaxException {
-      this.method421(!this.method419());
-      if (Options.INSTANCE.field991.method419()) {
-         ChatInstance.method624(this.name + " is now (highlight)" + (this.method419() ? "on" : "off"));
+      this.setValue(!this.getValue());
+      if (Options.INSTANCE.field991.getValue()) {
+         ChatInstance.method624(this.name + " is now (highlight)" + (this.getValue() ? "on" : "off"));
       }
 
       return 1;
    }
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
-      this.method421((Boolean)var1.getArgument("value", Boolean.class));
-      if (Options.INSTANCE.field991.method419()) {
-         ChatInstance.method624(this.name + " is now (highlight)" + (this.method419() ? "on" : "off"));
+      this.setValue((Boolean)var1.getArgument("value", Boolean.class));
+      if (Options.INSTANCE.field991.getValue()) {
+         ChatInstance.method624(this.name + " is now (highlight)" + (this.getValue() ? "on" : "off"));
       }
 
       return 1;

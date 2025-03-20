@@ -80,11 +80,11 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
    }
 
    boolean method107(ACRotationEvent var1) {
-      return var1.method1018(this.field205.method461(), false) ? true : !AutoWeb.INSTANCE.targets.field927;
+      return var1.method1018(this.field205.getValue(), false) ? true : !AutoWeb.INSTANCE.targets.field927;
    }
 
    boolean method108(ACRotationEvent var1) {
-      if (!Options.method477(this.field206.method419()) && !var1.method1018(this.field205.method461(), this.method2114())) {
+      if (!Options.method477(this.field206.getValue()) && !var1.method1018(this.field205.getValue(), this.method2114())) {
          return false;
       } else {
          Class2923.method2142();
@@ -93,7 +93,7 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
    }
 
    private boolean method109(RotationEvent var1) {
-      return var1.method554(RotationMode.Sequential) || Options.method477(this.field206.method419());
+      return var1.method554(RotationMode.Sequential) || Options.method477(this.field206.getValue());
    }
 
    void method1885(ACRotationEvent var1) {
@@ -105,7 +105,7 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
          var1.pitch = var5[1];
       }
 
-      if (this.field205.method461() == AnticheatMode.Grim) {
+      if (this.field205.getValue() == AnticheatMode.Grim) {
          this.method2142();
       }
    }
@@ -113,7 +113,7 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
    void method1883(RotationEvent var1) {
       if (!this.method109(var1)) {
          if (!this.field218.field1046.method109(var1)) {
-            if (this.field205.method461() == AnticheatMode.NCP) {
+            if (this.field205.getValue() == AnticheatMode.NCP) {
                this.method2142();
             }
          }
@@ -121,7 +121,7 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
    }
 
    private void method2142() {
-      if (this.field212.method461() == CrystalAuraUpdateMode.Tick) {
+      if (this.field212.getValue() == CrystalAuraUpdateMode.Tick) {
          this.field218.autoCrystalBreak.method2142();
       } else if (!this.field218.autoCrystalTracker.field1531) {
          this.field218.autoCrystalBreak.method2142();
@@ -135,7 +135,7 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
    private float[] method111() {
       float[] var4 = null;
       if (this.method2114()) {
-         if (this.field207.method419() && this.field218.field1046.method1954() != null) {
+         if (this.field207.getValue() && this.field218.field1046.method1954() != null) {
             return EntityUtil.method2146(this.field218.field1046.method1954());
          }
 
@@ -145,7 +145,7 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
          }
 
          boolean var6 = false;
-         if (var4 != null && this.field218.autoCrystalTracker.field1529 != null && this.field205.method461() == AnticheatMode.Grim && this.field207.method419()
+         if (var4 != null && this.field218.autoCrystalTracker.field1529 != null && this.field205.getValue() == AnticheatMode.Grim && this.field207.getValue()
             )
           {
             var6 = !this.method118(this.field218.autoCrystalTracker.field1529.getPos(), var4);
@@ -171,14 +171,14 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
    }
 
    private void method112(float[] var1) {
-      if (this.field205.method461() == AnticheatMode.NCP
+      if (this.field205.getValue() == AnticheatMode.NCP
          && (
-            this.field208.method461() == CrystalAuraYawStep.Break && this.field218.autoCrystalTracker.field1529 != null
-               || this.field208.method461() == CrystalAuraYawStep.Full
+            this.field208.getValue() == CrystalAuraYawStep.Break && this.field218.autoCrystalTracker.field1529 != null
+               || this.field208.getValue() == CrystalAuraYawStep.Full
          )) {
          float var5 = MathHelper.wrapDegrees(var1[0] - ((ClientPlayerEntityAccessor)mc.player).getLastYaw());
-         if (Math.abs(var5) > 180.0F * this.field209.method423()) {
-            var1[0] = ((ClientPlayerEntityAccessor)mc.player).getLastYaw() + var5 * (180.0F * this.field209.method423() / Math.abs(var5));
+         if (Math.abs(var5) > 180.0F * this.field209.getValue()) {
+            var1[0] = ((ClientPlayerEntityAccessor)mc.player).getLastYaw() + var5 * (180.0F * this.field209.getValue() / Math.abs(var5));
             this.field218.autoCrystalBreak.method1416();
             this.field218.autoCrystalPlace.method1416();
          }
@@ -221,35 +221,35 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
    }
 
    boolean method2114() {
-      return this.field205.method461() == AnticheatMode.Grim || this.field207.method419();
+      return this.field205.getValue() == AnticheatMode.Grim || this.field207.getValue();
    }
 
    boolean method2115() {
-      return this.field207.method419();
+      return this.field207.getValue();
    }
 
    private IPlace method120() {
-      return (IPlace)(this.field205.method461() == AnticheatMode.Grim ? this.grim : this.ncp);
+      return (IPlace)(this.field205.getValue() == AnticheatMode.Grim ? this.grim : this.ncp);
    }
 
    private boolean lambda$new$4() {
-      return this.field205.method461() == AnticheatMode.Grim
-         && (this.field213.method461() == AutoMineSwapMode.Normal || this.field213.method461() == AutoMineSwapMode.Silent);
+      return this.field205.getValue() == AnticheatMode.Grim
+         && (this.field213.getValue() == AutoMineSwapMode.Normal || this.field213.getValue() == AutoMineSwapMode.Silent);
    }
 
    private boolean lambda$new$3() {
-      return this.field205.method461() == AnticheatMode.NCP;
+      return this.field205.getValue() == AnticheatMode.NCP;
    }
 
    private boolean lambda$new$2() {
-      return this.field205.method461() == AnticheatMode.Grim;
+      return this.field205.getValue() == AnticheatMode.Grim;
    }
 
    private boolean lambda$new$1() {
-      return this.field205.method461() == AnticheatMode.NCP && this.field208.method461() != CrystalAuraYawStep.Off;
+      return this.field205.getValue() == AnticheatMode.NCP && this.field208.getValue() != CrystalAuraYawStep.Off;
    }
 
    private boolean lambda$new$0() {
-      return this.field205.method461() == AnticheatMode.NCP;
+      return this.field205.getValue() == AnticheatMode.NCP;
    }
 }

@@ -36,7 +36,7 @@ public class SettingModeComponent extends SettingBaseComponent implements IMinec
       byte var11 = 6;
       double var12 = var8 ? this.field318 + 6.0 * scaleFactor + IFontRender.method499().method501(this.field316) : this.field318;
       double var14 = var8 ? this.field320 - (6.0 * scaleFactor + IFontRender.method499().method501(this.field316) + 0.0) : this.field320;
-      if (Gui.INSTANCE.field2372.method419()) {
+      if (Gui.INSTANCE.field2372.getValue()) {
          RenderUtil.field3963
             .method2257(
                var12 + 6.0 * scaleFactor,

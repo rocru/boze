@@ -56,7 +56,7 @@ public class TickShift extends Module {
       if (this.field895) {
          return Integer.toString(this.field885.method434() - this.field896);
       } else {
-         return this.field897.hasElapsed((double)(this.field886.method423() * 1000.0F)) ? "Ready" : "Charging";
+         return this.field897.hasElapsed((double)(this.field886.getValue() * 1000.0F)) ? "Ready" : "Charging";
       }
    }
 
@@ -94,7 +94,7 @@ public class TickShift extends Module {
          this.field904 = 0;
       }
 
-      if (!this.method1971() || this.field896 >= (int)(this.field892.method423() * (float)this.field885.method434().intValue())) {
+      if (!this.method1971() || this.field896 >= (int)(this.field892.getValue() * (float)this.field885.method434().intValue())) {
          while (!this.field901.isEmpty()) {
             mc.player.networkHandler.sendPacket((Packet)this.field901.poll());
          }
@@ -107,20 +107,20 @@ public class TickShift extends Module {
             if (this.field895) {
                this.field895 = false;
                this.field897.reset();
-               if (this.field893.method419()) {
+               if (this.field893.getValue()) {
                   this.setEnabled(false);
                   return;
                }
             }
-         } else if (this.field897.hasElapsed((double)(this.field886.method423() * 1000.0F))
-            && (!this.field881.method419() || this.field902)
+         } else if (this.field897.hasElapsed((double)(this.field886.getValue() * 1000.0F))
+            && (!this.field881.getValue() || this.field902)
             && this.field904 > this.field883.method434()
-            && (!this.field882.method419() || this.field903 || mc.player.isOnGround())) {
-            Class3076.method6024(this, 100, this.field884.method423());
+            && (!this.field882.getValue() || this.field903 || mc.player.isOnGround())) {
+            Class3076.method6024(this, 100, this.field884.getValue());
             this.field895 = true;
          }
 
-         if (this.field889.method419()) {
+         if (this.field889.getValue()) {
             this.field899.reset();
          }
       } else {
@@ -140,7 +140,7 @@ public class TickShift extends Module {
    public void method1853(PrePacketSendEvent event) {
       try {
          if (event.packet instanceof PlayerMoveC2SPacket) {
-            if (this.field887.method419() && event.packet instanceof LookAndOnGround) {
+            if (this.field887.getValue() && event.packet instanceof LookAndOnGround) {
                if (field898) {
                   return;
                }
@@ -148,7 +148,7 @@ public class TickShift extends Module {
                event.method1020();
             }
 
-            if (this.field887.method419() && !this.method1971()) {
+            if (this.field887.getValue() && !this.method1971()) {
                if (field898) {
                   return;
                }
@@ -159,9 +159,9 @@ public class TickShift extends Module {
                   this.field900 = 0;
                   event.method1020();
                }
-            } else if (this.field891.method419()
+            } else if (this.field891.getValue()
                && mc.player.age > 50
-               && this.field896 < (int)(this.field892.method423() * (float)this.field885.method434().intValue())) {
+               && this.field896 < (int)(this.field892.getValue() * (float)this.field885.method434().intValue())) {
                this.field901.add(event.packet);
             }
          }
@@ -171,7 +171,7 @@ public class TickShift extends Module {
 
    @EventHandler
    public void method2042(PacketBundleEvent event) {
-      if (event.packet instanceof PlayerPositionLookS2CPacket && this.field894.method419()) {
+      if (event.packet instanceof PlayerPositionLookS2CPacket && this.field894.getValue()) {
          this.setEnabled(false);
       }
    }

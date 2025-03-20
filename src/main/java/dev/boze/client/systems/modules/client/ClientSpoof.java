@@ -24,7 +24,7 @@ public class ClientSpoof extends Module {
    @EventHandler
    private void method1333(PrePacketSendEvent var1) {
       if (var1.packet instanceof CustomPayloadC2SPacket var5) {
-         if (this.field2341.method419() && var5.payload() instanceof BrandCustomPayload) {
+         if (this.field2341.getValue() && var5.payload() instanceof BrandCustomPayload) {
             BrandCustomPayloadAccessor var6 = (BrandCustomPayloadAccessor)var5.payload();
             var6.setBrand("vanilla");
          }
@@ -33,7 +33,7 @@ public class ClientSpoof extends Module {
 
    @EventHandler
    private void method1334(PacketBundleEvent var1) {
-      if (this.field2342.method419()) {
+      if (this.field2342.getValue()) {
          if (!(var1.packet instanceof ResourcePackSendS2CPacket var5)) {
             return;
          }

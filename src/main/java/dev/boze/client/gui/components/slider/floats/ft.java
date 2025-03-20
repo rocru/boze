@@ -16,12 +16,12 @@ class ft extends FloatSliderComponent {
 
    @Override
    protected void method207(float value) {
-      this.field1147.method430().field3912 = value;
+      this.field1147.getValue().field3912 = value;
    }
 
    @Override
    protected float method1384() {
-      return this.field1147.method430().field3912;
+      return this.field1147.getValue().field3912;
    }
 
    @Override
@@ -41,6 +41,6 @@ class ft extends FloatSliderComponent {
 
    @Override
    protected void method2142() {
-      this.field1147.method430().field3912 = 1.0F;
+      this.field1147.getValue().field3912 = 1.0F;
    }
 }

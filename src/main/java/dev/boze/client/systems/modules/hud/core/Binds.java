@@ -92,16 +92,16 @@ public class Binds extends HUDModule {
       boolean var8 = var4.isEnabled();
       String var9 = this.method1551(var4);
       double var10 = IFontRender.method499()
-         .measureTextHeight(var9, this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419());
-      if (HUD.INSTANCE.field2394.method419()) {
+         .measureTextHeight(var9, this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue());
+      if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE
             .field2397
             .method2252(
                this.method1391() + (var1 ? this.method313() - var10 - 4.0 : 0.0),
                this.method305() + (double)var2[0],
                var10 + 4.0,
-               IFontRender.method499().method502(this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419())
-                  + this.field2596.method419() ? this.field2604.getValue() : HUD.INSTANCE.field2385.getValue(),
+               IFontRender.method499().method502(this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue())
+                  + this.field2596.getValue() ? this.field2604.getValue() : HUD.INSTANCE.field2385.getValue(),
                RGBAColor.field402
             );
       }
@@ -111,8 +111,8 @@ public class Binds extends HUDModule {
             this.method1550(var4),
             this.method1391() + (var1 ? this.method313() - var10 - 2.0 : 2.0),
             this.method305() + (double)var2[0] + 0.5,
-            this.field2596.method419() ? (var8 ? this.field2600.method1362() : this.field2597.method1362()) : HUD.INSTANCE.field2383.method1362(),
-            this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2596.getValue() ? (var8 ? this.field2600.getValue() : this.field2597.getValue()) : HUD.INSTANCE.field2383.getValue(),
+            this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       if (!var4.bind.toString().isEmpty()) {
          IFontRender.method499()
@@ -122,11 +122,11 @@ public class Binds extends HUDModule {
                   + (var1 ? this.method313() - var10 - 2.0 : 2.0)
                   + IFontRender.method499()
                      .measureTextHeight(
-                        this.method1550(var4) + " ", this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419()
+                        this.method1550(var4) + " ", this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue()
                      ),
                this.method305() + (double)var2[0] + 0.5,
-               this.field2596.method419() ? (var8 ? this.field2602.method1362() : this.field2599.method1362()) : HUD.INSTANCE.field2383.method1362(),
-               this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419()
+               this.field2596.getValue() ? (var8 ? this.field2602.getValue() : this.field2599.getValue()) : HUD.INSTANCE.field2383.getValue(),
+               this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue()
             );
          IFontRender.method499()
             .drawShadowedText(
@@ -135,11 +135,11 @@ public class Binds extends HUDModule {
                   + (var1 ? this.method313() - var10 - 2.0 : 2.0)
                   + IFontRender.method499()
                      .measureTextHeight(
-                        this.method1550(var4) + " [", this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419()
+                        this.method1550(var4) + " [", this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue()
                      ),
                this.method305() + (double)var2[0] + 0.5,
-               this.field2596.method419() ? (var8 ? this.field2601.method1362() : this.field2598.method1362()) : HUD.INSTANCE.field2383.method1362(),
-               this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419()
+               this.field2596.getValue() ? (var8 ? this.field2601.getValue() : this.field2598.getValue()) : HUD.INSTANCE.field2383.getValue(),
+               this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue()
             );
          IFontRender.method499()
             .drawShadowedText(
@@ -149,18 +149,18 @@ public class Binds extends HUDModule {
                   + IFontRender.method499()
                      .measureTextHeight(
                         this.method1550(var4) + " [" + var4.bind.toString(),
-                        this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419()
+                        this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue()
                      ),
                this.method305() + (double)var2[0] + 0.5,
-               this.field2596.method419() ? (var8 ? this.field2602.method1362() : this.field2599.method1362()) : HUD.INSTANCE.field2383.method1362(),
-               this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419()
+               this.field2596.getValue() ? (var8 ? this.field2602.getValue() : this.field2599.getValue()) : HUD.INSTANCE.field2383.getValue(),
+               this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue()
             );
       }
 
       var2[0] = (int)(
          (double)var2[0]
-            + IFontRender.method499().method502(this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419())
-            + this.field2596.method419() ? this.field2604.getValue() : HUD.INSTANCE.field2385.getValue()
+            + IFontRender.method499().method502(this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue())
+            + this.field2596.getValue() ? this.field2604.getValue() : HUD.INSTANCE.field2385.getValue()
       );
       var3[0]++;
    }
@@ -168,14 +168,14 @@ public class Binds extends HUDModule {
    private double lambda$onRender$2(boolean var1, Module var2) {
       return var1
          ? -IFontRender.method499()
-            .measureTextHeight(this.method1551(var2), this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419())
+            .measureTextHeight(this.method1551(var2), this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue())
          : IFontRender.method499()
-            .measureTextHeight(this.method1551(var2), this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419());
+            .measureTextHeight(this.method1551(var2), this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue());
    }
 
    private double lambda$onRender$1(Module var1) {
       return IFontRender.method499()
-         .measureTextHeight(this.method1551(var1), this.field2596.method419() ? this.field2603.method419() : HUD.INSTANCE.field2384.method419());
+         .measureTextHeight(this.method1551(var1), this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue());
    }
 
    private static boolean lambda$onRender$0(Module var0) {

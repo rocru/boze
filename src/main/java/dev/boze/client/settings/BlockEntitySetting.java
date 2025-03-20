@@ -67,8 +67,8 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
    }
 
    public List<String> method1144() {
-      ArrayList var1 = new ArrayList();
-      this.field946.forEach(BlockEntitySetting::lambda$getBlockEntitiesAsString$1);
+      ArrayList<String> var1 = new ArrayList();
+      this.field946.forEach(v -> lambda$getBlockEntitiesAsString$1(var1, v));
       return var1;
    }
 
@@ -86,7 +86,8 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
       return this.field946;
    }
 
-   public List<String> method2033() {
+   @Override
+   public List<String> resetValue() {
       this.field946.clear();
       this.field947.clear();
       return this.field947;
@@ -97,7 +98,8 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
       return this.field947;
    }
 
-   public List<String> method443(List<String> newVal) {
+   @Override
+   public List<String> setValue(List<String> newVal) {
       this.field947 = newVal;
       this.method1416();
       if (this.callback != null) {
@@ -123,12 +125,13 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
    @Override
    public NbtCompound save(NbtCompound tag) {
       NbtList var4 = new NbtList();
-      this.field947.forEach(BlockEntitySetting::lambda$addValueToTag$7);
+      this.field947.forEach(v -> lambda$addValueToTag$7(var4, v));
       tag.put("Blocks", var4);
       return tag;
    }
 
-   public List<String> method444(NbtCompound tag) {
+   @Override
+   public List<String> load(NbtCompound tag) {
       if (tag.contains("Blocks")) {
          NbtList var5 = tag.getList("Blocks", 8);
          this.field947.clear();
@@ -147,24 +150,24 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method444(nbtCompound);
-   }
+   //@Override
+   ///public Object load(NbtCompound nbtCompound) {
+   //   return this.method444(nbtCompound);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method443((List<String>)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+   //   return this.method443((List<String>)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method2033();
-   }
+   //@Override
+   //public List<String> resetValue() {
+   //   return this.method2033();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
@@ -181,7 +184,7 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
 
    private int lambda$build$6(CommandContext var1) throws CommandSyntaxException {
       ChatInstance.method624("Clearing all blocks...");
-      this.method2033();
+      this.resetValue();
       if (this.field948) {
          mc.worldRenderer.reload();
       }
@@ -233,7 +236,7 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
       }
    }
 
-   private static void lambda$getBlockEntitiesAsString$1(List var0, BlockEntityType var1) {
+   private static void lambda$getBlockEntitiesAsString$1(List<String> var0, BlockEntityType var1) {
       var0.add(Registries.BLOCK_ENTITY_TYPE.getId(var1).getPath());
    }
 

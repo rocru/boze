@@ -48,13 +48,13 @@ public class FastProjectile extends Module {
          }
 
          for (int var5 = 0; var5 < (int)(this.factor.getValue() * 10.0); var5++) {
-            if (this.rotate.method419()) {
+            if (this.rotate.getValue()) {
                mc.player
                   .networkHandler
                   .sendPacket(
                      new Full(
                         mc.player.getX(),
-                        mc.player.getY() + (this.minimize.method419() ? 1.3E-13 : 4.3E-13),
+                        mc.player.getY() + (this.minimize.getValue() ? 1.3E-13 : 4.3E-13),
                         mc.player.getZ(),
                         ((ClientPlayerEntityAccessor)mc.player).getLastYaw(),
                         ((ClientPlayerEntityAccessor)mc.player).getLastPitch(),
@@ -66,7 +66,7 @@ public class FastProjectile extends Module {
                   .sendPacket(
                      new Full(
                         mc.player.getX(),
-                        mc.player.getY() + (this.minimize.method419() ? 2.7E-13 : 8.4E-13),
+                        mc.player.getY() + (this.minimize.getValue() ? 2.7E-13 : 8.4E-13),
                         mc.player.getZ(),
                         ((ClientPlayerEntityAccessor)mc.player).getLastYaw(),
                         ((ClientPlayerEntityAccessor)mc.player).getLastPitch(),
@@ -77,12 +77,12 @@ public class FastProjectile extends Module {
                mc.player
                   .networkHandler
                   .sendPacket(
-                     new PositionAndOnGround(mc.player.getX(), mc.player.getY() + (this.minimize.method419() ? 1.3E-13 : 4.3E-13), mc.player.getZ(), true)
+                     new PositionAndOnGround(mc.player.getX(), mc.player.getY() + (this.minimize.getValue() ? 1.3E-13 : 4.3E-13), mc.player.getZ(), true)
                   );
                mc.player
                   .networkHandler
                   .sendPacket(
-                     new PositionAndOnGround(mc.player.getX(), mc.player.getY() + (this.minimize.method419() ? 2.7E-13 : 8.4E-13), mc.player.getZ(), false)
+                     new PositionAndOnGround(mc.player.getX(), mc.player.getY() + (this.minimize.getValue() ? 2.7E-13 : 8.4E-13), mc.player.getZ(), false)
                   );
             }
          }
@@ -90,17 +90,17 @@ public class FastProjectile extends Module {
    }
 
    private boolean method1505(Item var1) {
-      return var1 instanceof EnderPearlItem && this.pearls.method419()
-         || var1 instanceof ExperienceBottleItem && this.xp.method419()
-         || var1 instanceof EggItem && this.eggs.method419()
-         || var1 instanceof SplashPotionItem && this.splashPotions.method419()
-         || var1 instanceof SnowballItem && this.snowballs.method419();
+      return var1 instanceof EnderPearlItem && this.pearls.getValue()
+         || var1 instanceof ExperienceBottleItem && this.xp.getValue()
+         || var1 instanceof EggItem && this.eggs.getValue()
+         || var1 instanceof SplashPotionItem && this.splashPotions.getValue()
+         || var1 instanceof SnowballItem && this.snowballs.getValue();
    }
 
    private boolean method1506() {
-      return !this.bows.method419()
+      return !this.bows.getValue()
             || !(mc.player.getMainHandStack().getItem() instanceof BowItem) && !(mc.player.getOffHandStack().getItem() instanceof BowItem)
-         ? this.tridents.method419()
+         ? this.tridents.getValue()
             && (mc.player.getMainHandStack().getItem() instanceof TridentItem || mc.player.getOffHandStack().getItem() instanceof TridentItem)
          : true;
    }

@@ -153,14 +153,14 @@ public class ClickGUI extends Screen implements IMinecraft {
             this.field1333.method2233();
          }
 
-         if (Gui.INSTANCE.field2362.method461() != AAMode.Off && !FontManager.method1106()) {
+         if (Gui.INSTANCE.field2362.getValue() != AAMode.Off && !FontManager.method1106()) {
             var28 = true;
             GL32.glEnable(32925);
             if (this.field1348 == null) {
                this.field1348 = new Framebuffer();
             }
 
-            if (this.field1348.field2150 != Gui.INSTANCE.field2362.method461().samples) {
+            if (this.field1348.field2150 != Gui.INSTANCE.field2362.getValue().samples) {
                this.field1348.resize(this.field1348.textureWidth, this.field1348.textureHeight, MinecraftClient.IS_SYSTEM_MAC);
             }
 
@@ -217,11 +217,11 @@ public class ClickGUI extends Screen implements IMinecraft {
             ChamsShaderRenderer.method1312(this::lambda$render$0, true, Theme.method1383(), Theme.method1386(), Theme.method1384(), Theme.method1385());
          }
 
-         if (Gui.INSTANCE.field2358.method419() && this.field1346 != null) {
+         if (Gui.INSTANCE.field2358.getValue() && this.field1346 != null) {
             this.field1346.render(context, mouseX, mouseY, delta);
          }
 
-         if (Gui.INSTANCE.field2354.method419() && this.field1343 != null && this.field1342 == null) {
+         if (Gui.INSTANCE.field2354.getValue() && this.field1343 != null && this.field1342 == null) {
             RenderUtil.field3963.method2233();
             double var30 = this.field1345;
             double var33 = (double)mouseY;
@@ -269,7 +269,7 @@ public class ClickGUI extends Screen implements IMinecraft {
                   var33 - 4.0 * BaseComponent.scaleFactor,
                   var17 + 4.0 * BaseComponent.scaleFactor,
                   var15 + 2.0 * BaseComponent.scaleFactor,
-                  Gui.INSTANCE.field2356.method1347()
+                  Gui.INSTANCE.field2356.getValue()
                );
             RenderUtil.field3963.method2235(context);
             var19 = BaseComponent.scaleFactor * 0.6;
@@ -325,7 +325,7 @@ public class ClickGUI extends Screen implements IMinecraft {
       if (element instanceof ModuleComponent var5) {
          if (!var5.method2116()) {
             return true;
-         } else if (this.field1346 == null || !Gui.INSTANCE.field2358.method419()) {
+         } else if (this.field1346 == null || !Gui.INSTANCE.field2358.getValue()) {
             return false;
          } else if (this.field1346.field387.isEmpty()) {
             return false;
@@ -336,7 +336,7 @@ public class ClickGUI extends Screen implements IMinecraft {
          }
       } else if (!(element instanceof AddonComponent var6)) {
          return false;
-      } else if (this.field1346 == null || !Gui.INSTANCE.field2358.method419()) {
+      } else if (this.field1346 == null || !Gui.INSTANCE.field2358.getValue()) {
          return false;
       } else {
          return this.field1346.field387.isEmpty()
@@ -347,7 +347,7 @@ public class ClickGUI extends Screen implements IMinecraft {
    }
 
    public boolean method2114() {
-      return this.field1346 != null && Gui.INSTANCE.field2358.method419() && !this.field1346.field387.isEmpty();
+      return this.field1346 != null && Gui.INSTANCE.field2358.getValue() && !this.field1346.field387.isEmpty();
    }
 
    public void init() {
@@ -392,7 +392,7 @@ public class ClickGUI extends Screen implements IMinecraft {
 
       this.field1342 = null;
       if (this.field1332 == GUIMenu.Normal) {
-         if (Gui.INSTANCE.field2350.method461() != GUILayout.Classic) {
+         if (Gui.INSTANCE.field2350.getValue() != GUILayout.Classic) {
             double var19 = (double)Theme.method1363() * Theme.method1364() * BaseComponent.scaleFactor;
             this.field1339
                .add(
@@ -401,7 +401,7 @@ public class ClickGUI extends Screen implements IMinecraft {
                      var19,
                      (double)Theme.method1363() * Theme.method1364() * BaseComponent.scaleFactor,
                      (double)Theme.method1363() * BaseComponent.scaleFactor,
-                     Gui.INSTANCE.field2357.method419() ? Class2782.field93 : 0.0
+                     Gui.INSTANCE.field2357.getValue() ? Class2782.field93 : 0.0
                   )
                );
             if (!BozeInstance.INSTANCE.getModules().isEmpty()) {
@@ -422,7 +422,7 @@ public class ClickGUI extends Screen implements IMinecraft {
                         var24,
                         var28,
                         (double)Theme.method1363() * BaseComponent.scaleFactor,
-                        Gui.INSTANCE.field2357.method419() ? Class2779.field89 : 0.0
+                        Gui.INSTANCE.field2357.getValue() ? Class2779.field89 : 0.0
                      )
                   );
             }
@@ -434,7 +434,7 @@ public class ClickGUI extends Screen implements IMinecraft {
                if (var13 != Category.Hud && var13 != Category.Graph) {
                   double var14 = var18;
                   double var16 = var23;
-                  if (Gui.INSTANCE.field2366.method461() == MaxHeight.Relative) {
+                  if (Gui.INSTANCE.field2366.getValue() == MaxHeight.Relative) {
                      var16 = (
                            (double)mc.getWindow().getScaledHeight() * (1.0 - Gui.INSTANCE.field2368.getValue())
                               - (double)Theme.method1357() * BaseComponent.scaleFactor
@@ -460,7 +460,7 @@ public class ClickGUI extends Screen implements IMinecraft {
                            var14,
                            var16,
                            (double)Theme.method1363() * BaseComponent.scaleFactor,
-                           Gui.INSTANCE.field2357.method419() ? var13.scrollOffset : 0.0
+                           Gui.INSTANCE.field2357.getValue() ? var13.scrollOffset : 0.0
                         )
                      );
                   var18 += (double)Theme.method1363() * (1.0 + Theme.method1364()) * BaseComponent.scaleFactor;
@@ -484,7 +484,7 @@ public class ClickGUI extends Screen implements IMinecraft {
                         var27,
                         var31,
                         (double)Theme.method1363() * BaseComponent.scaleFactor,
-                        Gui.INSTANCE.field2357.method419() ? Class2779.field89 : 0.0
+                        Gui.INSTANCE.field2357.getValue() ? Class2779.field89 : 0.0
                      )
                   );
             }
@@ -498,7 +498,7 @@ public class ClickGUI extends Screen implements IMinecraft {
                   (double)Theme.method1363() / 4.0 * BaseComponent.scaleFactor,
                   (double)Theme.method1363() / 4.0 * BaseComponent.scaleFactor,
                   (double)Theme.method1363() * BaseComponent.scaleFactor,
-                  Gui.INSTANCE.field2357.method419() ? Category.Hud.scrollOffset : 0.0
+                  Gui.INSTANCE.field2357.getValue() ? Category.Hud.scrollOffset : 0.0
                )
             );
          this.field1340
@@ -509,7 +509,7 @@ public class ClickGUI extends Screen implements IMinecraft {
                   (double)Theme.method1363() / 4.0 * BaseComponent.scaleFactor * 2.0 + (double)Theme.method1363() * BaseComponent.scaleFactor,
                   (double)Theme.method1363() / 4.0 * BaseComponent.scaleFactor,
                   (double)Theme.method1363() * BaseComponent.scaleFactor,
-                  Gui.INSTANCE.field2357.method419() ? Category.Graph.scrollOffset : 0.0
+                  Gui.INSTANCE.field2357.getValue() ? Category.Graph.scrollOffset : 0.0
                )
             );
 
@@ -592,7 +592,7 @@ public class ClickGUI extends Screen implements IMinecraft {
          }
       }
 
-      if (Gui.INSTANCE.field2358.method419() && this.field1346 != null && this.field1346.mouseClicked(mouseX, mouseY, button)) {
+      if (Gui.INSTANCE.field2358.getValue() && this.field1346 != null && this.field1346.mouseClicked(mouseX, mouseY, button)) {
          return true;
       } else {
          return this.field1347 != null && !this.field1336 && this.field1347.mouseClicked(mouseX, mouseY, button)
@@ -629,7 +629,7 @@ public class ClickGUI extends Screen implements IMinecraft {
             }
          }
 
-         return Gui.INSTANCE.field2358.method419() && this.field1346 != null && this.field1346.onDrag(mouseX, mouseY, button, deltaX, deltaY)
+         return Gui.INSTANCE.field2358.getValue() && this.field1346 != null && this.field1346.onDrag(mouseX, mouseY, button, deltaX, deltaY)
             ? true
             : super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY);
       }
@@ -663,7 +663,7 @@ public class ClickGUI extends Screen implements IMinecraft {
             }
          }
 
-         if (Gui.INSTANCE.field2358.method419() && this.field1346 != null) {
+         if (Gui.INSTANCE.field2358.getValue() && this.field1346 != null) {
             if (this.field1346.keyPressed(keyCode, scanCode, modifiers)) {
                return true;
             }
@@ -699,7 +699,7 @@ public class ClickGUI extends Screen implements IMinecraft {
       for (Module var5 : Boze.getModules().modules) {
          for (Setting var7 : var5.method1144()) {
             if (var7 instanceof SettingBlock var8) {
-               var8.method421(false);
+               var8.setValue(false);
             }
          }
       }

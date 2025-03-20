@@ -41,7 +41,7 @@ public class HandTweaks extends Module {
    }
 
    public static boolean method1961(LivingEntity entity) {
-      if (INSTANCE.isEnabled() && INSTANCE.field3572.method419()) {
+      if (INSTANCE.isEnabled() && INSTANCE.field3572.getValue()) {
          Item var4 = entity.getMainHandStack().getItem();
          Item var5 = entity.getOffHandStack().getItem();
          return (var4 instanceof SwordItem || var4 instanceof AxeItem || var4 instanceof MaceItem) && var5 instanceof ShieldItem

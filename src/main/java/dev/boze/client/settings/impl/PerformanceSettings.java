@@ -30,14 +30,14 @@ public class PerformanceSettings implements SettingsGroup {
    }
 
    public boolean method1300(Entity entity) {
-      return entity instanceof ArmorStandEntity && this.field2221.method419()
-         || entity instanceof FallingBlockEntity && this.field2220.method419()
-         || entity instanceof FireworkRocketEntity && this.field2222.method419();
+      return entity instanceof ArmorStandEntity && this.field2221.getValue()
+         || entity instanceof FallingBlockEntity && this.field2220.getValue()
+         || entity instanceof FireworkRocketEntity && this.field2222.getValue();
    }
 
    public boolean method1301(Particle particle) {
-      return (particle instanceof FireworkParticle || particle instanceof Flash) && this.field2222.method419()
+      return (particle instanceof FireworkParticle || particle instanceof Flash) && this.field2222.getValue()
          ? true
-         : particle instanceof CampfireSmokeParticle && this.field2223.method419();
+         : particle instanceof CampfireSmokeParticle && this.field2223.getValue();
    }
 }

@@ -24,15 +24,18 @@ public class SettingCategory extends Setting<Boolean> {
       super(name, description, visibility, parent);
    }
 
-   public Boolean method419() {
+   @Override
+   public Boolean getValue() {
       return false;
    }
 
-   public Boolean method420() {
+   @Override
+   public Boolean resetValue() {
       return false;
    }
 
-   public Boolean method421(Boolean newVal) {
+   @Override
+   public Boolean setValue(Boolean newVal) {
       return false;
    }
 
@@ -42,7 +45,8 @@ public class SettingCategory extends Setting<Boolean> {
       return tag;
    }
 
-   public Boolean method422(NbtCompound tag) {
+   @Override
+   public Boolean load(NbtCompound tag) {
       if (tag.contains("Value") && !ConfigNBTSerializer.field3913) {
          this.field927 = tag.getBoolean("Value");
       }
@@ -52,29 +56,29 @@ public class SettingCategory extends Setting<Boolean> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method422(nbtCompound);
-   }
+  // @Override
+   //public Object load(NbtCompound nbtCompound) {
+  //    return this.method422(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method421((Boolean)object);
-   }
+   //@Override
+  // public Object setValue(Object object) {
+   //   return this.method421((Boolean)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method420();
-   }
+   //@Override
+   //public Object resetValue() {
+  //    return this.method420();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method419();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method419();
+   //}
 }

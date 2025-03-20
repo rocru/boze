@@ -81,7 +81,7 @@ public class nz {
 
    private void method2064(Vector3d var1) {
       this.field3807.add(var1);
-      if (this.field3814.field3792.method419()) {
+      if (this.field3814.field3792.getValue()) {
          this.field3808.add(System.currentTimeMillis());
       }
    }
@@ -105,18 +105,18 @@ public class nz {
             float var8 = 0.0F;
             float var9 = 0.0F;
             if (this.field3813 != -1) {
-               if (this.field3814.field3792.method419() && this.field3808.size() > var7) {
-                  if ((float)(System.currentTimeMillis() - (Long)this.field3808.get(var7 - 1)) / (this.field3814.field3791.method423() * 1000.0F) > 1.0F) {
+               if (this.field3814.field3792.getValue() && this.field3808.size() > var7) {
+                  if ((float)(System.currentTimeMillis() - (Long)this.field3808.get(var7 - 1)) / (this.field3814.field3791.getValue() * 1000.0F) > 1.0F) {
                      this.field3807.remove(var7 - 1);
                      this.field3808.remove(var7 - 1);
                      continue;
                   }
 
                   var8 = MathHelper.clamp(
-                     (float)(System.currentTimeMillis() - (Long)this.field3808.get(var7 - 1)) / (this.field3814.field3791.method423() * 1000.0F), 0.0F, 1.0F
+                     (float)(System.currentTimeMillis() - (Long)this.field3808.get(var7 - 1)) / (this.field3814.field3791.getValue() * 1000.0F), 0.0F, 1.0F
                   );
                   var9 = MathHelper.clamp(
-                     (float)(System.currentTimeMillis() - (Long)this.field3808.get(var7)) / (this.field3814.field3791.method423() * 1000.0F), 0.0F, 1.0F
+                     (float)(System.currentTimeMillis() - (Long)this.field3808.get(var7)) / (this.field3814.field3791.getValue() * 1000.0F), 0.0F, 1.0F
                   );
                }
             } else {
@@ -184,7 +184,7 @@ public class nz {
                   var24 = new Box(var24.minX, var24.minY, var24.minZ, var24.minX, var24.maxY, var24.maxZ);
             }
 
-            this.field3814.ac.method1273(var24, this.field3814.field3783.method1362(), this.field3814.field3784.method1362(), ShapeMode.Full, 0);
+            this.field3814.ac.method1273(var24, this.field3814.field3783.getValue(), this.field3814.field3784.getValue(), ShapeMode.Full, 0);
          }
 
          if (this.field3812 != null) {
@@ -201,8 +201,8 @@ public class nz {
                   var25 + var13.maxX,
                   var26 + var13.maxY,
                   var27 + var13.maxZ,
-                  this.field3814.field3783.method1362(),
-                  this.field3814.field3784.method1362(),
+                  this.field3814.field3783.getValue(),
+                  this.field3814.field3784.getValue(),
                   ShapeMode.Full,
                   0
                );

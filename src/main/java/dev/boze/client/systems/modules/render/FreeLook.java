@@ -64,7 +64,7 @@ public class FreeLook extends Module {
    @EventHandler
    public void method1958(PostRender event) {
       if (MinecraftUtils.isClientActive()) {
-         if (!this.field3558.method419() && !Options.INSTANCE.method1971()) {
+         if (!this.field3558.getValue() && !Options.INSTANCE.method1971()) {
             if (mc.options.getPerspective() != Perspective.THIRD_PERSON_BACK) {
                mc.options.setPerspective(Perspective.THIRD_PERSON_BACK);
             }

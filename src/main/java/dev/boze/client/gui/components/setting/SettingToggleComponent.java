@@ -37,7 +37,7 @@ public class SettingToggleComponent extends SettingBaseComponent implements IMin
             Theme.method1350()
          );
       this.field1240 = 0.0;
-      switch (hO.field2099[Gui.INSTANCE.field2371.method461().ordinal()]) {
+      switch (hO.field2099[Gui.INSTANCE.field2371.getValue().ordinal()]) {
          case 1:
             RenderUtil.field3963
                .method2257(

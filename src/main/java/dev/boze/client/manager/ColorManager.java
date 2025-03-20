@@ -25,7 +25,7 @@ public abstract class ColorManager {
 
     public BozeDrawColor method1362() {
         if (this.field413) {
-            BozeDrawColor var4 = OldColors.INSTANCE.clientGradient.method1362();
+            BozeDrawColor var4 = OldColors.INSTANCE.clientGradient.getValue();
             return new BozeDrawColor(
                     var4.field408, var4.field409, var4.field410, this.field412.field411, var4.field1842, var4.field1843, var4.field1844, var4.field1845, var4.field1846
             );

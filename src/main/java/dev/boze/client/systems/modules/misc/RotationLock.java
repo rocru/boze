@@ -30,15 +30,15 @@ public class RotationLock extends Module {
 
    @EventHandler
    private void method1762(PostPlayerTickEvent var1) {
-      if (this.field3083.method461() == RotationLockYawLock.Angle) {
-         mc.player.setYaw(this.field3085.method423());
-      } else if (this.field3083.method461() == RotationLockYawLock.Cardinal) {
+      if (this.field3083.getValue() == RotationLockYawLock.Angle) {
+         mc.player.setYaw(this.field3085.getValue());
+      } else if (this.field3083.getValue() == RotationLockYawLock.Cardinal) {
          mc.player
             .setYaw(
                (float)(Math.round(mc.player.getYaw() / 90.0F) * 90)
                   + (GrimDisabler.INSTANCE.isEnabled() ? (this.field3087.nextBoolean() ? 0.1F : -0.1F) : 0.0F)
             );
-      } else if (this.field3083.method461() == RotationLockYawLock.InterCardinal) {
+      } else if (this.field3083.getValue() == RotationLockYawLock.InterCardinal) {
          mc.player
             .setYaw(
                (float)(Math.round(mc.player.getYaw() / 45.0F) * 45)
@@ -46,16 +46,16 @@ public class RotationLock extends Module {
             );
       }
 
-      if (this.field3084.method419()) {
-         mc.player.setPitch(this.field3086.method423());
+      if (this.field3084.getValue()) {
+         mc.player.setPitch(this.field3086.getValue());
       }
    }
 
    private boolean lambda$new$1() {
-      return this.field3084.method419();
+      return this.field3084.getValue();
    }
 
    private boolean lambda$new$0() {
-      return this.field3083.method461() == RotationLockYawLock.Angle;
+      return this.field3083.getValue() == RotationLockYawLock.Angle;
    }
 }

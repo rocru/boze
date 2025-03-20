@@ -56,12 +56,12 @@ public class Class3069 {
          if (var3182 > 0) {
             if (var3180 == FakePlayer.INSTANCE.fakePlayer
                && FakePlayer.INSTANCE.isEnabled()
-               && FakePlayer.INSTANCE.move.method419()
+               && FakePlayer.INSTANCE.move.getValue()
                && !FakePlayer.INSTANCE.positions.isEmpty()) {
                int var18 = FakePlayer.INSTANCE.field2946 + var3182;
                if (var18 >= FakePlayer.INSTANCE.positions.size()) {
                   byte var19 = 0;
-                  if (FakePlayer.INSTANCE.loop.method419()) {
+                  if (FakePlayer.INSTANCE.loop.getValue()) {
                      FakePositions var9 = (FakePositions)FakePlayer.INSTANCE.positions.get(var19);
                      ((IVec3d)field162).boze$set(var9.method2174().getX(), var9.method2174().getY(), var9.method2174().getZ());
                   }
@@ -143,7 +143,7 @@ public class Class3069 {
                var13 = 0.0;
             }
 
-            if (AutoBed.INSTANCE.targetMode.method461() == BedTargetMode.Semi && var3187 != field161.player && var3187.getBoundingBox().contains(var3188)) {
+            if (AutoBed.INSTANCE.targetMode.getValue() == BedTargetMode.Semi && var3187 != field161.player && var3187.getBoundingBox().contains(var3188)) {
                var13 += 4000.0;
             }
 

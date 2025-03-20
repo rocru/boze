@@ -61,8 +61,8 @@ public class Jesus extends Module {
    public void onEnable() {
       this.field3295 = (Boolean)BaritoneAPI.getSettings().assumeWalkOnWater.value;
       this.field3296 = (Boolean)BaritoneAPI.getSettings().assumeWalkOnLava.value;
-      BaritoneAPI.getSettings().assumeWalkOnWater.value = this.field3285.method461() == JesusMode.Normal;
-      BaritoneAPI.getSettings().assumeWalkOnLava.value = this.field3288.method461() == JesusMode.Normal;
+      BaritoneAPI.getSettings().assumeWalkOnWater.value = this.field3285.getValue() == JesusMode.Normal;
+      BaritoneAPI.getSettings().assumeWalkOnLava.value = this.field3288.getValue() == JesusMode.Normal;
    }
 
    @Override
@@ -74,8 +74,8 @@ public class Jesus extends Module {
    @EventHandler
    private void method1839(PostTickEvent var1) {
       if (MinecraftUtils.isClientActive()) {
-         if (this.field3285.method461() == JesusMode.Strict && mc.player.isTouchingWater()
-            || this.field3288.method461() == JesusMode.Strict && mc.player.isInLava()) {
+         if (this.field3285.getValue() == JesusMode.Strict && mc.player.isTouchingWater()
+            || this.field3288.getValue() == JesusMode.Strict && mc.player.isInLava()) {
             double var5;
             if (mc.player.isInLava()) {
                var5 = mc.player.getFluidHeight(FluidTags.LAVA);
@@ -190,15 +190,15 @@ public class Jesus extends Module {
    }
 
    private boolean method1844() {
-      if (this.field3286.method419() && mc.player.isOnFire()) {
+      if (this.field3286.getValue() && mc.player.isOnFire()) {
          return false;
       } else if (mc.options.sneakKey.isPressed()) {
          return false;
       } else {
-         return (this.field3289.method461() == JesusNoSetback.Water || this.field3289.method461() == JesusNoSetback.Both)
+         return (this.field3289.getValue() == JesusNoSetback.Water || this.field3289.getValue() == JesusNoSetback.Both)
                && mc.player.fallDistance > (float)this.field3290.method434().intValue()
             ? false
-            : this.field3285.method461() == JesusMode.Normal;
+            : this.field3285.getValue() == JesusMode.Normal;
       }
    }
 
@@ -206,10 +206,10 @@ public class Jesus extends Module {
       if (mc.options.sneakKey.isPressed()) {
          return false;
       } else {
-         return (this.field3289.method461() == JesusNoSetback.Lava || this.field3289.method461() == JesusNoSetback.Both)
+         return (this.field3289.getValue() == JesusNoSetback.Lava || this.field3289.getValue() == JesusNoSetback.Both)
                && mc.player.fallDistance > (float)this.field3290.method434().intValue()
             ? false
-            : this.field3288.method461() == JesusMode.Normal;
+            : this.field3288.getValue() == JesusMode.Normal;
       }
    }
 }

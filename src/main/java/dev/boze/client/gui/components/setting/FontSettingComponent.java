@@ -56,11 +56,11 @@ public class FontSettingComponent extends ScaledSettingBaseComponent implements 
                this.field319 + this.field321 * 0.5 - Notifications.VIEW_LIST.method1614() * 0.5,
                Theme.method1350()
             );
-         if (!this.field286.method1276().isEmpty()) {
+         if (!this.field286.getValue().isEmpty()) {
             IFontRender.method499()
                .drawShadowedText(
-                  this.field286.method1276(),
-                  this.field318 + this.field320 - scaleFactor * 21.0 - var8 - IFontRender.method499().method501(this.field286.method1276()),
+                  this.field286.getValue(),
+                  this.field318 + this.field320 - scaleFactor * 21.0 - var8 - IFontRender.method499().method501(this.field286.getValue()),
                   this.field319 + this.field321 * 0.5 - IFontRender.method499().method1390() * 0.5,
                   Theme.method1350()
                );

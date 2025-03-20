@@ -14,7 +14,7 @@ public class ClickImplementationB extends IClickMethod implements IMinecraft {
 
     @Override
     public int method578(double targetedCPS) {
-        if (mc.player.getAttackCooldownProgress(-this.field1328.method423() * mc.player.getAttackCooldownProgressPerTick() * 0.5F) < 1.0F) {
+        if (mc.player.getAttackCooldownProgress(-this.field1328.getValue() * mc.player.getAttackCooldownProgressPerTick() * 0.5F) < 1.0F) {
             this.field1327.reset();
             return 0;
         } else {

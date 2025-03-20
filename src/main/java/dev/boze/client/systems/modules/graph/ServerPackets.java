@@ -15,12 +15,12 @@ public class ServerPackets extends GraphHUDModule {
 
    public ServerPackets() {
       super("ServerPackets", "Graphs inbound packets");
-      this.field2300.method421(true);
+      this.field2300.setValue(true);
    }
 
    @EventHandler
    public void method1542(PacketBundleEvent event) {
-      if (this.field2579.method461() == ServerPacketsMode.Tick) {
+      if (this.field2579.getValue() == ServerPacketsMode.Tick) {
          this.field2580++;
       }
    }
@@ -28,7 +28,7 @@ public class ServerPackets extends GraphHUDModule {
    @EventHandler
    public void method1543(PostTickEvent event) {
       if (MinecraftUtils.isClientActive()) {
-         if (this.field2579.method461() == ServerPacketsMode.Second) {
+         if (this.field2579.getValue() == ServerPacketsMode.Second) {
             if (mc.player.age % 20 == 0) {
                if (mc.getNetworkHandler() == null || mc.getNetworkHandler().getConnection() == null) {
                   return;

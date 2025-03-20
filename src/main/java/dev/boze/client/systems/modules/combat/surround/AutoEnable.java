@@ -15,7 +15,7 @@ class AutoEnable implements IMinecraft {
       priority = 10000
    )
    public void method1540(ACRotationEvent event) {
-      if (!Surround.INSTANCE.isEnabled() && Surround.INSTANCE.autoEnable.method419()) {
+      if (!Surround.INSTANCE.isEnabled() && Surround.INSTANCE.autoEnable.getValue()) {
          Box var5 = Surround.INSTANCE.field2571.method1953();
          BlockPos[] var6 = TrapUtil.method587(var5);
          HashSet var7 = new HashSet(Arrays.asList(var6));

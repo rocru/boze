@@ -54,12 +54,12 @@ public class AutoCraft extends Module {
          if (this.field2885 > 0) {
             this.field2885--;
          } else {
-            if (this.strict.method419()) {
+            if (this.strict.getValue()) {
                mc.player.getInventory().updateItems();
             }
 
             Item var5 = this.item.method447();
-            if (var5 == Items.FIREWORK_ROCKET && this.fireworks.method419()) {
+            if (var5 == Items.FIREWORK_ROCKET && this.fireworks.getValue()) {
                int var12 = InventoryHelper.method169(AutoCraft::lambda$onSendMovementPackets$1);
                int var13 = InventoryHelper.method169(AutoCraft::lambda$onSendMovementPackets$2);
                if (var12 != -1 && var13 != -1) {
@@ -68,7 +68,7 @@ public class AutoCraft extends Module {
                   this.field2884.add(AutoCraft::lambda$onSendMovementPackets$5);
                   ((Runnable)this.field2884.poll()).run();
                } else {
-                  if (this.field2886 && this.autoClose.method419()) {
+                  if (this.field2886 && this.autoClose.getValue()) {
                      mc.player.closeHandledScreen();
                   }
                }
@@ -78,10 +78,10 @@ public class AutoCraft extends Module {
                for (RecipeResultCollection var9 : mc.player.getRecipeBook().getOrderedResults()) {
                   for (RecipeEntry var11 : var9.getRecipes(true)) {
                      if (var11.value().getResult(mc.world.getRegistryManager()).getItem().equals(var5)) {
-                        mc.interactionManager.clickRecipe(var6.syncId, var11, this.shiftCraft.method419());
+                        mc.interactionManager.clickRecipe(var6.syncId, var11, this.shiftCraft.getValue());
                         mc.interactionManager
                            .clickSlot(
-                              var6.syncId, 0, 1, this.mode.method461() == AutoCraftMode.Drop ? SlotActionType.THROW : SlotActionType.QUICK_MOVE, mc.player
+                              var6.syncId, 0, 1, this.mode.getValue() == AutoCraftMode.Drop ? SlotActionType.THROW : SlotActionType.QUICK_MOVE, mc.player
                            );
                         this.field2886 = true;
                         this.field2885 = this.delay.method434() - 1;
@@ -90,7 +90,7 @@ public class AutoCraft extends Module {
                   }
                }
 
-               if (this.field2886 && this.autoClose.method419()) {
+               if (this.field2886 && this.autoClose.getValue()) {
                   mc.player.closeHandledScreen();
                }
             }

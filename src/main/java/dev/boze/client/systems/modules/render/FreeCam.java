@@ -85,7 +85,7 @@ public class FreeCam extends Module {
          mc.options.leftKey.setPressed(false);
          mc.options.jumpKey.setPressed(false);
          mc.options.sneakKey.setPressed(false);
-         if (this.field3539.method419()) {
+         if (this.field3539.getValue()) {
             mc.worldRenderer.reload();
          }
       }
@@ -100,7 +100,7 @@ public class FreeCam extends Module {
       }
 
       if (MinecraftUtils.isClientActive()) {
-         if (this.field3539.method419() && MinecraftUtils.isClientReadyForSinglePlayer()) {
+         if (this.field3539.getValue() && MinecraftUtils.isClientReadyForSinglePlayer()) {
             mc.worldRenderer.reload();
          }
 
@@ -131,15 +131,15 @@ public class FreeCam extends Module {
       priority = 3
    )
    public void method1940(MovementEvent event) {
-      if (this.field3529.method419() && !event.method1022() && this.method1941() && mc.crosshairTarget != null && mc.crosshairTarget.getPos() != null) {
+      if (this.field3529.getValue() && !event.method1022() && this.method1941() && mc.crosshairTarget != null && mc.crosshairTarget.getPos() != null) {
          float[] var5 = EntityUtil.method2146(mc.crosshairTarget.getPos());
          event.method1074(new ActionWrapper(var5[0], var5[1]));
       }
    }
 
    public boolean method1941() {
-      return this.field3535.method461() == FreeCamInteract.Camera
-         || INSTANCE.field3535.method461() == FreeCamInteract.Dynamic && !INSTANCE.field3536.method476().isPressed();
+      return this.field3535.getValue() == FreeCamInteract.Camera
+         || INSTANCE.field3535.getValue() == FreeCamInteract.Dynamic && !INSTANCE.field3536.method476().isPressed();
    }
 
    @EventHandler
@@ -218,13 +218,13 @@ public class FreeCam extends Module {
          this.field3549 = this.field3544;
       }
 
-      if (this.field3538.method419()) {
+      if (this.field3538.getValue()) {
          this.field3540 = this.field3540 + (mc.player.getX() - mc.player.prevX);
          this.field3541 = this.field3541 + (mc.player.getY() - mc.player.prevY);
          this.field3542 = this.field3542 + (mc.player.getZ() - mc.player.prevZ);
       }
 
-      if (this.field3537.method419()) {
+      if (this.field3537.getValue()) {
          this.field3548 = this.field3543;
          this.field3549 = this.field3544;
          float[] var19 = EntityUtil.method2147(
@@ -237,9 +237,9 @@ public class FreeCam extends Module {
 
    @EventHandler
    private void method1943(MouseScrollEvent var1) {
-      if (this.field3532.method419() && mc.currentScreen == null) {
+      if (this.field3532.getValue() && mc.currentScreen == null) {
          this.field3530.setValue(this.field3530.getValue() + var1.vertical * this.field3533.getValue());
-         if (this.field3534.method419()) {
+         if (this.field3534.getValue()) {
             this.field3531.setValue(this.field3531.getValue() + var1.vertical * this.field3533.getValue());
          }
 
@@ -267,7 +267,7 @@ public class FreeCam extends Module {
          mc.options.sneakKey.setPressed(false);
          if (mc.currentScreen == null
             || event.action == KeyAction.Release
-            || NoSlow.INSTANCE.isEnabled() && NoSlow.INSTANCE.field3312.method461() != NoSlowInvMove.Off) {
+            || NoSlow.INSTANCE.isEnabled() && NoSlow.INSTANCE.field3312.getValue() != NoSlowInvMove.Off) {
             if (mc.options.forwardKey.matchesKey(event.key, 0) || mc.options.forwardKey.matchesMouse(event.key)) {
                this.field3552 = event.action != KeyAction.Release;
                event.method1020();
@@ -297,7 +297,7 @@ public class FreeCam extends Module {
    }
 
    public void method1946(double dX, double dY) {
-      if (!this.field3537.method419()) {
+      if (!this.field3537.getValue()) {
          this.field3548 = this.field3543;
          this.field3549 = this.field3544;
          this.field3543 = (float)((double)this.field3543 + dX);

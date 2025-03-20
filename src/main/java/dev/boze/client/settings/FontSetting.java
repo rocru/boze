@@ -35,15 +35,18 @@ public class FontSetting extends Setting<String> {
       this.field2178 = value;
    }
 
-   public String method1276() {
+   @Override
+   public String getValue() {
       return this.field2177;
    }
 
-   public String method1277() {
+   @Override
+   public String resetValue() {
       return this.field2177 = this.field2178;
    }
 
-   public String method1278(String newVal) {
+   @Override
+   public String setValue(String newVal) {
       if (newVal.equals("vanilla")) {
          FontManager.method1104();
          this.field2177 = newVal;
@@ -65,9 +68,10 @@ public class FontSetting extends Setting<String> {
       return tag;
    }
 
-   public String method1279(NbtCompound tag) {
+   @Override
+   public String load(NbtCompound tag) {
       if (tag.contains("Value")) {
-         this.method1278(tag.getString("Value"));
+         this.setValue(tag.getString("Value"));
       }
 
       return this.field2177;
@@ -75,29 +79,29 @@ public class FontSetting extends Setting<String> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method1279(nbtCompound);
-   }
+  // @Override
+   //public Object load(NbtCompound nbtCompound) {
+   //   return this.method1279(nbtCompound);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method1278((String)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+   //   return this.method1278((String)object);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method1277();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method1277();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1276();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method1276();
+   //}
 }

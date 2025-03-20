@@ -27,12 +27,12 @@ public class ParticleSettings implements SettingsGroup {
    }
 
    public boolean method1299(Particle particle) {
-      if (this.field2215.method419() && particle instanceof ElderGuardianAppearanceParticle) {
+      if (this.field2215.getValue() && particle instanceof ElderGuardianAppearanceParticle) {
          return true;
-      } else if (this.field2214.method419() && particle instanceof ExplosionLargeParticle) {
+      } else if (this.field2214.getValue() && particle instanceof ExplosionLargeParticle) {
          return true;
       } else {
-         return this.field2213.method419() && particle instanceof SpellParticle
+         return this.field2213.getValue() && particle instanceof SpellParticle
             ? true
             : particle instanceof TotemParticle
                && (this.field2212.getValue() == 1.0 || this.field2212.getValue() != 0.0 && Math.random() < this.field2212.getValue());

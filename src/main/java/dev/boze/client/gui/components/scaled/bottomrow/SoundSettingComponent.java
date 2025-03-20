@@ -51,7 +51,7 @@ public class SoundSettingComponent extends BottomRowScaledComponent {
             15,
             24,
             Theme.method1387() ? BaseComponent.scaleFactor * 2.0 : 0.0,
-            var13.equals(this.field1454.method1322()) ? Theme.method1347().method2025(Theme.method1391()) : Theme.method1347()
+            var13.equals(this.field1454.getValue()) ? Theme.method1347().method2025(Theme.method1391()) : Theme.method1347()
          );
       IFontRender.method499()
          .drawShadowedText(
@@ -71,8 +71,8 @@ public class SoundSettingComponent extends BottomRowScaledComponent {
       double var19 = itemX + itemWidth - Notifications.DELETE.method2091() - BaseComponent.scaleFactor * 6.0;
       double var21 = itemY + itemHeight * 0.5 - IconManager.method1116() * 0.5;
       if (isMouseWithinBounds(mouseX, mouseY, var19, var21, Notifications.DELETE.method2091(), IconManager.method1116())) {
-         if (var18.equals(this.field1454.method1322())) {
-            this.field1454.method1341("");
+         if (var18.equals(this.field1454.getValue())) {
+            this.field1454.setValue("");
          }
 
          ((File)this.field1455.get(index)).delete();
@@ -80,7 +80,7 @@ public class SoundSettingComponent extends BottomRowScaledComponent {
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
          return true;
       } else {
-         this.field1454.method1341(var18);
+         this.field1454.setValue(var18);
          mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
          return true;
       }

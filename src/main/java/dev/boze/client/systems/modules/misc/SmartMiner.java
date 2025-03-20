@@ -278,15 +278,15 @@ public class SmartMiner extends Module {
 
    private void method1854() {
       ArrayList var4 = new ArrayList();
-      if (this.field479.method419()) {
+      if (this.field479.getValue()) {
          var4.add(Blocks.COAL_ORE);
       }
 
-      if (this.field480.method419()) {
+      if (this.field480.getValue()) {
          var4.add(Blocks.REDSTONE_ORE);
       }
 
-      if (this.field481.method419()) {
+      if (this.field481.getValue()) {
          var4.add(Blocks.NETHER_QUARTZ_ORE);
       }
 
@@ -362,7 +362,7 @@ public class SmartMiner extends Module {
    private boolean lambda$findPickaxe$0(ItemStack var1) {
       return var1.getItem() instanceof PickaxeItem
          && (
-            !this.field477.method419()
+            !this.field477.getValue()
                || ItemEnchantmentUtils.hasEnchantment(var1, Enchantments.MENDING) && !ItemEnchantmentUtils.hasEnchantment(var1, Enchantments.SILK_TOUCH)
          );
    }

@@ -72,13 +72,13 @@ public class AntiBed extends Module {
       if (!event.method1022()) {
          this.field2457++;
          if (this.field2457 > this.interval.method434()) {
-            if (!Options.method477(this.multitask.method419())) {
-               if (!this.placeOnlyWhenStill.method419() || !Class5924.method2115()) {
+            if (!Options.method477(this.multitask.getValue())) {
+               if (!this.placeOnlyWhenStill.getValue() || !Class5924.method2115()) {
                   int var5 = 0;
-                  int var6 = this.rotate.method419() && Class5924.method2115() ? 1 : this.maxActions.method434();
+                  int var6 = this.rotate.getValue() && Class5924.method2115() ? 1 : this.maxActions.method434();
                   BlockPos var7 = mc.player.getBlockPos();
-                  if (!this.placeOnlyInHoles.method419() || Class5924.method76(true)) {
-                     if (this.smartPlace.method419()) {
+                  if (!this.placeOnlyInHoles.getValue() || Class5924.method76(true)) {
+                     if (this.smartPlace.getValue()) {
                         for (BlockEntity var9 : Class5914.method19()) {
                            if (var9 instanceof BedBlockEntity) {
                               BlockPos var10 = var9.getPos();
@@ -96,10 +96,10 @@ public class AntiBed extends Module {
                      }
 
                      Class2811.field99 = true;
-                     if (this.placeWebAtFeet.method419()
+                     if (this.placeWebAtFeet.getValue()
                         && (
-                           this.spamPlace.method419() && this.placePosition != PlacePosition.Feet
-                              || Class2812.method5504(var7, this.strictDirection.method419())
+                           this.spamPlace.getValue() && this.placePosition != PlacePosition.Feet
+                              || Class2812.method5504(var7, this.strictDirection.getValue())
                         )) {
                         PlaceAction var12 = this.method1396(var7);
                         if (var12 != null) {
@@ -109,11 +109,11 @@ public class AntiBed extends Module {
                         }
                      }
 
-                     if (this.placeWebAtHead.method419()
+                     if (this.placeWebAtHead.getValue()
                         && var5 < var6
                         && (
-                           this.spamPlace.method419() && this.placePosition != PlacePosition.Head
-                              || Class2812.method5504(var7.up(), this.strictDirection.method419())
+                           this.spamPlace.getValue() && this.placePosition != PlacePosition.Head
+                              || Class2812.method5504(var7.up(), this.strictDirection.getValue())
                         )) {
                         PlaceAction var13 = this.method1396(var7.up());
                         if (var13 != null) {
@@ -123,11 +123,11 @@ public class AntiBed extends Module {
                         }
                      }
 
-                     if (this.placeWebAboveHead.method419()
+                     if (this.placeWebAboveHead.getValue()
                         && var5 < var6
                         && (
-                           this.spamPlace.method419() && this.placePosition != PlacePosition.Above
-                              || Class2812.method5504(var7.up(2), this.strictDirection.method419())
+                           this.spamPlace.getValue() && this.placePosition != PlacePosition.Above
+                              || Class2812.method5504(var7.up(2), this.strictDirection.getValue())
                         )) {
                         PlaceAction var14 = this.method1396(var7.up(2));
                         if (var14 != null) {
@@ -151,7 +151,7 @@ public class AntiBed extends Module {
 
    private PlaceAction method1396(BlockPos var1) {
       Class2811.field103 = true;
-      PlaceAction var2 = Class2812.method5500(Items.STRING, var1, this.rotate.method419(), this.swing.method419(), this.strictDirection.method419());
+      PlaceAction var2 = Class2812.method5500(Items.STRING, var1, this.rotate.getValue(), this.swing.getValue(), this.strictDirection.getValue());
       Class2811.field103 = false;
       return var2;
    }

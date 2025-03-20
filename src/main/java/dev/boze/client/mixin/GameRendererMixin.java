@@ -150,12 +150,12 @@ public abstract class GameRendererMixin {
             .mul(
                new Matrix4f()
                   .setPerspective(
-                     (float)(var2 * (float) (Math.PI / 180.0)) * AspectRatio.INSTANCE.field3383.method423(),
+                     (float)(var2 * (float) (Math.PI / 180.0)) * AspectRatio.INSTANCE.field3383.getValue(),
                      (float)this.client.getWindow().getFramebufferWidth()
                         / (float)this.client.getWindow().getFramebufferHeight()
-                        * AspectRatio.INSTANCE.field3380.method423(),
-                     AspectRatio.INSTANCE.field3381.method423(),
-                     this.getFarPlaneDistance() * AspectRatio.INSTANCE.field3382.method423()
+                        * AspectRatio.INSTANCE.field3380.getValue(),
+                     AspectRatio.INSTANCE.field3381.getValue(),
+                     this.getFarPlaneDistance() * AspectRatio.INSTANCE.field3382.getValue()
                   )
             );
          return var6.peek().getPositionMatrix();
@@ -224,8 +224,8 @@ public abstract class GameRendererMixin {
       )
    )
    private void onRenderHandRenderItem(HeldItemRenderer var1, float var2, MatrixStack var3, Immediate var4, ClientPlayerEntity var5, int var6) {
-      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.al.method419()) {
-         if (Chams.INSTANCE.am.method419()) {
+      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.al.getValue()) {
+         if (Chams.INSTANCE.am.getValue()) {
             var3.push();
             var1.renderItem(var2, var3, var4, var5, var6);
             var3.pop();
@@ -234,13 +234,13 @@ public abstract class GameRendererMixin {
          ChamsShaderRenderer.method1310(
             GameRendererMixin::lambda$onRenderHandRenderItem$0,
             Chams.INSTANCE.method1921(),
-            Chams.INSTANCE.aq.method419(),
+            Chams.INSTANCE.aq.getValue(),
             Chams.INSTANCE.an,
             Chams.INSTANCE.ao,
             Chams.INSTANCE.au.method434(),
-            Chams.INSTANCE.av.method423(),
-            Chams.INSTANCE.as.method423(),
-            Chams.INSTANCE.at.method423(),
+            Chams.INSTANCE.av.getValue(),
+            Chams.INSTANCE.as.getValue(),
+            Chams.INSTANCE.at.getValue(),
             Chams.INSTANCE.ar.method434(),
             Chams.INSTANCE.aL
          );
@@ -298,7 +298,7 @@ public abstract class GameRendererMixin {
       EntityHitResult var10 = ProjectileUtil.raycast(entity, min, max, box, GameRendererMixin::lambda$onRaycastEntity$1, d);
       return var10 != null
             && CrystalOptimizer.INSTANCE.isEnabled()
-            && CrystalOptimizer.INSTANCE.field2789.method461() == CrystalOptimizerMode.EntityTrace
+            && CrystalOptimizer.INSTANCE.field2789.getValue() == CrystalOptimizerMode.EntityTrace
             && var10.getEntity() instanceof EndCrystalEntity
             && System.currentTimeMillis() - ((IEndCrystalEntity)var10.getEntity()).boze$getLastAttackTime() < 1000L
          ? null

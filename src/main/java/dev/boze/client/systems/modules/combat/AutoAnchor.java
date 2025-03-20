@@ -52,7 +52,7 @@ public class AutoAnchor extends Module {
    private final BooleanSetting swing = new BooleanSetting("Swing", true, "Swing hand");
    private final BooleanSetting strictDirection = new BooleanSetting("StrictDirection", true, "Strict direction");
    private final BooleanSetting sequential = new BooleanSetting("Sequential", true, "Sequential placements");
-   private final IntSetting charges = new IntSetting("Charges", 0, 0, 3, 1, "Charges to start placing at", this.sequential::method419);
+   private final IntSetting charges = new IntSetting("Charges", 0, 0, 3, 1, "Charges to start placing at", this.sequential::getValue);
    private final BooleanSetting instant = new BooleanSetting("Instant", false, "Instantly explode anchors after one charge");
    private final FloatSetting speed = new FloatSetting("Speed", 20.0F, 1.0F, 20.0F, 0.1F, "Anchoring speed");
    private final FloatSetting range = new FloatSetting("Range", 4.0F, 2.0F, 8.0F, 0.5F, "Range within which to target players");
@@ -83,11 +83,11 @@ public class AutoAnchor extends Module {
       priority = 48
    )
    private void method1431(ACRotationEvent var1) {
-      if (!var1.method1018(this.mode.method461(), this.rotate.method419())) {
+      if (!var1.method1018(this.mode.getValue(), this.rotate.getValue())) {
          if (!mc.world.getRegistryKey().getValue().getPath().equals("the_nether")) {
-            if (!Options.method477(this.multitask.method419())) {
-               if (!(mc.player.getHealth() + mc.player.getAbsorptionAmount() < this.minHealth.method423())) {
-                  if (this.field2501.hasElapsed((double)(1000.0F - this.speed.method423() * 50.0F))) {
+            if (!Options.method477(this.multitask.getValue())) {
+               if (!(mc.player.getHealth() + mc.player.getAbsorptionAmount() < this.minHealth.getValue())) {
+                  if (this.field2501.hasElapsed((double)(1000.0F - this.speed.getValue() * 50.0F))) {
                      this.field2504 = null;
                      int var5 = InventoryHelper.method163(Blocks.GLOWSTONE);
                      int var6 = InventoryHelper.method163(Blocks.RESPAWN_ANCHOR);
@@ -95,16 +95,16 @@ public class AutoAnchor extends Module {
                         List var7 = this.method1434();
                         if (!var7.isEmpty()) {
                            this.method1433(var7, var5, var6);
-                           if (this.field2508 == null && this.field2506 == null && this.mineObstruction.method419()) {
+                           if (this.field2508 == null && this.field2506 == null && this.mineObstruction.getValue()) {
                               BlockPos var8 = ((PlayerEntity)var7.get(0)).getBlockPos().up(2);
-                              Vec3d var9 = qG.method735(var8, (double)this.range.method423().floatValue(), true);
+                              Vec3d var9 = qG.method735(var8, (double)this.range.getValue().floatValue(), true);
                               if (var9 != null) {
                                  this.field2502 = var9;
                                  this.field2503.reset();
                               }
                            }
 
-                           if (this.rotate.method419() && this.field2502 != null && !this.field2503.hasElapsed(500.0)) {
+                           if (this.rotate.getValue() && this.field2502 != null && !this.field2503.hasElapsed(500.0)) {
                               float[] var10 = EntityUtil.method2146(this.field2502);
                               var1.yaw = var10[0];
                               var1.pitch = var10[1];
@@ -169,19 +169,19 @@ public class AutoAnchor extends Module {
          Vec3d var13 = null;
          Direction var14 = null;
          PlaceAction var15 = null;
-         double var16 = (double)this.minDamage.method423().floatValue() - 0.1;
+         double var16 = (double)this.minDamage.getValue().floatValue() - 0.1;
 
          for (BlockPos var19 : var11) {
-            if (mc.world.getBlockState(var19).getBlock() == Blocks.RESPAWN_ANCHOR || Class2812.method5504(var19, this.strictDirection.method419())) {
+            if (mc.world.getBlockState(var19).getBlock() == Blocks.RESPAWN_ANCHOR || Class2812.method5504(var19, this.strictDirection.getValue())) {
                Vec3d var20 = new Vec3d((double)var19.getX() + 0.5, (double)var19.getY() + 0.5, (double)var19.getZ() + 0.5);
                double var21 = Class3069.method6006(mc.player, var20, var19);
                if (!(
                   var21
-                     > (double)Math.min(mc.player.getHealth() + mc.player.getAbsorptionAmount() - this.minHealth.method423(), this.maxSelfDamage.method423())
+                     > (double)Math.min(mc.player.getHealth() + mc.player.getAbsorptionAmount() - this.minHealth.getValue(), this.maxSelfDamage.getValue())
                )) {
                   Class2811.field109 = true;
                   PlaceAction var23 = Class2812.method5502(
-                     var19, this.rotate.method419(), this.swing.method419(), this.strictDirection.method419(), false, Hand.MAIN_HAND, var3
+                     var19, this.rotate.getValue(), this.swing.getValue(), this.strictDirection.getValue(), false, Hand.MAIN_HAND, var3
                   );
                   Class2811.field109 = false;
                   if (var23 != null) {
@@ -190,7 +190,7 @@ public class AutoAnchor extends Module {
                         for (Direction var29 : Direction.values()) {
                            Vec3d var30 = var20.add(new Vec3d(var29.getUnitVector()).multiply(0.5));
                            double var31 = var7.distanceTo(var30);
-                           if (!(var31 > (double)this.placeRange.method423().floatValue())) {
+                           if (!(var31 > (double)this.placeRange.getValue().floatValue())) {
                               var12 = var19;
                               var13 = var30;
                               var14 = var29;
@@ -206,26 +206,26 @@ public class AutoAnchor extends Module {
 
          if (var12 != null) {
             this.field2501.reset();
-            if (this.rotate.method419()) {
+            if (this.rotate.getValue()) {
                this.field2502 = var13;
                this.field2503.reset();
             }
 
             this.field2504 = var9;
             if (mc.world.getBlockState(var12).getBlock() == Blocks.RESPAWN_ANCHOR) {
-               if (this.instant.method419() && this.field2507 != null) {
+               if (this.instant.getValue() && this.field2507 != null) {
                   this.field2506 = this.field2507;
                   this.field2507 = null;
                } else {
                   this.field2506 = this::lambda$generateActions$0;
-                  if (this.instant.method419()) {
+                  if (this.instant.getValue()) {
                      this.field2507 = this::lambda$generateActions$1;
                   }
                }
             }
 
             if (mc.world.getBlockState(var12).getBlock() != Blocks.RESPAWN_ANCHOR
-               || this.sequential.method419() && (Integer)mc.world.getBlockState(var12).get(RespawnAnchorBlock.CHARGES) >= this.charges.method434()) {
+               || this.sequential.getValue() && (Integer)mc.world.getBlockState(var12).get(RespawnAnchorBlock.CHARGES) >= this.charges.method434()) {
                this.field2508 = AutoAnchor::lambda$generateActions$2;
             }
 
@@ -242,7 +242,7 @@ public class AutoAnchor extends Module {
       for (Entity var6 : mc.world.getEntities()) {
          if (var6 instanceof PlayerEntity
             && this.method1435(var6)
-            && !(var6.distanceTo(mc.player) > this.range.method423())
+            && !(var6.distanceTo(mc.player) > this.range.getValue())
             && !((PlayerEntity)var6).isDead()
             && !(((PlayerEntity)var6).getHealth() + ((PlayerEntity)var6).getAbsorptionAmount() <= 0.0F)) {
             var4.add((PlayerEntity)var6);
@@ -301,7 +301,7 @@ public class AutoAnchor extends Module {
       }
 
       mc.getNetworkHandler().sendPacket(Class5913.method17(var7 ? Hand.OFF_HAND : Hand.MAIN_HAND, new BlockHitResult(var1, var2, var3, false)));
-      if (this.swing.method419()) {
+      if (this.swing.getValue()) {
          mc.getNetworkHandler().sendPacket(new HandSwingC2SPacket(var7 ? Hand.OFF_HAND : Hand.MAIN_HAND));
       }
    }
@@ -313,7 +313,7 @@ public class AutoAnchor extends Module {
       }
 
       mc.getNetworkHandler().sendPacket(Class5913.method17(Hand.MAIN_HAND, new BlockHitResult(var2, var3, var4, false)));
-      if (this.swing.method419()) {
+      if (this.swing.getValue()) {
          mc.getNetworkHandler().sendPacket(new HandSwingC2SPacket(Hand.MAIN_HAND));
       }
    }

@@ -24,9 +24,9 @@ public class NoEntityTrace extends Module {
       if (MinecraftUtils.isClientActive()) {
          if (!mc.options.pickItemKey.isPressed() || !MiddleClickAction.INSTANCE.isEnabled()) {
             if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.BLOCK) {
-               if (!this.picOnly.method419()
+               if (!this.picOnly.getValue()
                   || mc.player.getMainHandStack().getItem() instanceof PickaxeItem
-                  || this.swordOnly.method419() && mc.player.getMainHandStack().getItem() instanceof SwordItem) {
+                  || this.swordOnly.getValue() && mc.player.getMainHandStack().getItem() instanceof SwordItem) {
                   event.method1021(true);
                }
             }

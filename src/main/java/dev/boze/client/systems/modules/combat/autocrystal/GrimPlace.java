@@ -39,7 +39,7 @@ class GrimPlace implements IPlace, IMinecraft {
       Vec3d var8 = mc.player.getPos();
       Vec3d var9 = var8.add(0.0, (double)mc.player.getEyeHeight(mc.player.getPose()), 0.0);
       Vec3d var10 = this.method123(var7, var9);
-      if (var9.distanceTo(var10) > (double)AutoCrystal.INSTANCE.autoCrystalPlace.field138.method423().floatValue()) {
+      if (var9.distanceTo(var10) > (double)AutoCrystal.INSTANCE.autoCrystalPlace.field138.getValue().floatValue()) {
          return null;
       } else {
          Direction var11 = Direction.getFacing(var9.x - var10.x, var9.y - var10.y, var9.z - var10.z);
@@ -76,7 +76,7 @@ class GrimPlace implements IPlace, IMinecraft {
          Vec3d[] var16 = BlockSelection.method1451(var1, var15);
 
          for (Vec3d var20 : var16) {
-            if (!(var13.distanceTo(var20) > (double)AutoCrystal.INSTANCE.autoCrystalPlace.field138.method423().floatValue())) {
+            if (!(var13.distanceTo(var20) > (double)AutoCrystal.INSTANCE.autoCrystalPlace.field138.getValue().floatValue())) {
                Pair var21 = this.method127(var7, var12, var20);
                if (var21 != null && var21.getLeft() != null && var21.getRight() != null) {
                   double var22 = var13.distanceTo((Vec3d)var21.getLeft());
@@ -160,7 +160,7 @@ class GrimPlace implements IPlace, IMinecraft {
          }
       }
 
-      return var8 > (double)AutoCrystal.INSTANCE.autoCrystalPlace.field138.method423().floatValue() ? null : var7;
+      return var8 > (double)AutoCrystal.INSTANCE.autoCrystalPlace.field138.getValue().floatValue() ? null : var7;
    }
 
    private double method125(Box var1, Vec3d var2, Vec3d var3) {
@@ -191,7 +191,7 @@ class GrimPlace implements IPlace, IMinecraft {
       Vec3d var11 = this.method130(var2, var3, var1.minZ);
       Vec3d var12 = this.method130(var2, var3, var1.maxZ);
       Direction var13 = null;
-      if (AutoCrystal.INSTANCE.field1041.field210.method419()) {
+      if (AutoCrystal.INSTANCE.field1041.field210.getValue()) {
          if (!this.method131(var1, var7)) {
             var7 = null;
          }

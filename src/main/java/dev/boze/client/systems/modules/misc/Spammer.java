@@ -33,12 +33,12 @@ public class Spammer extends Module {
 
    @EventHandler
    private void method1776(PostPlayerTickEvent var1) {
-      if (this.field3129.hasElapsed(this.field3124.getValue() * 1000.0) && !this.field3123.method2120().isEmpty()) {
+      if (this.field3129.hasElapsed(this.field3124.getValue() * 1000.0) && !this.field3123.getValue().isEmpty()) {
          if (this.field3123.method2118()) {
             this.field3128 = 0;
             this.field3127.clear();
 
-            for (String var6 : this.field3123.method2120()) {
+            for (String var6 : this.field3123.getValue()) {
                File var7 = new File(ConfigManager.spammer, var6 + ".txt");
                if (var7.exists()) {
                   try {
@@ -58,7 +58,7 @@ public class Spammer extends Module {
 
          if (!this.field3127.isEmpty()) {
             String var11;
-            if (this.field3125.method419()) {
+            if (this.field3125.getValue()) {
                int var12 = this.field3130.nextInt(this.field3127.size());
                var11 = (String)this.field3127.get(var12);
             } else {
@@ -70,7 +70,7 @@ public class Spammer extends Module {
                this.field3128++;
             }
 
-            if (this.field3126.method419()) {
+            if (this.field3126.getValue()) {
                var11 = var11 + " " + this.field3130.nextInt(1000000);
             }
 

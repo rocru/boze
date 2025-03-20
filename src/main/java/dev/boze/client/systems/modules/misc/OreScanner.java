@@ -38,9 +38,9 @@ public class OreScanner extends Module {
    private final IntSetting field3029 = new IntSetting("ScanInterval", 0, 0, 20, 1, "Scan interval (in ticks)");
    private final IntSetting field3030 = new IntSetting("ScanAmount", 3, 1, 20, 1, "Amount of blocks to check per scan");
    private final BooleanSetting field3031 = new BooleanSetting("Render", true, "Render blocks being scanned");
-   public final ColorSetting field3032 = new ColorSetting("Color", new BozeDrawColor(-1606228235), "Color for fill", this.field3031::method419);
-   public final ColorSetting field3033 = new ColorSetting("Outline", new BozeDrawColor(-12392715), "Color for outline", this.field3031::method419);
-   private final BooleanSetting field3034 = new BooleanSetting("Shader", false, "Use a shader", this.field3031::method419);
+   public final ColorSetting field3032 = new ColorSetting("Color", new BozeDrawColor(-1606228235), "Color for fill", this.field3031::getValue);
+   public final ColorSetting field3033 = new ColorSetting("Outline", new BozeDrawColor(-12392715), "Color for outline", this.field3031::getValue);
+   private final BooleanSetting field3034 = new BooleanSetting("Shader", false, "Use a shader", this.field3031::getValue);
    public final EnumSetting<OreScannerShader> field3035 = new EnumSetting<OreScannerShader>("Shader", OreScannerShader.Normal, "Shader to use", this.field3034);
    public final BooleanSetting field3036 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field3034);
    public final IntSetting field3037 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field3034);
@@ -70,8 +70,8 @@ public class OreScanner extends Module {
 
    @EventHandler
    public void method1741(Render3DEvent event) {
-      if (this.field3048 != null && !this.field3049.hasElapsed(500.0) && this.field3031.method419()) {
-         if (this.field3034.method419()) {
+      if (this.field3048 != null && !this.field3049.hasElapsed(500.0) && this.field3031.getValue()) {
+         if (this.field3034.getValue()) {
             if (this.field3043 == null) {
                this.field3043 = new Renderer3D(false, true);
             }
@@ -79,19 +79,19 @@ public class OreScanner extends Module {
             this.field3043.method1217();
          }
 
-         (this.field3034.method419() ? this.field3043 : event.field1950)
-            .method1272(this.field3048, this.field3032.method1362(), this.field3033.method1362(), ShapeMode.Full, 0);
-         if (this.field3034.method419()) {
+         (this.field3034.getValue() ? this.field3043 : event.field1950)
+            .method1272(this.field3048, this.field3032.getValue(), this.field3033.getValue(), ShapeMode.Full, 0);
+         if (this.field3034.getValue()) {
             ChamsShaderRenderer.method1310(
                this::lambda$onRender3D$2,
                this.method1743(),
-               this.field3036.method419(),
+               this.field3036.getValue(),
                this.field3032,
                this.field3033,
                this.field3040.method434(),
-               this.field3041.method423(),
-               this.field3038.method423(),
-               this.field3039.method423(),
+               this.field3041.getValue(),
+               this.field3038.getValue(),
+               this.field3039.getValue(),
                this.field3037.method434(),
                this.field3044
             );
@@ -140,21 +140,21 @@ public class OreScanner extends Module {
    }
 
    private ShaderMode method1743() {
-      if (this.field3035.method461() == OreScannerShader.Image) {
-         if (!this.field3042.method1322().isEmpty() && (!this.field3042.method1322().equals(this.field3045) || this.field3044 == null)) {
-            File var4 = new File(ConfigManager.images, this.field3042.method1322() + ".png");
+      if (this.field3035.getValue() == OreScannerShader.Image) {
+         if (!this.field3042.getValue().isEmpty() && (!this.field3042.getValue().equals(this.field3045) || this.field3044 == null)) {
+            File var4 = new File(ConfigManager.images, this.field3042.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.field3044 = ByteTexturePacker.method493(var5);
                if (this.field3044 != null) {
-                  this.field3045 = this.field3042.method1322();
+                  this.field3045 = this.field3042.getValue();
                } else {
                   this.field3045 = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field3042.method1341("");
+               this.field3042.setValue("");
                this.field3045 = "";
             }
          }
@@ -176,10 +176,10 @@ public class OreScanner extends Module {
    }
 
    private boolean lambda$new$1() {
-      return this.field3035.method461() == OreScannerShader.Image;
+      return this.field3035.getValue() == OreScannerShader.Image;
    }
 
    private boolean lambda$new$0() {
-      return this.field3038.method423() > 0.0F;
+      return this.field3038.getValue() > 0.0F;
    }
 }

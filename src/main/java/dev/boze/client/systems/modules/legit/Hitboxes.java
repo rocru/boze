@@ -32,7 +32,7 @@ public class Hitboxes extends Module {
       if (!this.isEnabled()) {
          return 0.0;
       } else if (this.method1604(entity)) {
-         return this.field2791.method419()
+         return this.field2791.getValue()
                && !(mc.player.getMainHandStack().getItem() instanceof SwordItem)
                && !(mc.player.getMainHandStack().getItem() instanceof AxeItem)
                && !(mc.player.getMainHandStack().getItem() instanceof TridentItem)
@@ -54,9 +54,9 @@ public class Hitboxes extends Module {
          } else if (var1 instanceof FakePlayerEntity) {
             return false;
          } else if (Friends.method2055(var1)) {
-            return this.field2794.method419();
+            return this.field2794.getValue();
          } else {
-            return AntiBots.method2055(var1) ? false : this.field2793.method419();
+            return AntiBots.method2055(var1) ? false : this.field2793.getValue();
          }
       } else {
          switch (nb.field2117[var1.getType().getSpawnGroup().ordinal()]) {
@@ -64,9 +64,9 @@ public class Hitboxes extends Module {
             case 2:
             case 3:
             case 4:
-               return this.field2795.method419();
+               return this.field2795.getValue();
             case 5:
-               return this.field2796.method419();
+               return this.field2796.getValue();
             default:
                return false;
          }

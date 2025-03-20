@@ -30,10 +30,10 @@ public class EntitySpeed extends Module {
    private void method237(LivingEntityMoveEvent var1) {
       if (MinecraftUtils.isClientActive() && var1.field1929.getControllingPassenger() == mc.player) {
          LivingEntity var5 = var1.field1929;
-         if (!this.field442.method419() || var5.isOnGround()) {
-            if (this.field443.method419() || !var5.isTouchingWater()) {
+         if (!this.field442.getValue() || var5.isOnGround()) {
+            if (this.field443.getValue() || !var5.isTouchingWater()) {
                Vec3d var6 = Class5924.method95(this.field440.getValue() * 10.0);
-               ((IVec3d)var1.vec3).boze$set(var6.x, this.field441.method419() && var1.vec3.y < 0.0 ? -3.0 : var1.vec3.y, var6.z);
+               ((IVec3d)var1.vec3).boze$set(var6.x, this.field441.getValue() && var1.vec3.y < 0.0 ? -3.0 : var1.vec3.y, var6.z);
             }
          }
       }
@@ -41,12 +41,12 @@ public class EntitySpeed extends Module {
 
    @EventHandler
    private void method238(BoatEntityMoveEvent var1) {
-      if (MinecraftUtils.isClientActive() && this.field439.method419() && var1.field1902.getControllingPassenger() == mc.player) {
+      if (MinecraftUtils.isClientActive() && this.field439.getValue() && var1.field1902.getControllingPassenger() == mc.player) {
          BoatEntity var5 = var1.field1902;
-         if (!this.field442.method419() || var5.isOnGround()) {
-            if (this.field443.method419() || !var5.isTouchingWater()) {
+         if (!this.field442.getValue() || var5.isOnGround()) {
+            if (this.field443.getValue() || !var5.isTouchingWater()) {
                Vec3d var6 = Class5924.method95(this.field440.getValue() * 10.0);
-               ((IVec3d)var1.vec3).boze$set(var6.x, this.field441.method419() && var1.vec3.y < 0.0 ? -3.0 : var1.vec3.y, var6.z);
+               ((IVec3d)var1.vec3).boze$set(var6.x, this.field441.getValue() && var1.vec3.y < 0.0 ? -3.0 : var1.vec3.y, var6.z);
             }
          }
       }

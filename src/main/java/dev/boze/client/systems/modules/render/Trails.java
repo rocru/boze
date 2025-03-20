@@ -45,7 +45,7 @@ public class Trails extends Module {
             this.field3773 = new Renderer3D(false, false);
          }
 
-         this.field3773.field2166.field1594 = this.field3770.method423();
+         this.field3773.field2166.field1594 = this.field3770.getValue();
          this.field3773.method1217();
 
          for (nx var6 : this.field3772) {
@@ -61,7 +61,7 @@ public class Trails extends Module {
          }
 
          for (nx var10 : this.field3772) {
-            var10.method2052(var1, this.field3768.method1347(), this.field3769.method1347());
+            var10.method2052(var1, this.field3768.getValue(), this.field3769.getValue());
          }
 
          this.field3773.method1219(var1.matrix);
@@ -90,7 +90,7 @@ public class Trails extends Module {
    private boolean method2048(Entity var1) {
       if (var1 instanceof PlayerEntity) {
          if (var1 == mc.player) {
-            return this.field3766.method419();
+            return this.field3766.getValue();
          } else {
             double var5 = (double)var1.distanceTo(mc.player);
             return !(var5 < (double)this.field3765.method2010()) && !(var5 > (double)this.field3765.method1547());

@@ -83,8 +83,8 @@ public class WeirdColorSettingComponent extends BottomRowScaledComponent {
       String var14 = this.method1554(index);
       Class5903 var15 = this.method644(index);
       boolean var16 = index == 0 && this.field1458.method429(this.field1458.field936)
-         ? this.field1458.method430().field3909.startsWith("_default")
-         : this.field1458.method430().field3909.equals(var14);
+         ? this.field1458.getValue().field3909.startsWith("_default")
+         : this.field1458.getValue().field3909.equals(var14);
       Class2776.method5432(itemX, itemY, itemWidth, itemHeight, var16);
       Class2776.method5430(itemX, itemY, itemHeight, var15);
       Class2776.method5431(var14, itemX, itemY, itemHeight);
@@ -146,8 +146,8 @@ public class WeirdColorSettingComponent extends BottomRowScaledComponent {
          if (Class2778.method5441(mouseX, mouseY, Class2778.method5439(itemX, itemWidth, 0), var20)) {
             var19.method2142();
             Colors.INSTANCE.field2343.remove(var18);
-            if (this.field1458.method430().field3909.equals(var18)) {
-               this.field1458.method431();
+            if (this.field1458.getValue().field3909.equals(var18)) {
+               this.field1458.resetValue();
             }
 
             return true;
@@ -204,7 +204,7 @@ public class WeirdColorSettingComponent extends BottomRowScaledComponent {
       }
 
       if (Class2778.method5438(mouseX, mouseY, itemX, itemY, itemWidth, itemHeight)) {
-         this.field1458.method432(new ColorWrapper(var18, var19, this.field1458.method430().field3911, this.field1458.method430().field3912));
+         this.field1458.setValue(new ColorWrapper(var18, var19, this.field1458.getValue().field3911, this.field1458.getValue().field3912));
          Class2778.method5437();
          return true;
       } else {

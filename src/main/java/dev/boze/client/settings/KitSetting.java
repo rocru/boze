@@ -56,15 +56,18 @@ public class KitSetting extends Setting<String> implements IMinecraft {
       return this.field2197;
    }
 
-   public String method1283() {
+   @Override
+   public String getValue() {
       return this.field2195;
    }
 
-   public String method1284() {
+   @Override
+   public String resetValue() {
       return this.field2195 = this.field2196;
    }
 
-   public String method1285(String newVal) {
+   @Override
+   public String setValue(String newVal) {
       File var5 = new File(ConfigManager.kits, newVal + ".json");
 
       try {
@@ -117,9 +120,10 @@ public class KitSetting extends Setting<String> implements IMinecraft {
       return tag;
    }
 
-   public String method1286(NbtCompound tag) {
+   @Override
+   public String load(NbtCompound tag) {
       if (tag.contains("Value")) {
-         this.method1285(tag.getString("Value"));
+         this.setValue(tag.getString("Value"));
       }
 
       return this.field2195;
@@ -127,31 +131,31 @@ public class KitSetting extends Setting<String> implements IMinecraft {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method1286(nbtCompound);
-   }
+  // @Override
+  // public Object load(NbtCompound nbtCompound) {
+  //    return this.method1286(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method1285((String)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+   //   return this.method1285((String)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method1284();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method1284();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1283();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method1283();
+   //}
 
    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
       ChatInstance.method624("Kits: " + ConfigManager.kits.listFiles().length);
@@ -178,7 +182,7 @@ public class KitSetting extends Setting<String> implements IMinecraft {
    private int lambda$build$1(CommandContext var1) throws CommandSyntaxException {
       File var5 = new File(ConfigManager.kits, (String)var1.getArgument("title", String.class) + ".json");
       if (var5.exists()) {
-         String var6 = this.method1285((String)var1.getArgument("title", String.class));
+         String var6 = this.setValue((String)var1.getArgument("title", String.class));
          if (var6.equals(var1.getArgument("title", String.class))) {
             ChatInstance.method624("Loaded kit " + (String)var1.getArgument("title", String.class));
          } else {

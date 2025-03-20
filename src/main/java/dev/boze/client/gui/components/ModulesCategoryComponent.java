@@ -99,9 +99,9 @@ public class ModulesCategoryComponent extends BaseComponent implements IMinecraf
       Class2782.field92 = this.field319;
       Class2782.field93 = this.field329;
       this.field328 = 0.0;
-      if (Gui.INSTANCE.field2366.method461() == MaxHeight.Absolute) {
+      if (Gui.INSTANCE.field2366.getValue() == MaxHeight.Absolute) {
          this.field328 = Gui.INSTANCE.field2367.getValue() * scaleFactor;
-      } else if (Gui.INSTANCE.field2366.method461() == MaxHeight.Relative) {
+      } else if (Gui.INSTANCE.field2366.getValue() == MaxHeight.Relative) {
          this.field328 = (double)mc.getWindow().getScaledHeight() * Gui.INSTANCE.field2368.getValue();
       }
 
@@ -115,7 +115,7 @@ public class ModulesCategoryComponent extends BaseComponent implements IMinecraf
       double var8 = this.field322;
       double var10 = this.field322 + this.field328;
       double var12 = this.field322 - this.field329;
-      if (Gui.INSTANCE.field2364.method419()) {
+      if (Gui.INSTANCE.field2364.getValue()) {
          for (BaseComponent var15 : this.method1144()) {
             if (!ClickGUI.field1335.method582(var15) && var15 instanceof ModuleComponent var16 && var16.field338) {
                this.field327 = var16;
@@ -391,7 +391,7 @@ public class ModulesCategoryComponent extends BaseComponent implements IMinecraf
 
    @Override
    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-      if (Gui.INSTANCE.field2365.method419() && keyCode == 256 && this.field327 != null) {
+      if (Gui.INSTANCE.field2365.getValue() && keyCode == 256 && this.field327 != null) {
          this.field327.field338 = false;
          this.field327 = null;
          return true;

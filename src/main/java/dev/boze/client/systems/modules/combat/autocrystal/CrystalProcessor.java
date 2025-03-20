@@ -24,7 +24,7 @@ class CrystalProcessor implements IMinecraft {
                      this.field1365.autoCrystalBreak.timer.reset();
                      this.field1365.autoCrystalTracker.field1531 = true;
                      this.field1365.aa.markAsDeadOnTick(var2);
-                     if (this.field1365.field1041.field212.method461() == CrystalAuraUpdateMode.Packet) {
+                     if (this.field1365.field1041.field212.getValue() == CrystalAuraUpdateMode.Packet) {
                         try {
                            if (this.field1365.autoCrystalPlace.method2114()) {
                               this.field1365.autoCrystalPlace.method1198();
@@ -40,21 +40,21 @@ class CrystalProcessor implements IMinecraft {
    }
 
    private boolean method2101(BlockPos var1) {
-      return this.field1365.field1041.field212.method461() != CrystalAuraUpdateMode.Tick
+      return this.field1365.field1041.field212.getValue() != CrystalAuraUpdateMode.Tick
          && this.field1365.autoCrystalTracker.field1534 != null
          && this.field1365.autoCrystalTracker.field1534.method6061().equals(var1)
-         && this.field1365.autoCrystalBreak.timer.hasElapsed((double)(this.field1365.autoCrystalBreak.field180.method423() * 50.0F));
+         && this.field1365.autoCrystalBreak.timer.hasElapsed((double)(this.field1365.autoCrystalBreak.field180.getValue() * 50.0F));
    }
 
    private boolean method2102(BlockPos var1) {
-      return this.field1365.field1042.field114.method419()
+      return this.field1365.field1042.field114.getValue()
          && this.field1365.autoCrystalTracker.field1534 != null
          && this.field1365.autoCrystalTracker.field1534.method6061().equals(var1)
          && this.field1365.autoCrystalTracker.field1536 < this.field1365.autoCrystalTracker.field1537;
    }
 
    private boolean method2114() {
-      return this.field1365.ticksExisted.method423() > 0.0F
+      return this.field1365.ticksExisted.getValue() > 0.0F
          || this.field1365.autoCrystalBreak.method2116()
          || mc.player.hasStatusEffect(StatusEffects.WEAKNESS);
    }

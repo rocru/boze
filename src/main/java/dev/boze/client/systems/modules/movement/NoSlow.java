@@ -104,7 +104,7 @@ public class NoSlow extends Module {
 
    @EventHandler
    public void method1849(ACRotationEvent event) {
-      if (this.field3304.method461() == NoSlowItems.GrimV3 && !event.method1018(AnticheatMode.Grim, false)) {
+      if (this.field3304.getValue() == NoSlowItems.GrimV3 && !event.method1018(AnticheatMode.Grim, false)) {
          if (!ElytraBoost.INSTANCE.isEnabled() && !ElytraRecast.INSTANCE.isEnabled() && !ElytraFly.INSTANCE.isEnabled()) {
             if (mc.player.isFallFlying()) {
                this.field3324.method1820();
@@ -125,9 +125,9 @@ public class NoSlow extends Module {
 
    @EventHandler
    public void method1850(MovementEvent event) {
-      if (this.field3304.method461() == NoSlowItems.NCPStrict
+      if (this.field3304.getValue() == NoSlowItems.NCPStrict
          && mc.player.isUsingItem()
-         && (mc.player.getActiveHand() == Hand.OFF_HAND || !this.field3305.method419())) {
+         && (mc.player.getActiveHand() == Hand.OFF_HAND || !this.field3305.getValue())) {
          event.isSneaking = true;
       }
 
@@ -140,7 +140,7 @@ public class NoSlow extends Module {
             this.field3323.method1416();
             this.field3323 = null;
          }
-      } else if (this.field3304.method461() == NoSlowItems.GrimV2 && mc.player.isUsingItem() && !mc.player.isRiding() && !mc.player.isFallFlying()) {
+      } else if (this.field3304.getValue() == NoSlowItems.GrimV2 && mc.player.isUsingItem() && !mc.player.isRiding() && !mc.player.isFallFlying()) {
          if (mc.player.getActiveHand() == Hand.OFF_HAND) {
             mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(mc.player.getInventory().selectedSlot % 8 + 1));
             mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(mc.player.getInventory().selectedSlot));
@@ -154,15 +154,15 @@ public class NoSlow extends Module {
       priority = 100
    )
    public void method1851(PlayerMoveEvent event) {
-      if (this.field3309.method419() && mc.world.getBlockState(mc.player.getBlockPos()).getBlock() == Blocks.SOUL_SAND) {
+      if (this.field3309.getValue() && mc.world.getBlockState(mc.player.getBlockPos()).getBlock() == Blocks.SOUL_SAND) {
          mc.player.setVelocity(mc.player.getVelocity().multiply(2.5, 1.0, 2.5));
       }
 
-      if (this.field3311.method419() && mc.player.isHoldingOntoLadder() && mc.player.getVelocity().y > 0.0 && Class5924.method87(Blocks.LADDER)) {
+      if (this.field3311.getValue() && mc.player.isHoldingOntoLadder() && mc.player.getVelocity().y > 0.0 && Class5924.method87(Blocks.LADDER)) {
          mc.player.setVelocity(mc.player.getVelocity().x, 0.169, mc.player.getVelocity().z);
       }
 
-      if (this.field3310.method419()
+      if (this.field3310.getValue()
          && mc.world.getBlockState(BlockPos.ofFloored(mc.player.getPos().add(0.0, -0.01, 0.0))).getBlock() == Blocks.SLIME_BLOCK
          && mc.player.isOnGround()) {
          double var5 = Math.abs(mc.player.getVelocity().y);
@@ -174,7 +174,7 @@ public class NoSlow extends Module {
    }
 
    public void method1852() {
-      if (this.isEnabled() && this.field3304.method461() == NoSlowItems.Blink && !PacketFly.INSTANCE.isEnabled() && !this.method1857()) {
+      if (this.isEnabled() && this.field3304.getValue() == NoSlowItems.Blink && !PacketFly.INSTANCE.isEnabled() && !this.method1857()) {
          mc.player.stopUsingItem();
          ((MinecraftClientAccessor)mc).setItemUseCooldown(4);
       }
@@ -184,13 +184,13 @@ public class NoSlow extends Module {
    public void method1853(PrePacketSendEvent event) {
       if (!(event.packet instanceof PlayerInteractItemC2SPacket)
          || !MinecraftUtils.isClientActive()
-         || this.field3304.method461() != NoSlowItems.NCP
-         || mc.player.getActiveHand() != Hand.OFF_HAND && this.field3305.method419()) {
+         || this.field3304.getValue() != NoSlowItems.NCP
+         || mc.player.getActiveHand() != Hand.OFF_HAND && this.field3305.getValue()) {
          if (event.packet instanceof ClickSlotC2SPacket
             && mc.currentScreen instanceof HandledScreen
             && !this.field3325
-            && this.field3312.method461() == NoSlowInvMove.NCPStrict) {
-            if (this.field3313.method419()
+            && this.field3312.getValue() == NoSlowInvMove.NCPStrict) {
+            if (this.field3313.getValue()
                && ((ClickSlotC2SPacket)event.packet).getActionType() != SlotActionType.PICKUP
                && ((ClickSlotC2SPacket)event.packet).getActionType() != SlotActionType.PICKUP_ALL) {
                return;
@@ -199,14 +199,14 @@ public class NoSlow extends Module {
             this.method1854();
          } else {
             if (event.packet instanceof PlayerMoveC2SPacket var5
-               && this.field3304.method461() == NoSlowItems.Blink
+               && this.field3304.getValue() == NoSlowItems.Blink
                && !PacketFly.INSTANCE.isEnabled()
                && !this.method1857()) {
                if (var5 instanceof OnGroundOnly || var5 instanceof LookAndOnGround) {
                   return;
                }
 
-               if (this.field3306.method419()) {
+               if (this.field3306.getValue()) {
                   if (((PlayerMoveC2SPacket)event.packet).isOnGround()) {
                      this.field3322 = true;
                   } else if (this.field3320.isEmpty()) {
@@ -215,7 +215,7 @@ public class NoSlow extends Module {
                   }
                }
 
-               if (!mc.player.isUsingItem() || mc.player.getActiveHand() != Hand.OFF_HAND && this.field3305.method419()) {
+               if (!mc.player.isUsingItem() || mc.player.getActiveHand() != Hand.OFF_HAND && this.field3305.getValue()) {
                   if (!this.field3321) {
                      return;
                   }
@@ -225,7 +225,7 @@ public class NoSlow extends Module {
                   this.field3321 = true;
                }
 
-               if (this.field3307.method419() && this.field3320.isEmpty()) {
+               if (this.field3307.getValue() && this.field3320.isEmpty()) {
                   RenderSystem.recordRenderCall(this::lambda$onPacketSend$3);
                }
 
@@ -235,14 +235,14 @@ public class NoSlow extends Module {
             }
 
             if (event.packet instanceof ClientCommandC2SPacket var6
-               && this.field3304.method461() == NoSlowItems.Blink
+               && this.field3304.getValue() == NoSlowItems.Blink
                && !PacketFly.INSTANCE.isEnabled()
                && !this.method1857()) {
-               if (this.field3306.method419() && this.field3320.isEmpty() && !this.field3322) {
+               if (this.field3306.getValue() && this.field3320.isEmpty() && !this.field3322) {
                   return;
                }
 
-               if (!mc.player.isUsingItem() || mc.player.getActiveHand() != Hand.OFF_HAND && this.field3305.method419()) {
+               if (!mc.player.isUsingItem() || mc.player.getActiveHand() != Hand.OFF_HAND && this.field3305.getValue()) {
                   if (!this.field3321) {
                      return;
                   }
@@ -281,20 +281,20 @@ public class NoSlow extends Module {
 
    @EventHandler
    public void method1855(dN event) {
-      if (this.field3304.method461() != NoSlowItems.Off && (mc.player.getActiveHand() == Hand.OFF_HAND || !this.field3305.method419())) {
-         if (this.field3304.method461() == NoSlowItems.GrimV3 && !this.method1859()) {
+      if (this.field3304.getValue() != NoSlowItems.Off && (mc.player.getActiveHand() == Hand.OFF_HAND || !this.field3305.getValue())) {
+         if (this.field3304.getValue() == NoSlowItems.GrimV3 && !this.method1859()) {
             return;
          }
 
-         if (this.field3306.method419() && this.field3304.method461() == NoSlowItems.Blink && !this.field3322) {
+         if (this.field3306.getValue() && this.field3304.getValue() == NoSlowItems.Blink && !this.field3322) {
             return;
          }
 
-         if (this.field3304.method461() == NoSlowItems.Blink && (PacketFly.INSTANCE.isEnabled() || this.method1857())) {
+         if (this.field3304.getValue() == NoSlowItems.Blink && (PacketFly.INSTANCE.isEnabled() || this.method1857())) {
             return;
          }
 
-         if (this.field3304.method461() == NoSlowItems.GrimV2Old && mc.player.getActiveItem().getItem() == Items.BOW) {
+         if (this.field3304.getValue() == NoSlowItems.GrimV2Old && mc.player.getActiveItem().getItem() == Items.BOW) {
             return;
          }
 
@@ -307,8 +307,8 @@ public class NoSlow extends Module {
       if (MinecraftUtils.isClientActive()) {
          float var5 = (float)(System.currentTimeMillis() - this.field3319) / 5.0F;
          this.field3319 = System.currentTimeMillis();
-         if (this.field3312.method461() != NoSlowInvMove.Off
-            && this.field3315.method419()
+         if (this.field3312.getValue() != NoSlowInvMove.Off
+            && this.field3315.getValue()
             && this.method1858(mc.currentScreen)
             && !FreeCam.INSTANCE.isEnabled()
             && !ElytraRecast.method1974()
@@ -335,7 +335,7 @@ public class NoSlow extends Module {
             mc.player.setPitch(MathHelper.clamp(mc.player.getPitch() + var7, -90.0F, 90.0F));
          }
 
-         if (this.field3312.method461() != NoSlowInvMove.Off
+         if (this.field3312.getValue() != NoSlowInvMove.Off
             && this.method1858(mc.currentScreen)
             && !FreeCam.INSTANCE.isEnabled()
             && !ElytraRecast.method1974()
@@ -346,7 +346,7 @@ public class NoSlow extends Module {
                var9.setPressed(InputUtil.isKeyPressed(mc.getWindow().getHandle(), InputUtil.fromTranslationKey(var9.getBoundKeyTranslationKey()).getCode()));
             }
 
-            if (this.field3314.method419()) {
+            if (this.field3314.getValue()) {
                mc.options
                   .sneakKey
                   .setPressed(
@@ -371,7 +371,7 @@ public class NoSlow extends Module {
             && !(var1 instanceof AnvilScreen)
             && (
                !(var1 instanceof ClickGUI)
-                  || !Gui.INSTANCE.field2359.method419()
+                  || !Gui.INSTANCE.field2359.getValue()
                      && (
                         ClickGUI.field1335.method579() == null
                            || ClickGUI.field1335.method579() instanceof RGBASettingComponent
@@ -397,14 +397,14 @@ public class NoSlow extends Module {
    }
 
    private boolean lambda$new$2() {
-      return this.field3312.method461() == NoSlowInvMove.NCPStrict;
+      return this.field3312.getValue() == NoSlowInvMove.NCPStrict;
    }
 
    private boolean lambda$new$1() {
-      return this.field3304.method461() == NoSlowItems.Blink;
+      return this.field3304.getValue() == NoSlowItems.Blink;
    }
 
    private boolean lambda$new$0() {
-      return this.field3304.method461() == NoSlowItems.Blink;
+      return this.field3304.getValue() == NoSlowItems.Blink;
    }
 }

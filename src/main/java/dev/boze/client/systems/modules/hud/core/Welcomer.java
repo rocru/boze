@@ -43,22 +43,22 @@ public class Welcomer extends HUDModule {
             var6,
             var7,
             var8,
-            this.field2664.method419() ? this.field2665.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2664.method419() ? this.field2666.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2664.method419() ? this.field2665.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2664.method419() ? this.field2667.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2664.getValue() ? this.field2665.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2664.getValue() ? this.field2666.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2664.getValue() ? this.field2665.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2664.getValue() ? this.field2667.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       } else {
          this.method296(
             var5,
-            this.field2664.method419() ? this.field2665.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2664.method419() ? this.field2667.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2664.getValue() ? this.field2665.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2664.getValue() ? this.field2667.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       }
    }
 
    private String method1562() {
-      return this.field2662.method419() ? this.field2663.method1322() : this.method1563() + "{name}";
+      return this.field2662.getValue() ? this.field2663.getValue() : this.method1563() + "{name}";
    }
 
    private String method1563() {

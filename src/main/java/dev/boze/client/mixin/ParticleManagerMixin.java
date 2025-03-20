@@ -54,7 +54,7 @@ public class ParticleManagerMixin implements IParticleManager {
       )
    )
    private void onBuildGeometry(Particle var1, VertexConsumer var2, Camera var3, float var4) {
-      if (!(var1 instanceof ExplosionLargeParticle) || !Chams.INSTANCE.isEnabled() || !Chams.INSTANCE.ax.method419() || Chams.INSTANCE.ay.method419()) {
+      if (!(var1 instanceof ExplosionLargeParticle) || !Chams.INSTANCE.isEnabled() || !Chams.INSTANCE.ax.getValue() || Chams.INSTANCE.ay.getValue()) {
          var1.buildGeometry(var2, var3, var4);
       }
    }
@@ -64,17 +64,17 @@ public class ParticleManagerMixin implements IParticleManager {
       at = {@At("TAIL")}
    )
    public void onRenderParticlesTail(LightmapTextureManager lightmapTextureManager, Camera camera, float tickDelta, CallbackInfo ci) {
-      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ax.method419()) {
+      if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ax.getValue()) {
          ChamsShaderRenderer.method1310(
             this::lambda$onRenderParticlesTail$0,
             Chams.INSTANCE.method1922(),
-            Chams.INSTANCE.aC.method419(),
+            Chams.INSTANCE.aC.getValue(),
             Chams.INSTANCE.az,
             Chams.INSTANCE.aA,
             Chams.INSTANCE.aG.method434(),
-            Chams.INSTANCE.aH.method423(),
-            Chams.INSTANCE.aE.method423(),
-            Chams.INSTANCE.aF.method423(),
+            Chams.INSTANCE.aH.getValue(),
+            Chams.INSTANCE.aE.getValue(),
+            Chams.INSTANCE.aF.getValue(),
             Chams.INSTANCE.aD.method434(),
             Chams.INSTANCE.aN
          );

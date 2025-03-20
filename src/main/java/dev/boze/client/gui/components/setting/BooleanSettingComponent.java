@@ -52,7 +52,7 @@ public class BooleanSettingComponent extends ScaledSettingBaseComponent implemen
             this.field282 = scaleFactor * 6.0 + var8 / 2.0;
          }
 
-         switch (hU.field2105[Gui.INSTANCE.field2371.method461().ordinal()]) {
+         switch (hU.field2105[Gui.INSTANCE.field2371.getValue().ordinal()]) {
             case 1:
                RenderUtil.field3963
                   .method2257(
@@ -63,7 +63,7 @@ public class BooleanSettingComponent extends ScaledSettingBaseComponent implemen
                      15,
                      12,
                      this.field321 * 0.8,
-                     this.field281.method419() ? Theme.method1352() : Theme.method1352().method2025(Theme.method1391())
+                     this.field281.getValue() ? Theme.method1352() : Theme.method1352().method2025(Theme.method1391())
                   );
                RenderUtil.field3963
                   .method2261(
@@ -71,7 +71,7 @@ public class BooleanSettingComponent extends ScaledSettingBaseComponent implemen
                         + this.field320
                         - 6.0 * scaleFactor
                         - this.field282
-                        - (this.field281.method419() ? this.field321 * 0.5 : this.field321 * 1.1),
+                        - (this.field281.getValue() ? this.field321 * 0.5 : this.field321 * 1.1),
                      this.field319 + this.field321 * 0.3,
                      this.field321 * 0.4,
                      Theme.method1350()
@@ -85,7 +85,7 @@ public class BooleanSettingComponent extends ScaledSettingBaseComponent implemen
                      this.field321 * 0.6,
                      Theme.method1348().method183(Theme.method1390())
                   );
-               if (this.field281.method419()) {
+               if (this.field281.getValue()) {
                   RenderUtil.field3963
                      .method2261(
                         this.field318 + this.field320 - 6.0 * scaleFactor - this.field282 - this.field321 * 0.45,
@@ -102,7 +102,7 @@ public class BooleanSettingComponent extends ScaledSettingBaseComponent implemen
                      this.field319 + this.field321 * 0.5,
                      this.field318 + this.field320 - 6.0 * scaleFactor - this.field282 - this.field321 * 0.15,
                      this.field319 + this.field321 * 0.8,
-                     !this.field281.method419() ? Theme.method1348().method183(Theme.method1390()) : Theme.method1352()
+                     !this.field281.getValue() ? Theme.method1348().method183(Theme.method1390()) : Theme.method1352()
                   );
                RenderUtil.field3963
                   .method2242(
@@ -110,7 +110,7 @@ public class BooleanSettingComponent extends ScaledSettingBaseComponent implemen
                      this.field319 + this.field321 * 0.8,
                      this.field318 + this.field320 - 6.0 * scaleFactor - this.field282,
                      this.field319 + this.field321 * 0.2,
-                     !this.field281.method419() ? Theme.method1348().method183(Theme.method1390()) : Theme.method1352()
+                     !this.field281.getValue() ? Theme.method1348().method183(Theme.method1390()) : Theme.method1352()
                   );
          }
       } else {
@@ -123,7 +123,7 @@ public class BooleanSettingComponent extends ScaledSettingBaseComponent implemen
       if (this.field281.method2116() && isMouseWithinBounds(mouseX, mouseY, this.field318, this.field319, this.field320, this.field321)) {
          if (button == 0) {
             this.field273.reset();
-            this.field281.method421(!this.field281.method419());
+            this.field281.setValue(!this.field281.getValue());
             mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             return true;
          }

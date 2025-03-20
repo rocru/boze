@@ -81,11 +81,11 @@ public class SettingBlockComponent extends ScaledSettingBaseComponent implements
          if (button == 0) {
             mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             if (((ModuleComponent)this.field317).field343 == this.field400) {
-               ((ModuleComponent)this.field317).field343.method421(false);
+               ((ModuleComponent)this.field317).field343.setValue(false);
                ((ModuleComponent)this.field317).field343 = null;
             } else {
                ((ModuleComponent)this.field317).field343 = this.field400;
-               ((ModuleComponent)this.field317).field343.method421(true);
+               ((ModuleComponent)this.field317).field343.setValue(true);
             }
 
             return true;

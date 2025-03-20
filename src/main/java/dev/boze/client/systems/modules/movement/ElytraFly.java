@@ -84,7 +84,7 @@ public class ElytraFly extends Module {
 
    @Override
    public String method1322() {
-      return this.field3217.method461().toString();
+      return this.field3217.getValue().toString();
    }
 
    @EventHandler
@@ -96,7 +96,7 @@ public class ElytraFly extends Module {
 
       if (mc.player.getEquippedStack(EquipmentSlot.CHEST).getItem() == Items.ELYTRA) {
          if (Surround.INSTANCE.autoDisable.field927) {
-            if (this.field3217.method461() == ElytraFlyMode.Packet) {
+            if (this.field3217.getValue() == ElytraFlyMode.Packet) {
                if (mc.player.horizontalCollision) {
                   this.field3244 = 0.0;
                }
@@ -117,7 +117,7 @@ public class ElytraFly extends Module {
                   return;
                }
 
-               if (this.field3235.method419() && (mc.player.horizontalCollision || ElytraRecast.method286(mc.player.getPos(), mc.player.getYaw(), 15.0))) {
+               if (this.field3235.getValue() && (mc.player.horizontalCollision || ElytraRecast.method286(mc.player.getPos(), mc.player.getYaw(), 15.0))) {
                   this.field3244 = 0.0;
                   ChatInstance.method740(this.getName(), "Using baritone to walk around obstructions");
                   this.field3245 = true;
@@ -160,23 +160,23 @@ public class ElytraFly extends Module {
                }
 
                this.field3244 = MathHelper.clamp(this.field3244 + var22, 0.0, var19);
-               Vec3d var30 = Class5924.method94(this.field3244, this.field3235.method419());
+               Vec3d var30 = Class5924.method94(this.field3244, this.field3235.getValue());
                mc.player.setVelocity(new Vec3d(var30.x, 0.0, var30.z));
                event.field1892 = true;
                event.vec3 = mc.player.getVelocity();
             } else if (mc.player.isFallFlying()) {
                this.field3242 = 0;
-               if (this.field3217.method461() == ElytraFlyMode.ControlStrict) {
+               if (this.field3217.getValue() == ElytraFlyMode.ControlStrict) {
                   this.field3243 = this.field3243 + this.field3236.getValue();
                   double var5 = Math.sin(-Math.toRadians((double)mc.player.getYaw())) * this.field3243;
                   double var7 = Math.cos(Math.toRadians((double)mc.player.getYaw())) * this.field3243;
-                  if (this.field3223.method419()
+                  if (this.field3223.getValue()
                      && !mc.world.getChunkManager().isChunkLoaded((int)((mc.player.getX() + var5) / 16.0), (int)((mc.player.getZ() + var7) / 16.0))) {
                      event.vec3 = Vec3d.ZERO;
                      return;
                   }
 
-                  if (this.field3224.method419()) {
+                  if (this.field3224.getValue()) {
                      for (VoxelShape var10 : mc.world
                         .getBlockCollisions(
                            mc.player, mc.player.getBoundingBox().offset(var5 * this.field3225.getValue(), 0.0, var7 * this.field3225.getValue())
@@ -189,7 +189,7 @@ public class ElytraFly extends Module {
                   }
 
                   event.vec3 = new Vec3d(var5, 0.0, var7);
-               } else if (this.field3217.method461() != ElytraFlyMode.Infinite) {
+               } else if (this.field3217.getValue() != ElytraFlyMode.Infinite) {
                   Vector3d var18 = new Vector3d(mc.player.getVelocity().x, mc.player.getVelocity().y, mc.player.getVelocity().z);
                   Vec3d var6 = mc.player.getRotationVector();
                   double var21 = Math.sqrt(var6.x * var6.x + var6.z * var6.z);
@@ -197,18 +197,18 @@ public class ElytraFly extends Module {
                   Vec3d var11 = Class5924.method93(this.field3230.getValue());
                   if (mc.options.sneakKey.isPressed()) {
                      var18.set(var11.x, -this.field3232.getValue(), var11.z);
-                  } else if (this.field3217.method461() == ElytraFlyMode.Control && mc.options.jumpKey.isPressed() && var26 > 1.0) {
+                  } else if (this.field3217.getValue() == ElytraFlyMode.Control && mc.options.jumpKey.isPressed() && var26 > 1.0) {
                      double var12 = var26 * 0.01325 * this.field3231.getValue();
                      var18.y += var12 * 3.2;
                      var18.x = var18.x - var6.x * var12 / var21;
                      var18.z = var18.z - var6.z * var12 / var21;
-                  } else if (this.field3217.method461() == ElytraFlyMode.Creative && mc.options.jumpKey.isPressed()) {
+                  } else if (this.field3217.getValue() == ElytraFlyMode.Creative && mc.options.jumpKey.isPressed()) {
                      var18.set(var11.x, this.field3231.getValue(), var11.z);
                   } else {
                      var18.set(var11.x, -3.0E-14, var11.z);
                   }
 
-                  if (this.field3224.method419()) {
+                  if (this.field3224.getValue()) {
                      for (VoxelShape var13 : mc.world
                         .getBlockCollisions(
                            mc.player,
@@ -224,7 +224,7 @@ public class ElytraFly extends Module {
                      }
                   }
 
-                  if (this.field3217.method461() == ElytraFlyMode.Control) {
+                  if (this.field3217.getValue() == ElytraFlyMode.Control) {
                      Vec3d var32 = mc.player.getVelocity();
                      if (var32.subtract(var18.x, var18.y, var18.z).length() > 0.5) {
                         var18.set(
@@ -235,7 +235,7 @@ public class ElytraFly extends Module {
                      }
                   }
 
-                  if (this.field3217.method461() == ElytraFlyMode.Packet) {
+                  if (this.field3217.getValue() == ElytraFlyMode.Packet) {
                      mc.player.setVelocity(new Vec3d(var18.x * this.field3244, 0.0, var18.z * this.field3244));
                   } else {
                      mc.player.setVelocity(new Vec3d(var18.x, var18.y, var18.z));
@@ -246,9 +246,9 @@ public class ElytraFly extends Module {
                }
             } else if (!mc.player.isOnGround() && mc.player.getY() <= mc.player.prevY) {
                this.field3243 = 4.01389;
-               if (this.field3217.method461() == ElytraFlyMode.ControlStrict || this.field3226.method419()) {
+               if (this.field3217.getValue() == ElytraFlyMode.ControlStrict || this.field3226.getValue()) {
                   event.vec3 = new Vec3d(0.0, 0.0, 0.0);
-                  if (this.field3227.method419()) {
+                  if (this.field3227.getValue()) {
                      Class3076.method6024(this, 12, 0.125F);
                   }
 
@@ -273,7 +273,7 @@ public class ElytraFly extends Module {
 
    @EventHandler
    public void method1827(PreTickEvent event) {
-      if (MinecraftUtils.isClientActive() && this.field3217.method461() == ElytraFlyMode.Infinite && mc.player.isFallFlying()) {
+      if (MinecraftUtils.isClientActive() && this.field3217.getValue() == ElytraFlyMode.Infinite && mc.player.isFallFlying()) {
          double var5 = mc.player.getX() - mc.player.prevX;
          double var7 = mc.player.getZ() - mc.player.prevZ;
          double var9 = Math.sqrt(var5 * var5 + var7 * var7);
@@ -286,12 +286,12 @@ public class ElytraFly extends Module {
          }
 
          if (!this.ab && mc.player.getPitch() > -40.0F) {
-            this.ac = this.ac - this.field3220.method423() * 5.0F;
+            this.ac = this.ac - this.field3220.getValue() * 5.0F;
             if (this.ac < -40.0F) {
                this.ac = -40.0F;
             }
          } else if (this.ab && mc.player.getPitch() < 40.0F) {
-            this.ac = this.ac + this.field3220.method423() * 5.0F;
+            this.ac = this.ac + this.field3220.getValue() * 5.0F;
             if (this.ac > 40.0F) {
                this.ac = 40.0F;
             }
@@ -307,16 +307,16 @@ public class ElytraFly extends Module {
    public void method1828(MovementEvent event) {
       if (!this.field3245) {
          if (mc.player.getEquippedStack(EquipmentSlot.CHEST).getItem() == Items.ELYTRA) {
-            if (this.field3217.method461() == ElytraFlyMode.Packet) {
+            if (this.field3217.getValue() == ElytraFlyMode.Packet) {
                if (this.field3241.hasElapsed(this.field3234.getValue() * 1000.0)) {
                   mc.player.networkHandler.sendPacket(new ClientCommandC2SPacket(mc.player, Mode.START_FALL_FLYING));
                }
             } else {
-               if (this.field3217.method461() == ElytraFlyMode.ControlStrict) {
+               if (this.field3217.getValue() == ElytraFlyMode.ControlStrict) {
                   event.method1074(new ActionWrapper(event.yaw, -2.0F, true));
                }
 
-               if (this.field3237.method419() && this.field3240.hasElapsed((double)(this.field3238.method434() * 50))) {
+               if (this.field3237.getValue() && this.field3240.hasElapsed((double)(this.field3238.method434() * 50))) {
                   if (mc.player.getMainHandStack().getItem() == Items.FIREWORK_ROCKET) {
                      mc.player.swingHand(Hand.MAIN_HAND);
                      this.field3238.method435();
@@ -339,7 +339,7 @@ public class ElytraFly extends Module {
       if (!MinecraftUtils.isClientActive()) {
          this.setEnabled(false);
       } else {
-         if (mc.player.getY() < (double)this.field3219.method434().intValue() && this.field3217.method461() == ElytraFlyMode.Infinite) {
+         if (mc.player.getY() < (double)this.field3219.method434().intValue() && this.field3217.getValue() == ElytraFlyMode.Infinite) {
             ChatInstance.method742("ElytraFly", "Player must be above or at max height");
             this.setEnabled(false);
          }
@@ -351,7 +351,7 @@ public class ElytraFly extends Module {
    @Override
    public void onDisable() {
       Class3076.method6025(this);
-      if (this.field3217.method461() == ElytraFlyMode.Packet && MinecraftUtils.isClientActive() && !((ClientPlayerEntityAccessor)mc.player).getLastSneaking()) {
+      if (this.field3217.getValue() == ElytraFlyMode.Packet && MinecraftUtils.isClientActive() && !((ClientPlayerEntityAccessor)mc.player).getLastSneaking()) {
          mc.player.networkHandler.sendPacket(new ClientCommandC2SPacket(mc.player, Mode.PRESS_SHIFT_KEY));
          ((ClientPlayerEntityAccessor)mc.player).setLastSneaking(true);
       }
@@ -365,7 +365,7 @@ public class ElytraFly extends Module {
             this.field3244 = 0.0;
             this.field3241.reset();
          } else if (event.packet instanceof EntityTrackerUpdateS2CPacket var5
-            && this.field3217.method461() == ElytraFlyMode.Packet
+            && this.field3217.getValue() == ElytraFlyMode.Packet
             && mc.player != null
             && var5.id() == mc.player.getId()) {
             event.method1020();
@@ -374,86 +374,86 @@ public class ElytraFly extends Module {
    }
 
    private boolean lambda$new$19() {
-      return this.field3217.method461() != ElytraFlyMode.Packet && this.field3217.method461() != ElytraFlyMode.Infinite;
+      return this.field3217.getValue() != ElytraFlyMode.Packet && this.field3217.getValue() != ElytraFlyMode.Infinite;
    }
 
    private boolean lambda$new$18() {
-      return this.field3217.method461() == ElytraFlyMode.ControlStrict;
+      return this.field3217.getValue() == ElytraFlyMode.ControlStrict;
    }
 
    private boolean lambda$new$17() {
-      return this.field3217.method461() == ElytraFlyMode.Packet;
+      return this.field3217.getValue() == ElytraFlyMode.Packet;
    }
 
    private boolean lambda$new$16() {
-      return this.field3217.method461() == ElytraFlyMode.Packet;
+      return this.field3217.getValue() == ElytraFlyMode.Packet;
    }
 
    private boolean lambda$new$15() {
-      return this.field3217.method461() == ElytraFlyMode.Control || this.field3217.method461() == ElytraFlyMode.Packet;
+      return this.field3217.getValue() == ElytraFlyMode.Control || this.field3217.getValue() == ElytraFlyMode.Packet;
    }
 
    private boolean lambda$new$14() {
-      return this.field3217.method461() != ElytraFlyMode.Packet
-         && this.field3217.method461() != ElytraFlyMode.ControlStrict
-         && this.field3217.method461() != ElytraFlyMode.Infinite;
+      return this.field3217.getValue() != ElytraFlyMode.Packet
+         && this.field3217.getValue() != ElytraFlyMode.ControlStrict
+         && this.field3217.getValue() != ElytraFlyMode.Infinite;
    }
 
    private boolean lambda$new$13() {
-      return this.field3217.method461() != ElytraFlyMode.Packet
-         && this.field3217.method461() != ElytraFlyMode.ControlStrict
-         && this.field3217.method461() != ElytraFlyMode.Infinite;
+      return this.field3217.getValue() != ElytraFlyMode.Packet
+         && this.field3217.getValue() != ElytraFlyMode.ControlStrict
+         && this.field3217.getValue() != ElytraFlyMode.Infinite;
    }
 
    private boolean lambda$new$12() {
-      return this.field3217.method461() != ElytraFlyMode.ControlStrict && this.field3217.method461() != ElytraFlyMode.Infinite;
+      return this.field3217.getValue() != ElytraFlyMode.ControlStrict && this.field3217.getValue() != ElytraFlyMode.Infinite;
    }
 
    private boolean lambda$new$11() {
-      return (this.field3226.method419() || this.field3217.method461() == ElytraFlyMode.ControlStrict) && this.field3217.method461() != ElytraFlyMode.Packet;
+      return (this.field3226.getValue() || this.field3217.getValue() == ElytraFlyMode.ControlStrict) && this.field3217.getValue() != ElytraFlyMode.Packet;
    }
 
    private boolean lambda$new$10() {
-      return (this.field3226.method419() || this.field3217.method461() == ElytraFlyMode.ControlStrict) && this.field3217.method461() != ElytraFlyMode.Packet;
+      return (this.field3226.getValue() || this.field3217.getValue() == ElytraFlyMode.ControlStrict) && this.field3217.getValue() != ElytraFlyMode.Packet;
    }
 
    private boolean lambda$new$9() {
-      return (this.field3226.method419() || this.field3217.method461() == ElytraFlyMode.ControlStrict) && this.field3217.method461() != ElytraFlyMode.Packet;
+      return (this.field3226.getValue() || this.field3217.getValue() == ElytraFlyMode.ControlStrict) && this.field3217.getValue() != ElytraFlyMode.Packet;
    }
 
    private boolean lambda$new$8() {
-      return this.field3217.method461() != ElytraFlyMode.Packet;
+      return this.field3217.getValue() != ElytraFlyMode.Packet;
    }
 
    private boolean lambda$new$7() {
-      return this.field3217.method461() != ElytraFlyMode.Infinite;
+      return this.field3217.getValue() != ElytraFlyMode.Infinite;
    }
 
    private boolean lambda$new$6() {
-      return this.field3217.method461() != ElytraFlyMode.Infinite && this.field3217.method461() != ElytraFlyMode.Packet;
+      return this.field3217.getValue() != ElytraFlyMode.Infinite && this.field3217.getValue() != ElytraFlyMode.Packet;
    }
 
    private boolean lambda$new$5() {
-      return this.field3217.method461() == ElytraFlyMode.ControlStrict;
+      return this.field3217.getValue() == ElytraFlyMode.ControlStrict;
    }
 
    private boolean lambda$new$4() {
-      return this.field3217.method461() == ElytraFlyMode.Infinite;
+      return this.field3217.getValue() == ElytraFlyMode.Infinite;
    }
 
    private boolean lambda$new$3() {
-      return this.field3217.method461() == ElytraFlyMode.Infinite;
+      return this.field3217.getValue() == ElytraFlyMode.Infinite;
    }
 
    private boolean lambda$new$2() {
-      return this.field3217.method461() == ElytraFlyMode.Infinite;
+      return this.field3217.getValue() == ElytraFlyMode.Infinite;
    }
 
    private boolean lambda$new$1() {
-      return this.field3217.method461() == ElytraFlyMode.Infinite;
+      return this.field3217.getValue() == ElytraFlyMode.Infinite;
    }
 
    private boolean lambda$new$0() {
-      return this.field3217.method461() == ElytraFlyMode.Infinite;
+      return this.field3217.getValue() == ElytraFlyMode.Infinite;
    }
 }

@@ -29,7 +29,7 @@ public class AutoWeapon extends Module {
       if (var1.entity == null || !Friends.method2055(var1.entity)) {
          int var5 = this.method1492();
          if (var5 != mc.player.getInventory().selectedSlot && var5 != -1) {
-            if (this.silentSwap.method419()) {
+            if (this.silentSwap.getValue()) {
                this.field2548 = mc.player.getInventory().selectedSlot;
             }
 
@@ -50,11 +50,11 @@ public class AutoWeapon extends Module {
    private int method1492() {
       int var4 = mc.player.getInventory().selectedSlot;
       double var5 = 0.0;
-      if (this.weapon.method461() == PreferredWeapon.Sword) {
+      if (this.weapon.getValue() == PreferredWeapon.Sword) {
          for (int var11 = 0; var11 < 9; var11++) {
             if (mc.player.getInventory().getStack(var11).getItem() instanceof SwordItem
                && (
-                  !this.preserve.method419()
+                  !this.preserve.getValue()
                      || mc.player.getInventory().getStack(var11).getMaxDamage() - mc.player.getInventory().getStack(var11).getDamage() > 15
                )) {
                double var10 = (double)(((SwordItem)mc.player.getInventory().getStack(var11).getItem()).getMaterial().getAttackDamage() + 2.0F);
@@ -67,11 +67,11 @@ public class AutoWeapon extends Module {
 
          return var4;
       } else {
-         if (this.weapon.method461() == PreferredWeapon.Axe) {
+         if (this.weapon.getValue() == PreferredWeapon.Axe) {
             for (int var9 = 0; var9 < 9; var9++) {
                if (mc.player.getInventory().getStack(var9).getItem() instanceof AxeItem
                   && (
-                     !this.preserve.method419()
+                     !this.preserve.getValue()
                         || mc.player.getInventory().getStack(var9).getMaxDamage() - mc.player.getInventory().getStack(var9).getDamage() > 15
                   )) {
                   double var7 = (double)(((AxeItem)mc.player.getInventory().getStack(var9).getItem()).getMaterial().getAttackDamage() + 2.0F);

@@ -23,10 +23,10 @@ public class Teams extends Module {
    }
 
    public static boolean method1617(PlayerEntity player) {
-      if (INSTANCE.field2826.method419() && player.isTeammate(mc.player)) {
+      if (INSTANCE.field2826.getValue() && player.isTeammate(mc.player)) {
          return true;
       } else {
-         if (INSTANCE.field2827.method419() || INSTANCE.field2828.method419()) {
+         if (INSTANCE.field2827.getValue() || INSTANCE.field2828.getValue()) {
             PlayerListEntry var4 = null;
             PlayerListEntry var5 = null;
             if (mc.getNetworkHandler() != null && mc.getNetworkHandler().getPlayerList() != null) {
@@ -47,7 +47,7 @@ public class Teams extends Module {
                Text var15 = mc.inGameHud.getPlayerListHud().getPlayerName(var4);
                Text var16 = mc.inGameHud.getPlayerListHud().getPlayerName(var5);
                if (var15 != null && var16 != null) {
-                  if (INSTANCE.field2827.method419()) {
+                  if (INSTANCE.field2827.getValue()) {
                      if (var15.getStyle() != null && var16.getStyle() != null && var15.getStyle().equals(var16.getStyle())) {
                         return true;
                      }
@@ -74,7 +74,7 @@ public class Teams extends Module {
                      }
                   }
 
-                  if (INSTANCE.field2828.method419()) {
+                  if (INSTANCE.field2828.getValue()) {
                      String var17 = var15.getString();
                      String var18 = var16.getString();
                      Matcher var20 = field2829.matcher(var17);

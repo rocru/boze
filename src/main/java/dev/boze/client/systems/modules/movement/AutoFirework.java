@@ -23,7 +23,7 @@ public class AutoFirework extends Module {
 
    @EventHandler
    public void method1787(MovementEvent event) {
-      if (this.field3146.hasElapsed((double)(this.field3145.method423() * 1000.0F))) {
+      if (this.field3146.hasElapsed((double)(this.field3145.getValue() * 1000.0F))) {
          if (mc.player.isFallFlying()) {
             for (Entity var6 : mc.world.getEntities()) {
                if (var6 instanceof FireworkRocketEntity

@@ -29,13 +29,13 @@ public abstract class FluidRendererImplDefaultRenderContextMixin {
       cancellable = true
    )
    private void onGetColorProvider(Fluid var1, CallbackInfoReturnable<ColorProvider<FluidState>> var2) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.aa.method419() && var1.getDefaultState().isIn(FluidTags.LAVA)) {
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.aa.getValue() && var1.getDefaultState().isIn(FluidTags.LAVA)) {
          var2.setReturnValue(this::lavaTintProvider);
       }
    }
 
    @Unique
    private void lavaTintProvider(LevelSlice var1, BlockPos var2, Mutable var3, FluidState var4, ModelQuadView var5, int[] var6) {
-      Arrays.fill(var6, ColorABGR.withAlpha(Tint.INSTANCE.ab.method1347().method2010(), 255));
+      Arrays.fill(var6, ColorABGR.withAlpha(Tint.INSTANCE.ab.getValue().method2010(), 255));
    }
 }

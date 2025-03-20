@@ -24,7 +24,7 @@ public class Framebuffer extends BaseFramebuffer {
             this.colorAttachment = GL32.glGenTextures();
             GlStateManager._glBindFramebuffer(36160, this.fbo);
             GL32.glBindTexture(37120, this.colorAttachment);
-            this.field2150 = Gui.INSTANCE.field2362.method461().samples;
+            this.field2150 = Gui.INSTANCE.field2362.getValue().samples;
             GL32.glTexImage2DMultisample(37120, this.field2150, 32856, this.textureWidth, this.textureHeight, true);
             GlStateManager._glFramebufferTexture2D(36160, 36064, 37120, this.colorAttachment, 0);
             this.checkFramebufferStatus();

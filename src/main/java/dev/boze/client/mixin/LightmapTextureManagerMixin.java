@@ -20,7 +20,7 @@ public class LightmapTextureManagerMixin {
       )
    )
    private void updateSetColor(Args var1) {
-      if (FullBright.INSTANCE.isEnabled() && FullBright.INSTANCE.field3565.method419()) {
+      if (FullBright.INSTANCE.isEnabled() && FullBright.INSTANCE.field3565.getValue()) {
          var1.set(2, -1);
       }
    }

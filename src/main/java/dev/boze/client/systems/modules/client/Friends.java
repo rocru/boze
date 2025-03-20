@@ -21,9 +21,9 @@ public class Friends extends Module {
    }
 
    public static boolean addFriend(String name) {
-      if (!INSTANCE.field683.method2120().contains(new Class3063(name))) {
-         INSTANCE.field683.method2120().add(new Class3063(name));
-         if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.method1699() && ExtraChat.INSTANCE.field2941.method419()) {
+      if (!INSTANCE.field683.getValue().contains(new Class3063(name))) {
+         INSTANCE.field683.getValue().add(new Class3063(name));
+         if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.method1699() && ExtraChat.INSTANCE.field2941.getValue()) {
             ChatInstance.method1800("/msg " + name + " I just friended you!");
          }
 
@@ -34,9 +34,9 @@ public class Friends extends Module {
    }
 
    public static boolean method343(Class3063 friend) {
-      if (!INSTANCE.field683.method2120().contains(friend)) {
-         INSTANCE.field683.method2120().add(friend);
-         if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.method1699() && ExtraChat.INSTANCE.field2941.method419()) {
+      if (!INSTANCE.field683.getValue().contains(friend)) {
+         INSTANCE.field683.getValue().add(friend);
+         if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.method1699() && ExtraChat.INSTANCE.field2941.getValue()) {
             ChatInstance.method1800("/msg " + friend.method5992() + " I just friended you!");
          }
 
@@ -47,15 +47,15 @@ public class Friends extends Module {
    }
 
    public static void method1750(String name) {
-      INSTANCE.field683.method2120().removeIf(Friends::lambda$delFriend$0);
+      INSTANCE.field683.getValue().removeIf(Friends::lambda$delFriend$0);
    }
 
    public static boolean method345(Class3063 friend) {
-      return INSTANCE.field683.method2120().remove(friend);
+      return INSTANCE.field683.getValue().remove(friend);
    }
 
    public static void method1904() {
-      INSTANCE.field683.method2120().clear();
+      INSTANCE.field683.getValue().clear();
    }
 
    public static boolean method2055(Entity entity) {
@@ -68,7 +68,7 @@ public class Friends extends Module {
       } else {
          String var4 = entity.getName().getString();
 
-         for (Class3063 var6 : INSTANCE.field683.method2120()) {
+         for (Class3063 var6 : INSTANCE.field683.getValue()) {
             if (var6.method5992().equalsIgnoreCase(var4)) {
                return true;
             }
@@ -80,7 +80,7 @@ public class Friends extends Module {
 
    public static boolean method346(String name) {
       if (name != null && INSTANCE.isEnabled()) {
-         for (Class3063 var5 : INSTANCE.field683.method2120()) {
+         for (Class3063 var5 : INSTANCE.field683.getValue()) {
             if (var5.method5992().equalsIgnoreCase(name)) {
                return true;
             }
@@ -93,7 +93,7 @@ public class Friends extends Module {
    }
 
    public static ArrayList<Class3063> method2120() {
-      return INSTANCE.field683.method2120();
+      return INSTANCE.field683.getValue();
    }
 
    private static boolean lambda$delFriend$0(String var0, Class3063 var1) {

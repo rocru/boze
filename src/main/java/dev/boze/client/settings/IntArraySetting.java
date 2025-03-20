@@ -99,7 +99,8 @@ public class IntArraySetting extends Setting<int[]> {
       this.field923 = true;
    }
 
-   public int[] method410() {
+   @Override
+   public int[] getValue() {
       return this.field917;
    }
 
@@ -111,13 +112,15 @@ public class IntArraySetting extends Setting<int[]> {
       return this.field917[this.method1366()];
    }
 
-   public int[] method411() {
+   @Override
+   public int[] resetValue() {
       this.field917[0] = this.field918[0];
       this.field917[1] = this.field918[1];
       return this.field917;
    }
 
-   public int[] method412(int[] newVal) {
+   @Override
+   public int[] setValue(int[] newVal) {
       this.method413(0, newVal[0]);
       this.method413(1, newVal[1]);
       return this.field917;
@@ -174,7 +177,8 @@ public class IntArraySetting extends Setting<int[]> {
       return tag;
    }
 
-   public int[] method418(NbtCompound tag) {
+   @Override
+   public int[] load(NbtCompound tag) {
       if (tag.contains("Value0")) {
          this.field917[0] = tag.getInt("Value0");
       }
@@ -188,31 +192,31 @@ public class IntArraySetting extends Setting<int[]> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method418(nbtCompound);
-   }
+  // @Override
+  // public Object load(NbtCompound nbtCompound) {
+  //    return this.method418(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method412((int[])object);
-   }
+   //@Override
+  // public Object setValue(Object object) {
+   //   return this.method412((int[])object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method411();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method411();
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method410();
-   }
+   //@Override
+  // public Object getValue() {
+   //   return this.method410();
+   //}
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
       this.method413(0, IntegerArgumentType.getInteger(var1, "firstvalue"));

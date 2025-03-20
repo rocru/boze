@@ -93,9 +93,9 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
       this.field375.field43 = this.field319;
       this.field375.scrollOffset = this.field383;
       this.field381 = 0.0;
-      if (Gui.INSTANCE.field2366.method461() == MaxHeight.Absolute) {
+      if (Gui.INSTANCE.field2366.getValue() == MaxHeight.Absolute) {
          this.field381 = Gui.INSTANCE.field2367.getValue() * scaleFactor;
-      } else if (Gui.INSTANCE.field2366.method461() == MaxHeight.Relative) {
+      } else if (Gui.INSTANCE.field2366.getValue() == MaxHeight.Relative) {
          this.field381 = (double)mc.getWindow().getScaledHeight() * Gui.INSTANCE.field2368.getValue();
       }
 
@@ -122,7 +122,7 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
          double var10 = var8;
          double var12 = var8 + this.field381;
          double var14 = var8 - this.field383;
-         if (Gui.INSTANCE.field2364.method419()) {
+         if (Gui.INSTANCE.field2364.getValue()) {
             for (BaseComponent var17 : this.field378) {
                if (!ClickGUI.field1335.method582(var17) && var17 instanceof ModuleComponent var18 && var18.field338) {
                   this.field380 = var18;
@@ -493,7 +493,7 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
    @Override
    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
       if (this.field375.extended) {
-         if (Gui.INSTANCE.field2365.method419() && keyCode == 256 && this.field380 != null) {
+         if (Gui.INSTANCE.field2365.getValue() && keyCode == 256 && this.field380 != null) {
             this.field380.field338 = false;
             this.field380 = null;
             return true;

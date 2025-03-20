@@ -57,8 +57,8 @@ public class WeirdColorSettingComponent extends ScaledSettingBaseComponent imple
                this.field319 + this.field300 * 0.5 - scaleFactor * 3.0,
                scaleFactor * 6.0,
                scaleFactor * 6.0,
-               this.field299.method430().field3910.method208(),
-               this.field299.method430().field3911
+               this.field299.getValue().field3910.method208(),
+               this.field299.getValue().field3911
             );
       } else {
          this.field321 = 0.0;

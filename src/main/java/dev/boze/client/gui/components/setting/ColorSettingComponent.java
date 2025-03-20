@@ -73,7 +73,7 @@ public class ColorSettingComponent extends ScaledSettingBaseComponent implements
                this.field319 + this.field294 * 0.5 - scaleFactor * 3.0,
                scaleFactor * 6.0,
                scaleFactor * 6.0,
-               this.field292.method1362()
+               this.field292.getValue()
             );
          if (!this.field292.equals(OldColors.INSTANCE.clientGradient)) {
             Notifications.SYNC

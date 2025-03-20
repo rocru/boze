@@ -106,9 +106,9 @@ public class HoleFill extends Module {
 
    @EventHandler
    public void method2071(Render3DEvent event) {
-      if (this.render.method419()) {
+      if (this.render.getValue()) {
          for (Placement var6 : this.ad) {
-            PlaceRender.INSTANCE.method2015(event, var6, this.fillColor.method1362(), this.outlineColor.method1362());
+            PlaceRender.INSTANCE.method2015(event, var6, this.fillColor.getValue(), this.outlineColor.getValue());
          }
       }
    }
@@ -116,7 +116,7 @@ public class HoleFill extends Module {
    @EventHandler
    public void method2042(PacketBundleEvent event) {
       if (event.packet instanceof PlayerPositionLookS2CPacket
-         && this.disableOnTP.method419()
+         && this.disableOnTP.getValue()
          && MinecraftUtils.isClientActive()
          && mc.player
                .getPos()
@@ -136,14 +136,14 @@ public class HoleFill extends Module {
       priority = 65
    )
    public void method1885(ACRotationEvent event) {
-      if (!event.method1018(this.InteractionMode.method461(), this.rotate.method419())) {
+      if (!event.method1018(this.InteractionMode.getValue(), this.rotate.getValue())) {
          this.ad.removeIf(HoleFill::lambda$onRotate$0);
-         if (this.disableOnJump.method419() && mc.player.getVelocity().y > 0.0 && !mc.player.isOnGround()) {
+         if (this.disableOnJump.getValue() && mc.player.getVelocity().y > 0.0 && !mc.player.isOnGround()) {
             this.toggle();
-         } else if (this.disableWhenDone.method419() && this.ac.hasElapsed(650.0)) {
+         } else if (this.disableWhenDone.getValue() && this.ac.hasElapsed(650.0)) {
             this.toggle();
-         } else if (!this.onlyWhileSneaking.method419() || mc.player.input.sneaking) {
-            if (!Options.method477(this.multiTask.method419())) {
+         } else if (!this.onlyWhileSneaking.getValue() || mc.player.input.sneaking) {
+            if (!Options.method477(this.multiTask.getValue())) {
                if (this.aa < this.interval.method434()) {
                   this.aa++;
                } else if (this.method2010() != -1) {
@@ -152,8 +152,8 @@ public class HoleFill extends Module {
                   this.ae = (List<BlockPos>)this.ae.stream().sorted(Comparator.comparing(HoleFill::lambda$onRotate$1)).collect(Collectors.toList());
                   if (this.ab != 0) {
                      int var5 = 0;
-                     Class2811.field108 = this.wallsRange.method423();
-                     Class2811.field108 = this.wallsRange.method423();
+                     Class2811.field108 = this.wallsRange.getValue();
+                     Class2811.field108 = this.wallsRange.getValue();
 
                      while (var5 < this.ae.size()) {
                         BlockPos var6 = (BlockPos)this.ae.get(var5);
@@ -170,11 +170,11 @@ public class HoleFill extends Module {
 
                            if (Class2784.method2101(var6)) {
                               BlockInteraction var8 = BlockInteraction.method2272(var6)
-                                 .method2276(this.strictDirection.method419())
-                                 .method2275(this.raycast.method419());
+                                 .method2276(this.strictDirection.getValue())
+                                 .method2275(this.raycast.getValue());
                               if (var8.method2279() != null) {
                                  this.af = var8;
-                                 if (this.rotate.method419()) {
+                                 if (this.rotate.getValue()) {
                                     float[] var9 = EntityUtil.method2146(var8.method2279().getPos());
                                     event.method1021(true);
                                     event.yaw = var9[0];
@@ -198,16 +198,16 @@ public class HoleFill extends Module {
       priority = 65
    )
    public void method1883(RotationEvent event) {
-      if (!Options.method477(this.multiTask.method419()) && !event.method554(RotationMode.Sequential)) {
+      if (!Options.method477(this.multiTask.getValue()) && !event.method554(RotationMode.Sequential)) {
          if (this.af != null) {
             int var5 = 0;
             Vec3d var6 = mc.player.getEyePos();
             int var7 = this.method2010();
             if (var7 != -1) {
                while (this.af != null && this.af.method2279() != null) {
-                  if (this.rotate.method419()) {
+                  if (this.rotate.getValue()) {
                      Vec3d var8 = var6.add(RotationHandler.method1954().multiply(this.range.getValue()));
-                     if (this.raycast.method419() && var6.distanceTo(this.af.method2279().getPos()) > (double)this.wallsRange.method423().floatValue()) {
+                     if (this.raycast.getValue() && var6.distanceTo(this.af.method2279().getPos()) > (double)this.wallsRange.getValue().floatValue()) {
                         BlockHitResult var11 = Class5924.method98(var6, var8);
                         if (!Class2784.method5444(var11, this.af.method2279())) {
                            break;
@@ -221,13 +221,13 @@ public class HoleFill extends Module {
                   }
 
                   event.method556(
-                     this, this.placeMode.method461(), this.swapMode.method461(), 70, var7, this.af.method2279(), var7 == -2 ? Hand.OFF_HAND : Hand.MAIN_HAND
+                     this, this.placeMode.getValue(), this.swapMode.getValue(), 70, var7, this.af.method2279(), var7 == -2 ? Hand.OFF_HAND : Hand.MAIN_HAND
                   );
-                  if (this.placeMode.method461() == PlaceMode.Vanilla) {
+                  if (this.placeMode.getValue() == PlaceMode.Vanilla) {
                      Class2784.method1801(this.af.method2278());
                   }
 
-                  if (this.render.method419()) {
+                  if (this.render.getValue()) {
                      this.ad.add(PlaceRender.INSTANCE.method2017(this.af.method2278()));
                   }
 
@@ -236,9 +236,9 @@ public class HoleFill extends Module {
                      break;
                   }
 
-                  ACRotationEvent var10 = ACRotationEvent.method1016(this.InteractionMode.method461(), RotationHandler.method215(), RotationHandler.method520());
+                  ACRotationEvent var10 = ACRotationEvent.method1016(this.InteractionMode.getValue(), RotationHandler.method215(), RotationHandler.method520());
                   this.method1885(var10);
-                  if (var10.method1022() && this.rotate.method419()) {
+                  if (var10.method1022() && this.rotate.getValue()) {
                      if (!mc.player.isOnGround()) {
                         break;
                      }
@@ -256,14 +256,14 @@ public class HoleFill extends Module {
 
    @EventHandler
    public void method1877(PlayerPositionEvent event) {
-      if (this.onStep.method419() && Step.INSTANCE.isEnabled()) {
+      if (this.onStep.getValue() && Step.INSTANCE.isEnabled()) {
          this.setEnabled(false);
       }
    }
 
    private List<BlockPos> method2032() {
       List<AbstractClientPlayerEntity> var4 = null;
-      if (this.proximity.method419()) {
+      if (this.proximity.getValue()) {
          var4 = mc.world.getPlayers().stream().filter(this::method1617).toList();
       }
 
@@ -276,8 +276,8 @@ public class HoleFill extends Module {
          for (int var10 = var6.getY() - var8; var10 < var6.getY() + var8; var10++) {
             for (int var11 = var6.getZ() - var7; var11 < var6.getZ() + var7; var11++) {
                BlockPos var12 = new BlockPos(var9, var10, var11);
-               if (Class5914.method5504(var12, this.doubleHoles.method419()) && mc.world.getBlockState(var12).getFluidState().isEmpty()) {
-                  if (this.proximity.method419()) {
+               if (Class5914.method5504(var12, this.doubleHoles.getValue()) && mc.world.getBlockState(var12).getFluidState().isEmpty()) {
+                  if (this.proximity.getValue()) {
                      this.ah.set((double)var12.getX() + 0.5, (double)var12.getY() + 1.0, (double)var12.getZ() + 0.5);
 
                      for (PlayerEntity var14 : var4) {
@@ -351,7 +351,7 @@ public class HoleFill extends Module {
    }
 
    private boolean method2088(Block var1) {
-      return var1 == Blocks.OBSIDIAN && this.obsidian.method419() || var1 == Blocks.COBWEB && this.webs.method419() || this.other.method419();
+      return var1 == Blocks.OBSIDIAN && this.obsidian.getValue() || var1 == Blocks.COBWEB && this.webs.getValue() || this.other.getValue();
    }
 
    private static Double lambda$onRotate$1(BlockPos var0) {

@@ -15,7 +15,7 @@ public class Direction extends ColorHUDModule {
 
    @Override
    protected String method1562() {
-      return this.field610.method419() ? this.method329() : this.method330();
+      return this.field610.getValue() ? this.method329() : this.method330();
    }
 
    @Override

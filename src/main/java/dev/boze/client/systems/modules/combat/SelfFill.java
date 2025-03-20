@@ -76,8 +76,8 @@ public class SelfFill extends Module {
       priority = 150
    )
    public void method1525(ACRotationEvent event) {
-      if (this.selfFillMode.method461() == SelfFillMode.Burrow) {
-         if (this.attackCrystals.method419()) {
+      if (this.selfFillMode.getValue() == SelfFillMode.Burrow) {
+         if (this.attackCrystals.getValue()) {
             BlockPos var10 = BlockPos.ofFloored(mc.player.getX(), mc.player.getY(), mc.player.getZ());
             List var11 = mc.world.getOtherEntities(null, new Box(var10), SelfFill::lambda$onRotate$6);
             if (!var11.isEmpty() && var11.get(0) instanceof EndCrystalEntity var12) {
@@ -97,26 +97,26 @@ public class SelfFill extends Module {
                }
             }
 
-            if (this.rotate.method419() && this.field2567 != null) {
+            if (this.rotate.getValue() && this.field2567 != null) {
                float[] var14 = EntityUtil.method2146(this.field2567.getPos());
                event.method1021(true);
                event.yaw = var14[0];
                event.pitch = var14[1];
             }
          }
-      } else if (!event.method1018(this.interactionMode.method461(), this.rotate.method419())) {
+      } else if (!event.method1018(this.interactionMode.getValue(), this.rotate.getValue())) {
          BlockPos var5 = BlockPos.ofFloored(mc.player.getX(), mc.player.getY(), mc.player.getZ());
          Class2811.field99 = true;
          if (Class2784.method2101(var5) && mc.player.isOnGround()) {
             Class2811.field99 = false;
             BlockInteraction var6 = BlockInteraction.method2272(var5);
             if (var6.method2279() == null) {
-               if (!this.await.method419()) {
+               if (!this.await.getValue()) {
                   this.setEnabled(false);
                }
             } else {
                this.field2568 = var6;
-               if (this.rotate.method419()) {
+               if (this.rotate.getValue()) {
                   float[] var7 = EntityUtil.method2146(var6.method2279().getPos());
                   event.method1021(true);
                   event.yaw = var7[0];
@@ -129,7 +129,7 @@ public class SelfFill extends Module {
             }
          } else {
             Class2811.field99 = false;
-            if (!this.await.method419()) {
+            if (!this.await.getValue()) {
                this.setEnabled(false);
             }
          }
@@ -140,7 +140,7 @@ public class SelfFill extends Module {
       priority = 150
    )
    public void method1526(RotationEvent event) {
-      if (this.selfFillMode.method461() != SelfFillMode.Burrow) {
+      if (this.selfFillMode.getValue() != SelfFillMode.Burrow) {
          if (!event.method554(RotationMode.Sequential)) {
             int var5 = this.method1528();
             if (var5 == -1) {
@@ -150,14 +150,14 @@ public class SelfFill extends Module {
                if (this.field2568 != null && this.field2568.method2279() != null) {
                   event.method556(
                      this,
-                     this.field2569 ? PlaceMode.Packet : this.placeMode.method461(),
-                     this.swap.method461(),
+                     this.field2569 ? PlaceMode.Packet : this.placeMode.getValue(),
+                     this.swap.getValue(),
                      200,
                      var5,
                      this.field2568.method2279(),
                      var5 == -2 ? Hand.OFF_HAND : Hand.MAIN_HAND
                   );
-                  if (this.placeMode.method461() == PlaceMode.Vanilla && !this.field2569) {
+                  if (this.placeMode.getValue() == PlaceMode.Vanilla && !this.field2569) {
                      Class2784.method1801(this.field2568.method2278());
                   }
 
@@ -174,7 +174,7 @@ public class SelfFill extends Module {
       priority = 200
    )
    public void method1527(MovementEvent event) {
-      if (this.selfFillMode.method461() != SelfFillMode.Web) {
+      if (this.selfFillMode.getValue() != SelfFillMode.Web) {
          int var5 = this.method1528();
          if (var5 == -1) {
             this.setEnabled(false);
@@ -183,7 +183,7 @@ public class SelfFill extends Module {
             if (this.field2565 == null) {
                this.field2565 = var6;
             } else if (!this.field2565.equals(var6)) {
-               if (this.await.method419() && !mc.player.isOnGround() && !this.field2566) {
+               if (this.await.getValue() && !mc.player.isOnGround() && !this.field2566) {
                   this.field2565 = var6;
                   return;
                }
@@ -202,7 +202,7 @@ public class SelfFill extends Module {
                } else {
                   BlockPos var7 = var6.down();
                   Direction var8 = Direction.UP;
-                  if (this.rotate.method419()) {
+                  if (this.rotate.getValue()) {
                      if (((ClientPlayerEntityAccessor)mc.player).getLastPitch() < 0.0F) {
                         mc.player.networkHandler.sendPacket(new LookAndOnGround(mc.player.getYaw(), 0.0F, true));
                      }
@@ -227,7 +227,7 @@ public class SelfFill extends Module {
                   }
 
                   Class5913.method17(Hand.MAIN_HAND, new BlockHitResult(new Vec3d((double)var9, (double)var10, (double)var11), var8, var7, false));
-                  if (this.swing.method419()) {
+                  if (this.swing.getValue()) {
                      mc.player.swingHand(Hand.MAIN_HAND);
                   }
 
@@ -236,7 +236,7 @@ public class SelfFill extends Module {
                      mc.player.getInventory().selectedSlot = var13;
                   }
 
-                  if (this.customOffset.method419()) {
+                  if (this.customOffset.getValue()) {
                      mc.player
                         .networkHandler
                         .sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + this.offset.getValue(), mc.player.getZ(), false));
@@ -257,7 +257,7 @@ public class SelfFill extends Module {
                      this.setEnabled(false);
                   }
                }
-            } else if (!this.await.method419()) {
+            } else if (!this.await.getValue()) {
                this.setEnabled(false);
             }
          }
@@ -299,10 +299,10 @@ public class SelfFill extends Module {
    }
 
    private boolean method1529(Block var1) {
-      if (this.selfFillMode.method461() == SelfFillMode.Web) {
+      if (this.selfFillMode.getValue() == SelfFillMode.Web) {
          return var1 == Blocks.COBWEB;
       } else {
-         return this.onlyEChests.method419()
+         return this.onlyEChests.getValue()
             ? var1 == Blocks.ENDER_CHEST
             : var1 == Blocks.OBSIDIAN || var1 == Blocks.CRYING_OBSIDIAN || var1 == Blocks.NETHERITE_BLOCK || var1 == Blocks.ENDER_CHEST;
       }
@@ -313,26 +313,26 @@ public class SelfFill extends Module {
    }
 
    private boolean lambda$new$5() {
-      return this.selfFillMode.method461() == SelfFillMode.Burrow && this.customOffset.method419();
+      return this.selfFillMode.getValue() == SelfFillMode.Burrow && this.customOffset.getValue();
    }
 
    private boolean lambda$new$4() {
-      return this.selfFillMode.method461() == SelfFillMode.Burrow;
+      return this.selfFillMode.getValue() == SelfFillMode.Burrow;
    }
 
    private boolean lambda$new$3() {
-      return this.selfFillMode.method461() == SelfFillMode.Burrow;
+      return this.selfFillMode.getValue() == SelfFillMode.Burrow;
    }
 
    private boolean lambda$new$2() {
-      return this.selfFillMode.method461() == SelfFillMode.Burrow;
+      return this.selfFillMode.getValue() == SelfFillMode.Burrow;
    }
 
    private boolean lambda$new$1() {
-      return this.selfFillMode.method461() == SelfFillMode.Burrow;
+      return this.selfFillMode.getValue() == SelfFillMode.Burrow;
    }
 
    private boolean lambda$new$0() {
-      return this.selfFillMode.method461() == SelfFillMode.Web;
+      return this.selfFillMode.getValue() == SelfFillMode.Web;
    }
 }

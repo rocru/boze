@@ -23,8 +23,8 @@ public class Watermark extends ColorHUDModule {
 
    @Override
    protected String method1563() {
-      return (this.field613.method419() ? Version.tag : "")
-         + (this.field614.method419() && !Boze.BUILD.isEmpty() ? (this.field613.method419() ? "+" + Boze.BUILD : Boze.BUILD) : "");
+      return (this.field613.getValue() ? Version.tag : "")
+         + (this.field614.getValue() && !Boze.BUILD.isEmpty() ? (this.field613.getValue() ? "+" + Boze.BUILD : Boze.BUILD) : "");
    }
 
    private static boolean lambda$new$0() {

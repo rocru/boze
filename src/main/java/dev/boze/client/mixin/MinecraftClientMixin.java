@@ -124,7 +124,7 @@ public abstract class MinecraftClientMixin {
       cancellable = true
    )
    private void onIsWindowFocused(CallbackInfoReturnable<Boolean> var1) {
-      if (Options.INSTANCE.field987.method419()) {
+      if (Options.INSTANCE.field987.getValue()) {
          var1.setReturnValue(true);
       }
    }
@@ -157,7 +157,7 @@ public abstract class MinecraftClientMixin {
       cancellable = true
    )
    private void onItemPick(CallbackInfo var1) {
-      if (MiddleClickAction.INSTANCE.isEnabled() && MiddleClickAction.INSTANCE.field492.method419()) {
+      if (MiddleClickAction.INSTANCE.isEnabled() && MiddleClickAction.INSTANCE.field492.getValue()) {
          var1.cancel();
       }
    }
@@ -202,8 +202,8 @@ public abstract class MinecraftClientMixin {
    private void onDoAttack(CallbackInfoReturnable<Boolean> var1) {
       if (NoMissDelay.INSTANCE.isEnabled() && NoMissDelay.INSTANCE.method1611() && this.crosshairTarget != null && this.crosshairTarget.getType() == Type.MISS) {
          if (AutoClicker.INSTANCE.isEnabled()
-            && AutoClicker.INSTANCE.field2732.method419()
-            && AutoClicker.INSTANCE.field2734.method419()
+            && AutoClicker.INSTANCE.field2732.getValue()
+            && AutoClicker.INSTANCE.field2734.getValue()
             && this.options.attackKey.isPressed()) {
             return;
          }

@@ -34,7 +34,7 @@ public class TrapUtil implements IMinecraft {
     public static HitResult[] method585(PlaceHandler helper, Box box, TrapMode boxType, Predicate<BlockPos> validity) {
         BlockPos[] var7 = method586(box, boxType);
         BlockPos[] var8;
-        if (helper.field245.method419()) {
+        if (helper.field245.getValue()) {
             for (BlockPos var12 : var7) {
                 for (PlayerEntity var14 : mc.world.getEntitiesByClass(PlayerEntity.class, new Box(var12), TrapUtil::lambda$getNextNActions$1)) {
                     if (Math.floor(var14.getY() + 0.13) < Math.floor(mc.player.getY() + 0.13)) {
@@ -52,8 +52,8 @@ public class TrapUtil implements IMinecraft {
             var8 = var7;
         }
 
-        HashMap var24 = BlockBreakingTracker.field1511.method666(helper.field248.method419());
-        if (helper.field246.method419()) {
+        HashMap var24 = BlockBreakingTracker.field1511.method666(helper.field248.getValue());
+        if (helper.field246.getValue()) {
             for (BlockPos var34 : var8.clone()) {
                 if (var24.containsKey(var34)) {
                     BlockPos[] var38 = new BlockPos[var8.length + 6];
@@ -76,7 +76,7 @@ public class TrapUtil implements IMinecraft {
                 var8[var28] = null;
                 var26--;
             } else if (EntityTracker.method2143(field1351, var31, CheckEntityMode.NotCrystals)
-                    || helper.field247.method419() && !mc.world.getBlockState(var31).isAir() && (Float) var24.getOrDefault(var31, 0.0F) > 0.8F) {
+                    || helper.field247.getValue() && !mc.world.getBlockState(var31).isAir() && (Float) var24.getOrDefault(var31, 0.0F) > 0.8F) {
                 HitResult var35 = helper.method150(field1351, var31);
                 if (var35 != null) {
                     field1352.add(var35);
@@ -108,7 +108,7 @@ public class TrapUtil implements IMinecraft {
                             if (EntityTracker.method2143(field1351, var53, CheckEntityMode.NotCrystals)) {
                                 HitResult var19 = helper.method150(field1351, var53);
                                 if (var19 != null
-                                        && helper.method147().ac.method567(var53, var50.getOpposite(), helper.field238.method419(), helper.field239.method419())) {
+                                        && helper.method147().ac.method567(var53, var50.getOpposite(), helper.field238.getValue(), helper.field239.getValue())) {
                                     var29.add(var36);
                                     field1352.add(var19);
                                     field1351.add(var53);

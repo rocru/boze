@@ -59,7 +59,7 @@ public class BowAim extends Module {
    }
 
    private InteractionMode method260() {
-      return Options.INSTANCE.method1971() ? InteractionMode.Ghost : this.interactionMode.method461();
+      return Options.INSTANCE.method1971() ? InteractionMode.Ghost : this.interactionMode.getValue();
    }
 
    @Override
@@ -83,7 +83,7 @@ public class BowAim extends Module {
             if (var5 != null) {
                RotationHelper var6 = new RotationHelper(var5[0], var5[1]);
                RotationHelper var7 = GhostRotations.INSTANCE.field760 == null ? new RotationHelper(mc.player) : GhostRotations.INSTANCE.field760;
-               RotationHelper var8 = var7.method603(var6, this.aimSpeed.method1287());
+               RotationHelper var8 = var7.method603(var6, this.aimSpeed.getValue());
                event.method1099(var8.method1600());
             }
          }
@@ -190,10 +190,10 @@ public class BowAim extends Module {
    }
 
    private float method1384() {
-      if (this.aimMode.method461() == AimMode.Feet) {
+      if (this.aimMode.getValue() == AimMode.Feet) {
          return 10.0F;
       } else {
-         return this.aimMode.method461() == AimMode.Body ? 2.0F : 1.0F;
+         return this.aimMode.getValue() == AimMode.Body ? 2.0F : 1.0F;
       }
    }
 
@@ -224,12 +224,12 @@ public class BowAim extends Module {
          }
       }
 
-      if (this.targetPriority.method461() == PriorityMode.Highest) {
-         return this.targetMode.method461() == TargetAlgorithm.Health
+      if (this.targetPriority.getValue() == PriorityMode.Highest) {
+         return this.targetMode.getValue() == TargetAlgorithm.Health
             ? (LivingEntity)var4.stream().max(Comparator.comparing(BowAim::lambda$getTarget$2)).orElse(null)
             : (LivingEntity)var4.stream().max(Comparator.comparing(BowAim::lambda$getTarget$3)).orElse(null);
       } else {
-         return this.targetMode.method461() == TargetAlgorithm.Health
+         return this.targetMode.getValue() == TargetAlgorithm.Health
             ? (LivingEntity)var4.stream().min(Comparator.comparing(BowAim::lambda$getTarget$4)).orElse(null)
             : (LivingEntity)var4.stream().min(Comparator.comparing(BowAim::lambda$getTarget$5)).orElse(null);
       }
@@ -244,9 +244,9 @@ public class BowAim extends Module {
          } else if (var1 instanceof FakePlayerEntity) {
             return false;
          } else if (Friends.method2055(var1)) {
-            return this.friends.method419();
+            return this.friends.getValue();
          } else {
-            return this.method260() == InteractionMode.Ghost && AntiBots.method2055(var1) ? false : this.players.method419();
+            return this.method260() == InteractionMode.Ghost && AntiBots.method2055(var1) ? false : this.players.getValue();
          }
       } else {
          switch (mx.field2114[var1.getType().getSpawnGroup().ordinal()]) {
@@ -254,9 +254,9 @@ public class BowAim extends Module {
             case 2:
             case 3:
             case 4:
-               return this.animals.method419();
+               return this.animals.getValue();
             case 5:
-               return this.monsters.method419();
+               return this.monsters.getValue();
             default:
                return false;
          }
@@ -280,7 +280,7 @@ public class BowAim extends Module {
    }
 
    private boolean lambda$new$1() {
-      return Options.INSTANCE.method1971() || this.interactionMode.method461() == InteractionMode.Ghost;
+      return Options.INSTANCE.method1971() || this.interactionMode.getValue() == InteractionMode.Ghost;
    }
 
    private static boolean lambda$new$0() {

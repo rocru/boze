@@ -43,11 +43,11 @@ public class AutoDisconnect extends Module {
    @EventHandler
    public void method1659(PostPlayerTickEvent event) {
       if (MinecraftUtils.isClientActive()) {
-         if (!this.ignoreTotem.method419() || !this.hasTotem()) {
-            if (this.health.method423() > -0.5F && mc.player.getHealth() <= this.health.method423()) {
+         if (!this.ignoreTotem.getValue() || !this.hasTotem()) {
+            if (this.health.getValue() > -0.5F && mc.player.getHealth() <= this.health.getValue()) {
                this.method1660("Health below AutoDisconnect threshold");
             } else {
-               if (this.players.method419()) {
+               if (this.players.getValue()) {
                   int var5 = 0;
 
                   for (PlayerEntity var7 : mc.world.getPlayers()) {
@@ -67,7 +67,7 @@ public class AutoDisconnect extends Module {
                   }
                }
 
-               if (this.crystals.method419()) {
+               if (this.crystals.getValue()) {
                   float var9 = 0.0F;
                   int var10 = 0;
 
@@ -98,19 +98,19 @@ public class AutoDisconnect extends Module {
    }
 
    private void method1660(String var1) {
-      if (this.autoDisable.method419()) {
+      if (this.autoDisable.getValue()) {
          this.setEnabled(false);
       }
 
-      if (this.mode.method461() != DisconnectMode.LogOut && !this.macro.method1322().isEmpty()) {
+      if (this.mode.getValue() != DisconnectMode.LogOut && !this.macro.getValue().isEmpty()) {
          Macro var5 = this.macro.method467();
          if (var5 != null) {
             var5.method2142();
          }
       }
 
-      if (this.mode.method461() != DisconnectMode.Macro) {
-         if (this.exploit.method419()) {
+      if (this.mode.getValue() != DisconnectMode.Macro) {
+         if (this.exploit.getValue()) {
             mc.player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(1000));
          }
 
@@ -119,10 +119,10 @@ public class AutoDisconnect extends Module {
    }
 
    private boolean lambda$new$1() {
-      return this.mode.method461() != DisconnectMode.LogOut;
+      return this.mode.getValue() != DisconnectMode.LogOut;
    }
 
    private boolean lambda$new$0() {
-      return this.mode.method461() != DisconnectMode.Macro;
+      return this.mode.getValue() != DisconnectMode.Macro;
    }
 }

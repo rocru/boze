@@ -24,7 +24,7 @@ public class AutoClicker extends Module {
    private final BooleanSetting field2733 = new BooleanSetting("OnlyWeapon", false, "Only left click when holding a weapon", this.field2732);
    public final BooleanSetting field2734 = new BooleanSetting("OnlyWhenHolding", false, "Only click when holding left click", this.field2732);
    private final MinMaxDoubleSetting field2735 = new MinMaxDoubleSetting(
-      "StartDelay", new double[]{0.0, 0.0}, 0.0, 10.0, 0.1, "Delay before clicking on hold for OnlyWhenHolding", this.field2734::method419, this.field2732
+      "StartDelay", new double[]{0.0, 0.0}, 0.0, 10.0, 0.1, "Delay before clicking on hold for OnlyWhenHolding", this.field2734::getValue, this.field2732
    );
    private final EnumSetting<ClickMethod> field2736 = new EnumSetting<ClickMethod>("Mode", ClickMethod.Normal, "Left Click Mode", this.field2732);
    private final IntArraySetting field2737 = new IntArraySetting("CPS", new int[]{6, 10}, 1, 20, 1, "Left clicks per second", this.field2732);
@@ -36,7 +36,7 @@ public class AutoClicker extends Module {
    private final BooleanSetting field2741 = new BooleanSetting("NoRods", false, "Don't right click when holding fishing rods", this.field2739);
    private final BooleanSetting field2742 = new BooleanSetting("OnlyWhenHolding", false, "Only click when holding right click", this.field2739);
    private final MinMaxDoubleSetting field2743 = new MinMaxDoubleSetting(
-      "StartDelay", new double[]{0.0, 0.0}, 0.0, 10.0, 0.1, "Delay before clicking on hold for OnlyWhenHolding", this.field2742::method419, this.field2739
+      "StartDelay", new double[]{0.0, 0.0}, 0.0, 10.0, 0.1, "Delay before clicking on hold for OnlyWhenHolding", this.field2742::getValue, this.field2739
    );
    private final EnumSetting<ClickMethod> field2744 = new EnumSetting<ClickMethod>("RightMode", ClickMethod.Normal, "Right Click Mode", this.field2739);
    private final IntArraySetting field2745 = new IntArraySetting("CPS", new int[]{6, 10}, 1, 20, 1, "Right clicks per second", this.field2739);
@@ -70,8 +70,8 @@ public class AutoClicker extends Module {
    )
    public void method1585(MouseUpdateEvent event) {
       if (this.field2749 > 0.0F && !event.method1022()) {
-         double var5 = (double)(this.field2749 * this.field2731.method423()) * Math.random();
-         double var7 = (double)(this.field2749 * this.field2731.method423()) * Math.random();
+         double var5 = (double)(this.field2749 * this.field2731.getValue()) * Math.random();
+         double var7 = (double)(this.field2749 * this.field2731.getValue()) * Math.random();
          if (Math.random() > 0.5) {
             var5 *= -1.0;
          }
@@ -94,17 +94,17 @@ public class AutoClicker extends Module {
             this.field2747.method2172();
             this.field2748.method2172();
          } else {
-            if (!this.field2739.method419()
+            if (!this.field2739.getValue()
                || mc.player.isUsingItem()
-               || this.field2740.method419() && mc.player.getMainHandStack().getItem() == Items.ENDER_PEARL
-               || this.field2741.method419() && mc.player.getMainHandStack().getItem() == Items.FISHING_ROD) {
+               || this.field2740.getValue() && mc.player.getMainHandStack().getItem() == Items.ENDER_PEARL
+               || this.field2741.getValue() && mc.player.getMainHandStack().getItem() == Items.FISHING_ROD) {
                this.field2748.method2172();
             } else {
-               this.method1587(mc.options.useKey, this.field2748, event, this.field2742.method419());
+               this.method1587(mc.options.useKey, this.field2748, event, this.field2742.getValue());
             }
 
-            if (this.field2732.method419() && !mc.interactionManager.isBreakingBlock()) {
-               if (this.field2733.method419()) {
+            if (this.field2732.getValue() && !mc.interactionManager.isBreakingBlock()) {
+               if (this.field2733.getValue()) {
                   Item var5 = mc.player.getMainHandStack().getItem();
                   if (!(var5 instanceof SwordItem) && !(var5 instanceof AxeItem) && !(var5 instanceof TridentItem)) {
                      this.field2747.method2172();
@@ -112,7 +112,7 @@ public class AutoClicker extends Module {
                   }
                }
 
-               this.method1587(mc.options.attackKey, this.field2747, event, this.field2734.method419());
+               this.method1587(mc.options.attackKey, this.field2747, event, this.field2734.getValue());
             } else {
                this.field2747.method2172();
             }
@@ -132,7 +132,7 @@ public class AutoClicker extends Module {
          if (var8 > 0 && ((KeyBindingAccessor)var1).getTimesPressed() == 0) {
             ((KeyBindingAccessor)var1).setTimesPressed(var8);
             var3.method2142();
-            if (this.field2731.method423() > 0.0F) {
+            if (this.field2731.getValue() > 0.0F) {
                this.field2749++;
             }
 
@@ -142,10 +142,10 @@ public class AutoClicker extends Module {
    }
 
    private boolean lambda$new$1() {
-      return this.field2744.method461() == ClickMethod.Vanilla;
+      return this.field2744.getValue() == ClickMethod.Vanilla;
    }
 
    private boolean lambda$new$0() {
-      return this.field2736.method461() == ClickMethod.Vanilla;
+      return this.field2736.getValue() == ClickMethod.Vanilla;
    }
 }

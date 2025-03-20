@@ -140,7 +140,7 @@ public abstract class ChatHudMixin implements IChatHud {
    )
    private static void onGetMessageOpacityMultiplier(int var0, CallbackInfoReturnable<Double> var1) {
       lastAge = var0;
-      if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.field2934.method419() && var0 < ExtraChat.INSTANCE.field2935.method434()) {
+      if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.field2934.getValue() && var0 < ExtraChat.INSTANCE.field2935.method434()) {
          double var4 = Class3071.method6022(0.0, 1.0, (double)var0 / (double)ExtraChat.INSTANCE.field2935.method434().intValue());
          var4 = MathHelper.clamp(var4, 0.0, 1.0);
          var4 *= var4;
@@ -157,7 +157,7 @@ public abstract class ChatHudMixin implements IChatHud {
    )
    public void slideModify(Args args) {
       if (ExtraChat.INSTANCE.isEnabled()) {
-         if (ExtraChat.INSTANCE.field2936.method419() && !this.isChatFocused()) {
+         if (ExtraChat.INSTANCE.field2936.getValue() && !this.isChatFocused()) {
             double var4 = Class3071.method6022(
                0.0,
                1.0,
@@ -170,7 +170,7 @@ public abstract class ChatHudMixin implements IChatHud {
             args.set(2, -MathHelper.ceil((double)var6 * var4));
          }
 
-         args.set(4, ExtraChat.INSTANCE.field2933.method1347().copy().method196(RGBAColor.method188((Integer)args.get(4))).method2010());
+         args.set(4, ExtraChat.INSTANCE.field2933.getValue().copy().method196(RGBAColor.method188((Integer)args.get(4))).method2010());
       }
    }
 
@@ -182,7 +182,7 @@ public abstract class ChatHudMixin implements IChatHud {
       )}
    )
    private int modifyChatWidth(int var1) {
-      if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.field2939.method419()) {
+      if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.field2939.getValue()) {
          var1 += 10;
       }
 

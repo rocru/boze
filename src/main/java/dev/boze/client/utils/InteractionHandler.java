@@ -96,7 +96,7 @@ public class InteractionHandler implements SettingsGroup, IMinecraft {
     );
 
     public Anticheat method147() {
-        return Options.INSTANCE.method1971() ? Anticheat.Ghost : this.field226.method461();
+        return Options.INSTANCE.method1971() ? Anticheat.Ghost : this.field226.getValue();
     }
 
     public boolean method2114() {
@@ -112,7 +112,7 @@ public class InteractionHandler implements SettingsGroup, IMinecraft {
     }
 
     public final CrystalAttackMode method148() {
-        return this.method2114() ? this.field242.method461() : CrystalAttackMode.Ignore;
+        return this.method2114() ? this.field242.getValue() : CrystalAttackMode.Ignore;
     }
 
     @Override
@@ -121,16 +121,16 @@ public class InteractionHandler implements SettingsGroup, IMinecraft {
     }
 
     public boolean method2116() {
-        return this.field235.method419();
+        return this.field235.getValue();
     }
 
     public SwapMode method149() {
         if (this.method2115()) {
             return SwapMode.Normal;
         } else {
-            return this.field234.method461() != AttackMode.Packet && this.field241.method461() != SwapMode.Normal && this.field241.method461() != SwapMode.Silent
+            return this.field234.getValue() != AttackMode.Packet && this.field241.getValue() != SwapMode.Normal && this.field241.getValue() != SwapMode.Silent
                     ? SwapMode.Silent
-                    : this.field241.method461();
+                    : this.field241.getValue();
         }
     }
 
@@ -140,7 +140,7 @@ public class InteractionHandler implements SettingsGroup, IMinecraft {
 
         for (Direction var11 : Direction.values()) {
             BlockPos var12 = pos.offset(var11);
-            if (this.method151(context, var12) && var6.method567(var12, var11.getOpposite(), this.field238.method419(), this.field239.method419())) {
+            if (this.method151(context, var12) && var6.method567(var12, var11.getOpposite(), this.field238.getValue(), this.field239.getValue())) {
                 var7.add(var11);
             }
         }
@@ -176,7 +176,7 @@ public class InteractionHandler implements SettingsGroup, IMinecraft {
     }
 
     public boolean method2117() {
-        if (!this.field235.method419()) {
+        if (!this.field235.getValue()) {
             return false;
         } else if (mc.options.jumpKey.isPressed()) {
             return true;
@@ -190,7 +190,7 @@ public class InteractionHandler implements SettingsGroup, IMinecraft {
     }
 
     private boolean lambda$new$5() {
-        return this.method2114() && this.field234.method461() == AttackMode.Packet;
+        return this.method2114() && this.field234.getValue() == AttackMode.Packet;
     }
 
     private boolean lambda$new$4() {

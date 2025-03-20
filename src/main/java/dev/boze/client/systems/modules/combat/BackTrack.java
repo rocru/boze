@@ -57,7 +57,7 @@ public class BackTrack extends Module {
 
    @Override
    public void onEnable() {
-      this.field1028 = this.mode.method461() == BacktrackMode.Once ? 0 : -1;
+      this.field1028 = this.mode.getValue() == BacktrackMode.Once ? 0 : -1;
    }
 
    @Override
@@ -68,7 +68,7 @@ public class BackTrack extends Module {
    }
 
    private void method1904() {
-      if (this.mode.method461() == BacktrackMode.Once) {
+      if (this.mode.getValue() == BacktrackMode.Once) {
          this.setEnabled(false);
       }
 
@@ -90,20 +90,20 @@ public class BackTrack extends Module {
    @EventHandler
    private void method2072(PreTickEvent var1) {
       if (!MinecraftUtils.isClientActive()) {
-         if (this.mode.method461() == BacktrackMode.Smart) {
+         if (this.mode.getValue() == BacktrackMode.Smart) {
             this.field1028 = -1;
          } else {
             this.setEnabled(false);
          }
       } else {
          if (this.field1028 < -1) {
-            if (this.mode.method461() == BacktrackMode.Smart) {
+            if (this.mode.getValue() == BacktrackMode.Smart) {
                this.field1028++;
             } else {
                this.field1028 = 0;
             }
          } else if (this.field1028 == -1) {
-            if (this.mode.method461() == BacktrackMode.Smart) {
+            if (this.mode.getValue() == BacktrackMode.Smart) {
                boolean var5 = false;
 
                for (PlayerEntity var7 : mc.world.getPlayers()) {
@@ -190,7 +190,7 @@ public class BackTrack extends Module {
          } else if (var1 instanceof FakePlayerEntity) {
             return false;
          } else {
-            return Friends.method2055(var1) ? this.friends.method419() : !AntiBots.method2055(var1);
+            return Friends.method2055(var1) ? this.friends.getValue() : !AntiBots.method2055(var1);
          }
       } else {
          return false;
@@ -198,6 +198,6 @@ public class BackTrack extends Module {
    }
 
    private boolean lambda$new$0() {
-      return this.mode.method461() == BacktrackMode.Smart;
+      return this.mode.getValue() == BacktrackMode.Smart;
    }
 }

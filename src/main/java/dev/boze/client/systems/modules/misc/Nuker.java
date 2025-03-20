@@ -43,7 +43,7 @@ public class Nuker extends Module {
    );
    public final ColorSetting field2978 = new ColorSetting("Color", new BozeDrawColor(105015015), "Color for fill", this.field2976);
    public final ColorSetting field2979 = new ColorSetting("Outline", new BozeDrawColor(-891161), "Color for outline", this.field2976);
-   private final BooleanSetting field2980 = new BooleanSetting("Shader", false, "Use a shader", this.field2976::method419);
+   private final BooleanSetting field2980 = new BooleanSetting("Shader", false, "Use a shader", this.field2976::getValue);
    public final EnumSetting<NukerShader> field2981 = new EnumSetting<NukerShader>("Shader", NukerShader.Normal, "Shader to use", this.field2980);
    public final BooleanSetting field2982 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field2980);
    public final IntSetting field2983 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field2980);
@@ -83,10 +83,10 @@ public class Nuker extends Module {
 
    @EventHandler
    public void method1731(Render3DEvent event) {
-      if (this.field2976.method419()) {
+      if (this.field2976.getValue()) {
          this.ab.forEach(this::lambda$onRender3D$4);
          if (this.ab.isEmpty()) {
-            if (this.field2989.method419() && !this.field2980.method419()) {
+            if (this.field2989.getValue() && !this.field2980.getValue()) {
                this.ac.forEach(this::lambda$onRender3D$5);
             }
 
@@ -94,21 +94,21 @@ public class Nuker extends Module {
          }
 
          this.ab.forEach(this::lambda$onRender3D$6);
-         if (this.field2989.method419() && !this.field2980.method419()) {
+         if (this.field2989.getValue() && !this.field2980.getValue()) {
             this.ac.forEach(this::lambda$onRender3D$7);
          }
 
-         if (this.field2980.method419()) {
+         if (this.field2980.getValue()) {
             ChamsShaderRenderer.method1310(
                this::lambda$onRender3D$8,
                this.method1732(),
-               this.field2982.method419(),
+               this.field2982.getValue(),
                this.field2978,
                this.field2979,
                this.field2986.method434(),
-               this.field2987.method423(),
-               this.field2984.method423(),
-               this.field2985.method423(),
+               this.field2987.getValue(),
+               this.field2984.getValue(),
+               this.field2985.getValue(),
                this.field2983.method434(),
                this.ae
             );
@@ -117,21 +117,21 @@ public class Nuker extends Module {
    }
 
    private ShaderMode method1732() {
-      if (this.field2981.method461() == NukerShader.Image) {
-         if (!this.field2988.method1322().isEmpty() && (!this.field2988.method1322().equals(this.af) || this.ae == null)) {
-            File var4 = new File(ConfigManager.images, this.field2988.method1322() + ".png");
+      if (this.field2981.getValue() == NukerShader.Image) {
+         if (!this.field2988.getValue().isEmpty() && (!this.field2988.getValue().equals(this.af) || this.ae == null)) {
+            File var4 = new File(ConfigManager.images, this.field2988.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.ae = ByteTexturePacker.method493(var5);
                if (this.ae != null) {
-                  this.af = this.field2988.method1322();
+                  this.af = this.field2988.getValue();
                } else {
                   this.af = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field2988.method1341("");
+               this.field2988.setValue("");
                this.af = "";
             }
          }
@@ -146,8 +146,8 @@ public class Nuker extends Module {
 
    private void method1733(Box var1, long var2, Renderer3D var4) {
       float var7 = MathHelper.clamp(1.0F - (float)(System.currentTimeMillis() - var2) / (float)this.method1734(), 0.0F, 1.0F);
-      BozeDrawColor var8 = (BozeDrawColor)this.field2978.method1362().copy().method197(var7);
-      BozeDrawColor var9 = (BozeDrawColor)this.field2979.method1362().copy().method197(var7);
+      BozeDrawColor var8 = (BozeDrawColor)this.field2978.getValue().copy().method197(var7);
+      BozeDrawColor var9 = (BozeDrawColor)this.field2979.getValue().copy().method197(var7);
       var4.method1273(var1, var8, var9, ShapeMode.Full, 0);
    }
 
@@ -156,14 +156,14 @@ public class Nuker extends Module {
    }
 
    private void method1735(Box var1, Renderer3D var2) {
-      if (this.field2989.method419()) {
+      if (this.field2989.getValue()) {
          this.ac.put(var1, System.currentTimeMillis());
       }
 
-      if (this.field2980.method419()) {
-         var2.method1268(var1.minX, var1.minY, var1.minZ, var1.maxX, var1.maxY, var1.maxZ, this.field2979.method1362(), 0);
+      if (this.field2980.getValue()) {
+         var2.method1268(var1.minX, var1.minY, var1.minZ, var1.maxX, var1.maxY, var1.maxZ, this.field2979.getValue(), 0);
       } else {
-         var2.method1273(var1, this.field2978.method1362(), this.field2979.method1362(), ShapeMode.Full, 0);
+         var2.method1273(var1, this.field2978.getValue(), this.field2979.getValue(), ShapeMode.Full, 0);
       }
    }
 
@@ -193,7 +193,7 @@ public class Nuker extends Module {
                for (int var13 = var7 - this.field2993.method434(); var13 <= var7 + this.field2993.method434(); var13++) {
                   for (int var14 = Math.max(mc.world.getBottomY(), var6 - this.field2993.method434()); var14 <= var6 + this.field2993.method434(); var14++) {
                      if ((!(this.field2994.getValue() > 0.0) || !(var8.squaredDistanceTo((double)var12 + 0.5, (double)var14 + 0.5, (double)var13 + 0.5) > var9))
-                        && (!this.field2998.method419() || !((double)var14 < Math.floor(mc.player.getY())))) {
+                        && (!this.field2998.getValue() || !((double)var14 < Math.floor(mc.player.getY())))) {
                         BlockPos var15 = new BlockPos(var12, var14, var13);
                         if (qG.method2101(var15) && this.method1737(mc.world.getBlockState(var15).getBlock())) {
                            var11.add(var15);
@@ -203,9 +203,9 @@ public class Nuker extends Module {
                }
             }
 
-            if (this.field2999.method461() == NukerPriority.Highest) {
+            if (this.field2999.getValue() == NukerPriority.Highest) {
                var11.sort(Comparator.comparingDouble(Nuker::lambda$onSendMovementPackets$9));
-            } else if (this.field2999.method461() != NukerPriority.Random) {
+            } else if (this.field2999.getValue() != NukerPriority.Random) {
                var11.sort(Comparator.comparingDouble(this::lambda$onSendMovementPackets$10));
             }
 
@@ -241,20 +241,20 @@ public class Nuker extends Module {
                      );
                      float[] var18 = EntityUtil.method2146(var17);
                      Object var19 = null;
-                     if (this.field2997.method419()) {
-                        var19 = new ActionWrapper(this::lambda$onSendMovementPackets$11, var18[0], var18[1], this.field2991.method419());
+                     if (this.field2997.getValue()) {
+                        var19 = new ActionWrapper(this::lambda$onSendMovementPackets$11, var18[0], var18[1], this.field2991.getValue());
                      } else {
-                        var19 = new ActionWrapper(this::lambda$onSendMovementPackets$12, var18[0], var18[1], this.field2991.method419());
+                        var19 = new ActionWrapper(this::lambda$onSendMovementPackets$12, var18[0], var18[1], this.field2991.getValue());
                      }
 
-                     if (this.field2976.method419()) {
+                     if (this.field2976.getValue()) {
                         this.ab.put(var23, System.currentTimeMillis());
                      }
 
                      var1.method1074((ActionWrapper)var19);
                      this.aa.set(var23);
                      var21++;
-                     if (!var24 && !this.field2997.method419()) {
+                     if (!var24 && !this.field2997.getValue()) {
                         break;
                      }
                   }
@@ -267,11 +267,11 @@ public class Nuker extends Module {
    }
 
    private boolean method1737(Block var1) {
-      if (this.field3001.method461() == NukerFilter.Blacklist) {
+      if (this.field3001.getValue() == NukerFilter.Blacklist) {
          if (this.field3000.method2032().contains(var1)) {
             return false;
          }
-      } else if (this.field3001.method461() == NukerFilter.Whitelist && !this.field3000.method2032().contains(var1)) {
+      } else if (this.field3001.getValue() == NukerFilter.Whitelist && !this.field3000.method2032().contains(var1)) {
          return false;
       }
 
@@ -285,14 +285,14 @@ public class Nuker extends Module {
    private void lambda$onSendMovementPackets$11(BlockPos var1, Direction var2) {
       mc.getNetworkHandler().sendPacket(new PlayerActionC2SPacket(Action.START_DESTROY_BLOCK, var1, var2));
       mc.getNetworkHandler().sendPacket(new PlayerActionC2SPacket(Action.STOP_DESTROY_BLOCK, var1, var2));
-      if (this.field2992.method419()) {
+      if (this.field2992.getValue()) {
          mc.player.swingHand(Hand.MAIN_HAND);
       }
    }
 
    private double lambda$onSendMovementPackets$10(Vec3d var1, BlockPos var2) {
       return var1.squaredDistanceTo((double)var2.getX() + 0.5, (double)var2.getY() + 0.5, (double)var2.getZ() + 0.5)
-         * (double)(this.field2999.method461() == NukerPriority.Closest ? 1 : -1);
+         * (double)(this.field2999.getValue() == NukerPriority.Closest ? 1 : -1);
    }
 
    private static double lambda$onSendMovementPackets$9(BlockPos var0) {
@@ -315,7 +315,7 @@ public class Nuker extends Module {
       BlockState var7 = mc.world.getBlockState(var2);
       VoxelShape var8 = var7.getOutlineShape(mc.world, var2);
       if (!var8.isEmpty()) {
-         if (this.field2980.method419()) {
+         if (this.field2980.getValue()) {
             if (this.ad == null) {
                this.ad = new Renderer3D(false, true);
             }
@@ -323,13 +323,13 @@ public class Nuker extends Module {
             this.ad.method1217();
          }
 
-         if (this.field2977.method461() == NukerHighlight.Complex) {
+         if (this.field2977.getValue() == NukerHighlight.Complex) {
             for (Box var10 : var8.getBoundingBoxes()) {
-               this.method1735(var10.offset(var2), this.field2980.method419() ? this.ad : var1.field1950);
+               this.method1735(var10.offset(var2), this.field2980.getValue() ? this.ad : var1.field1950);
             }
          } else {
             Box var11 = var8.getBoundingBox();
-            this.method1735(var11.offset(var2), this.field2980.method419() ? this.ad : var1.field1950);
+            this.method1735(var11.offset(var2), this.field2980.getValue() ? this.ad : var1.field1950);
          }
       }
    }
@@ -349,18 +349,18 @@ public class Nuker extends Module {
    }
 
    private boolean lambda$new$3() {
-      return !this.field2980.method419();
+      return !this.field2980.getValue();
    }
 
    private boolean lambda$new$2() {
-      return !this.field2980.method419() && this.field2976.method419();
+      return !this.field2980.getValue() && this.field2976.getValue();
    }
 
    private boolean lambda$new$1() {
-      return this.field2981.method461() == NukerShader.Image;
+      return this.field2981.getValue() == NukerShader.Image;
    }
 
    private boolean lambda$new$0() {
-      return this.field2984.method423() > 0.0F;
+      return this.field2984.getValue() > 0.0F;
    }
 }

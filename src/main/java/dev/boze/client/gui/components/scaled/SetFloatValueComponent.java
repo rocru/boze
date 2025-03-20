@@ -27,7 +27,7 @@ public class SetFloatValueComponent extends ScaledBaseComponent {
       super(setting.name, 0.2, 0.2);
       this.field1414 = setting;
       DecimalFormat var4 = new DecimalFormat("#.###");
-      this.field1415 = var4.format(setting.method423());
+      this.field1415 = var4.format(setting.getValue());
    }
 
    @Override
@@ -158,7 +158,7 @@ public class SetFloatValueComponent extends ScaledBaseComponent {
             )
             && this.field1415.length() > 0) {
             try {
-               this.field1414.method425(MathHelper.clamp(Float.parseFloat(this.field1415), this.field1414.field930, this.field1414.field931));
+               this.field1414.setValue(MathHelper.clamp(Float.parseFloat(this.field1415), this.field1414.field930, this.field1414.field931));
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             } catch (Exception var12) {
                ChatInstance.method626("Error setting value");
@@ -181,7 +181,7 @@ public class SetFloatValueComponent extends ScaledBaseComponent {
             this.field1415 = this.field1415.substring(0, this.field1415.length() - 1);
          } else if (keyCode == 257 && this.field1415.length() > 0) {
             try {
-               this.field1414.method425(MathHelper.clamp(Float.parseFloat(this.field1415), this.field1414.field930, this.field1414.field931));
+               this.field1414.setValue(MathHelper.clamp(Float.parseFloat(this.field1415), this.field1414.field930, this.field1414.field931));
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             } catch (Exception var8) {
                ChatInstance.method626("Error setting value");

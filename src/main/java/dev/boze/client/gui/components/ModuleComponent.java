@@ -331,7 +331,7 @@ public class ModuleComponent extends BaseComponent implements IMinecraft {
                   );
             }
          } else if (Theme.method1370() == ModuleDisplayMode.State && this.field334.getNotificationLength() == NotificationLength.Normal) {
-            switch (hS.field2104[Gui.INSTANCE.field2371.method461().ordinal()]) {
+            switch (hS.field2104[Gui.INSTANCE.field2371.getValue().ordinal()]) {
                case 1:
                   RenderUtil.field3963
                      .method2257(
@@ -498,7 +498,7 @@ public class ModuleComponent extends BaseComponent implements IMinecraft {
                      }
 
                      SettingBlock var12 = (SettingBlock)var13;
-                     if (!var12.method419()) {
+                     if (!var12.getValue()) {
                         continue;
                      }
                   }

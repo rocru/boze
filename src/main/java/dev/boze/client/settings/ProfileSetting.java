@@ -21,15 +21,18 @@ public class ProfileSetting extends Setting<String> {
       super(name, description, visibility);
    }
 
-   public String method1322() {
+   @Override
+   public String getValue() {
       return "";
    }
 
-   public String method1562() {
+   @Override
+   public String resetValue() {
       return "";
    }
 
-   public String method1341(String newVal) {
+   @Override
+   public String setValue(String newVal) {
       return "";
    }
 
@@ -60,37 +63,38 @@ public class ProfileSetting extends Setting<String> {
       return tag;
    }
 
-   public String method1286(NbtCompound tag) {
+   @Override
+   public String load(NbtCompound tag) {
       return "";
    }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method1286(nbtCompound);
-   }
+  // @Override
+  // public Object load(NbtCompound nbtCompound) {
+  //    return this.method1286(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method1341((String)object);
-   }
+  // @Override
+  // public Object setValue(Object object) {
+  //    return this.method1341((String)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method1562();
-   }
+   //@Override
+  // public Object resetValue() {
+   //   return this.method1562();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1322();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method1322();
+  // }
 
    private int lambda$build$2(CommandContext var1) throws CommandSyntaxException {
       String var5 = ProfileArgument.method1010(var1, "profile");
@@ -115,10 +119,10 @@ public class ProfileSetting extends Setting<String> {
          String var7 = "v2.visuals." + var5;
          String var8 = "v2.binds." + var5;
          String var9 = "v2.client." + var5;
-         Profiles.INSTANCE.field762.method1341(var6);
-         Profiles.INSTANCE.field763.method1341(var7);
-         Profiles.INSTANCE.field764.method1341(var8);
-         Profiles.INSTANCE.field765.method1341(var9);
+         Profiles.INSTANCE.field762.setValue(var6);
+         Profiles.INSTANCE.field763.setValue(var7);
+         Profiles.INSTANCE.field764.setValue(var8);
+         Profiles.INSTANCE.field765.setValue(var9);
          Boze.getModules().method398(ConfigManager.downloadConfig(var5, ConfigType.PROFILE), true);
          Class1201.method2384(false, var6, var7, var8, var9);
          this.method1800("Migrated profile " + var5);

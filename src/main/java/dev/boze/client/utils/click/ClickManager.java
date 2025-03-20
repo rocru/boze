@@ -33,11 +33,11 @@ public class ClickManager {
     }
 
     public int method2171() {
-        return this.field3938[this.field3933.method461().ordinal()].method578(this.method2173());
+        return this.field3938[this.field3933.getValue().ordinal()].method578(this.method2173());
     }
 
     public void method2172() {
-        this.field3938[this.field3933.method461().ordinal()].method938(this.method2173());
+        this.field3938[this.field3933.getValue().ordinal()].method938(this.method2173());
     }
 
     private double method2173() {

@@ -90,18 +90,18 @@ public class ESP extends Module {
 
    @EventHandler
    private void method1928(Render3DEvent var1) {
-      if (this.field3499.method461() != BoxDrawMode.Flat) {
+      if (this.field3499.getValue() != BoxDrawMode.Flat) {
          this.ap = 0;
          Renderer3D var5 = var1.field1950;
-         if (this.field3500.method423() > 1.0F) {
+         if (this.field3500.getValue() > 1.0F) {
             if (this.aq == null) {
                this.aq = new Renderer3D(false, true);
             }
 
             var5 = this.aq;
-            var5.field2166.field1594 = this.field3500.method423();
-            var5.field2168.field1594 = this.field3500.method423();
-            var5.field2170.field1594 = this.field3500.method423();
+            var5.field2166.field1594 = this.field3500.getValue();
+            var5.field2168.field1594 = this.field3500.getValue();
+            var5.field2170.field1594 = this.field3500.getValue();
             var5.method1217();
          }
 
@@ -112,7 +112,7 @@ public class ESP extends Module {
             }
          }
 
-         if (this.field3500.method423() > 1.0F) {
+         if (this.field3500.getValue() > 1.0F) {
             this.aq.method1219(var1.matrix);
          }
       }
@@ -124,7 +124,7 @@ public class ESP extends Module {
       BozeDrawColor var10 = this.method1936(var3).copy();
       var9.field411 = (int)((double)var9.field411 * var7);
       var10.field411 = (int)((double)var10.field411 * var7);
-      if (this.field3499.method461() != BoxDrawMode.Simple && !(var3 instanceof FlyingItemEntity)) {
+      if (this.field3499.getValue() != BoxDrawMode.Simple && !(var3 instanceof FlyingItemEntity)) {
          Class5923.method68(var1, var2, var3, var9, var10, ShapeMode.Full);
       } else {
          double var11 = MathHelper.lerp((double)var2, var3.lastRenderX, var3.getX()) - var3.getX();
@@ -148,10 +148,10 @@ public class ESP extends Module {
 
    @EventHandler
    public void method1930(Render2DEvent event) {
-      if (this.field3499.method461() == BoxDrawMode.Flat) {
+      if (this.field3499.getValue() == BoxDrawMode.Flat) {
          RenderUtil.field3965.method2233();
-         if (this.field3500.method423() > 1.0F) {
-            RenderUtil.field3965.field3972.field1594 = this.field3500.method423();
+         if (this.field3500.getValue() > 1.0F) {
+            RenderUtil.field3965.field3972.field1594 = this.field3500.getValue();
          }
 
          this.ap = 0;
@@ -188,7 +188,7 @@ public class ESP extends Module {
          }
 
          RenderUtil.field3965.method2235(null);
-         if (this.field3500.method423() > 1.0F) {
+         if (this.field3500.getValue() > 1.0F) {
             RenderUtil.field3965.field3972.field1594 = 1.0F;
          }
       }
@@ -228,15 +228,15 @@ public class ESP extends Module {
    }
 
    private double method1932(Entity var1) {
-      if (!this.field3501.method419()) {
+      if (!this.field3501.getValue()) {
          return 1.0;
       } else {
          double var5 = var1.getEyePos().distanceTo(mc.player.getEyePos());
-         if (var5 <= (double)this.field3502.method423().floatValue()) {
+         if (var5 <= (double)this.field3502.getValue().floatValue()) {
             return 1.0;
          } else {
-            var5 -= (double)this.field3502.method423().floatValue();
-            return 1.0 - MathHelper.clamp(var5 / (1.0 / (double)this.field3503.method423().floatValue()), 0.0, 1.0);
+            var5 -= (double)this.field3502.getValue().floatValue();
+            return 1.0 - MathHelper.clamp(var5 / (1.0 / (double)this.field3503.getValue().floatValue()), 0.0, 1.0);
          }
       }
    }
@@ -245,13 +245,13 @@ public class ESP extends Module {
    // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
    public boolean method1933(Entity e) {
       if (e instanceof PlayerEntity) {
-         return this.ai.method419();
+         return this.ai.getValue();
       } else if (e instanceof EndCrystalEntity) {
-         return this.al.method419();
+         return this.al.getValue();
       } else {
          return switch (np.field2123[e.getType().getSpawnGroup().ordinal()]) {
-            case 1, 2, 3, 4, 5, 6 -> this.aj.method419();
-            case 7 -> this.ak.method419();
+            case 1, 2, 3, 4, 5, 6 -> this.aj.getValue();
+            case 7 -> this.ak.getValue();
             default -> false;
          };
       }
@@ -260,28 +260,28 @@ public class ESP extends Module {
    // $VF: Unable to simplify switch on enum
    // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
    public boolean method1934(Entity e) {
-      if (e instanceof PlayerEntity && this.field3504.method419()) {
+      if (e instanceof PlayerEntity && this.field3504.getValue()) {
          if (e == mc.player) {
-            return this.field3505.method419() && !mc.options.getPerspective().isFirstPerson();
+            return this.field3505.getValue() && !mc.options.getPerspective().isFirstPerson();
          } else if (Friends.method2055(e)) {
-            return this.field3508.method419();
+            return this.field3508.getValue();
          } else {
-            return TargetTracker.method2055(e) ? this.field3511.method419() : true;
+            return TargetTracker.method2055(e) ? this.field3511.getValue() : true;
          }
       } else if (e instanceof EndCrystalEntity) {
-         return this.field3520.method419();
+         return this.field3520.getValue();
       } else if (e instanceof ItemEntity) {
-         return this.field3523.method419();
+         return this.field3523.getValue();
       } else if (e instanceof MinecartEntity || e instanceof BoatEntity) {
-         return this.field3526.method419();
+         return this.field3526.getValue();
       } else if (e instanceof EnderPearlEntity) {
-         return this.ab.method419();
+         return this.ab.getValue();
       } else if (e instanceof EyeOfEnderEntity) {
-         return this.ae.method419();
+         return this.ae.getValue();
       } else {
          return switch (np.field2123[e.getType().getSpawnGroup().ordinal()]) {
-            case 1, 2, 3, 4, 5, 6 -> this.field3514.method419();
-            case 7 -> this.field3517.method419();
+            case 1, 2, 3, 4, 5, 6 -> this.field3514.getValue();
+            case 7 -> this.field3517.getValue();
             default -> false;
          };
       }
@@ -292,25 +292,25 @@ public class ESP extends Module {
    private BozeDrawColor method1935(Entity var1) {
       if (var1 instanceof PlayerEntity) {
          if (Friends.method2055(var1)) {
-            return this.field3509.method1362();
+            return this.field3509.getValue();
          } else {
-            return TargetTracker.method2055(var1) ? this.field3512.method1362() : this.field3506.method1362();
+            return TargetTracker.method2055(var1) ? this.field3512.getValue() : this.field3506.getValue();
          }
       } else if (var1 instanceof EndCrystalEntity) {
-         return this.field3521.method1362();
+         return this.field3521.getValue();
       } else if (var1 instanceof ItemEntity) {
-         return this.field3524.method1362();
+         return this.field3524.getValue();
       } else if (var1 instanceof MinecartEntity || var1 instanceof BoatEntity) {
-         return this.field3527.method1362();
+         return this.field3527.getValue();
       } else if (var1 instanceof EnderPearlEntity) {
-         return this.ac.method1362();
+         return this.ac.getValue();
       } else if (var1 instanceof EyeOfEnderEntity) {
-         return this.af.method1362();
+         return this.af.getValue();
       } else {
          return switch (np.field2123[var1.getType().getSpawnGroup().ordinal()]) {
-            case 1, 2, 3, 4, 5, 6 -> this.field3515.method1362();
-            case 7 -> this.field3518.method1362();
-            default -> this.field3515.method1362();
+            case 1, 2, 3, 4, 5, 6 -> this.field3515.getValue();
+            case 7 -> this.field3518.getValue();
+            default -> this.field3515.getValue();
          };
       }
    }
@@ -320,25 +320,25 @@ public class ESP extends Module {
    private BozeDrawColor method1936(Entity var1) {
       if (var1 instanceof PlayerEntity) {
          if (Friends.method2055(var1)) {
-            return this.field3510.method1362();
+            return this.field3510.getValue();
          } else {
-            return TargetTracker.method2055(var1) ? this.field3513.method1362() : this.field3507.method1362();
+            return TargetTracker.method2055(var1) ? this.field3513.getValue() : this.field3507.getValue();
          }
       } else if (var1 instanceof EndCrystalEntity) {
-         return this.field3522.method1362();
+         return this.field3522.getValue();
       } else if (var1 instanceof ItemEntity) {
-         return this.field3525.method1362();
+         return this.field3525.getValue();
       } else if (var1 instanceof MinecartEntity || var1 instanceof BoatEntity) {
-         return this.aa.method1362();
+         return this.aa.getValue();
       } else if (var1 instanceof EnderPearlEntity) {
-         return this.ad.method1362();
+         return this.ad.getValue();
       } else if (var1 instanceof EyeOfEnderEntity) {
-         return this.ag.method1362();
+         return this.ag.getValue();
       } else {
          return switch (np.field2123[var1.getType().getSpawnGroup().ordinal()]) {
-            case 1, 2, 3, 4, 5, 6 -> this.field3516.method1362();
-            case 7 -> this.field3519.method1362();
-            default -> this.field3515.method1362();
+            case 1, 2, 3, 4, 5, 6 -> this.field3516.getValue();
+            case 7 -> this.field3519.getValue();
+            default -> this.field3515.getValue();
          };
       }
    }

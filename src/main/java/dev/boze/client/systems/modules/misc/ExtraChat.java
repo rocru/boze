@@ -48,7 +48,7 @@ public class ExtraChat extends Module {
    private static final Pattern field2945 = Pattern.compile("^(?:<[0-9]{2}:[0-9]{2}>\\s)?<(.*?)>.*");
 
    public boolean method1698() {
-      return Options.INSTANCE.method1971() || this.field2929.method461() == ExtraChatMode.Ghost;
+      return Options.INSTANCE.method1971() || this.field2929.getValue() == ExtraChatMode.Ghost;
    }
 
    public boolean method1699() {
@@ -64,7 +64,7 @@ public class ExtraChat extends Module {
 
    @EventHandler
    private void method1700(AddMessageEvent var1) {
-      if (this.field2938.method419()) {
+      if (this.field2938.getValue()) {
          Text var4 = var1.method1041();
          MutableText var5 = Text.literal("<" + this.field2944.format(new Date()) + "> ").formatted(Formatting.GRAY);
          MutableText var6 = Text.empty().append(var5).append(var4);
@@ -85,7 +85,7 @@ public class ExtraChat extends Module {
    }
 
    public void method1702(DrawContext var1, Visible var2, int var3, int var4) {
-      if (this.isEnabled() && this.field2939.method419()) {
+      if (this.isEnabled() && this.field2939.getValue()) {
          if (((IChatHudLineVisible)var2).boze$isFirst()) {
             RenderSystem.enableBlend();
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, (float)RGBAColor.method188(var4) / 255.0F);

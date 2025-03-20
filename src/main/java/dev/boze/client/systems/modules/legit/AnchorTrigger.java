@@ -66,7 +66,7 @@ public class AnchorTrigger extends Module {
 
    @EventHandler
    public void method1577(MovementEvent event) {
-      if (this.field2710.method419()) {
+      if (this.field2710.getValue()) {
          this.field2725.entrySet().removeIf(AnchorTrigger::lambda$onSendMovementPackets$2);
       }
    }
@@ -76,8 +76,8 @@ public class AnchorTrigger extends Module {
    )
    public void method1578(MouseUpdateEvent event) {
       if (this.field2719 > 0.0F && !event.method1022()) {
-         double var5 = (double)(this.field2719 * this.field2704.method423()) * Math.random();
-         double var7 = (double)(this.field2719 * this.field2704.method423()) * Math.random();
+         double var5 = (double)(this.field2719 * this.field2704.getValue()) * Math.random();
+         double var7 = (double)(this.field2719 * this.field2704.getValue()) * Math.random();
          if (Math.random() > 0.5) {
             var5 *= -1.0;
          }
@@ -95,21 +95,21 @@ public class AnchorTrigger extends Module {
 
    @EventHandler
    public void method1579(HandleInputEvent event) {
-      if (this.field2705.method419()) {
-         if (!this.field2713.method419() || mc.options.useKey.isPressed()) {
+      if (this.field2705.getValue()) {
+         if (!this.field2713.getValue() || mc.options.useKey.isPressed()) {
             Item var5 = null;
             if (mc.crosshairTarget != null
                && mc.crosshairTarget instanceof BlockHitResult var6
                && mc.world.getBlockState(var6.getBlockPos()).getBlock() == Blocks.RESPAWN_ANCHOR) {
-               if (!this.field2710.method419() || this.field2725.containsKey(var6.getBlockPos())) {
+               if (!this.field2710.getValue() || this.field2725.containsKey(var6.getBlockPos())) {
                   int var8 = (Integer)mc.world.getBlockState(var6.getBlockPos()).get(RespawnAnchorBlock.CHARGES);
                   if (var8 == 0) {
-                     if (!this.field2709.method419()) {
+                     if (!this.field2709.getValue()) {
                         return;
                      }
 
                      var5 = Items.GLOWSTONE;
-                  } else if (var8 > 0 && !this.field2708.method419()) {
+                  } else if (var8 > 0 && !this.field2708.getValue()) {
                      return;
                   }
 
@@ -123,26 +123,26 @@ public class AnchorTrigger extends Module {
                         }
                      }
                   } else if (var5 == null && mc.player.getInventory().getMainHandStack().getItem() == Items.GLOWSTONE) {
-                     if (this.field2706.method461() == AnchorTriggerDefaultItem.Slot) {
+                     if (this.field2706.getValue() == AnchorTriggerDefaultItem.Slot) {
                         ((KeyBindingAccessor)mc.options.hotbarKeys[this.field2707.method434()]).setTimesPressed(1);
                         this.field2721.reset();
                         this.field2717.method1376();
                      } else {
                         for (int var9 = 0; var9 < 9; var9++) {
-                           if (this.field2706.method461() == AnchorTriggerDefaultItem.Any
+                           if (this.field2706.getValue() == AnchorTriggerDefaultItem.Any
                                  && mc.player.getInventory().getStack(var9).getItem() != Items.GLOWSTONE
-                              || this.field2706.method461() == AnchorTriggerDefaultItem.Crystal
+                              || this.field2706.getValue() == AnchorTriggerDefaultItem.Crystal
                                  && mc.player.getInventory().getStack(var9).getItem() == Items.END_CRYSTAL
-                              || this.field2706.method461() == AnchorTriggerDefaultItem.Gapple
+                              || this.field2706.getValue() == AnchorTriggerDefaultItem.Gapple
                                  && (
                                     mc.player.getInventory().getStack(var9).getItem() == Items.GOLDEN_APPLE
                                        || mc.player.getInventory().getStack(var9).getItem() == Items.ENCHANTED_GOLDEN_APPLE
                                  )
-                              || this.field2706.method461() == AnchorTriggerDefaultItem.Sword
+                              || this.field2706.getValue() == AnchorTriggerDefaultItem.Sword
                                  && mc.player.getInventory().getStack(var9).getItem() instanceof SwordItem
-                              || this.field2706.method461() == AnchorTriggerDefaultItem.Totem
+                              || this.field2706.getValue() == AnchorTriggerDefaultItem.Totem
                                  && mc.player.getInventory().getStack(var9).getItem() == Items.TOTEM_OF_UNDYING
-                              || this.field2706.method461() == AnchorTriggerDefaultItem.Anchor
+                              || this.field2706.getValue() == AnchorTriggerDefaultItem.Anchor
                                  && mc.player.getInventory().getStack(var9).getItem() == Items.RESPAWN_ANCHOR) {
                               ((KeyBindingAccessor)mc.options.hotbarKeys[var9]).setTimesPressed(1);
                               this.field2721.reset();
@@ -167,7 +167,7 @@ public class AnchorTrigger extends Module {
             this.field2720.method2172();
          } else {
             if (this.field2721.hasElapsed((double)(this.field2717.method1367() * 50)) && !mc.player.isUsingItem() && this.method1582()) {
-               this.method1583(mc.options.useKey, this.field2720, event, this.field2713.method419());
+               this.method1583(mc.options.useKey, this.field2720, event, this.field2713.getValue());
             }
          }
       }
@@ -175,7 +175,7 @@ public class AnchorTrigger extends Module {
 
    @EventHandler
    public void method1581(PrePacketSendEvent event) {
-      if (this.field2710.method419()
+      if (this.field2710.getValue()
          && event.packet instanceof PlayerInteractBlockC2SPacket var5
          && mc.player.getStackInHand(var5.getHand()).getItem() == Items.RESPAWN_ANCHOR) {
          this.field2725.put(var5.getBlockHitResult().getBlockPos().offset(var5.getBlockHitResult().getSide()), System.currentTimeMillis());
@@ -189,12 +189,12 @@ public class AnchorTrigger extends Module {
          this.field2722.reset();
          this.field2718.method1296();
          return false;
-      } else if (this.field2710.method419() && !this.field2725.containsKey(var4.getBlockPos())) {
+      } else if (this.field2710.getValue() && !this.field2725.containsKey(var4.getBlockPos())) {
          this.field2722.reset();
          this.field2718.method1296();
          return false;
       } else if ((Integer)mc.world.getBlockState(var4.getBlockPos()).get(RespawnAnchorBlock.CHARGES) == 0) {
-         if ((!this.field2709.method419() || mc.player.getInventory().getMainHandStack().getItem() != Items.GLOWSTONE)
+         if ((!this.field2709.getValue() || mc.player.getInventory().getMainHandStack().getItem() != Items.GLOWSTONE)
             && mc.player.getOffHandStack().getItem() != Items.GLOWSTONE) {
             this.field2722.reset();
             this.field2718.method1296();
@@ -204,7 +204,7 @@ public class AnchorTrigger extends Module {
          }
       } else if ((Integer)mc.world.getBlockState(var4.getBlockPos()).get(RespawnAnchorBlock.CHARGES) <= 0) {
          return this.field2722.hasElapsed(this.field2718.method1295() * 50.0);
-      } else if (this.field2708.method419()
+      } else if (this.field2708.getValue()
          && mc.player.getInventory().getMainHandStack().getItem() != Items.GLOWSTONE
          && mc.player.getOffHandStack().getItem() != Items.GLOWSTONE) {
          return this.field2722.hasElapsed(this.field2718.method1295() * 50.0) && this.field2723.hasElapsed(this.field2711.getValue() * 50.0);
@@ -223,7 +223,7 @@ public class AnchorTrigger extends Module {
          if (var8 > 0 && ((KeyBindingAccessor)var1).getTimesPressed() == 0) {
             ((KeyBindingAccessor)var1).setTimesPressed(1);
             var3.method2142();
-            if (this.field2704.method423() > 0.0F) {
+            if (this.field2704.getValue() > 0.0F) {
                this.field2719++;
             }
 
@@ -241,10 +241,10 @@ public class AnchorTrigger extends Module {
    }
 
    private boolean lambda$new$1() {
-      return this.field2714.method461() == ClickMethod.Vanilla;
+      return this.field2714.getValue() == ClickMethod.Vanilla;
    }
 
    private boolean lambda$new$0() {
-      return this.field2706.method461() == AnchorTriggerDefaultItem.Slot;
+      return this.field2706.getValue() == AnchorTriggerDefaultItem.Slot;
    }
 }

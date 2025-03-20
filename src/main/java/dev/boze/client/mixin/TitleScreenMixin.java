@@ -69,7 +69,7 @@ public abstract class TitleScreenMixin extends Screen {
       cancellable = true
    )
    public void onInit(CallbackInfo ci) {
-      if (Options.INSTANCE.field985.method419()) {
+      if (Options.INSTANCE.field985.getValue()) {
          ci.cancel();
          if (this.splashText == null) {
             this.splashText = this.client.getSplashTextLoader().get();
@@ -122,7 +122,7 @@ public abstract class TitleScreenMixin extends Screen {
       at = {@At("TAIL")}
    )
    public void onRender(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
-      if (Options.INSTANCE.field985.method419()) {
+      if (Options.INSTANCE.field985.getValue()) {
          context.drawText(this.client.textRenderer, Text.literal("Boze " + Version.tag), 2, this.height - 20, -1, true);
          if (!Boze.BUILD.isEmpty()) {
             context.drawText(this.client.textRenderer, Text.literal("Build " + Boze.BUILD), 2, this.height - 30, -1, true);

@@ -40,16 +40,19 @@ public class ItemSetting extends Setting<String> implements IMinecraft {
       return true;
    }
 
-   public String method1322() {
+   @Override
+   public String getValue() {
       return this.field952;
    }
 
-   public String method1562() {
+   @Override
+   public String resetValue() {
       this.field952 = null;
       return null;
    }
 
-   public String method1341(String newVal) {
+   @Override
+   public String setValue(String newVal) {
       this.field952 = newVal;
       return newVal;
    }
@@ -63,7 +66,8 @@ public class ItemSetting extends Setting<String> implements IMinecraft {
       return tag;
    }
 
-   public String method1286(NbtCompound tag) {
+   @Override
+   public String load(NbtCompound tag) {
       if (tag.contains(this.name)) {
          this.field952 = tag.getString(this.name);
       }
@@ -73,31 +77,31 @@ public class ItemSetting extends Setting<String> implements IMinecraft {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method1286(nbtCompound);
-   }
+   //@Override
+   //public Object load(NbtCompound nbtCompound) {
+   //   return this.method1286(nbtCompound);
+   //}
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method1341((String)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+   //   return this.method1341((String)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method1562();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method1562();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1322();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method1322();
+   //}
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
       try {

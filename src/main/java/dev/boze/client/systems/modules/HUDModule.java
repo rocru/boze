@@ -149,7 +149,7 @@ public abstract class HUDModule extends Module {
    protected void method296(String text, BozeDrawColor color, boolean shadow) {
       this.method314(IFontRender.method499().measureTextHeight(text, shadow) + (double)HUD.INSTANCE.field2377.method434().intValue() * 2.0);
       this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.method434().intValue() * 2.0);
-      if (HUD.INSTANCE.field2394.method419()) {
+      if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
       }
 
@@ -166,7 +166,7 @@ public abstract class HUDModule extends Module {
    protected void method297(String a, String b, BozeDrawColor one, BozeDrawColor two, boolean shadow) {
       this.method314(IFontRender.method499().measureTextHeight(a + " " + b, shadow) + (double)HUD.INSTANCE.field2377.method434().intValue() * 2.0);
       this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.method434().intValue() * 2.0);
-      if (HUD.INSTANCE.field2394.method419()) {
+      if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
       }
 
@@ -191,7 +191,7 @@ public abstract class HUDModule extends Module {
    protected void method298(String a, String b, String c, BozeDrawColor one, BozeDrawColor two, BozeDrawColor three, boolean shadow) {
       this.method314(IFontRender.method499().measureTextHeight(a + " " + b + " " + c, shadow) + (double)HUD.INSTANCE.field2377.method434().intValue() * 2.0);
       this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.method434().intValue() * 2.0);
-      if (HUD.INSTANCE.field2394.method419()) {
+      if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
       }
 
@@ -224,7 +224,7 @@ public abstract class HUDModule extends Module {
    protected void method299(String a, String b, String c, BozeDrawColor one, BozeDrawColor two, BozeDrawColor three, boolean shadow) {
       this.method314(IFontRender.method499().measureTextHeight(a + b + c, shadow) + (double)HUD.INSTANCE.field2377.method434().intValue() * 2.0);
       this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.method434().intValue() * 2.0);
-      if (HUD.INSTANCE.field2394.method419()) {
+      if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
       }
 
@@ -291,7 +291,7 @@ public abstract class HUDModule extends Module {
          var3 = (double)mc.getWindow().getScaledHeight() - this.method315() - var8;
       }
 
-      if (!HUD.INSTANCE.field2381.method419()) {
+      if (!HUD.INSTANCE.field2381.getValue()) {
          for (Module var11 : Boze.getModules().modules) {
             if (var11 instanceof HUDModule && var11.isEnabled()) {
                HUDModule var12 = (HUDModule)var11;
@@ -549,12 +549,12 @@ public abstract class HUDModule extends Module {
 
    protected double method322() {
       if (mc.currentScreen instanceof ChatScreen
-         && HUD.INSTANCE.field2379.method419()
+         && HUD.INSTANCE.field2379.getValue()
          && (Math.abs(this.method307()) < 5.0 || this.method309() == 0.0)
          && this.method2010() > 2) {
          return -15.0;
       } else {
-         if (HUD.INSTANCE.field2380.method419() && this.method307() < 5.0 && this.method2010() == 2) {
+         if (HUD.INSTANCE.field2380.getValue() && this.method307() < 5.0 && this.method2010() == 2) {
             int var4 = 0;
 
             for (int var5 = 0; var5 < ((ToastManagerAccessor)mc.getToastManager()).getVisibleEntries().size(); var5++) {
@@ -573,7 +573,7 @@ public abstract class HUDModule extends Module {
    }
 
    protected boolean method1974() {
-      return mc.currentScreen instanceof ChatScreen && HUD.INSTANCE.field2380.method419() && this.method307() == 0.0;
+      return mc.currentScreen instanceof ChatScreen && HUD.INSTANCE.field2380.getValue() && this.method307() == 0.0;
    }
 
    public static boolean method323(double mouseX, double mouseY, double x, double y, double width, double height) {

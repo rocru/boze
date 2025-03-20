@@ -40,7 +40,8 @@ public class MacroSetting extends Setting<String> {
       }
    }
 
-   public String method1322() {
+   @Override
+   public String getValue() {
       if (this.method467() == null) {
          this.field974 = "";
       }
@@ -48,11 +49,13 @@ public class MacroSetting extends Setting<String> {
       return this.field974;
    }
 
-   public String method1562() {
+   @Override
+   public String resetValue() {
       return this.field974 = this.field975;
    }
 
-   public String method1341(String newVal) {
+   @Override
+   public String setValue(String newVal) {
       this.field974 = newVal;
       if (this.method467() == null) {
          this.field974 = "";
@@ -67,7 +70,8 @@ public class MacroSetting extends Setting<String> {
       return tag;
    }
 
-   public String method1286(NbtCompound tag) {
+   @Override
+   public String load(NbtCompound tag) {
       if (tag.contains("Value")) {
          this.field974 = tag.getString("Value");
       }
@@ -77,29 +81,29 @@ public class MacroSetting extends Setting<String> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method1286(nbtCompound);
-   }
+  // @Override
+  // //public Object load(NbtCompound nbtCompound) {
+  //    return this.method1286(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method1341((String)object);
-   }
+  // @Override
+  // public Object setValue(Object object) {
+   //   return this.method1341((String)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method1562();
-   }
+   //@Override
+   //public Object resetValue() {
+   //   return this.method1562();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method1322();
-   }
+  // @Override
+   //public Object getValue() {
+   //   return this.method1322();
+   //}
 }

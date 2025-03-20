@@ -88,9 +88,9 @@ public class CrystalTrigger extends Module {
    private final BooleanSetting field707 = new BooleanSetting("AntiSuicide", true, "Don't break/place crystals if you'll die");
    private final MinMaxSetting field708 = new MinMaxSetting("MaxSelfDmg", 20.0, 0.0, 36.0, 0.01, "Max self damage to break/place");
    private final BooleanSetting field709 = new BooleanSetting("Targeting", false, "Do targeting");
-   private final MinMaxSetting field710 = new MinMaxSetting("BreakMinDmg", 2.0, 0.0, 20.0, 0.01, "Min damage to break crystals", this.field709::method419);
-   private final MinMaxSetting field711 = new MinMaxSetting("PlaceMinDmg", 4.0, 0.0, 20.0, 0.01, "Min damage to place crystals", this.field709::method419);
-   private final SettingCategory field712 = new SettingCategory("Targets", "Entities to target", this.field709::method419);
+   private final MinMaxSetting field710 = new MinMaxSetting("BreakMinDmg", 2.0, 0.0, 20.0, 0.01, "Min damage to break crystals", this.field709::getValue);
+   private final MinMaxSetting field711 = new MinMaxSetting("PlaceMinDmg", 4.0, 0.0, 20.0, 0.01, "Min damage to place crystals", this.field709::getValue);
+   private final SettingCategory field712 = new SettingCategory("Targets", "Entities to target", this.field709::getValue);
    private final BooleanSetting field713 = new BooleanSetting("Players", true, "Target players", this.field712);
    private final BooleanSetting field714 = new BooleanSetting("Friends", false, "Target friends", this.field712);
    private final BooleanSetting aa = new BooleanSetting("Animals", false, "Target animals", this.field712);
@@ -121,7 +121,7 @@ public class CrystalTrigger extends Module {
 
    @EventHandler
    public void method1853(PrePacketSendEvent event) {
-      if (this.field690.method419()
+      if (this.field690.getValue()
          && event.packet instanceof PlayerInteractBlockC2SPacket var5
          && mc.player.getStackInHand(var5.getHand()).getItem() == Items.END_CRYSTAL) {
          this.au.put(var5.getBlockHitResult().getBlockPos(), System.currentTimeMillis());
@@ -130,7 +130,7 @@ public class CrystalTrigger extends Module {
 
    @EventHandler
    public void method2041(MovementEvent event) {
-      if (this.field690.method419()) {
+      if (this.field690.getValue()) {
          this.au.entrySet().removeIf(CrystalTrigger::lambda$onSendMovementPackets$3);
       }
    }
@@ -170,8 +170,8 @@ public class CrystalTrigger extends Module {
    )
    public void method1695(MouseUpdateEvent event) {
       if (this.ac > 0.0F && !event.method1022()) {
-         double var5 = (double)(this.ac * this.field686.method423()) * Math.random();
-         double var7 = (double)(this.ac * this.field686.method423()) * Math.random();
+         double var5 = (double)(this.ac * this.field686.getValue()) * Math.random();
+         double var7 = (double)(this.ac * this.field686.getValue()) * Math.random();
          if (Math.random() > 0.5) {
             var5 *= -1.0;
          }
@@ -189,12 +189,12 @@ public class CrystalTrigger extends Module {
 
    @EventHandler
    public void method1693(HandleInputEvent event) {
-      if (this.field687.method419()) {
+      if (this.field687.getValue()) {
          Object var5 = null;
          if (this.af) {
             var5 = Items.OBSIDIAN;
          } else {
-            if (!this.field698.method419()) {
+            if (!this.field698.getValue()) {
                return;
             }
 
@@ -242,7 +242,7 @@ public class CrystalTrigger extends Module {
                   }
 
                   if (!mc.player.isUsingItem() && this.method1973()) {
-                     this.method349(mc.options.useKey, this.ae, event, this.field699.method419());
+                     this.method349(mc.options.useKey, this.ae, event, this.field699.getValue());
                      this.ar.reset();
                      this.at = (long)(Math.random() * 250.0 + 250.0);
                   }
@@ -253,16 +253,16 @@ public class CrystalTrigger extends Module {
                this.af = false;
             }
 
-            if (this.field687.method419()
-               || !this.field688.method419()
+            if (this.field687.getValue()
+               || !this.field688.getValue()
                || mc.player.getMainHandStack().getItem() == Items.END_CRYSTAL
                || mc.player.getOffHandStack().getItem() == Items.END_CRYSTAL) {
-               if (this.field689.method419() && this.ag.hasElapsed((double)this.ah) && !mc.interactionManager.isBreakingBlock() && this.method1971()) {
-                  this.method349(mc.options.attackKey, this.ad, event, this.field691.method419());
+               if (this.field689.getValue() && this.ag.hasElapsed((double)this.ah) && !mc.interactionManager.isBreakingBlock() && this.method1971()) {
+                  this.method349(mc.options.attackKey, this.ad, event, this.field691.getValue());
                }
 
-               if (this.field698.method419() && this.ag.hasElapsed((double)this.ai) && !mc.player.isUsingItem() && this.method1972()) {
-                  this.method349(mc.options.useKey, this.ae, event, this.field699.method419());
+               if (this.field698.getValue() && this.ag.hasElapsed((double)this.ai) && !mc.player.isUsingItem() && this.method1972()) {
+                  this.method349(mc.options.useKey, this.ae, event, this.field699.getValue());
                }
             }
          }
@@ -275,7 +275,7 @@ public class CrystalTrigger extends Module {
          || var4.getEntity() == null
          || !(var4.getEntity() instanceof EndCrystalEntity var5)
          || !this.method347(var5.getPos(), false)
-         || this.field690.method419() && !this.au.containsKey(var5.getBlockPos().down())) {
+         || this.field690.getValue() && !this.au.containsKey(var5.getBlockPos().down())) {
          this.aj.reset();
          this.al = (long)(this.field696.method1296() * 50.0);
          return !this.ak.hasElapsed((double)this.am);
@@ -327,11 +327,11 @@ public class CrystalTrigger extends Module {
 
    private boolean method347(Vec3d var1, boolean var2) {
       double var6 = Class3069.method6003(mc.player, var1, 0, null, true);
-      if (this.field707.method419() && var6 + 2.0 > (double)(mc.player.getHealth() + mc.player.getAbsorptionAmount())) {
+      if (this.field707.getValue() && var6 + 2.0 > (double)(mc.player.getHealth() + mc.player.getAbsorptionAmount())) {
          return false;
       } else if (var6 > this.field708.getValue()) {
          return false;
-      } else if (this.field709.method419()) {
+      } else if (this.field709.getValue()) {
          for (LivingEntity var10 : this.method348(var1)) {
             if (Class3069.method6003(var10, var1, 0, null, true) > var2 ? this.field711.getValue() : this.field710.getValue()) {
                return true;
@@ -369,9 +369,9 @@ public class CrystalTrigger extends Module {
          } else if (var1 instanceof FakePlayerEntity) {
             return false;
          } else if (Friends.method2055(var1)) {
-            return this.field714.method419();
+            return this.field714.getValue();
          } else {
-            return AntiBots.method2055(var1) ? false : this.field713.method419();
+            return AntiBots.method2055(var1) ? false : this.field713.getValue();
          }
       } else {
          switch (na.field2116[var1.getType().getSpawnGroup().ordinal()]) {
@@ -379,9 +379,9 @@ public class CrystalTrigger extends Module {
             case 2:
             case 3:
             case 4:
-               return this.aa.method419();
+               return this.aa.getValue();
             case 5:
-               return this.ab.method419();
+               return this.ab.getValue();
             default:
                return false;
          }
@@ -396,7 +396,7 @@ public class CrystalTrigger extends Module {
          if (var8 > 0 && ((KeyBindingAccessor)var1).getTimesPressed() == 0) {
             ((KeyBindingAccessor)var1).setTimesPressed(var8);
             var3.method2142();
-            if (this.field686.method423() > 0.0F) {
+            if (this.field686.getValue() > 0.0F) {
                this.ac++;
             }
          }
@@ -408,14 +408,14 @@ public class CrystalTrigger extends Module {
    }
 
    private boolean lambda$new$2() {
-      return this.field700.method461() == ClickMethod.Vanilla;
+      return this.field700.getValue() == ClickMethod.Vanilla;
    }
 
    private boolean lambda$new$1() {
-      return this.field692.method461() == ClickMethod.Vanilla;
+      return this.field692.getValue() == ClickMethod.Vanilla;
    }
 
    private boolean lambda$new$0() {
-      return !this.field687.method419();
+      return !this.field687.getValue();
    }
 }

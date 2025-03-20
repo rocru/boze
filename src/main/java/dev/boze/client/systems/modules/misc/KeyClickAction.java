@@ -45,13 +45,13 @@ public class KeyClickAction extends Module {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
             if (this.field2968.method476().matches(true, event.key)) {
                if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.ENTITY && mc.targetedEntity instanceof PlayerEntity) {
-                  this.method1727(this.field2971.method461());
+                  this.method1727(this.field2971.getValue());
                } else if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.BLOCK) {
-                  this.method1727(this.field2972.method461());
+                  this.method1727(this.field2972.getValue());
                } else if (mc.player.isFallFlying()) {
-                  this.method1727(this.field2973.method461());
+                  this.method1727(this.field2973.getValue());
                } else {
-                  this.method1727(this.field2970.method461());
+                  this.method1727(this.field2970.getValue());
                }
             }
          }
@@ -64,13 +64,13 @@ public class KeyClickAction extends Module {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
             if (this.field2968.method476().matches(false, event.button)) {
                if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.ENTITY && mc.targetedEntity instanceof PlayerEntity) {
-                  this.method1727(this.field2971.method461());
+                  this.method1727(this.field2971.getValue());
                } else if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.BLOCK) {
-                  this.method1727(this.field2972.method461());
+                  this.method1727(this.field2972.getValue());
                } else if (mc.player.isFallFlying()) {
-                  this.method1727(this.field2973.method461());
+                  this.method1727(this.field2973.getValue());
                } else {
-                  this.method1727(this.field2970.method461());
+                  this.method1727(this.field2970.getValue());
                }
             }
          }
@@ -82,13 +82,13 @@ public class KeyClickAction extends Module {
       if (!(mc.currentScreen instanceof ClickGUI) && MinecraftUtils.isClientActive()) {
          if (this.field2968.method476().isPressed()) {
             if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.ENTITY && mc.targetedEntity instanceof PlayerEntity) {
-               this.method1726(this.field2971.method461());
+               this.method1726(this.field2971.getValue());
             } else if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.BLOCK) {
-               this.method1726(this.field2972.method461());
+               this.method1726(this.field2972.getValue());
             } else if (mc.player.isFallFlying()) {
-               this.method1726(this.field2973.method461());
+               this.method1726(this.field2973.getValue());
             } else {
-               this.method1726(this.field2970.method461());
+               this.method1726(this.field2970.getValue());
             }
          }
       }
@@ -100,9 +100,9 @@ public class KeyClickAction extends Module {
             return;
          }
 
-         int var5 = InventoryHelper.method166(KeyClickAction::lambda$doActionIfXp$1, this.field2974.method461());
+         int var5 = InventoryHelper.method166(KeyClickAction::lambda$doActionIfXp$1, this.field2974.getValue());
          if (var5 != -1) {
-            InventoryUtil.method534(this, 350, this.field2974.method461(), var5);
+            InventoryUtil.method534(this, 350, this.field2974.getValue(), var5);
             Class5913.method16(Hand.MAIN_HAND);
             this.field2975.reset();
             InventoryUtil.method396(this);
@@ -303,9 +303,9 @@ public class KeyClickAction extends Module {
    }
 
    private boolean lambda$new$0() {
-      return this.field2970.method461().field1730
-         || this.field2971.method461().field1730
-         || this.field2972.method461().field1730
-         || this.field2973.method461().field1730;
+      return this.field2970.getValue().field1730
+         || this.field2971.getValue().field1730
+         || this.field2972.getValue().field1730
+         || this.field2973.getValue().field1730;
    }
 }

@@ -21,14 +21,14 @@ public class AutoCraftCommand extends Command {
     }
 
     private int lambda$build$1(CommandContext var1) throws CommandSyntaxException {
-        AutoCraft.INSTANCE.item.method1341("");
+        AutoCraft.INSTANCE.item.setValue("");
         this.method624("Cleared AutoCraft item");
         return 1;
     }
 
     private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
         Item var4 = ItemArgument.method999(var1, "item");
-        AutoCraft.INSTANCE.item.method1341(var4.getName().getString());
+        AutoCraft.INSTANCE.item.setValue(var4.getName().getString());
         this.method624("Set AutoCraft item to " + var4.getName().getString());
         return 1;
     }

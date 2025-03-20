@@ -43,16 +43,19 @@ public class FriendsSetting extends Setting<ArrayList<Class3063>> {
       this.field916 = value;
    }
 
-   public ArrayList<Class3063> method2120() {
+   @Override
+   public ArrayList<Class3063> getValue() {
       return this.field916;
    }
 
-   public ArrayList<Class3063> method405() {
+   @Override
+   public ArrayList<Class3063> resetValue() {
       this.field916.clear();
       return this.field916;
    }
 
-   public ArrayList<Class3063> method406(ArrayList<Class3063> newVal) {
+   @Override
+   public ArrayList<Class3063> setValue(ArrayList<Class3063> newVal) {
       return this.field916 = newVal;
    }
 
@@ -73,12 +76,13 @@ public class FriendsSetting extends Setting<ArrayList<Class3063>> {
    @Override
    public NbtCompound save(NbtCompound tag) {
       NbtList var4 = new NbtList();
-      this.field916.forEach(FriendsSetting::lambda$addValueToTag$4);
+      this.field916.forEach(v ->lambda$addValueToTag$4(var4, v));
       tag.put("Friends", var4);
       return tag;
    }
 
-   public ArrayList<Class3063> method407(NbtCompound tag) {
+   @Override
+   public ArrayList<Class3063> load(NbtCompound tag) {
       if (tag.contains("Friends")) {
          NbtList var5 = tag.getList("Friends", 8);
          this.field916.clear();
@@ -95,31 +99,31 @@ public class FriendsSetting extends Setting<ArrayList<Class3063>> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method407(nbtCompound);
-   }
+  // @Override
+  // public Object load(NbtCompound nbtCompound) {
+  //    return this.method407(nbtCompound);
+ //  }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method406((ArrayList<Class3063>)object);
-   }
+   //@Override
+   //public Object setValue(Object object) {
+  //    return this.method406((ArrayList<Class3063>)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method405();
-   }
+   //@Override
+   //public Object resetValue() {
+  //    return this.method405();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method2120();
-   }
+   //@Override
+   //public Object getValue() {
+   //   return this.method2120();
+   //}
 
    private static void lambda$addValueToTag$4(NbtList var0, Class3063 var1) {
       if (!var0.contains(NbtString.of(var1.method5992()))) {

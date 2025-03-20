@@ -33,7 +33,7 @@ public class Regear extends Module {
 
    @Override
    public void onEnable() {
-      if (this.field3055.method1283().isEmpty()) {
+      if (this.field3055.getValue().isEmpty()) {
          ChatInstance.method740(this.internalName, "Please select a kit using the regear command before using the module");
          this.setEnabled(false);
       }
@@ -42,7 +42,7 @@ public class Regear extends Module {
    @EventHandler
    private void method1749(Render2DEvent var1) {
       if (mc.currentScreen instanceof ShulkerBoxScreen var5
-         && !this.field3055.method1283().isEmpty()
+         && !this.field3055.getValue().isEmpty()
          && this.field3055.method1282() != null
          && !this.field3055.method1282().isEmpty()) {
          ShulkerBoxScreenHandler var11 = (ShulkerBoxScreenHandler)var5.getScreenHandler();
@@ -55,17 +55,17 @@ public class Regear extends Module {
             }
          }
 
-         if (var7.get() && AntiCheat.INSTANCE.field2322.method419() && !InventoryUtil.isInventoryOpen()) {
+         if (var7.get() && AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
             mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
          }
       }
    }
 
    private void lambda$onRender2D$0(ItemStack var1, int var2, AtomicBoolean var3, String var4, Integer var5) {
-      if (this.field3058.hasElapsed((double)(this.field3056.method423() * 50.0F))) {
+      if (this.field3058.hasElapsed((double)(this.field3056.getValue() * 50.0F))) {
          ItemStack var9 = mc.player.getInventory().getStack(var5);
-         if (var9.isEmpty() || var9.getItem() == Items.AIR || this.field3057.method419()) {
-            if (!this.field3057.method419()
+         if (var9.isEmpty() || var9.getItem() == Items.AIR || this.field3057.getValue()) {
+            if (!this.field3057.getValue()
                || var9.isEmpty() && var9.getItem() == Items.AIR
                || var9.getCount() < var9.getMaxCount()
                || !var9.getItem().equals(var1.getItem())) {

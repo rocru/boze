@@ -231,7 +231,7 @@ public class pi implements IMinecraft {
                   mc.player.setPitch((float)field1102);
                }
 
-               mc.options.useKey.setPressed(!ElytraAutoPilot.INSTANCE.field3203.method419() && field1112 < 1.25 && method2114());
+               mc.options.useKey.setPressed(!ElytraAutoPilot.INSTANCE.field3203.getValue() && field1112 < 1.25 && method2114());
             }
 
             if (field1116 && !field1124 && !field1123) {
@@ -241,7 +241,7 @@ public class pi implements IMinecraft {
                   mc.player.setPitch((float)field1103);
                }
 
-               mc.options.useKey.setPressed(!ElytraAutoPilot.INSTANCE.field3203.method419() && field1112 < 1.25 && method2114());
+               mc.options.useKey.setPressed(!ElytraAutoPilot.INSTANCE.field3203.getValue() && field1112 < 1.25 && method2114());
             }
          } else {
             field1117 = 0.0;
@@ -357,7 +357,7 @@ public class pi implements IMinecraft {
 
    private static boolean method2114() {
       if (mc.player.getMainHandStack().getItem() != Items.FIREWORK_ROCKET && mc.player.getOffHandStack().getItem() != Items.FIREWORK_ROCKET) {
-         if (ElytraAutoPilot.INSTANCE.field3201.method419()) {
+         if (ElytraAutoPilot.INSTANCE.field3201.getValue()) {
             int var3 = InventoryHelper.method169(pi::lambda$tryRestockFirework$0);
             if (var3 != -1) {
                int var4;

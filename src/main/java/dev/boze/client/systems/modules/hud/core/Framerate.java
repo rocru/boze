@@ -32,24 +32,24 @@ public class Framerate extends HUDModule {
 
    @Override
    public void method295(DrawContext context) {
-      String var5 = this.field2621.method419() ? Long.toString(1000000000L / this.field2628) : Integer.toString(((MinecraftClientAccessor)mc).getCurrentFps());
-      if (this.field2620.method419()) {
+      String var5 = this.field2621.getValue() ? Long.toString(1000000000L / this.field2628) : Integer.toString(((MinecraftClientAccessor)mc).getCurrentFps());
+      if (this.field2620.getValue()) {
          this.method298(
             "FrameRate",
             var5,
             "fps",
-            this.field2622.method419() ? this.field2623.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2622.method419() ? this.field2624.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2622.method419() ? this.field2625.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2622.method419() ? this.field2626.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2622.getValue() ? this.field2623.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2622.getValue() ? this.field2624.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2622.getValue() ? this.field2625.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2622.getValue() ? this.field2626.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       } else {
          this.method297(
             var5,
             "fps",
-            this.field2622.method419() ? this.field2624.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2622.method419() ? this.field2625.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2622.method419() ? this.field2626.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2622.getValue() ? this.field2624.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2622.getValue() ? this.field2625.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2622.getValue() ? this.field2626.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       }
    }

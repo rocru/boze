@@ -49,27 +49,27 @@ public class Chams extends Module {
    public final IntSetting field3476 = new IntSetting("Range", 250, 10, 500, 10, "Range for chams");
    private final BooleanSetting field3477 = new BooleanSetting("Players", true, "Apply Chams to players");
    private final BooleanSetting field3478 = new BooleanSetting("Self", true, "Apply chams to self", this.field3477);
-   private final RGBASetting field3479 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for players", this.field3462::method419, this.field3477);
+   private final RGBASetting field3479 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for players", this.field3462::getValue, this.field3477);
    private final RGBASetting field3480 = new RGBASetting("Color", new RGBAColor(-12858419), "Color for player shader", this::lambda$new$8, this.field3477);
    private final BooleanSetting field3481 = new BooleanSetting("Friends", true, "Apply Chams to friends");
-   private final RGBASetting field3482 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for friends", this.field3462::method419, this.field3481);
+   private final RGBASetting field3482 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for friends", this.field3462::getValue, this.field3481);
    private final RGBASetting field3483 = new RGBASetting("Color", new RGBAColor(-15277290), "Color for friend shader", this::lambda$new$9, this.field3481);
    private final BooleanSetting field3484 = new BooleanSetting("Targets", true, "Apply Chams to targets");
    private final RGBASetting field3485 = new RGBASetting("Tint", new RGBAColor(-1), "Color for targets", this.field3484);
    private final RGBASetting field3486 = new RGBASetting("Color", new RGBAColor(-1894890), "Color for target shader", this.field3484);
    private final BooleanSetting field3487 = new BooleanSetting("Animals", false, "Apply Chams to animals");
-   private final RGBASetting field3488 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for animals", this.field3462::method419, this.field3487);
+   private final RGBASetting field3488 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for animals", this.field3462::getValue, this.field3487);
    private final RGBASetting field3489 = new RGBASetting("Color", new RGBAColor(-15277196), "Color for animal shader", this::lambda$new$10, this.field3487);
    private final BooleanSetting aa = new BooleanSetting("Monsters", false, "Apply Chams to monsters");
-   private final RGBASetting ab = new RGBASetting("Tint", new RGBAColor(-1), "Tint for monsters", this.field3462::method419, this.field3487);
+   private final RGBASetting ab = new RGBASetting("Tint", new RGBAColor(-1), "Tint for monsters", this.field3462::getValue, this.field3487);
    private final RGBASetting ac = new RGBASetting("Color", new RGBAColor(-1894890), "Color for monster shader", this::lambda$new$11, this.aa);
    public final BooleanSetting ad = new BooleanSetting("Crystals", false, "Apply Chams to crystals");
    public final FloatSetting ae = new FloatSetting("Scale", 1.0F, -5.0F, 5.0F, 0.1F, "Scale for crystals", this.ad);
    public final FloatSetting af = new FloatSetting("VScale", 1.0F, -5.0F, 5.0F, 0.1F, "Vertical scale for crystals", this.ad);
    public final FloatSetting ag = new FloatSetting("Spin", 1.0F, -5.0F, 5.0F, 0.1F, "Spin multiplier for crystals", this.ad);
    public final FloatSetting ah = new FloatSetting("Bounce", 1.0F, -5.0F, 5.0F, 0.1F, "Bounce multiplier for crystals", this.ad);
-   public final RGBASetting ai = new RGBASetting("CoreTint", new RGBAColor(-1), "Tint for crystal cores", this.field3462::method419, this.ad);
-   public final RGBASetting aj = new RGBASetting("FrameTint", new RGBAColor(-1), "Tint for crystal frames", this.field3462::method419, this.ad);
+   public final RGBASetting ai = new RGBASetting("CoreTint", new RGBAColor(-1), "Tint for crystal cores", this.field3462::getValue, this.ad);
+   public final RGBASetting aj = new RGBASetting("FrameTint", new RGBAColor(-1), "Tint for crystal frames", this.field3462::getValue, this.ad);
    public final RGBASetting ak = new RGBASetting("Color", new RGBAColor(-56932), "Color for crystal shader", this::lambda$new$12, this.ad);
    public final BooleanSetting al = new BooleanSetting("Hands", false, "Apply chams to hands");
    public final BooleanSetting am = new BooleanSetting("Textured", true, "Textured hands", this.al);
@@ -107,21 +107,21 @@ public class Chams extends Module {
    }
 
    public ShaderMode method1921() {
-      if (this.ap.method461() == ChamsShaderMode.Image) {
-         if (!this.aw.method1322().isEmpty() && (!this.aw.method1322().equals(this.aM) || this.aL == null)) {
-            File var4 = new File(ConfigManager.images, this.aw.method1322() + ".png");
+      if (this.ap.getValue() == ChamsShaderMode.Image) {
+         if (!this.aw.getValue().isEmpty() && (!this.aw.getValue().equals(this.aM) || this.aL == null)) {
+            File var4 = new File(ConfigManager.images, this.aw.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.aL = ByteTexturePacker.method493(var5);
                if (this.aL != null) {
-                  this.aM = this.aw.method1322();
+                  this.aM = this.aw.getValue();
                } else {
                   this.aM = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.aw.method1341("");
+               this.aw.setValue("");
                this.aM = "";
             }
          }
@@ -135,21 +135,21 @@ public class Chams extends Module {
    }
 
    public ShaderMode method1922() {
-      if (this.aB.method461() == ChamsShaderMode.Image) {
-         if (!this.aI.method1322().isEmpty() && (!this.aI.method1322().equals(this.aO) || this.aN == null)) {
-            File var4 = new File(ConfigManager.images, this.aI.method1322() + ".png");
+      if (this.aB.getValue() == ChamsShaderMode.Image) {
+         if (!this.aI.getValue().isEmpty() && (!this.aI.getValue().equals(this.aO) || this.aN == null)) {
+            File var4 = new File(ConfigManager.images, this.aI.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.aN = ByteTexturePacker.method493(var5);
                if (this.aN != null) {
-                  this.aO = this.aI.method1322();
+                  this.aO = this.aI.getValue();
                } else {
                   this.aO = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.aI.method1341("");
+               this.aI.setValue("");
                this.aO = "";
             }
          }
@@ -163,7 +163,7 @@ public class Chams extends Module {
    }
 
    public ShaderMode method1923() {
-      return this.field3465.method461();
+      return this.field3465.getValue();
    }
 
    // $VF: Unable to simplify switch on enum
@@ -172,18 +172,18 @@ public class Chams extends Module {
       if (e.distanceTo(mc.player) > (float)this.field3476.method434().intValue()) {
          return false;
       } else if (e instanceof EndCrystalEntity) {
-         return this.ad.method419();
+         return this.ad.getValue();
       } else if (!(e instanceof PlayerEntity)) {
          return switch (no.field2122[e.getType().getSpawnGroup().ordinal()]) {
-            case 1, 2, 3, 4, 5, 6 -> this.field3487.method419();
-            case 7 -> this.aa.method419();
+            case 1, 2, 3, 4, 5, 6 -> this.field3487.getValue();
+            case 7 -> this.aa.getValue();
             default -> false;
          };
-      } else if (e != mc.player || (FreeCam.INSTANCE.isEnabled() || !mc.options.getPerspective().isFirstPerson()) && this.field3478.method419()) {
+      } else if (e != mc.player || (FreeCam.INSTANCE.isEnabled() || !mc.options.getPerspective().isFirstPerson()) && this.field3478.getValue()) {
          if (Friends.method2055(e)) {
-            return this.field3481.method419();
+            return this.field3481.getValue();
          } else {
-            return TargetTracker.method2055(e) ? this.field3484.method419() : this.field3477.method419();
+            return TargetTracker.method2055(e) ? this.field3484.getValue() : this.field3477.getValue();
          }
       } else {
          return false;
@@ -195,14 +195,14 @@ public class Chams extends Module {
    public RGBAColor method1925(Entity e) {
       if (e instanceof PlayerEntity) {
          if (Friends.method2055(e)) {
-            return this.field3482.method1347();
+            return this.field3482.getValue();
          } else {
-            return TargetTracker.method2055(e) ? this.field3485.method1347() : this.field3479.method1347();
+            return TargetTracker.method2055(e) ? this.field3485.getValue() : this.field3479.getValue();
          }
       } else {
          return switch (no.field2122[e.getType().getSpawnGroup().ordinal()]) {
-            case 1, 2, 3, 4, 5, 6 -> this.field3488.method1347();
-            case 7 -> this.ab.method1347();
+            case 1, 2, 3, 4, 5, 6 -> this.field3488.getValue();
+            case 7 -> this.ab.getValue();
             default -> RGBAColor.field402;
          };
       }
@@ -213,55 +213,55 @@ public class Chams extends Module {
    public RGBAColor method1926(Entity e) {
       if (e instanceof PlayerEntity) {
          if (Friends.method2055(e)) {
-            return this.field3483.method1347();
+            return this.field3483.getValue();
          } else {
-            return TargetTracker.method2055(e) ? this.field3486.method1347() : this.field3480.method1347();
+            return TargetTracker.method2055(e) ? this.field3486.getValue() : this.field3480.getValue();
          }
       } else if (e instanceof EndCrystalEntity) {
-         return this.ak.method1347();
+         return this.ak.getValue();
       } else {
          return switch (no.field2122[e.getType().getSpawnGroup().ordinal()]) {
-            case 1, 2, 3, 4, 5, 6 -> this.field3489.method1347();
-            case 7 -> this.ac.method1347();
+            case 1, 2, 3, 4, 5, 6 -> this.field3489.getValue();
+            case 7 -> this.ac.getValue();
             default -> RGBAColor.field402;
          };
       }
    }
 
    private boolean lambda$new$16() {
-      return this.aB.method461() == ChamsShaderMode.Image;
+      return this.aB.getValue() == ChamsShaderMode.Image;
    }
 
    private boolean lambda$new$15() {
-      return this.aE.method423() > 0.0F;
+      return this.aE.getValue() > 0.0F;
    }
 
    private boolean lambda$new$14() {
-      return this.ap.method461() == ChamsShaderMode.Image;
+      return this.ap.getValue() == ChamsShaderMode.Image;
    }
 
    private boolean lambda$new$13() {
-      return this.as.method423() > 0.0F;
+      return this.as.getValue() > 0.0F;
    }
 
    private boolean lambda$new$12() {
-      return this.field3463.method461() != ChamsMode.Normal && this.method1923() == ShaderMode.Colored;
+      return this.field3463.getValue() != ChamsMode.Normal && this.method1923() == ShaderMode.Colored;
    }
 
    private boolean lambda$new$11() {
-      return this.field3463.method461() != ChamsMode.Normal && this.method1923() == ShaderMode.Colored;
+      return this.field3463.getValue() != ChamsMode.Normal && this.method1923() == ShaderMode.Colored;
    }
 
    private boolean lambda$new$10() {
-      return this.field3463.method461() != ChamsMode.Normal && this.method1923() == ShaderMode.Colored;
+      return this.field3463.getValue() != ChamsMode.Normal && this.method1923() == ShaderMode.Colored;
    }
 
    private boolean lambda$new$9() {
-      return this.field3463.method461() != ChamsMode.Normal && this.method1923() == ShaderMode.Colored;
+      return this.field3463.getValue() != ChamsMode.Normal && this.method1923() == ShaderMode.Colored;
    }
 
    private boolean lambda$new$8() {
-      return this.field3463.method461() != ChamsMode.Normal && this.method1923() == ShaderMode.Colored;
+      return this.field3463.getValue() != ChamsMode.Normal && this.method1923() == ShaderMode.Colored;
    }
 
    private boolean lambda$new$7() {
@@ -285,14 +285,14 @@ public class Chams extends Module {
    }
 
    private boolean lambda$new$2() {
-      return this.field3469.method423() > 0.0F;
+      return this.field3469.getValue() > 0.0F;
    }
 
    private boolean lambda$new$1() {
-      return this.field3463.method461() != ChamsMode.Normal;
+      return this.field3463.getValue() != ChamsMode.Normal;
    }
 
    private boolean lambda$new$0() {
-      return this.field3463.method461() == ChamsMode.Normal || this.field3463.method461() == ChamsMode.Both;
+      return this.field3463.getValue() == ChamsMode.Normal || this.field3463.getValue() == ChamsMode.Both;
    }
 }

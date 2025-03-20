@@ -139,11 +139,11 @@ public class OffHand extends Module {
    }
 
    public boolean method1971() {
-      return this.offhandMode.method461() == OffhandMode.Anarchy && !Options.INSTANCE.method1971();
+      return this.offhandMode.getValue() == OffhandMode.Anarchy && !Options.INSTANCE.method1971();
    }
 
    private boolean method1972() {
-      return this.offhandMode.method461() == OffhandMode.Ghost || Options.INSTANCE.method1971();
+      return this.offhandMode.getValue() == OffhandMode.Ghost || Options.INSTANCE.method1971();
    }
 
    private OffHand() {
@@ -187,7 +187,7 @@ public class OffHand extends Module {
    @EventHandler
    public void method2042(PacketBundleEvent event) {
       if (!this.method1972() && MinecraftUtils.isClientActive()) {
-         if (event.packet instanceof EntityStatusS2CPacket var5 && this.reactMode.method461() == ReactMode.Packet) {
+         if (event.packet instanceof EntityStatusS2CPacket var5 && this.reactMode.getValue() == ReactMode.Packet) {
             if (var5.getStatus() == 35) {
                try {
                   if (((EntityStatusS2CPacketAccessor)var5).getEntityId() == mc.player.getId()) {
@@ -227,7 +227,7 @@ public class OffHand extends Module {
    @EventHandler
    public void method384(Class1204 event) {
       if (MinecraftUtils.isClientActive()) {
-         if (this.notify.method419() && event.field65 == mc.player) {
+         if (this.notify.getValue() && event.field65 == mc.player) {
             String var5 = "th";
             if (event.field66 != 3 && (event.field66 <= 22 || !Integer.toString(event.field66).endsWith("3"))) {
                if (event.field66 != 2 && (event.field66 <= 21 || !Integer.toString(event.field66).endsWith("2"))) {
@@ -254,12 +254,12 @@ public class OffHand extends Module {
          int var5 = this.method2010();
          if (var5 == -1) {
             if (mc.currentScreen instanceof AbstractInventoryScreen) {
-               if (this.inventoryMode.method461() == InventoryMode.Auto && this.al && this.ak.hasElapsed(this.closeDelay.method1295() * 1000.0)) {
+               if (this.inventoryMode.getValue() == InventoryMode.Auto && this.al && this.ak.hasElapsed(this.closeDelay.method1295() * 1000.0)) {
                   mc.player.closeHandledScreen();
                   this.closeDelay.method1296();
                   this.ak.reset();
                   this.al = false;
-                  if (this.keepMovement.method419()) {
+                  if (this.keepMovement.getValue()) {
                      mc.options.forwardKey.setPressed(this.am);
                      mc.options.backKey.setPressed(this.an);
                      mc.options.leftKey.setPressed(this.ao);
@@ -271,12 +271,12 @@ public class OffHand extends Module {
             } else {
                this.ai.reset();
             }
-         } else if (this.inventoryMode.method461() != InventoryMode.Ignore && !(mc.currentScreen instanceof AbstractInventoryScreen)) {
+         } else if (this.inventoryMode.getValue() != InventoryMode.Ignore && !(mc.currentScreen instanceof AbstractInventoryScreen)) {
             this.aj.reset();
-            if (this.inventoryMode.method461() == InventoryMode.Auto && this.ai.hasElapsed(this.openDelay.method1295() * 1000.0)) {
+            if (this.inventoryMode.getValue() == InventoryMode.Auto && this.ai.hasElapsed(this.openDelay.method1295() * 1000.0)) {
                this.al = true;
                this.openDelay.method1296();
-               if (this.keepMovement.method419()) {
+               if (this.keepMovement.getValue()) {
                   this.method1904();
                }
 
@@ -301,14 +301,14 @@ public class OffHand extends Module {
       Item var4 = this.method447();
       if (var4 != null && var4 != mc.player.getOffHandStack().getItem()) {
          byte var5 = 0;
-         if (this.ignoreHotbar.method461() == IgnoreHotbarMode.Full
-            || this.ignoreHotbar.method461() == IgnoreHotbarMode.SemiLast
-            || this.ignoreHotbar.method461() == IgnoreHotbarMode.Semi && var4 != Items.TOTEM_OF_UNDYING) {
+         if (this.ignoreHotbar.getValue() == IgnoreHotbarMode.Full
+            || this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast
+            || this.ignoreHotbar.getValue() == IgnoreHotbarMode.Semi && var4 != Items.TOTEM_OF_UNDYING) {
             var5 = 9;
          }
 
          int var6 = InventoryHelper.method170(OffHand::lambda$getSlot$15, var5, mc.player.getInventory().size());
-         if (var4 == Items.TOTEM_OF_UNDYING && var6 == -1 && this.ignoreHotbar.method461() == IgnoreHotbarMode.SemiLast) {
+         if (var4 == Items.TOTEM_OF_UNDYING && var6 == -1 && this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast) {
             var5 = 0;
             var6 = InventoryHelper.method170(OffHand::lambda$getSlot$16, var5, mc.player.getInventory().size());
          }
@@ -366,11 +366,11 @@ public class OffHand extends Module {
 
    private void method482(Item var1) {
       if (mc.player.playerScreenHandler == mc.player.currentScreenHandler && !(mc.currentScreen instanceof AbstractInventoryScreen) && !mc.player.isCreative()
-         || this.inInventory.method419() && mc.currentScreen instanceof InventoryScreen) {
+         || this.inInventory.getValue() && mc.currentScreen instanceof InventoryScreen) {
          byte var5 = 0;
-         if (this.ignoreHotbar.method461() == IgnoreHotbarMode.Full
-            || this.ignoreHotbar.method461() == IgnoreHotbarMode.SemiLast
-            || this.ignoreHotbar.method461() == IgnoreHotbarMode.Semi && var1 != Items.TOTEM_OF_UNDYING) {
+         if (this.ignoreHotbar.getValue() == IgnoreHotbarMode.Full
+            || this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast
+            || this.ignoreHotbar.getValue() == IgnoreHotbarMode.Semi && var1 != Items.TOTEM_OF_UNDYING) {
             var5 = 9;
          }
 
@@ -385,7 +385,7 @@ public class OffHand extends Module {
             var6 = InventoryHelper.method172(this::lambda$doOffhand$18);
          }
 
-         if (var1 == Items.TOTEM_OF_UNDYING && var6 == -1 && this.ignoreHotbar.method461() == IgnoreHotbarMode.SemiLast) {
+         if (var1 == Items.TOTEM_OF_UNDYING && var6 == -1 && this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast) {
             var5 = 0;
             var6 = InventoryHelper.method171(this::lambda$doOffhand$19, var5, mc.player.getInventory().size());
          }
@@ -453,31 +453,31 @@ public class OffHand extends Module {
          method1750("Cancelled sprinting");
       }
 
-      if (this.eating.method419() && mc.player.isUsingItem()) {
+      if (this.eating.getValue() && mc.player.isUsingItem()) {
          mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, Direction.DOWN));
          short var1 = 12415;
          mc.player.stopUsingItem();
          method1750("Cancelled eating");
       }
 
-      if (this.movement.method419() && mc.player.getVelocity().length() > 0.0) {
+      if (this.movement.getValue() && mc.player.getVelocity().length() > 0.0) {
          mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), mc.player.isOnGround()));
          method1750("Cancelled movement");
       }
    }
 
    private void method1201() {
-      if (this.attacks.method419()) {
+      if (this.attacks.getValue()) {
          mc.player.resetLastAttackedTicks();
          method1750("Cancelled attacks");
       }
    }
 
    private Item method447() {
-      if (mc.player.getHealth() + mc.player.getAbsorptionAmount() <= this.health.method423()) {
+      if (mc.player.getHealth() + mc.player.getAbsorptionAmount() <= this.health.getValue()) {
          return Items.TOTEM_OF_UNDYING;
       } else {
-         if (this.safety.method461() != SafetyMode.None) {
+         if (this.safety.getValue() != SafetyMode.None) {
             if (mc.player.fallDistance > 8.0F && !PacketFly.INSTANCE.isEnabled()) {
                return Items.TOTEM_OF_UNDYING;
             }
@@ -486,7 +486,7 @@ public class OffHand extends Module {
                if (var5 instanceof EndCrystalEntity
                   && var5.distanceTo(mc.player) < 6.0F
                   && (double)(mc.player.getHealth() + mc.player.getAbsorptionAmount()) - Class3069.method6004(mc.player, var5.getPos())
-                     <= (double)(this.safety.method461() == SafetyMode.Lethal ? 1.0F : this.health.method423())) {
+                     <= (double)(this.safety.getValue() == SafetyMode.Lethal ? 1.0F : this.health.getValue())) {
                   return Items.TOTEM_OF_UNDYING;
                }
             }
@@ -498,14 +498,14 @@ public class OffHand extends Module {
             return Items.POTION;
          } else {
             Item var6 = mc.player.getOffHandStack().getItem();
-            if (this.offhandItem.method461() == OffhandItem.Totem) {
+            if (this.offhandItem.getValue() == OffhandItem.Totem) {
                return Items.TOTEM_OF_UNDYING;
-            } else if (this.offhandItem.method461() == OffhandItem.GApple) {
+            } else if (this.offhandItem.getValue() == OffhandItem.GApple) {
                return this.method487();
-            } else if (this.offhandItem.method461() == OffhandItem.Crystal) {
+            } else if (this.offhandItem.getValue() == OffhandItem.Crystal) {
                return Items.END_CRYSTAL;
             } else {
-               if (this.offhandItem.method461() == OffhandItem.Binds && this.ag == null && mc.currentScreen == null) {
+               if (this.offhandItem.getValue() == OffhandItem.Binds && this.ag == null && mc.currentScreen == null) {
                   if (this.totem.method476().isPressed() && var6 != Items.TOTEM_OF_UNDYING) {
                      this.af = Items.TOTEM_OF_UNDYING;
                      this.ag = this.totem.method476();
@@ -536,16 +536,16 @@ public class OffHand extends Module {
                }
 
                Item var7 = null;
-               if (this.offhandItem.method461() == OffhandItem.Integration) {
+               if (this.offhandItem.getValue() == OffhandItem.Integration) {
                   if (mc.player.isFallFlying()) {
                      return Items.TOTEM_OF_UNDYING;
                   }
 
                   if (mc.player.getMainHandStack().getItem() instanceof SwordItem
                      && (this.method1972() || mc.options.useKey.isPressed())
-                     && this.swordGap.method419()
+                     && this.swordGap.getValue()
                      && (
-                        !this.allowInteract.method419()
+                        !this.allowInteract.getValue()
                            || mc.crosshairTarget == null
                            || mc.crosshairTarget.getType() != Type.BLOCK
                            || !Class5924.method2088(mc.world.getBlockState(((BlockHitResult)mc.crosshairTarget).getBlockPos()).getBlock())
@@ -555,9 +555,9 @@ public class OffHand extends Module {
 
                   if (mc.player.getMainHandStack().getItem() == Items.TOTEM_OF_UNDYING
                      && mc.options.useKey.isPressed()
-                     && this.totemGap.method419()
+                     && this.totemGap.getValue()
                      && (
-                        !this.allowInteract.method419()
+                        !this.allowInteract.getValue()
                            || mc.crosshairTarget == null
                            || mc.crosshairTarget.getType() != Type.BLOCK
                            || !Class5924.method2088(mc.world.getBlockState(((BlockHitResult)mc.crosshairTarget).getBlockPos()).getBlock())
@@ -566,18 +566,18 @@ public class OffHand extends Module {
                   }
 
                   if (AutoCrystal.INSTANCE.isEnabled()
-                     && this.antiWeakness.method419()
+                     && this.antiWeakness.getValue()
                      && mc.player.hasStatusEffect(StatusEffects.WEAKNESS)
                      && (var7 = this.method485()) != null) {
                      return var7;
                   }
 
-                  if (AutoCrystal.INSTANCE.isEnabled() && this.autoCrystal.method419()) {
+                  if (AutoCrystal.INSTANCE.isEnabled() && this.autoCrystal.getValue()) {
                      return Items.END_CRYSTAL;
                   }
                }
 
-               return this.force.method419() ? Items.TOTEM_OF_UNDYING : null;
+               return this.force.getValue() ? Items.TOTEM_OF_UNDYING : null;
             }
          }
       }
@@ -600,21 +600,21 @@ public class OffHand extends Module {
 
    private boolean method486(Item var1) {
       if (var1 == Items.GOLDEN_APPLE) {
-         return this.goldenApple.method461() != GoldenAppleMode.Enc;
+         return this.goldenApple.getValue() != GoldenAppleMode.Enc;
       } else {
-         return var1 == Items.ENCHANTED_GOLDEN_APPLE ? this.goldenApple.method461() != GoldenAppleMode.Crap : false;
+         return var1 == Items.ENCHANTED_GOLDEN_APPLE ? this.goldenApple.getValue() != GoldenAppleMode.Crap : false;
       }
    }
 
    private Item method487() {
-      if (this.goldenApple.method461() == GoldenAppleMode.Enc) {
+      if (this.goldenApple.getValue() == GoldenAppleMode.Enc) {
          return Items.ENCHANTED_GOLDEN_APPLE;
-      } else if (this.goldenApple.method461() == GoldenAppleMode.Crap) {
+      } else if (this.goldenApple.getValue() == GoldenAppleMode.Crap) {
          return Items.GOLDEN_APPLE;
       } else if (this.method486(mc.player.getOffHandStack().getItem())) {
          return mc.player.getOffHandStack().getItem();
       } else {
-         for (int var4 = this.ignoreHotbar.method461() != IgnoreHotbarMode.Off ? 36 : 44; var4 >= 9; var4--) {
+         for (int var4 = this.ignoreHotbar.getValue() != IgnoreHotbarMode.Off ? 36 : 44; var4 >= 9; var4--) {
             Item var5 = mc.player.getInventory().getStack(var4 >= 36 ? var4 - 36 : var4).getItem();
             if (var5 == Items.GOLDEN_APPLE) {
                return Items.GOLDEN_APPLE;
@@ -650,59 +650,59 @@ public class OffHand extends Module {
    }
 
    private boolean lambda$new$14() {
-      return this.offhandItem.method461() == OffhandItem.Binds;
+      return this.offhandItem.getValue() == OffhandItem.Binds;
    }
 
    private boolean lambda$new$13() {
-      return this.offhandItem.method461() == OffhandItem.Binds;
+      return this.offhandItem.getValue() == OffhandItem.Binds;
    }
 
    private boolean lambda$new$12() {
-      return this.offhandItem.method461() == OffhandItem.Binds;
+      return this.offhandItem.getValue() == OffhandItem.Binds;
    }
 
    private boolean lambda$new$11() {
-      return this.offhandItem.method461() == OffhandItem.Binds;
+      return this.offhandItem.getValue() == OffhandItem.Binds;
    }
 
    private boolean lambda$new$10() {
-      return this.swordGap.method419() || this.totemGap.method419();
+      return this.swordGap.getValue() || this.totemGap.getValue();
    }
 
    private boolean lambda$new$9() {
-      return this.swordGap.method419() || this.totemGap.method419();
+      return this.swordGap.getValue() || this.totemGap.getValue();
    }
 
    private boolean lambda$new$8() {
-      return this.offhandItem.method461() == OffhandItem.Integration;
+      return this.offhandItem.getValue() == OffhandItem.Integration;
    }
 
    private boolean lambda$new$7() {
-      return this.offhandItem.method461() == OffhandItem.Integration;
+      return this.offhandItem.getValue() == OffhandItem.Integration;
    }
 
    private boolean lambda$new$6() {
-      return this.offhandItem.method461() == OffhandItem.Integration;
+      return this.offhandItem.getValue() == OffhandItem.Integration;
    }
 
    private boolean lambda$new$5() {
-      return this.offhandItem.method461() == OffhandItem.Integration;
+      return this.offhandItem.getValue() == OffhandItem.Integration;
    }
 
    private boolean lambda$new$4() {
-      return this.method1972() && this.inventoryMode.method461() == InventoryMode.Auto;
+      return this.method1972() && this.inventoryMode.getValue() == InventoryMode.Auto;
    }
 
    private boolean lambda$new$3() {
-      return this.method1972() && this.inventoryMode.method461() != InventoryMode.Ignore;
+      return this.method1972() && this.inventoryMode.getValue() != InventoryMode.Ignore;
    }
 
    private boolean lambda$new$2() {
-      return this.method1972() && this.inventoryMode.method461() == InventoryMode.Auto;
+      return this.method1972() && this.inventoryMode.getValue() == InventoryMode.Auto;
    }
 
    private boolean lambda$new$1() {
-      return this.method1972() && this.inventoryMode.method461() == InventoryMode.Auto;
+      return this.method1972() && this.inventoryMode.getValue() == InventoryMode.Auto;
    }
 
    private static boolean lambda$new$0() {

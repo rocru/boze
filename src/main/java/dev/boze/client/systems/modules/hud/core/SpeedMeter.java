@@ -54,23 +54,23 @@ public class SpeedMeter extends HUDModule {
 
    @Override
    public void method295(DrawContext context) {
-      if (this.field2644.method419()) {
+      if (this.field2644.getValue()) {
          this.method298(
             "Speed",
             String.format("%,.2f", this.method1560()),
-            this.field2645.method419() ? "b/s" : "km/h",
-            this.field2646.method419() ? this.field2647.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2646.method419() ? this.field2648.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2646.method419() ? this.field2649.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2646.method419() ? this.field2650.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2645.getValue() ? "b/s" : "km/h",
+            this.field2646.getValue() ? this.field2647.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2646.getValue() ? this.field2648.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2646.getValue() ? this.field2649.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2646.getValue() ? this.field2650.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       } else {
          this.method297(
             String.format("%,.2f", this.method1560()),
-            this.field2645.method419() ? "b/s" : "km/h",
-            this.field2646.method419() ? this.field2648.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2646.method419() ? this.field2649.method1362() : HUD.INSTANCE.field2383.method1362(),
-            this.field2646.method419() ? this.field2650.method419() : HUD.INSTANCE.field2384.method419()
+            this.field2645.getValue() ? "b/s" : "km/h",
+            this.field2646.getValue() ? this.field2648.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2646.getValue() ? this.field2649.getValue() : HUD.INSTANCE.field2383.getValue(),
+            this.field2646.getValue() ? this.field2650.getValue() : HUD.INSTANCE.field2384.getValue()
          );
       }
    }
@@ -83,6 +83,6 @@ public class SpeedMeter extends HUDModule {
       }
 
       double var8 = var4 / 30.0;
-      return this.field2645.method419() ? var8 * 20.0 * (double)Class3076.method6027() : var8 * 20.0 * 3.6 * (double)Class3076.method6027();
+      return this.field2645.getValue() ? var8 * 20.0 * (double)Class3076.method6027() : var8 * 20.0 * 3.6 * (double)Class3076.method6027();
    }
 }

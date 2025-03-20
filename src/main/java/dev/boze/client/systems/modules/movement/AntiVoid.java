@@ -67,7 +67,7 @@ public class AntiVoid extends Module {
    private boolean field562 = false;
 
    private AntiVoidMode method280() {
-      return Options.INSTANCE.method1971() ? AntiVoidMode.Ghost : this.field550.method461();
+      return Options.INSTANCE.method1971() ? AntiVoidMode.Ghost : this.field550.getValue();
    }
 
    public AntiVoid() {
@@ -83,7 +83,7 @@ public class AntiVoid extends Module {
    @EventHandler
    public void method1693(HandleInputEvent event) {
       if (this.method280() == AntiVoidMode.Ghost
-         && mc.player.fallDistance >= this.field551.method423()
+         && mc.player.fallDistance >= this.field551.getValue()
          && !this.field562
          && mc.world.isSpaceEmpty(mc.player.getBoundingBox().withMinY((double)mc.world.getBottomY()))
          && !mc.player.isCreative()) {
@@ -113,7 +113,7 @@ public class AntiVoid extends Module {
          && !this.field562
          && this.field560.hasElapsed(300.0)
          && !mc.player.isCreative()) {
-         if (mc.player.fallDistance >= this.field551.method423() && mc.world.isSpaceEmpty(mc.player.getBoundingBox().withMinY((double)mc.world.getBottomY()))) {
+         if (mc.player.fallDistance >= this.field551.getValue() && mc.world.isSpaceEmpty(mc.player.getBoundingBox().withMinY((double)mc.world.getBottomY()))) {
             ItemStack var5 = mc.player.getMainHandStack();
             if (var5.isEmpty() || var5.getItem() != Items.ENDER_PEARL) {
                var5 = mc.player.getOffHandStack();
@@ -134,7 +134,7 @@ public class AntiVoid extends Module {
             }
 
             RotationHelper var8 = Class1202.method2391(mc.player.getEyePos(), mc.player.getEyePos().add(var7));
-            RotationHelper var9 = var6.method603(var8, this.field552.method1287()).method1600();
+            RotationHelper var9 = var6.method603(var8, this.field552.getValue()).method1600();
             RotationHelper var10 = var9.method606(var6);
             Pair[] var11 = RotationHelper.method614(var10);
             event.deltaX = event.deltaX + (Double)var11[0].getLeft();
@@ -155,7 +155,7 @@ public class AntiVoid extends Module {
          && !this.field562
          && this.field560.hasElapsed(300.0)
          && !mc.player.isCreative()) {
-         if (mc.player.fallDistance >= this.field551.method423() && mc.world.isSpaceEmpty(mc.player.getBoundingBox().withMinY((double)mc.world.getBottomY()))) {
+         if (mc.player.fallDistance >= this.field551.getValue() && mc.world.isSpaceEmpty(mc.player.getBoundingBox().withMinY((double)mc.world.getBottomY()))) {
             this.field555.method1782();
             ItemStack var7 = mc.player.getMainHandStack();
             if (var7.isEmpty() || var7.getItem() != Items.ENDER_PEARL) {
@@ -212,20 +212,20 @@ public class AntiVoid extends Module {
       if (this.method280() == AntiVoidMode.Anarchy) {
          int var5 = mc.world.getBottomY() - this.field554.method434();
          if (mc.player.getPos().y + event.vec3.y <= (double)var5) {
-            if (this.field553.method461() == AntiVoidType.Packet) {
+            if (this.field553.getValue() == AntiVoidType.Packet) {
                mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), 999.0, mc.player.getZ(), true));
                mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), 999.0, mc.player.getZ(), false));
                mc.player.networkHandler.sendPacket(new PositionAndOnGround(Math.random() * 5.8E7 - 2.9E7, 999.0, Math.random() * 5.8E7 - 2.9E7, true));
                mc.player.networkHandler.sendPacket(new PositionAndOnGround(Math.random() * 5.8E7 - 2.9E7, 999.0, Math.random() * 5.8E7 - 2.9E7, false));
-            } else if (this.field553.method461() == AntiVoidType.Motion) {
+            } else if (this.field553.getValue() == AntiVoidType.Motion) {
                event.vec3 = new Vec3d(event.vec3.x, 0.4, event.vec3.z);
                event.field1892 = true;
-            } else if (this.field553.method461() == AntiVoidType.Flight) {
+            } else if (this.field553.getValue() == AntiVoidType.Flight) {
                Flight.INSTANCE.setEnabled(true);
-            } else if (this.field553.method461() == AntiVoidType.Hover) {
+            } else if (this.field553.getValue() == AntiVoidType.Hover) {
                event.vec3 = new Vec3d(event.vec3.x, 0.0, event.vec3.z);
                event.field1892 = true;
-            } else if (this.field553.method461() == AntiVoidType.PacketFloat) {
+            } else if (this.field553.getValue() == AntiVoidType.PacketFloat) {
                for (int var6 = 0; var6 < 20; var6++) {
                   mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), false));
                }

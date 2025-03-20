@@ -134,7 +134,7 @@ public class AuraGhost extends GhostModule {
 
    @Override
    public InteractionMode getInteractionMode() {
-      return Options.INSTANCE.method1971() ? InteractionMode.Ghost : this.field2460.mode.method461();
+      return Options.INSTANCE.method1971() ? InteractionMode.Ghost : this.field2460.mode.getValue();
    }
 
    public void method1417(eJ event) {
@@ -472,13 +472,13 @@ public class AuraGhost extends GhostModule {
    }
 
    public void method1418(OpenScreenEvent event) {
-      if (event.screen instanceof DeathScreen && this.field2488.method419()) {
+      if (event.screen instanceof DeathScreen && this.field2488.getValue()) {
          this.field2460.setEnabled(false);
       }
    }
 
    public void method1419(PacketBundleEvent event) {
-      if (event.packet instanceof PlayerPositionLookS2CPacket && this.field2489.method419() && MinecraftUtils.isClientActive()) {
+      if (event.packet instanceof PlayerPositionLookS2CPacket && this.field2489.getValue() && MinecraftUtils.isClientActive()) {
          this.field2460.setEnabled(false);
       }
    }
@@ -493,23 +493,23 @@ public class AuraGhost extends GhostModule {
 
    public void method1421(RotationEvent event) {
       this.field2497 = false;
-      if (this.field2465.method419() || !(mc.currentScreen instanceof HandledScreen)) {
-         if (!this.field2466.method419()
+      if (this.field2465.getValue() || !(mc.currentScreen instanceof HandledScreen)) {
+         if (!this.field2466.getValue()
             || mc.player.getMainHandStack().getItem() instanceof SwordItem
             || mc.player.getMainHandStack().getItem() instanceof AxeItem) {
-            if (!this.field2467.method419() || mc.options.attackKey.isPressed()) {
+            if (!this.field2467.getValue() || mc.options.attackKey.isPressed()) {
                ArrayList<Pair> var5 = new ArrayList<>();
                this.field2496.stream().filter(this::lambda$onInteract$7).forEach(this::lambda$onInteract$8);
                if (!var5.isEmpty() && !event.method2114()) {
                   int var6 = this.field2461.method2171();
-                  if (this.field2486.method461() == AuraAntiBlock.Always
+                  if (this.field2486.getValue() == AuraAntiBlock.Always
                      && var6 == 0
                      && mc.player.getMainHandStack().getItem() instanceof AxeItem
                      && var5.stream().anyMatch(AuraGhost::lambda$onInteract$9)) {
                      var6 = 1;
                   }
 
-                  if (!mc.player.isUsingItem() && !this.field2468.method461().method2114()) {
+                  if (!mc.player.isUsingItem() && !this.field2468.getValue().method2114()) {
                      boolean var7 = false;
 
                      for (Pair var9 : var5) {
@@ -518,12 +518,12 @@ public class AuraGhost extends GhostModule {
                         this.method1423(var10, var6, var11);
                         event.method2142();
                         var7 = true;
-                        if (this.field2483.method461() == Targeting.Single) {
+                        if (this.field2483.getValue() == Targeting.Single) {
                            break;
                         }
                      }
 
-                     if (!var7 && this.field2482.method419()) {
+                     if (!var7 && this.field2482.getValue()) {
                         HitResult var12 = Class5924.method73(
                            this.field2469.method1295(),
                            GhostRotations.INSTANCE.field760 != null ? GhostRotations.INSTANCE.field760 : new RotationHelper(mc.player),
@@ -560,8 +560,8 @@ public class AuraGhost extends GhostModule {
                   var4 + var10.maxX,
                   var6 + var10.maxY,
                   var8 + var10.maxZ,
-                  this.field2463.method1362(),
-                  this.field2464.method1362(),
+                  this.field2463.getValue(),
+                  this.field2464.getValue(),
                   ShapeMode.Full,
                   0
                );
@@ -1189,11 +1189,11 @@ public class AuraGhost extends GhostModule {
 
    private boolean method1425(Entity var1) {
       if (!(mc.player.getMainHandStack().getItem() instanceof AxeItem)) {
-          return this.field2487.method419()
+          return this.field2487.getValue()
                   || !(var1 instanceof LivingEntity)
                   || !((LivingEntity) var1).isBlocking()
                   || !((LivingEntity) var1).blockedByShield(var1.getDamageSources().playerAttack(mc.player));
-      } else return this.field2486.method461() != AuraAntiBlock.On
+      } else return this.field2486.getValue() != AuraAntiBlock.On
               || !(var1 instanceof PlayerEntity var5)
               || !(var5.getOffHandStack().getItem() instanceof ShieldItem)
               || (var5.isBlocking() && var5.blockedByShield(var1.getDamageSources().playerAttack(mc.player)));
@@ -1210,21 +1210,21 @@ public class AuraGhost extends GhostModule {
          } else if (var1 instanceof FakePlayerEntity) {
             return false;
          } else if (Friends.method2055(var1)) {
-            return this.field2492.method419();
+            return this.field2492.getValue();
          } else {
-            return !AntiBots.method2055(var1) && this.field2491.method419();
+            return !AntiBots.method2055(var1) && this.field2491.getValue();
          }
       } else if (var1 instanceof FireballEntity) {
-         return this.field2495.method419();
+         return this.field2495.getValue();
       } else {
          switch (eI.field2096[var1.getType().getSpawnGroup().ordinal()]) {
             case 1:
             case 2:
             case 3:
             case 4:
-               return this.field2493.method419();
+               return this.field2493.getValue();
             case 5:
-               return this.field2494.method419();
+               return this.field2494.getValue();
             default:
                return false;
          }
@@ -1232,7 +1232,7 @@ public class AuraGhost extends GhostModule {
    }
 
    private RotationHelper method1427() {
-      return this.field2471.method461() == AuraReference.Server && GhostRotations.INSTANCE.field760 != null
+      return this.field2471.getValue() == AuraReference.Server && GhostRotations.INSTANCE.field760 != null
          ? GhostRotations.INSTANCE.field760
          : new RotationHelper(mc.player);
    }
@@ -1242,7 +1242,7 @@ public class AuraGhost extends GhostModule {
    }
 
    private boolean method1429(Predicate<LivingEntity> var1) {
-      if (this.field2483.method461() == Targeting.Single) {
+      if (this.field2483.getValue() == Targeting.Single) {
          Optional<Entity> var5 = this.field2496.stream().findFirst().map(AuraGhost::lambda$allAttackedLivingEntities$10);
          if (var5.isPresent() && var5.get() instanceof LivingEntity var6) {
              return var1.test(var6);
@@ -1255,7 +1255,7 @@ public class AuraGhost extends GhostModule {
    }
 
    public boolean method1430(eJ event, RotationHelper currentRot) {
-      if (!this.field2465.method419() && mc.currentScreen instanceof HandledScreen) {
+      if (!this.field2465.getValue() && mc.currentScreen instanceof HandledScreen) {
          if (!event.method1101() && GhostRotations.INSTANCE.field760 != null) {
             event.method1099(currentRot);
          }
@@ -1280,21 +1280,21 @@ public class AuraGhost extends GhostModule {
       Entity var6 = var2.getLeft();
       Vec3d var7 = var2.getRight();
       double var8 = var7.squaredDistanceTo(mc.player.getEyePos());
-      if (this.field2474.method419()) {
+      if (this.field2474.getValue()) {
          if (GhostRotations.INSTANCE.field760 == null) {
             return;
          }
 
          HitResult var10 = Class5924.method73(
             this.field2469.method1295(),
-            this.field2483.method461() == Targeting.Single
+            this.field2483.getValue() == Targeting.Single
                ? (
-                  this.field2481.method419()
+                  this.field2481.getValue()
                      ? new RotationHelper(((ClientPlayerEntityAccessor)mc.player).getLastYaw(), ((ClientPlayerEntityAccessor)mc.player).getLastPitch())
                      : GhostRotations.INSTANCE.field760
                )
                : Class1202.method2391(mc.player.getEyePos(), var7),
-            this.field2475.method461() == TrackMode.Attack
+            this.field2475.getValue() == TrackMode.Attack
          );
          if (!(var10 instanceof EntityHitResult) || ((EntityHitResult) var10).getEntity() == null) {
             return;
@@ -1313,7 +1313,7 @@ public class AuraGhost extends GhostModule {
    }
 
    private Boolean lambda$onRotate$6(RotationHelper var1) {
-      return Class5924.method73(this.field2469.method1295(), var1, this.field2475.method461() == TrackMode.Attack) instanceof EntityHitResult;
+      return Class5924.method73(this.field2469.method1295(), var1, this.field2475.getValue() == TrackMode.Attack) instanceof EntityHitResult;
    }
 
    private Boolean lambda$onRotate$5(Pair<Entity, Vec3d> var1) {
@@ -1333,11 +1333,11 @@ public class AuraGhost extends GhostModule {
    }
 
    private Double lambda$new$1(Pair<?, ?> pair) {
-      if (this.field2485.method419() && pair.getLeft() == this.field2498) {
+      if (this.field2485.getValue() && pair.getLeft() == this.field2498) {
          return 0.0;
       }
 
-      AttackPriority priority = this.field2484.method461();
+      AttackPriority priority = this.field2484.getValue();
       switch (priority.ordinal()) {
          case 0 -> {
             Vec3d eyePos = AuraGhost.mc.player.getEyePos();
@@ -1370,6 +1370,6 @@ public class AuraGhost extends GhostModule {
    }
 
    private boolean lambda$new$0() {
-      return this.field2478.method461() == ClickMethod.Vanilla;
+      return this.field2478.getValue() == ClickMethod.Vanilla;
    }
 }

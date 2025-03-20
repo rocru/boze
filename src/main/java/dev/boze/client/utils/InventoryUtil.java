@@ -7,7 +7,6 @@ import dev.boze.client.mixin.ClientPlayerInteractionManagerAccessor;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.systems.modules.client.AntiCheat;
 import dev.boze.client.systems.modules.combat.OffHand;
-import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.trackers.ItemTracker;
 import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import mapped.Class2839;
@@ -160,7 +159,7 @@ public class InventoryUtil
     private static void method1198() {
         if (field1253 >= 0) {
             Class2839.field111 = InventoryUtil.mc.player.getInventory().selectedSlot;
-            if (AntiCheat.INSTANCE.field2320.method419().booleanValue()) {
+            if (AntiCheat.INSTANCE.field2320.getValue().booleanValue()) {
                 ((ClientPlayerInteractionManagerAccessor)InventoryUtil.mc.interactionManager).callSyncSelectedSlot();
             }
             field1253 = -1;

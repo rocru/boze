@@ -10,7 +10,7 @@ public class Durability extends GraphHUDModule {
 
    public Durability() {
       super("Durability", "Graphs your total armor durability");
-      this.field2300.method421(true);
+      this.field2300.setValue(true);
    }
 
    @EventHandler

@@ -134,7 +134,7 @@ public class LogoutSpots extends Module {
          Vector3d var9 = new Vector3d(var11.x, var11.y, var11.z);
          boolean var10 = Class5922.method59(var9, this.field827);
          if (var10) {
-            NameTags.INSTANCE.method374(var6, var9, this.field824.method419(), this.field825.method1347(), this.field826.method1347());
+            NameTags.INSTANCE.method374(var6, var9, this.field824.getValue(), this.field825.getValue(), this.field826.getValue());
          }
       }
    }
@@ -142,7 +142,7 @@ public class LogoutSpots extends Module {
    @EventHandler
    private void method2071(Render3DEvent var1) {
       if (!this.field832.isEmpty()) {
-         if (this.field814.method419()) {
+         if (this.field814.getValue()) {
             if (this.field828 == null) {
                this.field828 = new Renderer3D(false, true);
             }
@@ -152,13 +152,13 @@ public class LogoutSpots extends Module {
 
          for (LogoutPlayerEntity var6 : this.field832) {
             double var7 = var6.field3587 / 2.0;
-            if (this.field811.method419()) {
-               if (this.field814.method419()) {
+            if (this.field811.getValue()) {
+               if (this.field814.getValue()) {
                   var6.field3592.method549(this.field828, BozeDrawColor.field1841, BozeDrawColor.field1841, var1.field1951);
                } else {
-                  var6.field3592.method549(var1.field1950, this.field812.method1362(), this.field813.method1362(), var1.field1951);
+                  var6.field3592.method549(var1.field1950, this.field812.getValue(), this.field813.getValue(), var1.field1951);
                }
-            } else if (this.field814.method419()) {
+            } else if (this.field814.getValue()) {
                this.field828
                   .method1261(
                      var6.field3586.x - var7,
@@ -179,25 +179,25 @@ public class LogoutSpots extends Module {
                      var6.field3586.x + var7,
                      var6.field3586.y + var6.field3588,
                      var6.field3586.z + var7,
-                     this.field812.method1362(),
-                     this.field813.method1362(),
+                     this.field812.getValue(),
+                     this.field813.getValue(),
                      ShapeMode.Full,
                      0
                   );
             }
          }
 
-         if (this.field814.method419()) {
+         if (this.field814.getValue()) {
             ChamsShaderRenderer.method1310(
                this::lambda$onRender3D$2,
                this.method1921(),
-               this.field816.method419(),
+               this.field816.getValue(),
                this.field812,
                this.field813,
                this.field820.method434(),
-               this.field821.method423(),
-               this.field818.method423(),
-               this.field819.method423(),
+               this.field821.getValue(),
+               this.field818.getValue(),
+               this.field819.getValue(),
                this.field817.method434(),
                this.field829
             );
@@ -206,21 +206,21 @@ public class LogoutSpots extends Module {
    }
 
    private ShaderMode method1921() {
-      if (this.field815.method461() == LogoutSpotsShader.Image) {
-         if (!this.field822.method1322().isEmpty() && (!this.field822.method1322().equals(this.field830) || this.field829 == null)) {
-            File var4 = new File(ConfigManager.images, this.field822.method1322() + ".png");
+      if (this.field815.getValue() == LogoutSpotsShader.Image) {
+         if (!this.field822.getValue().isEmpty() && (!this.field822.getValue().equals(this.field830) || this.field829 == null)) {
+            File var4 = new File(ConfigManager.images, this.field822.getValue() + ".png");
 
             try {
                FileInputStream var5 = new FileInputStream(var4);
                this.field829 = ByteTexturePacker.method493(var5);
                if (this.field829 != null) {
-                  this.field830 = this.field822.method1322();
+                  this.field830 = this.field822.getValue();
                } else {
                   this.field830 = "";
                }
             } catch (Exception var6) {
                NotificationManager.method1151(new Notification(this.getName(), " Couldn't load image", Notifications.WARNING, NotificationPriority.Yellow));
-               this.field822.method1341("");
+               this.field822.setValue("");
                this.field830 = "";
             }
          }
@@ -269,7 +269,7 @@ public class LogoutSpots extends Module {
                   for (LogoutPlayerEntity var11 : this.field832) {
                      if (var11.field3589.equals(var9.profileId())) {
                         this.field832.remove(var11);
-                        if (this.field810.method419()) {
+                        if (this.field810.getValue()) {
                            ChatInstance.method740(
                               this.getName(),
                               "%s logged back in at (%d, %d, %d)",
@@ -342,10 +342,10 @@ public class LogoutSpots extends Module {
    }
 
    private boolean lambda$new$1() {
-      return this.field815.method461() == LogoutSpotsShader.Image;
+      return this.field815.getValue() == LogoutSpotsShader.Image;
    }
 
    private boolean lambda$new$0() {
-      return this.field818.method423() > 0.0F;
+      return this.field818.getValue() > 0.0F;
    }
 }

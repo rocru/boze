@@ -17,13 +17,13 @@ public class TotemParticleMixin {
       )
    )
    private void setColorYellow(TotemParticle var1, float var2, float var3, float var4) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3730.method419()) {
-         var2 = Tint.INSTANCE.field3731.method423() * (1.0F - Tint.INSTANCE.field3732.method423())
-            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3732.method423() * Tint.INSTANCE.field3731.method423();
-         var3 = Tint.INSTANCE.field3733.method423() * (1.0F - Tint.INSTANCE.field3734.method423())
-            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3734.method423() * Tint.INSTANCE.field3733.method423();
-         var4 = Tint.INSTANCE.field3735.method423() * (1.0F - Tint.INSTANCE.field3736.method423())
-            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3736.method423() * Tint.INSTANCE.field3735.method423();
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3730.getValue()) {
+         var2 = Tint.INSTANCE.field3731.getValue() * (1.0F - Tint.INSTANCE.field3732.getValue())
+            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3732.getValue() * Tint.INSTANCE.field3731.getValue();
+         var3 = Tint.INSTANCE.field3733.getValue() * (1.0F - Tint.INSTANCE.field3734.getValue())
+            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3734.getValue() * Tint.INSTANCE.field3733.getValue();
+         var4 = Tint.INSTANCE.field3735.getValue() * (1.0F - Tint.INSTANCE.field3736.getValue())
+            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3736.getValue() * Tint.INSTANCE.field3735.getValue();
       }
 
       var1.setColor(var2, var3, var4);
@@ -38,13 +38,13 @@ public class TotemParticleMixin {
       )
    )
    private void setColorGreen(TotemParticle var1, float var2, float var3, float var4) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3730.method419()) {
-         var2 = Tint.INSTANCE.field3737.method423() * (1.0F - Tint.INSTANCE.field3738.method423())
-            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3738.method423() * Tint.INSTANCE.field3737.method423();
-         var3 = Tint.INSTANCE.field3739.method423() * (1.0F - Tint.INSTANCE.field3740.method423())
-            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3740.method423() * Tint.INSTANCE.field3739.method423();
-         var4 = Tint.INSTANCE.field3741.method423() * (1.0F - Tint.INSTANCE.field3742.method423())
-            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3742.method423() * Tint.INSTANCE.field3741.method423();
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3730.getValue()) {
+         var2 = Tint.INSTANCE.field3737.getValue() * (1.0F - Tint.INSTANCE.field3738.getValue())
+            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3738.getValue() * Tint.INSTANCE.field3737.getValue();
+         var3 = Tint.INSTANCE.field3739.getValue() * (1.0F - Tint.INSTANCE.field3740.getValue())
+            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3740.getValue() * Tint.INSTANCE.field3739.getValue();
+         var4 = Tint.INSTANCE.field3741.getValue() * (1.0F - Tint.INSTANCE.field3742.getValue())
+            + Tint.INSTANCE.ai.nextFloat() * Tint.INSTANCE.field3742.getValue() * Tint.INSTANCE.field3741.getValue();
       }
 
       var1.setColor(var2, var3, var4);

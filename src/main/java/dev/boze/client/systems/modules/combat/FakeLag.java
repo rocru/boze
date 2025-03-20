@@ -47,9 +47,9 @@ public class FakeLag extends Module {
    private void method1853(PrePacketSendEvent var1) {
       Packet var5 = var1.packet;
       if (!this.field472.get()) {
-         if (this.pulse.method419()) {
+         if (this.pulse.getValue()) {
             if (var1.packet instanceof PlayerMoveC2SPacket) {
-               if (this.strict.method419() && !((PlayerMoveC2SPacket)var1.packet).isOnGround()) {
+               if (this.strict.getValue() && !((PlayerMoveC2SPacket)var1.packet).isOnGround()) {
                   this.field472.set(true);
 
                   while (!this.field471.isEmpty()) {
@@ -59,7 +59,7 @@ public class FakeLag extends Module {
 
                   this.field472.set(false);
                   this.field471.clear();
-                  if (this.render.method419() && this.field474 != null) {
+                  if (this.render.getValue() && this.field474 != null) {
                      RenderSystem.recordRenderCall(this::lambda$onPacketSend$0);
                   }
                } else {
@@ -69,9 +69,9 @@ public class FakeLag extends Module {
             }
          } else if (!(var5 instanceof ChatMessageC2SPacket)
             && !(var5 instanceof TeleportConfirmC2SPacket)
-            && (!(var5 instanceof HandSwingC2SPacket) || !this.allowInteract.method419())
-            && (!(var5 instanceof PlayerInteractBlockC2SPacket) || !this.allowInteract.method419())
-            && (!(var5 instanceof PlayerInteractItemC2SPacket) || !this.allowInteract.method419())
+            && (!(var5 instanceof HandSwingC2SPacket) || !this.allowInteract.getValue())
+            && (!(var5 instanceof PlayerInteractBlockC2SPacket) || !this.allowInteract.getValue())
+            && (!(var5 instanceof PlayerInteractItemC2SPacket) || !this.allowInteract.getValue())
             && !(var5 instanceof KeepAliveC2SPacket)
             && !(var5 instanceof RequestCommandCompletionsC2SPacket)
             && !(var5 instanceof ClientStatusC2SPacket)) {
@@ -83,9 +83,9 @@ public class FakeLag extends Module {
 
    @EventHandler
    private void method1942(PostPlayerTickEvent var1) {
-      if (this.pulse.method419()
+      if (this.pulse.getValue()
          && MinecraftUtils.isClientActive()
-         && ((float)this.field471.size() >= this.factor.method423() * 10.0F || this.reduceExposure.method419() && this.method1384() <= this.field473)) {
+         && ((float)this.field471.size() >= this.factor.getValue() * 10.0F || this.reduceExposure.getValue() && this.method1384() <= this.field473)) {
          this.field473 = this.method1384();
          this.field472.set(true);
 
@@ -94,7 +94,7 @@ public class FakeLag extends Module {
             mc.player.networkHandler.sendPacket(var5);
          }
 
-         if (this.render.method419()) {
+         if (this.render.getValue()) {
             if (this.field474.isRemoved()) {
                this.field474.method2142();
             }
@@ -115,7 +115,7 @@ public class FakeLag extends Module {
          this.field473 = 999.0F;
          this.field474 = new FakePlayerEntity(mc.player, mc.player.getGameProfile().getName(), 20.0F, true);
          this.field474.field1265 = true;
-         if (this.render.method419()) {
+         if (this.render.getValue()) {
             this.field474.method2142();
          }
       } else {

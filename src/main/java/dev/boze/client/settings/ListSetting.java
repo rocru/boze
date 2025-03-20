@@ -32,7 +32,8 @@ public class ListSetting extends Setting<ArrayList<String>> {
       this.field953 = value;
    }
 
-   public ArrayList<String> method2120() {
+   @Override
+   public ArrayList<String> getValue() {
       return this.field953;
    }
 
@@ -44,13 +45,15 @@ public class ListSetting extends Setting<ArrayList<String>> {
       this.field954 = dirty;
    }
 
-   public ArrayList<String> method405() {
+   @Override
+   public ArrayList<String> resetValue() {
       this.field953.clear();
       this.field954 = true;
       return this.field953;
    }
 
-   public ArrayList<String> method406(ArrayList<String> newVal) {
+   @Override
+   public ArrayList<String> setValue(ArrayList<String> newVal) {
       this.field954 = true;
       return this.field953 = newVal;
    }
@@ -58,12 +61,13 @@ public class ListSetting extends Setting<ArrayList<String>> {
    @Override
    public NbtCompound save(NbtCompound tag) {
       NbtList var4 = new NbtList();
-      this.field953.forEach(ListSetting::lambda$addValueToTag$0);
+      this.field953.forEach(v -> lambda$addValueToTag$0(var4, v));
       tag.put("Files", var4);
       return tag;
    }
 
-   public ArrayList<String> method407(NbtCompound tag) {
+   @Override
+   public ArrayList<String> load(NbtCompound tag) {
       if (tag.contains("Files")) {
          NbtList var5 = tag.getList("Files", 8);
          this.field953.clear();
@@ -81,31 +85,31 @@ public class ListSetting extends Setting<ArrayList<String>> {
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object load(NbtCompound nbtCompound) {
-      return this.method407(nbtCompound);
-   }
+  // @Override
+   //public Object load(NbtCompound nbtCompound) {
+   //   return this.method407(nbtCompound);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object setValue(Object object) {
-      return this.method406((ArrayList<String>)object);
-   }
+  // @Override
+   //public Object setValue(Object object) {
+  //    return this.method406((ArrayList<String>)object);
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object resetValue() {
-      return this.method405();
-   }
+  // @Override
+  // public Object resetValue() {
+   //   return this.method405();
+  // }
 
    // $VF: synthetic method
    // $VF: bridge method
-   @Override
-   public Object getValue() {
-      return this.method2120();
-   }
+  // @Override
+   //public Object getValue() {
+   //   return this.method2120();
+   //}
 
    private static void lambda$addValueToTag$0(NbtList var0, String var1) {
       if (!var0.contains(NbtString.of(var1))) {

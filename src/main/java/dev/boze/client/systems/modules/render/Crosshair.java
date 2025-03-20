@@ -33,9 +33,9 @@ public class Crosshair extends Module {
                var7 - this.field3493.getValue() / 2.0,
                this.field3493.getValue(),
                this.field3493.getValue(),
-               this.field3491.method1362()
+               this.field3491.getValue()
             );
-         if (this.field3490.method419()) {
+         if (this.field3490.getValue()) {
             RenderUtil.field3965
                .method2258(
                   var5 - this.field3493.getValue() / 2.0 - this.field3492.getValue(),
@@ -45,7 +45,7 @@ public class Crosshair extends Module {
                   9,
                   24,
                   this.field3493.getValue() / 2.0,
-                  this.field3491.method1362()
+                  this.field3491.getValue()
                );
             RenderUtil.field3965
                .method2258(
@@ -56,7 +56,7 @@ public class Crosshair extends Module {
                   6,
                   24,
                   this.field3493.getValue() / 2.0,
-                  this.field3491.method1362()
+                  this.field3491.getValue()
                );
             RenderUtil.field3965
                .method2258(
@@ -67,7 +67,7 @@ public class Crosshair extends Module {
                   3,
                   24,
                   this.field3493.getValue() / 2.0,
-                  this.field3491.method1362()
+                  this.field3491.getValue()
                );
             RenderUtil.field3965
                .method2258(
@@ -78,7 +78,7 @@ public class Crosshair extends Module {
                   12,
                   24,
                   this.field3493.getValue() / 2.0,
-                  this.field3491.method1362()
+                  this.field3491.getValue()
                );
          } else {
             RenderUtil.field3965
@@ -87,7 +87,7 @@ public class Crosshair extends Module {
                   var7 - this.field3493.getValue() / 2.0,
                   this.field3492.getValue(),
                   this.field3493.getValue(),
-                  this.field3491.method1362()
+                  this.field3491.getValue()
                );
             RenderUtil.field3965
                .method2253(
@@ -95,7 +95,7 @@ public class Crosshair extends Module {
                   var7 - this.field3493.getValue() / 2.0,
                   this.field3492.getValue(),
                   this.field3493.getValue(),
-                  this.field3491.method1362()
+                  this.field3491.getValue()
                );
             RenderUtil.field3965
                .method2253(
@@ -103,7 +103,7 @@ public class Crosshair extends Module {
                   var7 - this.field3493.getValue() / 2.0 - this.field3492.getValue(),
                   this.field3493.getValue(),
                   this.field3492.getValue(),
-                  this.field3491.method1362()
+                  this.field3491.getValue()
                );
             RenderUtil.field3965
                .method2253(
@@ -111,7 +111,7 @@ public class Crosshair extends Module {
                   var7 + this.field3493.getValue() / 2.0,
                   this.field3493.getValue(),
                   this.field3492.getValue(),
-                  this.field3491.method1362()
+                  this.field3491.getValue()
                );
          }
 

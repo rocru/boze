@@ -20,13 +20,13 @@ public class RenderSystemMixin {
       remap = false
    )
    private static void onGetShaderFogColor(CallbackInfoReturnable<float[]> var0) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3743.method419()) {
+      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3743.getValue()) {
          var0.setReturnValue(
             new float[]{
-               (float)Tint.INSTANCE.field3744.method1347().field408 / 255.0F,
-               (float)Tint.INSTANCE.field3744.method1347().field409 / 255.0F,
-               (float)Tint.INSTANCE.field3744.method1347().field410 / 255.0F,
-               (float)Tint.INSTANCE.field3744.method1347().field411 / 255.0F
+               (float)Tint.INSTANCE.field3744.getValue().field408 / 255.0F,
+               (float)Tint.INSTANCE.field3744.getValue().field409 / 255.0F,
+               (float)Tint.INSTANCE.field3744.getValue().field410 / 255.0F,
+               (float)Tint.INSTANCE.field3744.getValue().field411 / 255.0F
             }
          );
       }
