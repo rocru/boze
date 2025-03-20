@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum CrystalAssistPriority {
+public enum CrystalAssistPriority {
     Distance,
     FOV;
 
