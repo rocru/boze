@@ -470,7 +470,7 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
 
         for (AbstractClientPlayerEntity var7 : this.method1144()) {
             Box var8 = var7.getBoundingBox().shrink(0.05, 0.05, 0.05);
-            HashSet var9 = new HashSet();
+            HashSet<BlockPos> var9 = new HashSet();
             var9.add(BlockPos.ofFloored(var8.minX, var8.minY, var8.minZ));
             var9.add(BlockPos.ofFloored(var8.minX, var8.minY, var8.maxZ));
             var9.add(BlockPos.ofFloored(var8.maxX, var8.minY, var8.minZ));
