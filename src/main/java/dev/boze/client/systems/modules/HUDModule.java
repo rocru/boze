@@ -147,8 +147,8 @@ public abstract class HUDModule extends Module {
    public abstract void method295(DrawContext var1);
 
    protected void method296(String text, BozeDrawColor color, boolean shadow) {
-      this.method314(IFontRender.method499().measureTextHeight(text, shadow) + (double)HUD.INSTANCE.field2377.method434().intValue() * 2.0);
-      this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.method434().intValue() * 2.0);
+      this.method314(IFontRender.method499().measureTextHeight(text, shadow) + (double)HUD.INSTANCE.field2377.getValue().intValue() * 2.0);
+      this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.getValue().intValue() * 2.0);
       if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
       }
@@ -156,16 +156,16 @@ public abstract class HUDModule extends Module {
       IFontRender.method499()
          .drawShadowedText(
             text,
-            this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue(),
-            this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue(),
+            this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue(),
+            this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue(),
             color,
             shadow
          );
    }
 
    protected void method297(String a, String b, BozeDrawColor one, BozeDrawColor two, boolean shadow) {
-      this.method314(IFontRender.method499().measureTextHeight(a + " " + b, shadow) + (double)HUD.INSTANCE.field2377.method434().intValue() * 2.0);
-      this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.method434().intValue() * 2.0);
+      this.method314(IFontRender.method499().measureTextHeight(a + " " + b, shadow) + (double)HUD.INSTANCE.field2377.getValue().intValue() * 2.0);
+      this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.getValue().intValue() * 2.0);
       if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
       }
@@ -173,24 +173,24 @@ public abstract class HUDModule extends Module {
       IFontRender.method499()
          .drawShadowedText(
             a,
-            this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue(),
-            this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue(),
+            this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue(),
+            this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue(),
             one,
             shadow
          );
       IFontRender.method499()
          .drawShadowedText(
             b,
-            this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue() + IFontRender.method499().method501(a + " "),
-            this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue(),
+            this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue() + IFontRender.method499().method501(a + " "),
+            this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue(),
             two,
             shadow
          );
    }
 
    protected void method298(String a, String b, String c, BozeDrawColor one, BozeDrawColor two, BozeDrawColor three, boolean shadow) {
-      this.method314(IFontRender.method499().measureTextHeight(a + " " + b + " " + c, shadow) + (double)HUD.INSTANCE.field2377.method434().intValue() * 2.0);
-      this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.method434().intValue() * 2.0);
+      this.method314(IFontRender.method499().measureTextHeight(a + " " + b + " " + c, shadow) + (double)HUD.INSTANCE.field2377.getValue().intValue() * 2.0);
+      this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.getValue().intValue() * 2.0);
       if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
       }
@@ -198,32 +198,32 @@ public abstract class HUDModule extends Module {
       IFontRender.method499()
          .drawShadowedText(
             a,
-            this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue(),
-            this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue(),
+            this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue(),
+            this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue(),
             one,
             shadow
          );
       IFontRender.method499()
          .drawShadowedText(
             b,
-            this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue() + IFontRender.method499().method501(a + " "),
-            this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue(),
+            this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue() + IFontRender.method499().method501(a + " "),
+            this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue(),
             two,
             shadow
          );
       IFontRender.method499()
          .drawShadowedText(
             c,
-            this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue() + IFontRender.method499().method501(a + " " + b + " "),
-            this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue(),
+            this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue() + IFontRender.method499().method501(a + " " + b + " "),
+            this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue(),
             three,
             shadow
          );
    }
 
    protected void method299(String a, String b, String c, BozeDrawColor one, BozeDrawColor two, BozeDrawColor three, boolean shadow) {
-      this.method314(IFontRender.method499().measureTextHeight(a + b + c, shadow) + (double)HUD.INSTANCE.field2377.method434().intValue() * 2.0);
-      this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.method434().intValue() * 2.0);
+      this.method314(IFontRender.method499().measureTextHeight(a + b + c, shadow) + (double)HUD.INSTANCE.field2377.getValue().intValue() * 2.0);
+      this.method316(IFontRender.method499().method502(shadow) + (double)HUD.INSTANCE.field2378.getValue().intValue() * 2.0);
       if (HUD.INSTANCE.field2394.getValue()) {
          HUD.INSTANCE.field2397.method2252(this.method1391(), this.method305(), this.method313(), this.method315(), RGBAColor.field402);
       }
@@ -231,24 +231,24 @@ public abstract class HUDModule extends Module {
       IFontRender.method499()
          .drawShadowedText(
             a,
-            this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue(),
-            this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue(),
+            this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue(),
+            this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue(),
             one,
             shadow
          );
       IFontRender.method499()
          .drawShadowedText(
             b,
-            this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue() + IFontRender.method499().method501(a),
-            this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue(),
+            this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue() + IFontRender.method499().method501(a),
+            this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue(),
             two,
             shadow
          );
       IFontRender.method499()
          .drawShadowedText(
             c,
-            this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue() + IFontRender.method499().method501(a + b),
-            this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue(),
+            this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue() + IFontRender.method499().method501(a + b),
+            this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue(),
             three,
             shadow
          );

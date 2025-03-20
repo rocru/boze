@@ -84,7 +84,7 @@ public class AutoCraft extends Module {
                               var6.syncId, 0, 1, this.mode.getValue() == AutoCraftMode.Drop ? SlotActionType.THROW : SlotActionType.QUICK_MOVE, mc.player
                            );
                         this.field2886 = true;
-                        this.field2885 = this.delay.method434() - 1;
+                        this.field2885 = this.delay.getValue() - 1;
                         return;
                      }
                   }

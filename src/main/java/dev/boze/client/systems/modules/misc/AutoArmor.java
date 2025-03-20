@@ -521,7 +521,7 @@ public class AutoArmor extends Module {
          InvUtils.method2201().method2207(var1).method2218(var2);
       }
 
-      this.field2877 = this.interval.method434();
+      this.field2877 = this.interval.getValue();
       if (AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
          mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
       }
@@ -531,7 +531,7 @@ public class AutoArmor extends Module {
       for (int var5 = 0; var5 < mc.player.getInventory().main.size(); var5++) {
          if (mc.player.getInventory().getStack(var5).isEmpty()) {
             InvUtils.method2201().method2211(var1).method2213(var5);
-            this.field2877 = this.interval.method434();
+            this.field2877 = this.interval.getValue();
             break;
          }
       }

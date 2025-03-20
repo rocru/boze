@@ -83,7 +83,7 @@ public class Blur extends Module {
                (double)((float)this.field3411.getValue().field410 / 255.0F),
                (double)((float)this.field3411.getValue().field411 / 255.0F)
             );
-         ShaderRegistry.field2267.method690("u_Passes", this.field3408.method434());
+         ShaderRegistry.field2267.method690("u_Passes", this.field3408.getValue());
          ShaderRegistry.field2267.method691("u_Radius", (double)this.field3409.getValue().floatValue() * var7);
          this.field3418.method1156(false, true);
          QuadRenderer.render();

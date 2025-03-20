@@ -60,7 +60,7 @@ public class Criticals extends Module {
       if (this.field444) {
          this.field444 = false;
 
-         for (int var5 = 0; var5 < this.ticks.method434(); var5++) {
+         for (int var5 = 0; var5 < this.ticks.getValue(); var5++) {
             mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), true));
          }
       }

@@ -123,11 +123,11 @@ public class PopChams extends Module {
             this.field3649.getValue(),
             this.field3646,
             this.field3647,
-            this.field3653.method434(),
+            this.field3653.getValue(),
             this.field3654.getValue(),
             this.field3651.getValue(),
             this.field3652.getValue(),
-            this.field3650.method434(),
+            this.field3650.getValue(),
             this.field3660
          );
       }

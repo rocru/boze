@@ -69,7 +69,7 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
    // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
    @Override
    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-      double var8 = !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.method434().intValue()
+      double var8 = !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.getValue().intValue()
          ? this.field376
          : this.field377;
       if (this.field375.locked) {
@@ -99,12 +99,12 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
          this.field381 = (double)mc.getWindow().getScaledHeight() * Gui.INSTANCE.field2368.getValue();
       }
 
-      if (System.currentTimeMillis() - this.field382 < (long)Gui.INSTANCE.field2370.method434().intValue()) {
+      if (System.currentTimeMillis() - this.field382 < (long)Gui.INSTANCE.field2370.getValue().intValue()) {
          this.field381 = this.field381
             * Class3071.method6022(
                this.field375.extended ? 0.0 : 1.0,
                this.field375.extended ? 1.0 : 0.0,
-               (double)(System.currentTimeMillis() - this.field382) / (double)Gui.INSTANCE.field2370.method434().intValue()
+               (double)(System.currentTimeMillis() - this.field382) / (double)Gui.INSTANCE.field2370.getValue().intValue()
             );
       }
 
@@ -116,7 +116,7 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
       IconManager.setScale(scaleFactor * 0.4);
       this.field384 = 0.0;
       this.field380 = null;
-      if (!this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.method434().intValue()) {
+      if (!this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.getValue().intValue()) {
          this.field321 = var8;
       } else {
          double var10 = var8;
@@ -214,7 +214,7 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
                   this.field319,
                   this.field320,
                   var8,
-                  !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.method434().intValue() ? 15 : 3,
+                  !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.getValue().intValue() ? 15 : 3,
                   24,
                   scaleFactor * 6.0,
                   Theme.method1362()
@@ -226,7 +226,7 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
                   this.field319,
                   this.field320,
                   var8,
-                  !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.method434().intValue() ? 15 : 3,
+                  !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.getValue().intValue() ? 15 : 3,
                   24,
                   scaleFactor * 6.0,
                   Theme.method1352()
@@ -241,7 +241,7 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
                   this.field319,
                   this.field320,
                   var8,
-                  !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.method434().intValue() ? 15 : 3,
+                  !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.getValue().intValue() ? 15 : 3,
                   24,
                   scaleFactor * 6.0,
                   RGBAColor.field402
@@ -304,7 +304,7 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
          var20 = true;
       }
 
-      if (this.field375.extended || System.currentTimeMillis() - this.field382 < (long)Gui.INSTANCE.field2370.method434().intValue()) {
+      if (this.field375.extended || System.currentTimeMillis() - this.field382 < (long)Gui.INSTANCE.field2370.getValue().intValue()) {
          if ((double)Theme.method1379() > 0.0) {
             if (Theme.method1387()) {
                if (Theme.method1380()) {
@@ -400,7 +400,7 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
 
    @Override
    public boolean mouseClicked(double mouseX, double mouseY, int button) {
-      double var9 = !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.method434().intValue()
+      double var9 = !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.getValue().intValue()
          ? this.field376
          : this.field377;
       if (isMouseWithinBounds(mouseX, mouseY, this.field318, this.field319, this.field320, var9)) {
@@ -476,13 +476,13 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
 
    @Override
    public boolean onMouseScroll(double mouseX, double mouseY, double amount) {
-      double var10 = !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.method434().intValue()
+      double var10 = !this.field375.extended && System.currentTimeMillis() - this.field382 >= (long)Gui.INSTANCE.field2370.getValue().intValue()
          ? this.field376
          : this.field377;
       if (this.field375.extended
          && isMouseWithinBounds(mouseX, mouseY, this.field318, this.field319 + var10, this.field320, this.field381)
          && this.field384 > this.field381) {
-         this.field383 = this.field383 + amount * (double)(-Gui.INSTANCE.field2369.method434());
+         this.field383 = this.field383 + amount * (double)(-Gui.INSTANCE.field2369.getValue());
          this.field383 = MathHelper.clamp(this.field383, 0.0, this.field384 - this.field381);
          return true;
       } else {

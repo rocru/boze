@@ -28,7 +28,7 @@ public abstract class PlayerListHudMixin {
       method = {"collectPlayerEntries"}
    )
    private long modifyCount(long var1) {
-      return BetterTab.INSTANCE.isEnabled() ? (long)BetterTab.INSTANCE.field2914.method434().intValue() : var1;
+      return BetterTab.INSTANCE.isEnabled() ? (long)BetterTab.INSTANCE.field2914.getValue().intValue() : var1;
    }
 
    @Inject(
@@ -61,7 +61,7 @@ public abstract class PlayerListHudMixin {
       method = {"render"}
    )
    private int modifyHeight(int var1) {
-      return BetterTab.INSTANCE.isEnabled() ? BetterTab.INSTANCE.field2915.method434() : var1;
+      return BetterTab.INSTANCE.isEnabled() ? BetterTab.INSTANCE.field2915.getValue() : var1;
    }
 
    @Inject(

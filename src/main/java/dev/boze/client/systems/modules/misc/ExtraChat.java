@@ -81,7 +81,7 @@ public class ExtraChat extends Module {
          }
       }
 
-      return var4 >= INSTANCE.field2943.method434();
+      return var4 >= INSTANCE.field2943.getValue();
    }
 
    public void method1702(DrawContext var1, Visible var2, int var3, int var4) {

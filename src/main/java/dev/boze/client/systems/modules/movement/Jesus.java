@@ -196,7 +196,7 @@ public class Jesus extends Module {
          return false;
       } else {
          return (this.field3289.getValue() == JesusNoSetback.Water || this.field3289.getValue() == JesusNoSetback.Both)
-               && mc.player.fallDistance > (float)this.field3290.method434().intValue()
+               && mc.player.fallDistance > (float)this.field3290.getValue().intValue()
             ? false
             : this.field3285.getValue() == JesusMode.Normal;
       }
@@ -207,7 +207,7 @@ public class Jesus extends Module {
          return false;
       } else {
          return (this.field3289.getValue() == JesusNoSetback.Lava || this.field3289.getValue() == JesusNoSetback.Both)
-               && mc.player.fallDistance > (float)this.field3290.method434().intValue()
+               && mc.player.fallDistance > (float)this.field3290.getValue().intValue()
             ? false
             : this.field3288.getValue() == JesusMode.Normal;
       }

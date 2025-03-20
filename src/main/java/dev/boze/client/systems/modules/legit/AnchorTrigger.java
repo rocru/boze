@@ -124,7 +124,7 @@ public class AnchorTrigger extends Module {
                      }
                   } else if (var5 == null && mc.player.getInventory().getMainHandStack().getItem() == Items.GLOWSTONE) {
                      if (this.field2706.getValue() == AnchorTriggerDefaultItem.Slot) {
-                        ((KeyBindingAccessor)mc.options.hotbarKeys[this.field2707.method434()]).setTimesPressed(1);
+                        ((KeyBindingAccessor)mc.options.hotbarKeys[this.field2707.getValue()]).setTimesPressed(1);
                         this.field2721.reset();
                         this.field2717.method1376();
                      } else {

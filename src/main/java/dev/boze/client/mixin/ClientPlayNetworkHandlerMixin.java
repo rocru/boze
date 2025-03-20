@@ -202,7 +202,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
             String[] var12 = var1.split(" ");
 
             for (String var16 : var12) {
-               if (var16.length() >= ExtraChat.INSTANCE.field2943.method434() && ExtraChat.method1701(var16)) {
+               if (var16.length() >= ExtraChat.INSTANCE.field2943.getValue() && ExtraChat.method1701(var16)) {
                   ChatInstance.method742(ExtraChat.INSTANCE.getName(), "Coordinates protected");
                   var2.cancel();
                   return;

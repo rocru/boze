@@ -83,7 +83,7 @@ public class TextRadar extends HUDModule implements Class5929 {
             .stream()
             .filter(TextRadar::lambda$onRender$1)
             .sorted(Comparator.comparingDouble(mc.player::method_5739).reversed())
-            .limit((long)this.field628.method434().intValue())
+            .limit((long)this.field628.getValue().intValue())
             .map(this::method337)
             .collect(Collectors.toList());
       } else {
@@ -219,6 +219,6 @@ public class TextRadar extends HUDModule implements Class5929 {
    }
 
    private boolean lambda$onSendMovementPackets$0(AbstractClientPlayerEntity var1) {
-      return var1 != mc.player && mc.player.distanceTo(var1) <= (float)this.field626.method434().intValue();
+      return var1 != mc.player && mc.player.distanceTo(var1) <= (float)this.field626.getValue().intValue();
    }
 }

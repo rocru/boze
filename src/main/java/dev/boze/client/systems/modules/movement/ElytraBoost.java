@@ -193,7 +193,7 @@ public class ElytraBoost extends Module {
                Class3076.method6024(this, 12, 0.125F);
             }
 
-            if (this.field1012.hasElapsed((double)(this.field1003.method434() * 50))) {
+            if (this.field1012.hasElapsed((double)(this.field1003.getValue() * 50))) {
                if (this.field1013 >= 5) {
                   ChatInstance.method740(this.getName(), "Failed to takeoff, waiting...");
                   this.field1013 = 0;

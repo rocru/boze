@@ -26,7 +26,7 @@ public class MotionBlur extends Module {
 
    private int method1962() {
       int var1 = mc.getWindow().getFramebufferHeight();
-      return Math.min(this.field3594.method434(), 16384 / var1);
+      return Math.min(this.field3594.getValue(), 16384 / var1);
    }
 
    @Override

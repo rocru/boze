@@ -44,11 +44,11 @@ public class Timer extends Module {
          || (!mc.player.isUsingItem() || !FoodUtil.isFood(mc.player.getActiveItem()))
             && (!mc.options.useKey.isPressed() || !FoodUtil.isFood(mc.player.getInventory().getMainHandStack()))) {
          if (this.field1030.getValue()) {
-            if (this.field1037 > this.field1031.method434() + this.field1032.method434()) {
+            if (this.field1037 > this.field1031.getValue() + this.field1032.getValue()) {
                this.field1037 = 0;
             }
 
-            if (this.field1037 > this.field1031.method434()) {
+            if (this.field1037 > this.field1031.getValue()) {
                var5 = this.field1033.getValue();
             }
          }

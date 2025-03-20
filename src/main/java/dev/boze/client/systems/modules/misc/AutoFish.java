@@ -53,7 +53,7 @@ public class AutoFish extends Module {
          if (var5.getId().getPath().equals("entity.fishing_bobber.splash")
             && var6.getPos().distanceTo(new Vec3d(var5.getX(), var5.getY(), var5.getZ())) <= this.soundRadius.getValue()) {
             this.field2890 = true;
-            this.field2894 = this.catchDelay.method434();
+            this.field2894 = this.catchDelay.getValue();
             this.field2895 = 0;
          }
       }
@@ -62,9 +62,9 @@ public class AutoFish extends Module {
    @EventHandler
    private void method1667(PostPlayerTickEvent var1) {
       if (MinecraftUtils.isClientActive()) {
-         if (mc.player.fishHook != null && this.timeout.method434() > 0 && this.timer.hasElapsed((double)(this.timeout.method434() * 1000))) {
+         if (mc.player.fishHook != null && this.timeout.getValue() > 0 && this.timer.hasElapsed((double)(this.timeout.getValue() * 1000))) {
             this.field2890 = true;
-            this.field2894 = this.catchDelay.method434();
+            this.field2894 = this.catchDelay.getValue();
             this.field2895 = 0;
             this.timer.reset();
          }
@@ -85,7 +85,7 @@ public class AutoFish extends Module {
 
          if (this.field2891) {
             this.field2892++;
-            if (this.field2892 > this.castDelay.method434()) {
+            if (this.field2892 > this.castDelay.getValue()) {
                this.field2891 = false;
                ((MinecraftClientAccessor)mc).callDoItemUse();
                this.timer.reset();
@@ -95,7 +95,7 @@ public class AutoFish extends Module {
          if (this.field2890 && this.field2894 <= 0) {
             if (this.field2895 == 0) {
                ((MinecraftClientAccessor)mc).callDoItemUse();
-               this.field2894 = this.castDelay.method434();
+               this.field2894 = this.castDelay.getValue();
                this.field2895 = 1;
                this.timer.reset();
             } else if (this.field2895 == 1) {

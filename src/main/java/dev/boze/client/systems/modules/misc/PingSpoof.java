@@ -33,7 +33,7 @@ public class PingSpoof extends Module {
    }
 
    private void lambda$onSendMovementPackets$0(Long var1, Long var2) {
-      if (System.currentTimeMillis() - var2 >= (long)this.field3052.method434().intValue()) {
+      if (System.currentTimeMillis() - var2 >= (long)this.field3052.getValue().intValue()) {
          mc.player.networkHandler.sendPacket(new KeepAliveC2SPacket(var1));
          this.field3053.remove(var1);
       }

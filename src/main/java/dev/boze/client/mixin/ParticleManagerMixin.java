@@ -71,11 +71,11 @@ public class ParticleManagerMixin implements IParticleManager {
             Chams.INSTANCE.aC.getValue(),
             Chams.INSTANCE.az,
             Chams.INSTANCE.aA,
-            Chams.INSTANCE.aG.method434(),
+            Chams.INSTANCE.aG.getValue(),
             Chams.INSTANCE.aH.getValue(),
             Chams.INSTANCE.aE.getValue(),
             Chams.INSTANCE.aF.getValue(),
-            Chams.INSTANCE.aD.method434(),
+            Chams.INSTANCE.aD.getValue(),
             Chams.INSTANCE.aN
          );
       }

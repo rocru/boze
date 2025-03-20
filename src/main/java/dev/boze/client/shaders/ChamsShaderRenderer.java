@@ -135,11 +135,11 @@ public class ChamsShaderRenderer implements IMinecraft {
          var9.method581("u_Outline_Strength", Chams.INSTANCE.field3475.getValue().method959()[0], Chams.INSTANCE.field3475.getValue().method959()[1]);
          var9.method691("u_Outline_Mod", Chams.INSTANCE.field3475.getValue().method960());
          var9.method581("u_Outline_Hues", Chams.INSTANCE.field3475.getValue().getMinHue(), Chams.INSTANCE.field3475.getValue().getMaxHue());
-         var9.method690("u_Radius", Chams.INSTANCE.field3468.method434());
-         var9.method691("u_Opacity", (double)((float)Chams.INSTANCE.field3471.method434().intValue() / 255.0F));
+         var9.method690("u_Radius", Chams.INSTANCE.field3468.getValue());
+         var9.method691("u_Opacity", (double)((float)Chams.INSTANCE.field3471.getValue().intValue() / 255.0F));
          var9.method691("u_Glow", (double)Chams.INSTANCE.field3469.getValue().floatValue());
          var9.method691("u_Glow_Strength", (double)Chams.INSTANCE.field3470.getValue().floatValue());
-         var9.method690("u_Passes", Chams.INSTANCE.field3467.method434());
+         var9.method690("u_Passes", Chams.INSTANCE.field3467.getValue());
          if (Chams.INSTANCE.method1923() == ShaderMode.Image && Chams.INSTANCE.aJ != null) {
             GL.method1210(Chams.INSTANCE.aJ.getGlId(), 1);
          }

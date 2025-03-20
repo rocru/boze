@@ -46,7 +46,7 @@ public class Breadcrumbs extends Module {
    public void method1910(PostPlayerTickEvent event) {
       if (!this.field3424.getValue()) {
          if (this.field3423.isEmpty() || !event.field1941.getPos().equals(this.field3423.get(this.field3423.size() - 1))) {
-            if (this.field3432 > this.field3425.method434()) {
+            if (this.field3432 > this.field3425.getValue()) {
                Vec3d var5 = event.field1941.getPos();
                if (this.method1913()) {
                   var5 = var5.multiply(8.0, 1.0, 8.0);
@@ -61,7 +61,7 @@ public class Breadcrumbs extends Module {
                this.field3423.add(var5);
                this.field3433.reset();
                if (this.field3426.getValue() == BreadcrumbsLimit.Length) {
-                  if (this.field3423.size() >= this.field3427.method434()) {
+                  if (this.field3423.size() >= this.field3427.getValue()) {
                      this.field3423.remove(0);
                      this.field3423.remove(1);
                   }

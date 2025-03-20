@@ -84,7 +84,7 @@ public class BackTrack extends Module {
       }
 
       this.field1027.set(false);
-      this.field1028 = -this.cooldown.method434();
+      this.field1028 = -this.cooldown.getValue();
    }
 
    @EventHandler
@@ -114,7 +114,7 @@ public class BackTrack extends Module {
                }
 
                if (!var5) {
-                  Pair var15 = Class5918.method38(this.ticks.method434(), mc.player);
+                  Pair var15 = Class5918.method38(this.ticks.getValue(), mc.player);
                   ArrayList var16 = (ArrayList)var15.getRight();
 
                   for (PlayerEntity var9 : mc.world.getPlayers()) {
@@ -127,9 +127,9 @@ public class BackTrack extends Module {
                               Vec3d var13 = (Vec3d)var16.get(var12);
                               if (var13.distanceTo(var10) <= Reach.method1613()) {
                                  if (var11 == null) {
-                                    var11 = Class5918.method38(this.ticks.method434(), var9);
+                                    var11 = Class5918.method38(this.ticks.getValue(), var9);
 
-                                    for (int var14 = 0; var14 < this.ticks.method434(); var14++) {
+                                    for (int var14 = 0; var14 < this.ticks.getValue(); var14++) {
                                        if (((Vec3d)var16.get(var14)).distanceTo((Vec3d)((ArrayList)var11.getRight()).get(var14)) <= Reach.method1613()) {
                                           return;
                                        }
@@ -147,7 +147,7 @@ public class BackTrack extends Module {
             } else {
                this.field1028 = 0;
             }
-         } else if (this.field1028 >= this.ticks.method434()) {
+         } else if (this.field1028 >= this.ticks.getValue()) {
             this.method1904();
          } else {
             this.field1028++;

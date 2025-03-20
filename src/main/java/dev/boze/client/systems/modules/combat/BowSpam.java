@@ -92,7 +92,7 @@ public class BowSpam extends Module {
                   return;
                }
 
-               if (mc.player.getItemUseTime() >= this.charge.method434()) {
+               if (mc.player.getItemUseTime() >= this.charge.getValue()) {
                   mc.player.stopUsingItem();
                   mc.interactionManager.stopUsingItem(mc.player);
                } else {

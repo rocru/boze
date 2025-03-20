@@ -44,8 +44,8 @@ public class ClickManager {
         if (this.field3934 != null) {
             return this.field3934.method1376();
         } else {
-            double var4 = Math.min(this.field3935.method434(), this.field3936.method434());
-            double var6 = Math.max(this.field3935.method434(), this.field3936.method434());
+            double var4 = Math.min(this.field3935.getValue(), this.field3936.getValue());
+            double var6 = Math.max(this.field3935.getValue(), this.field3936.getValue());
             return var4 + (var6 - var4) * Math.random();
         }
     }

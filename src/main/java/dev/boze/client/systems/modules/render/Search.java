@@ -133,11 +133,11 @@ public class Search extends Module {
             this.field3671.getValue(),
             this.field3667,
             this.field3668,
-            this.field3675.method434(),
+            this.field3675.getValue(),
             this.field3676.getValue(),
             this.field3673.getValue(),
             this.field3674.getValue(),
-            this.field3672.method434(),
+            this.field3672.getValue(),
             this.field3690
          );
       }
@@ -162,7 +162,7 @@ public class Search extends Module {
             }
 
             double var10 = var17.distanceTo(RotationHelper.field3956);
-            if (!(var10 > (double)this.field3680.method434().intValue()) && !(var10 < (double)this.field3681.method434().intValue())) {
+            if (!(var10 > (double)this.field3680.getValue().intValue()) && !(var10 < (double)this.field3681.getValue().intValue())) {
                RGBAColor var12 = this.method2025(var10);
                if (this.field3686.getValue()) {
                   double var13 = this.method2026(var10);
@@ -190,7 +190,7 @@ public class Search extends Module {
          ? Class3071.method6016(
             this.field3684.getValue(),
             this.field3685.getValue(),
-            (var1 - (double)this.field3681.method434().intValue()) / (double)this.field3680.method434().intValue()
+            (var1 - (double)this.field3681.getValue().intValue()) / (double)this.field3680.getValue().intValue()
          )
          : this.field3683.getValue();
    }

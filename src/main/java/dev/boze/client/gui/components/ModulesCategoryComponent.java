@@ -381,7 +381,7 @@ public class ModulesCategoryComponent extends BaseComponent implements IMinecraf
    @Override
    public boolean onMouseScroll(double mouseX, double mouseY, double amount) {
       if (isMouseWithinBounds(mouseX, mouseY, this.field318, this.field319 + this.field322, this.field320, this.field328) && this.field330 > this.field328) {
-         this.field329 = this.field329 + amount * (double)(-Gui.INSTANCE.field2369.method434());
+         this.field329 = this.field329 + amount * (double)(-Gui.INSTANCE.field2369.getValue());
          this.field329 = MathHelper.clamp(this.field329, 0.0, this.field330 - this.field328);
          return true;
       } else {

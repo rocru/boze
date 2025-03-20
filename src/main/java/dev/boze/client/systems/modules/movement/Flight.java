@@ -83,8 +83,8 @@ public class Flight extends Module {
                Vec3d var8 = new Vec3d(mc.player.getVelocity().x, mc.player.getY() - mc.player.prevY, mc.player.getVelocity().z);
                Vector3d var9 = new Vector3d(var5.x, var6, var5.z);
                if (this.field3277.getValue()) {
-                  int var10 = ChunkSectionPos.getSectionCoord(mc.player.getX() + var9.x * (double)this.field3278.method434().intValue());
-                  int var11 = ChunkSectionPos.getSectionCoord(mc.player.getZ() + var9.z * (double)this.field3278.method434().intValue());
+                  int var10 = ChunkSectionPos.getSectionCoord(mc.player.getX() + var9.x * (double)this.field3278.getValue().intValue());
+                  int var11 = ChunkSectionPos.getSectionCoord(mc.player.getZ() + var9.z * (double)this.field3278.getValue().intValue());
                   boolean var12 = mc.world.getChunkManager().isChunkLoaded(var10, var11);
                   if (!var12) {
                      var9.x = 0.0;

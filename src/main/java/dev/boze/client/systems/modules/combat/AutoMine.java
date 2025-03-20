@@ -149,8 +149,8 @@ public class AutoMine extends Module {
             Direction var6 = event.method1026();
             if (BlockUtil.method2101(var5) && !this.miner.method2101(event.method1024())) {
                event.method1021(true);
-               if (event.field1890 || this.queue.field90.getValue() && this.queue.field88.method434() > 0) {
-                  if (this.queue.field88.method434() == 0) {
+               if (event.field1890 || this.queue.field90.getValue() && this.queue.field88.getValue() > 0) {
+                  if (this.queue.field88.getValue() == 0) {
                      if (!this.miner.field204.isEmpty()) {
                         return;
                      }
@@ -208,7 +208,7 @@ public class AutoMine extends Module {
             break;
          }
 
-         if (this.queue.field88.method434() == 0) {
+         if (this.queue.field88.getValue() == 0) {
             this.queue.method1416();
          }
 

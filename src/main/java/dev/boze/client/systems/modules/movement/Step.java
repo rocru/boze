@@ -122,7 +122,7 @@ public class Step extends Module {
                var5 = 1.0F;
             }
 
-            boolean var6 = this.field3354.method434() == 0 || this.field3359.hasElapsed((double)this.field3354.method434().intValue());
+            boolean var6 = this.field3354.getValue() == 0 || this.field3359.hasElapsed((double)this.field3354.getValue().intValue());
             boolean var7 = !mc.player.isInsideWaterOrBubbleColumn() && (double)mc.player.fallDistance < 0.1 && mc.player.getVelocity().y < 0.5;
             if ((this.field3358.hasElapsed(80.0) || this.field3351.getValue() == StepMode.Vanilla) && var6 && this.field3352.getValue() && var7) {
                mc.player.getAttributeInstance(EntityAttributes.GENERIC_STEP_HEIGHT).setBaseValue((double)var5);

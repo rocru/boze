@@ -242,7 +242,7 @@ public class Miner implements IMinecraft, SettingsGroup {
           {
             InventoryUtil.method533(this.field200, 125, this.field200.swapMode.getValue(), var6);
             if (this.field200.swapMode.getValue().swapBack) {
-               var1.field2534 = this.field200.swapDelay.method434();
+               var1.field2534 = this.field200.swapDelay.getValue();
             }
          }
 
@@ -298,7 +298,7 @@ public class Miner implements IMinecraft, SettingsGroup {
          }
 
          if (this.field200.swapMode.getValue().swapBack) {
-            var1.field2534 = this.field200.swapDelay.method434();
+            var1.field2534 = this.field200.swapDelay.getValue();
          }
       }
 

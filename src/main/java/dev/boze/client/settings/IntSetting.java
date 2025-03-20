@@ -160,12 +160,10 @@ public class IntSetting extends Setting<Integer> {
    //   return this.method435();
   // }
 
+   // public Object getValue() method434
+
    // $VF: synthetic method
    // $VF: bridge method
-   //@Override
-   //public Object getValue() {
-   //   return this.method434();
-   //}
 
    private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
       this.setValue((Integer)var1.getArgument("value", Integer.class));

@@ -194,11 +194,11 @@ public class LogoutSpots extends Module {
                this.field816.getValue(),
                this.field812,
                this.field813,
-               this.field820.method434(),
+               this.field820.getValue(),
                this.field821.getValue(),
                this.field818.getValue(),
                this.field819.getValue(),
-               this.field817.method434(),
+               this.field817.getValue(),
                this.field829
             );
          }

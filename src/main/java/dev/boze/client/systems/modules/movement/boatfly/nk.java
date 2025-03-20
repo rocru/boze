@@ -194,18 +194,18 @@ class nk extends nj {
          Vec3d var11;
          if (this.field1556.field3170.getValue() && this.field1579 != null && this.field1580 != null) {
             Vec3d var14 = this.method697(var10, this.field1579, this.field1580);
-            var11 = var14.add(this.field1580.multiply((double)this.field1556.field3173.method434().intValue() * this.field1556.field3163.getValue() * 19.9));
+            var11 = var14.add(this.field1580.multiply((double)this.field1556.field3173.getValue().intValue() * this.field1556.field3163.getValue() * 19.9));
          } else {
             Vec3d var12 = mc.player.getRotationVec(1.0F);
             var12 = new Vec3d(var12.x, 0.0, var12.z).normalize();
             var11 = var10.add(
-               var12.multiply(Math.min((double)this.field1556.field3173.method434().intValue() * this.field1556.field3163.getValue() * 19.9, 200.0))
+               var12.multiply(Math.min((double)this.field1556.field3173.getValue().intValue() * this.field1556.field3163.getValue() * 19.9, 200.0))
             );
          }
 
          PathFinder var15 = new PathFinder(BlockPos.ofFloored(var10), BlockPos.ofFloored(var11.x, var10.y, var11.z), new PathRules(true, true, true, true));
          if (this.field1556.field3170.getValue() && this.field1579 != null && this.field1580 != null) {
-            var15.method2121(this.field1579, this.field1580, (double)BoatFly.INSTANCE.field3171.method434().intValue());
+            var15.method2121(this.field1579, this.field1580, (double)BoatFly.INSTANCE.field3171.getValue().intValue());
          }
 
          while (!var15.method2117() && !var15.method2118()) {
@@ -219,7 +219,7 @@ class nk extends nj {
          } else {
             if (var15.method2118()) {
                this.field1574++;
-               if (this.field1574 >= this.field1556.field3174.method434()) {
+               if (this.field1574 >= this.field1556.field3174.getValue()) {
                   this.field1556.field3169.setValue(false);
                   ChatInstance.method625("Failed to find path, disabling auto-pilot");
                   return null;
@@ -260,13 +260,13 @@ class nk extends nj {
    @Override
    void method2072(PreTickEvent var1) {
       this.field1570++;
-      if (this.field1570 % this.field1556.field3167.method434() == 0) {
+      if (this.field1570 % this.field1556.field3167.getValue() == 0) {
          this.method1854();
       }
 
       if (this.field1567) {
          this.field1568++;
-         if (this.field1568 > this.field1556.field3167.method434()) {
+         if (this.field1568 > this.field1556.field3167.getValue()) {
             this.method1854();
          }
       }

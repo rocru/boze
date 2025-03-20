@@ -20,8 +20,8 @@ public class FOV extends Module {
 
    @EventHandler
    public void method1937(Render3DEvent event) {
-      if (!Objects.equals(mc.options.getFov().getValue(), this.field3528.method434()) && !Zoom.INSTANCE.isEnabled()) {
-         ((ISimpleOption)mc.options.getFov()).boze$setOptionValue(this.field3528.method434());
+      if (!Objects.equals(mc.options.getFov().getValue(), this.field3528.getValue()) && !Zoom.INSTANCE.isEnabled()) {
+         ((ISimpleOption)mc.options.getFov()).boze$setOptionValue(this.field3528.getValue());
       }
    }
 

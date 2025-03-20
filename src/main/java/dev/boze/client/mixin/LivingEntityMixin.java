@@ -193,16 +193,16 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
    private void onGetHandSwingDuration(CallbackInfoReturnable<Integer> var1) {
       if (HandTweaks.INSTANCE.isEnabled()) {
          if (this.hasStatusEffect(StatusEffects.HASTE)) {
-            var1.setReturnValue(HandTweaks.INSTANCE.field3574.method434() - (1 + this.getStatusEffect(StatusEffects.HASTE).getAmplifier()));
+            var1.setReturnValue(HandTweaks.INSTANCE.field3574.getValue() - (1 + this.getStatusEffect(StatusEffects.HASTE).getAmplifier()));
             return;
          }
 
          if (this.hasStatusEffect(StatusEffects.MINING_FATIGUE)) {
-            var1.setReturnValue(HandTweaks.INSTANCE.field3574.method434() + (1 + this.getStatusEffect(StatusEffects.MINING_FATIGUE).getAmplifier()) * 2);
+            var1.setReturnValue(HandTweaks.INSTANCE.field3574.getValue() + (1 + this.getStatusEffect(StatusEffects.MINING_FATIGUE).getAmplifier()) * 2);
             return;
          }
 
-         var1.setReturnValue(HandTweaks.INSTANCE.field3574.method434());
+         var1.setReturnValue(HandTweaks.INSTANCE.field3574.getValue());
       }
    }
 }

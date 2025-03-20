@@ -31,7 +31,7 @@ public class Ghost implements Anticheat {
     public void method569(EnumSetting<PlayerAimPoint> aimPoint, MinMaxDoubleSetting scale, IntSetting resolution) {
         this.field1314 = aimPoint.getValue();
         this.field1315 = scale.method1295();
-        this.field1316 = resolution.method434();
+        this.field1316 = resolution.getValue();
     }
 
     private Vec3d method570(BlockPos var1, Direction var2, Box var3, Vec3d var4) {

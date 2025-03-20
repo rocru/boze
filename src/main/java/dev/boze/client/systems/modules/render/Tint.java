@@ -119,7 +119,7 @@ public class Tint extends Module {
    @EventHandler
    private void method2041(MovementEvent var1) {
       if (this.field3728.getValue()) {
-         mc.world.setTimeOfDay((long)this.field3729.method434().intValue());
+         mc.world.setTimeOfDay((long)this.field3729.getValue().intValue());
       }
    }
 

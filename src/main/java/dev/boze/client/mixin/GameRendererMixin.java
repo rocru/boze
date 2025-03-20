@@ -237,11 +237,11 @@ public abstract class GameRendererMixin {
             Chams.INSTANCE.aq.getValue(),
             Chams.INSTANCE.an,
             Chams.INSTANCE.ao,
-            Chams.INSTANCE.au.method434(),
+            Chams.INSTANCE.au.getValue(),
             Chams.INSTANCE.av.getValue(),
             Chams.INSTANCE.as.getValue(),
             Chams.INSTANCE.at.getValue(),
-            Chams.INSTANCE.ar.method434(),
+            Chams.INSTANCE.ar.getValue(),
             Chams.INSTANCE.aL
          );
       } else {

@@ -370,7 +370,7 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
             if (!var1.isCancelled()
                && !Options.INSTANCE.method1971()
                && (
-                  System.currentTimeMillis() - this.lastSpoofedTime < (long)(AntiCheat.INSTANCE.field2317.method434() * 50)
+                  System.currentTimeMillis() - this.lastSpoofedTime < (long)(AntiCheat.INSTANCE.field2317.getValue() * 50)
                      || var12.field1931 != this.getY()
                      || var12.field1930 != this.getX()
                      || var12.field1932 != this.getZ()

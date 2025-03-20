@@ -39,11 +39,11 @@ public class FastUse extends Module {
    public void method1715(PrePlayerTickEvent event) {
       if (mc.world != null && mc.player != null) {
          this.field2958++;
-         if (this.field2958 > this.field2950.method434()) {
+         if (this.field2958 > this.field2950.getValue()) {
             if (this.method1718()) {
                this.field2959++;
                this.field2958 = 0;
-               if (((MinecraftClientAccessor)mc).getItemUseCooldown() != 0 && this.field2959 > this.field2951.method434()) {
+               if (((MinecraftClientAccessor)mc).getItemUseCooldown() != 0 && this.field2959 > this.field2951.getValue()) {
                   ((MinecraftClientAccessor)mc).setItemUseCooldown(0);
                }
             } else {

@@ -91,7 +91,7 @@ public class MiddleClickAction extends Module {
 
    private void method266(MiddleClick var1) {
       if (var1 == MiddleClick.XP) {
-         if (!this.field498.hasElapsed((double)(50 * this.field491.method434()))) {
+         if (!this.field498.hasElapsed((double)(50 * this.field491.getValue()))) {
             return;
          }
 

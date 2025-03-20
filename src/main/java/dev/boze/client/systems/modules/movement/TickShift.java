@@ -54,7 +54,7 @@ public class TickShift extends Module {
    @Override
    public String method1322() {
       if (this.field895) {
-         return Integer.toString(this.field885.method434() - this.field896);
+         return Integer.toString(this.field885.getValue() - this.field896);
       } else {
          return this.field897.hasElapsed((double)(this.field886.getValue() * 1000.0F)) ? "Ready" : "Charging";
       }
@@ -94,7 +94,7 @@ public class TickShift extends Module {
          this.field904 = 0;
       }
 
-      if (!this.method1971() || this.field896 >= (int)(this.field892.getValue() * (float)this.field885.method434().intValue())) {
+      if (!this.method1971() || this.field896 >= (int)(this.field892.getValue() * (float)this.field885.getValue().intValue())) {
          while (!this.field901.isEmpty()) {
             mc.player.networkHandler.sendPacket((Packet)this.field901.poll());
          }
@@ -102,7 +102,7 @@ public class TickShift extends Module {
 
       if (this.method1971() && mc.player.age > 50) {
          this.field896++;
-         if (this.field896 > this.field885.method434()) {
+         if (this.field896 > this.field885.getValue()) {
             Class3076.method6025(this);
             if (this.field895) {
                this.field895 = false;
@@ -114,7 +114,7 @@ public class TickShift extends Module {
             }
          } else if (this.field897.hasElapsed((double)(this.field886.getValue() * 1000.0F))
             && (!this.field881.getValue() || this.field902)
-            && this.field904 > this.field883.method434()
+            && this.field904 > this.field883.getValue()
             && (!this.field882.getValue() || this.field903 || mc.player.isOnGround())) {
             Class3076.method6024(this, 100, this.field884.getValue());
             this.field895 = true;
@@ -154,14 +154,14 @@ public class TickShift extends Module {
                }
 
                this.field900++;
-               if (this.field890.method434() > 0 && this.field900 > 10 - this.field890.method434()
-                  || !this.field899.hasElapsed((double)(this.field888.method434() * 1000))) {
+               if (this.field890.getValue() > 0 && this.field900 > 10 - this.field890.getValue()
+                  || !this.field899.hasElapsed((double)(this.field888.getValue() * 1000))) {
                   this.field900 = 0;
                   event.method1020();
                }
             } else if (this.field891.getValue()
                && mc.player.age > 50
-               && this.field896 < (int)(this.field892.getValue() * (float)this.field885.method434().intValue())) {
+               && this.field896 < (int)(this.field892.getValue() * (float)this.field885.getValue().intValue())) {
                this.field901.add(event.packet);
             }
          }

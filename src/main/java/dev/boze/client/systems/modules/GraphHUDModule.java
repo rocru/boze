@@ -30,23 +30,23 @@ public abstract class GraphHUDModule extends HUDModule {
    private CopyOnWriteArrayList<Double> field2311 = new CopyOnWriteArrayList();
 
    public GraphHUDModule(String name, String description) {
-      super(name, description, Category.Graph, (double)(100 + HUD.INSTANCE.field2377.method434() * 2), (double)(60 + HUD.INSTANCE.field2378.method434() * 3));
+      super(name, description, Category.Graph, (double)(100 + HUD.INSTANCE.field2377.getValue() * 2), (double)(60 + HUD.INSTANCE.field2378.getValue() * 3));
    }
 
    protected void method1324(double value) {
       this.field2311.add(value);
 
-      while (this.field2311.size() > this.field2301.getValue() ? this.field2302.method434() : HUD.INSTANCE.field2387.method434()) {
+      while (this.field2311.size() > this.field2301.getValue() ? this.field2302.getValue() : HUD.INSTANCE.field2387.getValue()) {
          this.field2311.remove(0);
       }
    }
 
    @Override
    public void method295(DrawContext context) {
-      this.method314((double)(100 + HUD.INSTANCE.field2377.method434() * 2) * this.method1327());
+      this.method314((double)(100 + HUD.INSTANCE.field2377.getValue() * 2) * this.method1327());
       this.method316(
          (double)(
-               60 + HUD.INSTANCE.field2378.method434() * (this.field2301.getValue() ? this.field2305.getValue() : HUD.INSTANCE.field2390.getValue() ? 2 : 3)
+               60 + HUD.INSTANCE.field2378.getValue() * (this.field2301.getValue() ? this.field2305.getValue() : HUD.INSTANCE.field2390.getValue() ? 2 : 3)
             )
             * this.method1327()
       );
@@ -63,8 +63,8 @@ public abstract class GraphHUDModule extends HUDModule {
          IFontRender.method499()
             .drawShadowedText(
                this.getName(),
-               this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue() * this.method1327(),
-               this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue() * this.method1327(),
+               this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue() * this.method1327(),
+               this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue() * this.method1327(),
                this.field2301.getValue() ? this.field2306.getValue() : HUD.INSTANCE.field2391.getValue(),
                this.field2301.getValue() ? this.field2308.getValue() : HUD.INSTANCE.field2393.getValue()
             );
@@ -75,18 +75,18 @@ public abstract class GraphHUDModule extends HUDModule {
                   var21,
                   this.method1391()
                      + this.method313()
-                     - (double)HUD.INSTANCE.field2377.method434().intValue() * this.method1327()
+                     - (double)HUD.INSTANCE.field2377.getValue().intValue() * this.method1327()
                      - IFontRender.method499().method501(var21),
-                  this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue() * this.method1327(),
+                  this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue() * this.method1327(),
                   this.field2301.getValue() ? this.field2306.getValue() : HUD.INSTANCE.field2391.getValue(),
                   this.field2301.getValue() ? this.field2308.getValue() : HUD.INSTANCE.field2393.getValue()
                );
          }
 
-         var34 = this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue() * this.method1327();
-         var35 = (double)(HUD.INSTANCE.field2378.method434() * 2) * this.method1327()
+         var34 = this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue() * this.method1327();
+         var35 = (double)(HUD.INSTANCE.field2378.getValue() * 2) * this.method1327()
             + IFontRender.method499().method502(this.field2301.getValue() ? this.field2308.getValue() : HUD.INSTANCE.field2393.getValue());
-         var11 = this.method315() - var35 - (double)HUD.INSTANCE.field2378.method434().intValue() * this.method1327();
+         var11 = this.method315() - var35 - (double)HUD.INSTANCE.field2378.getValue().intValue() * this.method1327();
          var35 += this.method305();
          IFontRender.method499().setFontScale(var19 * 0.3);
          if (!this.field2311.isEmpty()) {
@@ -139,12 +139,12 @@ public abstract class GraphHUDModule extends HUDModule {
             )
             + this.method1327() * 2.0;
          IFontRender.method499().setFontScale(var19);
-         var9 = this.method313() - (var34 - this.method1391()) - (double)HUD.INSTANCE.field2377.method434().intValue() * this.method1327();
+         var9 = this.method313() - (var34 - this.method1391()) - (double)HUD.INSTANCE.field2377.getValue().intValue() * this.method1327();
       } else {
-         var34 = this.method1391() + (double)HUD.INSTANCE.field2377.method434().intValue() * this.method1327();
-         var35 = this.method305() + (double)HUD.INSTANCE.field2378.method434().intValue() * this.method1327();
-         var9 = this.method313() - (double)HUD.INSTANCE.field2377.method434().intValue() * this.method1327() * 2.0;
-         var11 = this.method315() - (double)HUD.INSTANCE.field2378.method434().intValue() * this.method1327() * 2.0;
+         var34 = this.method1391() + (double)HUD.INSTANCE.field2377.getValue().intValue() * this.method1327();
+         var35 = this.method305() + (double)HUD.INSTANCE.field2378.getValue().intValue() * this.method1327();
+         var9 = this.method313() - (double)HUD.INSTANCE.field2377.getValue().intValue() * this.method1327() * 2.0;
+         var11 = this.method315() - (double)HUD.INSTANCE.field2378.getValue().intValue() * this.method1327() * 2.0;
       }
 
       if (this.field2311.size() >= 2 && var17 > 0.0) {

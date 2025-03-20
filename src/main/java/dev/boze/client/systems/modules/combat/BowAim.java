@@ -142,9 +142,9 @@ public class BowAim extends Module {
             double var8 = (double)(var7 * 3.0F);
             Vec3d var12 = var6.getPos();
             Vec3d var13 = mc.player.getPos();
-            if (this.extrapolation.method434() > 0 && var6 instanceof PlayerEntity var14) {
-               var12 = this.method262(var14, this.extrapolation.method434());
-               var13 = this.method262(mc.player, this.extrapolation.method434());
+            if (this.extrapolation.getValue() > 0 && var6 instanceof PlayerEntity var14) {
+               var12 = this.method262(var14, this.extrapolation.getValue());
+               var13 = this.method262(mc.player, this.extrapolation.getValue());
             }
 
             float var25 = (float)(-Math.toDegrees((double)this.method263(var6, var8, 0.05F, var12, var13)));
@@ -218,7 +218,7 @@ public class BowAim extends Module {
             && !(((LivingEntity)var6).getHealth() + ((LivingEntity)var6).getAbsorptionAmount() <= 0.0F)
             && !(
                (double)Class1202.method2391(mc.player.getEyePos(), var6.getEyePos()).method605(new RotationHelper(mc.player))
-                  > (double)this.fov.method434().intValue() * 1.417
+                  > (double)this.fov.getValue().intValue() * 1.417
             )) {
             var4.add((LivingEntity)var6);
          }

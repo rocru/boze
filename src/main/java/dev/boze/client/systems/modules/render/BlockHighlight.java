@@ -125,11 +125,11 @@ public class BlockHighlight extends Module {
                this.field3392.getValue(),
                this.field3388,
                this.field3389,
-               this.field3396.method434(),
+               this.field3396.getValue(),
                this.field3397.getValue(),
                this.field3394.getValue(),
                this.field3395.getValue(),
-               this.field3393.method434(),
+               this.field3393.getValue(),
                this.field3405
             );
          }
@@ -176,7 +176,7 @@ public class BlockHighlight extends Module {
    }
 
    private int method1902() {
-      return this.field3401.method434() * 50;
+      return this.field3401.getValue() * 50;
    }
 
    // $VF: Unable to simplify switch on enum

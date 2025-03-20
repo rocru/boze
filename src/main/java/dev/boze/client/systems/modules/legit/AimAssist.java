@@ -114,7 +114,7 @@ public class AimAssist extends Module {
                this.field2703.reset();
             }
 
-            if (!this.field2681.getValue() || !this.field2703.hasElapsed((double)(this.field2682.method434() * 50))) {
+            if (!this.field2681.getValue() || !this.field2703.hasElapsed((double)(this.field2682.getValue() * 50))) {
                RotationHelper var5 = new RotationHelper(mc.player);
                Entity var6 = this.method1574();
                if (var6 != null) {
@@ -122,7 +122,7 @@ public class AimAssist extends Module {
                      Box var18 = var6.getBoundingBox().expand((double)var6.getTargetingMargin()).contract(1.0 - this.field2687.getValue());
                      Vec3d var19 = this.method1573(var18, var6, var5);
                      RotationHelper var9 = Class1202.method2391(mc.player.getEyePos(), var19);
-                     if (!((double)var9.method605(var5) > (double)this.field2692.method434().intValue() * 1.417)) {
+                     if (!((double)var9.method605(var5) > (double)this.field2692.getValue().intValue() * 1.417)) {
                         RotationHelper var10 = var5.method603(var9, this.field2688.getValue()).method1600();
                         RotationHelper var11 = var10.method606(var5);
                         Pair[] var12 = RotationHelper.method614(var11);

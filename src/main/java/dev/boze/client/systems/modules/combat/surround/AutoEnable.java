@@ -34,9 +34,9 @@ class AutoEnable implements IMinecraft {
 
    private int method1541(int var1) {
       if (var1 == 4) {
-         return Surround.INSTANCE.min1x1.method434();
+         return Surround.INSTANCE.min1x1.getValue();
       } else {
-         return var1 == 6 ? Surround.INSTANCE.min2x1.method434() : Surround.INSTANCE.min2x2.method434();
+         return var1 == 6 ? Surround.INSTANCE.min2x1.getValue() : Surround.INSTANCE.min2x2.getValue();
       }
    }
 }

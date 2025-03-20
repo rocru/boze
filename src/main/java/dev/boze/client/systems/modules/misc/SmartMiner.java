@@ -298,7 +298,7 @@ public class SmartMiner extends Module {
    private boolean method1972() {
       ItemStack var4 = mc.player.getMainHandStack();
       double var5 = (double)((float)(var4.getMaxDamage() - var4.getDamage()) * 100.0F / (float)var4.getMaxDamage());
-      return !(var5 > 95.0) && (!(var5 > (double)this.field478.method434().intValue()) || this.field486);
+      return !(var5 > 95.0) && (!(var5 > (double)this.field478.getValue().intValue()) || this.field486);
    }
 
    private boolean method1973() {

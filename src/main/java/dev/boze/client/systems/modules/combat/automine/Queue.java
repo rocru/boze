@@ -52,8 +52,8 @@ public class Queue implements IMinecraft, SettingsGroup {
       } else if (AutoMine.INSTANCE.miner.method2101(var1.field2523)) {
          method1800("Task with pos " + var1.field2523.toShortString() + " already being mined");
          return false;
-      } else if (this.field87.size() < Math.max(1, this.field88.method434())) {
-         if (this.field88.method434() == 0 && !AutoMine.INSTANCE.miner.method2114()) {
+      } else if (this.field87.size() < Math.max(1, this.field88.getValue())) {
+         if (this.field88.getValue() == 0 && !AutoMine.INSTANCE.miner.method2114()) {
             method1800("Task " + var1.field2523.toShortString() + " was not added to queue");
             return false;
          } else {

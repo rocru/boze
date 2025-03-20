@@ -146,7 +146,7 @@ public class HoleTP extends Module {
 
          boolean var15 = false;
 
-         for (int var9 = 0; var9 < this.field451.method434() && var6 > 0 && this.method2077(var5, var6, var7); var9++) {
+         for (int var9 = 0; var9 < this.field451.getValue() && var6 > 0 && this.method2077(var5, var6, var7); var9++) {
             if (this.method244(var5, var6, var7)) {
                var15 = true;
                break;
@@ -173,11 +173,11 @@ public class HoleTP extends Module {
       BlockPos var7 = null;
       double var8 = Double.MAX_VALUE;
 
-      for (int var10 = var1 - this.field447.method434(); var10 <= var1 + this.field447.method434(); var10++) {
-         for (int var11 = var3 - this.field447.method434(); var11 <= var3 + this.field447.method434(); var11++) {
-            for (int var12 = Math.max(mc.world.getBottomY(), var2 - this.field447.method434());
-               var12 <= var2 + this.field447.method434() && var12 <= mc.world.getTopY();
-               var12++
+      for (int var10 = var1 - this.field447.getValue(); var10 <= var1 + this.field447.getValue(); var10++) {
+         for (int var11 = var3 - this.field447.getValue(); var11 <= var3 + this.field447.getValue(); var11++) {
+            for (int var12 = Math.max(mc.world.getBottomY(), var2 - this.field447.getValue());
+                 var12 <= var2 + this.field447.getValue() && var12 <= mc.world.getTopY();
+                 var12++
             ) {
                BlockPos var13 = new BlockPos(var10, var12, var11);
                if ((

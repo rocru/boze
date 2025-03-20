@@ -31,7 +31,7 @@ public class AntiBots extends Module {
    public static boolean method1617(PlayerEntity player) {
       if (!INSTANCE.isEnabled()) {
          return false;
-      } else if (INSTANCE.field996.getValue() && player.age < INSTANCE.field997.method434()) {
+      } else if (INSTANCE.field996.getValue() && player.age < INSTANCE.field997.getValue()) {
          return true;
       } else if (INSTANCE.field998.getValue() && player instanceof OtherClientPlayerEntity var4) {
          return !((IOtherClientPlayerEntity)var4).boze$hasMoved();

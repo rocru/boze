@@ -105,11 +105,11 @@ public class Nuker extends Module {
                this.field2982.getValue(),
                this.field2978,
                this.field2979,
-               this.field2986.method434(),
+               this.field2986.getValue(),
                this.field2987.getValue(),
                this.field2984.getValue(),
                this.field2985.getValue(),
-               this.field2983.method434(),
+               this.field2983.getValue(),
                this.ae
             );
          }
@@ -152,7 +152,7 @@ public class Nuker extends Module {
    }
 
    private int method1734() {
-      return this.field2990.method434() * 50;
+      return this.field2990.getValue() * 50;
    }
 
    private void method1735(Box var1, Renderer3D var2) {
@@ -189,9 +189,9 @@ public class Nuker extends Module {
             double var9 = this.field2994.getValue() * this.field2994.getValue();
             ArrayList var11 = new ArrayList();
 
-            for (int var12 = var5 - this.field2993.method434(); var12 <= var5 + this.field2993.method434(); var12++) {
-               for (int var13 = var7 - this.field2993.method434(); var13 <= var7 + this.field2993.method434(); var13++) {
-                  for (int var14 = Math.max(mc.world.getBottomY(), var6 - this.field2993.method434()); var14 <= var6 + this.field2993.method434(); var14++) {
+            for (int var12 = var5 - this.field2993.getValue(); var12 <= var5 + this.field2993.getValue(); var12++) {
+               for (int var13 = var7 - this.field2993.getValue(); var13 <= var7 + this.field2993.getValue(); var13++) {
+                  for (int var14 = Math.max(mc.world.getBottomY(), var6 - this.field2993.getValue()); var14 <= var6 + this.field2993.getValue(); var14++) {
                      if ((!(this.field2994.getValue() > 0.0) || !(var8.squaredDistanceTo((double)var12 + 0.5, (double)var14 + 0.5, (double)var13 + 0.5) > var9))
                         && (!this.field2998.getValue() || !((double)var14 < Math.floor(mc.player.getY())))) {
                         BlockPos var15 = new BlockPos(var12, var14, var13);
@@ -210,13 +210,13 @@ public class Nuker extends Module {
             }
 
             if (var11.isEmpty()) {
-               if (this.field3004++ >= this.field2996.method434()) {
+               if (this.field3004++ >= this.field2996.getValue()) {
                   this.field3002 = true;
                }
             } else {
                this.field3004 = 0;
                if (!this.field3002 && !this.aa.equals(var11.get(0))) {
-                  this.field3003 = this.field2996.method434();
+                  this.field3003 = this.field2996.getValue();
                   this.field3002 = false;
                   this.aa.set((Vec3i)var11.get(0));
                   if (this.field3003 > 0) {
@@ -227,12 +227,12 @@ public class Nuker extends Module {
                int var21 = 0;
 
                for (BlockPos var23 : var11) {
-                  if (var21 >= this.field2995.method434()) {
+                  if (var21 >= this.field2995.getValue()) {
                      break;
                   }
 
                   boolean var24 = qG.method2102(var23);
-                  Direction var16 = qG.method737(var23, true, (double)this.field2993.method434().intValue());
+                  Direction var16 = qG.method737(var23, true, (double)this.field2993.getValue().intValue());
                   if (var16 != null) {
                      Vec3d var17 = new Vec3d(
                         (double)var23.getX() + 0.5 + (double)var16.getVector().getX() * 0.5,
@@ -279,7 +279,7 @@ public class Nuker extends Module {
    }
 
    private void lambda$onSendMovementPackets$12(BlockPos var1) {
-      qG.method735(var1, (double)this.field2993.method434().intValue(), true);
+      qG.method735(var1, (double)this.field2993.getValue().intValue(), true);
    }
 
    private void lambda$onSendMovementPackets$11(BlockPos var1, Direction var2) {

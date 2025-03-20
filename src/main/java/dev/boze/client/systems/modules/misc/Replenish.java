@@ -214,17 +214,17 @@ public class Replenish extends Module {
             ItemStack var6 = this.method1760(var1);
             if (this.method1756(var6)) {
                if (var2.isStackable() && !var2.isEmpty()) {
-                  if (var2.getCount() <= Math.min(var2.getItem().getMaxCount() - 1, this.field3060.method434())) {
+                  if (var2.getCount() <= Math.min(var2.getItem().getMaxCount() - 1, this.field3060.getValue())) {
                      method1750("Replenishing stackable item " + var2.getItem().getName().getString() + " in slot " + var1);
                      this.method1758(
-                        var1, this.method1757(var2, var1, Math.min(var2.getItem().getMaxCount() - 1, this.field3060.method434()) - var2.getCount() + 1), false
+                        var1, this.method1757(var2, var1, Math.min(var2.getItem().getMaxCount() - 1, this.field3060.getValue()) - var2.getCount() + 1), false
                      );
                   }
                } else if (var2.isEmpty() && !var6.isEmpty()) {
                   if (var6.isStackable()) {
                      method1750("Replenishing empty slot " + var1 + " with stackable item " + var6.getItem().getName().getString());
                      this.method1758(
-                        var1, this.method1757(var6, var1, Math.min(var2.getItem().getMaxCount() - 1, this.field3060.method434()) - var2.getCount() + 1), true
+                        var1, this.method1757(var6, var1, Math.min(var2.getItem().getMaxCount() - 1, this.field3060.getValue()) - var2.getCount() + 1), true
                      );
                   } else {
                      method1750("Replenishing empty slot " + var1 + " with unstackable item " + var6.getItem().getName().getString());

@@ -41,7 +41,7 @@ public class RocketTweaks extends Module {
    private Vec3d field3333 = null;
 
    private boolean method1861() {
-      return this.field3328.method434() > 0;
+      return this.field3328.getValue() > 0;
    }
 
    private RocketTweaks() {
@@ -100,7 +100,7 @@ public class RocketTweaks extends Module {
       if (this.method1861()) {
          if (this.field3333 != null
             && (
-               this.field3333.squaredDistanceTo(mc.player.getX(), 0.0, mc.player.getZ()) > Math.pow((double)(this.field3329.method434() * 16), 2.0)
+               this.field3333.squaredDistanceTo(mc.player.getX(), 0.0, mc.player.getZ()) > Math.pow((double)(this.field3329.getValue() * 16), 2.0)
                   || !mc.player.isFallFlying()
                   || this.field3332.hasElapsed(55000.0)
             )) {

@@ -144,7 +144,7 @@ public class HoleFill extends Module {
             this.toggle();
          } else if (!this.onlyWhileSneaking.getValue() || mc.player.input.sneaking) {
             if (!Options.method477(this.multiTask.getValue())) {
-               if (this.aa < this.interval.method434()) {
+               if (this.aa < this.interval.getValue()) {
                   this.aa++;
                } else if (this.method2010() != -1) {
                   this.ae = this.method2032();
@@ -232,7 +232,7 @@ public class HoleFill extends Module {
                   }
 
                   this.af = null;
-                  if (++var5 >= this.placeRate.method434()) {
+                  if (++var5 >= this.placeRate.getValue()) {
                      break;
                   }
 
@@ -270,7 +270,7 @@ public class HoleFill extends Module {
       List<BlockPos> var5 = new ArrayList<>();
       BlockPos var6 = mc.player.getBlockPos();
       int var7 = (int)Math.ceil(this.range.getValue() + 1.0);
-      int var8 = this.vRange.method434();
+      int var8 = this.vRange.getValue();
 
       for (int var9 = var6.getX() - var7; var9 < var6.getX() + var7; var9++) {
          for (int var10 = var6.getY() - var8; var10 < var6.getY() + var8; var10++) {
@@ -281,7 +281,7 @@ public class HoleFill extends Module {
                      this.ah.set((double)var12.getX() + 0.5, (double)var12.getY() + 1.0, (double)var12.getZ() + 0.5);
 
                      for (PlayerEntity var14 : var4) {
-                        Class5920.method52(var14, this.extrapolation.method434(), this.ag);
+                        Class5920.method52(var14, this.extrapolation.getValue(), this.ag);
                         if (this.ag.distance(this.ah.x, this.ag.y, this.ah.z) <= this.hradius.getValue()
                            && Math.abs(this.ag.y - this.ah.y) <= this.vradius.getValue()) {
                            var5.add(var12);

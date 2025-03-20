@@ -47,9 +47,9 @@ public class SpawnESP extends Module {
       this.field771.clear();
       BlockPos var10 = mc.player.getBlockPos();
 
-      for (int var11 = -this.field767.method434(); var11 <= this.field767.method434(); var11++) {
-         for (int var7 = -this.field767.method434(); var7 <= this.field767.method434(); var7++) {
-            for (int var8 = -this.field767.method434(); var8 <= this.field767.method434(); var8++) {
+      for (int var11 = -this.field767.getValue(); var11 <= this.field767.getValue(); var11++) {
+         for (int var7 = -this.field767.getValue(); var7 <= this.field767.getValue(); var7++) {
+            for (int var8 = -this.field767.getValue(); var8 <= this.field767.getValue(); var8++) {
                BlockPos var9 = var10.add(var11, var7, var8);
                switch (method359(var9, mc.world.getBlockState(var9))) {
                   case 1:

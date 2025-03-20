@@ -223,11 +223,11 @@ public class HoleESP extends Module {
             this.field862.getValue(),
             this.field869,
             this.field870,
-            this.field866.method434(),
+            this.field866.getValue(),
             this.field867.getValue(),
             this.field864.getValue(),
             this.field865.getValue(),
-            this.field863.method434(),
+            this.field863.getValue(),
             this.aq
          );
       } else {
@@ -307,7 +307,7 @@ public class HoleESP extends Module {
    }
 
    private void method1904() {
-      if (this.ax < this.field852.method434()) {
+      if (this.ax < this.field852.getValue()) {
          this.ax++;
          if (this.field851.getValue() != HoleESPOptimization.Off) {
             return;
@@ -326,11 +326,11 @@ public class HoleESP extends Module {
          int var11 = (int)mc.player.getY();
          int var12 = (int)mc.player.getZ();
 
-         for (int var13 = var10 - this.field856.method434(); var13 <= var10 + this.field856.method434(); var13++) {
-            for (int var14 = var12 - this.field856.method434(); var14 <= var12 + this.field856.method434(); var14++) {
-               for (int var15 = Math.max(mc.world.getBottomY(), var11 - this.field857.method434());
-                  var15 <= var11 + this.field858.method434() && var15 <= mc.world.getTopY();
-                  var15++
+         for (int var13 = var10 - this.field856.getValue(); var13 <= var10 + this.field856.getValue(); var13++) {
+            for (int var14 = var12 - this.field856.getValue(); var14 <= var12 + this.field856.getValue(); var14++) {
+               for (int var15 = Math.max(mc.world.getBottomY(), var11 - this.field857.getValue());
+                    var15 <= var11 + this.field858.getValue() && var15 <= mc.world.getTopY();
+                    var15++
                ) {
                   BlockPos var16 = new BlockPos(var13, var15, var14);
                   if ((

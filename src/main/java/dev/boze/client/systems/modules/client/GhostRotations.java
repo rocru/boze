@@ -76,7 +76,7 @@ public class GhostRotations extends Module {
             this.field760 = var5.method1100();
             this.field761.reset();
          } else if (this.field760 != null) {
-            if (this.field761.hasElapsed((double)(this.field759.method434() * 100))) {
+            if (this.field761.hasElapsed((double)(this.field759.getValue() * 100))) {
                this.field760.method488(mc.player);
                mc.player.renderYaw = this.field760.method1384();
                mc.player.lastRenderYaw = this.field760.method1384();

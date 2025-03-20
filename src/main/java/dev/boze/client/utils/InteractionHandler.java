@@ -108,7 +108,7 @@ public class InteractionHandler implements SettingsGroup, IMinecraft {
     }
 
     public int method2010() {
-        return this.method2114() && MovementUtils.method2114() ? this.field240.method434() : 1;
+        return this.method2114() && MovementUtils.method2114() ? this.field240.getValue() : 1;
     }
 
     public final CrystalAttackMode method148() {

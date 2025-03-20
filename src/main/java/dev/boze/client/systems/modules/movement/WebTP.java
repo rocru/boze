@@ -38,10 +38,10 @@ public class WebTP extends Module {
             event.field1892 = true;
          }
 
-         if (this.field541.method434() > 0) {
+         if (this.field541.getValue() > 0) {
             Class3091.field217 = true;
 
-            for (int var5 = 1; var5 < this.field541.method434(); var5++) {
+            for (int var5 = 1; var5 < this.field541.getValue(); var5++) {
                mc.player.move(event.movementType, event.vec3);
                ((IClientPlayerEntity)mc.player).boze$sendMovementPackets(mc.player.isOnGround());
             }

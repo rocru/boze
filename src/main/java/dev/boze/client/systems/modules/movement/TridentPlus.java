@@ -42,7 +42,7 @@ public class TridentPlus extends Module {
                }
 
                ((KeyBindingAccessor)mc.options.useKey).setTimesPressed(1);
-               this.field3365 = this.field3363.method434();
+               this.field3365 = this.field3363.getValue();
             }
          }
       }

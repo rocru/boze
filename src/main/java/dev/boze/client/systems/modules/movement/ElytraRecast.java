@@ -244,7 +244,7 @@ public class ElytraRecast extends Module {
             Class3076.method6024(this, 12, 0.125F);
          }
 
-         if (this.field583.hasElapsed((double)(this.field577.method434() * 50))) {
+         if (this.field583.hasElapsed((double)(this.field577.getValue() * 50))) {
             if (this.field584 >= 5) {
                ChatInstance.method740(this.getName(), "Failed to takeoff, waiting...");
                this.field584 = 0;
@@ -271,7 +271,7 @@ public class ElytraRecast extends Module {
             if (method1972()) {
                this.method288(mc.options.forwardKey, true);
                this.method288(mc.options.jumpKey, true);
-               mc.player.setPitch((float)this.field566.method434().intValue());
+               mc.player.setPitch((float)this.field566.getValue().intValue());
                if (this.field567.getValue() != ElytraRecastDirection.Off) {
                   mc.player.setYaw(this.field567.getValue().field1766);
                }

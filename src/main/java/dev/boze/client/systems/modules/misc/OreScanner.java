@@ -88,11 +88,11 @@ public class OreScanner extends Module {
                this.field3036.getValue(),
                this.field3032,
                this.field3033,
-               this.field3040.method434(),
+               this.field3040.getValue(),
                this.field3041.getValue(),
                this.field3038.getValue(),
                this.field3039.getValue(),
-               this.field3037.method434(),
+               this.field3037.getValue(),
                this.field3044
             );
          }
@@ -101,20 +101,20 @@ public class OreScanner extends Module {
 
    @EventHandler
    public void method1742(MovementEvent event) {
-      if (this.field3046.hasElapsed((double)(this.field3029.method434() * 50))) {
+      if (this.field3046.hasElapsed((double)(this.field3029.getValue() * 50))) {
          int var5 = (int)mc.player.getX();
          int var6 = (int)mc.player.getY();
          int var7 = (int)mc.player.getZ();
          int var8 = 0;
          Hand var9 = mc.player.getMainHandStack().isEmpty() ? Hand.MAIN_HAND : Hand.OFF_HAND;
 
-         for (int var10 = var5 - this.field3027.method434(); var10 <= var5 + this.field3027.method434(); var10++) {
-            for (int var11 = var7 - this.field3027.method434(); var11 <= var7 + this.field3027.method434(); var11++) {
-               for (int var12 = Math.max(mc.world.getBottomY(), var6 - this.field3028.method434());
-                  var12 <= var6 + this.field3028.method434() && var12 <= mc.world.getTopY();
-                  var12++
+         for (int var10 = var5 - this.field3027.getValue(); var10 <= var5 + this.field3027.getValue(); var10++) {
+            for (int var11 = var7 - this.field3027.getValue(); var11 <= var7 + this.field3027.getValue(); var11++) {
+               for (int var12 = Math.max(mc.world.getBottomY(), var6 - this.field3028.getValue());
+                    var12 <= var6 + this.field3028.getValue() && var12 <= mc.world.getTopY();
+                    var12++
                ) {
-                  if (var8 >= this.field3030.method434()) {
+                  if (var8 >= this.field3030.getValue()) {
                      return;
                   }
 

@@ -251,7 +251,7 @@ public class HeldItemRendererMixin {
          float var11 = var10 / (float)var4.getMaxUseTime(var5);
          if (var11 < 0.8F) {
             float var9 = MathHelper.abs(
-               MathHelper.cos(var10 / (float)HandTweaks.INSTANCE.field3576.method434().intValue() * (float) Math.PI)
+               MathHelper.cos(var10 / (float)HandTweaks.INSTANCE.field3576.getValue().intValue() * (float) Math.PI)
                   * HandTweaks.INSTANCE.field3577.getValue()
             );
             if (HandTweaks.INSTANCE.field3578.getValue()) {

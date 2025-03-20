@@ -252,8 +252,8 @@ public class ElytraFly extends Module {
                      Class3076.method6024(this, 12, 0.125F);
                   }
 
-                  if (this.field3239.hasElapsed((double)(this.field3228.method434() * 50))) {
-                     if (this.field3242 >= this.field3229.method434()) {
+                  if (this.field3239.hasElapsed((double)(this.field3228.getValue() * 50))) {
+                     if (this.field3242 >= this.field3229.getValue()) {
                         NotificationManager.method1151(
                            new Notification(this.getName(), " Unable to take off", Notifications.WARNING, NotificationPriority.Yellow)
                         );
@@ -277,8 +277,8 @@ public class ElytraFly extends Module {
          double var5 = mc.player.getX() - mc.player.prevX;
          double var7 = mc.player.getZ() - mc.player.prevZ;
          double var9 = Math.sqrt(var5 * var5 + var7 * var7);
-         if (!this.ab || !(mc.player.getY() <= (double)this.field3218.method434().intValue()) && !(var9 > this.field3222.getValue())) {
-            if (!this.ab && (mc.player.getY() >= (double)this.field3219.method434().intValue() || var9 < this.field3221.getValue())) {
+         if (!this.ab || !(mc.player.getY() <= (double)this.field3218.getValue().intValue()) && !(var9 > this.field3222.getValue())) {
+            if (!this.ab && (mc.player.getY() >= (double)this.field3219.getValue().intValue() || var9 < this.field3221.getValue())) {
                this.ab = true;
             }
          } else {
@@ -316,7 +316,7 @@ public class ElytraFly extends Module {
                   event.method1074(new ActionWrapper(event.yaw, -2.0F, true));
                }
 
-               if (this.field3237.getValue() && this.field3240.hasElapsed((double)(this.field3238.method434() * 50))) {
+               if (this.field3237.getValue() && this.field3240.hasElapsed((double)(this.field3238.getValue() * 50))) {
                   if (mc.player.getMainHandStack().getItem() == Items.FIREWORK_ROCKET) {
                      mc.player.swingHand(Hand.MAIN_HAND);
                      this.field3238.method435();
@@ -339,7 +339,7 @@ public class ElytraFly extends Module {
       if (!MinecraftUtils.isClientActive()) {
          this.setEnabled(false);
       } else {
-         if (mc.player.getY() < (double)this.field3219.method434().intValue() && this.field3217.getValue() == ElytraFlyMode.Infinite) {
+         if (mc.player.getY() < (double)this.field3219.getValue().intValue() && this.field3217.getValue() == ElytraFlyMode.Infinite) {
             ChatInstance.method742("ElytraFly", "Player must be above or at max height");
             this.setEnabled(false);
          }

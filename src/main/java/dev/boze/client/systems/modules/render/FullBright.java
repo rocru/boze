@@ -22,8 +22,8 @@ public class FullBright extends Module {
 
    @EventHandler
    private void method1959(Render3DEvent var1) {
-      if (field3569 != this.field3566.method434()) {
-         field3569 = this.field3566.method434();
+      if (field3569 != this.field3566.getValue()) {
+         field3569 = this.field3566.getValue();
          if (mc.worldRenderer != null) {
             mc.worldRenderer.reload();
          }

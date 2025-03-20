@@ -145,7 +145,7 @@ public class Theme extends Module {
    }
 
    public static int method1357() {
-      return INSTANCE.field2418.method434();
+      return INSTANCE.field2418.getValue();
    }
 
    public static AlignMode method1358() {
@@ -169,7 +169,7 @@ public class Theme extends Module {
    }
 
    public static int method1363() {
-      return INSTANCE.field2425.method434();
+      return INSTANCE.field2425.getValue();
    }
 
    public static double method1364() {
@@ -177,15 +177,15 @@ public class Theme extends Module {
    }
 
    public static int method1365() {
-      return INSTANCE.field2427.method434();
+      return INSTANCE.field2427.getValue();
    }
 
    public static int method1366() {
-      return INSTANCE.field2428.method434();
+      return INSTANCE.field2428.getValue();
    }
 
    public static int method1367() {
-      return INSTANCE.field2430.method434();
+      return INSTANCE.field2430.getValue();
    }
 
    public static AlignMode method1368() {
@@ -221,7 +221,7 @@ public class Theme extends Module {
    }
 
    public static int method1376() {
-      return INSTANCE.ai.method434();
+      return INSTANCE.ai.getValue();
    }
 
    public static boolean method1377() {
@@ -233,7 +233,7 @@ public class Theme extends Module {
    }
 
    public static int method1379() {
-      return INSTANCE.am.method434();
+      return INSTANCE.am.getValue();
    }
 
    public static boolean method1380() {
@@ -261,7 +261,7 @@ public class Theme extends Module {
    }
 
    public static int method1386() {
-      return INSTANCE.au.method434();
+      return INSTANCE.au.getValue();
    }
 
    public static boolean method1387() {

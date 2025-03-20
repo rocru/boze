@@ -135,7 +135,7 @@ public class CrystalHelper implements IMinecraft {
       } else {
          return (double)(System.currentTimeMillis() - ((IEndCrystalEntity)var1).boze$getLastAttackTime()) > Boze.getModules().field905.field1519
                && var1 != this.field1626.autoCrystalTracker.field1529
-            ? var1.age >= this.field1626.hitTicks.method434()
+            ? var1.age >= this.field1626.hitTicks.getValue()
             : false;
       }
    }

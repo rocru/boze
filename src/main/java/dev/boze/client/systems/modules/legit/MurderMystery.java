@@ -86,7 +86,7 @@ public class MurderMystery extends Module {
    }
 
    private void lambda$onRotate$1(AbstractClientPlayerEntity var1) {
-      if (var1.distanceTo(mc.player) <= (float)this.field2812.method434().intValue()) {
+      if (var1.distanceTo(mc.player) <= (float)this.field2812.getValue().intValue()) {
          if (!this.method1610(var1.getMainHandStack()) && !this.method1610(var1.getOffHandStack())) {
             if (var1.equals(this.field2814) && this.field2810.getValue() != MurderMysteryWeapon.Hypixel) {
                this.field2814 = null;

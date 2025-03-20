@@ -404,7 +404,7 @@ public class Aura extends Module {
          return false;
       } else if (!this.method1413(mc.player.getMainHandStack().getItem())) {
          return false;
-      } else if (this.delay.getValue() == DelayMode.Tick && !this.aj.hasElapsed((double)((float)this.ticks.method434().intValue() * 50.0F))) {
+      } else if (this.delay.getValue() == DelayMode.Tick && !this.aj.hasElapsed((double)((float)this.ticks.getValue().intValue() * 50.0F))) {
          return false;
       } else {
          if (this.delay.getValue() == DelayMode.Dynamic) {

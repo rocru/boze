@@ -49,7 +49,7 @@ public class AutoBridge extends Module {
          if (this.field2726.getValue()) {
             Vec3d var5 = mc.player.getPos();
             Vec3d var6 = new Vec3d(mc.player.getX() - mc.player.prevX, mc.player.getY() - mc.player.prevY, mc.player.getZ() - mc.player.prevZ);
-            var5 = var5.add(var6.multiply((double)this.field2727.method434().intValue()));
+            var5 = var5.add(var6.multiply((double)this.field2727.getValue().intValue()));
             mc.options.sneakKey.setPressed(mc.player.isOnGround() && mc.world.getBlockState(BlockPos.ofFloored(var5).down()).isAir());
          }
 

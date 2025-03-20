@@ -140,8 +140,8 @@ public abstract class ChatHudMixin implements IChatHud {
    )
    private static void onGetMessageOpacityMultiplier(int var0, CallbackInfoReturnable<Double> var1) {
       lastAge = var0;
-      if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.field2934.getValue() && var0 < ExtraChat.INSTANCE.field2935.method434()) {
-         double var4 = Class3071.method6022(0.0, 1.0, (double)var0 / (double)ExtraChat.INSTANCE.field2935.method434().intValue());
+      if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.field2934.getValue() && var0 < ExtraChat.INSTANCE.field2935.getValue()) {
+         double var4 = Class3071.method6022(0.0, 1.0, (double)var0 / (double)ExtraChat.INSTANCE.field2935.getValue().intValue());
          var4 = MathHelper.clamp(var4, 0.0, 1.0);
          var4 *= var4;
          var1.setReturnValue(var4);
@@ -161,7 +161,7 @@ public abstract class ChatHudMixin implements IChatHud {
             double var4 = Class3071.method6022(
                0.0,
                1.0,
-               (double)((float)lastAge + this.client.getRenderTickCounter().getTickDelta(true)) / (double)ExtraChat.INSTANCE.field2937.method434().intValue()
+               (double)((float)lastAge + this.client.getRenderTickCounter().getTickDelta(true)) / (double)ExtraChat.INSTANCE.field2937.getValue().intValue()
             );
             var4 = MathHelper.clamp(var4, 0.0, 1.0);
             var4 *= var4;

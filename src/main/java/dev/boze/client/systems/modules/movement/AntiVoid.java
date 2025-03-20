@@ -210,7 +210,7 @@ public class AntiVoid extends Module {
    )
    public void method1893(PlayerMoveEvent event) {
       if (this.method280() == AntiVoidMode.Anarchy) {
-         int var5 = mc.world.getBottomY() - this.field554.method434();
+         int var5 = mc.world.getBottomY() - this.field554.getValue();
          if (mc.player.getPos().y + event.vec3.y <= (double)var5) {
             if (this.field553.getValue() == AntiVoidType.Packet) {
                mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), 999.0, mc.player.getZ(), true));

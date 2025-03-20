@@ -53,9 +53,9 @@ public class FastSwim extends Module {
    public void method1833(PlayerMoveEvent event) {
       if (!event.field1892) {
          if (this.field3264.getValue()) {
-            if (this.field3269 >= this.field3265.method434()) {
+            if (this.field3269 >= this.field3265.getValue()) {
                this.field3270++;
-               if (this.field3270 >= this.field3266.method434()) {
+               if (this.field3270 >= this.field3266.getValue()) {
                   this.field3270 = 0;
                   this.field3269 = 0;
                }
@@ -87,9 +87,9 @@ public class FastSwim extends Module {
                var11 = this.field3259.getValue();
             }
 
-            double var13 = this.field3255.method434() == 0
+            double var13 = this.field3255.getValue() == 0
                ? 1.0
-               : MathHelper.clamp((double)(System.currentTimeMillis() - this.field3267) / (double)(this.field3255.method434() * 50), 0.0, 1.0);
+               : MathHelper.clamp((double)(System.currentTimeMillis() - this.field3267) / (double)(this.field3255.getValue() * 50), 0.0, 1.0);
             Vec3d var15 = Class5924.method93(Class5924.method2091() * var5 * var13);
             double var16 = mc.options.jumpKey.isPressed() ? 0.4 * var7 : (mc.options.sneakKey.isPressed() ? -0.4 * var9 : -var11 * 0.04);
             event.vec3 = new Vec3d(var15.x, var16, var15.z);

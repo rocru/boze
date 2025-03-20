@@ -169,7 +169,7 @@ public class Chams extends Module {
    // $VF: Unable to simplify switch on enum
    // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
    public boolean method1924(Entity e) {
-      if (e.distanceTo(mc.player) > (float)this.field3476.method434().intValue()) {
+      if (e.distanceTo(mc.player) > (float)this.field3476.getValue().intValue()) {
          return false;
       } else if (e instanceof EndCrystalEntity) {
          return this.ad.getValue();

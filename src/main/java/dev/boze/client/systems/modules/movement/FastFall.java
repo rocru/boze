@@ -88,7 +88,7 @@ public class FastFall extends Module {
             }
 
             if (event.vec3.y < 0.0) {
-               for (int var5 = 0; var5 < this.field3251.method434(); var5++) {
+               for (int var5 = 0; var5 < this.field3251.getValue(); var5++) {
                   Class3091.field217 = true;
                   mc.player
                      .move(
@@ -116,7 +116,7 @@ public class FastFall extends Module {
    }
 
    private boolean lambda$new$5() {
-      return this.field3246.getValue() == FastFallMode.Normal && this.field3251.method434() > 0;
+      return this.field3246.getValue() == FastFallMode.Normal && this.field3251.getValue() > 0;
    }
 
    private boolean lambda$new$4() {

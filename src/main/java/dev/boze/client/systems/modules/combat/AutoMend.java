@@ -82,7 +82,7 @@ public class AutoMend extends Module {
    )
    public void method1885(ACRotationEvent event) {
       if (event.method1017() == this.interactionMode.getValue()) {
-         if (this.field685 >= this.delay.method434()) {
+         if (this.field685 >= this.delay.getValue()) {
             if (!ElytraRecast.INSTANCE.isEnabled()) {
                if (!this.method1971()) {
                   this.setEnabled(false);
@@ -100,7 +100,7 @@ public class AutoMend extends Module {
    )
    public void method1883(RotationEvent event) {
       if (!event.method554(RotationMode.Sequential)) {
-         if (this.field685 < this.delay.method434()) {
+         if (this.field685 < this.delay.getValue()) {
             this.field685++;
          } else if (this.method1971()) {
             int var5 = this.method2010();

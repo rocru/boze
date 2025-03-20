@@ -43,7 +43,7 @@ public class Target extends HUDModule implements Class5929 {
       PlayerEntity var5 = TargetTracker.method1520();
       if (var5 != null
          && mc.player.networkHandler.getPlayerListEntry(var5.getUuid()) != null
-         && !(mc.player.distanceTo(var5) > (float)this.field615.method434().intValue())) {
+         && !(mc.player.distanceTo(var5) > (float)this.field615.getValue().intValue())) {
          this.field623 = Math.max(IFontRender.method499().method501(var5.getName().getString()), IFontRender.method499().method501("Example42"));
          this.field624 = IFontRender.method499().method1390();
          this.method1904();
@@ -129,7 +129,7 @@ public class Target extends HUDModule implements Class5929 {
    @Override
    public void method332(DrawContext context) {
       PlayerEntity var5 = TargetTracker.method1520();
-      if (var5 != null && !(mc.player.distanceTo(var5) > (float)this.field615.method434().intValue())) {
+      if (var5 != null && !(mc.player.distanceTo(var5) > (float)this.field615.getValue().intValue())) {
          PlayerListEntry var6 = mc.player.networkHandler.getPlayerListEntry(var5.getUuid());
          if (var6 != null) {
             Identifier var7 = var6.getSkinTextures().texture();

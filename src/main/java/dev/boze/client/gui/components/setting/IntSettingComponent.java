@@ -52,8 +52,8 @@ public class IntSettingComponent extends ScaledSettingBaseComponent implements I
             this.field305 = scaleFactor * 6.0 + var8 / 2.0;
          }
 
-         String var12 = this.field304.method434().toString();
-         if (this.field304.method434() >= 0 && var12.startsWith("-")) {
+         String var12 = this.field304.getValue().toString();
+         if (this.field304.getValue() >= 0 && var12.startsWith("-")) {
             var12 = var12.substring(1);
          }
 
@@ -92,7 +92,7 @@ public class IntSettingComponent extends ScaledSettingBaseComponent implements I
                this.field318 + 12.0 * scaleFactor,
                this.field319 + this.field321 * 0.75 - scaleFactor,
                (this.field320 - 26.0 * scaleFactor)
-                     * MathHelper.clamp((double)(this.field304.method434() - this.field304.min) / (double)(this.field304.max - this.field304.min), 0.0, 1.0)
+                     * MathHelper.clamp((double)(this.field304.getValue() - this.field304.min) / (double)(this.field304.max - this.field304.min), 0.0, 1.0)
                   + scaleFactor * 2.0,
                scaleFactor * 2.0,
                15,
@@ -131,7 +131,7 @@ public class IntSettingComponent extends ScaledSettingBaseComponent implements I
                IFontRender.method499().method501("-") + 2.0 * scaleFactor,
                IFontRender.method499().method1390() + 2.0 * scaleFactor
             )) {
-               this.field304.method436(MathHelper.clamp(this.field304.method434() - this.field304.step, this.field304.min, this.field304.max));
+               this.field304.method436(MathHelper.clamp(this.field304.getValue() - this.field304.step, this.field304.min, this.field304.max));
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             } else if (isMouseWithinBounds(
                mouseX,
@@ -141,7 +141,7 @@ public class IntSettingComponent extends ScaledSettingBaseComponent implements I
                IFontRender.method499().method501("+") + 2.0 * scaleFactor,
                IFontRender.method499().method1390() + 2.0 * scaleFactor
             )) {
-               this.field304.method436(MathHelper.clamp(this.field304.method434() + this.field304.step, this.field304.min, this.field304.max));
+               this.field304.method436(MathHelper.clamp(this.field304.getValue() + this.field304.step, this.field304.min, this.field304.max));
                mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             }
 

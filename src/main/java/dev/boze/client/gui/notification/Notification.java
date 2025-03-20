@@ -28,7 +28,7 @@ public class Notification implements INotification {
       String var7 = this.field1244 != null ? this.field1244 + (this.field1245.startsWith(" ") ? "" : " - ") + this.field1245 : this.field1245;
       double var8 = IFontRender.method499().method501(var7) + IFontRender.method499().method1390() + 25.0;
       this.field1248 = IFontRender.method499().method1390() + 10.0;
-      if (dev.boze.client.systems.modules.client.Notifications.INSTANCE.field841.method434() == 0) {
+      if (dev.boze.client.systems.modules.client.Notifications.INSTANCE.field841.getValue() == 0) {
          RenderUtil.field3963
             .method2252(
                (double)mc.getWindow().getScaledWidth() - (var8 + 10.0) * (double)progress,
@@ -46,7 +46,7 @@ public class Notification implements INotification {
                this.field1248,
                15,
                24,
-               (double)dev.boze.client.systems.modules.client.Notifications.INSTANCE.field841.method434().intValue(),
+               (double)dev.boze.client.systems.modules.client.Notifications.INSTANCE.field841.getValue().intValue(),
                dev.boze.client.systems.modules.client.Notifications.INSTANCE.field839.getValue()
             );
       }

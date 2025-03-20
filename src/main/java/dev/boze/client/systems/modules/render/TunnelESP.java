@@ -113,11 +113,11 @@ public class TunnelESP extends Module {
             this.field3820.getValue(),
             this.field3815,
             this.field3816,
-            this.field3824.method434(),
+            this.field3824.getValue(),
             this.field3825.getValue(),
             this.field3822.getValue(),
             this.field3823.getValue(),
-            this.field3821.method434(),
+            this.field3821.getValue(),
             this.field3828
          );
       }

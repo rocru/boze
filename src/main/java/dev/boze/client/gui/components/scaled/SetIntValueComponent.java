@@ -27,7 +27,7 @@ public class SetIntValueComponent extends ScaledBaseComponent {
       super(setting.name, 0.2, 0.2);
       this.field1394 = setting;
       DecimalFormat var4 = new DecimalFormat("#.###");
-      this.field1395 = var4.format(setting.method434());
+      this.field1395 = var4.format(setting.getValue());
    }
 
    @Override

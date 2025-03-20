@@ -67,7 +67,7 @@ public class Sprint extends Module {
 
    @Override
    public void onEnable() {
-      this.field3345 = this.field3340.method434();
+      this.field3345 = this.field3340.getValue();
       this.field3346 = 0;
       this.field3347 = 0;
       this.field3348 = false;
@@ -141,12 +141,12 @@ public class Sprint extends Module {
    )
    public void method1873(PlayerMoveEvent event) {
       if (this.method1868() && !event.field1892) {
-         if (this.field3345 < this.field3340.method434()) {
+         if (this.field3345 < this.field3340.getValue()) {
             this.field3345++;
             this.field3346 = 0;
          } else {
             if (this.field3337.getValue()
-               && this.field3335.method434() == 0
+               && this.field3335.getValue() == 0
                && !Speed.INSTANCE.isEnabled()
                && mc.player.getHungerManager().getFoodLevel() > 6
                && !mc.player.isFallFlying()
@@ -159,7 +159,7 @@ public class Sprint extends Module {
                event.field1892 = true;
                if (this.field3338.getValue()) {
                   this.field3346++;
-                  if (this.field3346 >= this.field3339.method434()) {
+                  if (this.field3346 >= this.field3339.getValue()) {
                      this.field3346 = 0;
                      this.field3345 = 0;
                   }
@@ -187,9 +187,9 @@ public class Sprint extends Module {
    public void method1875(PostPlayerTickEvent event) {
       if (this.method1868()) {
          if (!this.field3341.method476().isPressed() && !mc.player.horizontalCollision) {
-            if (this.field3335.method434() > 0) {
+            if (this.field3335.getValue() > 0) {
                if (!mc.player.isOnGround()) {
-                  this.field3347 = this.field3335.method434();
+                  this.field3347 = this.field3335.getValue();
                   return;
                }
 
@@ -224,11 +224,11 @@ public class Sprint extends Module {
    }
 
    private boolean lambda$new$3() {
-      return this.field3337.getValue() && this.method1868() && this.field3335.method434() == 0;
+      return this.field3337.getValue() && this.method1868() && this.field3335.getValue() == 0;
    }
 
    private boolean lambda$new$2() {
-      return this.field3335.method434() == 0 && this.method1868();
+      return this.field3335.getValue() == 0 && this.method1868();
    }
 
    private boolean lambda$new$1() {

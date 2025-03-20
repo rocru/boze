@@ -310,7 +310,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
                return false;
             }
 
-            if (((IEndCrystalEntity)var1).boze$getHitsSinceLastAttack() > this.field183.extraLimit.method434()
+            if (((IEndCrystalEntity)var1).boze$getHitsSinceLastAttack() > this.field183.extraLimit.getValue()
                && (double)(System.currentTimeMillis() - ((IEndCrystalEntity)var1).boze$getLastAttackTime()) < Boze.getModules().field905.field1519) {
                return false;
             }
@@ -336,7 +336,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
          && !Boze.getModules()
             .field906
             .field1617
-            .hasElapsed((double)((float)this.field183.field1041.field215.method434().intValue() * 50.0F * this.field183.autoCrystalTracker.field1525));
+            .hasElapsed((double)((float)this.field183.field1041.field215.getValue().intValue() * 50.0F * this.field183.autoCrystalTracker.field1525));
    }
 
    boolean method2117() {

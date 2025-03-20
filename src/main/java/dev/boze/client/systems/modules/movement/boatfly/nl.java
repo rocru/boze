@@ -152,7 +152,7 @@ class nl extends nj {
          this.field1589 = var5.getTeleportId();
          if (!this.field1556.field3156.getValue()) {
             Vec3d var7 = new Vec3d(var5.getX(), var5.getY(), var5.getZ());
-            if (this.field1590 < this.field1556.field3162.method434() && var7.distanceTo(mc.player.getPos()) < 32.0) {
+            if (this.field1590 < this.field1556.field3162.getValue() && var7.distanceTo(mc.player.getPos()) < 32.0) {
                var1.method1020();
             }
          }
@@ -171,7 +171,7 @@ class nl extends nj {
             this.field1590++;
             VehicleMoveS2CPacket var5 = (VehicleMoveS2CPacket)var1.packet;
             Vec3d var6 = new Vec3d(var5.getX(), var5.getY(), var5.getZ());
-            if (this.field1590 < this.field1556.field3162.method434() && var6.distanceTo(mc.player.getVehicle().getPos()) < 32.0) {
+            if (this.field1590 < this.field1556.field3162.getValue() && var6.distanceTo(mc.player.getVehicle().getPos()) < 32.0) {
                var1.method1020();
             }
          }

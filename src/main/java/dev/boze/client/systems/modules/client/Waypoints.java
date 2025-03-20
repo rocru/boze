@@ -173,11 +173,11 @@ public class Waypoints extends Module {
                   this.field2447.getValue(),
                   this.field2443,
                   this.field2444,
-                  this.field2451.method434(),
+                  this.field2451.getValue(),
                   this.field2452.getValue(),
                   this.field2449.getValue(),
                   this.field2450.getValue(),
-                  this.field2448.method434(),
+                  this.field2448.getValue(),
                   this.field2455
                );
             }

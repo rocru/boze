@@ -225,7 +225,7 @@ public class AutoAnchor extends Module {
             }
 
             if (mc.world.getBlockState(var12).getBlock() != Blocks.RESPAWN_ANCHOR
-               || this.sequential.getValue() && (Integer)mc.world.getBlockState(var12).get(RespawnAnchorBlock.CHARGES) >= this.charges.method434()) {
+               || this.sequential.getValue() && (Integer)mc.world.getBlockState(var12).get(RespawnAnchorBlock.CHARGES) >= this.charges.getValue()) {
                this.field2508 = AutoAnchor::lambda$generateActions$2;
             }
 

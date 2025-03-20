@@ -112,7 +112,7 @@ public class NameTags extends Module {
                      Vector3d var10 = new Vector3d(var9.x, var9.y, var9.z);
                      double var11 = Math.sqrt(Math.pow(var10.x - var5.x, 2.0) + Math.pow(var10.z - var5.z, 2.0));
                      double var13 = Math.abs(var10.y - var5.y);
-                     if (!(var11 > (double)this.field807.method434().intValue()) && !(var13 > (double)this.field808.method434().intValue())) {
+                     if (!(var11 > (double)this.field807.getValue().intValue()) && !(var13 > (double)this.field808.getValue().intValue())) {
                         boolean var15 = method377(var10);
                         if (var15) {
                            this.method373(event.field1947, var7, var10);
@@ -134,7 +134,7 @@ public class NameTags extends Module {
                      Vector3d var24 = new Vector3d(var22.x, var22.y, var22.z);
                      double var12 = Math.sqrt(Math.pow(var24.x - var5.x, 2.0) + Math.pow(var24.z - var5.z, 2.0));
                      double var14 = Math.abs(var24.y - var5.y);
-                     if (!(var12 > (double)this.field807.method434().intValue()) && !(var14 > (double)this.field808.method434().intValue())) {
+                     if (!(var12 > (double)this.field807.getValue().intValue()) && !(var14 > (double)this.field808.getValue().intValue())) {
                         boolean var16 = method377(var24);
                         if (var16) {
                            this.method372(var19, var24);
@@ -256,19 +256,19 @@ public class NameTags extends Module {
          BozeDrawColor var33 = this.method370(var2);
          RenderUtil.field3965
             .method2253(
-               -(var31 + (double)this.field799.method434().intValue()),
-               -(IFontRender.method499().method1390() + (double)(this.field799.method434() * 2)),
-               ((double)this.field799.method434().intValue() + var31) * 2.0,
-               IFontRender.method499().method1390() + (double)(this.field799.method434() * 2),
+               -(var31 + (double)this.field799.getValue().intValue()),
+               -(IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2)),
+               ((double)this.field799.getValue().intValue() + var31) * 2.0,
+               IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2),
                var33
             );
       }
 
       if (this.field796.getValue().field411 > 0) {
-         double var34 = -(var31 + (double)this.field799.method434().intValue());
-         double var17 = -(IFontRender.method499().method1390() + (double)(this.field799.method434() * 2));
-         double var19 = var34 + ((double)this.field799.method434().intValue() + var31) * 2.0;
-         double var21 = var17 + IFontRender.method499().method1390() + (double)(this.field799.method434() * 2);
+         double var34 = -(var31 + (double)this.field799.getValue().intValue());
+         double var17 = -(IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2));
+         double var19 = var34 + ((double)this.field799.getValue().intValue() + var31) * 2.0;
+         double var21 = var17 + IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2);
          BozeDrawColor var23 = this.method371(var2);
          if (this.field797.getValue()) {
             var23 = new BozeDrawColor(var9[2].field146.method2010());
@@ -276,23 +276,23 @@ public class NameTags extends Module {
 
          RenderUtil.field3965
             .method2251(
-               var34 - (double)this.field798.method434().intValue(),
-               var17 - (double)this.field798.method434().intValue(),
-               var19 + (double)this.field798.method434().intValue(),
+               var34 - (double)this.field798.getValue().intValue(),
+               var17 - (double)this.field798.getValue().intValue(),
+               var19 + (double)this.field798.getValue().intValue(),
                var17,
                var23,
                var23,
                var23,
                var23
             );
-         RenderUtil.field3965.method2251(var34 - (double)this.field798.method434().intValue(), var17, var34, var21, var23, var23, var23, var23);
-         RenderUtil.field3965.method2251(var19, var17, var19 + (double)this.field798.method434().intValue(), var21, var23, var23, var23, var23);
+         RenderUtil.field3965.method2251(var34 - (double)this.field798.getValue().intValue(), var17, var34, var21, var23, var23, var23, var23);
+         RenderUtil.field3965.method2251(var19, var17, var19 + (double)this.field798.getValue().intValue(), var21, var23, var23, var23, var23);
          RenderUtil.field3965
             .method2251(
-               var34 - (double)this.field798.method434().intValue(),
+               var34 - (double)this.field798.getValue().intValue(),
                var21,
-               var19 + (double)this.field798.method434().intValue(),
-               var21 + (double)this.field798.method434().intValue(),
+               var19 + (double)this.field798.getValue().intValue(),
+               var21 + (double)this.field798.getValue().intValue(),
                var23,
                var23,
                var23,
@@ -315,7 +315,7 @@ public class NameTags extends Module {
                .drawShadowedText(
                   var18.field145,
                   var31,
-                  -(IFontRender.method499().method1390() + (double)this.field799.method434().intValue()),
+                  -(IFontRender.method499().method1390() + (double)this.field799.getValue().intValue()),
                   var18.field146,
                   Fonts.INSTANCE.field2346.getValue() != FontShadowMode.Off
                );
@@ -323,30 +323,30 @@ public class NameTags extends Module {
          }
       }
 
-      var7 += IFontRender.method499().method1390() + (double)(this.field799.method434() * 2);
+      var7 += IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2);
       IFontRender.method499().endBuilding();
       if (this.field787.getValue() || this.field789.getValue() != NameTagsArmor.Off) {
-         var7 += (double)this.field800.method434().intValue();
+         var7 += (double)this.field800.getValue().intValue();
          double var36 = 0.0;
 
          for (ItemStack var41 : var2.getInventory().armor) {
             if (var41 != null && !var41.isEmpty()) {
-               var36 -= (double)this.field801.method434().intValue() / 2.0;
+               var36 -= (double)this.field801.getValue().intValue() / 2.0;
             }
          }
 
          if (var2.getMainHandStack() != null && !var2.getMainHandStack().isEmpty()) {
-            var36 -= (double)this.field801.method434().intValue() / 2.0;
+            var36 -= (double)this.field801.getValue().intValue() / 2.0;
          }
 
          if (var2.getOffHandStack() != null && !var2.getOffHandStack().isEmpty()) {
-            var36 -= (double)this.field801.method434().intValue() / 2.0;
+            var36 -= (double)this.field801.getValue().intValue() / 2.0;
          }
 
          double var40 = 0.0;
          if (var2.getMainHandStack() != null && !var2.getMainHandStack().isEmpty()) {
             var40 = Math.max(var40, this.method376(var1, var2.getMainHandStack(), var36, -var7));
-            var36 += (double)this.field801.method434().intValue();
+            var36 += (double)this.field801.getValue().intValue();
          }
 
          if (this.field789.getValue() == NameTagsArmor.Normal) {
@@ -354,7 +354,7 @@ public class NameTags extends Module {
                ItemStack var45 = (ItemStack)var2.getInventory().armor.get(var43);
                if (var45 != null && !var45.isEmpty()) {
                   var40 = Math.max(var40, this.method376(var1, var45, var36, -var7));
-                  var36 += (double)this.field801.method434().intValue();
+                  var36 += (double)this.field801.getValue().intValue();
                }
             }
          } else {
@@ -362,7 +362,7 @@ public class NameTags extends Module {
                ItemStack var20 = (ItemStack)mc.player.getInventory().armor.get(var42);
                if (var20 != null && !var20.isEmpty()) {
                   var40 = Math.max(var40, this.method376(var1, var20, var36, -var7));
-                  var36 += (double)this.field801.method434().intValue();
+                  var36 += (double)this.field801.getValue().intValue();
                }
             }
          }
@@ -427,10 +427,10 @@ public class NameTags extends Module {
       if (this.field795.getValue().field411 > 0) {
          RenderUtil.field3965
             .method2253(
-               -(var21 + (double)this.field799.method434().intValue()),
-               -(IFontRender.method499().method1390() + (double)(this.field799.method434() * 2)),
-               ((double)this.field799.method434().intValue() + var21) * 2.0,
-               IFontRender.method499().method1390() + (double)(this.field799.method434() * 2),
+               -(var21 + (double)this.field799.getValue().intValue()),
+               -(IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2)),
+               ((double)this.field799.getValue().intValue() + var21) * 2.0,
+               IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2),
                this.field795.getValue()
             );
       }
@@ -443,10 +443,10 @@ public class NameTags extends Module {
 
          RenderUtil.field3965
             .method2249(
-               -(var21 + (double)this.field799.method434().intValue()),
-               -(IFontRender.method499().method1390() + (double)(this.field799.method434() * 2) + (double)(this.field798.method434() - 1)),
-               ((double)this.field799.method434().intValue() + var21) * 2.0,
-               (double)this.field798.method434().intValue(),
+               -(var21 + (double)this.field799.getValue().intValue()),
+               -(IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2) + (double)(this.field798.getValue() - 1)),
+               ((double)this.field799.getValue().intValue() + var21) * 2.0,
+               (double)this.field798.getValue().intValue(),
                var23,
                var23,
                var23,
@@ -454,10 +454,10 @@ public class NameTags extends Module {
             );
          RenderUtil.field3965
             .method2249(
-               -(var21 + (double)this.field799.method434().intValue()),
-               (double)(-this.field798.method434()),
-               ((double)this.field799.method434().intValue() + var21) * 2.0,
-               (double)this.field798.method434().intValue(),
+               -(var21 + (double)this.field799.getValue().intValue()),
+               (double)(-this.field798.getValue()),
+               ((double)this.field799.getValue().intValue() + var21) * 2.0,
+               (double)this.field798.getValue().intValue(),
                var23,
                var23,
                var23,
@@ -465,10 +465,10 @@ public class NameTags extends Module {
             );
          RenderUtil.field3965
             .method2249(
-               -(var21 + (double)this.field799.method434().intValue() + (double)(this.field798.method434() - 1)),
-               -(IFontRender.method499().method1390() + (double)(this.field799.method434() * 2)),
-               (double)this.field798.method434().intValue(),
-               IFontRender.method499().method1390() + (double)(this.field799.method434() * 2),
+               -(var21 + (double)this.field799.getValue().intValue() + (double)(this.field798.getValue() - 1)),
+               -(IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2)),
+               (double)this.field798.getValue().intValue(),
+               IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2),
                var23,
                var23,
                var23,
@@ -476,10 +476,10 @@ public class NameTags extends Module {
             );
          RenderUtil.field3965
             .method2249(
-               var21 + (double)this.field799.method434().intValue() - (double)this.field798.method434().intValue(),
-               -(IFontRender.method499().method1390() + (double)(this.field799.method434() * 2)),
-               (double)this.field798.method434().intValue(),
-               IFontRender.method499().method1390() + (double)(this.field799.method434() * 2),
+               var21 + (double)this.field799.getValue().intValue() - (double)this.field798.getValue().intValue(),
+               -(IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2)),
+               (double)this.field798.getValue().intValue(),
+               IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2),
                var23,
                var23,
                var23,
@@ -502,7 +502,7 @@ public class NameTags extends Module {
                .drawShadowedText(
                   var17.field145,
                   var21,
-                  -(IFontRender.method499().method1390() + (double)this.field799.method434().intValue()),
+                  -(IFontRender.method499().method1390() + (double)this.field799.getValue().intValue()),
                   var17.field146,
                   Fonts.INSTANCE.field2346.getValue() != FontShadowMode.Off
                );
@@ -526,10 +526,10 @@ public class NameTags extends Module {
       if (this.field795.getValue().field411 > 0) {
          RenderUtil.field3965
             .method2253(
-               -(var7 + (double)this.field799.method434().intValue()),
-               -(IFontRender.method499().method1390() + (double)(this.field799.method434() * 2)),
-               ((double)this.field799.method434().intValue() + var7) * 2.0,
-               IFontRender.method499().method1390() + (double)(this.field799.method434() * 2),
+               -(var7 + (double)this.field799.getValue().intValue()),
+               -(IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2)),
+               ((double)this.field799.getValue().intValue() + var7) * 2.0,
+               IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2),
                this.field795.getValue()
             );
       }
@@ -537,9 +537,9 @@ public class NameTags extends Module {
       if (this.field796.getValue().field411 > 0) {
          RenderUtil.field3965
             .method2249(
-               -(var7 + (double)this.field799.method434().intValue()),
-               -(IFontRender.method499().method1390() + (double)(this.field799.method434() * 2)),
-               ((double)this.field799.method434().intValue() + var7) * 2.0,
+               -(var7 + (double)this.field799.getValue().intValue()),
+               -(IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2)),
+               ((double)this.field799.getValue().intValue() + var7) * 2.0,
                1.0,
                this.field796.getValue(),
                this.field796.getValue(),
@@ -548,9 +548,9 @@ public class NameTags extends Module {
             );
          RenderUtil.field3965
             .method2249(
-               -(var7 + (double)this.field799.method434().intValue()),
+               -(var7 + (double)this.field799.getValue().intValue()),
                -1.0,
-               ((double)this.field799.method434().intValue() + var7) * 2.0,
+               ((double)this.field799.getValue().intValue() + var7) * 2.0,
                1.0,
                this.field796.getValue(),
                this.field796.getValue(),
@@ -559,10 +559,10 @@ public class NameTags extends Module {
             );
          RenderUtil.field3965
             .method2249(
-               -(var7 + (double)this.field799.method434().intValue()),
-               -(IFontRender.method499().method1390() + (double)(this.field799.method434() * 2)),
+               -(var7 + (double)this.field799.getValue().intValue()),
+               -(IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2)),
                1.0,
-               IFontRender.method499().method1390() + (double)(this.field799.method434() * 2),
+               IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2),
                this.field796.getValue(),
                this.field796.getValue(),
                this.field796.getValue(),
@@ -570,10 +570,10 @@ public class NameTags extends Module {
             );
          RenderUtil.field3965
             .method2249(
-               var7 + (double)this.field799.method434().intValue() - 1.0,
-               -(IFontRender.method499().method1390() + (double)(this.field799.method434() * 2)),
+               var7 + (double)this.field799.getValue().intValue() - 1.0,
+               -(IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2)),
                1.0,
-               IFontRender.method499().method1390() + (double)(this.field799.method434() * 2),
+               IFontRender.method499().method1390() + (double)(this.field799.getValue() * 2),
                this.field796.getValue(),
                this.field796.getValue(),
                this.field796.getValue(),
@@ -586,7 +586,7 @@ public class NameTags extends Module {
          .drawShadowedText(
             var6,
             -(IFontRender.method499().method501(var6) / 2.0),
-            -(IFontRender.method499().method1390() + (double)this.field799.method434().intValue()),
+            -(IFontRender.method499().method1390() + (double)this.field799.getValue().intValue()),
             RGBAColor.field402,
             Fonts.INSTANCE.field2346.getValue() != FontShadowMode.Off
          );

@@ -146,7 +146,7 @@ public class ItemRadar extends HUDModule {
    }
 
    private boolean lambda$onSendMovementPackets$2(ItemEntity var1) {
-      return mc.player.distanceTo(var1) <= (float)this.field2629.method434().intValue();
+      return mc.player.distanceTo(var1) <= (float)this.field2629.getValue().intValue();
    }
 
    private static ItemEntity lambda$onSendMovementPackets$1(Entity var0) {

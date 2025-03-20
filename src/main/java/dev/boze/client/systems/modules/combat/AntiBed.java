@@ -71,11 +71,11 @@ public class AntiBed extends Module {
    public void method1395(MovementEvent event) {
       if (!event.method1022()) {
          this.field2457++;
-         if (this.field2457 > this.interval.method434()) {
+         if (this.field2457 > this.interval.getValue()) {
             if (!Options.method477(this.multitask.getValue())) {
                if (!this.placeOnlyWhenStill.getValue() || !Class5924.method2115()) {
                   int var5 = 0;
-                  int var6 = this.rotate.getValue() && Class5924.method2115() ? 1 : this.maxActions.method434();
+                  int var6 = this.rotate.getValue() && Class5924.method2115() ? 1 : this.maxActions.getValue();
                   BlockPos var7 = mc.player.getBlockPos();
                   if (!this.placeOnlyInHoles.getValue() || Class5924.method76(true)) {
                      if (this.smartPlace.getValue()) {

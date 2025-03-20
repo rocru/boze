@@ -198,11 +198,11 @@ class AutoCrystalRender implements IMinecraft, SettingsGroup {
                this.field154.getValue(),
                var13,
                var14,
-               this.field158.method434(),
+               this.field158.getValue(),
                this.field159.getValue(),
                this.field156.getValue(),
                this.field157.getValue(),
-               this.field155.method434(),
+               this.field155.getValue(),
                this.field169.method1453()
             );
          } else {

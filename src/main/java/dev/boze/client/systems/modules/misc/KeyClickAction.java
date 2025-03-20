@@ -96,7 +96,7 @@ public class KeyClickAction extends Module {
 
    private void method1726(KeyClick var1) {
       if (var1 == KeyClick.XP) {
-         if (!this.field2975.hasElapsed((double)(50 * this.field2969.method434()))) {
+         if (!this.field2975.hasElapsed((double)(50 * this.field2969.getValue()))) {
             return;
          }
 

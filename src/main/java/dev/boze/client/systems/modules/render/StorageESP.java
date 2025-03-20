@@ -131,11 +131,11 @@ public class StorageESP extends Module {
             this.field3701.getValue(),
             this.field3708,
             this.field3709,
-            this.field3705.method434(),
+            this.field3705.getValue(),
             this.field3706.getValue(),
             this.field3703.getValue(),
             this.field3704.getValue(),
-            this.field3702.method434(),
+            this.field3702.getValue(),
             this.ah
          );
       }

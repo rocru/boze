@@ -49,7 +49,7 @@ public class RenderManager implements IMinecraft {
                 this.field1621 = -1L;
             }
 
-            int var9 = Gui.INSTANCE.field2352.method434();
+            int var9 = Gui.INSTANCE.field2352.getValue();
             double var10 = Gui.INSTANCE.field2353.getValue() * var13;
             QuadRenderer.render();
             this.applyShader(this.field1619[0], mc.getFramebuffer().getColorAttachment(), ShaderRegistry.field2272, var10);

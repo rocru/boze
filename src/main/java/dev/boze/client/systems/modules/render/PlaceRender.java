@@ -61,7 +61,7 @@ public class PlaceRender extends Module {
    }
 
    public static int method2010() {
-      return INSTANCE.field3632.method434() * 50;
+      return INSTANCE.field3632.getValue() * 50;
    }
 
    @EventHandler(
@@ -92,11 +92,11 @@ public class PlaceRender extends Module {
             this.field3630.getValue()
                ? (BozeDrawColor)OldColors.INSTANCE.clientGradient.getValue().copy().method196(this.field3629.getValue().field411)
                : this.field3629.getValue(),
-            this.field3625.method434(),
+            this.field3625.getValue(),
             this.field3626.getValue(),
             this.field3623.getValue(),
             this.field3624.getValue(),
-            this.field3622.method434(),
+            this.field3622.getValue(),
             this.field3638
          );
       }

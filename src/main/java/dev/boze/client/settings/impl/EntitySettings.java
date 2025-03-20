@@ -59,7 +59,7 @@ public class EntitySettings implements SettingsGroup, IMinecraft {
    public boolean method2055(Entity entity) {
       if (!(entity instanceof WardenEntity)
          || !this.field92.getValue()
-         || this.field94.method434() != 0 && !this.field93.getValue() && !(entity.distanceTo(mc.player) > (float)this.field94.method434().intValue())) {
+         || this.field94.getValue() != 0 && !this.field93.getValue() && !(entity.distanceTo(mc.player) > (float) this.field94.getValue())) {
          if (entity instanceof PlayerEntity && this.field97.getValue()) {
             ((LimbAnimatorAccessor)((PlayerEntity)entity).limbAnimator).setPos(0.0F);
             ((LimbAnimatorAccessor)((PlayerEntity)entity).limbAnimator).setSpeed(0.0F);

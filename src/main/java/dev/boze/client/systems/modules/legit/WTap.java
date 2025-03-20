@@ -30,7 +30,7 @@ public class WTap extends Module {
 
    @EventHandler
    public void method1627(PostAttackEntityEvent event) {
-      if (event.entity instanceof LivingEntity var5 && var5.hurtTime < this.field2860.method434()) {
+      if (event.entity instanceof LivingEntity var5 && var5.hurtTime < this.field2860.getValue()) {
          Vec3d var12 = mc.player.getPos();
          Vec3d var7 = new Vec3d(mc.player.prevX, mc.player.prevY, mc.player.prevZ);
          Vec3d var8 = var5.getPos();
