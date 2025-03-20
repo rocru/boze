@@ -31,9 +31,9 @@ public class AutoCrystalTracker implements IMinecraft {
     BlockPos field1533 = null;
     Class3087 field1534 = null;
     boolean field1535 = false;
-    double field1536 = 0.0;
+    public double field1536 = 0.0;
     double field1537 = 0.0;
-    LivingEntity field1538 = null;
+    public LivingEntity field1538 = null;
     private final HashMap<BlockPos, Long> field1539 = new HashMap();
     private final int[] field1540 = new int[10];
     private int field1541 = 0;
@@ -165,7 +165,7 @@ public class AutoCrystalTracker implements IMinecraft {
         this.field1528 = -1L;
     }
 
-    float method1384() {
+    public float method1384() {
         if (this.field1538 == null) {
             return 0.0F;
         } else {
@@ -187,7 +187,7 @@ public class AutoCrystalTracker implements IMinecraft {
         return this.method685(this.field1544);
     }
 
-    float method215() {
+    public float method215() {
         return this.method685(this.field1540);
     }
 

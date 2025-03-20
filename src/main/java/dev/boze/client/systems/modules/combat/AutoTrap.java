@@ -30,6 +30,7 @@ import mapped.Class2784;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
@@ -163,7 +164,7 @@ public class AutoTrap extends Module {
             if (var4 == -1) {
                 return false;
             } else {
-                List var5 = this.method1488();
+                List<LivingEntity> var5 = this.method1488();
                 this.field2547 = null;
                 if (this.noFeetReplace.getValue()) {
                     for (BlockPos var7 : this.field2545) {
@@ -175,12 +176,7 @@ public class AutoTrap extends Module {
 
                 for (LivingEntity var10 : var5) {
                     Box var8 = this.field2538.method155(var10);
-                    this.field2540 = TrapUtil.method585(
-                            this.field2538,
-                            var8,
-                            this.feetOnly.getValue() ? TrapMode.Flat : (this.coverHead.getValue() ? TrapMode.Top : TrapMode.Tall),
-                            this::lambda$calculate$1
-                    );
+                    this.field2540 = TrapUtil.method585(this.field2538, var8, this.feetOnly.getValue() ? TrapMode.Flat : (this.coverHead.getValue() ? TrapMode.Top : TrapMode.Tall), arg_0 -> this.lambda$calculate$1(var10, arg_0));
                     this.field2547 = var10;
                     if (this.field2540.length > 0) {
                         break;
@@ -429,13 +425,13 @@ public class AutoTrap extends Module {
                 return Friends.method2055(var1) ? this.friends.getValue() : this.players.getValue();
             }
         } else {
-            switch (mv.field2112[var1.getType().getSpawnGroup().ordinal()]) {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
+            switch (var1.getType().getSpawnGroup()) {
+                case SpawnGroup.CREATURE:
+                case SpawnGroup.WATER_AMBIENT:
+                case SpawnGroup.WATER_CREATURE:
+                case SpawnGroup.AMBIENT:
                     return this.animals.getValue();
-                case 5:
+                case SpawnGroup.MONSTER:
                     return this.monsters.getValue();
                 default:
                     return false;

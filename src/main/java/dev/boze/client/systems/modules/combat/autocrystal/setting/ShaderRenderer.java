@@ -1,4 +1,4 @@
-package dev.boze.client.systems.modules.combat.autocrystal.setting.AutoCrystalRender;
+package dev.boze.client.systems.modules.combat.autocrystal.setting;
 
 import dev.boze.client.enums.AutoCrystalShaderMode;
 import dev.boze.client.enums.ShaderMode;

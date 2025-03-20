@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum TargetAlgorithm {
+public enum TargetAlgorithm {
     Distance,
     Health;
 

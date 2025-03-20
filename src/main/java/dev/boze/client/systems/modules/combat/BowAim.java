@@ -25,6 +25,7 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ChargedProjectilesComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.CrossbowItem;
 import net.minecraft.item.Items;
@@ -249,13 +250,13 @@ public class BowAim extends Module {
                 return (this.method260() != InteractionMode.Ghost || !AntiBots.method2055(var1)) && this.players.getValue();
             }
         } else {
-            switch (mx.field2114[var1.getType().getSpawnGroup().ordinal()]) {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
+            switch (var1.getType().getSpawnGroup()) {
+                case SpawnGroup.CREATURE:
+                case SpawnGroup.WATER_AMBIENT:
+                case SpawnGroup.WATER_CREATURE:
+                case SpawnGroup.AMBIENT:
                     return this.animals.getValue();
-                case 5:
+                case SpawnGroup.MONSTER:
                     return this.monsters.getValue();
                 default:
                     return false;

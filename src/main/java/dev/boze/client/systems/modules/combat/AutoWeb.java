@@ -7,7 +7,6 @@ import dev.boze.client.enums.BlockPlaceMode;
 import dev.boze.client.enums.CheckEntityMode;
 import dev.boze.client.events.*;
 import dev.boze.client.gui.screens.ClickGUI;
-import dev.boze.client.jumptable.mw;
 import dev.boze.client.mixin.KeyBindingAccessor;
 import dev.boze.client.mixininterfaces.IClientPlayerEntity;
 import dev.boze.client.mixininterfaces.IEndCrystalEntity;
@@ -30,6 +29,7 @@ import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
@@ -92,7 +92,7 @@ public class AutoWeb extends Module {
             if (var4 == -1) {
                 return false;
             } else {
-                List var5 = this.method2032();
+                List<LivingEntity> var5 = this.method2032();
                 this.field1024 = null;
                 ArrayList var6 = new ArrayList();
 
@@ -403,13 +403,13 @@ public class AutoWeb extends Module {
                 return Friends.method2055(var1) ? this.friends.getValue() : this.players.getValue();
             }
         } else {
-            switch (mw.field2113[var1.getType().getSpawnGroup().ordinal()]) {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
+            switch (var1.getType().getSpawnGroup()) {
+                case SpawnGroup.CREATURE:
+                case SpawnGroup.WATER_AMBIENT:
+                case SpawnGroup.WATER_CREATURE:
+                case SpawnGroup.AMBIENT:
                     return this.animals.getValue();
-                case 5:
+                case SpawnGroup.MONSTER:
                     return this.monsters.getValue();
                 default:
                     return false;

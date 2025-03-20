@@ -29,16 +29,16 @@ public class AutoCrystal extends Module {
     final AutoCrystalRender field1040 = new AutoCrystalRender(this);
     public final PlaceHelper field1041 = new PlaceHelper(this);
     public final AutoCrystalTargeting field1042 = new AutoCrystalTargeting(this);
-    final TargetSetting field1043 = new TargetSetting();
-    final AutoCrystalBreak autoCrystalBreak = new AutoCrystalBreak(this);
+    public final TargetSetting field1043 = new TargetSetting();
+    public final AutoCrystalBreak autoCrystalBreak = new AutoCrystalBreak(this);
     public final AutoCrystalPlace autoCrystalPlace = new AutoCrystalPlace(this);
     public final AutoCrystalBasePlace autoCrystalBasePlace = new AutoCrystalBasePlace(this);
     final BooleanSetting proMode = new BooleanSetting("ProMode", false, "Show advanced options", AutoCrystal::lambda$new$0);
     final SettingCategory advancedSettings = new SettingCategory(
             "Advanced", "Advanced options\nDon't touch them unless you know what you're doing\n.set autocrystal promode false to hide\n", this.proMode::getValue
     );
-    final BooleanSetting delaySync = new BooleanSetting("DelaySync", false, "Sync delays to server TPS", this.advancedSettings);
-    final BooleanSetting placeSync = new BooleanSetting(
+    public final BooleanSetting delaySync = new BooleanSetting("DelaySync", false, "Sync delays to server TPS", this.advancedSettings);
+    public final BooleanSetting placeSync = new BooleanSetting(
             "PlaceSync",
             true,
             "Sync placements to once a cycle\nFor context; cycle = targeting calculation to damage applied time\nImproves performance and consistency\n",
@@ -60,7 +60,7 @@ public class AutoCrystal extends Module {
     final FloatSetting ticksExisted = new FloatSetting(
             "TicksExisted", 0.0F, 0.0F, 25.0F, 0.1F, "Min ticks to wait after a crystal's spawn before attacking it", this.advancedSettings
     );
-    final FloatSetting targetRange = new FloatSetting("TargetRange", 8.0F, 4.0F, 16.0F, 0.5F, "Range from which to select targets", this.advancedSettings);
+    public final FloatSetting targetRange = new FloatSetting("TargetRange", 8.0F, 4.0F, 16.0F, 0.5F, "Range from which to select targets", this.advancedSettings);
     final FloatSetting crystalRange = new FloatSetting(
             "CrystalRange",
             6.0F,
@@ -70,14 +70,14 @@ public class AutoCrystal extends Module {
             "Max range from target to place crystals\nTechnical detail: union, not intersection with target range",
             this.advancedSettings
     );
-    final BooleanSetting minDamage = new BooleanSetting("AutoMinDmg", false, "Automatically choose min damage", this.advancedSettings);
-    final FloatSetting holeMinDamage = new FloatSetting(
+    public final BooleanSetting minDamage = new BooleanSetting("AutoMinDmg", false, "Automatically choose min damage", this.advancedSettings);
+    public final FloatSetting holeMinDamage = new FloatSetting(
             "HoleMinDmg", 1.2F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for players in holes", this.minDamage::getValue, this.advancedSettings
     );
-    final FloatSetting stillMinDamage = new FloatSetting(
+    public final FloatSetting stillMinDamage = new FloatSetting(
             "StillMinDmg", 6.3F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for still players", this.minDamage::getValue, this.advancedSettings
     );
-    final FloatSetting movingMinDamage = new FloatSetting(
+    public final FloatSetting movingMinDamage = new FloatSetting(
             "MovingMinDmg", 7.0F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for moving players", this.minDamage::getValue, this.advancedSettings
     );
     public final CrystalSelectionHandler field1044 = new CrystalSelectionHandler(this);

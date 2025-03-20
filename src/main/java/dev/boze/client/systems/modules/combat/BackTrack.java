@@ -130,7 +130,7 @@ public class BackTrack extends Module {
                                                 var11 = Class5918.method38(this.ticks.getValue(), var9);
 
                                                 for (int var14 = 0; var14 < this.ticks.getValue(); var14++) {
-                                                    if (((Vec3d) var16.get(var14)).distanceTo((Vec3d) ((ArrayList) var11.getRight()).get(var14)) <= Reach.method1613()) {
+                                                    if (((Vec3d) var16.get(var14)).distanceTo((Vec3d) ((ArrayList<?>) var11.getRight()).get(var14)) <= Reach.method1613()) {
                                                         return;
                                                     }
                                                 }

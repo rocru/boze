@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AimMode {
+public enum AimMode {
     Feet,
     Body,
     Eyes;

@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum BacktrackMode {
+public enum BacktrackMode {
     Once,
     Smart;
 

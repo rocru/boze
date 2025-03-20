@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum PriorityMode {
+public enum PriorityMode {
     Highest,
     Lowest;
 

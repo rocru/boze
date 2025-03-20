@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AutoCrystalTargetingMode {
+public enum AutoCrystalTargetingMode {
     Optimal,
     Exposure,
     Distance,

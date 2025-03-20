@@ -16,7 +16,6 @@ import dev.boze.client.settings.generic.ScalingSetting;
 import dev.boze.client.settings.generic.SettingsGroup;
 import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
-import dev.boze.client.systems.modules.combat.autocrystal.setting.AutoCrystalRender.ShaderRenderer;
 import dev.boze.client.utils.EntityUtil;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.RGBAColor;
