@@ -41,7 +41,7 @@ public class Tooltips extends Module {
 
    @EventHandler
    private void method2043(TooltipDataEvent var1) {
-      if (!this.field3758.method476().isValid() || this.field3758.method476().isPressed()) {
+      if (!this.field3758.getValue().isValid() || this.field3758.getValue().isPressed()) {
          if (var1.field1959.getItem() == Items.FILLED_MAP && this.field3759.getValue()) {
             MapIdComponent var8 = (MapIdComponent)var1.field1959.get(DataComponentTypes.MAP_ID);
             if (var8 != null) {

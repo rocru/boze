@@ -19,7 +19,7 @@ public class TridentItemMixin {
    )
    private void modifyVelocity(Args var1) {
       double var4 = TridentPlus.INSTANCE.isEnabled() ? TridentPlus.INSTANCE.field3360.getValue() : 1.0;
-      boolean var6 = TridentPlus.INSTANCE.isEnabled() && TridentPlus.INSTANCE.field3364.method476().isPressed();
+      boolean var6 = TridentPlus.INSTANCE.isEnabled() && TridentPlus.INSTANCE.field3364.getValue().isPressed();
       if (var6) {
          var1.set(0, -MinecraftClient.getInstance().player.getVelocity().x);
          var1.set(1, -MinecraftClient.getInstance().player.getVelocity().y);

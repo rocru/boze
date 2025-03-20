@@ -3,13 +3,13 @@ package mapped;
 import dev.boze.client.gui.notification.Notifications;
 import dev.boze.client.systems.modules.Category;
 
-class Class3084 {
-   private final Category field202;
-   private final double field203;
-   private final double field204;
-   private final Notifications field205;
+public class Class3084 {
+   public final Category field202;
+   public final double field203;
+   public final double field204;
+   public final Notifications field205;
 
-   private Class3084(Category var1, double var2, double var4, Notifications var6) {
+   public Class3084(Category var1, double var2, double var4, Notifications var6) {
       this.field202 = var1;
       this.field203 = var2;
       this.field204 = var4;

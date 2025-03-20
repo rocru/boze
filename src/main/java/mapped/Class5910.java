@@ -4,11 +4,11 @@ import dev.boze.client.gui.components.DoubleArrayComponent;
 import dev.boze.client.gui.components.scaled.ColorSettingComponent;
 import dev.boze.client.settings.ColorSetting;
 
-class Class5910 extends DoubleArrayComponent {
+public class Class5910 extends DoubleArrayComponent {
    final ColorSetting field3;
    final ColorSettingComponent field4;
 
-   Class5910(ColorSettingComponent var1, String var2, double var3, double var5, double var7, double var9, ColorSetting var11) {
+   public Class5910(ColorSettingComponent var1, String var2, double var3, double var5, double var7, double var9, ColorSetting var11) {
       super(var2, var3, var5, var7, var9);
       this.field4 = var1;
       this.field3 = var11;

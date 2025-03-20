@@ -22,7 +22,7 @@ public class PauseBaritone extends Module {
    @Override
    public void onEnable() {
       if (MinecraftUtils.isClientActive()
-         && this.field3050.method476().getBind() == -1
+         && this.field3050.getValue().getBind() == -1
          && BaritoneAPI.getProvider().getPrimaryBaritone().getPathingBehavior().isPathing()
          && !this.field3051) {
          BaritoneAPI.getProvider().getPrimaryBaritone().getCommandManager().execute("pause");
@@ -44,8 +44,8 @@ public class PauseBaritone extends Module {
 
    @EventHandler
    private void method1744(KeyEvent var1) {
-      if (this.field3050.method476().getBind() != -1) {
-         if (this.field3050.method476().matches(true, var1.key)) {
+      if (this.field3050.getValue().getBind() != -1) {
+         if (this.field3050.getValue().matches(true, var1.key)) {
             if (var1.action == KeyAction.Press && BaritoneAPI.getProvider().getPrimaryBaritone().getPathingBehavior().isPathing() && !this.field3051) {
                BaritoneAPI.getProvider().getPrimaryBaritone().getCommandManager().execute("pause");
                this.field3051 = true;

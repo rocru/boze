@@ -58,14 +58,14 @@ public class ChorusPostpone extends Module {
 
    @EventHandler
    private void method1499(KeyEvent var1) {
-      if (this.teleportBind.method476().matches(true, var1.key)) {
+      if (this.teleportBind.getValue().matches(true, var1.key)) {
          this.method1503();
       }
    }
 
    @EventHandler
    private void method1500(MouseButtonEvent var1) {
-      if (this.teleportBind.method476().matches(false, var1.button)) {
+      if (this.teleportBind.getValue().matches(false, var1.button)) {
          this.method1503();
       }
    }

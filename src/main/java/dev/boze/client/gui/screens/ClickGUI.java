@@ -214,9 +214,8 @@ public class ClickGUI extends Screen implements IMinecraft {
          }
 
          if (Theme.method1382()) {
-            ChamsShaderRenderer.method1312(this::lambda$render$0, true, Theme.method1383(), Theme.method1386(), Theme.method1384(), Theme.method1385());
+            ChamsShaderRenderer.method1312(() -> this.lambda$render$0(context), true, Theme.method1383(), Theme.method1386(), Theme.method1384(), Theme.method1385());
          }
-
          if (Gui.INSTANCE.field2358.getValue() && this.field1346 != null) {
             this.field1346.render(context, mouseX, mouseY, delta);
          }
@@ -312,7 +311,7 @@ public class ClickGUI extends Screen implements IMinecraft {
 
          this.field1342.render(context, mouseX, mouseY, delta);
          if (Theme.method1382()) {
-            ChamsShaderRenderer.method1312(this::lambda$render$1, true, Theme.method1383(), Theme.method1386(), Theme.method1384(), Theme.method1385());
+            ChamsShaderRenderer.method1312(() -> this.lambda$render$1(context), true, Theme.method1383(), Theme.method1386(), Theme.method1384(), Theme.method1385());
          }
       }
 
@@ -603,7 +602,7 @@ public class ClickGUI extends Screen implements IMinecraft {
 
    public boolean mouseReleased(double mouseX, double mouseY, int button) {
       if (this.field1342 != null) {
-         this.field1342.mouseClicked(mouseX, mouseY, button);
+         this.field1342.onMouseClicked(mouseX, mouseY, button);
       }
 
       if (this.field1336) {
@@ -613,7 +612,7 @@ public class ClickGUI extends Screen implements IMinecraft {
       }
 
       for (BaseComponent var12 : this.method2120()) {
-         var12.mouseClicked(mouseX, mouseY, button);
+         var12.onMouseClicked(mouseX, mouseY, button);
       }
 
       return super.mouseReleased(mouseX, mouseY, button);
@@ -677,7 +676,7 @@ public class ClickGUI extends Screen implements IMinecraft {
 
    public boolean keyReleased(int keyCode, int scanCode, int modifiers) {
       if (this.field1342 != null) {
-         this.field1342.mouseClicked((double)keyCode, (double)scanCode, modifiers);
+         this.field1342.onMouseClicked((double)keyCode, (double)scanCode, modifiers);
       }
 
       for (BaseComponent var8 : this.method2120()) {

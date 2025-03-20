@@ -153,6 +153,7 @@ public class IntSetting extends Setting<Integer> {
     //    return this.method436((Integer)object);
     // }
 
+
     // $VF: synthetic method
     // $VF: bridge method
     //@Override

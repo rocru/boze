@@ -52,7 +52,7 @@ public class Octopus extends Module {
       if (mc.currentScreen == null) {
          if (this.leftClick.getValue()) {
             for (int var6 = 0; var6 < 9; var6++) {
-               if (this.field3025[var6].method476().matches(var2, var1) && !Options.method477(this.multiTask.getValue())) {
+               if (this.field3025[var6].getValue().matches(var2, var1) && !Options.method477(this.multiTask.getValue())) {
                   int var7 = mc.player.getInventory().selectedSlot;
                   mc.player.getInventory().selectedSlot = var6;
                   ((ClientPlayerInteractionManagerAccessor)mc.interactionManager).callSyncSelectedSlot();
@@ -64,7 +64,7 @@ public class Octopus extends Module {
 
          if (this.field3014.getValue()) {
             for (int var8 = 0; var8 < 9; var8++) {
-               if (this.field3026[var8].method476().matches(var2, var1) && !Options.method477(this.field3015.getValue())) {
+               if (this.field3026[var8].getValue().matches(var2, var1) && !Options.method477(this.field3015.getValue())) {
                   int var9 = mc.player.getInventory().selectedSlot;
                   mc.player.getInventory().selectedSlot = var8;
                   ((ClientPlayerInteractionManagerAccessor)mc.interactionManager).callSyncSelectedSlot();

@@ -139,7 +139,7 @@ public class FreeCam extends Module {
 
    public boolean method1941() {
       return this.field3535.getValue() == FreeCamInteract.Camera
-         || INSTANCE.field3535.getValue() == FreeCamInteract.Dynamic && !INSTANCE.field3536.method476().isPressed();
+         || INSTANCE.field3535.getValue() == FreeCamInteract.Dynamic && !INSTANCE.field3536.getValue().isPressed();
    }
 
    @EventHandler

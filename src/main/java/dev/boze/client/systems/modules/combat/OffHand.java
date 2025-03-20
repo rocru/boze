@@ -492,7 +492,7 @@ public class OffHand extends Module {
             }
          }
 
-         if (this.potion.method476().isPressed()) {
+         if (this.potion.getValue().isPressed()) {
             return Items.POTION;
          } else if (mc.player.getOffHandStack().getItem() == Items.POTION) {
             return Items.POTION;
@@ -506,27 +506,27 @@ public class OffHand extends Module {
                return Items.END_CRYSTAL;
             } else {
                if (this.offhandItem.getValue() == OffhandItem.Binds && this.ag == null && mc.currentScreen == null) {
-                  if (this.totem.method476().isPressed() && var6 != Items.TOTEM_OF_UNDYING) {
+                  if (this.totem.getValue().isPressed() && var6 != Items.TOTEM_OF_UNDYING) {
                      this.af = Items.TOTEM_OF_UNDYING;
-                     this.ag = this.totem.method476();
+                     this.ag = this.totem.getValue();
                      return Items.TOTEM_OF_UNDYING;
                   }
 
-                  if (this.gapple.method476().isPressed() && var6 != Items.GOLDEN_APPLE) {
+                  if (this.gapple.getValue().isPressed() && var6 != Items.GOLDEN_APPLE) {
                      this.af = Items.GOLDEN_APPLE;
-                     this.ag = this.gapple.method476();
+                     this.ag = this.gapple.getValue();
                      return Items.GOLDEN_APPLE;
                   }
 
-                  if (this.egapple.method476().isPressed() && var6 != Items.ENCHANTED_GOLDEN_APPLE) {
+                  if (this.egapple.getValue().isPressed() && var6 != Items.ENCHANTED_GOLDEN_APPLE) {
                      this.af = Items.ENCHANTED_GOLDEN_APPLE;
-                     this.ag = this.egapple.method476();
+                     this.ag = this.egapple.getValue();
                      return Items.ENCHANTED_GOLDEN_APPLE;
                   }
 
-                  if (this.crystal.method476().isPressed() && var6 != Items.END_CRYSTAL) {
+                  if (this.crystal.getValue().isPressed() && var6 != Items.END_CRYSTAL) {
                      this.af = Items.END_CRYSTAL;
-                     this.ag = this.crystal.method476();
+                     this.ag = this.crystal.getValue();
                      return Items.END_CRYSTAL;
                   }
 

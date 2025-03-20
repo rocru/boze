@@ -38,10 +38,10 @@ public class AutoMine extends Module {
    private final BooleanSetting autoRemine = new BooleanSetting("Auto", false, "Automatically always re-mine blocks", this.remineSettings);
    private final BindSetting remineBind = new BindSetting("Bind", Bind.create(), "Re-mine keybind", () -> !this.autoRemine.getValue(), this.remineSettings);
    private final FloatSetting remineDelay = new FloatSetting(
-      "Delay", 0.05F, 0.0F, 1.0F, 0.01F, "Re-mine delay in seconds", () -> this.autoRemine.getValue() || this.remineBind.method476().isValid(), this.remineSettings
+      "Delay", 0.05F, 0.0F, 1.0F, 0.01F, "Re-mine delay in seconds", () -> this.autoRemine.getValue() || this.remineBind.getValue().isValid(), this.remineSettings
    );
    private final BooleanSetting ignoreSelf = new BooleanSetting(
-      "IgnoreSelf", false, "Don't re-mine self-placed blocks", () -> this.autoRemine.getValue() || this.remineBind.method476().isValid(), this.remineSettings
+      "IgnoreSelf", false, "Don't re-mine self-placed blocks", () -> this.autoRemine.getValue() || this.remineBind.getValue().isValid(), this.remineSettings
    );
    final EnumSetting<AutoMineSwapMode> swapMode = new EnumSetting<AutoMineSwapMode>(
       "Swap",
@@ -331,20 +331,20 @@ public class AutoMine extends Module {
    @EventHandler
    private void method1464(MouseButtonEvent var1) {
       if (var1.action == KeyAction.Press) {
-         if (this.autoSelect.field64.method476().matches(false, var1.button)) {
+         if (this.autoSelect.field64.getValue().matches(false, var1.button)) {
             this.autoSelect.field85 = true;
-         } else if (this.autoSelect.field63.method476().matches(false, var1.button)) {
+         } else if (this.autoSelect.field63.getValue().matches(false, var1.button)) {
             this.autoSelect.field60.setValue(!this.autoSelect.field60.getValue());
-         } else if (this.autoSelect.field69.method476().matches(false, var1.button)) {
+         } else if (this.autoSelect.field69.getValue().matches(false, var1.button)) {
             this.autoSelect.field68.setValue(!this.autoSelect.field68.getValue());
-         } else if (this.antiRegear.field132.method476().matches(false, var1.button)) {
+         } else if (this.antiRegear.field132.getValue().matches(false, var1.button)) {
             this.antiRegear.field131.setValue(!this.antiRegear.field131.getValue());
             if (this.antiRegear.field131.getValue()) {
                this.antiRegear.method2142();
             }
-         } else if (this.proneEscape.field1633.method476().matches(false, var1.button)) {
+         } else if (this.proneEscape.field1633.getValue().matches(false, var1.button)) {
             this.proneEscape.field1632.setValue(!this.proneEscape.field1632.getValue());
-         } else if (this.remineBind.method476().matches(false, var1.button)) {
+         } else if (this.remineBind.getValue().matches(false, var1.button)) {
             this.field2521 = true;
          }
       }
@@ -353,20 +353,20 @@ public class AutoMine extends Module {
    @EventHandler
    private void method1465(KeyEvent var1) {
       if (var1.action == KeyAction.Press) {
-         if (this.autoSelect.field64.method476().matches(true, var1.key)) {
+         if (this.autoSelect.field64.getValue().matches(true, var1.key)) {
             this.autoSelect.field85 = true;
-         } else if (this.autoSelect.field63.method476().matches(true, var1.key)) {
+         } else if (this.autoSelect.field63.getValue().matches(true, var1.key)) {
             this.autoSelect.field60.setValue(!this.autoSelect.field60.getValue());
-         } else if (this.autoSelect.field69.method476().matches(true, var1.key)) {
+         } else if (this.autoSelect.field69.getValue().matches(true, var1.key)) {
             this.autoSelect.field68.setValue(!this.autoSelect.field68.getValue());
-         } else if (this.antiRegear.field132.method476().matches(true, var1.key)) {
+         } else if (this.antiRegear.field132.getValue().matches(true, var1.key)) {
             this.antiRegear.field131.setValue(!this.antiRegear.field131.getValue());
             if (this.antiRegear.field131.getValue()) {
                this.antiRegear.method2142();
             }
-         } else if (this.proneEscape.field1633.method476().matches(true, var1.key)) {
+         } else if (this.proneEscape.field1633.getValue().matches(true, var1.key)) {
             this.proneEscape.field1632.setValue(!this.proneEscape.field1632.getValue());
-         } else if (this.remineBind.method476().matches(true, var1.key)) {
+         } else if (this.remineBind.getValue().matches(true, var1.key)) {
             this.field2521 = true;
          }
       }

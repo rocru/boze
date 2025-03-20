@@ -91,7 +91,7 @@ public class ClickTP extends Module {
    public void method1811(KeyEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
-            if (this.field3198.getValue() == ClickTPMode.Bind && this.field3199.method476().matches(true, event.key)) {
+            if (this.field3198.getValue() == ClickTPMode.Bind && this.field3199.getValue().matches(true, event.key)) {
                this.method1813();
             }
          }
@@ -102,7 +102,7 @@ public class ClickTP extends Module {
    public void method1812(MouseButtonEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
-            if (this.field3198.getValue() == ClickTPMode.Bind && this.field3199.method476().matches(false, event.button)) {
+            if (this.field3198.getValue() == ClickTPMode.Bind && this.field3199.getValue().matches(false, event.button)) {
                this.method1813();
             }
          }

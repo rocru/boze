@@ -124,7 +124,7 @@ public class AutoArmor extends Module {
    @EventHandler
    private void method1639(KeyEvent var1) {
       if (this.method1638() == AutoArmorElytra.Bind
-         && this.swap.method476().matches(true, var1.key)
+         && this.swap.getValue().matches(true, var1.key)
          && var1.action == KeyAction.Press
          && mc.currentScreen == null) {
          this.bindState.setValue(!this.bindState.getValue());
@@ -134,7 +134,7 @@ public class AutoArmor extends Module {
    @EventHandler
    private void method1640(MouseButtonEvent var1) {
       if (this.method1638() == AutoArmorElytra.Bind
-         && this.swap.method476().matches(false, var1.button)
+         && this.swap.getValue().matches(false, var1.button)
          && var1.action == KeyAction.Press
          && mc.currentScreen == null) {
          this.bindState.setValue(!this.bindState.getValue());

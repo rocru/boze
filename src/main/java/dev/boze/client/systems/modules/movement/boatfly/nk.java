@@ -354,7 +354,7 @@ class nk extends nj {
       boolean var6 = mc.player.input.movementForward < 0.0F;
       boolean var7 = mc.player.input.movementSideways < 0.0F;
       boolean var8 = mc.player.input.movementSideways > 0.0F;
-      boolean var9 = this.field1556.field3155.method476().isPressed();
+      boolean var9 = this.field1556.field3155.getValue().isPressed();
       boolean var10 = mc.player.input.jumping;
       boolean var11 = var5 || var6 || var8 || var7;
       boolean var12 = var10 || var9;
@@ -363,7 +363,7 @@ class nk extends nj {
       double var17 = 0.0;
       double var19 = this.field1556.field3163.getValue() * 19.99;
       double var21 = this.field1556.field3164.getValue() * 19.99;
-      if (this.field1556.field3165.method476().isPressed()) {
+      if (this.field1556.field3165.getValue().isPressed()) {
          var19 *= 1.0 - this.field1556.field3166.getValue();
          var21 *= 1.0 - this.field1556.field3166.getValue();
       }

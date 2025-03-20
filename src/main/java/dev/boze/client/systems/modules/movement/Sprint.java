@@ -77,7 +77,7 @@ public class Sprint extends Module {
    @EventHandler
    public void method1870(KeyPressedEvent event) {
       if (!this.method1868()) {
-         if (event.method1067() == mc.options.sprintKey && !this.field3341.method476().isPressed()) {
+         if (event.method1067() == mc.options.sprintKey && !this.field3341.getValue().isPressed()) {
             event.method1070(true);
          }
       }
@@ -87,7 +87,7 @@ public class Sprint extends Module {
       priority = 20
    )
    public void method1871(PlayerGrimV3BypassEvent event) {
-      if (this.method1869() && !mc.player.isSneaking() && !this.field3341.method476().isPressed() && (this.field3342 != 0.0F || this.field3343 != 0.0F)) {
+      if (this.method1869() && !mc.player.isSneaking() && !this.field3341.getValue().isPressed() && (this.field3342 != 0.0F || this.field3343 != 0.0F)) {
          if (event.method1022()) {
             this.field3344 = -420.0F;
          } else {
@@ -125,7 +125,7 @@ public class Sprint extends Module {
       priority = 20
    )
    public void method1872(TickInputPostEvent event) {
-      if (this.method1869() && !RotationHandler.field1546.method2114() && !mc.player.isSneaking() && !this.field3341.method476().isPressed()) {
+      if (this.method1869() && !RotationHandler.field1546.method2114() && !mc.player.isSneaking() && !this.field3341.getValue().isPressed()) {
          this.field3342 = event.field1954;
          this.field3343 = event.field1953;
          if (event.field1954 != 0.0F || event.field1953 != 0.0F) {
@@ -186,7 +186,7 @@ public class Sprint extends Module {
    @EventHandler
    public void method1875(PostPlayerTickEvent event) {
       if (this.method1868()) {
-         if (!this.field3341.method476().isPressed() && !mc.player.horizontalCollision) {
+         if (!this.field3341.getValue().isPressed() && !mc.player.horizontalCollision) {
             if (this.field3335.getValue() > 0) {
                if (!mc.player.isOnGround()) {
                   this.field3347 = this.field3335.getValue();

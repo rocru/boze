@@ -147,7 +147,7 @@ public class Scaffold extends Module {
          this.field3111.removeIf(Scaffold::lambda$onRotate$0);
          if (this.field3107.hasElapsed(this.field3097.getValue() * 50.0)) {
             byte var5;
-            if (this.field3104.method476().isPressed()) {
+            if (this.field3104.getValue().isPressed()) {
                var5 = 2;
             } else {
                var5 = 1;
@@ -308,7 +308,7 @@ public class Scaffold extends Module {
       double var5 = event.vec3.x;
       double var7 = event.vec3.z;
       this.field3112 = false;
-      if (mc.player.isOnGround() && !mc.player.noClip && this.field3102.getValue() && !this.field3104.method476().isPressed()) {
+      if (mc.player.isOnGround() && !mc.player.noClip && this.field3102.getValue() && !this.field3104.getValue().isPressed()) {
          while (var5 != 0.0 && mc.world.isSpaceEmpty(mc.player, mc.player.getBoundingBox().expand(-0.15, 0.0, -0.15).offset(var5, -1.0, 0.0))) {
             if (var5 < 0.05 && var5 >= -0.05) {
                var5 = 0.0;

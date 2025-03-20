@@ -43,7 +43,7 @@ public class KeyClickAction extends Module {
    public void method1723(KeyEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
-            if (this.field2968.method476().matches(true, event.key)) {
+            if (this.field2968.getValue().matches(true, event.key)) {
                if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.ENTITY && mc.targetedEntity instanceof PlayerEntity) {
                   this.method1727(this.field2971.getValue());
                } else if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.BLOCK) {
@@ -62,7 +62,7 @@ public class KeyClickAction extends Module {
    public void method1724(MouseButtonEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
-            if (this.field2968.method476().matches(false, event.button)) {
+            if (this.field2968.getValue().matches(false, event.button)) {
                if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.ENTITY && mc.targetedEntity instanceof PlayerEntity) {
                   this.method1727(this.field2971.getValue());
                } else if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.BLOCK) {
@@ -80,7 +80,7 @@ public class KeyClickAction extends Module {
    @EventHandler
    public void method1725(PostPlayerTickEvent event) {
       if (!(mc.currentScreen instanceof ClickGUI) && MinecraftUtils.isClientActive()) {
-         if (this.field2968.method476().isPressed()) {
+         if (this.field2968.getValue().isPressed()) {
             if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.ENTITY && mc.targetedEntity instanceof PlayerEntity) {
                this.method1726(this.field2971.getValue());
             } else if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.BLOCK) {

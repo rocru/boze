@@ -110,7 +110,7 @@ class nl extends nj {
          }
 
          return (double)this.field1556.field3153.getValue().floatValue();
-      } else if (this.field1556.field3155.method476().isPressed()) {
+      } else if (this.field1556.field3155.getValue().isPressed()) {
          return (double)(-this.field1556.field3154.getValue());
       } else if (this.field1556.field3157.getValue()) {
          if (mc.player.age % 4 == 0) {

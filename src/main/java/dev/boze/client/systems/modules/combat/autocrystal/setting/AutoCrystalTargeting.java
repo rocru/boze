@@ -271,7 +271,7 @@ public class AutoCrystalTargeting implements IMinecraft, SettingsGroup {
             }
          }
 
-         return this.field120.field1042.field112.method476().isPressed();
+         return this.field120.field1042.field112.getValue().isPressed();
       } else {
          return true;
       }

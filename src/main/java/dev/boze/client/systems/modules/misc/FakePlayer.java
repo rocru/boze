@@ -81,14 +81,14 @@ public class FakePlayer extends Module {
 
    @EventHandler
    private void method1705(KeyEvent var1) {
-      if (this.recordPositions.method476().matches(true, var1.key) && var1.action == KeyAction.Press && mc.currentScreen == null) {
+      if (this.recordPositions.getValue().matches(true, var1.key) && var1.action == KeyAction.Press && mc.currentScreen == null) {
          this.positions.clear();
       }
    }
 
    @EventHandler
    private void method1706(MouseButtonEvent var1) {
-      if (this.recordPositions.method476().matches(false, var1.button) && var1.action == KeyAction.Press && mc.currentScreen == null) {
+      if (this.recordPositions.getValue().matches(false, var1.button) && var1.action == KeyAction.Press && mc.currentScreen == null) {
          this.positions.clear();
       }
    }
@@ -115,7 +115,7 @@ public class FakePlayer extends Module {
          this.timer.reset();
       }
 
-      if (this.recordPositions.method476().isPressed() && mc.currentScreen == null) {
+      if (this.recordPositions.getValue().isPressed() && mc.currentScreen == null) {
          this.positions.add(new FakePositions(mc.player));
       } else if (this.move.getValue() && !this.positions.isEmpty() && (!BackTrack.INSTANCE.isEnabled() || BackTrack.INSTANCE.field1028 < 0)) {
          if (this.field2946 >= this.positions.size()) {

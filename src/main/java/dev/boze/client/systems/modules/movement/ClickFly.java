@@ -161,7 +161,7 @@ public class ClickFly extends Module {
    public void method1805(KeyEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
-            if (this.field3188.getValue() == ClickFlyMode.Bind && this.field3189.method476().matches(true, event.key)) {
+            if (this.field3188.getValue() == ClickFlyMode.Bind && this.field3189.getValue().matches(true, event.key)) {
                this.field3192 = true;
             }
          }
@@ -172,7 +172,7 @@ public class ClickFly extends Module {
    public void method1806(MouseButtonEvent event) {
       if (MinecraftUtils.isClientActive()) {
          if (event.action == KeyAction.Press && mc.currentScreen == null) {
-            if (this.field3188.getValue() == ClickFlyMode.Bind && this.field3189.method476().matches(true, event.button)) {
+            if (this.field3188.getValue() == ClickFlyMode.Bind && this.field3189.getValue().matches(true, event.button)) {
                this.field3192 = true;
             } else if (this.field3188.getValue() == ClickFlyMode.RightClick && event.button == 1) {
                try {

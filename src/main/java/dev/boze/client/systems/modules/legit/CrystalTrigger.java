@@ -148,7 +148,7 @@ public class CrystalTrigger extends Module {
    @EventHandler
    public void method1944(KeyEvent event) {
       if (event.action == KeyAction.Press) {
-         if (this.field706.method476().isKey() && this.field706.method476().getBind() == event.key) {
+         if (this.field706.getValue().isKey() && this.field706.getValue().getBind() == event.key) {
             this.af = true;
             this.as.reset();
          }
@@ -158,7 +158,7 @@ public class CrystalTrigger extends Module {
    @EventHandler
    public void method1812(MouseButtonEvent event) {
       if (event.action == KeyAction.Press) {
-         if (!this.field706.method476().isKey() && this.field706.method476().getBind() == event.button) {
+         if (!this.field706.getValue().isKey() && this.field706.getValue().getBind() == event.button) {
             this.af = true;
             this.as.reset();
          }

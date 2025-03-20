@@ -59,14 +59,14 @@ public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGrou
 
    @Override
    public void method1812(MouseButtonEvent event) {
-      if (this.field123.method476().matches(false, event.button)) {
+      if (this.field123.getValue().matches(false, event.button)) {
          this.field129.reset();
       }
    }
 
    @Override
    public void method1944(KeyEvent event) {
-      if (this.field123.method476().matches(true, event.key)) {
+      if (this.field123.getValue().matches(true, event.key)) {
          this.field129.reset();
       }
    }

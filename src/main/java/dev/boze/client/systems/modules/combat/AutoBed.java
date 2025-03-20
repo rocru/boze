@@ -256,7 +256,7 @@ public class AutoBed extends Module {
                         var18 = true;
                      }
 
-                     if (this.forceBind.method476().isPressed()) {
+                     if (this.forceBind.getValue().isPressed()) {
                         var18 = true;
                      }
 
