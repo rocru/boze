@@ -1,6 +1,5 @@
 accessWidener v2 named
 
-accessible method net/fabricmc/loader/impl/launch/knot/MixinServiceKnot getTransformer ()Lorg/spongepowered/asm/mixin/transformer/IMixinTransformer;
 accessible class net/minecraft/client/model/ModelPart$Quad
 accessible class net/minecraft/client/model/ModelPart$Vertex
 accessible class net/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket$InteractType

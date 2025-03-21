@@ -53,8 +53,8 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
 
     public AutoCrystalBreak(AutoCrystal var1) {
         this.field183 = var1;
-        this.field178.setVisibility(() -> lambda$new$0(var1));
-        this.field179.setVisibility(() -> lambda$new$1(var1));
+        this.field178.setVisibility(() -> $lambda$new$0(var1));
+        this.field179.setVisibility(() -> $lambda$new$1(var1));
         this.field182 = new Setting[]{this.field177, this.field178, this.field179, this.field180, this.field181};
     }
 
@@ -212,7 +212,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
                     BlockPos var9 = var7.autoSelect.field79.method1471().up();
                     Box var10 = new Box(var9);
                     EndCrystalEntity var11 = mc.world
-                            .getEntitiesByType(TypeFilter.instanceOf(EndCrystalEntity.class), var10, AutoCrystalBreak::lambda$findCrystalTarget$2)
+                            .getEntitiesByType(TypeFilter.instanceOf(EndCrystalEntity.class), var10, AutoCrystalBreak::$lambda$findCrystalTarget$2)
                             .stream()
                             .findFirst()
                             .orElse(null);
@@ -332,15 +332,15 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
         return this.field183.field1041.field205.getValue() == AnticheatMode.NCP && (this.field183.field1041.field213.getValue() == AutoMineSwapMode.Normal || this.field183.field1041.field213.getValue() == AutoMineSwapMode.Silent);
     }
 
-    private static boolean lambda$findCrystalTarget$2(EndCrystalEntity var0) {
+    private static boolean $lambda$findCrystalTarget$2(EndCrystalEntity var0) {
         return true;
     }
 
-    private static boolean lambda$new$1(AutoCrystal var0) {
+    private static boolean $lambda$new$1(AutoCrystal var0) {
         return var0.field1041.field205.getValue() == AnticheatMode.NCP;
     }
 
-    private static boolean lambda$new$0(AutoCrystal var0) {
+    private static boolean $lambda$new$0(AutoCrystal var0) {
         return var0.field1041.field205.getValue() == AnticheatMode.NCP;
     }
 }

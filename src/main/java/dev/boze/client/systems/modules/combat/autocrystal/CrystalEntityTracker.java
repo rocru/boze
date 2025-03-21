@@ -19,7 +19,7 @@ public class CrystalEntityTracker implements IMinecraft {
     }
 
     void markAsDeadOnTick(Vec3d var1) {
-        this.field1238.add(() -> lambda$markAsDeadOnTick$0(var1));
+        this.field1238.add(() -> $lambda$markAsDeadOnTick$0(var1));
     }
 
     public void method530(Vec3d var1) {
@@ -37,7 +37,7 @@ public class CrystalEntityTracker implements IMinecraft {
         }
     }
 
-    private void lambda$markAsDeadOnTick$0(Vec3d var1) {
+    private void $lambda$markAsDeadOnTick$0(Vec3d var1) {
         this.method530(var1);
     }
 }

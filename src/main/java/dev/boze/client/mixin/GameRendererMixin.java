@@ -232,7 +232,7 @@ public abstract class GameRendererMixin {
             }
 
             ChamsShaderRenderer.method1310(
-                    () -> lambda$onRenderHandRenderItem$0(var1, var2, var3, var4, var5, var6),
+                    () -> lorhr0(var1, var2, var3, var4, var5, var6),
                     Chams.INSTANCE.method1921(),
                     Chams.INSTANCE.aq.getValue(),
                     Chams.INSTANCE.an,
@@ -373,7 +373,7 @@ public abstract class GameRendererMixin {
     }
 
     @Unique
-    private static void lambda$onRenderHandRenderItem$0(HeldItemRenderer var0, float var1, MatrixStack var2, Immediate var3, ClientPlayerEntity var4, int var5) {
+    private static void lorhr0(HeldItemRenderer var0, float var1, MatrixStack var2, Immediate var3, ClientPlayerEntity var4, int var5) {
         var0.renderItem(var1, var2, var3, var4, var5);
     }
 }

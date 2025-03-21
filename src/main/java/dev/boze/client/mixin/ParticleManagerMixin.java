@@ -66,7 +66,7 @@ public class ParticleManagerMixin implements IParticleManager {
     public void onRenderParticlesTail(LightmapTextureManager lightmapTextureManager, Camera camera, float tickDelta, CallbackInfo ci) {
         if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ax.getValue()) {
             ChamsShaderRenderer.method1310(
-                    () -> lambda$onRenderParticlesTail$0(lightmapTextureManager, camera, tickDelta),
+                    () -> $lambda$onRenderParticlesTail$0(lightmapTextureManager, camera, tickDelta),
                     Chams.INSTANCE.method1922(),
                     Chams.INSTANCE.aC.getValue(),
                     Chams.INSTANCE.az,
@@ -144,7 +144,7 @@ public class ParticleManagerMixin implements IParticleManager {
     }
 
     @Unique
-    private void lambda$onRenderParticlesTail$0(LightmapTextureManager var1, Camera var2, float var3) {
+    private void $lambda$onRenderParticlesTail$0(LightmapTextureManager var1, Camera var2, float var3) {
         var1.enable();
         RenderSystem.enableDepthTest();
         ParticleTextureSheet var4 = ParticleTextureSheet.PARTICLE_SHEET_LIT;

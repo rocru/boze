@@ -57,7 +57,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
 
     public AutoCrystalPlace(AutoCrystal var1) {
         this.field143 = var1;
-        this.field139.setVisibility(() -> lambda$new$0(var1));
+        this.field139.setVisibility(() -> $lambda$new$0(var1));
         this.field142 = new Setting[]{this.field137, this.field138, this.field139, this.field140, this.field141};
     }
 
@@ -315,7 +315,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
         return new Pair(var4, var16);
     }
 
-    private static boolean lambda$new$0(AutoCrystal var0) {
+    private static boolean $lambda$new$0(AutoCrystal var0) {
         return var0.field1041.field205.getValue() == AnticheatMode.NCP;
     }
 }
