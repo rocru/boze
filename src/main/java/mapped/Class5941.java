@@ -27,7 +27,8 @@ class Class5941
     }
 
     HashMap<String, byte[]> method11524(final String v1, final String v2) {
-        final boolean field4012 = Count.field4012;
+        return  null;//
+        /*final boolean field4012 = Count.field4012;
         try {
             String s = "";
             File file = new File(System.getProperty("user.home"), "Boze" + File.separator + "cache");
@@ -36,12 +37,9 @@ class Class5941
             if (!field4012) {
                 if (!contains) {
                     final boolean contains2 = lowerCase.contains("nux");
-                    if (!field4012) {
-                        if (!contains2) {
-                            final boolean contains3 = lowerCase.contains("aix");
-                            if (!field4012) {
-                                if (contains3) {}
-                            }
+                    if (!contains2) {
+                        final boolean contains3 = lowerCase.contains("aix");
+                        if (contains3) {
                         }
                     }
                 }
@@ -458,11 +456,12 @@ class Class5941
             Log.error(LogCategory.BOZE, "Error loading client", (Throwable)ex3);
             FabricGuiEntry.displayExitMessage("Error Loading Client", "Error Loading Client", "Error: " + ex3.getMessage() + " - if this error persists, please contact support", FabricStatusTree$FabricTreeWarningLevel.ERROR);
             return new HashMap<String, byte[]>();
-        }
+        }*/
     }
 
     private void method11525(final File v1, final String v2) {
-        final boolean field4012 = Count.field4012;
+        return;
+        /*final boolean field4012 = Count.field4012;
         final File file = new File(v1, "dt");
         final boolean b = field4012;
         try {
@@ -507,11 +506,12 @@ class Class5941
                 }
             }
         }
-        catch (final Exception ex) {}
+        catch (final Exception ex) {}*/
     }
 
     private byte[] method11526() {
-        final boolean field4012 = Count.field4012;
+        return null;//
+        /*f/inal boolean field4012 = Count.field4012;
         final StringBuilder sb = new StringBuilder();
         final boolean b = field4012;
         final String lowerCase = System.getProperty("os.name").toLowerCase(Locale.ROOT);
@@ -546,11 +546,12 @@ class Class5941
         }
         catch (final NoSuchAlgorithmException ex) {}
         instance.update(sb.toString().getBytes(StandardCharsets.UTF_8));
-        return instance.digest();
+        return instance.digest();*/
     }
 
     private String[] method11527() {
-        final boolean field4012 = Count.field4012;
+        return null;
+        /*final boolean field4012 = Count.field4012;
         final String lowerCase = System.getProperty("os.name").toLowerCase(Locale.ROOT);
         final boolean b = field4012;
         int contains;
@@ -576,23 +577,24 @@ class Class5941
         }
         final String[] array = new String[contains];
         array[0] = this.method11530(new String[] { "/bin/sh", "-c", "lscpu | grep -e \"Architecture:\" -e \"Byte Order:\" -e \"Model name:\"" });
-        return array;
+        return array;*/
     }
 
     private String method11528(final String v1) {
-        final Process exec = Runtime.getRuntime().exec(v1);
+        /*final Process exec = Runtime.getRuntime().exec(v1);
         exec.waitFor();
         final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(exec.getInputStream()));
         final StringBuilder obj = new StringBuilder();
         final Stream<String> lines = bufferedReader.lines();
         final StringBuilder sb = obj;
         Objects.requireNonNull(obj);
-        lines.forEach(sb::append);
-        return obj.toString();
+        lines.forEach(sb::append);*/
+//        return obj.toString();
+        return null;
     }
 
     private String method11529() {
-        final String getenv = System.getenv("SystemRoot");
+        /*final String getenv = System.getenv("SystemRoot");
         final boolean field4012 = Count.field4012;
         final File file = new File(getenv, "System32" + File.separatorChar + "WindowsPowerShell" + File.separatorChar + "v1.0");
         final boolean b = field4012;
@@ -612,10 +614,12 @@ class Class5941
             return file2.getAbsolutePath() + "\\powershell.exe";
         }
         throw new IOException("\"" + file.getAbsolutePath().toString() + "\" does not exist or is not a directory!");
+*/
+        return null;//
     }
 
     private String method11530(final String[] v1) {
-        final Process exec = Runtime.getRuntime().exec(v1);
+        /*final Process exec = Runtime.getRuntime().exec(v1);
         final boolean field4012 = Count.field4012;
         exec.waitFor();
         final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(exec.getInputStream()));
@@ -632,7 +636,8 @@ class Class5941
             }
         }
         final StringBuilder append = sb;
-        return append.toString();
+        return append.toString();*/
+        return null;
     }
 
     public static String method11531(final String v0) {
@@ -645,7 +650,8 @@ class Class5941
     }
 
     private byte[] method11532(final InputStream v1) {
-        final boolean field4012 = Count.field4012;
+        return null;
+        /*final boolean field4012 = Count.field4012;
         final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         final byte[] b = new byte[65535];
         int i = v1.read(b);
@@ -662,11 +668,11 @@ class Class5941
                 break;
             }
         }
-        return byteArrayOutputStream2.toByteArray();
+        return byteArrayOutputStream2.toByteArray();*/
     }
 
     static String method11533(final String v0, final byte[] v1) {
-        final StringBuilder sb = new StringBuilder();
+        /*final StringBuilder sb = new StringBuilder();
         final boolean field4012 = Count.field4012;
         int i = 0;
         final boolean b = field4012;
@@ -681,11 +687,12 @@ class Class5941
             }
         }
         final StringBuilder append = sb;
-        return append.toString();
+        return append.toString();*/
+        return null;
     }
 
     static String method11534(final String v0, final String v1) {
-        final boolean field4012 = Count.field4012;
+        /*final boolean field4012 = Count.field4012;
         final StringBuilder sb = new StringBuilder();
         int i = 0;
         final boolean b = field4012;
@@ -700,7 +707,8 @@ class Class5941
             }
         }
         final StringBuilder append = sb;
-        return append.toString();
+        return append.toString();*/
+        return null;//
     }
 
     static byte[] method11535(final byte[] v0, final String v1) {
@@ -760,6 +768,6 @@ class Class5941
     }
 
     private static byte[] lambda$load$0(final HashMap v0, final byte[] v1) {
-        return v0.get(new String(v1));
+        return (byte[]) v0.get(new String(v1));
     }
 }
