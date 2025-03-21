@@ -1,6 +1,5 @@
 package mapped;
 
-import com.mojang.datafixers.util.Pair;
 import dev.boze.client.api.BozeDrawColor;
 import dev.boze.client.enums.ShapeMode;
 import dev.boze.client.renderer.Renderer3D;
@@ -9,25 +8,9 @@ import dev.boze.client.systems.modules.render.NoRender;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.model.ModelPart.Cuboid;
-import net.minecraft.client.model.ModelPart.Quad;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
-import net.minecraft.client.render.entity.BoatEntityRenderer;
-import net.minecraft.client.render.entity.EndCrystalEntityRenderer;
-import net.minecraft.client.render.entity.EntityRenderer;
-import net.minecraft.client.render.entity.ItemEntityRenderer;
-import net.minecraft.client.render.entity.LivingEntityRenderer;
-import net.minecraft.client.render.entity.PlayerEntityRenderer;
-import net.minecraft.client.render.entity.model.AnimalModel;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.render.entity.model.CompositeEntityModel;
-import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.client.render.entity.model.LlamaEntityModel;
-import net.minecraft.client.render.entity.model.ModelWithWaterPatch;
-import net.minecraft.client.render.entity.model.PlayerEntityModel;
-import net.minecraft.client.render.entity.model.RabbitEntityModel;
-import net.minecraft.client.render.entity.model.SinglePartEntityModel;
-import net.minecraft.client.render.entity.model.BipedEntityModel.ArmPose;
+import net.minecraft.client.render.entity.*;
+import net.minecraft.client.render.entity.model.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -44,585 +27,493 @@ import org.joml.Quaternionf;
 import org.joml.Vector4f;
 
 public class Class5923 implements IMinecraft {
-   private static final MatrixStack field31 = new MatrixStack();
-   private static final Vector4f field32 = new Vector4f();
-   private static final Vector4f field33 = new Vector4f();
-   private static final Vector4f field34 = new Vector4f();
-   private static final Vector4f field35 = new Vector4f();
-   private static double field36;
-   private static double field37;
-   private static double field38;
-   private static BozeDrawColor field39;
-   private static BozeDrawColor field40;
-   private static ShapeMode field41;
+    private static final MatrixStack field31;
+    private static final Vector4f field32;
+    private static final Vector4f field33;
+    private static final Vector4f field34;
+    private static final Vector4f field35;
+    private static double field36;
+    private static double field37;
+    private static double field38;
+    private static BozeDrawColor field39;
+    private static BozeDrawColor field40;
+    private static ShapeMode field41;
 
-   public static void method67(
-      Renderer3D renderer3D,
-      float tickDelta,
-      FakePlayerEntity entity,
-      BozeDrawColor sideColor,
-      BozeDrawColor lineColor,
-      ShapeMode shapeMode,
-      float handSwingProgress,
-      float limbDistance,
-      float limbAngle
-   ) {
-      field39 = var86;
-      field40 = var87;
-      field41 = var88;
-      field36 = MathHelper.lerp((double)var84, var85.lastRenderX, var85.getX());
-      field37 = MathHelper.lerp((double)var84, var85.lastRenderY, var85.getY());
-      field38 = MathHelper.lerp((double)var84, var85.lastRenderZ, var85.getZ());
-      field31.push();
-      EntityRenderer var12 = mc.getEntityRenderDispatcher().getRenderer(var85);
-      if (var12 instanceof LivingEntityRenderer var13) {
-         EntityModel var15 = var13.getModel();
-         if (var12 instanceof PlayerEntityRenderer var16) {
-            PlayerEntityModel var17 = (PlayerEntityModel)var16.getModel();
-            var17.sneaking = var85.isInSneakingPose() || NoRender.method1992();
-            ArmPose var18 = PlayerEntityRenderer.getArmPose(var85, Hand.MAIN_HAND);
-            ArmPose var19 = PlayerEntityRenderer.getArmPose(var85, Hand.OFF_HAND);
-            if (var18.isTwoHanded()) {
-               var19 = var85.getOffHandStack().isEmpty() ? ArmPose.EMPTY : ArmPose.ITEM;
+    public Class5923() {
+        super();
+    }
+
+    public static void method67(final Renderer3D renderer3D, final float tickDelta, final FakePlayerEntity entity, final BozeDrawColor sideColor, final BozeDrawColor lineColor, final ShapeMode shapeMode, final float handSwingProgress, final float limbDistance, float limbAngle) {
+        Class5923.field39 = sideColor;
+        Class5923.field40 = lineColor;
+        Class5923.field41 = shapeMode;
+        Class5923.field36 = MathHelper.lerp(tickDelta, entity.lastRenderX, entity.getX());
+        Class5923.field37 = MathHelper.lerp(tickDelta, entity.lastRenderY, entity.getY());
+        Class5923.field38 = MathHelper.lerp(tickDelta, entity.lastRenderZ, entity.getZ());
+        Class5923.field31.push();
+        final EntityRenderer renderer = Class5923.mc.getEntityRenderDispatcher().getRenderer((Entity) entity);
+        if (renderer instanceof final LivingEntityRenderer livingEntityRenderer) {
+            final EntityModel model = livingEntityRenderer.getModel();
+            if (renderer instanceof final PlayerEntityRenderer playerEntityRenderer) {
+                final PlayerEntityModel playerEntityModel = playerEntityRenderer.getModel();
+                playerEntityModel.sneaking = (entity.isInSneakingPose() || NoRender.method1992());
+                final BipedEntityModel.ArmPose armPose = PlayerEntityRenderer.getArmPose(entity, Hand.MAIN_HAND);
+                BipedEntityModel.ArmPose armPose2 = PlayerEntityRenderer.getArmPose(entity, Hand.OFF_HAND);
+                if (armPose.isTwoHanded()) {
+                    armPose2 = (entity.getOffHandStack().isEmpty() ? BipedEntityModel.ArmPose.EMPTY : BipedEntityModel.ArmPose.ITEM);
+                }
+                if (((LivingEntity) entity).getMainArm() == Arm.RIGHT) {
+                    playerEntityModel.rightArmPose = armPose;
+                    playerEntityModel.leftArmPose = armPose2;
+                } else {
+                    playerEntityModel.rightArmPose = armPose2;
+                    playerEntityModel.leftArmPose = armPose;
+                }
             }
+            model.handSwingProgress = handSwingProgress;
+            model.riding = entity.hasVehicle();
+            model.child = entity.isBaby();
+            float lerpAngleDegrees = MathHelper.lerpAngleDegrees(tickDelta, entity.prevBodyYaw, entity.bodyYaw);
+            final float lerpAngleDegrees2 = MathHelper.lerpAngleDegrees(tickDelta, entity.prevHeadYaw, entity.headYaw);
+            float n = lerpAngleDegrees2 - lerpAngleDegrees;
+            if (entity.hasVehicle()) {
+                final Entity vehicle = entity.getVehicle();
+                if (vehicle instanceof final LivingEntity livingEntity) {
+                    float wrapDegrees = MathHelper.wrapDegrees(lerpAngleDegrees2 - MathHelper.lerpAngleDegrees(tickDelta, livingEntity.prevBodyYaw, livingEntity.bodyYaw));
+                    if (wrapDegrees < -85.0f) {
+                        wrapDegrees = -85.0f;
+                    }
+                    if (wrapDegrees >= 85.0f) {
+                        wrapDegrees = 85.0f;
+                    }
+                    lerpAngleDegrees = lerpAngleDegrees2 - wrapDegrees;
+                    if (wrapDegrees * wrapDegrees > 2500.0f) {
+                        lerpAngleDegrees += (float) (wrapDegrees * 0.2);
+                    }
+                    n = lerpAngleDegrees2 - lerpAngleDegrees;
+                }
+            }
+            final float lerp = MathHelper.lerp(tickDelta, entity.prevPitch, entity.getPitch());
+            final float animationProgress = livingEntityRenderer.getAnimationProgress(entity, tickDelta);
+            if (!entity.hasVehicle() && entity.isAlive() && entity.isBaby()) {
+                limbAngle *= 3.0f;
+            }
+            model.animateModel(entity, limbAngle, 1.0f, tickDelta);
+            model.setAngles(entity, limbAngle, 1.0f, animationProgress, n, lerp);
+            livingEntityRenderer.setupTransforms(entity, Class5923.field31, animationProgress, lerpAngleDegrees, tickDelta, entity.getScale());
+            Class5923.field31.scale(-1.0f, -1.0f, 1.0f);
+            livingEntityRenderer.scale(entity, Class5923.field31, tickDelta);
+            Class5923.field31.translate(0.0, -1.5010000467300415, 0.0);
+            if (model instanceof final AnimalModel animalModel) {
+                if (animalModel.child) {
+                    Class5923.field31.push();
+                    if (animalModel.headScaled) {
+                        final float n2 = 1.5f / animalModel.invertedChildHeadScale;
+                        Class5923.field31.scale(n2, n2, n2);
+                    }
+                    Class5923.field31.translate(0.0, animalModel.childHeadYOffset / 16.0f, animalModel.childHeadZOffset / 16.0f);
+                    if (model instanceof final BipedEntityModel bipedEntityModel3) {
+                        method70(renderer3D, bipedEntityModel3.head);
+                    } else {
+                        animalModel.getHeadParts().forEach(v -> lambda$render$0(renderer3D, v));
+                    }
+                    Class5923.field31.pop();
+                    Class5923.field31.push();
+                    final float n3 = 1.0f / animalModel.invertedChildBodyScale;
+                    Class5923.field31.scale(n3, n3, n3);
+                    Class5923.field31.translate(0.0, animalModel.childBodyYOffset / 16.0f, 0.0);
+                    if (model instanceof final BipedEntityModel bipedEntityModel) {
+                        method70(renderer3D, bipedEntityModel.body);
+                        method70(renderer3D, bipedEntityModel.leftArm);
+                        method70(renderer3D, bipedEntityModel.rightArm);
+                        method70(renderer3D, bipedEntityModel.leftLeg);
+                        method70(renderer3D, bipedEntityModel.rightLeg);
+                    } else {
+                        animalModel.getBodyParts().forEach(v -> lambda$render$1(renderer3D, v));
+                    }
+                    Class5923.field31.pop();
+                } else if (model instanceof final BipedEntityModel bipedEntityModel2) {
+                    method70(renderer3D, bipedEntityModel2.head);
+                    method70(renderer3D, bipedEntityModel2.body);
+                    method70(renderer3D, bipedEntityModel2.leftArm);
+                    method70(renderer3D, bipedEntityModel2.rightArm);
+                    method70(renderer3D, bipedEntityModel2.leftLeg);
+                    method70(renderer3D, bipedEntityModel2.rightLeg);
+                } else {
+                    animalModel.getHeadParts().forEach(v -> lambda$render$2(renderer3D, v));
+                    animalModel.getBodyParts().forEach(v -> lambda$render$3(renderer3D, v));
+                }
+            }
+        }
+        Class5923.field31.pop();
+    }
 
-            if (var85.getMainArm() == Arm.RIGHT) {
-               var17.rightArmPose = var18;
-               var17.leftArmPose = var19;
+    public static void method68(final Renderer3D renderer3D, final float tickDelta, final Entity entity, final BozeDrawColor sideColor, final BozeDrawColor lineColor, final ShapeMode shapeMode) {
+        method69(renderer3D, tickDelta, entity, sideColor, lineColor, shapeMode, null);
+    }
+
+    public static void method69(final Renderer3D renderer3D, final float tickDelta, final Entity entity, final BozeDrawColor sideColor, final BozeDrawColor lineColor, final ShapeMode shapeMode, final Vec3d difference) {
+        Class5923.field39 = sideColor;
+        Class5923.field40 = lineColor;
+        Class5923.field41 = shapeMode;
+        if (difference != null) {
+            Class5923.field36 = entity.getX() + difference.x;
+            Class5923.field37 = entity.getY() + difference.y;
+            Class5923.field38 = entity.getZ() + difference.z;
+        } else {
+            Class5923.field36 = MathHelper.lerp(tickDelta, entity.lastRenderX, entity.getX());
+            Class5923.field37 = MathHelper.lerp(tickDelta, entity.lastRenderY, entity.getY());
+            Class5923.field38 = MathHelper.lerp(tickDelta, entity.lastRenderZ, entity.getZ());
+        }
+        Class5923.field31.push();
+        final EntityRenderer renderer = Class5923.mc.getEntityRenderDispatcher().getRenderer(entity);
+        if (renderer instanceof final LivingEntityRenderer livingEntityRenderer) {
+            final LivingEntity livingEntity = (LivingEntity) entity;
+            final EntityModel model = livingEntityRenderer.getModel();
+            if (renderer instanceof final PlayerEntityRenderer playerEntityRenderer) {
+                final PlayerEntityModel playerEntityModel = playerEntityRenderer.getModel();
+                playerEntityModel.sneaking = (entity.isInSneakingPose() || NoRender.method1992());
+                final BipedEntityModel.ArmPose armPose = PlayerEntityRenderer.getArmPose((AbstractClientPlayerEntity) entity, Hand.MAIN_HAND);
+                BipedEntityModel.ArmPose armPose2 = PlayerEntityRenderer.getArmPose((AbstractClientPlayerEntity) entity, Hand.OFF_HAND);
+                if (armPose.isTwoHanded()) {
+                    armPose2 = (livingEntity.getOffHandStack().isEmpty() ? BipedEntityModel.ArmPose.EMPTY : BipedEntityModel.ArmPose.ITEM);
+                }
+                if (livingEntity.getMainArm() == Arm.RIGHT) {
+                    playerEntityModel.rightArmPose = armPose;
+                    playerEntityModel.leftArmPose = armPose2;
+                } else {
+                    playerEntityModel.rightArmPose = armPose2;
+                    playerEntityModel.leftArmPose = armPose;
+                }
+            }
+            model.handSwingProgress = livingEntity.getHandSwingProgress(tickDelta);
+            model.riding = livingEntity.hasVehicle();
+            model.child = livingEntity.isBaby();
+            float lerpAngleDegrees = MathHelper.lerpAngleDegrees(tickDelta, livingEntity.prevBodyYaw, livingEntity.bodyYaw);
+            final float lerpAngleDegrees2 = MathHelper.lerpAngleDegrees(tickDelta, livingEntity.prevHeadYaw, livingEntity.headYaw);
+            float n = lerpAngleDegrees2 - lerpAngleDegrees;
+            if (livingEntity.hasVehicle()) {
+                final Entity vehicle = livingEntity.getVehicle();
+                if (vehicle instanceof final LivingEntity livingEntity2) {
+                    float wrapDegrees = MathHelper.wrapDegrees(lerpAngleDegrees2 - MathHelper.lerpAngleDegrees(tickDelta, livingEntity2.prevBodyYaw, livingEntity2.bodyYaw));
+                    if (wrapDegrees < -85.0f) {
+                        wrapDegrees = -85.0f;
+                    }
+                    if (wrapDegrees >= 85.0f) {
+                        wrapDegrees = 85.0f;
+                    }
+                    lerpAngleDegrees = lerpAngleDegrees2 - wrapDegrees;
+                    if (wrapDegrees * wrapDegrees > 2500.0f) {
+                        lerpAngleDegrees += (float) (wrapDegrees * 0.2);
+                    }
+                    n = lerpAngleDegrees2 - lerpAngleDegrees;
+                }
+            }
+            final float lerp = MathHelper.lerp(tickDelta, livingEntity.prevPitch, livingEntity.getPitch());
+            final float animationProgress = livingEntityRenderer.getAnimationProgress(livingEntity, tickDelta);
+            float speed = 0.0f;
+            float pos = 0.0f;
+            if (!livingEntity.hasVehicle() && livingEntity.isAlive()) {
+                speed = livingEntity.limbAnimator.getSpeed(tickDelta);
+                pos = livingEntity.limbAnimator.getPos(tickDelta);
+                if (livingEntity.isBaby()) {
+                    pos *= 3.0f;
+                }
+                if (speed > 1.0f) {
+                    speed = 1.0f;
+                }
+            }
+            model.animateModel(livingEntity, pos, speed, tickDelta);
+            model.setAngles(livingEntity, pos, speed, animationProgress, n, lerp);
+            livingEntityRenderer.setupTransforms(livingEntity, Class5923.field31, animationProgress, lerpAngleDegrees, tickDelta, livingEntity.getScale());
+            Class5923.field31.scale(-1.0f, -1.0f, 1.0f);
+            livingEntityRenderer.scale(livingEntity, Class5923.field31, tickDelta);
+            Class5923.field31.translate(0.0, -1.5010000467300415, 0.0);
+            if (model instanceof final AnimalModel animalModel) {
+                if (animalModel.child) {
+                    Class5923.field31.push();
+                    if (animalModel.headScaled) {
+                        final float n2 = 1.5f / animalModel.invertedChildHeadScale;
+                        Class5923.field31.scale(n2, n2, n2);
+                    }
+                    Class5923.field31.translate(0.0, animalModel.childHeadYOffset / 16.0f, animalModel.childHeadZOffset / 16.0f);
+                    if (model instanceof final BipedEntityModel bipedEntityModel3) {
+                        method70(renderer3D, bipedEntityModel3.head);
+                    } else {
+                        animalModel.getHeadParts().forEach(v -> lambda$render$4(renderer3D, v));
+                    }
+                    Class5923.field31.pop();
+                    Class5923.field31.push();
+                    final float n3 = 1.0f / animalModel.invertedChildBodyScale;
+                    Class5923.field31.scale(n3, n3, n3);
+                    Class5923.field31.translate(0.0, animalModel.childBodyYOffset / 16.0f, 0.0);
+                    if (model instanceof final BipedEntityModel bipedEntityModel) {
+                        method70(renderer3D, bipedEntityModel.body);
+                        method70(renderer3D, bipedEntityModel.leftArm);
+                        method70(renderer3D, bipedEntityModel.rightArm);
+                        method70(renderer3D, bipedEntityModel.leftLeg);
+                        method70(renderer3D, bipedEntityModel.rightLeg);
+                    } else {
+                        animalModel.getBodyParts().forEach(v -> lambda$render$5(renderer3D, v));
+                    }
+                    Class5923.field31.pop();
+                } else if (model instanceof final BipedEntityModel bipedEntityModel2) {
+                    method70(renderer3D, bipedEntityModel2.head);
+                    method70(renderer3D, bipedEntityModel2.body);
+                    method70(renderer3D, bipedEntityModel2.leftArm);
+                    method70(renderer3D, bipedEntityModel2.rightArm);
+                    method70(renderer3D, bipedEntityModel2.leftLeg);
+                    method70(renderer3D, bipedEntityModel2.rightLeg);
+                } else {
+                    animalModel.getHeadParts().forEach(v -> lambda$render$6(renderer3D, v));
+                    animalModel.getBodyParts().forEach(v -> lambda$render$7(renderer3D, v));
+                }
+            } else if (model instanceof final SinglePartEntityModel singlePartEntityModel) {
+                method70(renderer3D, singlePartEntityModel.getPart());
+            } else if (model instanceof final CompositeEntityModel compositeEntityModel2) {
+                compositeEntityModel2.getParts().forEach(v -> lambda$render$8(renderer3D, v));
+            } else if (model instanceof final LlamaEntityModel llamaEntityModel) {
+                if (llamaEntityModel.child) {
+                    Class5923.field31.push();
+                    Class5923.field31.scale(0.71428573f, 0.64935064f, 0.7936508f);
+                    Class5923.field31.translate(0.0, 1.3125, 0.2199999988079071);
+                    method70(renderer3D, llamaEntityModel.head);
+                    Class5923.field31.pop();
+                    Class5923.field31.push();
+                    Class5923.field31.scale(0.625f, 0.45454544f, 0.45454544f);
+                    Class5923.field31.translate(0.0, 2.0625, 0.0);
+                    method70(renderer3D, llamaEntityModel.body);
+                    Class5923.field31.pop();
+                    Class5923.field31.push();
+                    Class5923.field31.scale(0.45454544f, 0.41322312f, 0.45454544f);
+                    Class5923.field31.translate(0.0, 2.0625, 0.0);
+                    method70(renderer3D, llamaEntityModel.rightHindLeg);
+                    method70(renderer3D, llamaEntityModel.leftHindLeg);
+                    method70(renderer3D, llamaEntityModel.rightFrontLeg);
+                    method70(renderer3D, llamaEntityModel.leftFrontLeg);
+                    method70(renderer3D, llamaEntityModel.rightChest);
+                    method70(renderer3D, llamaEntityModel.leftChest);
+                    Class5923.field31.pop();
+                } else {
+                    method70(renderer3D, llamaEntityModel.head);
+                    method70(renderer3D, llamaEntityModel.body);
+                    method70(renderer3D, llamaEntityModel.rightHindLeg);
+                    method70(renderer3D, llamaEntityModel.leftHindLeg);
+                    method70(renderer3D, llamaEntityModel.rightFrontLeg);
+                    method70(renderer3D, llamaEntityModel.leftFrontLeg);
+                    method70(renderer3D, llamaEntityModel.rightChest);
+                    method70(renderer3D, llamaEntityModel.leftChest);
+                }
+            } else if (model instanceof final RabbitEntityModel rabbitEntityModel) {
+                if (rabbitEntityModel.child) {
+                    Class5923.field31.push();
+                    Class5923.field31.scale(0.56666666f, 0.56666666f, 0.56666666f);
+                    Class5923.field31.translate(0.0, 1.375, 0.125);
+                    method70(renderer3D, rabbitEntityModel.head);
+                    method70(renderer3D, rabbitEntityModel.leftEar);
+                    method70(renderer3D, rabbitEntityModel.rightEar);
+                    method70(renderer3D, rabbitEntityModel.nose);
+                    Class5923.field31.pop();
+                    Class5923.field31.push();
+                    Class5923.field31.scale(0.4f, 0.4f, 0.4f);
+                    Class5923.field31.translate(0.0, 2.25, 0.0);
+                    method70(renderer3D, rabbitEntityModel.leftHindLeg);
+                    method70(renderer3D, rabbitEntityModel.rightHindLeg);
+                    method70(renderer3D, rabbitEntityModel.leftHaunch);
+                    method70(renderer3D, rabbitEntityModel.rightHaunch);
+                    method70(renderer3D, rabbitEntityModel.body);
+                    method70(renderer3D, rabbitEntityModel.leftFrontLeg);
+                    method70(renderer3D, rabbitEntityModel.rightFrontLeg);
+                    method70(renderer3D, rabbitEntityModel.tail);
+                    Class5923.field31.pop();
+                } else {
+                    Class5923.field31.push();
+                    Class5923.field31.scale(0.6f, 0.6f, 0.6f);
+                    Class5923.field31.translate(0.0, 1.0, 0.0);
+                    method70(renderer3D, rabbitEntityModel.leftHindLeg);
+                    method70(renderer3D, rabbitEntityModel.rightHindLeg);
+                    method70(renderer3D, rabbitEntityModel.leftHaunch);
+                    method70(renderer3D, rabbitEntityModel.rightHaunch);
+                    method70(renderer3D, rabbitEntityModel.body);
+                    method70(renderer3D, rabbitEntityModel.leftFrontLeg);
+                    method70(renderer3D, rabbitEntityModel.rightFrontLeg);
+                    method70(renderer3D, rabbitEntityModel.head);
+                    method70(renderer3D, rabbitEntityModel.rightEar);
+                    method70(renderer3D, rabbitEntityModel.leftEar);
+                    method70(renderer3D, rabbitEntityModel.tail);
+                    method70(renderer3D, rabbitEntityModel.nose);
+                    Class5923.field31.pop();
+                }
+            }
+        }
+        if (renderer instanceof final EndCrystalEntityRenderer endCrystalEntityRenderer) {
+            final EndCrystalEntity endCrystalEntity = (EndCrystalEntity) entity;
+            final boolean b = Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.getValue();
+            Class5923.field31.push();
+            float yOffset;
+            if (b) {
+                final float n4 = MathHelper.sin((endCrystalEntity.endCrystalAge + tickDelta) * 0.2f) / 2.0f + 0.5f;
+                yOffset = (n4 * n4 + n4) * 0.4f * Chams.INSTANCE.ah.getValue() - 1.4f;
             } else {
-               var17.rightArmPose = var19;
-               var17.leftArmPose = var18;
+                yOffset = EndCrystalEntityRenderer.getYOffset(endCrystalEntity, tickDelta);
             }
-         }
-
-         var15.handSwingProgress = var89;
-         var15.riding = var85.hasVehicle();
-         var15.child = var85.isBaby();
-         float var24 = MathHelper.lerpAngleDegrees(var84, var85.prevBodyYaw, var85.bodyYaw);
-         float var26 = MathHelper.lerpAngleDegrees(var84, var85.prevHeadYaw, var85.headYaw);
-         float var27 = var26 - var24;
-         if (var85.hasVehicle() && var85.getVehicle() instanceof LivingEntity var20) {
-            var24 = MathHelper.lerpAngleDegrees(var84, var20.prevBodyYaw, var20.bodyYaw);
-            var27 = var26 - var24;
-            float var29 = MathHelper.wrapDegrees(var27);
-            if (var29 < -85.0F) {
-               var29 = -85.0F;
-            }
-
-            if (var29 >= 85.0F) {
-               var29 = 85.0F;
-            }
-
-            var24 = var26 - var29;
-            if (var29 * var29 > 2500.0F) {
-               var24 = (float)((double)var24 + (double)var29 * 0.2);
-            }
-
-            var27 = var26 - var24;
-         }
-
-         float var31 = MathHelper.lerp(var84, var85.prevPitch, var85.getPitch());
-         float var30 = var13.getAnimationProgress(var85, var84);
-         if (!var85.hasVehicle() && var85.isAlive() && var85.isBaby()) {
-            var91 *= 3.0F;
-         }
-
-         var15.animateModel(var85, var91, 1.0F, var84);
-         var15.setAngles(var85, var91, 1.0F, var30, var27, var31);
-         var13.setupTransforms(var85, field31, var30, var24, var84, var85.getScale());
-         field31.scale(-1.0F, -1.0F, 1.0F);
-         var13.scale(var85, field31, var84);
-         field31.translate(0.0, -1.501F, 0.0);
-         if (var15 instanceof AnimalModel var32) {
-            if (var32.child) {
-               field31.push();
-               if (var32.headScaled) {
-                  float var22 = 1.5F / var32.invertedChildHeadScale;
-                  field31.scale(var22, var22, var22);
-               }
-
-               field31.translate(0.0, (double)(var32.childHeadYOffset / 16.0F), (double)(var32.childHeadZOffset / 16.0F));
-               if (var15 instanceof BipedEntityModel var23) {
-                  method70(var83, var23.head);
-               } else {
-                  var32.getHeadParts().forEach(Class5923::lambda$render$0);
-               }
-
-               field31.pop();
-               field31.push();
-               float var33 = 1.0F / var32.invertedChildBodyScale;
-               field31.scale(var33, var33, var33);
-               field31.translate(0.0, (double)(var32.childBodyYOffset / 16.0F), 0.0);
-               if (var15 instanceof BipedEntityModel var35) {
-                  method70(var83, var35.body);
-                  method70(var83, var35.leftArm);
-                  method70(var83, var35.rightArm);
-                  method70(var83, var35.leftLeg);
-                  method70(var83, var35.rightLeg);
-               } else {
-                  var32.getBodyParts().forEach(Class5923::lambda$render$1);
-               }
-
-               field31.pop();
-            } else if (var15 instanceof BipedEntityModel var34) {
-               method70(var83, var34.head);
-               method70(var83, var34.body);
-               method70(var83, var34.leftArm);
-               method70(var83, var34.rightArm);
-               method70(var83, var34.leftLeg);
-               method70(var83, var34.rightLeg);
+            final float n5 = (endCrystalEntity.endCrystalAge + tickDelta) * 3.0f;
+            Class5923.field31.push();
+            if (b) {
+                Class5923.field31.scale(2.0f * Chams.INSTANCE.ae.getValue(), 2.0f * Chams.INSTANCE.af.getValue(), 2.0f * Chams.INSTANCE.ae.getValue());
             } else {
-               var32.getHeadParts().forEach(Class5923::lambda$render$2);
-               var32.getBodyParts().forEach(Class5923::lambda$render$3);
+                Class5923.field31.scale(2.0f, 2.0f, 2.0f);
             }
-         }
-      }
-
-      field31.pop();
-   }
-
-   public static void method68(Renderer3D renderer3D, float tickDelta, Entity entity, BozeDrawColor sideColor, BozeDrawColor lineColor, ShapeMode shapeMode) {
-      method69(var92, var93, var94, var95, var96, var97, null);
-   }
-
-   public static void method69(
-      Renderer3D renderer3D, float tickDelta, Entity entity, BozeDrawColor sideColor, BozeDrawColor lineColor, ShapeMode shapeMode, Vec3d difference
-   ) {
-      field39 = var101;
-      field40 = var102;
-      field41 = var103;
-      if (var104 != null) {
-         field36 = var100.getX() + var104.x;
-         field37 = var100.getY() + var104.y;
-         field38 = var100.getZ() + var104.z;
-      } else {
-         field36 = MathHelper.lerp((double)var99, var100.lastRenderX, var100.getX());
-         field37 = MathHelper.lerp((double)var99, var100.lastRenderY, var100.getY());
-         field38 = MathHelper.lerp((double)var99, var100.lastRenderZ, var100.getZ());
-      }
-
-      field31.push();
-      EntityRenderer var10 = mc.getEntityRenderDispatcher().getRenderer(var100);
-      if (var10 instanceof LivingEntityRenderer var11) {
-         LivingEntity var12 = (LivingEntity)var100;
-         EntityModel var13 = var11.getModel();
-         if (var10 instanceof PlayerEntityRenderer var14) {
-            PlayerEntityModel var15 = (PlayerEntityModel)var14.getModel();
-            var15.sneaking = var100.isInSneakingPose() || NoRender.method1992();
-            ArmPose var16 = PlayerEntityRenderer.getArmPose((AbstractClientPlayerEntity)var100, Hand.MAIN_HAND);
-            ArmPose var17 = PlayerEntityRenderer.getArmPose((AbstractClientPlayerEntity)var100, Hand.OFF_HAND);
-            if (var16.isTwoHanded()) {
-               var17 = var12.getOffHandStack().isEmpty() ? ArmPose.EMPTY : ArmPose.ITEM;
+            Class5923.field31.translate(0.0, -0.5, 0.0);
+            if (endCrystalEntity.shouldShowBottom()) {
+                method70(renderer3D, endCrystalEntityRenderer.bottom);
             }
-
-            if (var12.getMainArm() == Arm.RIGHT) {
-               var15.rightArmPose = var16;
-               var15.leftArmPose = var17;
+            if (b) {
+                Class5923.field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(n5 * Chams.INSTANCE.ag.getValue()));
             } else {
-               var15.rightArmPose = var17;
-               var15.leftArmPose = var16;
+                Class5923.field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(n5));
             }
-         }
-
-         var13.handSwingProgress = var12.getHandSwingProgress(var99);
-         var13.riding = var12.hasVehicle();
-         var13.child = var12.isBaby();
-         float var31 = MathHelper.lerpAngleDegrees(var99, var12.prevBodyYaw, var12.bodyYaw);
-         float var35 = MathHelper.lerpAngleDegrees(var99, var12.prevHeadYaw, var12.headYaw);
-         float var39 = var35 - var31;
-         if (var12.hasVehicle() && var12.getVehicle() instanceof LivingEntity var18) {
-            var31 = MathHelper.lerpAngleDegrees(var99, var18.prevBodyYaw, var18.bodyYaw);
-            var39 = var35 - var31;
-            float var44 = MathHelper.wrapDegrees(var39);
-            if (var44 < -85.0F) {
-               var44 = -85.0F;
-            }
-
-            if (var44 >= 85.0F) {
-               var44 = 85.0F;
-            }
-
-            var31 = var35 - var44;
-            if (var44 * var44 > 2500.0F) {
-               var31 = (float)((double)var31 + (double)var44 * 0.2);
-            }
-
-            var39 = var35 - var31;
-         }
-
-         float var50 = MathHelper.lerp(var99, var12.prevPitch, var12.getPitch());
-         float var45 = var11.getAnimationProgress(var12, var99);
-         float var52 = 0.0F;
-         float var20 = 0.0F;
-         if (!var12.hasVehicle() && var12.isAlive()) {
-            var52 = var12.limbAnimator.getSpeed(var99);
-            var20 = var12.limbAnimator.getPos(var99);
-            if (var12.isBaby()) {
-               var20 *= 3.0F;
-            }
-
-            if (var52 > 1.0F) {
-               var52 = 1.0F;
-            }
-         }
-
-         var13.animateModel(var12, var20, var52, var99);
-         var13.setAngles(var12, var20, var52, var45, var39, var50);
-         var11.setupTransforms(var12, field31, var45, var31, var99, var12.getScale());
-         field31.scale(-1.0F, -1.0F, 1.0F);
-         var11.scale(var12, field31, var99);
-         field31.translate(0.0, -1.501F, 0.0);
-         if (var13 instanceof AnimalModel var21) {
-            if (var21.child) {
-               field31.push();
-               if (var21.headScaled) {
-                  float var22 = 1.5F / var21.invertedChildHeadScale;
-                  field31.scale(var22, var22, var22);
-               }
-
-               field31.translate(0.0, (double)(var21.childHeadYOffset / 16.0F), (double)(var21.childHeadZOffset / 16.0F));
-               if (var13 instanceof BipedEntityModel var23) {
-                  method70(var98, var23.head);
-               } else {
-                  var21.getHeadParts().forEach(Class5923::lambda$render$4);
-               }
-
-               field31.pop();
-               field31.push();
-               float var54 = 1.0F / var21.invertedChildBodyScale;
-               field31.scale(var54, var54, var54);
-               field31.translate(0.0, (double)(var21.childBodyYOffset / 16.0F), 0.0);
-               if (var13 instanceof BipedEntityModel var57) {
-                  method70(var98, var57.body);
-                  method70(var98, var57.leftArm);
-                  method70(var98, var57.rightArm);
-                  method70(var98, var57.leftLeg);
-                  method70(var98, var57.rightLeg);
-               } else {
-                  var21.getBodyParts().forEach(Class5923::lambda$render$5);
-               }
-
-               field31.pop();
-            } else if (var13 instanceof BipedEntityModel var55) {
-               method70(var98, var55.head);
-               method70(var98, var55.body);
-               method70(var98, var55.leftArm);
-               method70(var98, var55.rightArm);
-               method70(var98, var55.leftLeg);
-               method70(var98, var55.rightLeg);
+            Class5923.field31.translate(0.0, 1.5f + yOffset / 2.0f, 0.0);
+            Class5923.field31.multiply(new Quaternionf().setAngleAxis(1.0471976f, EndCrystalEntityRenderer.SINE_45_DEGREES, 0.0f, EndCrystalEntityRenderer.SINE_45_DEGREES));
+            method70(renderer3D, endCrystalEntityRenderer.frame);
+            Class5923.field31.scale(0.875f, 0.875f, 0.875f);
+            Class5923.field31.multiply(new Quaternionf().setAngleAxis(1.0471976f, EndCrystalEntityRenderer.SINE_45_DEGREES, 0.0f, EndCrystalEntityRenderer.SINE_45_DEGREES));
+            if (b) {
+                Class5923.field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(n5 * Chams.INSTANCE.ag.getValue()));
             } else {
-               var21.getHeadParts().forEach(Class5923::lambda$render$6);
-               var21.getBodyParts().forEach(Class5923::lambda$render$7);
+                Class5923.field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(n5));
             }
-         } else if (var13 instanceof SinglePartEntityModel var56) {
-            method70(var98, var56.getPart());
-         } else if (var13 instanceof CompositeEntityModel var58) {
-            var58.getParts().forEach(Class5923::lambda$render$8);
-         } else if (var13 instanceof LlamaEntityModel var24) {
-            if (var24.child) {
-               field31.push();
-               field31.scale(0.71428573F, 0.64935064F, 0.7936508F);
-               field31.translate(0.0, 1.3125, 0.22F);
-               method70(var98, var24.head);
-               field31.pop();
-               field31.push();
-               field31.scale(0.625F, 0.45454544F, 0.45454544F);
-               field31.translate(0.0, 2.0625, 0.0);
-               method70(var98, var24.body);
-               field31.pop();
-               field31.push();
-               field31.scale(0.45454544F, 0.41322312F, 0.45454544F);
-               field31.translate(0.0, 2.0625, 0.0);
-               method70(var98, var24.rightHindLeg);
-               method70(var98, var24.leftHindLeg);
-               method70(var98, var24.rightFrontLeg);
-               method70(var98, var24.leftFrontLeg);
-               method70(var98, var24.rightChest);
-               method70(var98, var24.leftChest);
-               field31.pop();
+            method70(renderer3D, endCrystalEntityRenderer.frame);
+            Class5923.field31.scale(0.875f, 0.875f, 0.875f);
+            Class5923.field31.multiply(new Quaternionf().setAngleAxis(1.0471976f, EndCrystalEntityRenderer.SINE_45_DEGREES, 0.0f, EndCrystalEntityRenderer.SINE_45_DEGREES));
+            if (b) {
+                Class5923.field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(n5 * Chams.INSTANCE.ag.getValue()));
             } else {
-               method70(var98, var24.head);
-               method70(var98, var24.body);
-               method70(var98, var24.rightHindLeg);
-               method70(var98, var24.leftHindLeg);
-               method70(var98, var24.rightFrontLeg);
-               method70(var98, var24.leftFrontLeg);
-               method70(var98, var24.rightChest);
-               method70(var98, var24.leftChest);
+                Class5923.field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(n5));
             }
-         } else if (var13 instanceof RabbitEntityModel var25) {
-            if (var25.child) {
-               field31.push();
-               field31.scale(0.56666666F, 0.56666666F, 0.56666666F);
-               field31.translate(0.0, 1.375, 0.125);
-               method70(var98, var25.head);
-               method70(var98, var25.leftEar);
-               method70(var98, var25.rightEar);
-               method70(var98, var25.nose);
-               field31.pop();
-               field31.push();
-               field31.scale(0.4F, 0.4F, 0.4F);
-               field31.translate(0.0, 2.25, 0.0);
-               method70(var98, var25.leftHindLeg);
-               method70(var98, var25.rightHindLeg);
-               method70(var98, var25.leftHaunch);
-               method70(var98, var25.rightHaunch);
-               method70(var98, var25.body);
-               method70(var98, var25.leftFrontLeg);
-               method70(var98, var25.rightFrontLeg);
-               method70(var98, var25.tail);
-               field31.pop();
-            } else {
-               field31.push();
-               field31.scale(0.6F, 0.6F, 0.6F);
-               field31.translate(0.0, 1.0, 0.0);
-               method70(var98, var25.leftHindLeg);
-               method70(var98, var25.rightHindLeg);
-               method70(var98, var25.leftHaunch);
-               method70(var98, var25.rightHaunch);
-               method70(var98, var25.body);
-               method70(var98, var25.leftFrontLeg);
-               method70(var98, var25.rightFrontLeg);
-               method70(var98, var25.head);
-               method70(var98, var25.rightEar);
-               method70(var98, var25.leftEar);
-               method70(var98, var25.tail);
-               method70(var98, var25.nose);
-               field31.pop();
+            method70(renderer3D, endCrystalEntityRenderer.core);
+            Class5923.field31.pop();
+            Class5923.field31.pop();
+        } else if (renderer instanceof final BoatEntityRenderer boatEntityRenderer) {
+            final BoatEntity boatEntity = (BoatEntity) entity;
+            Class5923.field31.push();
+            Class5923.field31.translate(0.0, 0.375, 0.0);
+            Class5923.field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f - MathHelper.lerp(tickDelta, entity.prevYaw, entity.getYaw())));
+            final float n6 = boatEntity.getDamageWobbleTicks() - tickDelta;
+            float n7 = boatEntity.getDamageWobbleStrength() - tickDelta;
+            if (n7 < 0.0f) {
+                n7 = 0.0f;
             }
-         }
-      }
+            if (n6 > 0.0f) {
+                Class5923.field31.multiply(RotationAxis.POSITIVE_X.rotationDegrees(MathHelper.sin(n6) * n6 * n7 / 10.0f * boatEntity.getDamageWobbleSide()));
+            }
+            if (!MathHelper.approximatelyEquals(boatEntity.interpolateBubbleWobble(tickDelta), 0.0f)) {
+                Class5923.field31.multiply(new Quaternionf().setAngleAxis(boatEntity.interpolateBubbleWobble(tickDelta), 1.0f, 0.0f, 1.0f));
+            }
+            final CompositeEntityModel compositeEntityModel = boatEntityRenderer.texturesAndModels.get(boatEntity.getVariant()).getSecond();
+            Class5923.field31.scale(-1.0f, -1.0f, 1.0f);
+            Class5923.field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90.0f));
+            compositeEntityModel.setAngles(boatEntity, tickDelta, 0.0f, -0.1f, 0.0f, 0.0f);
+            compositeEntityModel.getParts().forEach(arg_0 -> Class5923.lambda$render$9(renderer3D, (ModelPart) arg_0));
+            if (!boatEntity.isSubmergedInWater() && compositeEntityModel instanceof ModelWithWaterPatch) {
+                method70(renderer3D, ((ModelWithWaterPatch) compositeEntityModel).getWaterPatch());
+            }
+            Class5923.field31.pop();
+        } else if (renderer instanceof ItemEntityRenderer) {
+            final double n8 = (entity.getX() - entity.prevX) * tickDelta;
+            final double n9 = (entity.getY() - entity.prevY) * tickDelta;
+            final double n10 = (entity.getZ() - entity.prevZ) * tickDelta;
+            final Box boundingBox = entity.getBoundingBox();
+            renderer3D.method1271(n8 + boundingBox.minX, n9 + boundingBox.minY, n10 + boundingBox.minZ, n8 + boundingBox.maxX, n9 + boundingBox.maxY, n10 + boundingBox.maxZ, sideColor, lineColor, shapeMode, 0);
+        }
+        Class5923.field31.pop();
+    }
 
-      if (var10 instanceof EndCrystalEntityRenderer var26) {
-         EndCrystalEntity var28 = (EndCrystalEntity)var100;
-         boolean var33 = Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.getValue();
-         field31.push();
-         float var36;
-         if (var33) {
-            float var41 = (float)var28.endCrystalAge + var99;
-            float var46 = MathHelper.sin(var41 * 0.2F) / 2.0F + 0.5F;
-            var46 = (var46 * var46 + var46) * 0.4F * Chams.INSTANCE.ah.getValue();
-            var36 = var46 - 1.4F;
-         } else {
-            var36 = EndCrystalEntityRenderer.getYOffset(var28, var99);
-         }
+    private static void method70(final Renderer3D renderer3D, final ModelPart modelPart) {
+        if (!modelPart.visible || (modelPart.cuboids.isEmpty() && modelPart.children.isEmpty())) {
+            return;
+        }
+        Class5923.field31.push();
+        modelPart.rotate(Class5923.field31);
+        for (ModelPart.Cuboid cuboid : modelPart.cuboids) {
+            method71(renderer3D, cuboid, Class5923.field36, Class5923.field37, Class5923.field38);
+        }
+        for (ModelPart part : modelPart.children.values()) {
+            method70(renderer3D, part);
+        }
+        Class5923.field31.pop();
+    }
 
-         float var42 = ((float)var28.endCrystalAge + var99) * 3.0F;
-         field31.push();
-         if (var33) {
-            field31.scale(2.0F * Chams.INSTANCE.ae.getValue(), 2.0F * Chams.INSTANCE.af.getValue(), 2.0F * Chams.INSTANCE.ae.getValue());
-         } else {
-            field31.scale(2.0F, 2.0F, 2.0F);
-         }
+    private static void method71(final Renderer3D renderer3D, final ModelPart.Cuboid modelPart$Cuboid, final double n, final double n2, final double n3) {
+        final Matrix4f positionMatrix = Class5923.field31.peek().getPositionMatrix();
+        final ModelPart.Quad[] sides = modelPart$Cuboid.sides;
+        for (int length = sides.length, i = 0; i < length; ++i) {
+            final ModelPart.Quad modelPart$Quad = sides[i];
+            Class5923.field32.set(modelPart$Quad.vertices[0].pos.x / 16.0f, modelPart$Quad.vertices[0].pos.y / 16.0f, modelPart$Quad.vertices[0].pos.z / 16.0f, 1.0f);
+            Class5923.field32.mul(positionMatrix);
+            Class5923.field33.set(modelPart$Quad.vertices[1].pos.x / 16.0f, modelPart$Quad.vertices[1].pos.y / 16.0f, modelPart$Quad.vertices[1].pos.z / 16.0f, 1.0f);
+            Class5923.field33.mul(positionMatrix);
+            Class5923.field34.set(modelPart$Quad.vertices[2].pos.x / 16.0f, modelPart$Quad.vertices[2].pos.y / 16.0f, modelPart$Quad.vertices[2].pos.z / 16.0f, 1.0f);
+            Class5923.field34.mul(positionMatrix);
+            Class5923.field35.set(modelPart$Quad.vertices[3].pos.x / 16.0f, modelPart$Quad.vertices[3].pos.y / 16.0f, modelPart$Quad.vertices[3].pos.z / 16.0f, 1.0f);
+            Class5923.field35.mul(positionMatrix);
+            if (Class5923.field41.method2115()) {
+                renderer3D.method1251(n + Class5923.field32.x, n2 + Class5923.field32.y, n3 + Class5923.field32.z, n + Class5923.field33.x, n2 + Class5923.field33.y, n3 + Class5923.field33.z, n + Class5923.field34.x, n2 + Class5923.field34.y, n3 + Class5923.field34.z, n + Class5923.field35.x, n2 + Class5923.field35.y, n3 + Class5923.field35.z, Class5923.field39);
+            }
+            if (Class5923.field41.method2114()) {
+                renderer3D.method1241(n + Class5923.field32.x, n2 + Class5923.field32.y, n3 + Class5923.field32.z, n + Class5923.field33.x, n2 + Class5923.field33.y, n3 + Class5923.field33.z, Class5923.field40);
+                renderer3D.method1241(n + Class5923.field33.x, n2 + Class5923.field33.y, n3 + Class5923.field33.z, n + Class5923.field34.x, n2 + Class5923.field34.y, n3 + Class5923.field34.z, Class5923.field40);
+                renderer3D.method1241(n + Class5923.field34.x, n2 + Class5923.field34.y, n3 + Class5923.field34.z, n + Class5923.field35.x, n2 + Class5923.field35.y, n3 + Class5923.field35.z, Class5923.field40);
+                renderer3D.method1241(n + Class5923.field32.x, n2 + Class5923.field32.y, n3 + Class5923.field32.z, n + Class5923.field32.x, n2 + Class5923.field32.y, n3 + Class5923.field32.z, Class5923.field40);
+            }
+        }
+    }
 
-         field31.translate(0.0, -0.5, 0.0);
-         if (var28.shouldShowBottom()) {
-            method70(var98, var26.bottom);
-         }
+    private static void lambda$render$9(final Renderer3D renderer3D, final ModelPart modelPart) {
+        method70(renderer3D, modelPart);
+    }
 
-         if (var33) {
-            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42 * Chams.INSTANCE.ag.getValue()));
-         } else {
-            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42));
-         }
+    private static void lambda$render$8(final Renderer3D renderer3D, final Object o) {
+        method70(renderer3D, (ModelPart) o);
+    }
 
-         field31.translate(0.0, (double)(1.5F + var36 / 2.0F), 0.0);
-         field31.multiply(
-            new Quaternionf().setAngleAxis((float) (Math.PI / 3), EndCrystalEntityRenderer.SINE_45_DEGREES, 0.0F, EndCrystalEntityRenderer.SINE_45_DEGREES)
-         );
-         method70(var98, var26.frame);
-         field31.scale(0.875F, 0.875F, 0.875F);
-         field31.multiply(
-            new Quaternionf().setAngleAxis((float) (Math.PI / 3), EndCrystalEntityRenderer.SINE_45_DEGREES, 0.0F, EndCrystalEntityRenderer.SINE_45_DEGREES)
-         );
-         if (var33) {
-            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42 * Chams.INSTANCE.ag.getValue()));
-         } else {
-            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42));
-         }
+    private static void lambda$render$7(final Renderer3D renderer3D, final Object o) {
+        method70(renderer3D, (ModelPart) o);
+    }
 
-         method70(var98, var26.frame);
-         field31.scale(0.875F, 0.875F, 0.875F);
-         field31.multiply(
-            new Quaternionf().setAngleAxis((float) (Math.PI / 3), EndCrystalEntityRenderer.SINE_45_DEGREES, 0.0F, EndCrystalEntityRenderer.SINE_45_DEGREES)
-         );
-         if (var33) {
-            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42 * Chams.INSTANCE.ag.getValue()));
-         } else {
-            field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(var42));
-         }
+    private static void lambda$render$6(final Renderer3D renderer3D, final Object o) {
+        method70(renderer3D, (ModelPart) o);
+    }
 
-         method70(var98, var26.core);
-         field31.pop();
-         field31.pop();
-      } else if (var10 instanceof BoatEntityRenderer var27) {
-         BoatEntity var29 = (BoatEntity)var100;
-         field31.push();
-         field31.translate(0.0, 0.375, 0.0);
-         field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F - MathHelper.lerp(var99, var100.prevYaw, var100.getYaw())));
-         float var34 = (float)var29.getDamageWobbleTicks() - var99;
-         float var37 = var29.getDamageWobbleStrength() - var99;
-         if (var37 < 0.0F) {
-            var37 = 0.0F;
-         }
+    private static void lambda$render$5(final Renderer3D renderer3D, final Object o) {
+        method70(renderer3D, (ModelPart) o);
+    }
 
-         if (var34 > 0.0F) {
-            field31.multiply(RotationAxis.POSITIVE_X.rotationDegrees(MathHelper.sin(var34) * var34 * var37 / 10.0F * (float)var29.getDamageWobbleSide()));
-         }
+    private static void lambda$render$4(final Renderer3D renderer3D, final Object o) {
+        method70(renderer3D, (ModelPart) o);
+    }
 
-         float var43 = var29.interpolateBubbleWobble(var99);
-         if (!MathHelper.approximatelyEquals(var43, 0.0F)) {
-            field31.multiply(new Quaternionf().setAngleAxis(var29.interpolateBubbleWobble(var99), 1.0F, 0.0F, 1.0F));
-         }
+    private static void lambda$render$3(final Renderer3D renderer3D, final Object o) {
+        method70(renderer3D, (ModelPart) o);
+    }
 
-         CompositeEntityModel var48 = (CompositeEntityModel)((Pair)var27.texturesAndModels.get(var29.getVariant())).getSecond();
-         field31.scale(-1.0F, -1.0F, 1.0F);
-         field31.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90.0F));
-         var48.setAngles(var29, var99, 0.0F, -0.1F, 0.0F, 0.0F);
-         var48.getParts().forEach(Class5923::lambda$render$9);
-         if (!var29.isSubmergedInWater() && var48 instanceof ModelWithWaterPatch var51) {
-            method70(var98, var51.getWaterPatch());
-         }
+    private static void lambda$render$2(final Renderer3D renderer3D, final Object o) {
+        method70(renderer3D, (ModelPart) o);
+    }
 
-         field31.pop();
-      } else if (var10 instanceof ItemEntityRenderer) {
-         double var30 = (var100.getX() - var100.prevX) * (double)var99;
-         double var38 = (var100.getY() - var100.prevY) * (double)var99;
-         double var49 = (var100.getZ() - var100.prevZ) * (double)var99;
-         Box var53 = var100.getBoundingBox();
-         var98.method1271(
-            var30 + var53.minX, var38 + var53.minY, var49 + var53.minZ, var30 + var53.maxX, var38 + var53.maxY, var49 + var53.maxZ, var101, var102, var103, 0
-         );
-      }
+    private static void lambda$render$1(final Renderer3D renderer3D, final Object o) {
+        method70(renderer3D, (ModelPart) o);
+    }
 
-      field31.pop();
-   }
+    private static void lambda$render$0(final Renderer3D renderer3D, final Object o) {
+        method70(renderer3D, (ModelPart) o);
+    }
 
-   private static void method70(Renderer3D var0, ModelPart var1) {
-      if (var1.visible && (!var1.cuboids.isEmpty() || !var1.children.isEmpty())) {
-         field31.push();
-         var1.rotate(field31);
-
-         for (Cuboid var6 : var1.cuboids) {
-            method71(var0, var6, field36, field37, field38);
-         }
-
-         for (ModelPart var8 : var1.children.values()) {
-            method70(var0, var8);
-         }
-
-         field31.pop();
-      }
-   }
-
-   private static void method71(Renderer3D var0, Cuboid var1, double var2, double var4, double var6) {
-      Matrix4f var11 = field31.peek().getPositionMatrix();
-
-      for (Quad var15 : var1.sides) {
-         field32.set(var15.vertices[0].pos.x / 16.0F, var15.vertices[0].pos.y / 16.0F, var15.vertices[0].pos.z / 16.0F, 1.0F);
-         field32.mul(var11);
-         field33.set(var15.vertices[1].pos.x / 16.0F, var15.vertices[1].pos.y / 16.0F, var15.vertices[1].pos.z / 16.0F, 1.0F);
-         field33.mul(var11);
-         field34.set(var15.vertices[2].pos.x / 16.0F, var15.vertices[2].pos.y / 16.0F, var15.vertices[2].pos.z / 16.0F, 1.0F);
-         field34.mul(var11);
-         field35.set(var15.vertices[3].pos.x / 16.0F, var15.vertices[3].pos.y / 16.0F, var15.vertices[3].pos.z / 16.0F, 1.0F);
-         field35.mul(var11);
-         if (field41.method2115()) {
-            var0.method1251(
-               var2 + (double)field32.x,
-               var4 + (double)field32.y,
-               var6 + (double)field32.z,
-               var2 + (double)field33.x,
-               var4 + (double)field33.y,
-               var6 + (double)field33.z,
-               var2 + (double)field34.x,
-               var4 + (double)field34.y,
-               var6 + (double)field34.z,
-               var2 + (double)field35.x,
-               var4 + (double)field35.y,
-               var6 + (double)field35.z,
-               field39
-            );
-         }
-
-         if (field41.method2114()) {
-            var0.method1241(
-               var2 + (double)field32.x,
-               var4 + (double)field32.y,
-               var6 + (double)field32.z,
-               var2 + (double)field33.x,
-               var4 + (double)field33.y,
-               var6 + (double)field33.z,
-               field40
-            );
-            var0.method1241(
-               var2 + (double)field33.x,
-               var4 + (double)field33.y,
-               var6 + (double)field33.z,
-               var2 + (double)field34.x,
-               var4 + (double)field34.y,
-               var6 + (double)field34.z,
-               field40
-            );
-            var0.method1241(
-               var2 + (double)field34.x,
-               var4 + (double)field34.y,
-               var6 + (double)field34.z,
-               var2 + (double)field35.x,
-               var4 + (double)field35.y,
-               var6 + (double)field35.z,
-               field40
-            );
-            var0.method1241(
-               var2 + (double)field32.x,
-               var4 + (double)field32.y,
-               var6 + (double)field32.z,
-               var2 + (double)field32.x,
-               var4 + (double)field32.y,
-               var6 + (double)field32.z,
-               field40
-            );
-         }
-      }
-   }
-
-   private static void lambda$render$9(Renderer3D var0, ModelPart var1) {
-      method70(var0, var1);
-   }
-
-   private static void lambda$render$8(Renderer3D var0, Object var1) {
-      method70(var0, (ModelPart)var1);
-   }
-
-   private static void lambda$render$7(Renderer3D var0, Object var1) {
-      method70(var0, (ModelPart)var1);
-   }
-
-   private static void lambda$render$6(Renderer3D var0, Object var1) {
-      method70(var0, (ModelPart)var1);
-   }
-
-   private static void lambda$render$5(Renderer3D var0, Object var1) {
-      method70(var0, (ModelPart)var1);
-   }
-
-   private static void lambda$render$4(Renderer3D var0, Object var1) {
-      method70(var0, (ModelPart)var1);
-   }
-
-   private static void lambda$render$3(Renderer3D var0, Object var1) {
-      method70(var0, (ModelPart)var1);
-   }
-
-   private static void lambda$render$2(Renderer3D var0, Object var1) {
-      method70(var0, (ModelPart)var1);
-   }
-
-   private static void lambda$render$1(Renderer3D var0, Object var1) {
-      method70(var0, (ModelPart)var1);
-   }
-
-   private static void lambda$render$0(Renderer3D var0, Object var1) {
-      method70(var0, (ModelPart)var1);
-   }
+    static {
+        field31 = new MatrixStack();
+        field32 = new Vector4f();
+        field33 = new Vector4f();
+        field34 = new Vector4f();
+        field35 = new Vector4f();
+    }
 }

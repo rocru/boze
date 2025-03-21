@@ -15,7 +15,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.*;
-import net.minecraft.util.math.Direction.Axis;
 
 import java.util.Arrays;
 import java.util.HashSet;

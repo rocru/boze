@@ -7,117 +7,95 @@ import net.minecraft.util.math.Vec2f;
 import net.minecraft.util.math.Vec3d;
 
 public class Class5917 implements IMinecraft {
-   public static Vec2f method31(Vec2f line1Begin, Vec2f line1End, Vec2f line2Begin, Vec2f line2End) {
-      float var4 = (var21.x - var22.x) * (var23.y - var24.y) - (var21.y - var22.y) * (var23.x - var24.x);
-      float var5 = (var21.x * var22.y - var21.y * var22.x) * (var23.x - var24.x) - (var21.x - var22.x) * (var23.x * var24.y - var23.y * var24.x);
-      float var6 = (var21.x * var22.y - var21.y * var22.x) * (var23.y - var24.y) - (var21.y - var22.y) * (var23.x * var24.y - var23.y * var24.x);
-      float var7 = var5 / var4;
-      float var8 = var6 / var4;
-      return new Vec2f(var7, var8);
-   }
+    public Class5917() {
+        super();
+    }
 
-   public static double method32(double time, double bias) {
-      return var25 / ((1.0 / var26 - 2.0) * (1.0 - var25) + 1.0);
-   }
+    public static Vec2f method31(final Vec2f line1Begin, final Vec2f line1End, final Vec2f line2Begin, final Vec2f line2End) {
+        final float n = (line1Begin.x - line1End.x) * (line2Begin.y - line2End.y) - (line1Begin.y - line1End.y) * (line2Begin.x - line2End.x);
+        return new Vec2f(((line1Begin.x * line1End.y - line1Begin.y * line1End.x) * (line2Begin.x - line2End.x) - (line1Begin.x - line1End.x) * (line2Begin.x * line2End.y - line2Begin.y * line2End.x)) / n, ((line1Begin.x * line1End.y - line1Begin.y * line1End.x) * (line2Begin.y - line2End.y) - (line1Begin.y - line1End.y) * (line2Begin.x * line2End.y - line2Begin.y * line2End.x)) / n);
+    }
 
-   public static Vec3d method33(Vec3d start, Box box) {
-      return new Vec3d(
-         MathHelper.clamp(var27.getX(), var28.minX, var28.maxX),
-         MathHelper.clamp(var27.getY(), var28.minY, var28.maxY),
-         MathHelper.clamp(var27.getZ(), var28.minZ, var28.maxZ)
-      );
-   }
+    public static double method32(final double time, final double bias) {
+        return time / ((1.0 / bias - 2.0) * (1.0 - time) + 1.0);
+    }
 
-   public static Vec3d method34(Box box) {
-      Vec3d var4 = mc.player.getEyePos();
-      return var29.minX < var4.x && var4.x < var29.maxX && var29.minZ < var4.z && var4.z < var29.maxZ
-         ? new Vec3d(
-            var29.minX + (var29.maxX - var29.minX) / 2.0, Math.max(var29.minY, Math.min(var4.y, var29.maxY)), var29.minZ + (var29.maxZ - var29.minZ) / 2.0
-         )
-         : method33(var4, var29);
-   }
+    public static Vec3d method33(final Vec3d start, final Box box) {
+        return new Vec3d(MathHelper.clamp(start.getX(), box.minX, box.maxX), MathHelper.clamp(start.getY(), box.minY, box.maxY), MathHelper.clamp(start.getZ(), box.minZ, box.maxZ));
+    }
 
-   public static double method35(double value, double goal, double increment) {
-      return var30 < var31 ? Math.min(var30 + var32, var31) : Math.max(var30 - var32, var31);
-   }
+    public static Vec3d method34(final Box box) {
+        final Vec3d eyePos = Class5917.mc.player.getEyePos();
+        if (box.minX < eyePos.x && eyePos.x < box.maxX && box.minZ < eyePos.z && eyePos.z < box.maxZ) {
+            return new Vec3d(box.minX + (box.maxX - box.minX) / 2.0, Math.max(box.minY, Math.min(eyePos.y, box.maxY)), box.minZ + (box.maxZ - box.minZ) / 2.0);
+        }
+        return method33(eyePos, box);
+    }
 
-   public static Vec3d method136(Box box, Vec3d look, Vec3d eyes) {
-      double var6 = Double.MAX_VALUE;
-      Vec3d var8 = var5943.getCenter();
-      double var9 = (var5943.minX + var5943.maxX) / 2.0;
-      double var11 = (var5943.minY + var5943.maxY) / 2.0;
-      double var13 = (var5943.minZ + var5943.maxZ) / 2.0;
-      Vec3d[] var15 = new Vec3d[]{
-         new Vec3d(var5943.minX, var11, var13),
-         new Vec3d(var5943.maxX, var11, var13),
-         new Vec3d(var9, var5943.minY, var13),
-         new Vec3d(var9, var5943.maxY, var13),
-         new Vec3d(var9, var11, var5943.minZ),
-         new Vec3d(var9, var11, var5943.maxZ)
-      };
+    public static double method35(final double value, final double goal, final double increment) {
+        if (value < goal) {
+            return Math.min(value + increment, goal);
+        }
+        return Math.max(value - increment, goal);
+    }
 
-      for (Vec3d var19 : var15) {
-         Vec3d var20 = new Vec3d(var19.x - var5945.x, var19.y - var5945.y, var19.z - var5945.z);
-         double var21 = Math.acos(var5944.dotProduct(var20) / (var5944.length() * var20.length()));
-         if (var21 < var6) {
-            var6 = var21;
-            var8 = var19;
-         }
-      }
+    public static Vec3d method136(final Box box, final Vec3d look, final Vec3d eyes) {
+        double n = Double.MAX_VALUE;
+        Vec3d center = box.getCenter();
+        final double n2 = (box.minX + box.maxX) / 2.0;
+        final double n3 = (box.minY + box.maxY) / 2.0;
+        final double n4 = (box.minZ + box.maxZ) / 2.0;
+        final Vec3d[] array = {new Vec3d(box.minX, n3, n4), new Vec3d(box.maxX, n3, n4), new Vec3d(n2, box.minY, n4), new Vec3d(n2, box.maxY, n4), new Vec3d(n2, n3, box.minZ), new Vec3d(n2, n3, box.maxZ)};
+        for (int length = array.length, i = 0; i < length; ++i) {
+            final Vec3d vec3d = array[i];
+            final Vec3d vec3d2 = new Vec3d(vec3d.x - eyes.x, vec3d.y - eyes.y, vec3d.z - eyes.z);
+            final double acos = Math.acos(look.dotProduct(vec3d2) / (look.length() * vec3d2.length()));
+            if (acos < n) {
+                n = acos;
+                center = vec3d;
+            }
+        }
+        final double[] array2 = {box.minX, box.maxX, box.minX, box.maxX};
+        final double[] array3 = {n3, n3, box.minY, box.maxY};
+        final double[] array4 = {n4, n4, n4, n4};
+        for (int j = 0; j < 4; ++j) {
+            final Vec3d vec3d3 = new Vec3d(array2[j], array3[j], array4[j]);
+            final Vec3d vec3d4 = new Vec3d(vec3d3.x - eyes.x, vec3d3.y - eyes.y, vec3d3.z - eyes.z);
+            final double acos2 = Math.acos(look.dotProduct(vec3d4) / (look.length() * vec3d4.length()));
+            if (acos2 < n) {
+                n = acos2;
+                center = vec3d3;
+            }
+        }
+        return center;
+    }
 
-      double[] var24 = new double[]{var5943.minX, var5943.maxX, var5943.minX, var5943.maxX};
-      double[] var25 = new double[]{var11, var11, var5943.minY, var5943.maxY};
-      double[] var26 = new double[]{var13, var13, var13, var13};
-
-      for (int var27 = 0; var27 < 4; var27++) {
-         Vec3d var28 = new Vec3d(var24[var27], var25[var27], var26[var27]);
-         Vec3d var29 = new Vec3d(var28.x - var5945.x, var28.y - var5945.y, var28.z - var5945.z);
-         double var22 = Math.acos(var5944.dotProduct(var29) / (var5944.length() * var29.length()));
-         if (var22 < var6) {
-            var6 = var22;
-            var8 = var28;
-         }
-      }
-
-      return var8;
-   }
-
-   public static Vec3d method123(Box box, Vec3d eyes) {
-      double var5 = Double.MAX_VALUE;
-      Vec3d var7 = var5946.getCenter();
-      double var8 = (var5946.minX + var5946.maxX) / 2.0;
-      double var10 = (var5946.minY + var5946.maxY) / 2.0;
-      double var12 = (var5946.minZ + var5946.maxZ) / 2.0;
-      Vec3d[] var14 = new Vec3d[]{
-         new Vec3d(var5946.minX, var10, var12),
-         new Vec3d(var5946.maxX, var10, var12),
-         new Vec3d(var8, var5946.minY, var12),
-         new Vec3d(var8, var5946.maxY, var12),
-         new Vec3d(var8, var10, var5946.minZ),
-         new Vec3d(var8, var10, var5946.maxZ)
-      };
-
-      for (Vec3d var18 : var14) {
-         double var19 = Math.sqrt(Math.pow(var18.x - var5947.x, 2.0) + Math.pow(var18.y - var5947.y, 2.0) + Math.pow(var18.z - var5947.z, 2.0));
-         if (var19 < var5) {
-            var5 = var19;
-            var7 = var18;
-         }
-      }
-
-      double[] var22 = new double[]{var5946.minX, var5946.maxX, var5946.minX, var5946.maxX};
-      double[] var23 = new double[]{var10, var10, var5946.minY, var5946.maxY};
-      double[] var24 = new double[]{var12, var12, var12, var12};
-
-      for (int var25 = 0; var25 < 4; var25++) {
-         Vec3d var26 = new Vec3d(var22[var25], var23[var25], var24[var25]);
-         double var20 = Math.sqrt(Math.pow(var26.x - var5947.x, 2.0) + Math.pow(var26.y - var5947.y, 2.0) + Math.pow(var26.z - var5947.z, 2.0));
-         if (var20 < var5) {
-            var5 = var20;
-            var7 = var26;
-         }
-      }
-
-      return var7;
-   }
+    public static Vec3d method123(final Box box, final Vec3d eyes) {
+        double n = Double.MAX_VALUE;
+        Vec3d center = box.getCenter();
+        final double n2 = (box.minX + box.maxX) / 2.0;
+        final double n3 = (box.minY + box.maxY) / 2.0;
+        final double n4 = (box.minZ + box.maxZ) / 2.0;
+        final Vec3d[] array = {new Vec3d(box.minX, n3, n4), new Vec3d(box.maxX, n3, n4), new Vec3d(n2, box.minY, n4), new Vec3d(n2, box.maxY, n4), new Vec3d(n2, n3, box.minZ), new Vec3d(n2, n3, box.maxZ)};
+        for (int length = array.length, i = 0; i < length; ++i) {
+            final Vec3d vec3d = array[i];
+            final double sqrt = Math.sqrt(Math.pow(vec3d.x - eyes.x, 2.0) + Math.pow(vec3d.y - eyes.y, 2.0) + Math.pow(vec3d.z - eyes.z, 2.0));
+            if (sqrt < n) {
+                n = sqrt;
+                center = vec3d;
+            }
+        }
+        final double[] array2 = {box.minX, box.maxX, box.minX, box.maxX};
+        final double[] array3 = {n3, n3, box.minY, box.maxY};
+        final double[] array4 = {n4, n4, n4, n4};
+        for (int j = 0; j < 4; ++j) {
+            final Vec3d vec3d2 = new Vec3d(array2[j], array3[j], array4[j]);
+            final double sqrt2 = Math.sqrt(Math.pow(vec3d2.x - eyes.x, 2.0) + Math.pow(vec3d2.y - eyes.y, 2.0) + Math.pow(vec3d2.z - eyes.z, 2.0));
+            if (sqrt2 < n) {
+                n = sqrt2;
+                center = vec3d2;
+            }
+        }
+        return center;
+    }
 }

@@ -13,7 +13,6 @@ import mapped.Class3090;
 import mapped.Class5924;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.DownloadingTerrainScreen;
-import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.PositionAndOnGround;
 import net.minecraft.network.packet.c2s.play.TeleportConfirmC2SPacket;

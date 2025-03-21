@@ -1,12 +1,13 @@
 package meteordevelopment.discordipc.connection;
 
 import com.google.gson.JsonObject;
+import meteordevelopment.discordipc.Opcode;
+import meteordevelopment.discordipc.Packet;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.UUID;
 import java.util.function.Consumer;
-import meteordevelopment.discordipc.Opcode;
-import meteordevelopment.discordipc.Packet;
 
 public abstract class Connection {
    private static final String[] field4001 = new String[]{"XDG_RUNTIME_DIR", "TMPDIR", "TMP", "TEMP"};

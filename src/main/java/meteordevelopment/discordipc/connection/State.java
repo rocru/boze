@@ -1,6 +1,6 @@
 package meteordevelopment.discordipc.connection;
 
-enum State {
+public enum State {
    Opcode,
    Length,
    Data;

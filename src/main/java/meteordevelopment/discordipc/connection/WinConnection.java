@@ -1,13 +1,14 @@
 package meteordevelopment.discordipc.connection;
 
 import com.google.gson.JsonParser;
+import meteordevelopment.discordipc.Opcode;
+import meteordevelopment.discordipc.Packet;
+
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.util.function.Consumer;
-import meteordevelopment.discordipc.Opcode;
-import meteordevelopment.discordipc.Packet;
 
 public class WinConnection extends Connection {
    private final RandomAccessFile field4005;

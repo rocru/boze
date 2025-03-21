@@ -1,12 +1,10 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.events.ConnectEvent;
 import dev.boze.client.events.PacketBundleEvent;
 import dev.boze.client.events.PostPacketSendEvent;
 import dev.boze.client.events.PrePacketSendEvent;
-import java.net.InetSocketAddress;
-import java.util.Iterator;
-import dev.boze.client.Boze;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.listener.PacketListener;
 import net.minecraft.network.packet.Packet;
@@ -16,6 +14,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.net.InetSocketAddress;
+import java.util.Iterator;
 
 @Mixin({ClientConnection.class})
 public abstract class ClientConnectionMixin {

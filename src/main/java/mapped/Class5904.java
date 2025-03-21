@@ -1,64 +1,68 @@
 package mapped;
 
-import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import netutil.Count;
 
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+
 final class Class5904 extends AbstractQueuedSynchronizer {
-   private static final long serialVersionUID = 4982264981922014374L;
+    private static final long serialVersionUID = 4982264981922014374L;
 
-   Class5904(int var1) {
-      this.setState(var1);
-   }
+    Class5904(final int state) {
+        super();
+        this.setState(state);
+    }
 
-   int method2010() {
-      return this.getState();
-   }
+    int method2010() {
+        return this.getState();
+    }
 
-   void method1649(int var1) {
-      this.setState(var1);
-   }
+    void method1649(final int state) {
+        this.setState(state);
+    }
 
-   protected int tryAcquireShared(int var1) {
-      boolean var4 = Count.field4012;
-      int var10000 = this.getState();
-      if (!var4) {
-         var10000 = var10000 == 0 ? 1 : -1;
-      }
+    @Override
+    protected int tryAcquireShared(final int n) {
+        final boolean field4012 = Count.field4012;
+        final int state = this.getState();
+        if (!field4012 && state != 0) {
+        }
+        return state;
+    }
 
-      return var10000;
-   }
-
-   protected boolean tryReleaseShared(int var1) {
-      boolean var4 = Count.field4012;
-
-      int var7;
-      while (true) {
-         int var5 = this.getState();
-         if (var5 == 0) {
-            var7 = 0;
-            if (!var4) {
-               return false;
+    @Override
+    protected boolean tryReleaseShared(final int n) {
+        final boolean field4012 = Count.field4012;
+        int compareAndSetState;
+        boolean b;
+        while (true) {
+            final int state = this.getState();
+            int n3;
+            if (state == 0) {
+                final int n2 = n3 = 0;
+                if (!field4012) {
+                    return n2 != 0;
+                }
+            } else {
+                n3 = state - 1;
             }
-         } else {
-            var7 = var5 - 1;
-         }
-
-         int var6 = var7;
-         var7 = this.compareAndSetState(var5, var6);
-         if (var4) {
-            break;
-         }
-
-         if (var7 != 0) {
-            var7 = var6;
-            break;
-         }
-      }
-
-      if (!var4) {
-         var7 = var7 == 0 ? 1 : 0;
-      }
-
-      return (boolean)var7;
-   }
+            final int update = n3;
+            b = ((compareAndSetState = (this.compareAndSetState(state, update) ? 1 : 0)) != 0);
+            if (field4012) {
+                break;
+            }
+            if (b) {
+                final int n4;
+                compareAndSetState = (n4 = update);
+                break;
+            }
+        }
+        if (!field4012) {
+            if (!b) {
+                compareAndSetState = 1;
+            } else {
+                compareAndSetState = 0;
+            }
+        }
+        return compareAndSetState != 0;
+    }
 }

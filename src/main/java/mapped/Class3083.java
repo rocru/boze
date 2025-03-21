@@ -1,35 +1,32 @@
 package mapped;
 
-import dev.boze.client.jumptable.qF;
 import net.minecraft.util.math.Direction;
 
 public class Class3083 {
-   public static final byte field196 = 2;
-   public static final byte field197 = 4;
-   public static final byte field198 = 8;
-   public static final byte field199 = 16;
-   public static final byte field200 = 32;
-   public static final byte field201 = 64;
+    public static final byte field196 = 2;
+    public static final byte field197 = 4;
+    public static final byte field198 = 8;
+    public static final byte field199 = 16;
+    public static final byte field200 = 32;
+    public static final byte field201 = 64;
 
-   // $VF: Unable to simplify switch on enum
-   // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-   public static byte method6049(Direction dir) {
-      return switch (qF.field2129[var3225.ordinal()]) {
-         case 1 -> 2;
-         case 2 -> 4;
-         case 3 -> 8;
-         case 4 -> 16;
-         case 5 -> 32;
-         case 6 -> 64;
-         default -> throw new IncompatibleClassChangeError();
-      };
-   }
+    public static byte method6049(Direction var3225) {
+        return switch (var3225) {
+            default -> throw new IncompatibleClassChangeError();
+            case Direction.UP -> 2;
+            case Direction.DOWN -> 4;
+            case Direction.NORTH -> 8;
+            case Direction.SOUTH -> 16;
+            case Direction.WEST -> 32;
+            case Direction.EAST -> 64;
+        };
+    }
 
-   public static boolean method6050(int dir, byte idk) {
-      return (var3226 & var3227) == var3227;
-   }
+    public static boolean method6050(int var3226, byte var3227) {
+        return (var3226 & var3227) == var3227;
+    }
 
-   public static boolean method6051(int dir, byte idk) {
-      return (var3228 & var3229) != var3229;
-   }
+    public static boolean method6051(int var3228, byte var3229) {
+        return (var3228 & var3229) != var3229;
+    }
 }

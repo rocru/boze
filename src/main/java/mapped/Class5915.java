@@ -4,124 +4,110 @@ import dev.boze.client.enums.BottomRow;
 import dev.boze.client.font.IFontRender;
 import dev.boze.client.gui.components.BaseComponent;
 import dev.boze.client.gui.components.BottomRowScaledComponent;
+import dev.boze.client.gui.components.ScaledBaseComponent;
 import dev.boze.client.gui.notification.Notifications;
 import dev.boze.client.settings.FriendsSetting;
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.render.RenderUtil;
-import java.util.ArrayList;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.client.sound.SoundInstance;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvents;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.ArrayList;
+
 public class Class5915 extends BottomRowScaledComponent {
-   private final FriendsSetting field5;
-   private String field6;
-   private final ArrayList<Class3063> field7;
+    private final FriendsSetting field5;
+    private String field6;
+    private final ArrayList<Class3063> field7;
 
-   public Class5915(FriendsSetting setting) {
-      super(setting.name, BottomRow.TextAddClose, 0.1, 0.4);
-      this.field5 = setting;
-      this.field6 = "";
-      this.field7 = new ArrayList(setting.getValue());
-   }
+    public Class5915(final FriendsSetting setting) {
+        super(setting.name, BottomRow.TextAddClose, 0.1, 0.4);
+        this.field5 = setting;
+        this.field6 = "";
+        this.field7 = new ArrayList<Class3063>(setting.getValue());
+    }
 
-   @Override
-   protected int method2010() {
-      return this.field7.size();
-   }
+    @Override
+    protected int method2010() {
+        return this.field7.size();
+    }
 
-   @Override
-   protected void method639(DrawContext context, int index, double itemX, double itemY, double itemWidth, double itemHeight) {
-      Class3063 var13 = (Class3063)this.field7.get(var5931);
-      String var14 = var13.method5992();
-      RenderUtil.field3963
-         .method2257(var5932, var5933, var5934, var5935, 15, 24, Theme.method1387() ? BaseComponent.scaleFactor * 2.0 : 0.0, Theme.method1347());
-      IFontRender.method499()
-         .drawShadowedText(
-            var14, var5932 + BaseComponent.scaleFactor * 6.0, var5933 + var5935 * 0.5 - IFontRender.method499().method1390() * 0.5, Theme.method1350()
-         );
-      double var15 = var5932 + var5934 - BaseComponent.scaleFactor * 6.0 - Notifications.PLAYERS_REMOVE.method2091();
-      Notifications.PLAYERS_REMOVE.render(var15, var5933 + var5935 * 0.5 - Notifications.PLAYERS_REMOVE.method1614() * 0.5, Theme.method1350());
-   }
+    @Override
+    protected void method639(final DrawContext context, final int index, final double itemX, final double itemY, final double itemWidth, final double itemHeight) {
+        final String method5992 = this.field7.get(index).method5992();
+        RenderUtil.field3963.method2257(itemX, itemY, itemWidth, itemHeight, 15, 24, Theme.method1387() ? (BaseComponent.scaleFactor * 2.0) : 0.0, Theme.method1347());
+        IFontRender.method499().drawShadowedText(method5992, itemX + BaseComponent.scaleFactor * 6.0, itemY + itemHeight * 0.5 - IFontRender.method499().method1390() * 0.5, Theme.method1350());
+        Notifications.PLAYERS_REMOVE.render(itemX + itemWidth - BaseComponent.scaleFactor * 6.0 - Notifications.PLAYERS_REMOVE.method2091(), itemY + itemHeight * 0.5 - Notifications.PLAYERS_REMOVE.method1614() * 0.5, Theme.method1350());
+    }
 
-   @Override
-   protected boolean handleItemClick(int index, int button, double itemX, double itemY, double itemWidth, double itemHeight, double mouseX, double mouseY) {
-      Class3063 var18 = (Class3063)this.field7.get(index);
-      double var19 = itemX + itemWidth - BaseComponent.scaleFactor * 6.0 - Notifications.PLAYERS_REMOVE.method2091();
-      if (isMouseWithinBounds(
-         mouseX,
-         mouseY,
-         var19,
-         itemY + itemHeight * 0.5 - Notifications.PLAYERS_REMOVE.method1614() * 0.5,
-         Notifications.PLAYERS_REMOVE.method2091(),
-         Notifications.PLAYERS_REMOVE.method1614()
-      )) {
-         this.field7.remove(index);
-         this.field5.getValue().remove(index);
-         mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-         return true;
-      } else {
-         return false;
-      }
-   }
+    @Override
+    protected boolean handleItemClick(final int index, final int button, final double itemX, final double itemY, final double itemWidth, final double itemHeight, final double mouseX, final double mouseY) {
+        final Class3063 class3063 = this.field7.get(index);
+        if (ScaledBaseComponent.isMouseWithinBounds(mouseX, mouseY, itemX + itemWidth - BaseComponent.scaleFactor * 6.0 - Notifications.PLAYERS_REMOVE.method2091(), itemY + itemHeight * 0.5 - Notifications.PLAYERS_REMOVE.method1614() * 0.5, Notifications.PLAYERS_REMOVE.method2091(), Notifications.PLAYERS_REMOVE.method1614())) {
+            this.field7.remove(index);
+            this.field5.getValue().remove(index);
+            Class5915.mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0f));
+            return true;
+        }
+        return false;
+    }
 
-   @Override
-   protected void method1904() {
-      this.method1800(this.field6);
-   }
+    @Override
+    protected void method1904() {
+        this.method1800(this.field6);
+    }
 
-   private void method1800(String var1) {
-      if (var1 != null && !var1.isEmpty()) {
-         Class3063 var5 = new Class3063(var1);
-         if (!this.field7.contains(var5)) {
-            this.field7.add(var5);
-            this.field5.getValue().add(var5);
+    private void method1800(final String name) {
+        if (name == null || name.isEmpty()) {
+            return;
+        }
+        final Class3063 e = new Class3063(name);
+        if (!this.field7.contains(e)) {
+            this.field7.add(e);
+            this.field5.getValue().add(e);
             this.field6 = "";
-            mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-         }
-      }
-   }
+            Class5915.mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0f));
+        }
+    }
 
-   @Override
-   public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-      try {
-         if (keyCode == 259 && this.field6.length() > 0) {
-            this.field6 = this.field6.substring(0, this.field6.length() - 1);
-         } else if (keyCode == 257) {
+    @Override
+    public boolean keyPressed(final int keyCode, final int scanCode, final int modifiers) {
+        try {
+            if (keyCode == 259 && this.field6.length() > 0) {
+                this.field6 = this.field6.substring(0, this.field6.length() - 1);
+            } else if (keyCode == 257) {
+                if (this.field6.length() > 0) {
+                    this.method1800(this.field6);
+                }
+            } else if (keyCode == 86 && Class5928.method159(341)) {
+                final String glfwGetClipboardString = GLFW.glfwGetClipboardString(Class5915.mc.getWindow().getHandle());
+                if (glfwGetClipboardString != null && !glfwGetClipboardString.isEmpty()) {
+                    glfwGetClipboardString.chars().forEach(this::lambda$keyPressed$0);
+                }
+            }
+        } catch (final Exception ex) {
+        }
+        return super.keyPressed(keyCode, scanCode, modifiers);
+    }
+
+    @Override
+    public void method583(final char c) {
+        if ((this.field6.length() < 26 && c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_') {
+            this.field6 += c;
+        }
+    }
+
+    private void lambda$keyPressed$0(final int n) {
+        final char c = (char) n;
+        if (c == '\n') {
             if (this.field6.length() > 0) {
-               this.method1800(this.field6);
+                this.method1800(this.field6);
             }
-         } else if (keyCode == 86 && Class5928.method159(341)) {
-            String var7 = GLFW.glfwGetClipboardString(mc.getWindow().getHandle());
-            if (var7 != null && !var7.isEmpty()) {
-               var7.chars().forEach(this::lambda$keyPressed$0);
-            }
-         }
-      } catch (Exception var8) {
-      }
-
-      return super.keyPressed(keyCode, scanCode, modifiers);
-   }
-
-   @Override
-   public void method583(char c) {
-      if (this.field6.length() < 26 && var5936 >= 'a' && var5936 <= 'z'
-         || var5936 >= 'A' && var5936 <= 'Z'
-         || var5936 >= '0' && var5936 <= '9'
-         || var5936 == '_') {
-         this.field6 = this.field6 + var5936;
-      }
-   }
-
-   private void lambda$keyPressed$0(int var1) {
-      char var5 = (char)var1;
-      if (var5 == '\n') {
-         if (this.field6.length() > 0) {
-            this.method1800(this.field6);
-         }
-      } else {
-         this.method583(var5);
-      }
-   }
+        } else {
+            this.method583(c);
+        }
+    }
 }

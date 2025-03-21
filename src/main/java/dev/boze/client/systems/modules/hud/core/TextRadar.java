@@ -58,7 +58,7 @@ public class TextRadar extends HUDModule implements Class5929 {
     private final BozeDrawColor field643 = new BozeDrawColor(-14169088);
     float aa = 0.0F;
     private final java.util.ArrayList<PlayerEntity> ab = new java.util.ArrayList();
-    private final LinkedList<Class2895> ac = new LinkedList();
+    public final LinkedList<Class2895> ac = new LinkedList();
 
     public TextRadar() {
         super("TextRadar", "Shows a list of nearby players", 40.0, 40.0);

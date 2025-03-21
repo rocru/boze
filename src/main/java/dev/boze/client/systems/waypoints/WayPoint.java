@@ -3,8 +3,9 @@ package dev.boze.client.systems.waypoints;
 import com.google.gson.JsonObject;
 import dev.boze.client.utils.misc.IJsonSerializable2;
 import dev.boze.client.utils.misc.ISerializable;
-import java.util.Objects;
 import net.minecraft.nbt.NbtCompound;
+
+import java.util.Objects;
 
 public class WayPoint implements ISerializable<WayPoint>, IJsonSerializable2<WayPoint> {
    public String field908;

@@ -1,786 +1,634 @@
 package mapped;
 
+import netutil.BozeClassLoader;
+import netutil.Count;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.Map.Entry;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import netutil.BozeClassLoader;
-import netutil.Count;
 
 public class Class5905<K, V> extends HashMap<K, V> {
-   public Class5905(int var1) {
-      super(var1);
-   }
+    public Class5905(final int initialCapacity) {
+        super(initialCapacity);
+    }
 
-   public int size() {
-      int var10000 = Count.field4012;
-      Field[] var4 = BozeClassLoader.class.getDeclaredFields();
-      boolean var3 = (boolean)var10000;
-      int var5 = var4.length;
-      int var6 = 0;
-
-      while (true) {
-         if (var6 < var5) {
-            Field var7 = var4[var6];
-            if (!var3) {
-               var10000 = Modifier.isPrivate(var7.getModifiers());
-               if (var3) {
-                  break;
-               }
-
-               if (var10000 == 0) {
-                  return 0;
-               }
-
-               var6++;
+    @Override
+    public int size() {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final int n;
+                final boolean b2 = (n = (Modifier.isPrivate(field4013.getModifiers()) ? 1 : 0)) != 0;
+                if (b) {
+                    return n;
+                }
+                if (!b2) {
+                    return 0;
+                }
+                ++i;
             }
-
-            if (!var3) {
-               continue;
+            if (b) {
+                break;
             }
-         }
+        }
+        return super.size();
+    }
 
-         var10000 = super.size();
-         break;
-      }
+    @Override
+    public boolean isEmpty() {
+        return super.isEmpty();
+    }
 
-      return var10000;
-   }
-
-   public boolean isEmpty() {
-      return super.isEmpty();
-   }
-
-   public V get(Object var1) {
-      boolean var10000 = Count.field4012;
-      Field[] var5 = BozeClassLoader.class.getDeclaredFields();
-      boolean var4 = var10000;
-      int var6 = var5.length;
-      int var7 = 0;
-
-      while (true) {
-         if (var7 < var6) {
-            Field var8 = var5[var7];
-            if (!var4) {
-               var9 = var8;
-               if (var4) {
-                  break;
-               }
-
-               if (!Modifier.isPrivate(var8.getModifiers())) {
-                  return null;
-               }
-
-               var7++;
+    @Override
+    public V get(final Object key) {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final Object value;
+                final Field field4014 = (Field) (value = field4013);
+                if (b) {
+                    return (V) value;
+                }
+                if (!Modifier.isPrivate(field4014.getModifiers())) {
+                    return null;
+                }
+                ++i;
             }
-
-            if (!var4) {
-               continue;
+            if (b) {
+                break;
             }
-         }
+        }
+        Object value = super.get(key);
+        return (V) value;
+    }
 
-         var9 = super.get(var1);
-         break;
-      }
-
-      return (V)var9;
-   }
-
-   public boolean containsKey(Object var1) {
-      Field[] var5 = BozeClassLoader.class.getDeclaredFields();
-      int var6 = var5.length;
-      int var7 = 0;
-      boolean var4 = Count.field4012;
-
-      boolean var10000;
-      while (true) {
-         if (var7 < var6) {
-            Field var8 = var5[var7];
-            if (!var4) {
-               var10000 = Modifier.isPrivate(var8.getModifiers());
-               if (var4) {
-                  break;
-               }
-
-               if (!var10000) {
-                  return false;
-               }
-
-               var7++;
+    @Override
+    public boolean containsKey(final Object key) {
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean field4012 = Count.field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        final boolean b = field4012;
+        boolean private1 = false;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                private1 = Modifier.isPrivate(field4013.getModifiers());
+                if (!private1) {
+                    return false;
+                }
+                ++i;
             }
-
-            if (!var4) {
-               continue;
+            if (b) {
+                break;
             }
-         }
+        }
+        super.containsKey(key);
+        return private1;
+    }
 
-         var10000 = super.containsKey(var1);
-         break;
-      }
-
-      return var10000;
-   }
-
-   public V put(K var1, V var2) {
-      boolean var10000 = Count.field4012;
-      Field[] var6 = BozeClassLoader.class.getDeclaredFields();
-      boolean var5 = var10000;
-      int var7 = var6.length;
-      int var8 = 0;
-
-      while (true) {
-         if (var8 < var7) {
-            Field var9 = var6[var8];
-            if (!var5) {
-               var10 = var9;
-               if (var5) {
-                  break;
-               }
-
-               if (!Modifier.isPrivate(var9.getModifiers())) {
-                  return (V)var2;
-               }
-
-               var8++;
+    @Override
+    public V put(final K key, final V value) {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final Object put;
+                final Field field4014 = (Field) (put = field4013);
+                if (b) {
+                    return (V) put;
+                }
+                if (!Modifier.isPrivate(field4014.getModifiers())) {
+                    return value;
+                }
+                ++i;
             }
-
-            if (!var5) {
-               continue;
+            if (b) {
+                break;
             }
-         }
+        }
+        Object put = super.put(key, value);
+        return (V) put;
+    }
 
-         var10 = super.put(var1, var2);
-         break;
-      }
-
-      return (V)var10;
-   }
-
-   public void putAll(Map<? extends K, ? extends V> var1) {
-      Field[] var5 = BozeClassLoader.class.getDeclaredFields();
-      int var6 = var5.length;
-      int var7 = 0;
-      boolean var4 = Count.field4012;
-
-      while (true) {
-         if (var7 < var6) {
-            Field var8 = var5[var7];
-            if (var4) {
-               break;
+    @Override
+    public void putAll(final Map<? extends K, ? extends V> m) {
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final int length = declaredFields.length;
+        final boolean field4012 = Count.field4012;
+        int i = 0;
+        final boolean b = field4012;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (b) {
+                return;
             }
-
-            if (!var4) {
-               if (!Modifier.isPrivate(var8.getModifiers())) {
-                  return;
-               }
-
-               var7++;
+            if (!b) {
+                if (!Modifier.isPrivate(field4013.getModifiers())) {
+                    return;
+                }
+                ++i;
             }
-
-            if (!var4) {
-               continue;
+            if (b) {
+                break;
             }
-         }
+        }
+        super.putAll(m);
+    }
 
-         super.putAll(var1);
-         break;
-      }
-   }
-
-   public V remove(Object var1) {
-      boolean var10000 = Count.field4012;
-      Field[] var5 = BozeClassLoader.class.getDeclaredFields();
-      int var6 = var5.length;
-      int var7 = 0;
-      boolean var4 = var10000;
-
-      while (true) {
-         if (var7 < var6) {
-            Field var8 = var5[var7];
-            if (!var4) {
-               var9 = var8;
-               if (var4) {
-                  break;
-               }
-
-               if (!Modifier.isPrivate(var8.getModifiers())) {
-                  return null;
-               }
-
-               var7++;
+    @Override
+    public V remove(final Object key) {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final int length = declaredFields.length;
+        int i = 0;
+        final boolean b = field4012;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final Object remove;
+                final Field field4014 = (Field) (remove = field4013);
+                if (b) {
+                    return (V) remove;
+                }
+                if (!Modifier.isPrivate(field4014.getModifiers())) {
+                    return null;
+                }
+                ++i;
             }
-
-            if (!var4) {
-               continue;
+            if (b) {
+                break;
             }
-         }
+        }
+        Object remove = super.remove(key);
+        return (V) remove;
+    }
 
-         var9 = super.remove(var1);
-         break;
-      }
-
-      return (V)var9;
-   }
-
-   public void clear() {
-      boolean var10000 = Count.field4012;
-      Field[] var4 = BozeClassLoader.class.getDeclaredFields();
-      boolean var3 = var10000;
-      int var5 = var4.length;
-      int var6 = 0;
-
-      while (true) {
-         if (var6 < var5) {
-            Field var7 = var4[var6];
-            if (var3) {
-               break;
+    @Override
+    public void clear() {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (b) {
+                return;
             }
-
-            if (!var3) {
-               if (!Modifier.isPrivate(var7.getModifiers())) {
-                  return;
-               }
-
-               var6++;
+            if (!b) {
+                if (!Modifier.isPrivate(field4013.getModifiers())) {
+                    return;
+                }
+                ++i;
             }
-
-            if (!var3) {
-               continue;
+            if (b) {
+                break;
             }
-         }
+        }
+        super.clear();
+    }
 
-         super.clear();
-         break;
-      }
-   }
-
-   public boolean containsValue(Object var1) {
-      boolean var10000 = Count.field4012;
-      Field[] var5 = BozeClassLoader.class.getDeclaredFields();
-      int var6 = var5.length;
-      boolean var4 = var10000;
-      int var7 = 0;
-
-      while (true) {
-         if (var7 < var6) {
-            Field var8 = var5[var7];
-            if (!var4) {
-               var10000 = Modifier.isPrivate(var8.getModifiers());
-               if (var4) {
-                  break;
-               }
-
-               if (!var10000) {
-                  return false;
-               }
-
-               var7++;
+    @Override
+    public boolean containsValue(final Object value) {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final int length = declaredFields.length;
+        final boolean b = field4012;
+        int i = 0;
+        boolean private1 = false;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                private1 = Modifier.isPrivate(field4013.getModifiers());
+                if (b) {
+                    return private1;
+                }
+                if (!private1) {
+                    return false;
+                }
+                ++i;
             }
-
-            if (!var4) {
-               continue;
+            if (b) {
+                break;
             }
-         }
+        }
+        super.containsValue(value);
+        return private1;
+    }
 
-         var10000 = super.containsValue(var1);
-         break;
-      }
-
-      return var10000;
-   }
-
-   public Set<K> keySet() {
-      boolean var10000 = Count.field4012;
-      Field[] var4 = BozeClassLoader.class.getDeclaredFields();
-      boolean var3 = var10000;
-      int var5 = var4.length;
-      int var6 = 0;
-
-      while (var6 < var5) {
-         Field var7 = var4[var6];
-         if (!var3) {
-            if (!Modifier.isPrivate(var7.getModifiers())) {
-               return null;
+    @Override
+    public Set<K> keySet() {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                if (!Modifier.isPrivate(field4013.getModifiers())) {
+                    return null;
+                }
+                ++i;
             }
-
-            var6++;
-         }
-
-         if (var3) {
-            break;
-         }
-      }
-
-      return super.keySet();
-   }
-
-   public Collection<V> values() {
-      boolean var10000 = Count.field4012;
-      Field[] var4 = BozeClassLoader.class.getDeclaredFields();
-      boolean var3 = var10000;
-      int var5 = var4.length;
-      int var6 = 0;
-
-      while (var6 < var5) {
-         Field var7 = var4[var6];
-         if (!var3) {
-            if (!Modifier.isPrivate(var7.getModifiers())) {
-               return null;
+            if (b) {
+                break;
             }
+        }
+        return super.keySet();
+    }
 
-            var6++;
-         }
-
-         if (var3) {
-            break;
-         }
-      }
-
-      return super.values();
-   }
-
-   public Set<Entry<K, V>> entrySet() {
-      boolean var10000 = Count.field4012;
-      Field[] var4 = BozeClassLoader.class.getDeclaredFields();
-      boolean var3 = var10000;
-      int var5 = var4.length;
-      int var6 = 0;
-
-      while (var6 < var5) {
-         Field var7 = var4[var6];
-         if (!var3) {
-            if (!Modifier.isPrivate(var7.getModifiers())) {
-               return null;
+    @Override
+    public Collection<V> values() {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                if (!Modifier.isPrivate(field4013.getModifiers())) {
+                    return null;
+                }
+                ++i;
             }
-
-            var6++;
-         }
-
-         if (var3) {
-            break;
-         }
-      }
-
-      return super.entrySet();
-   }
-
-   public V getOrDefault(Object var1, V var2) {
-      Field[] var6 = BozeClassLoader.class.getDeclaredFields();
-      int var7 = var6.length;
-      int var8 = 0;
-      boolean var5 = Count.field4012;
-
-      Object var10000;
-      while (true) {
-         if (var8 < var7) {
-            Field var9 = var6[var8];
-            if (!var5) {
-               var10000 = var9;
-               if (var5) {
-                  break;
-               }
-
-               if (!Modifier.isPrivate(var9.getModifiers())) {
-                  return (V)var2;
-               }
-
-               var8++;
+            if (b) {
+                break;
             }
+        }
+        return super.values();
+    }
 
-            if (!var5) {
-               continue;
+    @Override
+    public Set<Entry<K, V>> entrySet() {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                if (!Modifier.isPrivate(field4013.getModifiers())) {
+                    return null;
+                }
+                ++i;
             }
-         }
-
-         var10000 = super.getOrDefault(var1, var2);
-         break;
-      }
-
-      return (V)var10000;
-   }
-
-   public V putIfAbsent(K var1, V var2) {
-      boolean var10000 = Count.field4012;
-      Field[] var6 = BozeClassLoader.class.getDeclaredFields();
-      int var7 = var6.length;
-      boolean var5 = var10000;
-      int var8 = 0;
-
-      while (true) {
-         if (var8 < var7) {
-            Field var9 = var6[var8];
-            if (!var5) {
-               var10 = var9;
-               if (var5) {
-                  break;
-               }
-
-               if (!Modifier.isPrivate(var9.getModifiers())) {
-                  return (V)var2;
-               }
-
-               var8++;
+            if (b) {
+                break;
             }
+        }
+        return super.entrySet();
+    }
 
-            if (!var5) {
-               continue;
+    @Override
+    public V getOrDefault(final Object key, final V defaultValue) {
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean field4012 = Count.field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        final boolean b = field4012;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final Object orDefault;
+                final Field field4014 = (Field) (orDefault = field4013);
+                if (b) {
+                    return (V) orDefault;
+                }
+                if (!Modifier.isPrivate(field4014.getModifiers())) {
+                    return defaultValue;
+                }
+                ++i;
             }
-         }
-
-         var10 = super.putIfAbsent(var1, var2);
-         break;
-      }
-
-      return (V)var10;
-   }
-
-   public boolean remove(Object var1, Object var2) {
-      boolean var10000 = Count.field4012;
-      Field[] var6 = BozeClassLoader.class.getDeclaredFields();
-      boolean var5 = var10000;
-      int var7 = var6.length;
-      int var8 = 0;
-
-      while (true) {
-         if (var8 < var7) {
-            Field var9 = var6[var8];
-            if (!var5) {
-               var10000 = Modifier.isPrivate(var9.getModifiers());
-               if (var5) {
-                  break;
-               }
-
-               if (!var10000) {
-                  return false;
-               }
-
-               var8++;
+            if (b) {
+                break;
             }
+        }
+        Object orDefault = super.getOrDefault(key, defaultValue);
+        return (V) orDefault;
+    }
 
-            if (!var5) {
-               continue;
+    @Override
+    public V putIfAbsent(final K key, final V value) {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final int length = declaredFields.length;
+        final boolean b = field4012;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final Object putIfAbsent;
+                final Field field4014 = (Field) (putIfAbsent = field4013);
+                if (b) {
+                    return (V) putIfAbsent;
+                }
+                if (!Modifier.isPrivate(field4014.getModifiers())) {
+                    return value;
+                }
+                ++i;
             }
-         }
-
-         var10000 = super.remove(var1, var2);
-         break;
-      }
-
-      return var10000;
-   }
-
-   public boolean replace(K var1, V var2, V var3) {
-      boolean var10000 = Count.field4012;
-      Field[] var7 = BozeClassLoader.class.getDeclaredFields();
-      boolean var6 = var10000;
-      int var8 = var7.length;
-      int var9 = 0;
-
-      while (true) {
-         if (var9 < var8) {
-            Field var10 = var7[var9];
-            if (!var6) {
-               var10000 = Modifier.isPrivate(var10.getModifiers());
-               if (var6) {
-                  break;
-               }
-
-               if (!var10000) {
-                  return false;
-               }
-
-               var9++;
+            if (b) {
+                break;
             }
+        }
+        Object putIfAbsent = super.putIfAbsent(key, value);
+        return (V) putIfAbsent;
+    }
 
-            if (!var6) {
-               continue;
+    @Override
+    public boolean remove(final Object key, final Object value) {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        boolean private1 = false;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                private1 = Modifier.isPrivate(field4013.getModifiers());
+                if (b) {
+                    return private1;
+                }
+                if (!private1) {
+                    return false;
+                }
+                ++i;
             }
-         }
-
-         var10000 = super.replace(var1, var2, var3);
-         break;
-      }
-
-      return var10000;
-   }
-
-   public V replace(K var1, V var2) {
-      boolean var10000 = Count.field4012;
-      Field[] var6 = BozeClassLoader.class.getDeclaredFields();
-      boolean var5 = var10000;
-      int var7 = var6.length;
-      int var8 = 0;
-
-      while (true) {
-         if (var8 < var7) {
-            Field var9 = var6[var8];
-            if (!var5) {
-               var10 = var9;
-               if (var5) {
-                  break;
-               }
-
-               if (!Modifier.isPrivate(var9.getModifiers())) {
-                  return (V)var2;
-               }
-
-               var8++;
+            if (b) {
+                break;
             }
+        }
+        super.remove(key, value);
+        return private1;
+    }
 
-            if (!var5) {
-               continue;
+    @Override
+    public boolean replace(final K key, final V oldValue, final V newValue) {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        boolean private1 = false;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                private1 = Modifier.isPrivate(field4013.getModifiers());
+                if (b) {
+                    return private1;
+                }
+                if (!private1) {
+                    return false;
+                }
+                ++i;
             }
-         }
-
-         var10 = super.replace(var1, var2);
-         break;
-      }
-
-      return (V)var10;
-   }
-
-   public V computeIfAbsent(K var1, Function<? super K, ? extends V> var2) {
-      Field[] var6 = BozeClassLoader.class.getDeclaredFields();
-      int var7 = var6.length;
-      boolean var5 = Count.field4012;
-      int var8 = 0;
-
-      Object var10000;
-      while (true) {
-         if (var8 < var7) {
-            Field var9 = var6[var8];
-            if (!var5) {
-               var10000 = var9;
-               if (var5) {
-                  break;
-               }
-
-               if (!Modifier.isPrivate(var9.getModifiers())) {
-                  return null;
-               }
-
-               var8++;
+            if (b) {
+                break;
             }
+        }
+        super.replace(key, oldValue, newValue);
+        return private1;
+    }
 
-            if (!var5) {
-               continue;
+    @Override
+    public V replace(final K key, final V value) {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final Object replace;
+                final Field field4014 = (Field) (replace = field4013);
+                if (b) {
+                    return (V) replace;
+                }
+                if (!Modifier.isPrivate(field4014.getModifiers())) {
+                    return value;
+                }
+                ++i;
             }
-         }
-
-         var10000 = super.computeIfAbsent(var1, var2);
-         break;
-      }
-
-      return (V)var10000;
-   }
-
-   public V computeIfPresent(K var1, BiFunction<? super K, ? super V, ? extends V> var2) {
-      boolean var10000 = Count.field4012;
-      Field[] var6 = BozeClassLoader.class.getDeclaredFields();
-      boolean var5 = var10000;
-      int var7 = var6.length;
-      int var8 = 0;
-
-      while (true) {
-         if (var8 < var7) {
-            Field var9 = var6[var8];
-            if (!var5) {
-               var10 = var9;
-               if (var5) {
-                  break;
-               }
-
-               if (!Modifier.isPrivate(var9.getModifiers())) {
-                  return null;
-               }
-
-               var8++;
+            if (b) {
+                break;
             }
+        }
+        Object replace = super.replace(key, value);
+        return (V) replace;
+    }
 
-            if (!var5) {
-               continue;
+    @Override
+    public V computeIfAbsent(final K key, final Function<? super K, ? extends V> mappingFunction) {
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean field4012 = Count.field4012;
+        final int length = declaredFields.length;
+        final boolean b = field4012;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final Object computeIfAbsent;
+                final Field field4014 = (Field) (computeIfAbsent = field4013);
+                if (b) {
+                    return (V) computeIfAbsent;
+                }
+                if (!Modifier.isPrivate(field4014.getModifiers())) {
+                    return null;
+                }
+                ++i;
             }
-         }
-
-         var10 = super.computeIfPresent(var1, var2);
-         break;
-      }
-
-      return (V)var10;
-   }
-
-   public V compute(K var1, BiFunction<? super K, ? super V, ? extends V> var2) {
-      Field[] var6 = BozeClassLoader.class.getDeclaredFields();
-      int var7 = var6.length;
-      boolean var5 = Count.field4012;
-      int var8 = 0;
-
-      Object var10000;
-      while (true) {
-         if (var8 < var7) {
-            Field var9 = var6[var8];
-            if (!var5) {
-               var10000 = var9;
-               if (var5) {
-                  break;
-               }
-
-               if (!Modifier.isPrivate(var9.getModifiers())) {
-                  return null;
-               }
-
-               var8++;
+            if (b) {
+                break;
             }
+        }
+        Object computeIfAbsent = super.computeIfAbsent(key, mappingFunction);
+        return (V) computeIfAbsent;
+    }
 
-            if (!var5) {
-               continue;
+    @Override
+    public V computeIfPresent(final K key, final BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final Object computeIfPresent;
+                final Field field4014 = (Field) (computeIfPresent = field4013);
+                if (b) {
+                    return (V) computeIfPresent;
+                }
+                if (!Modifier.isPrivate(field4014.getModifiers())) {
+                    return null;
+                }
+                ++i;
             }
-         }
-
-         var10000 = super.compute(var1, var2);
-         break;
-      }
-
-      return (V)var10000;
-   }
-
-   public V merge(K var1, V var2, BiFunction<? super V, ? super V, ? extends V> var3) {
-      Field[] var7 = BozeClassLoader.class.getDeclaredFields();
-      int var8 = var7.length;
-      int var9 = 0;
-      boolean var6 = Count.field4012;
-
-      Object var10000;
-      while (true) {
-         if (var9 < var8) {
-            Field var10 = var7[var9];
-            if (!var6) {
-               var10000 = var10;
-               if (var6) {
-                  break;
-               }
-
-               if (!Modifier.isPrivate(var10.getModifiers())) {
-                  return null;
-               }
-
-               var9++;
+            if (b) {
+                break;
             }
+        }
+        Object computeIfPresent = super.computeIfPresent(key, remappingFunction);
+        return (V) computeIfPresent;
+    }
 
-            if (!var6) {
-               continue;
+    @Override
+    public V compute(final K key, final BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean field4012 = Count.field4012;
+        final int length = declaredFields.length;
+        final boolean b = field4012;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final Object compute;
+                final Field field4014 = (Field) (compute = field4013);
+                if (b) {
+                    return (V) compute;
+                }
+                if (!Modifier.isPrivate(field4014.getModifiers())) {
+                    return null;
+                }
+                ++i;
             }
-         }
-
-         var10000 = super.merge(var1, var2, var3);
-         break;
-      }
-
-      return (V)var10000;
-   }
-
-   public void forEach(BiConsumer<? super K, ? super V> var1) {
-      boolean var10000 = Count.field4012;
-      Field[] var5 = BozeClassLoader.class.getDeclaredFields();
-      boolean var4 = var10000;
-      int var6 = var5.length;
-      int var7 = 0;
-
-      while (true) {
-         if (var7 < var6) {
-            Field var8 = var5[var7];
-            if (var4) {
-               break;
+            if (b) {
+                break;
             }
+        }
+        Object compute = super.compute(key, remappingFunction);
+        return (V) compute;
+    }
 
-            if (!var4) {
-               if (!Modifier.isPrivate(var8.getModifiers())) {
-                  return;
-               }
-
-               var7++;
+    @Override
+    public V merge(final K key, final V value, final BiFunction<? super V, ? super V, ? extends V> remappingFunction) {
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean field4012 = Count.field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        final boolean b = field4012;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final Object merge;
+                final Field field4014 = (Field) (merge = field4013);
+                if (b) {
+                    return (V) merge;
+                }
+                if (!Modifier.isPrivate(field4014.getModifiers())) {
+                    return null;
+                }
+                ++i;
             }
-
-            if (!var4) {
-               continue;
+            if (b) {
+                break;
             }
-         }
+        }
+        Object merge = super.merge(key, value, remappingFunction);
+        return (V) merge;
+    }
 
-         super.forEach(var1);
-         break;
-      }
-   }
-
-   public void replaceAll(BiFunction<? super K, ? super V, ? extends V> var1) {
-      boolean var10000 = Count.field4012;
-      Field[] var5 = BozeClassLoader.class.getDeclaredFields();
-      int var6 = var5.length;
-      boolean var4 = var10000;
-      int var7 = 0;
-
-      while (true) {
-         if (var7 < var6) {
-            Field var8 = var5[var7];
-            if (var4) {
-               break;
+    @Override
+    public void forEach(final BiConsumer<? super K, ? super V> action) {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (b) {
+                return;
             }
-
-            if (!var4) {
-               if (!Modifier.isPrivate(var8.getModifiers())) {
-                  return;
-               }
-
-               var7++;
+            if (!b) {
+                if (!Modifier.isPrivate(field4013.getModifiers())) {
+                    return;
+                }
+                ++i;
             }
-
-            if (!var4) {
-               continue;
+            if (b) {
+                break;
             }
-         }
+        }
+        super.forEach(action);
+    }
 
-         super.replaceAll(var1);
-         break;
-      }
-   }
-
-   public Object clone() {
-      boolean var10000 = Count.field4012;
-      Field[] var4 = BozeClassLoader.class.getDeclaredFields();
-      boolean var3 = var10000;
-      int var5 = var4.length;
-      int var6 = 0;
-
-      while (true) {
-         if (var6 < var5) {
-            Field var7 = var4[var6];
-            if (!var3) {
-               var8 = var7;
-               if (var3) {
-                  break;
-               }
-
-               if (!Modifier.isPrivate(var7.getModifiers())) {
-                  return null;
-               }
-
-               var6++;
+    @Override
+    public void replaceAll(final BiFunction<? super K, ? super V, ? extends V> function) {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final int length = declaredFields.length;
+        final boolean b = field4012;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (b) {
+                return;
             }
-
-            if (!var3) {
-               continue;
+            if (!b) {
+                if (!Modifier.isPrivate(field4013.getModifiers())) {
+                    return;
+                }
+                ++i;
             }
-         }
+            if (b) {
+                break;
+            }
+        }
+        super.replaceAll(function);
+    }
 
-         var8 = super.clone();
-         break;
-      }
-
-      return var8;
-   }
+    @Override
+    public Object clone() {
+        final boolean field4012 = Count.field4012;
+        final Field[] declaredFields = BozeClassLoader.class.getDeclaredFields();
+        final boolean b = field4012;
+        final int length = declaredFields.length;
+        int i = 0;
+        while (i < length) {
+            final Field field4013 = declaredFields[i];
+            if (!b) {
+                final Object clone;
+                final Field field4014 = (Field) (clone = field4013);
+                if (b) {
+                    return clone;
+                }
+                if (!Modifier.isPrivate(field4014.getModifiers())) {
+                    return null;
+                }
+                ++i;
+            }
+            if (b) {
+                break;
+            }
+        }
+        return super.clone();
+    }
 }

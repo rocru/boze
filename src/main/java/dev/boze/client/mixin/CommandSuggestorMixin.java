@@ -7,9 +7,8 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.suggestion.Suggestions;
 import dev.boze.api.BozeInstance;
 import dev.boze.api.addon.command.AddonDispatcher;
-import dev.boze.client.systems.modules.client.Options;
-import java.util.concurrent.CompletableFuture;
 import dev.boze.client.Boze;
+import dev.boze.client.systems.modules.client.Options;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatInputSuggestor;
 import net.minecraft.client.gui.screen.ChatInputSuggestor.SuggestionWindow;
@@ -22,7 +21,8 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+
+import java.util.concurrent.CompletableFuture;
 
 @Mixin({ChatInputSuggestor.class})
 public abstract class CommandSuggestorMixin {

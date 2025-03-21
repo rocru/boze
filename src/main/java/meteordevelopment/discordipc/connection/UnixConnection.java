@@ -1,6 +1,9 @@
 package meteordevelopment.discordipc.connection;
 
 import com.google.gson.JsonParser;
+import meteordevelopment.discordipc.Opcode;
+import meteordevelopment.discordipc.Packet;
+
 import java.io.IOException;
 import java.net.UnixDomainSocketAddress;
 import java.nio.ByteBuffer;
@@ -8,9 +11,6 @@ import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
 import java.util.function.Consumer;
-import mapped.Class5939;
-import meteordevelopment.discordipc.Opcode;
-import meteordevelopment.discordipc.Packet;
 
 public class UnixConnection extends Connection {
    private final Selector field4002 = Selector.open();
@@ -38,8 +38,8 @@ public class UnixConnection extends Connection {
       try {
          while (true) {
             this.field4002.select();
-            switch (Class5939.field250[var4.ordinal()]) {
-               case 1:
+            switch (var4) {
+               case State.Opcode:
                   this.field4003.read(var5);
                   if (!var5.hasRemaining()) {
                      var7 = Opcode.method807(Integer.reverseBytes(var5.getInt(0)));
@@ -47,7 +47,7 @@ public class UnixConnection extends Connection {
                      var5.rewind();
                   }
                   break;
-               case 2:
+               case State.Length:
                   this.field4003.read(var5);
                   if (!var5.hasRemaining()) {
                      var6 = ByteBuffer.allocate(Integer.reverseBytes(var5.getInt(0)));
@@ -55,7 +55,7 @@ public class UnixConnection extends Connection {
                      var5.rewind();
                   }
                   break;
-               case 3:
+               case State.Data:
                   this.field4003.read(var6);
                   if (!var6.hasRemaining()) {
                      String var8 = Charset.defaultCharset().decode(var6.rewind()).toString();

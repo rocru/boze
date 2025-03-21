@@ -2,9 +2,10 @@ package meteordevelopment.discordipc;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import meteordevelopment.discordipc.connection.Connection;
+
 import java.lang.management.ManagementFactory;
 import java.util.function.BiConsumer;
-import meteordevelopment.discordipc.connection.Connection;
 
 public class DiscordIPC {
    private static final Gson field3983 = new Gson();

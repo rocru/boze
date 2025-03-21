@@ -19,7 +19,7 @@ public class BozeClassLoader extends SecureClassLoader {
     private static BiConsumer<Cipher, byte[]> field4009 = null;
     public static boolean field4010;
 
-    BozeClassLoader(ClassLoader var1) {
+    public BozeClassLoader(ClassLoader var1) {
         super(var1);
         boolean var4 = Count.field4012;
         BozeClassLoader var5 = field4007;
@@ -94,7 +94,7 @@ public class BozeClassLoader extends SecureClassLoader {
         }
     }
 
-    static final ClassNode method2309(String var0, byte[] var1, int var2) {
+    public static final ClassNode method2309(String var0, byte[] var1, int var2) {
         boolean var5;
         ClassNode var6;
         label26:
@@ -128,7 +128,7 @@ public class BozeClassLoader extends SecureClassLoader {
         return var6;
     }
 
-    static final Class<?> method2310(String var0, byte[] var1, CodeSource var2) {
+    public static final Class<?> method2310(String var0, byte[] var1, CodeSource var2) {
         boolean var5 = Count.field4012;
         if (var0.startsWith("dev.boze.client")) {
             try {

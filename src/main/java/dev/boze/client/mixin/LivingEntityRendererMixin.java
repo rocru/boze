@@ -1,5 +1,6 @@
 package dev.boze.client.mixin;
 
+import dev.boze.client.Boze;
 import dev.boze.client.enums.ChamsMode;
 import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.modules.client.Options;
@@ -7,7 +8,6 @@ import dev.boze.client.systems.modules.render.Chams;
 import dev.boze.client.systems.modules.render.ESP;
 import dev.boze.client.systems.modules.render.FreeCam;
 import dev.boze.client.utils.RGBAColor;
-import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;

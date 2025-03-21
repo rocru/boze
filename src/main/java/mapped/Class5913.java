@@ -13,45 +13,43 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 
 public class Class5913 implements IMinecraft {
-   public static PlayerInteractItemC2SPacket method16(Hand hand) {
-      return (PlayerInteractItemC2SPacket)method18(Class5913::lambda$interactItem$0);
-   }
+    public Class5913() {
+        super();
+    }
 
-   public static PlayerInteractBlockC2SPacket method17(Hand hand, BlockHitResult blockHitResult) {
-      return (PlayerInteractBlockC2SPacket)method18(Class5913::lambda$interactBlock$1);
-   }
+    public static PlayerInteractItemC2SPacket method16(Hand var2) {
+        return (PlayerInteractItemC2SPacket) Class5913.method18(arg_0 -> Class5913.lambda$interactItem$0(var2, arg_0));
+    }
 
-   public static Packet<ServerPlayPacketListener> method18(SequencedPacketCreator packetCreator) {
-      PendingUpdateManager var4 = ((ClientWorldAccessor)mc.world).callGetPendingUpdateManager().incrementSequence();
+    public static PlayerInteractBlockC2SPacket method17(Hand var3, BlockHitResult var4) {
+        return (PlayerInteractBlockC2SPacket) Class5913.method18(arg_0 -> Class5913.lambda$interactBlock$1(var3, var4, arg_0));
+    }
 
-      try {
-         int var51 = var4.getSequence();
-         Packet var9 = var5.predict(var51);
-         mc.player.networkHandler.sendPacket(var9);
-         var4.close();
-         return var9;
-      } catch (Throwable var8) {
-         PendingUpdateManager var10000 = var4;
+    public static Packet<ServerPlayPacketListener> method18(final SequencedPacketCreator packetCreator) {
+        final PendingUpdateManager incrementSequence = ((ClientWorldAccessor) Class5913.mc.world).callGetPendingUpdateManager().incrementSequence();
+        try {
+            final Packet predict = packetCreator.predict(incrementSequence.getSequence());
+            Class5913.mc.player.networkHandler.sendPacket(predict);
+            incrementSequence.close();
+            return (Packet<ServerPlayPacketListener>) predict;
+        } catch (final Throwable t) {
+            final PendingUpdateManager pendingUpdateManager = incrementSequence;
+            try {
+                pendingUpdateManager.close();
+            } catch (final Throwable exception) {
+                t.addSuppressed(exception);
+            }
+            final Packet predict2 = packetCreator.predict(0);
+            Class5913.mc.player.networkHandler.sendPacket(predict2);
+            return (Packet<ServerPlayPacketListener>) predict2;
+        }
+    }
 
-         try {
-            var10000.close();
-         } catch (Throwable var7) {
-            var8.addSuppressed(var7);
-         }
+    private static Packet lambda$interactBlock$1(final Hand hand, final BlockHitResult blockHitResult, final int n) {
+        return new PlayerInteractBlockC2SPacket(hand, blockHitResult, n);
+    }
 
-         Packet var6 = var5.predict(0);
-         mc.player.networkHandler.sendPacket(var6);
-         return var6;
-      }
-   }
-
-   private static Packet lambda$interactBlock$1(Hand var0, BlockHitResult var1, int var2) {
-      return new PlayerInteractBlockC2SPacket(var0, var1, var2);
-   }
-
-   private static Packet lambda$interactItem$0(Hand var0, int var1) {
-      return new PlayerInteractItemC2SPacket(
-         var0, var1, ((ClientPlayerEntityAccessor)mc.player).getLastYaw(), ((ClientPlayerEntityAccessor)mc.player).getLastPitch()
-      );
-   }
+    private static Packet lambda$interactItem$0(final Hand hand, final int n) {
+        return new PlayerInteractItemC2SPacket(hand, n, ((ClientPlayerEntityAccessor) Class5913.mc.player).getLastYaw(), ((ClientPlayerEntityAccessor) Class5913.mc.player).getLastPitch());
+    }
 }

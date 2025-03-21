@@ -10,238 +10,197 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ChargedProjectilesComponent;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.projectile.ArrowEntity;
-import net.minecraft.entity.projectile.DragonFireballEntity;
-import net.minecraft.entity.projectile.FireballEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.entity.projectile.ProjectileUtil;
-import net.minecraft.entity.projectile.TridentEntity;
-import net.minecraft.entity.projectile.WitherSkullEntity;
-import net.minecraft.entity.projectile.thrown.EggEntity;
-import net.minecraft.entity.projectile.thrown.EnderPearlEntity;
-import net.minecraft.entity.projectile.thrown.ExperienceBottleEntity;
-import net.minecraft.entity.projectile.thrown.SnowballEntity;
-import net.minecraft.entity.projectile.thrown.ThrownEntity;
+import net.minecraft.entity.projectile.*;
+import net.minecraft.entity.projectile.thrown.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.BowItem;
-import net.minecraft.item.CrossbowItem;
-import net.minecraft.item.EggItem;
-import net.minecraft.item.EnderPearlItem;
-import net.minecraft.item.ExperienceBottleItem;
-import net.minecraft.item.FishingRodItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SnowballItem;
-import net.minecraft.item.ThrowablePotionItem;
-import net.minecraft.item.TridentItem;
+import net.minecraft.item.*;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.hit.HitResult.Type;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.BlockPos.Mutable;
 import net.minecraft.world.RaycastContext;
-import net.minecraft.world.RaycastContext.FluidHandling;
-import net.minecraft.world.RaycastContext.ShapeType;
+import net.minecraft.world.World;
 import org.joml.Quaterniond;
+import org.joml.Quaterniondc;
 import org.joml.Vector3d;
+import org.joml.Vector3dc;
 
 public class Class5919 implements IMinecraft {
-   private static final Mutable field10 = new Mutable();
-   private static final Vec3d field11 = new Vec3d(0.0, 0.0, 0.0);
-   private static final Vec3d field12 = new Vec3d(0.0, 0.0, 0.0);
-   public final Vector3d field13 = new Vector3d();
-   private final Vector3d field14 = new Vector3d();
-   private double field15;
-   private double field16;
-   private double field17;
+    private static final BlockPos.Mutable field10;
+    private static final Vec3d field11;
+    private static final Vec3d field12;
+    public final Vector3d field13;
+    private final Vector3d field14;
+    private double field15;
+    private double field16;
+    private double field17;
 
-   public boolean method44(Entity user, ItemStack itemStack, double simulated, double tickDelta) {
-      Item var10 = var44.getItem();
-      if (var10 instanceof BowItem) {
-         double var11 = (double)BowItem.getPullProgress(mc.player.getItemUseTime());
-         if (var11 <= 0.0) {
-            return false;
-         }
+    public Class5919() {
+        super();
+        this.field13 = new Vector3d();
+        this.field14 = new Vector3d();
+    }
 
-         this.method45(var43, 0.0, var11 * 3.0, var45, 0.05F, 0.6, var46);
-      } else if (var10 instanceof CrossbowItem) {
-         if (!CrossbowItem.isCharged(var44)) {
-            return false;
-         }
-
-         this.method45(
-            var43,
-            0.0,
-            (double)CrossbowItemAccessor.getSpeed((ChargedProjectilesComponent)var44.get(DataComponentTypes.CHARGED_PROJECTILES)),
-            var45,
-            0.05F,
-            0.6,
-            var46
-         );
-      } else if (var10 instanceof FishingRodItem) {
-         this.method48(var43, var46);
-      } else if (var10 instanceof TridentItem) {
-         this.method45(var43, 0.0, 2.5, var45, 0.05F, 0.99, var46);
-      } else if (var10 instanceof SnowballItem || var10 instanceof EggItem || var10 instanceof EnderPearlItem) {
-         this.method45(var43, 0.0, 1.5, var45, 0.03, 0.8, var46);
-      } else if (var10 instanceof ExperienceBottleItem) {
-         this.method45(var43, -20.0, 0.7, var45, 0.07, 0.8, var46);
-      } else {
-         if (!(var10 instanceof ThrowablePotionItem)) {
-            return false;
-         }
-
-         this.method45(var43, -20.0, 0.5, var45, 0.05, 0.8, var46);
-      }
-
-      return true;
-   }
-
-   public void method45(Entity user, double roll, double speed, double simulated, double gravity, double waterDrag, double tickDelta) {
-      Class3062.method5990(this.field13, var47, var53).add(0.0, (double)var47.getEyeHeight(var47.getPose()), 0.0);
-      double var17;
-      double var19;
-      if (var47 instanceof ClientPlayerEntity) {
-         var17 = MathHelper.lerp(var53, (double) Boze.prevLastYaw, (double)((ClientPlayerEntityAccessor)var47).getLastYaw());
-         var19 = MathHelper.lerp(var53, (double) Boze.prevLastPitch, (double)((ClientPlayerEntityAccessor)var47).getLastPitch());
-      } else {
-         var17 = MathHelper.lerp(var53, (double)var47.prevYaw, (double)var47.getYaw());
-         var19 = MathHelper.lerp(var53, (double)var47.prevPitch, (double)var47.getPitch());
-      }
-
-      double var21;
-      double var23;
-      double var25;
-      if (var50 == 0.0) {
-         var21 = -Math.sin(var17 * 0.017453292) * Math.cos(var19 * 0.017453292);
-         var23 = -Math.sin((var19 + var48) * 0.017453292);
-         var25 = Math.cos(var17 * 0.017453292) * Math.cos(var19 * 0.017453292);
-      } else {
-         Vec3d var27 = var47.getOppositeRotationVector(1.0F);
-         Quaterniond var28 = new Quaterniond().setAngleAxis(var50, var27.x, var27.y, var27.z);
-         Vec3d var29 = var47.getRotationVec(1.0F);
-         Vector3d var30 = new Vector3d(var29.x, var29.y, var29.z);
-         var30.rotate(var28);
-         var21 = var30.x;
-         var23 = var30.y;
-         var25 = var30.z;
-      }
-
-      this.field14.set(var21, var23, var25).normalize().mul(var49);
-      Vec3d var31 = var47.getVelocity();
-      this.field14.add(var31.x, var47.isOnGround() ? 0.0 : var31.y, var31.z);
-      this.field15 = var51;
-      this.field16 = 0.99;
-      this.field17 = var52;
-   }
-
-   public boolean method46(Entity entity, double tickDelta) {
-      if (var54 instanceof PersistentProjectileEntity && ((PersistentProjectileEntityAccessor)var54).getInGround()) {
-         return false;
-      } else {
-         if (var54 instanceof ArrowEntity var7) {
-            this.method47(var54, var7.getVelocity().length(), 0.05F, 0.6, var55);
-         } else if (var54 instanceof EnderPearlEntity || var54 instanceof SnowballEntity || var54 instanceof EggEntity) {
-            this.method47(var54, 1.5, 0.03, 0.8, var55);
-         } else if (var54 instanceof TridentEntity) {
-            this.method47(var54, 2.5, 0.05F, 0.99, var55);
-         } else if (var54 instanceof ExperienceBottleEntity) {
-            this.method47(var54, 0.7, 0.07, 0.8, var55);
-         } else if (var54 instanceof ThrownEntity) {
-            this.method47(var54, 0.5, 0.05, 0.8, var55);
-         } else {
-            if (!(var54 instanceof WitherSkullEntity) && !(var54 instanceof FireballEntity) && !(var54 instanceof DragonFireballEntity)) {
-               return false;
+    public boolean method44(final Entity user, final ItemStack itemStack, final double simulated, final double tickDelta) {
+        final Item item = itemStack.getItem();
+        if (item instanceof BowItem) {
+            final double n = BowItem.getPullProgress(Class5919.mc.player.getItemUseTime());
+            if (n <= 0.0) {
+                return false;
             }
+            this.method45(user, 0.0, n * 3.0, simulated, 0.05000000074505806, 0.6, tickDelta);
+        } else if (item instanceof CrossbowItem) {
+            if (!CrossbowItem.isCharged(itemStack)) {
+                return false;
+            }
+            this.method45(user, 0.0, CrossbowItemAccessor.getSpeed(itemStack.get(DataComponentTypes.CHARGED_PROJECTILES)), simulated, 0.05000000074505806, 0.6, tickDelta);
+        } else if (item instanceof FishingRodItem) {
+            this.method48(user, tickDelta);
+        } else if (item instanceof TridentItem) {
+            this.method45(user, 0.0, 2.5, simulated, 0.05000000074505806, 0.99, tickDelta);
+        } else if (item instanceof SnowballItem || item instanceof EggItem || item instanceof EnderPearlItem) {
+            this.method45(user, 0.0, 1.5, simulated, 0.03, 0.8, tickDelta);
+        } else if (item instanceof ExperienceBottleItem) {
+            this.method45(user, -20.0, 0.7, simulated, 0.07, 0.8, tickDelta);
+        } else {
+            if (!(item instanceof ThrowablePotionItem)) {
+                return false;
+            }
+            this.method45(user, -20.0, 0.5, simulated, 0.05, 0.8, tickDelta);
+        }
+        return true;
+    }
 
-            this.method47(var54, 0.95, 0.0, 0.8, var55);
-         }
+    public void method45(final Entity user, final double roll, final double speed, final double simulated, final double gravity, final double waterDrag, final double tickDelta) {
+        Class3062.method5990(this.field13, user, tickDelta).add(0.0, user.getEyeHeight(user.getPose()), 0.0);
+        double n;
+        double n2;
+        if (user instanceof ClientPlayerEntity) {
+            n = MathHelper.lerp(tickDelta, Boze.prevLastYaw, ((ClientPlayerEntityAccessor) user).getLastYaw());
+            n2 = MathHelper.lerp(tickDelta, Boze.prevLastPitch, ((ClientPlayerEntityAccessor) user).getLastPitch());
+        } else {
+            n = MathHelper.lerp(tickDelta, user.prevYaw, user.getYaw());
+            n2 = MathHelper.lerp(tickDelta, user.prevPitch, user.getPitch());
+        }
+        double x;
+        double y;
+        double z;
+        if (simulated == 0.0) {
+            x = -Math.sin(n * 0.017453292) * Math.cos(n2 * 0.017453292);
+            y = -Math.sin((n2 + roll) * 0.017453292);
+            z = Math.cos(n * 0.017453292) * Math.cos(n2 * 0.017453292);
+        } else {
+            final Vec3d oppositeRotationVector = user.getOppositeRotationVector(1.0f);
+            final Quaterniond setAngleAxis = new Quaterniond().setAngleAxis(simulated, oppositeRotationVector.x, oppositeRotationVector.y, oppositeRotationVector.z);
+            final Vec3d rotationVec = user.getRotationVec(1.0f);
+            final Vector3d vector3d = new Vector3d(rotationVec.x, rotationVec.y, rotationVec.z);
+            vector3d.rotate(setAngleAxis);
+            x = vector3d.x;
+            y = vector3d.y;
+            z = vector3d.z;
+        }
+        this.field14.set(x, y, z).normalize().mul(speed);
+        final Vec3d velocity = user.getVelocity();
+        this.field14.add(velocity.x, user.isOnGround() ? 0.0 : velocity.y, velocity.z);
+        this.field15 = gravity;
+        this.field16 = 0.99;
+        this.field17 = waterDrag;
+    }
 
-         return true;
-      }
-   }
+    public boolean method46(final Entity entity, final double tickDelta) {
+        if (entity instanceof PersistentProjectileEntity && ((PersistentProjectileEntityAccessor) entity).getInGround()) {
+            return false;
+        }
+        if (entity instanceof final ArrowEntity arrowEntity) {
+            this.method47(entity, arrowEntity.getVelocity().length(), 0.05000000074505806, 0.6, tickDelta);
+        } else if (entity instanceof EnderPearlEntity || entity instanceof SnowballEntity || entity instanceof EggEntity) {
+            this.method47(entity, 1.5, 0.03, 0.8, tickDelta);
+        } else if (entity instanceof TridentEntity) {
+            this.method47(entity, 2.5, 0.05000000074505806, 0.99, tickDelta);
+        } else if (entity instanceof ExperienceBottleEntity) {
+            this.method47(entity, 0.7, 0.07, 0.8, tickDelta);
+        } else if (entity instanceof ThrownEntity) {
+            this.method47(entity, 0.5, 0.05, 0.8, tickDelta);
+        } else {
+            if (!(entity instanceof WitherSkullEntity) && !(entity instanceof FireballEntity) && !(entity instanceof DragonFireballEntity)) {
+                return false;
+            }
+            this.method47(entity, 0.95, 0.0, 0.8, tickDelta);
+        }
+        return true;
+    }
 
-   public void method47(Entity entity, double speed, double gravity, double waterDrag, double tickDelta) {
-      Class3062.method5990(this.field13, var56, var60);
-      this.field14.set(var56.getVelocity().x, var56.getVelocity().y, var56.getVelocity().z).normalize().mul(var57);
-      Vec3d var12 = var56.getVelocity();
-      this.field14.add(var12.x, var56.isOnGround() ? 0.0 : var12.y, var12.z);
-      this.field15 = var58;
-      this.field16 = 0.99;
-      this.field17 = var59;
-   }
+    public void method47(final Entity entity, final double speed, final double gravity, final double waterDrag, final double tickDelta) {
+        Class3062.method5990(this.field13, entity, tickDelta);
+        this.field14.set(entity.getVelocity().x, entity.getVelocity().y, entity.getVelocity().z).normalize().mul(speed);
+        final Vec3d velocity = entity.getVelocity();
+        this.field14.add(velocity.x, entity.isOnGround() ? 0.0 : velocity.y, velocity.z);
+        this.field15 = gravity;
+        this.field16 = 0.99;
+        this.field17 = waterDrag;
+    }
 
-   public void method48(Entity user, double tickDelta) {
-      double var4 = MathHelper.lerp(var62, (double)var61.prevYaw, (double)var61.getYaw());
-      double var6 = MathHelper.lerp(var62, (double)var61.prevPitch, (double)var61.getPitch());
-      double var8 = Math.cos(-var4 * (float) (Math.PI / 180.0) - (float) Math.PI);
-      double var10 = Math.sin(-var4 * (float) (Math.PI / 180.0) - (float) Math.PI);
-      double var12 = -Math.cos(-var6 * (float) (Math.PI / 180.0));
-      double var14 = Math.sin(-var6 * (float) (Math.PI / 180.0));
-      Class3062.method5990(this.field13, var61, var62).sub(var10 * 0.3, 0.0, var8 * 0.3).add(0.0, (double)var61.getEyeHeight(var61.getPose()), 0.0);
-      this.field14.set(-var10, MathHelper.clamp(-(var14 / var12), -5.0, 5.0), -var8);
-      double var16 = this.field14.length();
-      this.field14.mul(0.6 / var16 + 0.5, 0.6 / var16 + 0.5, 0.6 / var16 + 0.5);
-      this.field15 = 0.03;
-      this.field16 = 0.92;
-      this.field17 = 0.0;
-   }
+    public void method48(final Entity user, final double tickDelta) {
+        final double lerp = MathHelper.lerp(tickDelta, user.prevYaw, user.getYaw());
+        final double lerp2 = MathHelper.lerp(tickDelta, user.prevPitch, user.getPitch());
+        final double cos = Math.cos(-lerp * 0.01745329238474369 - 3.1415927410125732);
+        final double sin = Math.sin(-lerp * 0.01745329238474369 - 3.1415927410125732);
+        final double n = -Math.cos(-lerp2 * 0.01745329238474369);
+        final double sin2 = Math.sin(-lerp2 * 0.01745329238474369);
+        Class3062.method5990(this.field13, user, tickDelta).sub(sin * 0.3, 0.0, cos * 0.3).add(0.0, user.getEyeHeight(user.getPose()), 0.0);
+        this.field14.set(-sin, MathHelper.clamp(-(sin2 / n), -5.0, 5.0), -cos);
+        final double length = this.field14.length();
+        this.field14.mul(0.6 / length + 0.5, 0.6 / length + 0.5, 0.6 / length + 0.5);
+        this.field15 = 0.03;
+        this.field16 = 0.92;
+        this.field17 = 0.0;
+    }
 
-   public HitResult method49() {
-      ((IVec3d)field12).boze$set(this.field13);
-      this.field13.add(this.field14);
-      this.field14.mul(this.method2114() ? this.field17 : this.field16);
-      this.field14.sub(0.0, this.field15, 0.0);
-      if (this.field13.y < (double)mc.world.getBottomY()) {
-         return Class3089.field215;
-      } else {
-         int var4 = (int)(this.field13.x / 16.0);
-         int var5 = (int)(this.field13.z / 16.0);
-         if (!mc.world.getChunkManager().isChunkLoaded(var4, var5)) {
+    public HitResult method49() {
+        ((IVec3d) Class5919.field12).boze$set(this.field13);
+        this.field13.add(this.field14);
+        this.field14.mul(this.method2114() ? this.field17 : this.field16);
+        this.field14.sub(0.0, this.field15, 0.0);
+        if (this.field13.y < Class5919.mc.world.getBottomY()) {
             return Class3089.field215;
-         } else {
-            ((IVec3d)field11).boze$set(this.field13);
-            HitResult var6 = this.method51();
-            return var6.getType() == Type.MISS ? null : var6;
-         }
-      }
-   }
+        }
+        if (!Class5919.mc.world.getChunkManager().isChunkLoaded((int) (this.field13.x / 16.0), (int) (this.field13.z / 16.0))) {
+            return Class3089.field215;
+        }
+        ((IVec3d) Class5919.field11).boze$set(this.field13);
+        final HitResult method51 = this.method51();
+        return (method51.getType() == HitResult.Type.MISS) ? null : method51;
+    }
 
-   private boolean method2114() {
-      field10.set(this.field13.x, this.field13.y, this.field13.z);
-      FluidState var4 = mc.world.getFluidState(field10);
-      return var4.getFluid() != Fluids.WATER && var4.getFluid() != Fluids.FLOWING_WATER
-         ? false
-         : this.field13.y - (double)((int)this.field13.y) <= (double)var4.getHeight();
-   }
+    private boolean method2114() {
+        Class5919.field10.set(this.field13.x, this.field13.y, this.field13.z);
+        final FluidState fluidState = Class5919.mc.world.getFluidState(Class5919.field10);
+        return (fluidState.getFluid() == Fluids.WATER || fluidState.getFluid() == Fluids.FLOWING_WATER) && this.field13.y - (int) this.field13.y <= fluidState.getHeight();
+    }
 
-   private HitResult method51() {
-      Vec3d var4 = field12;
-      Object var5 = mc.world
-         .raycast(new RaycastContext(var4, field11, ShapeType.COLLIDER, this.field17 == 0.0 ? FluidHandling.ANY : FluidHandling.NONE, mc.player));
-      if (var5.getType() != Type.MISS) {
-         var4 = var5.getPos();
-      }
+    private HitResult method51() {
+        Vec3d vec3d = Class5919.field12;
+        Object raycast = Class5919.mc.world.raycast(new RaycastContext(vec3d, Class5919.field11, RaycastContext.ShapeType.COLLIDER, (this.field17 == 0.0) ? RaycastContext.FluidHandling.ANY : RaycastContext.FluidHandling.NONE, Class5919.mc.player));
+        if (((HitResult) raycast).getType() != HitResult.Type.MISS) {
+            vec3d = ((HitResult) raycast).getPos();
+        }
+        final EntityHitResult entityCollision = ProjectileUtil.getEntityCollision(Class5919.mc.world, Class5919.mc.player, vec3d, Class5919.field11, new Box(this.field13.x, this.field13.y, this.field13.z, this.field13.x, this.field13.y, this.field13.z).stretch(Class5919.mc.player.getVelocity()).expand(1.0), Class5919::lambda$getCollision$0);
+        if (entityCollision != null) {
+            raycast = entityCollision;
+        }
+        return (HitResult) raycast;
+    }
 
-      EntityHitResult var6 = ProjectileUtil.getEntityCollision(
-         mc.world,
-         mc.player,
-         var4,
-         field11,
-         new Box(this.field13.x, this.field13.y, this.field13.z, this.field13.x, this.field13.y, this.field13.z).stretch(mc.player.getVelocity()).expand(1.0),
-         Class5919::lambda$getCollision$0
-      );
-      if (var6 != null) {
-         var5 = var6;
-      }
+    private static boolean lambda$getCollision$0(final Entity entity) {
+        return !entity.isSpectator() && entity.isAlive() && entity.canHit();
+    }
 
-      return (HitResult)var5;
-   }
-
-   private static boolean lambda$getCollision$0(Entity var0) {
-      return !var0.isSpectator() && var0.isAlive() && var0.canHit();
-   }
+    static {
+        field10 = new BlockPos.Mutable();
+        field11 = new Vec3d(0.0, 0.0, 0.0);
+        field12 = new Vec3d(0.0, 0.0, 0.0);
+    }
 }

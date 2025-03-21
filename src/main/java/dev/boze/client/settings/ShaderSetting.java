@@ -96,7 +96,7 @@ public class ShaderSetting extends Setting<String> {
     @Override
     public String load(NbtCompound tag) {
         if (this.method2118()) {
-            this.field964.method2267(tag.getCompound("fill"));
+            this.field964.fromTag(tag.getCompound("fill"));
         }
 
         if (this.method222()) {

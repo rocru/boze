@@ -9,7 +9,6 @@ import dev.boze.client.utils.Bind;
 import dev.boze.client.utils.MinecraftUtils;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.item.Items;
-import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.TeleportConfirmC2SPacket;
 
 import java.util.LinkedList;

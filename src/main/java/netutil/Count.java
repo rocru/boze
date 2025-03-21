@@ -1,15 +1,16 @@
 package netutil;
 
-import java.util.concurrent.TimeUnit;
 import mapped.Class5904;
 
+import java.util.concurrent.TimeUnit;
+
 public class Count {
-   private final Class5904 field4011;
+   private Class5904 field4011;
    public static boolean field4012;
 
    public Count(int var1) {
-      boolean var10000 = field4012;
       super();
+      boolean var10000 = field4012;
       boolean var4 = var10000;
       if (!var4) {
          if (var1 < 0) {

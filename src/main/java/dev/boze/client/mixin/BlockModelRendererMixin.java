@@ -2,7 +2,6 @@ package dev.boze.client.mixin;
 
 import dev.boze.client.systems.modules.render.Tint;
 import dev.boze.client.utils.RGBAColor;
-import java.nio.ByteBuffer;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.block.BlockModelRenderer;
@@ -16,6 +15,8 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.nio.ByteBuffer;
 
 @Mixin({BlockModelRenderer.class})
 public class BlockModelRendererMixin {

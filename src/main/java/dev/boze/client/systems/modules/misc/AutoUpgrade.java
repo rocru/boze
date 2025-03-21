@@ -14,7 +14,6 @@ import dev.boze.client.utils.player.SlotUtils;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.ingame.SmithingScreen;
 import net.minecraft.item.*;
-import net.minecraft.screen.SmithingScreenHandler;
 import net.minecraft.screen.slot.SlotActionType;
 
 public class AutoUpgrade extends Module {

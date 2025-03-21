@@ -9,109 +9,85 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 
 public class Class3071 {
-   public static BozeDrawColor method6015(BozeDrawColor one, BozeDrawColor two, double partial) {
-      float[] var7 = RGBAColor.method191(var3198.field408, var3198.field409, var3198.field410);
-      float[] var8 = RGBAColor.method191(var3199.field408, var3199.field409, var3199.field410);
-      if (var8[0] - var7[0] > 0.5F) {
-         var7[0]++;
-      } else if (var7[0] - var8[0] > 0.5F) {
-         var8[0]++;
-      }
+    public Class3071() {
+        super();
+    }
 
-      int[] var9 = RGBAColor.method190(
-         method6022((double)var7[0], (double)var8[0], var3200) * 360.0,
-         method6022((double)var7[1], (double)var8[1], var3200),
-         method6022((double)var7[2], (double)var8[2], var3200)
-      );
-      return new BozeDrawColor(
-         var9[0],
-         var9[1],
-         var9[2],
-         (int)method6022((double)var3198.field411, (double)var3199.field411, var3200),
-         var3200 < 0.5 ? var3198.field1842 : var3199.field1842,
-         method6022(var3198.field1843, var3199.field1843, var3200),
-         method6022(var3198.field1844, var3199.field1844, var3200),
-         method6023(var3198.field1845, var3199.field1845, var3200),
-         method6023(var3198.field1846, var3199.field1846, var3200)
-      );
-   }
+    public static BozeDrawColor method6015(final BozeDrawColor one, final BozeDrawColor two, final double partial) {
+        final float[] method191 = RGBAColor.method191(one.field408, one.field409, one.field410);
+        final float[] method192 = RGBAColor.method191(two.field408, two.field409, two.field410);
+        if (method192[0] - method191[0] > 0.5f) {
+            final float[] array = method191;
+            final int n = 0;
+            ++array[n];
+        } else if (method191[0] - method192[0] > 0.5f) {
+            final float[] array2 = method192;
+            final int n2 = 0;
+            ++array2[n2];
+        }
+        final int[] method193 = RGBAColor.method190(method6022(method191[0], method192[0], partial) * 360.0, method6022(method191[1], method192[1], partial), method6022(method191[2], method192[2], partial));
+        return new BozeDrawColor(method193[0], method193[1], method193[2], (int) method6022(one.field411, two.field411, partial), (partial < 0.5) ? one.field1842 : two.field1842, method6022(one.field1843, two.field1843, partial), method6022(one.field1844, two.field1844, partial), method6023(one.field1845, two.field1845, partial), method6023(one.field1846, two.field1846, partial));
+    }
 
-   public static RGBAColor method6016(RGBAColor one, RGBAColor two, double partial) {
-      float[] var7 = RGBAColor.method191(var3201.field408, var3201.field409, var3201.field410);
-      float[] var8 = RGBAColor.method191(var3202.field408, var3202.field409, var3202.field410);
-      if (var8[0] - var7[0] > 0.5F) {
-         var7[0]++;
-      } else if (var7[0] - var8[0] > 0.5F) {
-         var8[0]++;
-      }
+    public static RGBAColor method6016(final RGBAColor one, final RGBAColor two, final double partial) {
+        final float[] method191 = RGBAColor.method191(one.field408, one.field409, one.field410);
+        final float[] method192 = RGBAColor.method191(two.field408, two.field409, two.field410);
+        if (method192[0] - method191[0] > 0.5f) {
+            final float[] array = method191;
+            final int n = 0;
+            ++array[n];
+        } else if (method191[0] - method192[0] > 0.5f) {
+            final float[] array2 = method192;
+            final int n2 = 0;
+            ++array2[n2];
+        }
+        final int[] method193 = RGBAColor.method190(method6022(method191[0], method192[0], partial) * 360.0, method6022(method191[1], method192[1], partial), method6022(method191[2], method192[2], partial));
+        return new RGBAColor(method193[0], method193[1], method193[2], (int) method6022(one.field411, two.field411, partial));
+    }
 
-      int[] var9 = RGBAColor.method190(
-         method6022((double)var7[0], (double)var8[0], var3203) * 360.0,
-         method6022((double)var7[1], (double)var8[1], var3203),
-         method6022((double)var7[2], (double)var8[2], var3203)
-      );
-      return new RGBAColor(var9[0], var9[1], var9[2], (int)method6022((double)var3201.field411, (double)var3202.field411, var3203));
-   }
+    public static StaticColor method6017(final StaticColor one, final StaticColor two, final double partial) {
+        return new StaticColor((int) method6022(one.field430, two.field430, partial), (int) method6022(one.field431, two.field431, partial), (int) method6022(one.field432, two.field432, partial));
+    }
 
-   public static StaticColor method6017(StaticColor one, StaticColor two, double partial) {
-      return new StaticColor(
-         (int)method6022((double)var3204.field430, (double)var3205.field430, var3206),
-         (int)method6022((double)var3204.field431, (double)var3205.field431, var3206),
-         (int)method6022((double)var3204.field432, (double)var3205.field432, var3206)
-      );
-   }
+    public static StaticColor method6018(final StaticColor one, final StaticColor two, final double partial) {
+        final float[] method191 = RGBAColor.method191(one.field430, one.field431, one.field432);
+        final float[] method192 = RGBAColor.method191(two.field430, two.field431, two.field432);
+        if (method192[0] - method191[0] > 0.5f) {
+            final float[] array = method191;
+            final int n = 0;
+            ++array[n];
+        } else if (method191[0] - method192[0] > 0.5f) {
+            final float[] array2 = method192;
+            final int n2 = 0;
+            ++array2[n2];
+        }
+        final int[] method193 = RGBAColor.method190(method6022(method191[0], method192[0], partial) * 360.0, method6022(method191[1], method192[1], partial), method6022(method191[2], method192[2], partial));
+        return new StaticColor(method193[0], method193[1], method193[2]);
+    }
 
-   public static StaticColor method6018(StaticColor one, StaticColor two, double partial) {
-      float[] var7 = RGBAColor.method191(var3207.field430, var3207.field431, var3207.field432);
-      float[] var8 = RGBAColor.method191(var3208.field430, var3208.field431, var3208.field432);
-      if (var8[0] - var7[0] > 0.5F) {
-         var7[0]++;
-      } else if (var7[0] - var8[0] > 0.5F) {
-         var8[0]++;
-      }
+    public static Vec3d method6019(final Entity entity) {
+        final double[] method6020 = method6020(entity);
+        return new Vec3d(method6020[0], method6020[1], method6020[2]);
+    }
 
-      int[] var9 = RGBAColor.method190(
-         method6022((double)var7[0], (double)var8[0], var3209) * 360.0,
-         method6022((double)var7[1], (double)var8[1], var3209),
-         method6022((double)var7[2], (double)var8[2], var3209)
-      );
-      return new StaticColor(var9[0], var9[1], var9[2]);
-   }
+    public static double[] method6020(final Entity entity) {
+        if (entity.prevX == 0.0 && entity.prevY == 0.0 && entity.prevZ == 0.0) {
+            entity.prevX = entity.getX();
+            entity.prevY = entity.getY();
+            entity.prevZ = entity.getZ();
+        }
+        return new double[]{method6022(entity.lastRenderX, entity.getX(), MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true)), method6022(entity.lastRenderY, entity.getY(), MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true)), method6022(entity.lastRenderZ, entity.getZ(), MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true))};
+    }
 
-   public static Vec3d method6019(Entity entity) {
-      double[] var1 = method6020(var3210);
-      return new Vec3d(var1[0], var1[1], var1[2]);
-   }
+    public static Box method6021(final Box a, final Box b, final double partial) {
+        return new Box(method6022(a.minX, b.minX, partial), method6022(a.minY, b.minY, partial), method6022(a.minZ, b.minZ, partial), method6022(a.maxX, b.maxX, partial), method6022(a.maxY, b.maxY, partial), method6022(a.maxZ, b.maxZ, partial));
+    }
 
-   public static double[] method6020(Entity entity) {
-      if (var3211.prevX == 0.0 && var3211.prevY == 0.0 && var3211.prevZ == 0.0) {
-         var3211.prevX = var3211.getX();
-         var3211.prevY = var3211.getY();
-         var3211.prevZ = var3211.getZ();
-      }
+    public static double method6022(final double a, final double b, final double partial) {
+        return a * (1.0 - partial) + b * partial;
+    }
 
-      double var4 = method6022(var3211.lastRenderX, var3211.getX(), (double)MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true));
-      double var6 = method6022(var3211.lastRenderY, var3211.getY(), (double)MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true));
-      double var8 = method6022(var3211.lastRenderZ, var3211.getZ(), (double)MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true));
-      return new double[]{var4, var6, var8};
-   }
-
-   public static Box method6021(Box a, Box b, double partial) {
-      return new Box(
-         method6022(var3212.minX, var3213.minX, var3214),
-         method6022(var3212.minY, var3213.minY, var3214),
-         method6022(var3212.minZ, var3213.minZ, var3214),
-         method6022(var3212.maxX, var3213.maxX, var3214),
-         method6022(var3212.maxY, var3213.maxY, var3214),
-         method6022(var3212.maxZ, var3213.maxZ, var3214)
-      );
-   }
-
-   public static double method6022(double a, double b, double partial) {
-      return var3215 * (1.0 - var3217) + var3216 * var3217;
-   }
-
-   public static double[] method6023(double[] a, double[] b, double partial) {
-      return new double[]{var3218[0] * (1.0 - var3220) + var3219[0] * var3220, var3218[1] * (1.0 - var3220) + var3219[1] * var3220};
-   }
+    public static double[] method6023(final double[] a, final double[] b, final double partial) {
+        return new double[]{a[0] * (1.0 - partial) + b[0] * partial, a[1] * (1.0 - partial) + b[1] * partial};
+    }
 }

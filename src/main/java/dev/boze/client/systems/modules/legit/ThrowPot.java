@@ -12,8 +12,6 @@ import dev.boze.client.utils.InventoryHelper;
 import dev.boze.client.utils.MinecraftUtils;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.PotionContentsComponent;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SplashPotionItem;
