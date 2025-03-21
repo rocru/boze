@@ -150,7 +150,7 @@ public abstract class BottomRowScaledComponent extends ScaledBaseComponent {
         if (method501 > width - BaseComponent.scaleFactor * 4.0) {
             x2 -= method501 - (width - BaseComponent.scaleFactor * 4.0);
         }
-        if (System.currentTimeMillis() % 1000L >= 500L) {
+        if (System.currentTimeMillis() % 1000L >= 500L && !substring.isEmpty()) {
             substring = substring.substring(0, substring.length() - 1);
         }
         IFontRender.method499().drawShadowedText(substring, x2, y + height * 0.5 - IFontRender.method499().method1390() * 0.5, Theme.method1350());
