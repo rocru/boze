@@ -4,19 +4,19 @@ import netutil.Count;
 
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
-final class Class5904 extends AbstractQueuedSynchronizer {
+public final class Class5904 extends AbstractQueuedSynchronizer {
     private static final long serialVersionUID = 4982264981922014374L;
 
-    Class5904(final int state) {
+    public Class5904(final int state) {
         super();
         this.setState(state);
     }
 
-    int method2010() {
+    public int method2010() {
         return this.getState();
     }
 
-    void method1649(final int state) {
+    public void method1649(final int state) {
         this.setState(state);
     }
 
