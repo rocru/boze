@@ -40,57 +40,44 @@ public class PhaseESP extends Module {
 
     @EventHandler
     public void method2071(Render3DEvent event) {
-        if (!this.field461.getValue() || Class5924.method76(true)) {
-            event.field1950.field2166.field1594 = this.field463.getValue();
-            Box var5 = mc.player.getBoundingBox().shrink(1.0E-4, 0.0, 1.0E-4);
-            Set<BlockPos> var6 = this.method250(var5);
-            if (this.field469 == null) {
-                this.field469 = new Renderer3D(false, false);
-            }
-
-            this.field469.method1217();
-
-            for (BlockPos var8 : var6) {
-                for (Direction var12 : Direction.values()) {
-                    if (var12.getAxis() != Axis.Y) {
-                        BlockPos var13 = var8.offset(var12);
-                        BlockState var14 = mc.world.getBlockState(var13);
-                        if (var14.getBlock() == Blocks.BEDROCK || var14.getBlock() == Blocks.OBSIDIAN) {
-                            BlockPos var15 = var13.down();
-                            BlockState var16 = mc.world.getBlockState(var15);
-                            if (var16.isAir() || var16.getBlock() == Blocks.LAVA || var16.getBlock() == Blocks.WATER) {
-                                this.method248(this.field469, var13, var12, this.field466.getValue());
-                            } else if (var16.getBlock() == Blocks.BEDROCK) {
-                                if (var14.getBlock() == Blocks.BEDROCK) {
-                                    this.method248(this.field469, var13, var12, this.field464.getValue());
-                                } else {
-                                    this.method248(this.field469, var13, var12, this.field465.getValue());
-                                }
-                            } else {
-                                this.method248(this.field469, var13, var12, this.field465.getValue());
-                            }
-                        }
-                    }
-                }
-            }
-
-            this.field469.method1219(event.matrix);
-            if (this.field462.getValue()) {
-                Map var17 = Map.of(
-                        BlockPos.ofFloored(var5.minX - 1.0, var5.minY, var5.minZ - 1.0),
-                        new Vec3i(1, 0, 1),
-                        BlockPos.ofFloored(var5.minX - 1.0, var5.minY, var5.maxZ + 1.0),
-                        new Vec3i(1, 0, 0),
-                        BlockPos.ofFloored(var5.maxX + 1.0, var5.minY, var5.minZ - 1.0),
-                        new Vec3i(0, 0, 1),
-                        BlockPos.ofFloored(var5.maxX + 1.0, var5.minY, var5.maxZ + 1.0),
-                        new Vec3i(0, 0, 0)
-                );
-                var17.forEach(this::lambda$onRender3D$2);
-            }
-
-            event.field1950.field2166.field1594 = 1.0F;
+        if (this.field461.getValue() && !Class5924.method76(true)) {
+            return;
         }
+        event.field1950.field2166.field1594 = this.field463.getValue();
+        Box box = PhaseESP.mc.player.getBoundingBox().shrink(1.0E-4, 0.0, 1.0E-4);
+        Set<BlockPos> set = this.method250(box);
+        if (this.field469 == null) {
+            this.field469 = new Renderer3D(false, false);
+        }
+        this.field469.method1217();
+        for (BlockPos blockPos : set) {
+            for (Direction direction : Direction.values()) {
+                BlockPos blockPos2;
+                BlockState blockState;
+                if (direction.getAxis() == Direction.Axis.Y || (blockState = PhaseESP.mc.world.getBlockState(blockPos2 = blockPos.offset(direction))).getBlock() != Blocks.BEDROCK && blockState.getBlock() != Blocks.OBSIDIAN) continue;
+                BlockPos blockPos3 = blockPos2.down();
+                BlockState blockState2 = PhaseESP.mc.world.getBlockState(blockPos3);
+                if (blockState2.isAir() || blockState2.getBlock() == Blocks.LAVA || blockState2.getBlock() == Blocks.WATER) {
+                    this.method248(this.field469, blockPos2, direction, this.field466.getValue());
+                    continue;
+                }
+                if (blockState2.getBlock() == Blocks.BEDROCK) {
+                    if (blockState.getBlock() == Blocks.BEDROCK) {
+                        this.method248(this.field469, blockPos2, direction, this.field464.getValue());
+                        continue;
+                    }
+                    this.method248(this.field469, blockPos2, direction, this.field465.getValue());
+                    continue;
+                }
+                this.method248(this.field469, blockPos2, direction, this.field465.getValue());
+            }
+        }
+        this.field469.method1219(event.matrix);
+        if (this.field462.getValue()) {
+            Map<BlockPos, Vec3i> map = Map.of(BlockPos.ofFloored((double)(box.minX - 1.0), (double)box.minY, (double)(box.minZ - 1.0)), new Vec3i(1, 0, 1), BlockPos.ofFloored((double)(box.minX - 1.0), (double)box.minY, (double)(box.maxZ + 1.0)), new Vec3i(1, 0, 0), BlockPos.ofFloored((double)(box.maxX + 1.0), (double)box.minY, (double)(box.minZ - 1.0)), new Vec3i(0, 0, 1), BlockPos.ofFloored((double)(box.maxX + 1.0), (double)box.minY, (double)(box.maxZ + 1.0)), new Vec3i(0, 0, 0));
+            map.forEach((arg_0, arg_1) -> this.lambda$onRender3D$2(event, arg_0, arg_1));
+        }
+        event.field1950.field2166.field1594 = 1.0f;
     }
 
     private void method247(Render3DEvent var1, BlockPos var2, Vec3i var3, BozeDrawColor var4) {
