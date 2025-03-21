@@ -6,7 +6,6 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.render.ByteTexture;
 import dev.boze.client.utils.render.Filter;
 import dev.boze.client.utils.render.Format;
-import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.stb.STBImage;

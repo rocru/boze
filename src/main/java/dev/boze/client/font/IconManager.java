@@ -2,7 +2,6 @@ package dev.boze.client.font;
 
 import dev.boze.client.Boze;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
 
 import java.io.IOException;

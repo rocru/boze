@@ -52,7 +52,7 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
             cancellable = true
     )
     protected void clipAtLedge(CallbackInfoReturnable<Boolean> info) {
-        if (((Object) this).equals(MinecraftClient.getInstance().player)) {
+        if (this.equals(MinecraftClient.getInstance().player)) {
             ClipAtLedgeEvent var2 = Boze.EVENT_BUS.post(ClipAtLedgeEvent.method1055());
             if (var2.method1022()) {
                 info.setReturnValue(true);
@@ -66,7 +66,7 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     )
     private void onTravelPre(Vec3d var1, CallbackInfo var2) {
         if (MinecraftClient.getInstance().player != null) {
-            if (((Object) this).equals(MinecraftClient.getInstance().player)) {
+            if (this.equals(MinecraftClient.getInstance().player)) {
                 if (RotationHandler.field1546.method2114()) {
                     Class2839.field112 = MinecraftClient.getInstance().player.getYaw();
                     MinecraftClient.getInstance().player.setYaw(RotationHandler.field1546.method1384());
@@ -88,7 +88,7 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     )
     private void onTravelPost(Vec3d var1, CallbackInfo var2) {
         if (MinecraftClient.getInstance().player != null) {
-            if (((Object) this).equals(MinecraftClient.getInstance().player)) {
+            if (this.equals(MinecraftClient.getInstance().player)) {
                 MinecraftClient.getInstance().player.setYaw(Class2839.field112);
             }
         }
@@ -100,7 +100,7 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     )
     private void onJumpPre(CallbackInfo var1) {
         if (MinecraftClient.getInstance().player != null) {
-            if (((Object) this).equals(MinecraftClient.getInstance().player)) {
+            if (this.equals(MinecraftClient.getInstance().player)) {
                 if (RotationHandler.field1546.method2114()) {
                     Class2839.field112 = MinecraftClient.getInstance().player.getYaw();
                     MinecraftClient.getInstance().player.setYaw(RotationHandler.field1546.method1384());
@@ -122,7 +122,7 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     )
     private void onJumpPost(CallbackInfo var1) {
         if (MinecraftClient.getInstance().player != null) {
-            if (((Object) this).equals(MinecraftClient.getInstance().player)) {
+            if (this.equals(MinecraftClient.getInstance().player)) {
                 MinecraftClient.getInstance().player.setYaw(Class2839.field112);
             }
         }

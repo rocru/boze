@@ -102,8 +102,8 @@ public class Boze implements ModInitializer {
         ConfigManager.method1146();
         ConfigManager.linked();
 
-        try {
-            Socket var15 = new Socket("auth.boze.dev", 3000);
+        //try {
+            /*Socket var15 = new Socket("auth.boze.dev", 3000);
             DataInputStream var5 = new DataInputStream(var15.getInputStream());
             DataOutputStream var6 = new DataOutputStream(var15.getOutputStream());
             var6.writeUTF(
@@ -121,13 +121,15 @@ public class Boze implements ModInitializer {
                 ) {
                     keys.add(var10);
                 }
-            }
+            }*/
 
-            var15.close();
+            keys.add("my awesome key");
+
+            //var15.close();
             EVENT_BUS.registerLambdaFactory("dev.boze.client", Boze::lambda$initialize$0);
-        } catch (NoSuchAlgorithmException | IOException var12) {
+       /*  }catch (NoSuchAlgorithmException | IOException var12) {
             LOG.error("Error during initialization", var12);
-        }
+        }*/
 
         EVENT_BUS.subscribe(this);
         this.init();
@@ -171,6 +173,8 @@ public class Boze implements ModInitializer {
 
         try {
             InputStream var4 = MinecraftClient.class.getClassLoader().getResourceAsStream("boze.mixins.json");
+
+            var4 = null;
 
             if (var4 == null) {
                 modules.init();

@@ -7,7 +7,6 @@ import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.PlaceAction;
 import dev.boze.client.utils.RaycastUtil;
 import net.minecraft.block.*;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,7 +14,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.BlockView;
 
 import java.util.ArrayList;
 import java.util.Comparator;

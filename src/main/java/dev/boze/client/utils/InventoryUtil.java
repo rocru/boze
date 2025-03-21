@@ -11,7 +11,6 @@ import dev.boze.client.utils.trackers.ItemTracker;
 import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import mapped.Class2839;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.ClickSlotC2SPacket;
 import net.minecraft.network.packet.c2s.play.UpdateSelectedSlotC2SPacket;
 import net.minecraft.screen.ScreenHandler;

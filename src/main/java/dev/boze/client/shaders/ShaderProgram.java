@@ -9,7 +9,6 @@ import dev.boze.client.utils.IMinecraft;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.client.gl.GlProgramManager;
-import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
 import org.apache.commons.io.IOUtils;
 import org.joml.Matrix4f;

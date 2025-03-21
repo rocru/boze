@@ -4,8 +4,6 @@ import dev.boze.client.gui.components.BaseComponent;
 import dev.boze.client.gui.notification.Notifications;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
-import net.minecraft.client.sound.SoundInstance;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvents;
 
 public class Class2778 {

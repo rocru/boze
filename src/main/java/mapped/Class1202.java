@@ -1,7 +1,8 @@
 package mapped;
 
-import dev.boze.client.utils.*;
-import net.minecraft.util.math.*;
+import dev.boze.client.utils.RotationHelper;
+import net.minecraft.util.math.Vec2f;
+import net.minecraft.util.math.Vec3d;
 
 public class Class1202 {
     public Class1202() {
