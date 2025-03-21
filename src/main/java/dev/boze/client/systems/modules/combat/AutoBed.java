@@ -8,7 +8,6 @@ import dev.boze.client.enums.YPriority;
 import dev.boze.client.events.ACRotationEvent;
 import dev.boze.client.events.Render3DEvent;
 import dev.boze.client.events.RotationEvent;
-import dev.boze.client.jumptable.mt;
 import dev.boze.client.mixininterfaces.IClientPlayerEntity;
 import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;
@@ -678,10 +677,10 @@ public class AutoBed extends Module {
                                 if ((!this.antiSuicide.getValue() || !((double) (mc.player.getHealth() + mc.player.getAbsorptionAmount()) <= var19 + 2.0))
                                         && (!(this.placeSelfDamage.getValue() > 0.0F) || !(var19 > (double) this.placeSelfDamage.getValue().floatValue()))) {
                                     if (!this.placeRotate.getValue()) {
-                                        float var21 = switch (mt.field2111[var14.ordinal()]) {
-                                            case 1 -> -90.0F;
-                                            case 2 -> 0.0F;
-                                            case 3 -> 90.0F;
+                                        float var21 = switch (var14) {
+                                            case Direction.EAST -> -90.0F;
+                                            case Direction.SOUTH -> 0.0F;
+                                            case Direction.WEST -> 90.0F;
                                             default -> 180.0F;
                                         };
                                         var7.method2158(var21);

@@ -4,7 +4,6 @@ import baritone.api.BaritoneAPI;
 import dev.boze.client.api.BozeDrawColor;
 import dev.boze.client.enums.*;
 import dev.boze.client.events.*;
-import dev.boze.client.jumptable.ms;
 import dev.boze.client.mixin.ClientPlayerEntityAccessor;
 import dev.boze.client.mixin.ClientPlayerInteractionManagerAccessor;
 import dev.boze.client.settings.*;
@@ -26,6 +25,7 @@ import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.gui.screen.DeathScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.entity.mob.ZombifiedPiglinEntity;
@@ -470,9 +470,9 @@ public class Aura extends Module {
             if (var1 instanceof ArmorStandEntity && this.armorStands.getValue()) {
                 return true;
             } else {
-                return switch (ms.field2109[var1.getType().getSpawnGroup().ordinal()]) {
-                    case 1, 2, 3, 4 -> this.animals.getValue();
-                    case 5 -> this.monsters.getValue();
+                return switch (var1.getType().getSpawnGroup()) {
+                    case SpawnGroup.AMBIENT, SpawnGroup.CREATURE, SpawnGroup.WATER_CREATURE, SpawnGroup.WATER_AMBIENT -> this.animals.getValue();
+                    case SpawnGroup.MONSTER -> this.monsters.getValue();
                     default -> false;
                 };
             }

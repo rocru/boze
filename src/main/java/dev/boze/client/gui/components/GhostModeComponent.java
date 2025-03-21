@@ -1,8 +1,8 @@
 package dev.boze.client.gui.components;
 
+import dev.boze.client.enums.ToggleStyle;
 import dev.boze.client.font.IFontRender;
 import dev.boze.client.gui.screens.ClickGUI;
-import dev.boze.client.jumptable.hR;
 import dev.boze.client.systems.modules.client.Gui;
 import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.client.Theme;
@@ -37,8 +37,8 @@ public class GhostModeComponent extends BaseComponent implements IMinecraft {
             ClickGUI.field1335.field1333.method2252(this.field318, this.field319, this.field320, this.field321, RGBAColor.field402);
         }
 
-        switch (hR.field2102[Gui.INSTANCE.field2371.getValue().ordinal()]) {
-            case 1:
+        switch (Gui.INSTANCE.field2371.getValue()) {
+            case ToggleStyle.Switch:
                 RenderUtil.field3963
                         .method2257(
                                 this.field318 + this.field320 - 6.0 * scaleFactor - this.field321 * 1.2,
@@ -58,7 +58,7 @@ public class GhostModeComponent extends BaseComponent implements IMinecraft {
                                 Theme.method1350()
                         );
                 break;
-            case 2:
+            case ToggleStyle.Circle:
                 RenderUtil.field3963
                         .method2261(
                                 this.field318 + this.field320 - 6.0 * scaleFactor - this.field321 * 0.6,
@@ -76,7 +76,7 @@ public class GhostModeComponent extends BaseComponent implements IMinecraft {
                             );
                 }
                 break;
-            case 3:
+            case ToggleStyle.Check:
                 RenderUtil.field3963
                         .method2242(
                                 this.field318 + this.field320 - 6.0 * scaleFactor - this.field321 * 0.3,

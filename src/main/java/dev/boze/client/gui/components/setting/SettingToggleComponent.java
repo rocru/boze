@@ -1,10 +1,10 @@
 package dev.boze.client.gui.components.setting;
 
 import dev.boze.api.setting.SettingToggle;
+import dev.boze.client.enums.ToggleStyle;
 import dev.boze.client.font.IFontRender;
 import dev.boze.client.gui.components.BaseComponent;
 import dev.boze.client.gui.components.SettingBaseComponent;
-import dev.boze.client.jumptable.hO;
 import dev.boze.client.systems.modules.client.Gui;
 import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.IMinecraft;
@@ -37,8 +37,8 @@ public class SettingToggleComponent extends SettingBaseComponent implements IMin
                         Theme.method1350()
                 );
         this.field1240 = 0.0;
-        switch (hO.field2099[Gui.INSTANCE.field2371.getValue().ordinal()]) {
-            case 1:
+        switch (Gui.INSTANCE.field2371.getValue()) {
+            case ToggleStyle.Switch:
                 RenderUtil.field3963
                         .method2257(
                                 this.field318 + this.field320 - 6.0 * scaleFactor - this.field1240 - this.field321 * 1.2,
@@ -58,7 +58,7 @@ public class SettingToggleComponent extends SettingBaseComponent implements IMin
                                 Theme.method1350()
                         );
                 break;
-            case 2:
+            case ToggleStyle.Circle:
                 RenderUtil.field3963
                         .method2261(
                                 this.field318 + this.field320 - 6.0 * scaleFactor - this.field1240 - this.field321 * 0.6,
@@ -76,7 +76,7 @@ public class SettingToggleComponent extends SettingBaseComponent implements IMin
                             );
                 }
                 break;
-            case 3:
+            case ToggleStyle.Check:
                 RenderUtil.field3963
                         .method2242(
                                 this.field318 + this.field320 - 6.0 * scaleFactor - this.field1240 - this.field321 * 0.3,

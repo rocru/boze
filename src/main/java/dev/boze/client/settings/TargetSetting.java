@@ -1,11 +1,11 @@
 package dev.boze.client.settings;
 
-import dev.boze.client.jumptable.al;
 import dev.boze.client.settings.generic.SettingsGroup;
 import dev.boze.client.systems.modules.client.Friends;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.player.PlayerEntity;
 
 public class TargetSetting implements IMinecraft, SettingsGroup {
@@ -31,9 +31,9 @@ public class TargetSetting implements IMinecraft, SettingsGroup {
                 return Friends.method2055(entity) ? this.field1319.getValue() : this.field1318.getValue();
             }
         } else {
-            return switch (al.field2094[entity.getType().getSpawnGroup().ordinal()]) {
-                case 1, 2, 3, 4 -> this.field1320.getValue();
-                case 5 -> this.field1321.getValue();
+            return switch (entity.getType().getSpawnGroup()) {
+                case SpawnGroup.CREATURE, SpawnGroup.AMBIENT, SpawnGroup.WATER_AMBIENT, SpawnGroup.WATER_CREATURE -> this.field1320.getValue();
+                case SpawnGroup.MONSTER -> this.field1321.getValue();
                 default -> false;
             };
         }

@@ -3,7 +3,6 @@ package mapped;
 import dev.boze.client.enums.AnticheatMode;
 import dev.boze.client.enums.AutoCrystalAction;
 import dev.boze.client.events.GameJoinEvent;
-import dev.boze.client.jumptable.mI;
 import dev.boze.client.mixininterfaces.IExplosion;
 import dev.boze.client.systems.modules.combat.AutoCrystal;
 import dev.boze.client.systems.modules.misc.FakePlayer;
@@ -21,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.RaycastContext.FluidHandling;
@@ -85,10 +85,10 @@ public class DamageCalculator implements IMinecraft {
     // $VF: Unable to simplify switch on enum
     // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
     private double method5666(double var1) {
-        return switch (mI.field2107[mc.world.getDifficulty().ordinal()]) {
-            case 1 -> 0.0;
-            case 2 -> Math.min(var1 / 2.0 + 1.0, var1);
-            case 3 -> var1 * 3.0 / 2.0;
+        return switch (mc.world.getDifficulty()) {
+            case Difficulty.PEACEFUL -> 0.0;
+            case Difficulty.EASY -> Math.min(var1 / 2.0 + 1.0, var1);
+            case Difficulty.HARD -> var1 * 3.0 / 2.0;
             default -> var1;
         };
     }

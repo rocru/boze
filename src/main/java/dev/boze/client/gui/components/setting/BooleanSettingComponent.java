@@ -1,9 +1,9 @@
 package dev.boze.client.gui.components.setting;
 
+import dev.boze.client.enums.ToggleStyle;
 import dev.boze.client.font.IFontRender;
 import dev.boze.client.gui.components.BaseComponent;
 import dev.boze.client.gui.components.ScaledSettingBaseComponent;
-import dev.boze.client.jumptable.hU;
 import dev.boze.client.settings.BooleanSetting;
 import dev.boze.client.systems.modules.client.Gui;
 import dev.boze.client.systems.modules.client.Theme;
@@ -52,8 +52,8 @@ public class BooleanSettingComponent extends ScaledSettingBaseComponent implemen
                 this.field282 = scaleFactor * 6.0 + var8 / 2.0;
             }
 
-            switch (hU.field2105[Gui.INSTANCE.field2371.getValue().ordinal()]) {
-                case 1:
+            switch (Gui.INSTANCE.field2371.getValue()) {
+                case ToggleStyle.Switch:
                     RenderUtil.field3963
                             .method2257(
                                     this.field318 + this.field320 - 6.0 * scaleFactor - this.field282 - this.field321 * 1.2,
@@ -77,7 +77,7 @@ public class BooleanSettingComponent extends ScaledSettingBaseComponent implemen
                                     Theme.method1350()
                             );
                     break;
-                case 2:
+                case ToggleStyle.Circle:
                     RenderUtil.field3963
                             .method2261(
                                     this.field318 + this.field320 - 6.0 * scaleFactor - this.field282 - this.field321 * 0.6,
@@ -95,7 +95,7 @@ public class BooleanSettingComponent extends ScaledSettingBaseComponent implemen
                                 );
                     }
                     break;
-                case 3:
+                case ToggleStyle.Check:
                     RenderUtil.field3963
                             .method2242(
                                     this.field318 + this.field320 - 6.0 * scaleFactor - this.field282 - this.field321 * 0.3,

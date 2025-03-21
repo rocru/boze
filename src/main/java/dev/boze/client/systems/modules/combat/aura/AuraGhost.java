@@ -3,7 +3,6 @@ package dev.boze.client.systems.modules.combat.aura;
 import dev.boze.client.api.BozeDrawColor;
 import dev.boze.client.enums.*;
 import dev.boze.client.events.*;
-import dev.boze.client.jumptable.eI;
 import dev.boze.client.mixin.ClientPlayerEntityAccessor;
 import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.GhostModule;
@@ -26,6 +25,7 @@ import net.minecraft.client.gui.screen.DeathScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.item.AxeItem;
@@ -404,13 +404,13 @@ public class AuraGhost extends GhostModule {
         } else if (var1 instanceof FireballEntity) {
             return this.field2495.getValue();
         } else {
-            switch (eI.field2096[var1.getType().getSpawnGroup().ordinal()]) {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
+            switch (var1.getType().getSpawnGroup()) {
+                case SpawnGroup.CREATURE:
+                case SpawnGroup.AMBIENT:
+                case SpawnGroup.WATER_AMBIENT:
+                case SpawnGroup.WATER_CREATURE:
                     return this.field2493.getValue();
-                case 5:
+                case SpawnGroup.MONSTER:
                     return this.field2494.getValue();
                 default:
                     return false;
