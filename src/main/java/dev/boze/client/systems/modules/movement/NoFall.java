@@ -16,6 +16,9 @@ import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.legit.Reach;
 import dev.boze.client.utils.*;
 import mapped.Class1202;
+import mapped.Class2811;
+import mapped.Class2812;
+import mapped.Class5913;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
@@ -23,10 +26,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.Full;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Pair;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult.Type;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 
 public class NoFall extends Module {
     public static final NoFall INSTANCE = new NoFall();
@@ -178,263 +185,57 @@ public class NoFall extends Module {
     }
 
     @EventHandler
-    private void method2041(MovementEvent param1) {
-        // $VF: Couldn't be decompiled
-        // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-        // java.lang.NullPointerException: Cannot read field "classStruct" because "classNode" is null
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifyNewEnumSwitch(SwitchHelper.java:319)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplify(SwitchHelper.java:41)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:30)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:376)
-        //
-        // Bytecode:
-        // 000: aload 0
-        // 001: invokevirtual dev/boze/client/systems/modules/movement/NoFall.method1971 ()Z
-        // 004: ifeq 008
-        // 007: return
-        // 008: aload 0
-        // 009: getfield dev/boze/client/systems/modules/movement/NoFall.field535 Ldev/boze/client/utils/Timer;
-        // 00c: ldc2_w 500.0
-        // 00f: invokevirtual dev/boze/client/utils/Timer.hasElapsed (D)Z
-        // 012: ifne 016
-        // 015: return
-        // 016: aload 0
-        // 017: invokevirtual dev/boze/client/systems/modules/movement/NoFall.method275 ()Ldev/boze/client/enums/NoFallMode;
-        // 01a: getstatic dev/boze/client/enums/NoFallMode.Grim Ldev/boze/client/enums/NoFallMode;
-        // 01d: if_acmpne 0bd
-        // 020: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 023: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 026: invokevirtual net/minecraft/client/network/ClientPlayerEntity.isOnGround ()Z
-        // 029: ifeq 034
-        // 02c: aload 0
-        // 02d: bipush 0
-        // 02e: putfield dev/boze/client/systems/modules/movement/NoFall.field536 Z
-        // 031: goto 0bc
-        // 034: aload 0
-        // 035: getfield dev/boze/client/systems/modules/movement/NoFall.field536 Z
-        // 038: ifne 0bc
-        // 03b: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 03e: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 041: getfield net/minecraft/client/network/ClientPlayerEntity.fallDistance F
-        // 044: f2d
-        // 045: aload 0
-        // 046: getfield dev/boze/client/systems/modules/movement/NoFall.field532 Ldev/boze/client/settings/MinMaxSetting;
-        // 049: invokevirtual dev/boze/client/settings/MinMaxSetting.getValue ()Ljava/lang/Double;
-        // 04c: invokevirtual java/lang/Double.doubleValue ()D
-        // 04f: dcmpl
-        // 050: iflt 0bc
-        // 053: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 056: getfield net/minecraft/client/MinecraftClient.world Lnet/minecraft/client/world/ClientWorld;
-        // 059: new net/minecraft/util/math/Box
-        // 05c: dup
-        // 05d: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 060: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 063: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getBoundingBox ()Lnet/minecraft/util/math/Box;
-        // 066: getfield net/minecraft/util/math/Box.minX D
-        // 069: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 06c: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 06f: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getBoundingBox ()Lnet/minecraft/util/math/Box;
-        // 072: getfield net/minecraft/util/math/Box.minY D
-        // 075: ldc2_w 2.0
-        // 078: dsub
-        // 079: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 07c: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 07f: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getBoundingBox ()Lnet/minecraft/util/math/Box;
-        // 082: getfield net/minecraft/util/math/Box.minZ D
-        // 085: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 088: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 08b: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getBoundingBox ()Lnet/minecraft/util/math/Box;
-        // 08e: getfield net/minecraft/util/math/Box.maxX D
-        // 091: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 094: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 097: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getBoundingBox ()Lnet/minecraft/util/math/Box;
-        // 09a: getfield net/minecraft/util/math/Box.maxY D
-        // 09d: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 0a0: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 0a3: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getBoundingBox ()Lnet/minecraft/util/math/Box;
-        // 0a6: getfield net/minecraft/util/math/Box.maxZ D
-        // 0a9: invokespecial net/minecraft/util/math/Box.<init> (DDDDDD)V
-        // 0ac: invokevirtual net/minecraft/client/world/ClientWorld.isSpaceEmpty (Lnet/minecraft/util/math/Box;)Z
-        // 0af: ifne 0bc
-        // 0b2: aload 0
-        // 0b3: bipush 1
-        // 0b4: putfield dev/boze/client/systems/modules/movement/NoFall.field537 Z
-        // 0b7: aload 0
-        // 0b8: bipush 1
-        // 0b9: putfield dev/boze/client/systems/modules/movement/NoFall.field536 Z
-        // 0bc: return
-        // 0bd: aload 0
-        // 0be: invokevirtual dev/boze/client/systems/modules/movement/NoFall.method1972 ()Z
-        // 0c1: ifeq 251
-        // 0c4: aload 0
-        // 0c5: invokevirtual dev/boze/client/systems/modules/movement/NoFall.method275 ()Ldev/boze/client/enums/NoFallMode;
-        // 0c8: invokevirtual dev/boze/client/enums/NoFallMode.ordinal ()I
-        // 0cb: tableswitch 390 0 5 37 390 45 94 109 312
-        // 0f0: aload 1
-        // 0f1: bipush 1
-        // 0f2: putfield dev/boze/client/events/MovementEvent.isOnGround Z
-        // 0f5: goto 251
-        // 0f8: aload 1
-        // 0f9: aload 1
-        // 0fa: getfield dev/boze/client/events/MovementEvent.field1931 D
-        // 0fd: ldc2_w 0.001
-        // 100: dadd
-        // 101: putfield dev/boze/client/events/MovementEvent.field1931 D
-        // 104: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 107: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 10a: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 10d: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 110: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getVelocity ()Lnet/minecraft/util/math/Vec3d;
-        // 113: getfield net/minecraft/util/math/Vec3d.x D
-        // 116: dconst_0
-        // 117: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 11a: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 11d: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getVelocity ()Lnet/minecraft/util/math/Vec3d;
-        // 120: getfield net/minecraft/util/math/Vec3d.z D
-        // 123: invokevirtual net/minecraft/client/network/ClientPlayerEntity.setVelocity (DDD)V
-        // 126: goto 251
-        // 129: aload 1
-        // 12a: aload 1
-        // 12b: getfield dev/boze/client/events/MovementEvent.field1931 D
-        // 12e: ldc2_w 3.0
-        // 131: dadd
-        // 132: putfield dev/boze/client/events/MovementEvent.field1931 D
-        // 135: goto 251
-        // 138: bipush 0
-        // 139: istore 5
-        // 13b: iload 5
-        // 13d: bipush 10
-        // 13f: if_icmpge 200
-        // 142: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 145: invokevirtual net/minecraft/client/MinecraftClient.getNetworkHandler ()Lnet/minecraft/client/network/ClientPlayNetworkHandler;
-        // 148: new net/minecraft/network/packet/c2s/play/PlayerMoveC2SPacket$Full
-        // 14b: dup
-        // 14c: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 14f: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 152: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getX ()D
-        // 155: bipush 10
-        // 157: invokestatic java/lang/Math.random ()D
-        // 15a: ldc2_w 20.0
-        // 15d: dmul
-        // 15e: d2i
-        // 15f: isub
-        // 160: i2d
-        // 161: dadd
-        // 162: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 165: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 168: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getY ()D
-        // 16b: bipush 10
-        // 16d: invokestatic java/lang/Math.random ()D
-        // 170: ldc2_w 20.0
-        // 173: dmul
-        // 174: d2i
-        // 175: isub
-        // 176: i2d
-        // 177: dadd
-        // 178: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 17b: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 17e: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getZ ()D
-        // 181: bipush 10
-        // 183: invokestatic java/lang/Math.random ()D
-        // 186: ldc2_w 20.0
-        // 189: dmul
-        // 18a: d2i
-        // 18b: isub
-        // 18c: i2d
-        // 18d: dadd
-        // 18e: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 191: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 194: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getYaw ()F
-        // 197: sipush 180
-        // 19a: invokestatic java/lang/Math.random ()D
-        // 19d: ldc2_w 360.0
-        // 1a0: dmul
-        // 1a1: d2i
-        // 1a2: isub
-        // 1a3: i2f
-        // 1a4: fadd
-        // 1a5: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 1a8: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 1ab: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getPitch ()F
-        // 1ae: bipush 1
-        // 1af: invokespecial net/minecraft/network/packet/c2s/play/PlayerMoveC2SPacket$Full.<init> (DDDFFZ)V
-        // 1b2: invokevirtual net/minecraft/client/network/ClientPlayNetworkHandler.sendPacket (Lnet/minecraft/network/packet/Packet;)V
-        // 1b5: getstatic net/minecraft/util/Hand.MAIN_HAND Lnet/minecraft/util/Hand;
-        // 1b8: new net/minecraft/util/hit/BlockHitResult
-        // 1bb: dup
-        // 1bc: getstatic net/minecraft/util/math/Vec3d.ZERO Lnet/minecraft/util/math/Vec3d;
-        // 1bf: getstatic net/minecraft/util/math/Direction.UP Lnet/minecraft/util/math/Direction;
-        // 1c2: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 1c5: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 1c8: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getPos ()Lnet/minecraft/util/math/Vec3d;
-        // 1cb: invokestatic net/minecraft/util/math/BlockPos.ofFloored (Lnet/minecraft/util/math/Position;)Lnet/minecraft/util/math/BlockPos;
-        // 1ce: bipush 10
-        // 1d0: invokestatic java/lang/Math.random ()D
-        // 1d3: ldc2_w 20.0
-        // 1d6: dmul
-        // 1d7: d2i
-        // 1d8: isub
-        // 1d9: bipush 10
-        // 1db: invokestatic java/lang/Math.random ()D
-        // 1de: ldc2_w 20.0
-        // 1e1: dmul
-        // 1e2: d2i
-        // 1e3: isub
-        // 1e4: bipush 10
-        // 1e6: invokestatic java/lang/Math.random ()D
-        // 1e9: ldc2_w 20.0
-        // 1ec: dmul
-        // 1ed: d2i
-        // 1ee: isub
-        // 1ef: invokevirtual net/minecraft/util/math/BlockPos.add (III)Lnet/minecraft/util/math/BlockPos;
-        // 1f2: bipush 0
-        // 1f3: invokespecial net/minecraft/util/hit/BlockHitResult.<init> (Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Direction;Lnet/minecraft/util/math/BlockPos;Z)V
-        // 1f6: invokestatic mapped/Class5913.method17 (Lnet/minecraft/util/Hand;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/network/packet/c2s/play/PlayerInteractBlockC2SPacket;
-        // 1f9: pop
-        // 1fa: iinc 5 1
-        // 1fd: goto 13b
-        // 200: goto 251
-        // 203: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, dev/boze/client/systems/modules/movement/NoFall.lambda$onSendMovementPackets$2 (Lnet/minecraft/item/ItemStack;)Z, (Lnet/minecraft/item/ItemStack;)Z ]
-        // 208: invokestatic dev/boze/client/utils/InventoryHelper.method168 (Ljava/util/function/Predicate;)I
-        // 20b: istore 5
-        // 20d: iload 5
-        // 20f: bipush -1
-        // 210: if_icmpne 214
-        // 213: return
-        // 214: getstatic mapped/Class2811.field101 Z
-        // 217: istore 6
-        // 219: bipush 1
-        // 21a: putstatic mapped/Class2811.field101 Z
-        // 21d: getstatic dev/boze/client/systems/modules/movement/NoFall.mc Lnet/minecraft/client/MinecraftClient;
-        // 220: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 223: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getPos ()Lnet/minecraft/util/math/Vec3d;
-        // 226: invokestatic net/minecraft/util/math/BlockPos.ofFloored (Lnet/minecraft/util/math/Position;)Lnet/minecraft/util/math/BlockPos;
-        // 229: invokevirtual net/minecraft/util/math/BlockPos.down ()Lnet/minecraft/util/math/BlockPos;
-        // 22c: bipush 1
-        // 22d: bipush 1
-        // 22e: bipush 0
-        // 22f: bipush 0
-        // 230: getstatic net/minecraft/util/Hand.MAIN_HAND Lnet/minecraft/util/Hand;
-        // 233: iload 5
-        // 235: invokestatic mapped/Class2812.method5502 (Lnet/minecraft/util/math/BlockPos;ZZZZLnet/minecraft/util/Hand;I)Ldev/boze/client/utils/PlaceAction;
-        // 238: astore 7
-        // 23a: aload 7
-        // 23c: ifnull 24c
-        // 23f: aload 1
-        // 240: new dev/boze/client/utils/ActionWrapper
-        // 243: dup
-        // 244: aload 7
-        // 246: invokespecial dev/boze/client/utils/ActionWrapper.<init> (Ldev/boze/client/utils/PlaceAction;)V
-        // 249: invokevirtual dev/boze/client/events/MovementEvent.method1074 (Ldev/boze/client/utils/ActionWrapper;)V
-        // 24c: iload 6
-        // 24e: putstatic mapped/Class2811.field101 Z
-        // 251: return
+    private void method2041(final MovementEvent movementEvent) {
+        if (this.method1971()) {
+            return;
+        }
+        if (!this.field535.hasElapsed(500.0)) {
+            return;
+        }
+        if (this.method275() == NoFallMode.Grim) {
+            if (NoFall.mc.player.isOnGround()) {
+                this.field536 = false;
+            }
+            else if (!this.field536 && NoFall.mc.player.fallDistance >= this.field532.getValue() && !NoFall.mc.world.isSpaceEmpty(new Box(NoFall.mc.player.getBoundingBox().minX, NoFall.mc.player.getBoundingBox().minY - 2.0, NoFall.mc.player.getBoundingBox().minZ, NoFall.mc.player.getBoundingBox().maxX, NoFall.mc.player.getBoundingBox().maxY, NoFall.mc.player.getBoundingBox().maxZ))) {
+                this.field537 = true;
+                this.field536 = true;
+            }
+            return;
+        }
+        if (this.method1972()) {
+            switch (this.method275().ordinal()) {
+                case 0:
+                    movementEvent.isOnGround = true;
+                    break;
+                case 2:
+                    movementEvent.field1931 += 0.001;
+                    NoFall.mc.player.setVelocity(NoFall.mc.player.getVelocity().x, 0.0, NoFall.mc.player.getVelocity().z);
+                    break;
+                case 3:
+                    movementEvent.field1931 += 3.0;
+                    break;
+                case 4:
+                    for (int i = 0; i < 10; ++i) {
+                        NoFall.mc.getNetworkHandler().sendPacket(new PlayerMoveC2SPacket.Full(NoFall.mc.player.getX() + (10 - (int)(Math.random() * 20.0)), NoFall.mc.player.getY() + (10 - (int)(Math.random() * 20.0)), NoFall.mc.player.getZ() + (10 - (int)(Math.random() * 20.0)), NoFall.mc.player.getYaw() + (180 - (int)(Math.random() * 360.0)), NoFall.mc.player.getPitch(), true));
+                        Class5913.method17(Hand.MAIN_HAND, new BlockHitResult(Vec3d.ZERO, Direction.UP, BlockPos.ofFloored(NoFall.mc.player.getPos()).add(10 - (int)(Math.random() * 20.0), 10 - (int)(Math.random() * 20.0), 10 - (int)(Math.random() * 20.0)), false));
+                    }
+                    break;
+                case 5: {
+                    final int method168 = InventoryHelper.method168(NoFall::lambda$onSendMovementPackets$2);
+                    if (method168 == -1) {
+                        return;
+                    }
+                    final boolean field101 = Class2811.field101;
+                    Class2811.field101 = true;
+                    final PlaceAction method169 = Class2812.method5502(BlockPos.ofFloored(NoFall.mc.player.getPos()).down(), true, true, false, false, Hand.MAIN_HAND, method168);
+                    if (method169 != null) {
+                        movementEvent.method1074(new ActionWrapper(method169));
+                    }
+                    Class2811.field101 = field101;
+                    break;
+                }
+            }
+        }
     }
 
     @EventHandler

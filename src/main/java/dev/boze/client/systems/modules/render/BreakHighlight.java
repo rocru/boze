@@ -20,6 +20,7 @@ import dev.boze.client.renderer.Renderer3D;
 import dev.boze.client.renderer.packer.ByteTexturePacker;
 import dev.boze.client.settings.*;
 import dev.boze.client.settings.generic.ScalingSetting;
+import dev.boze.client.shaders.ChamsShaderRenderer;
 import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 import dev.boze.client.utils.RGBAColor;
@@ -29,15 +30,14 @@ import mapped.Class5922;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.Frustum;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
 import net.minecraft.util.shape.VoxelShape;
 import org.joml.Vector3d;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -119,385 +119,54 @@ public class BreakHighlight extends Module {
     }
 
     @EventHandler
-    public void method1916(Render3DEvent event) {
-        // $VF: Couldn't be decompiled
-        // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-        // java.lang.NullPointerException: Cannot read field "classStruct" because "classNode" is null
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifyNewEnumSwitch(SwitchHelper.java:319)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplify(SwitchHelper.java:41)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:30)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:376)
-        //
-        // Bytecode:
-        // 000: aload 0
-        // 001: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3440 Ldev/boze/client/settings/BooleanSetting;
-        // 004: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-        // 007: invokevirtual java/lang/Boolean.booleanValue ()Z
-        // 00a: ifeq 028
-        // 00d: aload 0
-        // 00e: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3452 Ldev/boze/client/renderer/Renderer3D;
-        // 011: ifnonnull 021
-        // 014: aload 0
-        // 015: new dev/boze/client/renderer/Renderer3D
-        // 018: dup
-        // 019: bipush 0
-        // 01a: bipush 1
-        // 01b: invokespecial dev/boze/client/renderer/Renderer3D.<init> (ZZ)V
-        // 01e: putfield dev/boze/client/systems/modules/render/BreakHighlight.field3452 Ldev/boze/client/renderer/Renderer3D;
-        // 021: aload 0
-        // 022: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3452 Ldev/boze/client/renderer/Renderer3D;
-        // 025: invokevirtual dev/boze/client/renderer/Renderer3D.method1217 ()V
-        // 028: getstatic dev/boze/client/utils/trackers/BlockBreakingTracker.field1511 Ldev/boze/client/utils/trackers/BlockBreakingTracker;
-        // 02b: aload 0
-        // 02c: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3434 Ldev/boze/client/settings/BooleanSetting;
-        // 02f: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-        // 032: invokevirtual java/lang/Boolean.booleanValue ()Z
-        // 035: invokevirtual dev/boze/client/utils/trackers/BlockBreakingTracker.method666 (Z)Ljava/util/HashMap;
-        // 038: invokevirtual java/util/HashMap.entrySet ()Ljava/util/Set;
-        // 03b: invokeinterface java/util/Set.iterator ()Ljava/util/Iterator; 1
-        // 040: astore 5
-        // 042: aload 5
-        // 044: invokeinterface java/util/Iterator.hasNext ()Z 1
-        // 049: ifeq 34b
-        // 04c: aload 5
-        // 04e: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
-        // 053: checkcast java/util/Map$Entry
-        // 056: astore 6
-        // 058: aload 0
-        // 059: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3436 Ldev/boze/client/settings/BooleanSetting;
-        // 05c: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-        // 05f: invokevirtual java/lang/Boolean.booleanValue ()Z
-        // 062: ifne 084
-        // 065: aload 6
-        // 067: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 06c: checkcast net/minecraft/util/math/BlockPos
-        // 06f: getstatic dev/boze/client/systems/modules/render/BreakHighlight.mc Lnet/minecraft/client/MinecraftClient;
-        // 072: getfield net/minecraft/client/MinecraftClient.interactionManager Lnet/minecraft/client/network/ClientPlayerInteractionManager;
-        // 075: checkcast dev/boze/client/mixin/ClientPlayerInteractionManagerAccessor
-        // 078: invokeinterface dev/boze/client/mixin/ClientPlayerInteractionManagerAccessor.getCurrentBreakingPos ()Lnet/minecraft/util/math/BlockPos; 1
-        // 07d: invokevirtual net/minecraft/util/math/BlockPos.equals (Ljava/lang/Object;)Z
-        // 080: ifeq 084
-        // 083: return
-        // 084: getstatic dev/boze/client/systems/modules/render/BreakHighlight.mc Lnet/minecraft/client/MinecraftClient;
-        // 087: getfield net/minecraft/client/MinecraftClient.world Lnet/minecraft/client/world/ClientWorld;
-        // 08a: aload 6
-        // 08c: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 091: checkcast net/minecraft/util/math/BlockPos
-        // 094: invokevirtual net/minecraft/client/world/ClientWorld.getBlockState (Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/block/BlockState;
-        // 097: astore 7
-        // 099: aload 7
-        // 09b: getstatic dev/boze/client/systems/modules/render/BreakHighlight.mc Lnet/minecraft/client/MinecraftClient;
-        // 09e: getfield net/minecraft/client/MinecraftClient.world Lnet/minecraft/client/world/ClientWorld;
-        // 0a1: aload 6
-        // 0a3: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 0a8: checkcast net/minecraft/util/math/BlockPos
-        // 0ab: invokevirtual net/minecraft/block/BlockState.getOutlineShape (Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/shape/VoxelShape;
-        // 0ae: astore 8
-        // 0b0: aload 8
-        // 0b2: invokevirtual net/minecraft/util/shape/VoxelShape.isEmpty ()Z
-        // 0b5: ifeq 0b9
-        // 0b8: return
-        // 0b9: aload 8
-        // 0bb: invokevirtual net/minecraft/util/shape/VoxelShape.getBoundingBox ()Lnet/minecraft/util/math/Box;
-        // 0be: astore 9
-        // 0c0: aload 0
-        // 0c1: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3435 Ldev/boze/client/settings/BooleanSetting;
-        // 0c4: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-        // 0c7: invokevirtual java/lang/Boolean.booleanValue ()Z
-        // 0ca: ifeq 1d4
-        // 0cd: aload 6
-        // 0cf: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 0d4: checkcast net/minecraft/util/math/BlockPos
-        // 0d7: getstatic dev/boze/client/systems/modules/render/BreakHighlight.mc Lnet/minecraft/client/MinecraftClient;
-        // 0da: getfield net/minecraft/client/MinecraftClient.interactionManager Lnet/minecraft/client/network/ClientPlayerInteractionManager;
-        // 0dd: checkcast dev/boze/client/mixin/ClientPlayerInteractionManagerAccessor
-        // 0e0: invokeinterface dev/boze/client/mixin/ClientPlayerInteractionManagerAccessor.getCurrentBreakingPos ()Lnet/minecraft/util/math/BlockPos; 1
-        // 0e5: invokevirtual net/minecraft/util/math/BlockPos.equals (Ljava/lang/Object;)Z
-        // 0e8: ifne 1d4
-        // 0eb: aload 9
-        // 0ed: aload 6
-        // 0ef: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 0f4: checkcast net/minecraft/util/math/BlockPos
-        // 0f7: invokevirtual net/minecraft/util/math/Box.offset (Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/math/Box;
-        // 0fa: invokevirtual net/minecraft/util/math/Box.getCenter ()Lnet/minecraft/util/math/Vec3d;
-        // 0fd: getstatic dev/boze/client/systems/modules/render/BreakHighlight.mc Lnet/minecraft/client/MinecraftClient;
-        // 100: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 103: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getPos ()Lnet/minecraft/util/math/Vec3d;
-        // 106: invokevirtual net/minecraft/util/math/Vec3d.distanceTo (Lnet/minecraft/util/math/Vec3d;)D
-        // 109: ldc2_w 1.5
-        // 10c: dcmpg
-        // 10d: ifge 1d4
-        // 110: aload 0
-        // 111: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3455 Ljava/util/concurrent/ConcurrentHashMap;
-        // 114: aload 6
-        // 116: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 11b: invokevirtual java/util/concurrent/ConcurrentHashMap.containsKey (Ljava/lang/Object;)Z
-        // 11e: ifeq 140
-        // 121: invokestatic java/lang/System.currentTimeMillis ()J
-        // 124: aload 0
-        // 125: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3455 Ljava/util/concurrent/ConcurrentHashMap;
-        // 128: aload 6
-        // 12a: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 12f: invokevirtual java/util/concurrent/ConcurrentHashMap.get (Ljava/lang/Object;)Ljava/lang/Object;
-        // 132: checkcast java/lang/Long
-        // 135: invokevirtual java/lang/Long.longValue ()J
-        // 138: lsub
-        // 139: ldc2_w 10000
-        // 13c: lcmp
-        // 13d: ifle 1d4
-        // 140: getstatic dev/boze/client/systems/modules/render/BreakHighlight.mc Lnet/minecraft/client/MinecraftClient;
-        // 143: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 146: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getX ()D
-        // 149: invokestatic net/minecraft/util/math/MathHelper.floor (D)I
-        // 14c: aload 6
-        // 14e: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 153: checkcast net/minecraft/util/math/BlockPos
-        // 156: invokevirtual net/minecraft/util/math/BlockPos.getX ()I
-        // 159: isub
-        // 15a: i2f
-        // 15b: getstatic dev/boze/client/systems/modules/render/BreakHighlight.mc Lnet/minecraft/client/MinecraftClient;
-        // 15e: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 161: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getY ()D
-        // 164: invokestatic net/minecraft/util/math/MathHelper.floor (D)I
-        // 167: aload 6
-        // 169: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 16e: checkcast net/minecraft/util/math/BlockPos
-        // 171: invokevirtual net/minecraft/util/math/BlockPos.getY ()I
-        // 174: isub
-        // 175: i2f
-        // 176: getstatic dev/boze/client/systems/modules/render/BreakHighlight.mc Lnet/minecraft/client/MinecraftClient;
-        // 179: getfield net/minecraft/client/MinecraftClient.player Lnet/minecraft/client/network/ClientPlayerEntity;
-        // 17c: invokevirtual net/minecraft/client/network/ClientPlayerEntity.getZ ()D
-        // 17f: invokestatic net/minecraft/util/math/MathHelper.floor (D)I
-        // 182: aload 6
-        // 184: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 189: checkcast net/minecraft/util/math/BlockPos
-        // 18c: invokevirtual net/minecraft/util/math/BlockPos.getZ ()I
-        // 18f: isub
-        // 190: i2f
-        // 191: invokestatic net/minecraft/util/math/Direction.getFacing (FFF)Lnet/minecraft/util/math/Direction;
-        // 194: invokevirtual net/minecraft/util/math/Direction.getOpposite ()Lnet/minecraft/util/math/Direction;
-        // 197: astore 10
-        // 199: new dev/boze/client/gui/notification/Notification
-        // 19c: dup
-        // 19d: ldc "BreakAlert"
-        // 19f: aload 10
-        // 1a1: invokevirtual net/minecraft/util/math/Direction.name ()Ljava/lang/String;
-        // 1a4: invokevirtual java/lang/String.toLowerCase ()Ljava/lang/String;
-        // 1a7: ldc_w "Block facing "
-        // 1aa: swap
-        // 1ab: invokedynamic makeConcatWithConstants (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; bsm=java/lang/invoke/StringConcatFactory.makeConcatWithConstants (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite; args=[ "\u0001\u0001" ]
-        // 1b0: getstatic dev/boze/client/gui/notification/Notifications.WARNING Ldev/boze/client/gui/notification/Notifications;
-        // 1b3: getstatic dev/boze/client/gui/notification/NotificationPriority.Yellow Ldev/boze/client/gui/notification/NotificationPriority;
-        // 1b6: invokespecial dev/boze/client/gui/notification/Notification.<init> (Ljava/lang/String;Ljava/lang/String;Ldev/boze/client/gui/notification/Notifications;Ldev/boze/client/gui/notification/NotificationPriority;)V
-        // 1b9: invokestatic dev/boze/client/manager/NotificationManager.method1151 (Ldev/boze/client/gui/notification/INotification;)V
-        // 1bc: aload 0
-        // 1bd: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3455 Ljava/util/concurrent/ConcurrentHashMap;
-        // 1c0: aload 6
-        // 1c2: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 1c7: checkcast net/minecraft/util/math/BlockPos
-        // 1ca: invokestatic java/lang/System.currentTimeMillis ()J
-        // 1cd: invokestatic java/lang/Long.valueOf (J)Ljava/lang/Long;
-        // 1d0: invokevirtual java/util/concurrent/ConcurrentHashMap.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-        // 1d3: pop
-        // 1d4: aload 6
-        // 1d6: invokeinterface java/util/Map$Entry.getValue ()Ljava/lang/Object; 1
-        // 1db: checkcast java/lang/Float
-        // 1de: invokevirtual java/lang/Float.floatValue ()F
-        // 1e1: fstore 10
-        // 1e3: aload 0
-        // 1e4: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3437 Ldev/boze/client/settings/EnumSetting;
-        // 1e7: invokevirtual dev/boze/client/settings/EnumSetting.method461 ()Ljava/lang/Enum;
-        // 1ea: checkcast dev/boze/client/enums/BreakHighlightMode
-        // 1ed: invokevirtual dev/boze/client/enums/BreakHighlightMode.ordinal ()I
-        // 1f0: tableswitch 301 0 2 28 99 166
-        // 20c: ldc2_w 0.5
-        // 20f: fload 10
-        // 211: f2d
-        // 212: ldc2_w 0.5
-        // 215: dmul
-        // 216: dsub
-        // 217: dstore 11
-        // 219: aload 0
-        // 21a: aload 9
-        // 21c: dload 11
-        // 21e: dneg
-        // 21f: dload 11
-        // 221: dneg
-        // 222: dload 11
-        // 224: dneg
-        // 225: invokevirtual net/minecraft/util/math/Box.expand (DDD)Lnet/minecraft/util/math/Box;
-        // 228: aload 6
-        // 22a: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 22f: checkcast net/minecraft/util/math/BlockPos
-        // 232: invokevirtual net/minecraft/util/math/Box.offset (Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/math/Box;
-        // 235: aload 0
-        // 236: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3440 Ldev/boze/client/settings/BooleanSetting;
-        // 239: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-        // 23c: invokevirtual java/lang/Boolean.booleanValue ()Z
-        // 23f: ifeq 249
-        // 242: aload 0
-        // 243: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3452 Ldev/boze/client/renderer/Renderer3D;
-        // 246: goto 24d
-        // 249: aload 1
-        // 24a: getfield dev/boze/client/events/Render3DEvent.field1950 Ldev/boze/client/renderer/Renderer3D;
-        // 24d: invokevirtual dev/boze/client/systems/modules/render/BreakHighlight.method1919 (Lnet/minecraft/util/math/Box;Ldev/boze/client/renderer/Renderer3D;)V
-        // 250: goto 348
-        // 253: fload 10
-        // 255: f2d
-        // 256: ldc2_w 0.5
-        // 259: dmul
-        // 25a: dstore 11
-        // 25c: aload 0
-        // 25d: aload 9
-        // 25f: dload 11
-        // 261: dneg
-        // 262: dload 11
-        // 264: dneg
-        // 265: dload 11
-        // 267: dneg
-        // 268: invokevirtual net/minecraft/util/math/Box.expand (DDD)Lnet/minecraft/util/math/Box;
-        // 26b: aload 6
-        // 26d: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 272: checkcast net/minecraft/util/math/BlockPos
-        // 275: invokevirtual net/minecraft/util/math/Box.offset (Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/math/Box;
-        // 278: aload 0
-        // 279: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3440 Ldev/boze/client/settings/BooleanSetting;
-        // 27c: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-        // 27f: invokevirtual java/lang/Boolean.booleanValue ()Z
-        // 282: ifeq 28c
-        // 285: aload 0
-        // 286: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3452 Ldev/boze/client/renderer/Renderer3D;
-        // 289: goto 290
-        // 28c: aload 1
-        // 28d: getfield dev/boze/client/events/Render3DEvent.field1950 Ldev/boze/client/renderer/Renderer3D;
-        // 290: invokevirtual dev/boze/client/systems/modules/render/BreakHighlight.method1919 (Lnet/minecraft/util/math/Box;Ldev/boze/client/renderer/Renderer3D;)V
-        // 293: goto 348
-        // 296: ldc2_w 0.5
-        // 299: fload 10
-        // 29b: f2d
-        // 29c: ldc2_w 0.5
-        // 29f: dmul
-        // 2a0: dsub
-        // 2a1: dstore 11
-        // 2a3: aload 0
-        // 2a4: aload 9
-        // 2a6: dload 11
-        // 2a8: dneg
-        // 2a9: dload 11
-        // 2ab: dneg
-        // 2ac: dload 11
-        // 2ae: dneg
-        // 2af: invokevirtual net/minecraft/util/math/Box.expand (DDD)Lnet/minecraft/util/math/Box;
-        // 2b2: aload 6
-        // 2b4: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 2b9: checkcast net/minecraft/util/math/BlockPos
-        // 2bc: invokevirtual net/minecraft/util/math/Box.offset (Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/math/Box;
-        // 2bf: aload 0
-        // 2c0: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3440 Ldev/boze/client/settings/BooleanSetting;
-        // 2c3: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-        // 2c6: invokevirtual java/lang/Boolean.booleanValue ()Z
-        // 2c9: ifeq 2d3
-        // 2cc: aload 0
-        // 2cd: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3452 Ldev/boze/client/renderer/Renderer3D;
-        // 2d0: goto 2d7
-        // 2d3: aload 1
-        // 2d4: getfield dev/boze/client/events/Render3DEvent.field1950 Ldev/boze/client/renderer/Renderer3D;
-        // 2d7: invokevirtual dev/boze/client/systems/modules/render/BreakHighlight.method1919 (Lnet/minecraft/util/math/Box;Ldev/boze/client/renderer/Renderer3D;)V
-        // 2da: fload 10
-        // 2dc: f2d
-        // 2dd: ldc2_w 0.5
-        // 2e0: dmul
-        // 2e1: dstore 11
-        // 2e3: aload 0
-        // 2e4: aload 9
-        // 2e6: dload 11
-        // 2e8: dneg
-        // 2e9: dload 11
-        // 2eb: dneg
-        // 2ec: dload 11
-        // 2ee: dneg
-        // 2ef: invokevirtual net/minecraft/util/math/Box.expand (DDD)Lnet/minecraft/util/math/Box;
-        // 2f2: aload 6
-        // 2f4: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 2f9: checkcast net/minecraft/util/math/BlockPos
-        // 2fc: invokevirtual net/minecraft/util/math/Box.offset (Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/math/Box;
-        // 2ff: aload 0
-        // 300: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3440 Ldev/boze/client/settings/BooleanSetting;
-        // 303: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-        // 306: invokevirtual java/lang/Boolean.booleanValue ()Z
-        // 309: ifeq 313
-        // 30c: aload 0
-        // 30d: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3452 Ldev/boze/client/renderer/Renderer3D;
-        // 310: goto 317
-        // 313: aload 1
-        // 314: getfield dev/boze/client/events/Render3DEvent.field1950 Ldev/boze/client/renderer/Renderer3D;
-        // 317: invokevirtual dev/boze/client/systems/modules/render/BreakHighlight.method1919 (Lnet/minecraft/util/math/Box;Ldev/boze/client/renderer/Renderer3D;)V
-        // 31a: goto 348
-        // 31d: aload 0
-        // 31e: aload 9
-        // 320: aload 6
-        // 322: invokeinterface java/util/Map$Entry.getKey ()Ljava/lang/Object; 1
-        // 327: checkcast net/minecraft/util/math/BlockPos
-        // 32a: invokevirtual net/minecraft/util/math/Box.offset (Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/math/Box;
-        // 32d: aload 0
-        // 32e: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3440 Ldev/boze/client/settings/BooleanSetting;
-        // 331: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-        // 334: invokevirtual java/lang/Boolean.booleanValue ()Z
-        // 337: ifeq 341
-        // 33a: aload 0
-        // 33b: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3452 Ldev/boze/client/renderer/Renderer3D;
-        // 33e: goto 345
-        // 341: aload 1
-        // 342: getfield dev/boze/client/events/Render3DEvent.field1950 Ldev/boze/client/renderer/Renderer3D;
-        // 345: invokevirtual dev/boze/client/systems/modules/render/BreakHighlight.method1919 (Lnet/minecraft/util/math/Box;Ldev/boze/client/renderer/Renderer3D;)V
-        // 348: goto 042
-        // 34b: aload 0
-        // 34c: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3440 Ldev/boze/client/settings/BooleanSetting;
-        // 34f: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-        // 352: invokevirtual java/lang/Boolean.booleanValue ()Z
-        // 355: ifeq 3ae
-        // 358: aload 0
-        // 359: aload 1
-        // 35a: invokedynamic run (Ldev/boze/client/systems/modules/render/BreakHighlight;Ldev/boze/client/events/Render3DEvent;)Ljava/lang/Runnable; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ ()V, dev/boze/client/systems/modules/render/BreakHighlight.lambda$onRender3D$4 (Ldev/boze/client/events/Render3DEvent;)V, ()V ]
-        // 35f: aload 0
-        // 360: invokevirtual dev/boze/client/systems/modules/render/BreakHighlight.method1918 ()Ldev/boze/client/enums/ShaderMode;
-        // 363: aload 0
-        // 364: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3442 Ldev/boze/client/settings/BooleanSetting;
-        // 367: invokevirtual dev/boze/client/settings/BooleanSetting.method419 ()Ljava/lang/Boolean;
-        // 36a: invokevirtual java/lang/Boolean.booleanValue ()Z
-        // 36d: aload 0
-        // 36e: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3438 Ldev/boze/client/settings/ColorSetting;
-        // 371: aload 0
-        // 372: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3439 Ldev/boze/client/settings/ColorSetting;
-        // 375: aload 0
-        // 376: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3446 Ldev/boze/client/settings/IntSetting;
-        // 379: invokevirtual dev/boze/client/settings/IntSetting.method434 ()Ljava/lang/Integer;
-        // 37c: invokevirtual java/lang/Integer.intValue ()I
-        // 37f: aload 0
-        // 380: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3447 Ldev/boze/client/settings/FloatSetting;
-        // 383: invokevirtual dev/boze/client/settings/FloatSetting.method423 ()Ljava/lang/Float;
-        // 386: invokevirtual java/lang/Float.floatValue ()F
-        // 389: aload 0
-        // 38a: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3444 Ldev/boze/client/settings/FloatSetting;
-        // 38d: invokevirtual dev/boze/client/settings/FloatSetting.method423 ()Ljava/lang/Float;
-        // 390: invokevirtual java/lang/Float.floatValue ()F
-        // 393: aload 0
-        // 394: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3445 Ldev/boze/client/settings/FloatSetting;
-        // 397: invokevirtual dev/boze/client/settings/FloatSetting.method423 ()Ljava/lang/Float;
-        // 39a: invokevirtual java/lang/Float.floatValue ()F
-        // 39d: aload 0
-        // 39e: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3443 Ldev/boze/client/settings/IntSetting;
-        // 3a1: invokevirtual dev/boze/client/settings/IntSetting.method434 ()Ljava/lang/Integer;
-        // 3a4: invokevirtual java/lang/Integer.intValue ()I
-        // 3a7: aload 0
-        // 3a8: getfield dev/boze/client/systems/modules/render/BreakHighlight.field3453 Ldev/boze/client/utils/render/ByteTexture;
-        // 3ab: invokestatic dev/boze/client/shaders/ChamsShaderRenderer.method1310 (Ljava/lang/Runnable;Ldev/boze/client/enums/ShaderMode;ZLdev/boze/client/settings/ColorSetting;Ldev/boze/client/settings/ColorSetting;IFFFILdev/boze/client/utils/render/ByteTexture;)V
-        // 3ae: return
+    public void method1916(final Render3DEvent event) {
+        if (this.field3440.getValue()) {
+            if (this.field3452 == null) {
+                this.field3452 = new Renderer3D(false, true);
+            }
+            this.field3452.method1217();
+        }
+        for (Entry<BlockPos, Float> blockPosFloatEntry : BlockBreakingTracker.field1511.method666(this.field3434.getValue()).entrySet()) {
+            final Entry<BlockPos, ?> entry = (Entry<BlockPos, ?>) blockPosFloatEntry;
+            if (!this.field3436.getValue() && entry.getKey().equals((Object) ((ClientPlayerInteractionManagerAccessor) BreakHighlight.mc.interactionManager).getCurrentBreakingPos())) {
+                return;
+            }
+            final VoxelShape outlineShape = BreakHighlight.mc.world.getBlockState((BlockPos) entry.getKey()).getOutlineShape(BreakHighlight.mc.world, (BlockPos) entry.getKey());
+            if (outlineShape.isEmpty()) {
+                return;
+            }
+            final Box boundingBox = outlineShape.getBoundingBox();
+            if (this.field3435.getValue() && !entry.getKey().equals((Object) ((ClientPlayerInteractionManagerAccessor) BreakHighlight.mc.interactionManager).getCurrentBreakingPos()) && boundingBox.offset((BlockPos) entry.getKey()).getCenter().distanceTo(BreakHighlight.mc.player.getPos()) < 1.5 && (!this.field3455.containsKey(entry.getKey()) || System.currentTimeMillis() - this.field3455.get(entry.getKey()) > 10000L)) {
+                NotificationManager.method1151(new Notification("BreakAlert", "Block facing " + Direction.getFacing((float) (MathHelper.floor(BreakHighlight.mc.player.getX()) - entry.getKey().getX()), (float) (MathHelper.floor(BreakHighlight.mc.player.getY()) - entry.getKey().getY()), (float) (MathHelper.floor(BreakHighlight.mc.player.getZ()) - entry.getKey().getZ())).getOpposite().name().toLowerCase(), Notifications.WARNING, NotificationPriority.Yellow));
+                this.field3455.put(entry.getKey(), System.currentTimeMillis());
+            }
+            final float floatValue = (float) entry.getValue();
+            switch (this.field3437.getValue().ordinal()) {
+                case 0: {
+                    final double n = 0.5 - floatValue * 0.5;
+                    this.method1919(boundingBox.expand(-n, -n, -n).offset((BlockPos) entry.getKey()), ((boolean) this.field3440.getValue()) ? this.field3452 : event.field1950);
+                    continue;
+                }
+                case 1: {
+                    final double n2 = floatValue * 0.5;
+                    this.method1919(boundingBox.expand(-n2, -n2, -n2).offset((BlockPos) entry.getKey()), ((boolean) this.field3440.getValue()) ? this.field3452 : event.field1950);
+                    continue;
+                }
+                case 2: {
+                    final double n3 = 0.5 - floatValue * 0.5;
+                    this.method1919(boundingBox.expand(-n3, -n3, -n3).offset((BlockPos) entry.getKey()), ((boolean) this.field3440.getValue()) ? this.field3452 : event.field1950);
+                    final double n4 = floatValue * 0.5;
+                    this.method1919(boundingBox.expand(-n4, -n4, -n4).offset((BlockPos) entry.getKey()), ((boolean) this.field3440.getValue()) ? this.field3452 : event.field1950);
+                    continue;
+                }
+                default:
+                    this.method1919(boundingBox.offset((BlockPos) entry.getKey()), ((boolean) this.field3440.getValue()) ? this.field3452 : event.field1950);
+                    continue;
+            }
+        }
+        if (this.field3440.getValue()) {
+            ChamsShaderRenderer.method1310(() -> lambda$onRender3D$4(event), this.method1918(), this.field3442.getValue(), this.field3438, this.field3439, this.field3446.getValue(), this.field3447.getValue(), this.field3444.getValue(), this.field3445.getValue(), this.field3443.getValue(), this.field3453);
+        }
     }
 
     private void method1917(Vector3d var1, double var2, int var4) {

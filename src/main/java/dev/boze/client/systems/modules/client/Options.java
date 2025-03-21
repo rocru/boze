@@ -54,38 +54,21 @@ public class Options extends Module {
         return INSTANCE.field989.getValue();
     }
 
-    @EventHandler(
-            priority = 9999
-    )
-    private void method2041(MovementEvent param1) {
-        // $VF: Couldn't be decompiled
-        // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-        // java.lang.NullPointerException: Cannot read field "classStruct" because "classNode" is null
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifyNewEnumSwitch(SwitchHelper.java:319)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplify(SwitchHelper.java:41)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:30)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-        //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:376)
-        //
-        // Bytecode:
-        // 00: aload 0
-        // 01: getfield dev/boze/client/systems/modules/client/Options.field983 Ldev/boze/client/settings/EnumSetting;
-        // 04: invokevirtual dev/boze/client/settings/EnumSetting.method461 ()Ljava/lang/Enum;
-        // 07: checkcast dev/boze/client/enums/PacketRenderMode
-        // 0a: invokevirtual dev/boze/client/enums/PacketRenderMode.ordinal ()I
-        // 0d: tableswitch 53 0 2 27 34 41
-        // 28: bipush 1
-        // 29: putstatic dev/boze/client/systems/modules/client/Options.field993 Z
-        // 2c: goto 42
-        // 2f: bipush 0
-        // 30: putstatic dev/boze/client/systems/modules/client/Options.field993 Z
-        // 33: goto 42
-        // 36: getstatic dev/boze/client/systems/modules/client/Options.field994 Ldev/boze/client/utils/Timer;
-        // 39: ldc2_w 100.0
-        // 3c: invokevirtual dev/boze/client/utils/Timer.hasElapsed (D)Z
-        // 3f: putstatic dev/boze/client/systems/modules/client/Options.field993 Z
-        // 42: return
+    @EventHandler(priority=9999)
+    private void method2041(MovementEvent movementEvent) {
+        switch (this.field983.getValue().ordinal()) {
+            case 0: {
+                field993 = true;
+                break;
+            }
+            case 1: {
+                field993 = false;
+                break;
+            }
+            case 2: {
+                field993 = field994.hasElapsed(100.0);
+            }
+        }
     }
 
     @Override
