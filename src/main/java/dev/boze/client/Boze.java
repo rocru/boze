@@ -7,7 +7,6 @@ import dev.boze.api.BozeInstance;
 import dev.boze.api.addon.Addon;
 import dev.boze.client.api.APIEventHandler;
 import dev.boze.client.api.BozeAPI;
-import dev.boze.client.core.Version;
 import dev.boze.client.events.PacketBundleEvent;
 import dev.boze.client.gui.renderer.IconLoader;
 import dev.boze.client.instances.impl.ChatInstance;
@@ -32,6 +31,7 @@ import mapped.Class3069;
 import meteordevelopment.orbit.EventBus;
 import meteordevelopment.orbit.EventHandler;
 import meteordevelopment.orbit.IEventBus;
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
@@ -57,7 +57,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class Boze implements ModInitializer {
+public class Boze implements ClientModInitializer {
     public static float prevLastYaw;
     public static float prevLastPitch;
     public static boolean isInventory = false;
@@ -74,7 +74,7 @@ public class Boze implements ModInitializer {
     private static final LinkedList<String> keys = new LinkedList<>();
 
     @Override
-    public void onInitialize() {
+    public void onInitializeClient() {
         LOG.info("Initializing Boze");
 
         try {
@@ -123,10 +123,12 @@ public class Boze implements ModInitializer {
                 }
             }*/
 
-            keys.add("my awesome key");
+        keys.add("my awesome key");
 
-            //var15.close();
-            EVENT_BUS.registerLambdaFactory("dev.boze.client", Boze::lambda$initialize$0);
+        //var15.close();
+        LOG.info("registering lambda factory");
+        EVENT_BUS.registerLambdaFactory("dev.boze.client", Boze::lambda$initialize$0);
+        LOG.info("registered lambda factory");
        /*  }catch (NoSuchAlgorithmException | IOException var12) {
             LOG.error("Error during initialization", var12);
         }*/
@@ -161,7 +163,8 @@ public class Boze implements ModInitializer {
         accounts = new AccountManager();
         TickRateTracker.reset();
         ConfigManager.createDirs();
-        QuadRenderer.initialize();
+        MinecraftClient.getInstance().execute(QuadRenderer::initialize);
+        //QuadRenderer.initialize();
     }
 
     private void postInit() {

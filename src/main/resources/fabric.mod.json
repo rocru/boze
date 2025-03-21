@@ -15,7 +15,7 @@
   "icon": "assets/boze/textures/logo.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
+    "client": [
       "dev.boze.client.Boze"
     ]
   },
@@ -23,8 +23,7 @@
     "boze.mixins.json"
   ],
   "depends": {
-    "minecraft": "~1.21.4",
-    "java": ">=21",
-    "fabric-api": "*"
+    "minecraft": "~1.21.1",
+    "java": ">=21"
   }
 }

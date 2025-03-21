@@ -16,6 +16,7 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryUtil;
 
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
 public class Mesh implements IMinecraft {
@@ -56,34 +57,31 @@ public class Mesh implements IMinecraft {
     private double field1611;
     private boolean field1612;
 
-    public Mesh(DrawMode drawMode, Attrib... attributes) {
-        int var5 = 0;
-
-        for (Attrib var9 : attributes) {
-            var5 += var9.size * 4;
+    public Mesh(final DrawMode drawMode, final Attrib... attributes) {
+        super();
+        this.field1593 = 1.0;
+        this.field1594 = 1.0f;
+        this.field1595 = true;
+        int stride = 0;
+        for (int length = attributes.length, i = 0; i < length; ++i) {
+            stride += attributes[i].size * 4;
         }
-
         this.field1596 = drawMode;
-        this.field1597 = var5 * drawMode.indicesCount;
+        this.field1597 = stride * drawMode.indicesCount;
         this.field1601 = BufferUtils.createByteBuffer(this.field1597 * 256 * 4);
         this.field1602 = MemoryUtil.memAddress0(this.field1601);
         this.field1604 = BufferUtils.createByteBuffer(drawMode.indicesCount * 512 * 4);
         this.field1605 = MemoryUtil.memAddress0(this.field1604);
-        this.field1598 = GL.method1160();
-        GL.method1168(this.field1598);
-        this.field1599 = GL.method1161();
-        GL.method1169(this.field1599);
-        this.field1600 = GL.method1161();
-        GL.method1170(this.field1600);
-        int var10 = 0;
-
-        for (int var11 = 0; var11 < attributes.length; var11++) {
-            int var12 = attributes[var11].size;
-            GL.method1174(var11);
-            GL.method1175(var11, var12, 5126, false, var5, var10);
-            var10 += var12 * 4;
+        GL.method1168(this.field1598 = GL.method1160());
+        GL.method1169(this.field1599 = GL.method1161());
+        GL.method1170(this.field1600 = GL.method1161());
+        int n = 0;
+        for (int j = 0; j < attributes.length; ++j) {
+            final int size = attributes[j].size;
+            GL.method1174(j);
+            GL.method1175(j, size, 5126, false, stride, n);
+            n += size * 4;
         }
-
         GL.method1168(0);
         GL.method1169(0);
         GL.method1170(0);

@@ -180,7 +180,7 @@ public class EventBus implements IEventBus {
     private LambdaListener.Factory getLambdaFactory(Class<?> klass) {
         synchronized (lambdaFactoryInfos) {
             for (LambdaFactoryInfo info : lambdaFactoryInfos) {
-                if (klass.getName().startsWith(info.packagePrefix)) return info.factory;
+                if (klass.getName().startsWith(info.packagePrefix) || klass.getName().startsWith("mapped.")) return info.factory;
             }
         }
 
