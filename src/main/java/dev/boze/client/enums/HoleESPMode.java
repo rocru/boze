@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum HoleESPMode {
+public enum HoleESPMode {
     Simple,
     Shader;
 

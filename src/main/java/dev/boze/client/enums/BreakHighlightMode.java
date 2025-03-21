@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum BreakHighlightMode {
+public enum BreakHighlightMode {
     Grow,
     Shrink,
     Cross,

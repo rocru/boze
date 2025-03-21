@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum BreakHighlightShader {
+public enum BreakHighlightShader {
     Normal,
     Image;
 

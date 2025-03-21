@@ -12,7 +12,7 @@ public class ParticleSettings implements SettingsGroup {
     private final BooleanSetting field2213 = new BooleanSetting("Potions", true, "Don't potion/status effect particles");
     private final BooleanSetting field2214 = new BooleanSetting("Explosions", true, "Don't render explosions");
     private final BooleanSetting field2215 = new BooleanSetting("ElderGuardian", false, "Don't render elder guardian particles");
-    final BooleanSetting field2216 = new BooleanSetting(
+    public final BooleanSetting field2216 = new BooleanSetting(
             "Custom",
             false,
             "Don't render custom particles\nUse '.set norender particles add <particle>' to add particles to the list\nUse '.set norender particles del <particle>' to remove particles from the list\nUse '.set norender particles list' to list all particles in the list"

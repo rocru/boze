@@ -2,7 +2,7 @@ package mapped;
 
 import dev.boze.client.utils.RGBAColor;
 
-class Class3060 {
+public class Class3060 {
    public final String field145;
    public final RGBAColor field146;
 

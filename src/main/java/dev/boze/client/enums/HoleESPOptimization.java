@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum HoleESPOptimization {
+public enum HoleESPOptimization {
     Off,
     Normal,
     Thread;

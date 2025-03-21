@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum LogoutSpotsShader {
+public enum LogoutSpotsShader {
     Normal,
     Image;
 

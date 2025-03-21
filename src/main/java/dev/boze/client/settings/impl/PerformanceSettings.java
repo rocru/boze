@@ -14,8 +14,8 @@ import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.projectile.FireworkRocketEntity;
 
 public class PerformanceSettings implements SettingsGroup {
-    final BooleanSetting field2218 = new BooleanSetting("Unfocused", false, "Don't render when game is unfocused");
-    final BooleanSetting field2219 = new BooleanSetting("Skylight", false, "Don't recalculate skylight");
+    public final BooleanSetting field2218 = new BooleanSetting("Unfocused", false, "Don't render when game is unfocused");
+    public final BooleanSetting field2219 = new BooleanSetting("Skylight", false, "Don't recalculate skylight");
     private final BooleanSetting field2220 = new BooleanSetting("Gravity", false, "Don't render falling blocks");
     private final BooleanSetting field2221 = new BooleanSetting("ArmorStands", false, "Don't render armor stands");
     private final BooleanSetting field2222 = new BooleanSetting("Fireworks", false, "Don't render fireworks, might mess with elytra flying");

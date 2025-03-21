@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum BoxDrawMode {
+public enum BoxDrawMode {
     Complex,
     Simple,
     Flat;

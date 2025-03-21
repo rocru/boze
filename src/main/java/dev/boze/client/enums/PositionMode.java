@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum PositionMode {
+public enum PositionMode {
     Feet,
     Body,
     Head;

@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum BlockHighlightMode {
+public enum BlockHighlightMode {
     Normal,
     Flat,
     Complex;

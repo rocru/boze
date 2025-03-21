@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum NewChunksScan {
+public enum NewChunksScan {
     New,
     Old,
     Both;

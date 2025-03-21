@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum HoleESPIgnoreOwn {
+public enum HoleESPIgnoreOwn {
     Off,
     Basic,
     Eye,

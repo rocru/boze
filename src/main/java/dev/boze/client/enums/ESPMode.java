@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum ESPMode {
+public enum ESPMode {
     Simple,
     Shader;
 

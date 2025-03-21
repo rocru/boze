@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum NameTagsArmor {
+public enum NameTagsArmor {
     Off,
     Normal,
     Reverse;

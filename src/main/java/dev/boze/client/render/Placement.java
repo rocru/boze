@@ -3,8 +3,8 @@ package dev.boze.client.render;
 import net.minecraft.util.math.BlockPos;
 
 public class Placement {
-    private final int[] field2151 = new int[3];
-    private long field2152;
+    public final int[] field2151 = new int[3];
+    public long field2152;
 
     public void method1157(BlockPos pos, long time) {
         this.field2151[0] = pos.getX();
