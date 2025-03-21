@@ -32,24 +32,15 @@ public class ConfigCommand extends Command {
 
     @Override
     public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.then(method403("list").executes(this::lambda$build$1));
-        builder.then(method403("share").then(method402("config", ConfigArgument.method987()).executes(this::lambda$build$3)));
-        builder.then(
-                method403("group")
-                        .then(method402("title", StringArgumentType.word()).then(method402("codes", StringArgumentType.greedyString()).executes(this::lambda$build$5)))
-        );
-        builder.then(method403("import").then(method402("title", StringArgumentType.string()).executes(this::lambda$build$7)));
-        builder.then(method403("delete").then(method402("title", StringArgumentType.string()).executes(this::lambda$build$8)));
-        builder.then(
-                method403("export")
-                        .then(method402("module", ModuleArgument.method1003()).then(method402("title", StringArgumentType.string()).executes(this::lambda$build$9)))
-        );
-        builder.then(method403("exportall").then(method402("title", StringArgumentType.string()).executes(this::lambda$build$10)));
-
-        for (Category var8 : Category.values()) {
-            builder.then(
-                    method403("export" + var8.name().toLowerCase(Locale.ROOT)).then(method402("title", StringArgumentType.string()).executes(this::lambda$build$11))
-            );
+        builder.then(ConfigCommand.method403("list").executes(this::lambda$build$1));
+        builder.then(ConfigCommand.method403("share").then(ConfigCommand.method402("config", ConfigArgument.method987()).executes(this::lambda$build$3)));
+        builder.then(ConfigCommand.method403("group").then(ConfigCommand.method402("title", StringArgumentType.word()).then(ConfigCommand.method402("codes", StringArgumentType.greedyString()).executes(this::lambda$build$5))));
+        builder.then(ConfigCommand.method403("import").then(ConfigCommand.method402("title", StringArgumentType.string()).executes(this::lambda$build$7)));
+        builder.then(ConfigCommand.method403("delete").then(ConfigCommand.method402("title", StringArgumentType.string()).executes(this::lambda$build$8)));
+        builder.then(ConfigCommand.method403("export").then(ConfigCommand.method402("module", ModuleArgument.method1003()).then(ConfigCommand.method402("title", StringArgumentType.string()).executes(this::lambda$build$9))));
+        builder.then(ConfigCommand.method403("exportall").then(ConfigCommand.method402("title", StringArgumentType.string()).executes(this::lambda$build$10)));
+        for (Category category : Category.values()) {
+            builder.then(ConfigCommand.method403("export" + category.name().toLowerCase(Locale.ROOT)).then(ConfigCommand.method402("title", StringArgumentType.string()).executes(arg_0 -> this.lambda$build$11(category, arg_0))));
         }
     }
 
@@ -63,7 +54,7 @@ public class ConfigCommand extends Command {
         return null;
     }
 
-    private int lambda$build$11(Category var1, CommandContext var2) throws CommandSyntaxException {
+    private int lambda$build$11(Category var1, CommandContext<CommandSource> var2) throws CommandSyntaxException {
         String var6 = (String) var2.getArgument("title", String.class);
         NbtCompound var7 = ConfigNBTSerializer.method2140(var6, var1);
         NbtCompound var8 = new NbtCompound();
@@ -123,7 +114,7 @@ public class ConfigCommand extends Command {
     }
 
     private int lambda$build$7(CommandContext var1) throws CommandSyntaxException {
-        ArrayList var5 = new ArrayList();
+        ArrayList<String> var5 = new ArrayList();
 
         for (String var9 : ConfigManager.get(ConfigType.CONFIG)) {
             if (Files.getNameWithoutExtension(var9).equalsIgnoreCase((String) var1.getArgument("title", String.class))) {
@@ -194,8 +185,8 @@ public class ConfigCommand extends Command {
             }
         }
 
-        if (var5.size() > 0) {
-            this.method624("Loaded config " + var1.getArgument("title", String.class) + " for:");
+        if (!var5.isEmpty()) {
+            this.method624("Loaded config " + (String)var1.getArgument("title", String.class) + " for:", new Object[0]);
             var5.forEach(this::lambda$build$6);
         }
 
@@ -206,11 +197,11 @@ public class ConfigCommand extends Command {
         this.method624(" - (highlight)%s", var1);
     }
 
-    private int lambda$build$5(CommandContext var1) throws CommandSyntaxException {
-        String var4 = StringArgumentType.getString(var1, "title");
-        String var5 = StringArgumentType.getString(var1, "codes");
-        String[] var6 = var5.split(" ");
-        BozeExecutor.method2200(this::lambda$build$4);
+    private int lambda$build$5(CommandContext commandContext) throws CommandSyntaxException {
+        String string = StringArgumentType.getString((CommandContext)commandContext, (String)"title");
+        String string2 = StringArgumentType.getString((CommandContext)commandContext, (String)"codes");
+        String[] stringArray = string2.split(" ");
+        BozeExecutor.method2200(() -> this.lambda$build$4(stringArray, string));
         return 1;
     }
 
@@ -244,7 +235,7 @@ public class ConfigCommand extends Command {
 
     private int lambda$build$3(CommandContext var1) throws CommandSyntaxException {
         String var4 = (String) var1.getArgument("config", String.class);
-        BozeExecutor.method2200(this::lambda$build$2);
+        BozeExecutor.method2200(() -> lambda$build$2(var4));
         return 1;
     }
 
@@ -267,7 +258,7 @@ public class ConfigCommand extends Command {
     }
 
     private int lambda$build$1(CommandContext var1) throws CommandSyntaxException {
-        ArrayList var5 = new ArrayList();
+        ArrayList<String> var5 = new ArrayList();
 
         for (String var9 : ConfigManager.get(ConfigType.CONFIG)) {
             var5.add(Files.getNameWithoutExtension(var9));

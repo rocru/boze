@@ -20,7 +20,7 @@ public class Class2741 implements ISerializable<Class2741> {
     // $VF: synthetic method
     // $VF: bridge method
     @Override
-    public Object fromTag(NbtCompound nbtCompound) {
+    public Class2741 fromTag(NbtCompound nbtCompound) {
         return this.method5349(nbtCompound);
     }
 }

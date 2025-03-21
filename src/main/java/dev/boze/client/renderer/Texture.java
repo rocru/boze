@@ -15,7 +15,7 @@ public class Texture {
         if (RenderSystem.isOnRenderThread()) {
             this.method496(width, height, data, format, filterMin, filterMag);
         } else {
-            RenderSystem.recordRenderCall(() -> this.lambda$new$0(width, height, data, format, filterMin, filterMag));
+            RenderSystem.recordRenderCall(() -> this.wrap(width, height, data, format, filterMin, filterMag));
         }
     }
 
@@ -65,7 +65,7 @@ public class Texture {
         this.field1058 = false;
     }
 
-    private void lambda$new$0(int var1, int var2, byte[] var3, Format var4, Filter var5, Filter var6) {
+    private void wrap(int var1, int var2, byte[] var3, Format var4, Filter var5, Filter var6) {
         this.method496(var1, var2, var3, var4, var5, var6);
     }
 

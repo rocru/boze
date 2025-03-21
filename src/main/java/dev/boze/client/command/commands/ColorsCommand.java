@@ -231,7 +231,7 @@ public class ColorsCommand extends Command {
     }
 
     private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
-        HashMap var5 = Colors.INSTANCE.field2343;
+        HashMap<String, Class5903<?>> var5 = Colors.INSTANCE.field2343;
         if (!var5.isEmpty()) {
             this.method624("Colors (%d):", var5.size());
             var5.forEach(this::method628);

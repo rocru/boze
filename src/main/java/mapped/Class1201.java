@@ -54,7 +54,7 @@ public class Class1201 {
             if (Class1201.field58.isEmpty() && !Class1201.field57.isEmpty()) {
                 final NbtCompound method2389 = method2389("MAIN_PROFILE");
                 if (method2389 != null) {
-                    Boze.getModules().method399(method2389);
+                    Boze.getModules().fromTag(method2389);
                 }
             }
             method2383(false);

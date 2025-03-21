@@ -66,7 +66,7 @@ public class ConfigManager {
     public static void load() {
         Boze.getAccounts().deserialize(readFile(Boze.FOLDER, "accounts"));
         Boze.getMacros().deserialize(readFile(Boze.FOLDER, "macros"));
-        Class5906.field1.method12(readFile(Boze.FOLDER, "local-storage"));
+        Class5906.field1.deserialize(readFile(Boze.FOLDER, "local-storage"));
     }
 
     public static void writeFile(File folder, String name, JsonObject object) {
