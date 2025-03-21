@@ -323,7 +323,7 @@ public class AutoArmor extends Module {
         }
     }
 
-    private int method1645(ItemStack itemStack) {
+    public int method1645(ItemStack itemStack) {
         if (itemStack.isEmpty()) {
             return 0;
         }
