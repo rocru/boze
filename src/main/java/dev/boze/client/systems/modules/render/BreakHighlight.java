@@ -36,8 +36,6 @@ import org.joml.Vector3d;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -127,16 +125,16 @@ public class BreakHighlight extends Module {
             this.field3452.method1217();
         }
         for (Entry<BlockPos, Float> blockPosFloatEntry : BlockBreakingTracker.field1511.method666(this.field3434.getValue()).entrySet()) {
-            final Entry<BlockPos, ?> entry = (Entry<BlockPos, ?>) blockPosFloatEntry;
-            if (!this.field3436.getValue() && entry.getKey().equals((Object) ((ClientPlayerInteractionManagerAccessor) BreakHighlight.mc.interactionManager).getCurrentBreakingPos())) {
+            final Entry<BlockPos, ?> entry = blockPosFloatEntry;
+            if (!this.field3436.getValue() && entry.getKey().equals(((ClientPlayerInteractionManagerAccessor) BreakHighlight.mc.interactionManager).getCurrentBreakingPos())) {
                 return;
             }
-            final VoxelShape outlineShape = BreakHighlight.mc.world.getBlockState((BlockPos) entry.getKey()).getOutlineShape(BreakHighlight.mc.world, (BlockPos) entry.getKey());
+            final VoxelShape outlineShape = BreakHighlight.mc.world.getBlockState(entry.getKey()).getOutlineShape(BreakHighlight.mc.world, entry.getKey());
             if (outlineShape.isEmpty()) {
                 return;
             }
             final Box boundingBox = outlineShape.getBoundingBox();
-            if (this.field3435.getValue() && !entry.getKey().equals((Object) ((ClientPlayerInteractionManagerAccessor) BreakHighlight.mc.interactionManager).getCurrentBreakingPos()) && boundingBox.offset((BlockPos) entry.getKey()).getCenter().distanceTo(BreakHighlight.mc.player.getPos()) < 1.5 && (!this.field3455.containsKey(entry.getKey()) || System.currentTimeMillis() - this.field3455.get(entry.getKey()) > 10000L)) {
+            if (this.field3435.getValue() && !entry.getKey().equals(((ClientPlayerInteractionManagerAccessor) BreakHighlight.mc.interactionManager).getCurrentBreakingPos()) && boundingBox.offset(entry.getKey()).getCenter().distanceTo(BreakHighlight.mc.player.getPos()) < 1.5 && (!this.field3455.containsKey(entry.getKey()) || System.currentTimeMillis() - this.field3455.get(entry.getKey()) > 10000L)) {
                 NotificationManager.method1151(new Notification("BreakAlert", "Block facing " + Direction.getFacing((float) (MathHelper.floor(BreakHighlight.mc.player.getX()) - entry.getKey().getX()), (float) (MathHelper.floor(BreakHighlight.mc.player.getY()) - entry.getKey().getY()), (float) (MathHelper.floor(BreakHighlight.mc.player.getZ()) - entry.getKey().getZ())).getOpposite().name().toLowerCase(), Notifications.WARNING, NotificationPriority.Yellow));
                 this.field3455.put(entry.getKey(), System.currentTimeMillis());
             }
@@ -144,23 +142,23 @@ public class BreakHighlight extends Module {
             switch (this.field3437.getValue().ordinal()) {
                 case 0: {
                     final double n = 0.5 - floatValue * 0.5;
-                    this.method1919(boundingBox.expand(-n, -n, -n).offset((BlockPos) entry.getKey()), ((boolean) this.field3440.getValue()) ? this.field3452 : event.field1950);
+                    this.method1919(boundingBox.expand(-n, -n, -n).offset(entry.getKey()), this.field3440.getValue() ? this.field3452 : event.field1950);
                     continue;
                 }
                 case 1: {
                     final double n2 = floatValue * 0.5;
-                    this.method1919(boundingBox.expand(-n2, -n2, -n2).offset((BlockPos) entry.getKey()), ((boolean) this.field3440.getValue()) ? this.field3452 : event.field1950);
+                    this.method1919(boundingBox.expand(-n2, -n2, -n2).offset(entry.getKey()), this.field3440.getValue() ? this.field3452 : event.field1950);
                     continue;
                 }
                 case 2: {
                     final double n3 = 0.5 - floatValue * 0.5;
-                    this.method1919(boundingBox.expand(-n3, -n3, -n3).offset((BlockPos) entry.getKey()), ((boolean) this.field3440.getValue()) ? this.field3452 : event.field1950);
+                    this.method1919(boundingBox.expand(-n3, -n3, -n3).offset(entry.getKey()), this.field3440.getValue() ? this.field3452 : event.field1950);
                     final double n4 = floatValue * 0.5;
-                    this.method1919(boundingBox.expand(-n4, -n4, -n4).offset((BlockPos) entry.getKey()), ((boolean) this.field3440.getValue()) ? this.field3452 : event.field1950);
+                    this.method1919(boundingBox.expand(-n4, -n4, -n4).offset(entry.getKey()), this.field3440.getValue() ? this.field3452 : event.field1950);
                     continue;
                 }
                 default:
-                    this.method1919(boundingBox.offset((BlockPos) entry.getKey()), ((boolean) this.field3440.getValue()) ? this.field3452 : event.field1950);
+                    this.method1919(boundingBox.offset(entry.getKey()), this.field3440.getValue() ? this.field3452 : event.field1950);
                     continue;
             }
         }

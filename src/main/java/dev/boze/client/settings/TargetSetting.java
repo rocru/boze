@@ -32,7 +32,8 @@ public class TargetSetting implements IMinecraft, SettingsGroup {
             }
         } else {
             return switch (entity.getType().getSpawnGroup()) {
-                case SpawnGroup.CREATURE, SpawnGroup.AMBIENT, SpawnGroup.WATER_AMBIENT, SpawnGroup.WATER_CREATURE -> this.field1320.getValue();
+                case SpawnGroup.CREATURE, SpawnGroup.AMBIENT, SpawnGroup.WATER_AMBIENT, SpawnGroup.WATER_CREATURE ->
+                        this.field1320.getValue();
                 case SpawnGroup.MONSTER -> this.field1321.getValue();
                 default -> false;
             };

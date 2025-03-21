@@ -54,7 +54,7 @@ public class Options extends Module {
         return INSTANCE.field989.getValue();
     }
 
-    @EventHandler(priority=9999)
+    @EventHandler(priority = 9999)
     private void method2041(MovementEvent movementEvent) {
         switch (this.field983.getValue().ordinal()) {
             case 0: {

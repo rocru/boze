@@ -1,24 +1,26 @@
 package dev.boze.client.gui.components;
 
-import dev.boze.client.enums.*;
-import dev.boze.client.systems.modules.client.*;
-import net.minecraft.util.math.*;
-import net.minecraft.client.gui.*;
-import dev.boze.client.font.*;
-import dev.boze.client.gui.screens.*;
-import dev.boze.client.utils.*;
-import net.minecraft.sound.*;
-import net.minecraft.registry.entry.*;
-import net.minecraft.client.sound.*;
-import dev.boze.client.utils.render.*;
+import dev.boze.client.enums.BottomRow;
+import dev.boze.client.font.IFontRender;
+import dev.boze.client.font.IconManager;
+import dev.boze.client.gui.screens.ClickGUI;
+import dev.boze.client.systems.modules.client.Theme;
+import dev.boze.client.utils.RGBAColor;
+import dev.boze.client.utils.render.RenderUtil;
+import dev.boze.client.utils.render.Scissor;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.client.sound.SoundInstance;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.MathHelper;
 
-public abstract class BottomRowScaledComponent extends ScaledBaseComponent
-{
+public abstract class BottomRowScaledComponent extends ScaledBaseComponent {
     private double field1419;
     private double field1420;
     private double field1421;
     private int field1422;
-    private BottomRow field1423;
+    private final BottomRow field1423;
     private final int field1424;
     private Runnable field1425;
     private final boolean field1426;
@@ -122,12 +124,12 @@ public abstract class BottomRowScaledComponent extends ScaledBaseComponent
         final double n2 = IFontRender.method499().method1390() + BaseComponent.scaleFactor * 6.0;
         final double n3 = this.field1389 + this.field1391 - n2 - BaseComponent.scaleFactor * 6.0;
         if (ScaledBaseComponent.isMouseWithinBounds(mouseX, mouseY, this.field1388 + this.field1390 * 0.25 - n * 0.5, n3, n, n2)) {
-            BottomRowScaledComponent.mc.getSoundManager().play((SoundInstance)PositionedSoundInstance.master((RegistryEntry)SoundEvents.UI_BUTTON_CLICK, 1.0f));
+            BottomRowScaledComponent.mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0f));
             this.method1904();
             return;
         }
         if (ScaledBaseComponent.isMouseWithinBounds(mouseX, mouseY, this.field1388 + this.field1390 * 0.75 - n * 0.5, n3, n, n2)) {
-            BottomRowScaledComponent.mc.getSoundManager().play((SoundInstance)PositionedSoundInstance.master((RegistryEntry)SoundEvents.UI_BUTTON_CLICK, 1.0f));
+            BottomRowScaledComponent.mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0f));
             ClickGUI.field1335.method580(null);
         }
     }
@@ -176,11 +178,11 @@ public abstract class BottomRowScaledComponent extends ScaledBaseComponent
         final double x = this.field1388 + BaseComponent.scaleFactor * 12.0 + (this.field1390 - n3 * 2.0 - BaseComponent.scaleFactor * 36.0) + BaseComponent.scaleFactor * 6.0;
         if (ScaledBaseComponent.isMouseWithinBounds(n, n2, x, n5, n3, n4)) {
             this.method1904();
-            BottomRowScaledComponent.mc.getSoundManager().play((SoundInstance)PositionedSoundInstance.master((RegistryEntry)SoundEvents.UI_BUTTON_CLICK, 1.0f));
+            BottomRowScaledComponent.mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0f));
             return;
         }
         if (ScaledBaseComponent.isMouseWithinBounds(n, n2, x + n3 + BaseComponent.scaleFactor * 6.0, n5, n3, n4)) {
-            BottomRowScaledComponent.mc.getSoundManager().play((SoundInstance)PositionedSoundInstance.master((RegistryEntry)SoundEvents.UI_BUTTON_CLICK, 1.0f));
+            BottomRowScaledComponent.mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0f));
             ClickGUI.field1335.method580(null);
         }
     }
@@ -215,7 +217,7 @@ public abstract class BottomRowScaledComponent extends ScaledBaseComponent
                 final double width = this.field1390 - BaseComponent.scaleFactor * 36.0;
                 if (ScaledBaseComponent.isMouseWithinBounds(mouseX, mouseY, x, y, width, this.field1421)) {
                     if (this.handleItemClick(i + this.field1422, button, x, y, width, this.field1421, mouseX, mouseY)) {
-                        BottomRowScaledComponent.mc.getSoundManager().play((SoundInstance)PositionedSoundInstance.master((RegistryEntry)SoundEvents.UI_BUTTON_CLICK, 1.0f));
+                        BottomRowScaledComponent.mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0f));
                     }
                     return;
                 }
@@ -226,7 +228,7 @@ public abstract class BottomRowScaledComponent extends ScaledBaseComponent
     @Override
     public boolean onMouseScroll(final double mouseX, final double mouseY, final double amount) {
         if (ScaledBaseComponent.isMouseWithinBounds(mouseX, mouseY, this.field1388 + BaseComponent.scaleFactor * 12.0, this.field1419, this.field1390 - BaseComponent.scaleFactor * 24.0, this.field1420)) {
-            this.field1422 = (int)MathHelper.clamp(this.field1422 - amount, 0.0, (double)MathHelper.clamp(this.method2010() - 12, 0, this.method2010()));
+            this.field1422 = (int) MathHelper.clamp(this.field1422 - amount, 0.0, MathHelper.clamp(this.method2010() - 12, 0, this.method2010()));
             return true;
         }
         return super.onMouseScroll(mouseX, mouseY, amount);

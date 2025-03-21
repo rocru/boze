@@ -195,8 +195,7 @@ public class NoFall extends Module {
         if (this.method275() == NoFallMode.Grim) {
             if (NoFall.mc.player.isOnGround()) {
                 this.field536 = false;
-            }
-            else if (!this.field536 && NoFall.mc.player.fallDistance >= this.field532.getValue() && !NoFall.mc.world.isSpaceEmpty(new Box(NoFall.mc.player.getBoundingBox().minX, NoFall.mc.player.getBoundingBox().minY - 2.0, NoFall.mc.player.getBoundingBox().minZ, NoFall.mc.player.getBoundingBox().maxX, NoFall.mc.player.getBoundingBox().maxY, NoFall.mc.player.getBoundingBox().maxZ))) {
+            } else if (!this.field536 && NoFall.mc.player.fallDistance >= this.field532.getValue() && !NoFall.mc.world.isSpaceEmpty(new Box(NoFall.mc.player.getBoundingBox().minX, NoFall.mc.player.getBoundingBox().minY - 2.0, NoFall.mc.player.getBoundingBox().minZ, NoFall.mc.player.getBoundingBox().maxX, NoFall.mc.player.getBoundingBox().maxY, NoFall.mc.player.getBoundingBox().maxZ))) {
                 this.field537 = true;
                 this.field536 = true;
             }
@@ -216,8 +215,8 @@ public class NoFall extends Module {
                     break;
                 case 4:
                     for (int i = 0; i < 10; ++i) {
-                        NoFall.mc.getNetworkHandler().sendPacket(new PlayerMoveC2SPacket.Full(NoFall.mc.player.getX() + (10 - (int)(Math.random() * 20.0)), NoFall.mc.player.getY() + (10 - (int)(Math.random() * 20.0)), NoFall.mc.player.getZ() + (10 - (int)(Math.random() * 20.0)), NoFall.mc.player.getYaw() + (180 - (int)(Math.random() * 360.0)), NoFall.mc.player.getPitch(), true));
-                        Class5913.method17(Hand.MAIN_HAND, new BlockHitResult(Vec3d.ZERO, Direction.UP, BlockPos.ofFloored(NoFall.mc.player.getPos()).add(10 - (int)(Math.random() * 20.0), 10 - (int)(Math.random() * 20.0), 10 - (int)(Math.random() * 20.0)), false));
+                        NoFall.mc.getNetworkHandler().sendPacket(new PlayerMoveC2SPacket.Full(NoFall.mc.player.getX() + (10 - (int) (Math.random() * 20.0)), NoFall.mc.player.getY() + (10 - (int) (Math.random() * 20.0)), NoFall.mc.player.getZ() + (10 - (int) (Math.random() * 20.0)), NoFall.mc.player.getYaw() + (180 - (int) (Math.random() * 360.0)), NoFall.mc.player.getPitch(), true));
+                        Class5913.method17(Hand.MAIN_HAND, new BlockHitResult(Vec3d.ZERO, Direction.UP, BlockPos.ofFloored(NoFall.mc.player.getPos()).add(10 - (int) (Math.random() * 20.0), 10 - (int) (Math.random() * 20.0), 10 - (int) (Math.random() * 20.0)), false));
                     }
                     break;
                 case 5: {

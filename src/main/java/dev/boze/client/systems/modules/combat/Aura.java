@@ -471,7 +471,8 @@ public class Aura extends Module {
                 return true;
             } else {
                 return switch (var1.getType().getSpawnGroup()) {
-                    case SpawnGroup.AMBIENT, SpawnGroup.CREATURE, SpawnGroup.WATER_CREATURE, SpawnGroup.WATER_AMBIENT -> this.animals.getValue();
+                    case SpawnGroup.AMBIENT, SpawnGroup.CREATURE, SpawnGroup.WATER_CREATURE, SpawnGroup.WATER_AMBIENT ->
+                            this.animals.getValue();
                     case SpawnGroup.MONSTER -> this.monsters.getValue();
                     default -> false;
                 };

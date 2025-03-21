@@ -265,8 +265,7 @@ public class Speed extends Module {
                     this.field735 %= 5;
                     if (this.field735 != 0) {
                         Class3076.method6025(this);
-                    }
-                    else if (Class5924.method2116()) {
+                    } else if (Class5924.method2116()) {
                         if (this.field722.getValue()) {
                             Class3076.method6024(this, 10, 1.44f);
                         }
@@ -275,7 +274,7 @@ public class Speed extends Module {
                     if (Speed.mc.player.isOnGround() && Class5924.method2116()) {
                         this.field734 = 2;
                     }
-                    if (this.method355(Speed.mc.player.getY() - (int)Speed.mc.player.getY()) == this.method355(0.138)) {
+                    if (this.method355(Speed.mc.player.getY() - (int) Speed.mc.player.getY()) == this.method355(0.138)) {
                         Speed.mc.player.setVelocity(Speed.mc.player.getVelocity().x, Speed.mc.player.getVelocity().y - 0.08, Speed.mc.player.getVelocity().z);
                         n -= 0.09316090325960147;
                         Speed.mc.player.setPos(Speed.mc.player.getX(), Speed.mc.player.getY() - 0.09316090325960147, Speed.mc.player.getZ());
@@ -283,8 +282,7 @@ public class Speed extends Module {
                     if (this.field734 == 1 && (n2 != 0.0f || Speed.mc.player.input.movementSideways != 0.0f)) {
                         this.field734 = 2;
                         this.field732 = 1.38 * Class5924.method2091() - 0.01;
-                    }
-                    else if (this.field734 == 2) {
+                    } else if (this.field734 == 2) {
                         this.field734 = 3;
                         n = this.method1389(0.399399995803833);
                         if (!this.method1972()) {
@@ -292,12 +290,10 @@ public class Speed extends Module {
                         }
                         Speed.mc.player.setVelocity(Speed.mc.player.getVelocity().x, n, Speed.mc.player.getVelocity().z);
                         this.field732 *= 2.149;
-                    }
-                    else if (this.field734 == 3) {
+                    } else if (this.field734 == 3) {
                         this.field734 = 4;
                         this.field732 -= 0.66 * (this.field732 - Class5924.method2091());
-                    }
-                    else {
+                    } else {
                         if (!Speed.mc.world.isSpaceEmpty(Speed.mc.player.getBoundingBox().offset(0.0, Speed.mc.player.getVelocity().y, 0.0)) || Speed.mc.player.verticalCollision) {
                             this.field734 = 1;
                         }
@@ -306,8 +302,7 @@ public class Speed extends Module {
                     this.field732 = Math.max(this.field732, Class5924.method2091());
                     if (this.field739 > 0.0 && this.field723.getValue() && !this.field740.hasElapsed(75.0)) {
                         this.field732 = Math.max(this.field732, this.field739);
-                    }
-                    else if (this.field719.getValue()) {
+                    } else if (this.field719.getValue()) {
                         this.field732 = Math.min(this.field732, (this.field736 > 25) ? 0.449 : 0.433);
                     }
                     float n4 = n2;
@@ -322,15 +317,13 @@ public class Speed extends Module {
                             if (movementSideways >= 1.0f) {
                                 yaw += ((n4 > 0.0f) ? -45 : 45);
                                 movementSideways = 0.0f;
-                            }
-                            else if (movementSideways <= -1.0f) {
+                            } else if (movementSideways <= -1.0f) {
                                 yaw += ((n4 > 0.0f) ? 45 : -45);
                                 movementSideways = 0.0f;
                             }
                             if (n4 > 0.0f) {
                                 n4 = 1.0f;
-                            }
-                            else if (n4 < 0.0f) {
+                            } else if (n4 < 0.0f) {
                                 n4 = -1.0f;
                             }
                         }
@@ -343,8 +336,7 @@ public class Speed extends Module {
                         x3 = 0.0;
                         z3 = 0.0;
                     }
-                }
-                else {
+                } else {
                     if (this.field734 != 1 || n2 == 0.0f || Speed.mc.player.input.movementSideways == 0.0f) {
                         if (this.field734 == 2 && (n2 != 0.0f || Speed.mc.player.input.movementSideways != 0.0f)) {
                             double method96 = this.method1389(0.3999);
@@ -354,26 +346,22 @@ public class Speed extends Module {
                             Speed.mc.player.setVelocity(new Vec3d(Speed.mc.player.getVelocity().x, method96, Speed.mc.player.getVelocity().z));
                             n = method96;
                             this.field731 *= (this.field733 ? (1.6835 * this.field717.getValue()) : (1.395 * this.field717.getValue()));
-                        }
-                        else if (this.field734 == 3) {
+                        } else if (this.field734 == 3) {
                             this.field731 = this.field732 - 0.66 * (this.field732 - Class5924.method2091());
                             this.field733 = !this.field733;
-                        }
-                        else {
+                        } else {
                             if ((!Speed.mc.world.isSpaceEmpty(Speed.mc.player.getBoundingBox().offset(0.0, Speed.mc.player.getVelocity().y, 0.0)) || Speed.mc.player.verticalCollision) && this.field734 > 0) {
                                 this.field734 = ((n2 != 0.0f || Speed.mc.player.input.movementSideways != 0.0f) ? 1 : 0);
                             }
                             this.field731 = this.field732 - this.field732 / 159.0;
                         }
-                    }
-                    else {
+                    } else {
                         this.field731 = 1.35 * Class5924.method2091() - 0.01;
                     }
                     this.field731 = Math.max(this.field731, Class5924.method2091());
                     if (this.field739 > 0.0 && this.field723.getValue() && !this.field740.hasElapsed(75.0)) {
                         this.field731 = Math.max(this.field731, this.field739);
-                    }
-                    else if (this.field719.getValue()) {
+                    } else if (this.field719.getValue()) {
                         this.field731 = Math.min(this.field731, (this.field736 > 25) ? 0.449 : 0.433);
                     }
                     final Vec3d method97 = Class5924.method93(this.field731);
@@ -439,8 +427,7 @@ public class Speed extends Module {
                 this.field731 = Math.max(this.field731, Class5924.method2091());
                 if (this.field739 > 0.0 && this.field723.getValue() && !this.field740.hasElapsed(75.0)) {
                     this.field731 = Math.max(this.field731, this.field739);
-                }
-                else if (this.field719.getValue()) {
+                } else if (this.field719.getValue()) {
                     this.field731 = Math.min(this.field731, (this.field736 > 25) ? 0.449 : 0.433);
                 }
                 final Vec3d method98 = Class5924.method93(this.field731);
@@ -458,12 +445,10 @@ public class Speed extends Module {
                         n = (this.method1972() ? 0.2 : 0.4);
                         this.field731 *= 2.149;
                         this.field734 = 3;
-                    }
-                    else if (this.field734 == 3) {
+                    } else if (this.field734 == 3) {
                         this.field731 = this.field732 - 0.66 * (this.field732 - Class5924.method2091());
                         this.field734 = 2;
-                    }
-                    else if (this.method1972() || Speed.mc.player.verticalCollision) {
+                    } else if (this.method1972() || Speed.mc.player.verticalCollision) {
                         this.field734 = 1;
                     }
                 }
@@ -471,8 +456,8 @@ public class Speed extends Module {
                 float n5 = n2;
                 float movementSideways2 = Speed.mc.player.input.movementSideways;
                 if (n5 != 0.0 && movementSideways2 != 0.0) {
-                    n5 *= (float)Math.sin(0.7853981633974483);
-                    movementSideways2 *= (float)Math.cos(0.7853981633974483);
+                    n5 *= (float) Math.sin(0.7853981633974483);
+                    movementSideways2 *= (float) Math.cos(0.7853981633974483);
                 }
                 event.vec3 = new Vec3d(n5 * this.field731 * -Math.sin(Math.toRadians(Speed.mc.player.getYaw())) + movementSideways2 * this.field731 * Math.cos(Math.toRadians(Speed.mc.player.getYaw())), n, n5 * this.field731 * Math.cos(Math.toRadians(Speed.mc.player.getYaw())) - movementSideways2 * this.field731 * -Math.sin(Math.toRadians(Speed.mc.player.getYaw())));
                 event.field1892 = true;

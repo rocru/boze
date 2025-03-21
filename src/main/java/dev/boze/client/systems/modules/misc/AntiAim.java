@@ -65,15 +65,15 @@ public class AntiAim extends Module {
             float f = movementEvent.yaw;
             switch (this.yaw.getValue().ordinal()) {
                 case 1: {
-                    f = this.field2864 + (float)((Math.random() * 2.0 - 1.0) * (double)this.rawRange.getValue());
+                    f = this.field2864 + (float) ((Math.random() * 2.0 - 1.0) * (double) this.rawRange.getValue());
                     break;
                 }
                 case 2: {
-                    f = AntiAim.mc.player.getYaw() + (float)((Math.random() * 2.0 - 1.0) * (double)this.rawRange.getValue());
+                    f = AntiAim.mc.player.getYaw() + (float) ((Math.random() * 2.0 - 1.0) * (double) this.rawRange.getValue());
                     break;
                 }
                 case 3: {
-                    f = (float)((Math.random() * 2.0 - 1.0) * (double)this.rawRange.getValue());
+                    f = (float) ((Math.random() * 2.0 - 1.0) * (double) this.rawRange.getValue());
                     break;
                 }
                 case 4: {
@@ -87,7 +87,8 @@ public class AntiAim extends Module {
                 case 6: {
                     Entity object = null;
                     for (Entity object2 : AntiAim.mc.world.getEntities()) {
-                        if (!(object2 instanceof PlayerEntity) || object2 == AntiAim.mc.player || Friends.method2055((Entity)object2) || object != null && !(object.distanceTo((Entity)AntiAim.mc.player) > object2.distanceTo((Entity)AntiAim.mc.player))) continue;
+                        if (!(object2 instanceof PlayerEntity) || object2 == AntiAim.mc.player || Friends.method2055(object2) || object != null && !(object.distanceTo(AntiAim.mc.player) > object2.distanceTo(AntiAim.mc.player)))
+                            continue;
                         object = object2;
                     }
                     if (object == null) break;
@@ -99,19 +100,19 @@ public class AntiAim extends Module {
                     f = this.field2864 + this.yawAdd.getValue();
                 }
             }
-            this.field2864 = f = MathHelper.wrapDegrees((float)f);
+            this.field2864 = f = MathHelper.wrapDegrees(f);
             float f2 = movementEvent.pitch;
             switch (this.pitch.getValue().ordinal()) {
                 case 1: {
-                    f2 = this.field2865 + (float)((Math.random() * 2.0 - 1.0) * (double)this.pitchRange.getValue());
+                    f2 = this.field2865 + (float) ((Math.random() * 2.0 - 1.0) * (double) this.pitchRange.getValue());
                     break;
                 }
                 case 2: {
-                    f2 = AntiAim.mc.player.getPitch() + (float)((Math.random() * 2.0 - 1.0) * (double)this.pitchRange.getValue());
+                    f2 = AntiAim.mc.player.getPitch() + (float) ((Math.random() * 2.0 - 1.0) * (double) this.pitchRange.getValue());
                     break;
                 }
                 case 3: {
-                    f2 = (float)((Math.random() * 2.0 - 1.0) * (double)this.pitchRange.getValue());
+                    f2 = (float) ((Math.random() * 2.0 - 1.0) * (double) this.pitchRange.getValue());
                     break;
                 }
                 case 4: {
@@ -125,7 +126,8 @@ public class AntiAim extends Module {
                 case 6: {
                     Entity entity = null;
                     for (Entity entity2 : AntiAim.mc.world.getEntities()) {
-                        if (!(entity2 instanceof PlayerEntity) || entity2 == AntiAim.mc.player || Friends.method2055(entity2) || entity != null && !(entity.distanceTo((Entity)AntiAim.mc.player) > entity2.distanceTo((Entity)AntiAim.mc.player))) continue;
+                        if (!(entity2 instanceof PlayerEntity) || entity2 == AntiAim.mc.player || Friends.method2055(entity2) || entity != null && !(entity.distanceTo(AntiAim.mc.player) > entity2.distanceTo(AntiAim.mc.player)))
+                            continue;
                         entity = entity2;
                     }
                     if (entity == null) break;
