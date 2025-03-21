@@ -46,7 +46,7 @@ public class AutoCrystalTargeting
         System.out.println("[AutoCrystal.Targeting @" + AutoCrystalTargeting.mc.player.age + "] " + string);
     }
 
-    AutoCrystalTargeting(AutoCrystal autoCrystal) {
+    public AutoCrystalTargeting(AutoCrystal autoCrystal) {
         this.field120 = autoCrystal;
     }
 
@@ -55,28 +55,33 @@ public class AutoCrystalTargeting
         return this.field119;
     }
 
-    List<LivingEntity> method1144() {
+    public List<LivingEntity> method1144() {
         return this.field121;
     }
 
-    void method2142() {
+    public void method2142() {
         ArrayList<LivingEntity> arrayList = new ArrayList<LivingEntity>();
         for (Entity entity : AutoCrystalTargeting.mc.world.getEntities()) {
-            if (!(entity instanceof LivingEntity) || !this.field120.field1043.method2055(entity) || entity.distanceTo((Entity)AutoCrystalTargeting.mc.player) > this.field120.targetRange.getValue() || ((LivingEntity)entity).isDead() || ((LivingEntity)entity).getHealth() + ((LivingEntity)entity).getAbsorptionAmount() <= 0.0f || System.currentTimeMillis() - ((ILivingEntity)entity).boze$getDamageSyncTime() < 500L) continue;
-            arrayList.add((LivingEntity)entity);
+            if (!(entity instanceof LivingEntity) || !this.field120.field1043.method2055(entity) || entity.distanceTo(AutoCrystalTargeting.mc.player) > this.field120.targetRange.getValue() || ((LivingEntity) entity).isDead() || ((LivingEntity) entity).getHealth() + ((LivingEntity) entity).getAbsorptionAmount() <= 0.0f || System.currentTimeMillis() - ((ILivingEntity) entity).boze$getDamageSyncTime() < 500L)
+                continue;
+            arrayList.add((LivingEntity) entity);
         }
         this.field121 = switch (this.field107.getValue().ordinal()) {
-            case 1 -> Collections.singletonList(arrayList.stream().max(Comparator.comparingDouble(this::method78)).orElse(null));
-            case 2 -> Collections.singletonList(arrayList.stream().min(Comparator.comparing(AutoCrystalTargeting::lambda$updateTargets$2)).orElse(null));
-            case 3 -> Collections.singletonList(arrayList.stream().min(Comparator.comparingDouble(AutoCrystalTargeting::lambda$updateTargets$3)).orElse(null));
-            default -> arrayList.stream().sorted(Comparator.comparing(AutoCrystalTargeting::lambda$updateTargets$4)).collect(Collectors.toList());
+            case 1 ->
+                    Collections.singletonList(arrayList.stream().max(Comparator.comparingDouble(this::method78)).orElse(null));
+            case 2 ->
+                    Collections.singletonList(arrayList.stream().min(Comparator.comparing(AutoCrystalTargeting::lambda$updateTargets$2)).orElse(null));
+            case 3 ->
+                    Collections.singletonList(arrayList.stream().min(Comparator.comparingDouble(AutoCrystalTargeting::lambda$updateTargets$3)).orElse(null));
+            default ->
+                    arrayList.stream().sorted(Comparator.comparing(AutoCrystalTargeting::lambda$updateTargets$4)).collect(Collectors.toList());
         };
     }
 
     double method75(LivingEntity livingEntity) {
         double d = this.field108.getValue();
         if (this.field120.minDamage.getValue()) {
-            d = Class5924.method77(true, (Entity)livingEntity) ? (double)this.field120.holeMinDamage.getValue() : (Class5924.method1934((Entity)livingEntity) ? (double)this.field120.stillMinDamage.getValue() : (double)this.field120.movingMinDamage.getValue());
+            d = Class5924.method77(true, livingEntity) ? (double) this.field120.holeMinDamage.getValue() : (Class5924.method1934(livingEntity) ? (double) this.field120.stillMinDamage.getValue() : (double) this.field120.movingMinDamage.getValue());
         }
         return d;
     }
@@ -89,21 +94,21 @@ public class AutoCrystalTargeting
     }
 
     boolean method65(double d, double d2) {
-        return this.field115.getValue() == AutoCrystalMaxDamage.MaxSelfDmg || d <= d2 * (double)this.field117.getValue();
+        return this.field115.getValue() == AutoCrystalMaxDamage.MaxSelfDmg || d <= d2 * (double) this.field117.getValue();
     }
 
     boolean method77(LivingEntity livingEntity, double d) {
         if (livingEntity == null) {
             return false;
         }
-        if (d >= 0.5 && !ServerType.method2114() && ((double)(livingEntity.getHealth() + livingEntity.getAbsorptionAmount()) - d <= 0.0 || livingEntity.getHealth() + livingEntity.getAbsorptionAmount() < this.field120.field1042.field109.getValue())) {
+        if (d >= 0.5 && !ServerType.method2114() && ((double) (livingEntity.getHealth() + livingEntity.getAbsorptionAmount()) - d <= 0.0 || livingEntity.getHealth() + livingEntity.getAbsorptionAmount() < this.field120.field1042.field109.getValue())) {
             return true;
         }
         if (this.field110.getValue() > 0.0f && livingEntity != null && livingEntity.getArmorItems() != null) {
             for (ItemStack itemStack : livingEntity.getArmorItems()) {
                 int n = itemStack.getMaxDamage();
                 int n2 = n - itemStack.getDamage();
-                float f = (float)n2 / (float)n;
+                float f = (float) n2 / (float) n;
                 if (!(f <= this.field110.getValue())) continue;
                 return true;
             }
@@ -112,14 +117,14 @@ public class AutoCrystalTargeting
     }
 
     private double method78(LivingEntity livingEntity) {
-        if (Class5924.method77(true, (Entity)livingEntity)) {
+        if (Class5924.method77(true, livingEntity)) {
             return 0.0;
         }
-        return this.field120.targetRange.getValue() - livingEntity.distanceTo((Entity)AutoCrystalTargeting.mc.player);
+        return this.field120.targetRange.getValue() - livingEntity.distanceTo(AutoCrystalTargeting.mc.player);
     }
 
     private static Float lambda$updateTargets$4(LivingEntity livingEntity) {
-        return Float.valueOf(livingEntity.distanceTo((Entity)AutoCrystalTargeting.mc.player));
+        return Float.valueOf(livingEntity.distanceTo(AutoCrystalTargeting.mc.player));
     }
 
     private static double lambda$updateTargets$3(LivingEntity livingEntity) {
@@ -127,11 +132,11 @@ public class AutoCrystalTargeting
     }
 
     private static Float lambda$updateTargets$2(LivingEntity livingEntity) {
-        return Float.valueOf(livingEntity.distanceTo((Entity)AutoCrystalTargeting.mc.player));
+        return Float.valueOf(livingEntity.distanceTo(AutoCrystalTargeting.mc.player));
     }
 
     private boolean lambda$new$1() {
-        return this.field115.getValue()!= AutoCrystalMaxDamage.MaxSelfDmg;
+        return this.field115.getValue() != AutoCrystalMaxDamage.MaxSelfDmg;
     }
 
     private boolean lambda$new$0() {

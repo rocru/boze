@@ -55,7 +55,7 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
         }
     }
 
-    AutoCrystalPlace(AutoCrystal var1) {
+    public AutoCrystalPlace(AutoCrystal var1) {
         this.field143 = var1;
         this.field139.setVisibility(() -> lambda$new$0(var1));
         this.field142 = new Setting[]{this.field137, this.field138, this.field139, this.field140, this.field141};

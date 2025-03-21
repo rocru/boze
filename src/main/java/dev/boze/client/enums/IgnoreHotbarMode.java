@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum IgnoreHotbarMode {
+public enum IgnoreHotbarMode {
     Off,
     Semi,
     SemiLast,

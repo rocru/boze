@@ -12,7 +12,7 @@ import java.util.LinkedList;
 public class CrystalEntityTracker implements IMinecraft {
     private final LinkedList<Runnable> field1238 = new LinkedList();
 
-    void method2142() {
+    public void method2142() {
         while (!this.field1238.isEmpty()) {
             this.field1238.poll().run();
         }

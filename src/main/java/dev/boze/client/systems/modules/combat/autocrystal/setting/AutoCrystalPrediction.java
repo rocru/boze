@@ -30,7 +30,7 @@ public class AutoCrystalPrediction implements IMinecraft {
         this.field1091 = var1;
     }
 
-    void method2071(Render3DEvent var1) {
+    public void method2071(Render3DEvent var1) {
         if (AutoCrystal.field1038) {
             for (Entry var6 : AutoCrystalAction.Full.field1776.entrySet()) {
                 var1.field1950.method1234(((LivingEntity) var6.getKey()).getPos(), (Vec3d) var6.getValue(), RGBAColor.field405);
@@ -48,14 +48,14 @@ public class AutoCrystalPrediction implements IMinecraft {
                 : var1.getBoundingBox(var1.getPose()).offset(var1.getPos());
     }
 
-    void method2142() {
+    public void method2142() {
         for (AutoCrystalAction var7 : AutoCrystalAction.values()) {
             var7.field1776.clear();
             var7.field1777.clear();
         }
     }
 
-    void method1416() {
+    public void method1416() {
         if (this.field1091.dontPredict.getValue()) {
             AutoCrystalAction.Place.ticks = 0;
             AutoCrystalAction.Place.field1775 = 0;

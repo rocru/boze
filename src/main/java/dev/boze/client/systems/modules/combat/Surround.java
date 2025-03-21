@@ -47,7 +47,7 @@ import java.util.HashMap;
 public class Surround extends Module {
     public static Surround INSTANCE = new Surround();
     private final PlacementRenderer field2570 = new PlacementRenderer();
-    final PlaceHandler field2571 = new PlaceHandler();
+    public final PlaceHandler field2571 = new PlaceHandler();
     private final BooleanSetting multiTask = new BooleanSetting("MultiTask", false, "Surround while already using items");
     private final EnumSetting<SurroundReactMode> react = new EnumSetting<SurroundReactMode>(
             "React",
@@ -60,12 +60,12 @@ public class Surround extends Module {
     private final BooleanSetting onStep = new BooleanSetting("OnStep", false, "Disable when you step", this.autoDisable);
     private final BooleanSetting onTP = new BooleanSetting("OnTP", false, "Disable when you teleport/chorus", this.autoDisable);
     private final BooleanSetting whenDone = new BooleanSetting("WhenDone", false, "Disable when done surrounding", this.autoDisable);
-    final BooleanSetting autoEnable = new BooleanSetting(
+    public final BooleanSetting autoEnable = new BooleanSetting(
             "AutoEnable", false, "Auto enable surround when in semi/full hole\nTo make it only auto-enable in full holes, set all sub-settings to max (4/6/8)"
     );
-    final IntSetting min1x1 = new IntSetting("Min1x1", 3, 2, 4, 1, "Minimum existing blocks to auto-enable in 1x1 holes", this.autoEnable);
-    final IntSetting min2x1 = new IntSetting("Min2x1", 4, 3, 6, 1, "Minimum existing blocks to auto-enable in 2x1 holes", this.autoEnable);
-    final IntSetting min2x2 = new IntSetting("Min2x2", 6, 4, 8, 1, "Minimum existing blocks to auto-enable in 2x2 holes", this.autoEnable);
+    public final IntSetting min1x1 = new IntSetting("Min1x1", 3, 2, 4, 1, "Minimum existing blocks to auto-enable in 1x1 holes", this.autoEnable);
+    public final IntSetting min2x1 = new IntSetting("Min2x1", 4, 3, 6, 1, "Minimum existing blocks to auto-enable in 2x1 holes", this.autoEnable);
+    public final IntSetting min2x2 = new IntSetting("Min2x2", 6, 4, 8, 1, "Minimum existing blocks to auto-enable in 2x2 holes", this.autoEnable);
     private final SwapHandler field2572 = new SwapHandler(this, 150);
     private final AutoEnable field2573 = new AutoEnable();
     private HitResult[] field2574 = null;

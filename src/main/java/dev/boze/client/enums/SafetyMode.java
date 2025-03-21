@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum SafetyMode {
+public enum SafetyMode {
     None,
     Lethal,
     Health;

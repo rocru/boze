@@ -6,7 +6,6 @@ import dev.boze.client.enums.PriorityMode;
 import dev.boze.client.enums.TargetAlgorithm;
 import dev.boze.client.events.ACRotationEvent;
 import dev.boze.client.events.eJ;
-import dev.boze.client.jumptable.mx;
 import dev.boze.client.mixin.CrossbowItemAccessor;
 import dev.boze.client.settings.*;
 import dev.boze.client.systems.modules.Category;

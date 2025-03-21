@@ -47,7 +47,7 @@ public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGrou
         }
     }
 
-    AutoCrystalBasePlace(AutoCrystal var1) {
+    public AutoCrystalBasePlace(AutoCrystal var1) {
         this.field126 = var1;
         this.field125 = new Setting[]{this.field122, this.field123, this.field124};
     }
@@ -200,7 +200,7 @@ public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGrou
         return var4;
     }
 
-    boolean method2101(BlockPos var1) {
+    public boolean method2101(BlockPos var1) {
         boolean var5 = var1.getY() == mc.world.getTopY() - 1;
         BlockPos var6 = var1.up();
         if (!var5 && !this.field126.field1045.method2102(var6)) {

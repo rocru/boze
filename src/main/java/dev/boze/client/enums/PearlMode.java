@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum PearlMode {
+public enum PearlMode {
     Forward,
     Omni,
     Collision;

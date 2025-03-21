@@ -11,7 +11,7 @@ import net.minecraft.util.math.Box;
 import java.util.Arrays;
 import java.util.HashSet;
 
-class AutoEnable implements IMinecraft {
+public class AutoEnable implements IMinecraft {
     @EventHandler(
             priority = 10000
     )
@@ -19,7 +19,7 @@ class AutoEnable implements IMinecraft {
         if (!Surround.INSTANCE.isEnabled() && Surround.INSTANCE.autoEnable.getValue()) {
             Box var5 = Surround.INSTANCE.field2571.method1953();
             BlockPos[] var6 = TrapUtil.method587(var5);
-            HashSet var7 = new HashSet(Arrays.asList(var6));
+            HashSet<BlockPos> var7 = new HashSet(Arrays.asList(var6));
             int var8 = this.method1541(var7.size());
 
             for (BlockPos var10 : var7) {

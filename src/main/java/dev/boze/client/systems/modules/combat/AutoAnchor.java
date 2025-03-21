@@ -141,7 +141,7 @@ public class AutoAnchor extends Module {
 
         for (PlayerEntity var9 : var1) {
             Box var10 = var9.getBoundingBox();
-            ArrayList var11 = new ArrayList(
+            ArrayList<BlockPos> var11 = new ArrayList(
                     Arrays.asList(
                             BlockPos.ofFloored(var10.minX - 1.0, var10.minY, var10.minZ),
                             BlockPos.ofFloored(var10.minX, var10.minY, var10.minZ - 1.0),
@@ -217,16 +217,20 @@ public class AutoAnchor extends Module {
                         this.field2506 = this.field2507;
                         this.field2507 = null;
                     } else {
-                        this.field2506 = this::lambda$generateActions$0;
+                        Vec3d finalVar11 = var13;
+                        Direction finalVar12 = var14;
+                        BlockPos finalVar13 = var12;
+                        this.field2506 = () -> lambda$generateActions$0(var2, finalVar11, finalVar12, finalVar13);
                         if (this.instant.getValue()) {
-                            this.field2507 = this::lambda$generateActions$1;
+                            this.field2507 = () -> lambda$generateActions$1(finalVar11, finalVar12, finalVar13);
                         }
                     }
                 }
 
                 if (mc.world.getBlockState(var12).getBlock() != Blocks.RESPAWN_ANCHOR
                         || this.sequential.getValue() && mc.world.getBlockState(var12).get(RespawnAnchorBlock.CHARGES) >= this.charges.getValue()) {
-                    this.field2508 = AutoAnchor::lambda$generateActions$2;
+                    PlaceAction finalVar1 = var15;
+                    this.field2508 = () -> lambda$generateActions$2(finalVar1);
                 }
 
                 return true;

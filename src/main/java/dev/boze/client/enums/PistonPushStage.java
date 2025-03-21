@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum PistonPushStage {
+public enum PistonPushStage {
     Initial,
     Piston,
     Redstone,

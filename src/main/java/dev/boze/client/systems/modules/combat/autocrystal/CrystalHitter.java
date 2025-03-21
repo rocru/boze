@@ -47,7 +47,7 @@ public class CrystalHitter implements IMinecraft {
         return this.field1096;
     }
 
-    void method2142() {
+    public void method2142() {
         if (Class2923.method2114()
                 || mc.player.getInventory().getMainHandStack().getItem() instanceof EndCrystalItem
                 || this.field1093.field1041.field213.getValue() != AutoMineSwapMode.Off
@@ -116,13 +116,13 @@ public class CrystalHitter implements IMinecraft {
         this.field1096 = null;
     }
 
-    void method1812(MouseButtonEvent var1) {
+    public void method1812(MouseButtonEvent var1) {
         for (Class5912 var8 : this.field1095) {
             var8.method1812(var1);
         }
     }
 
-    void method1944(KeyEvent var1) {
+    public void method1944(KeyEvent var1) {
         for (Class5912 var8 : this.field1095) {
             var8.method1944(var1);
         }

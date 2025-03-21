@@ -298,26 +298,22 @@ public class OffHand extends Module {
     }
 
     private int method2010() {
-        Item var4 = this.method447();
-        if (var4 != null && var4 != mc.player.getOffHandStack().getItem()) {
-            byte var5 = 0;
-            if (this.ignoreHotbar.getValue() == IgnoreHotbarMode.Full
-                    || this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast
-                    || this.ignoreHotbar.getValue() == IgnoreHotbarMode.Semi && var4 != Items.TOTEM_OF_UNDYING) {
-                var5 = 9;
-            }
-
-            int var6 = InventoryHelper.method170(OffHand::lambda$getSlot$15, var5, mc.player.getInventory().size());
-            if (var4 == Items.TOTEM_OF_UNDYING && var6 == -1 && this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast) {
-                var5 = 0;
-                var6 = InventoryHelper.method170(OffHand::lambda$getSlot$16, var5, mc.player.getInventory().size());
-            }
-
-            return var6;
-        } else {
+        Item item = this.method447();
+        if (item == null || item == OffHand.mc.player.getOffHandStack().getItem()) {
             return -1;
         }
+        int n = 0;
+        if (this.ignoreHotbar.getValue() == IgnoreHotbarMode.Full || this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast || this.ignoreHotbar.getValue() == IgnoreHotbarMode.Semi && item != Items.TOTEM_OF_UNDYING) {
+            n = 9;
+        }
+        int n2 = InventoryHelper.method170(arg_0 -> OffHand.lambda$getSlot$15(item, arg_0), n, OffHand.mc.player.getInventory().size());
+        if (item == Items.TOTEM_OF_UNDYING && n2 == -1 && this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast) {
+            n = 0;
+            n2 = InventoryHelper.method170(arg_0 -> OffHand.lambda$getSlot$16(item, arg_0), n, OffHand.mc.player.getInventory().size());
+        }
+        return n2;
     }
+
 
     @EventHandler
     public void method1812(MouseButtonEvent event) {
@@ -364,35 +360,25 @@ public class OffHand extends Module {
         }
     }
 
-    private void method482(Item var1) {
-        if (mc.player.playerScreenHandler == mc.player.currentScreenHandler && !(mc.currentScreen instanceof AbstractInventoryScreen) && !mc.player.isCreative()
-                || this.inInventory.getValue() && mc.currentScreen instanceof InventoryScreen) {
-            byte var5 = 0;
-            if (this.ignoreHotbar.getValue() == IgnoreHotbarMode.Full
-                    || this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast
-                    || this.ignoreHotbar.getValue() == IgnoreHotbarMode.Semi && var1 != Items.TOTEM_OF_UNDYING) {
-                var5 = 9;
-            }
-
-            int var6 = -1;
-            if (this.ah != -1 && mc.player.getInventory().getStack(this.ah).getItem().equals(var1)) {
-                var6 = this.ah;
-            } else {
-                var6 = InventoryHelper.method171(this::lambda$doOffhand$17, var5, mc.player.getInventory().size());
-            }
-
-            if (var6 == -1) {
-                var6 = InventoryHelper.method172(this::lambda$doOffhand$18);
-            }
-
-            if (var1 == Items.TOTEM_OF_UNDYING && var6 == -1 && this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast) {
-                var5 = 0;
-                var6 = InventoryHelper.method171(this::lambda$doOffhand$19, var5, mc.player.getInventory().size());
-            }
-
-            if (var6 >= 0) {
-                this.method483(var6, var1);
-            }
+    private void method482(Item item) {
+        if (!(OffHand.mc.player.playerScreenHandler == OffHand.mc.player.currentScreenHandler && !(OffHand.mc.currentScreen instanceof AbstractInventoryScreen) && !OffHand.mc.player.isCreative() || this.inInventory.getValue() && OffHand.mc.currentScreen instanceof InventoryScreen)) {
+            return;
+        }
+        int n = 0;
+        if (this.ignoreHotbar.getValue() == IgnoreHotbarMode.Full || this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast || this.ignoreHotbar.getValue() == IgnoreHotbarMode.Semi && item != Items.TOTEM_OF_UNDYING) {
+            n = 9;
+        }
+        int n2 = -1;
+        n2 = this.ah != -1 && OffHand.mc.player.getInventory().getStack(this.ah).getItem().equals(item) ? this.ah : InventoryHelper.method171((arg_0, arg_1) -> this.lambda$doOffhand$17(item, arg_0, arg_1), n, OffHand.mc.player.getInventory().size());
+        if (n2 == -1) {
+            n2 = InventoryHelper.method172((arg_0, arg_1) -> this.lambda$doOffhand$18(item, arg_0, arg_1));
+        }
+        if (item == Items.TOTEM_OF_UNDYING && n2 == -1 && this.ignoreHotbar.getValue() == IgnoreHotbarMode.SemiLast) {
+            n = 0;
+            n2 = InventoryHelper.method171((arg_0, arg_1) -> this.lambda$doOffhand$19(item, arg_0, arg_1), n, OffHand.mc.player.getInventory().size());
+        }
+        if (n2 >= 0) {
+            this.method483(n2, item);
         }
     }
 

@@ -53,7 +53,7 @@ public class AutoCrystalRender implements IMinecraft, SettingsGroup {
     private final BooleanSetting field165 = new BooleanSetting("Fade", false, "Fade render opacity");
     private final FloatSetting field166 = new FloatSetting("MinTicks", 10.0F, 0.0F, 20.0F, 0.5F, "Min ticks for shrinking/facing", this::lambda$new$2);
     private final FloatSetting field167 = new FloatSetting("Duration", 10.0F, 1.0F, 20.0F, 0.5F, "Shrinking/fading duration in ticks", this::lambda$new$3);
-    final SettingBlock field168 = new SettingBlock(
+    public final SettingBlock field168 = new SettingBlock(
             "Render",
             "Render settings",
             this.field147,
@@ -91,12 +91,12 @@ public class AutoCrystalRender implements IMinecraft, SettingsGroup {
     final Timer field175 = new Timer();
     public Vec3d field176 = null;
 
-    AutoCrystalRender(AutoCrystal var1) {
+    public AutoCrystalRender(AutoCrystal var1) {
         this.field146 = var1;
         this.field151.field2234.setVisibility(this.field150::getValue);
     }
 
-    void method2142() {
+    public void method2142() {
         this.field173 = null;
         this.field171 = null;
         this.field174 = null;

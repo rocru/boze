@@ -18,6 +18,7 @@ import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import dev.boze.client.utils.fakeplayer.FakeClientPlayerEntity;
 import mapped.Class5918;
 import meteordevelopment.orbit.EventHandler;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -121,18 +122,16 @@ public class BackTrack extends Module {
                             if (this.method2055(var9)) {
                                 Vec3d var10 = var9.getPos();
                                 if (!(var10.squaredDistanceTo(var9.prevX, var9.prevY, var9.prevZ) < 1.0E-4)) {
-                                    Object var11 = null;
+                                    Pair<ClientPlayerEntity, ArrayList<Vec3d>> var11 = null;
 
-                                    for (int var12 = 0; var12 < var16.size(); var12++) {
-                                        Vec3d var13 = (Vec3d) var16.get(var12);
+                                    for (Object o : var16) {
+                                        Vec3d var13 = (Vec3d) o;
                                         if (var13.distanceTo(var10) <= Reach.method1613()) {
-                                            if (var11 == null) {
-                                                var11 = Class5918.method38(this.ticks.getValue(), var9);
+                                            var11 = Class5918.method38(this.ticks.getValue(), var9);
 
-                                                for (int var14 = 0; var14 < this.ticks.getValue(); var14++) {
-                                                    if (((Vec3d) var16.get(var14)).distanceTo((Vec3d) ((ArrayList<?>) var11.getRight()).get(var14)) <= Reach.method1613()) {
-                                                        return;
-                                                    }
+                                            for (int var14 = 0; var14 < this.ticks.getValue(); var14++) {
+                                                if (((Vec3d) var16.get(var14)).distanceTo((Vec3d) ((ArrayList<?>) var11.getRight()).get(var14)) <= Reach.method1613()) {
+                                                    return;
                                                 }
                                             }
 
@@ -168,7 +167,7 @@ public class BackTrack extends Module {
     public void method2042(PacketBundleEvent event) {
         if (!this.field1027.get() && this.field1028 >= 0 && MinecraftUtils.isClientActive()) {
             event.method1020();
-            this.field1026.add(event.packet);
+            this.field1026.add((Packet<ClientPlayPacketListener>) event.packet);
         }
     }
 

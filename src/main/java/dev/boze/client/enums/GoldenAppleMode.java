@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum GoldenAppleMode {
+public enum GoldenAppleMode {
     Enc,
     Crap,
     Both;

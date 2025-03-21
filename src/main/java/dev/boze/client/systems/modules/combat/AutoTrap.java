@@ -7,7 +7,6 @@ import dev.boze.client.enums.BlockPlaceMode;
 import dev.boze.client.enums.TrapMode;
 import dev.boze.client.events.*;
 import dev.boze.client.gui.screens.ClickGUI;
-import dev.boze.client.jumptable.mv;
 import dev.boze.client.mixin.KeyBindingAccessor;
 import dev.boze.client.mixininterfaces.IClientPlayerEntity;
 import dev.boze.client.mixininterfaces.IEndCrystalEntity;

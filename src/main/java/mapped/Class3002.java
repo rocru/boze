@@ -9,7 +9,7 @@ import meteordevelopment.orbit.EventHandler;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
 import net.minecraft.network.packet.s2c.play.PositionFlag;
 
-class Class3002 {
+public class Class3002 {
    private Class3002() {
    }
 

@@ -55,7 +55,7 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
     final GrimPlace grim = new GrimPlace();
     final NCPPlace ncp;
 
-    PlaceHelper(AutoCrystal var1) {
+    public PlaceHelper(AutoCrystal var1) {
         this.field218 = var1;
         this.ncp = new NCPPlace(var1, this);
         this.field217 = new Setting[]{
@@ -79,11 +79,11 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
         return this.field217;
     }
 
-    boolean method107(ACRotationEvent var1) {
+    public boolean method107(ACRotationEvent var1) {
         return var1.method1018(this.field205.getValue(), false) || !AutoWeb.INSTANCE.targets.field927;
     }
 
-    boolean method108(ACRotationEvent var1) {
+    public boolean method108(ACRotationEvent var1) {
         if (!Options.method477(this.field206.getValue()) && !var1.method1018(this.field205.getValue(), this.method2114())) {
             return false;
         } else {
@@ -96,7 +96,7 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
         return var1.method554(RotationMode.Sequential) || Options.method477(this.field206.getValue());
     }
 
-    void method1885(ACRotationEvent var1) {
+    public void method1885(ACRotationEvent var1) {
         float[] var5 = this.method111();
         if (var5 != null) {
             this.method112(var5);
@@ -110,7 +110,7 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
         }
     }
 
-    void method1883(RotationEvent var1) {
+    public void method1883(RotationEvent var1) {
         if (!this.method109(var1)) {
             if (!this.field218.field1046.method109(var1)) {
                 if (this.field205.getValue() == AnticheatMode.NCP) {

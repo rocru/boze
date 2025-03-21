@@ -11,6 +11,9 @@
 + ceejay - heavy carrying the remap
 + mrbubbles - fixing errors
 + vineflower - not working
++ procyon - cant handle basic lambdas
++ cfr - schizophrenic local var types
++ javac - useless enum switch tables
 
 <div align="center">
   

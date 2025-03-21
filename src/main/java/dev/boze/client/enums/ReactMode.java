@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum ReactMode {
+public enum ReactMode {
     Tick,
     Packet;
 

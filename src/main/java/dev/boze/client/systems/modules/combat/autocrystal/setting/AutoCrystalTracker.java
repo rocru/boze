@@ -52,7 +52,7 @@ public class AutoCrystalTracker implements IMinecraft {
         this.field1524 = var1;
     }
 
-    void update() {
+    public void update() {
         if (this.field1524.delaySync.getValue()) {
             this.field1525 = 20.0F / MathHelper.clamp(TickRateTracker.getLastTickRate(), 10.0F, 20.0F);
         } else {
@@ -74,7 +74,7 @@ public class AutoCrystalTracker implements IMinecraft {
         }
     }
 
-    void remove(BlockPos var1) {
+    public void remove(BlockPos var1) {
         try {
             long var5 = this.field1542.remove(var1);
             this.field1543.remove(var1);
@@ -97,7 +97,7 @@ public class AutoCrystalTracker implements IMinecraft {
         }
     }
 
-    void method682(BlockPos var1) {
+    public void method682(BlockPos var1) {
         try {
             long var5 = this.field1539.remove(var1);
             int var7 = (int) (System.currentTimeMillis() - var5);
@@ -131,7 +131,7 @@ public class AutoCrystalTracker implements IMinecraft {
         }
     }
 
-    boolean method2101(BlockPos var1) {
+    public boolean method2101(BlockPos var1) {
         return this.field1539.containsKey(var1);
     }
 
@@ -155,12 +155,12 @@ public class AutoCrystalTracker implements IMinecraft {
         this.field1538 = null;
     }
 
-    void method1904() {
+    public void method1904() {
         this.method1416();
         this.method1198();
     }
 
-    void method1854() {
+    public void method1854() {
         this.method1904();
         this.field1528 = -1L;
     }

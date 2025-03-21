@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum InventoryMode {
+public enum InventoryMode {
     Ignore,
     Await,
     Auto;

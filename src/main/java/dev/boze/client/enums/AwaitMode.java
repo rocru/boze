@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AwaitMode {
+public enum AwaitMode {
     Off,
     Once,
     Repeat;

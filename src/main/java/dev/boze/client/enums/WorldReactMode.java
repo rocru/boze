@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum WorldReactMode {
+public enum WorldReactMode {
     Tick,
     Packet;
 

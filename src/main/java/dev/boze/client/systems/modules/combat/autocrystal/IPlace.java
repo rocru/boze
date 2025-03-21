@@ -4,7 +4,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-interface IPlace {
+public interface IPlace {
     BlockHitResult method113(BlockPos var1);
 
     BlockHitResult method114(BlockPos var1);

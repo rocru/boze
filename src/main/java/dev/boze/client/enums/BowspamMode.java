@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum BowspamMode {
+public enum BowspamMode {
     Anarchy,
     Ghost;
 

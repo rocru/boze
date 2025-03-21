@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum SurroundReactMode {
+public enum SurroundReactMode {
     Tick,
     Packet;
 

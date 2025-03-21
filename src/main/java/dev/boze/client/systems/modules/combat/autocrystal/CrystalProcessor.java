@@ -15,7 +15,7 @@ public class CrystalProcessor implements IMinecraft {
         this.field1365 = var1;
     }
 
-    void method489(BlockPos var1, Vec3d var2, int var3) {
+    public void method489(BlockPos var1, Vec3d var2, int var3) {
         if (this.method2101(var1)) {
             if (!this.method2102(var1)) {
                 if (!this.method2114()) {

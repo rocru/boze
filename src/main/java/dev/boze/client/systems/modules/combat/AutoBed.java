@@ -22,6 +22,7 @@ import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.*;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import dev.boze.client.utils.player.InvUtils;
+import dev.boze.client.utils.player.InventoryUtil;
 import dev.boze.client.utils.player.RotationHandler;
 import dev.boze.client.utils.player.SlotUtils;
 import dev.boze.client.utils.trackers.LatencyTracker;
@@ -35,6 +36,7 @@ import net.minecraft.block.entity.BedBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BedItem;
 import net.minecraft.item.BlockItem;
@@ -133,7 +135,7 @@ public class AutoBed extends Module {
     @EventHandler
     public void method1437(Render3DEvent event) {
         if (this.renderPlacements.getValue()) {
-            this.aw.forEach(this::lambda$onRender$0);
+            this.aw.forEach((v, v1) -> lambda$onRender$0(event, v, v1));
         }
     }
 
@@ -307,7 +309,13 @@ public class AutoBed extends Module {
             }
         }
 
-        return (List<LivingEntity>) var4.stream().sorted(Comparator.comparing(AutoBed::lambda$getTargetsInRange$2)).limit(3L).collect(Collectors.toList());
+        ArrayList<LivingEntity> entities = new ArrayList<>();
+        for (Entity entity : var4) {
+            if (!(entity instanceof LivingEntity lv)) continue;
+            entities.add(lv);
+        }
+
+        return entities.stream().sorted(Comparator.comparing(AutoBed::lambda$getTargetsInRange$2)).limit(3L).collect(Collectors.toList());
     }
 
     // $VF: Unable to simplify switch on enum
@@ -322,9 +330,10 @@ public class AutoBed extends Module {
                 return Friends.method2055(var1) ? this.friends.getValue() : this.players.getValue();
             }
         } else {
-            return switch (mt.field2110[var1.getType().getSpawnGroup().ordinal()]) {
-                case 1, 2, 3, 4 -> this.animals.getValue();
-                case 5 -> this.monsters.getValue();
+            return switch (var1.getType().getSpawnGroup()) {
+                case SpawnGroup.CREATURE, SpawnGroup.AMBIENT, SpawnGroup.WATER_CREATURE, SpawnGroup.WATER_AMBIENT ->
+                        this.animals.getValue();
+                case SpawnGroup.MONSTER -> this.monsters.getValue();
                 default -> false;
             };
         }
@@ -345,7 +354,7 @@ public class AutoBed extends Module {
                         double var13 = Class3069.method6005(mc.player, var12, var11.down(), true);
                         if (var12.distanceTo(mc.player.getEyePos()) < (double) this.breakRange.getValue().floatValue()
                                 && (!this.antiSuicide.getValue() || var13 + 2.0 < (double) (mc.player.getHealth() + mc.player.getAbsorptionAmount()))
-                                && (this.breakSelfDamage.getValue() == 0.0F || var13 < (double) this.breakSelfDamage.getValue().floatValue())) {
+                                && (this.breakSelfDamage.getValue() == 0.0F || var13 < (double) this.breakSelfDamage.getValue())) {
                             if (pos != null) {
                                 var6 = var11;
                                 break;
@@ -397,9 +406,11 @@ public class AutoBed extends Module {
                 this.an.reset();
                 if (this.breakRotate.getValue()) {
                     float[] var23 = EntityUtil.method2146(var21);
-                    return new ActionWrapper(this::lambda$generateBreak$3, var23[0], var23[1]);
+                    BlockPos finalVar = var6;
+                    return new ActionWrapper(() -> lambda$generateBreak$3(var21, finalVar), var23[0], var23[1]);
                 } else {
-                    return new ActionWrapper(this::lambda$generateBreak$4);
+                    BlockPos finalVar1 = var6;
+                    return new ActionWrapper(() -> lambda$generateBreak$4(var21, finalVar1));
                 }
             } else {
                 return null;
@@ -432,7 +443,7 @@ public class AutoBed extends Module {
                 int var5 = InventoryHelper.method2010();
                 if (var21 != -1 && var5 != -1) {
                     InvUtils.method2202().method2207(var21).method2214(var5);
-                    if (AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
+                    if (AntiCheat.INSTANCE.field2322.getValue() && !dev.boze.client.utils.player.InventoryUtil.isInventoryOpen()) {
                         mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
                     }
 
@@ -451,15 +462,15 @@ public class AutoBed extends Module {
             if (mc.player.currentScreenHandler instanceof CraftingScreenHandler) {
                 if (!this.as) {
                     this.as = true;
-                    this.au.add(AutoBed::lambda$getBedSlot$8);
-                    this.au.add(AutoBed::lambda$getBedSlot$9);
+                    this.au.add(() -> AutoBed.lambda$getBedSlot$8(var22));
+                    this.au.add(() -> AutoBed.lambda$getBedSlot$9(var23));
                     this.au.add(AutoBed::lambda$getBedSlot$10);
                     if (this.strictAutoCraft.getValue()) {
                         if (!this.au.isEmpty()) {
                             this.au.poll().run();
                         }
 
-                        if (AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
+                        if (AntiCheat.INSTANCE.field2322.getValue() && !dev.boze.client.utils.player.InventoryUtil.isInventoryOpen()) {
                             mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
                         }
                     } else {
@@ -467,7 +478,7 @@ public class AutoBed extends Module {
                             this.au.poll().run();
                         }
 
-                        if (AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
+                        if (AntiCheat.INSTANCE.field2322.getValue() && !dev.boze.client.utils.player.InventoryUtil.isInventoryOpen()) {
                             mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
                         }
                     }
@@ -487,10 +498,10 @@ public class AutoBed extends Module {
                             if (mc.world.getBlockState(var12).getBlock() == Blocks.CRAFTING_TABLE) {
                                 Vec3d var13 = new Vec3d((double) var12.getX() + 0.5, (double) var12.getY() + 1.0, (double) var12.getZ() + 0.5);
                                 if (this.placeRotate.getValue()) {
-                                    float[] var14 = EntityUtil.method2146(var13);
-                                    this.at = new ActionWrapper(this::lambda$getBedSlot$11, var14[0], var14[1]);
+                                    float[] fArray = EntityUtil.method2146(var13);
+                                    this.at = new ActionWrapper(() -> this.lambda$getBedSlot$11(var13, var12), fArray[0], fArray[1]);
                                 } else {
-                                    this.at = new ActionWrapper(this::lambda$getBedSlot$12);
+                                    this.at = new ActionWrapper(() -> this.lambda$getBedSlot$12(var13, var12));
                                 }
 
                                 this.ao.reset();
@@ -513,7 +524,7 @@ public class AutoBed extends Module {
                         }
 
                         InvUtils.method2202().method2207(var24).method2214(var25);
-                        if (AntiCheat.INSTANCE.field2322.getValue() && !InventoryUtil.isInventoryOpen()) {
+                        if (AntiCheat.INSTANCE.field2322.getValue() && !dev.boze.client.utils.player.InventoryUtil.isInventoryOpen()) {
                             mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(0));
                         }
 

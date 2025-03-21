@@ -37,10 +37,10 @@ import java.util.List;
 
 public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
     private final SettingCategory field177 = new SettingCategory("Break", "Break settings\nDelays, ranges, etc.\n");
-    final FloatSetting field178 = new FloatSetting("Range", 3.0F, 1.0F, 6.0F, 0.1F, "Break range for breaking visible crystals", this.field177);
-    final FloatSetting field179 = new FloatSetting("WallsRange", 3.0F, 0.0F, 6.0F, 0.1F, "Break range for breaking crystals through walls", this.field177);
+    public final FloatSetting field178 = new FloatSetting("Range", 3.0F, 1.0F, 6.0F, 0.1F, "Break range for breaking visible crystals", this.field177);
+    public final FloatSetting field179 = new FloatSetting("WallsRange", 3.0F, 0.0F, 6.0F, 0.1F, "Break range for breaking crystals through walls", this.field177);
     public final FloatSetting field180 = new FloatSetting("BreakDelay", 0.0F, 0.0F, 10.0F, 0.05F, "Break delay (in ticks)", this.field177);
-    final EnumSetting<InhibitMode> field181 = new EnumSetting<InhibitMode>(
+    public final EnumSetting<InhibitMode> field181 = new EnumSetting<InhibitMode>(
             "Inhibit",
             InhibitMode.On,
             "Avoid unnecessary attacks\n - Off: Don't inhibit attacks, not recommended\n - On: Inhibit attacks\n - Strict: Inhibit attacks, and abandon failed attacks\n",
@@ -51,7 +51,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
     public final Timer timer = new Timer();
     private boolean field184 = false;
 
-    AutoCrystalBreak(AutoCrystal var1) {
+    public AutoCrystalBreak(AutoCrystal var1) {
         this.field183 = var1;
         this.field178.setVisibility(() -> lambda$new$0(var1));
         this.field179.setVisibility(() -> lambda$new$1(var1));
@@ -63,7 +63,7 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
         return this.field182;
     }
 
-    boolean method2114() {
+    public boolean method2114() {
         this.field183.autoCrystalTracker.method1416();
         Entity[] var4 = this.method95();
         if (var4 != null && var4[0] != null) {
