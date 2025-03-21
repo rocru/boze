@@ -16,7 +16,6 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryUtil;
 
-import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
 public class Mesh implements IMinecraft {

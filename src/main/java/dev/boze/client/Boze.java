@@ -32,7 +32,6 @@ import meteordevelopment.orbit.EventBus;
 import meteordevelopment.orbit.EventHandler;
 import meteordevelopment.orbit.IEventBus;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.tutorial.TutorialStep;
