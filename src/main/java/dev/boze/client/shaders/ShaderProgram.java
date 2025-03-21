@@ -22,6 +22,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.Objects;
 
 public class ShaderProgram implements IMinecraft {
     public static ShaderProgram field1552;
@@ -79,7 +80,8 @@ public class ShaderProgram implements IMinecraft {
             String var4 = IOUtils.toString(
                     new ByteArrayInputStream(
                             method688(
-                                    mc.getResourceManager().getResource(Identifier.of("boze", "shaders/" + var0)).get().getInputStream().readAllBytes(),
+                                    Objects.requireNonNull(ShaderProgram.class.getClassLoader().getResourceAsStream("assets/boze/shaders/" + var0)).readAllBytes(),
+//                                    mc.getResourceManager().getResource(Identifier.of("boze", "shaders/" + var0)).get().getInputStream().readAllBytes(),
                                     Files.getFileExtension(var0)
                             )
                     ),

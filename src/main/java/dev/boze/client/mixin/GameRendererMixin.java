@@ -174,7 +174,7 @@ public abstract class GameRendererMixin {
             locals = LocalCapture.CAPTURE_FAILEXCEPTION
     )
     private void onRenderWorld(
-            RenderTickCounter var1, CallbackInfo var2, @Local(ordinal = 1) Matrix4f var3, @Local(ordinal = 1) float var4, @Local MatrixStack var5
+            RenderTickCounter var1, CallbackInfo var2, @Local(ordinal = 1) Matrix4f var3, @Local(ordinal = 1) float var4
     ) {
         if (MinecraftUtils.isClientActive()) {
             if (RenderSystem.isOnRenderThread()) {
@@ -192,7 +192,7 @@ public abstract class GameRendererMixin {
                 }
 
                 Render3DEvent var6 = Render3DEvent.method1094(
-                        var5, this.camera, this.renderer, var4, this.camera.getPos().x, this.camera.getPos().y, this.camera.getPos().z
+                        this.matrices, this.camera, this.renderer, var4, this.camera.getPos().x, this.camera.getPos().y, this.camera.getPos().z
                 );
                 RotationHelper.updateRotation();
                 Class5922.method58(var3);
@@ -208,7 +208,7 @@ public abstract class GameRendererMixin {
                 RenderSystem.applyModelViewMatrix();
                 this.renderer.method1217();
                 Boze.EVENT_BUS.post(var6);
-                this.renderer.method1219(var5);
+                this.renderer.method1219(this.matrices);
                 RenderSystem.getModelViewStack().popMatrix();
                 RenderSystem.applyModelViewMatrix();
                 Class3094.field220 = false;

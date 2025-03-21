@@ -66,7 +66,7 @@ public class PlayerHeadTexture extends Texture implements IMinecraft {
 
     public PlayerHeadTexture() {
         try {
-            InputStream var4 = mc.getResourceManager().getResource(Identifier.of("boze", "textures/steve.png")).get().getInputStream();
+            InputStream var4 = getClass().getClassLoader().getResourceAsStream("assets/boze/textures/steve.png"); //mc.getResourceManager().getResource(Identifier.of("boze", "textures/steve.png")).get().getInputStream();
 
             try {
                 ByteBuffer var5 = TextureUtil.readResource(var4);

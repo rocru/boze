@@ -1,6 +1,7 @@
 package dev.boze.api.event;
 
 import dev.boze.api.interaction.PlaceInteraction;
+import mapped.Class28;
 
 /**
  * EventGrim
@@ -76,7 +77,7 @@ public class EventGrim {
     }
 
     public static abstract class Interact extends EventGrim {
-        private static Interact INSTANCE;
+        public static Interact INSTANCE;
 
         private boolean dirty;
 

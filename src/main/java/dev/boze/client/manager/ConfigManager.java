@@ -108,6 +108,7 @@ public class ConfigManager {
     }
 
     public static void uploadConfig(String name, NbtCompound tag, ConfigType tagType) {
+        if (true) return;
         try {
             URL var6 = new URL("https://config.boze.dev/upload_" + tagType.name().toLowerCase(Locale.ROOT));
             HttpsURLConnection var7 = (HttpsURLConnection) var6.openConnection();
@@ -139,6 +140,7 @@ public class ConfigManager {
     }
 
     public static String publishConfig(String name, NbtCompound tag, String type) {
+        if (true) return null;
         try {
             URL var5 = new URL("https://config.boze.dev/share");
             HttpsURLConnection var6 = (HttpsURLConnection) var5.openConnection();
@@ -172,6 +174,7 @@ public class ConfigManager {
     }
 
     public static NbtCompound downloadConfig(String name, ConfigType tagType) {
+        if (true) return new NbtCompound();
         try {
             URL var4 = new URL("https://config.boze.dev/download_" + tagType.name().toLowerCase(Locale.ROOT));
             HttpsURLConnection var5 = (HttpsURLConnection) var4.openConnection();
@@ -192,6 +195,7 @@ public class ConfigManager {
     }
 
     public static NbtCompound method1147(String code) {
+        if (true) return new NbtCompound();
         try {
             URL var4 = new URL("https://config.boze.dev/load");
             HttpsURLConnection var5 = (HttpsURLConnection) var4.openConnection();
@@ -219,6 +223,7 @@ public class ConfigManager {
     }
 
     public static String[] get(ConfigType tagType) {
+        if (true) return new String[0];
         try {
             URL var3 = new URL("https://config.boze.dev/get_" + tagType.name().toLowerCase(Locale.ROOT));
             HttpsURLConnection var4 = (HttpsURLConnection) var3.openConnection();
@@ -239,6 +244,7 @@ public class ConfigManager {
     }
 
     public static void delete(String name, ConfigType tagType) {
+        if (true) return;
         try {
             URL var5 = new URL("https://config.boze.dev/delete_" + tagType.name().toLowerCase(Locale.ROOT));
             HttpsURLConnection var6 = (HttpsURLConnection) var5.openConnection();
@@ -264,6 +270,9 @@ public class ConfigManager {
     }
 
     public static void linked() {
+        field2139 = true;
+        if (true) return;
+
         try {
             URL var2 = new URL("https://boze.dev/api/discordlinked");
             HttpsURLConnection var3 = (HttpsURLConnection) var2.openConnection();

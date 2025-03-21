@@ -11,9 +11,15 @@ repositories {
 		name = "modrinth"
 		url = "https://api.modrinth.com/maven"
 	}
+
 	maven {
 		name = "meteor-maven"
 		url = "https://maven.meteordev.org/snapshots"
+	}
+
+	maven {
+		name = 'babbaj-maven'
+		url = 'https://babbaj.github.io/maven/'
 	}
 }
 
@@ -30,9 +36,9 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
+	modImplementation "dev.babbaj:nether-pathfinder:1.5"
+	modImplementation "meteordevelopment:baritone:${project.baritone_version}-SNAPSHOT"
 	modCompileOnly "maven.modrinth:sodium:${project.sodium_version}"
-	modCompileOnly "meteordevelopment:baritone:${project.baritone_version}-SNAPSHOT"
 }
 
 processResources {

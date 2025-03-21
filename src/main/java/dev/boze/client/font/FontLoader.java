@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.util.Arrays;
 
 public class FontLoader implements IFontRender, IMinecraft {
     public static boolean field1062 = false;
@@ -36,7 +38,16 @@ public class FontLoader implements IFontRender, IMinecraft {
     private final double field1074;
 
     public FontLoader(File file) {
+        if (!file.exists()) throw new RuntimeException(file.getAbsolutePath());
         byte[] var5 = FontReader.read(file);
+        if (var5.length == 0) {
+            try {
+                var5 = Files.readAllBytes(file.toPath());
+            } catch (Throwable _t) {
+                _t.printStackTrace(System.err);
+            }
+            if (var5.length == 0) throw new RuntimeException(file.getAbsolutePath());
+        }
         ByteBuffer var6 = BufferUtils.createByteBuffer(var5.length).put(var5);
         this.field1068 = new GlyphBuffer[9];
 

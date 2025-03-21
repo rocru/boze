@@ -1,5 +1,5 @@
 <div align="center">
-<h1>boze open source edition</h1>
+<h1>boze runnable open source edition</h1>
 
 <img src="https://i.postimg.cc/R0JF9xJK/image.png" alt="logo" width="40%" align="center" />
 

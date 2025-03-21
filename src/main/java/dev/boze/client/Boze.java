@@ -5,8 +5,10 @@ import com.google.common.io.CharStreams;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import dev.boze.api.BozeInstance;
 import dev.boze.api.addon.Addon;
+import dev.boze.api.event.EventGrim;
 import dev.boze.client.api.APIEventHandler;
 import dev.boze.client.api.BozeAPI;
+import dev.boze.client.core.Version;
 import dev.boze.client.events.PacketBundleEvent;
 import dev.boze.client.gui.renderer.IconLoader;
 import dev.boze.client.instances.impl.ChatInstance;
@@ -27,6 +29,7 @@ import dev.boze.client.utils.trackers.InventoryTracker;
 import dev.boze.client.utils.trackers.TargetTracker;
 import dev.boze.client.utils.trackers.TickRateTracker;
 import mapped.Class1201;
+import mapped.Class28;
 import mapped.Class3069;
 import meteordevelopment.orbit.EventBus;
 import meteordevelopment.orbit.EventHandler;
@@ -52,6 +55,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -74,82 +79,85 @@ public class Boze implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        LOG.info("Initializing Boze");
+        MinecraftClient.getInstance().execute(() -> {
+            LOG.info("Initializing Boze");
 
-        try {
-            InputStream var4 = MinecraftClient.class.getClassLoader().getResourceAsStream("beta.build");
+            try {
+                InputStream var4 = MinecraftClient.class.getClassLoader().getResourceAsStream("beta.build");
 
-            try (InputStreamReader reader = var4 != null ? new InputStreamReader(var4, Charsets.UTF_8) : null) {
-                if (reader != null) {
-                    BUILD = CharStreams.toString(reader);
-                } else {
-                    throw new IllegalStateException("InputStream var4 is null");
+                try (InputStreamReader reader = var4 != null ? new InputStreamReader(var4, Charsets.UTF_8) : null) {
+                    if (reader != null) {
+                        BUILD = CharStreams.toString(reader);
+                    } else {
+                        throw new IllegalStateException("InputStream var4 is null");
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException("Error reading input stream", e);
                 }
-            } catch (IOException e) {
-                throw new RuntimeException("Error reading input stream", e);
+
+                var4.close();
+            } catch (Exception var14) {
+                BUILD = "";
             }
 
-            var4.close();
-        } catch (Exception var14) {
-            BUILD = "";
-        }
-
-        if (MinecraftClient.IS_SYSTEM_MAC) {
-            LOG.info("Running on a Mac, initializing a Mac-compatible version of Boze");
-        }
-
-        ConfigManager.method1146();
-        ConfigManager.linked();
-
-        //try {
-            /*Socket var15 = new Socket("auth.boze.dev", 3000);
-            DataInputStream var5 = new DataInputStream(var15.getInputStream());
-            DataOutputStream var6 = new DataOutputStream(var15.getOutputStream());
-            var6.writeUTF(
-                    Base64.getEncoder()
-                            .encodeToString(MessageDigest.getInstance("MD5").digest((Version.isBeta ? "clientPingBeta" : "clientPing").getBytes(StandardCharsets.UTF_8)))
-            );
-            String var7 = var5.readUTF();
-            String var8 = var5.readUTF();
-            String var9 = new String(this.cipherBytes(var8.getBytes(StandardCharsets.UTF_8), var7));
-            var6.writeUTF(new String(this.cipherBytes(ConfigManager.field2138.getBytes(StandardCharsets.UTF_8), var9)));
-            if (new String(this.cipherBytes(var5.readUTF().getBytes(StandardCharsets.UTF_8), var9)).equals("ok")) {
-                for (String var10 = new String(this.cipherBytes(var5.readUTF().getBytes(StandardCharsets.UTF_8), var9));
-                     !var10.equals("end");
-                     var10 = new String(this.cipherBytes(var5.readUTF().getBytes(StandardCharsets.UTF_8), var9))
-                ) {
-                    keys.add(var10);
-                }
-            }*/
-
-        keys.add("my awesome key");
-
-        //var15.close();
-        LOG.info("registering lambda factory");
-        EVENT_BUS.registerLambdaFactory("dev.boze.client", Boze::lambda$initialize$0);
-        LOG.info("registered lambda factory");
-       /*  }catch (NoSuchAlgorithmException | IOException var12) {
-            LOG.error("Error during initialization", var12);
-        }*/
-
-        EVENT_BUS.subscribe(this);
-        this.init();
-        this.postInit();
-        ConfigManager.load();
-        Class1201.method2378();
-
-        for (ShaderSetting var17 : ShaderSetting.field962) {
-            if (var17.field963.getShaderProgram() == null) {
-                var17.field963.setShaderSetting(var17);
+            if (MinecraftClient.IS_SYSTEM_MAC) {
+                LOG.info("Running on a Mac, initializing a Mac-compatible version of Boze");
             }
-        }
 
-        Runtime.getRuntime().addShutdownHook(new Thread(Boze::lambda$initialize$1));
-        MinecraftClient.getInstance().execute(Boze::lambda$initialize$2);
-        this.initApi();
-        ScheduledExecutorService playtimeExecutor = Executors.newSingleThreadScheduledExecutor(new ThreadFactoryBuilder().setDaemon(true).build());
-        playtimeExecutor.scheduleAtFixedRate(Boze::lambda$initialize$3, 10L, 10L, TimeUnit.MINUTES);
-        LOG.info("Initialized Boze");
+            ConfigManager.method1146();
+            ConfigManager.linked();
+
+            EventGrim.Interact.INSTANCE = new Class28();
+            keys.addAll(List.of(
+                    "position_color.vert", "position_color.frag",
+                    "position_color_circle.vert", "position_color_circle.frag",
+                    "position_gradient.vert", "position_gradient.frag",
+                    "position_gradient_world.vert", "position_gradient.frag",
+                    "position_gradient_circle.vert", "position_gradient_circle.frag",
+                    "position_hsb.vert", "position_hsb.frag",
+                    "position_hsb_circle.vert", "position_hsb_circle.frag",
+                    "position_texture_color.vert", "position_texture_color.frag",
+                    "position_rainbow.vert", "position_rainbow.frag",
+                    "position_texture_color.vert", "text.frag",
+                    "text_rainbow.vert", "text_rainbow.frag",
+                    "text_gradient.vert", "text_gradient.frag",
+                    "fb_gradient.vert", "fb_gradient.frag",
+                    "position_texture_color.vert", "text_vanilla.frag",
+                    "text_rainbow.vert", "text_vanilla_rainbow.frag",
+                    "blit.vert", "blit.frag",
+                    "blit.vert", "blit_opacity.frag",
+                    "background.vert", "background.frag",
+                    "blur.vert", "blur.frag",
+                    "motion_blur.vert", "motion_blur.frag",
+                    "rainbow_sample.vert", "rainbow_sample.frag",
+                    "pass.vert", "pass.frag",
+                    "fastblur.vert", "fastblur_plus.frag",
+                    "fastblur.vert", "fastblur_minus.frag"
+            ));
+
+            LOG.info("registering lambda factory");
+            EVENT_BUS.registerLambdaFactory("dev.boze.client", Boze::lambda$initialize$0);
+            LOG.info("registered lambda factory");
+
+            EVENT_BUS.subscribe(this);
+            this.init();
+            this.postInit();
+            ConfigManager.load();
+            Class1201.method2378();
+
+            for (ShaderSetting var17 : ShaderSetting.field962) {
+                if (var17.field963.getShaderProgram() == null) {
+                    var17.field963.setShaderSetting(var17);
+                }
+            }
+
+            Runtime.getRuntime().addShutdownHook(new Thread(Boze::lambda$initialize$1));
+            MinecraftClient.getInstance().execute(Boze::lambda$initialize$2);
+            this.initApi();
+            ScheduledExecutorService playtimeExecutor = Executors.newSingleThreadScheduledExecutor(new ThreadFactoryBuilder().setDaemon(true).build());
+            playtimeExecutor.scheduleAtFixedRate(Boze::lambda$initialize$3, 10L, 10L, TimeUnit.MINUTES);
+            LOG.info("Initialized Boze");
+        });
     }
 
     private void initApi() {
@@ -162,8 +170,7 @@ public class Boze implements ClientModInitializer {
         accounts = new AccountManager();
         TickRateTracker.reset();
         ConfigManager.createDirs();
-        MinecraftClient.getInstance().execute(QuadRenderer::initialize);
-        //QuadRenderer.initialize();
+        QuadRenderer.initialize();
     }
 
     private void postInit() {
