@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum ClickTPMode {
+public enum ClickTPMode {
     Once,
     RightClick,
     Bind;

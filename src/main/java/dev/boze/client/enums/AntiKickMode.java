@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AntiKickMode {
+public enum AntiKickMode {
     Off,
     Strong,
     Strict,

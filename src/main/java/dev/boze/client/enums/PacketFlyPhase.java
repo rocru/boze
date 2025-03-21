@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum PacketFlyPhase {
+public enum PacketFlyPhase {
     Off,
     Slow,
     Fast;

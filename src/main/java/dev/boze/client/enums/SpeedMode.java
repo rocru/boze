@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum SpeedMode {
+public enum SpeedMode {
     Vanilla,
     Strafe,
     Grim,

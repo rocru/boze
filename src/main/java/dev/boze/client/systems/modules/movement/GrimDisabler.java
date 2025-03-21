@@ -19,8 +19,8 @@ public class GrimDisabler extends Module {
     @EventHandler
     public void method1838(PacketBundleEvent event) {
         if (event.packet instanceof PlayerPositionLookS2CPacket var5 && MinecraftUtils.isClientActive()) {
-            ((PlayerPositionLookS2CPacketAccessor)var5).setYaw(mc.player.getYaw());
-            ((PlayerPositionLookS2CPacketAccessor)var5).setPitch(mc.player.getPitch());
+            ((PlayerPositionLookS2CPacketAccessor) var5).setYaw(mc.player.getYaw());
+            ((PlayerPositionLookS2CPacketAccessor) var5).setPitch(mc.player.getPitch());
             var5.getFlags().remove(PositionFlag.X_ROT);
             var5.getFlags().remove(PositionFlag.Y_ROT);
         }

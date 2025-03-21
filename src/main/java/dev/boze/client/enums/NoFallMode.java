@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum NoFallMode {
+public enum NoFallMode {
     Vanilla,
     Grim,
     Motion,

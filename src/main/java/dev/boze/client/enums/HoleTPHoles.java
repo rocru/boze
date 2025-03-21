@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum HoleTPHoles {
+public enum HoleTPHoles {
     All,
     Safe;
 

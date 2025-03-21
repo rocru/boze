@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum WebTPMode {
+public enum WebTPMode {
     Normal,
     Horizontal,
     Strict;

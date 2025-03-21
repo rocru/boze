@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum HoleTPMode {
+public enum HoleTPMode {
     Normal,
     Path,
     Baritone;

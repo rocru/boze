@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum FastFallMode {
+public enum FastFallMode {
     Normal,
     Step;
 

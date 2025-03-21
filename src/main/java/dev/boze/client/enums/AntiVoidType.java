@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AntiVoidType {
+public enum AntiVoidType {
     Packet,
     PacketFloat,
     Hover,

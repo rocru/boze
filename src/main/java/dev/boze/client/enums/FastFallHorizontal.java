@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum FastFallHorizontal {
+public enum FastFallHorizontal {
     Cancel,
     Normal,
     Boost;

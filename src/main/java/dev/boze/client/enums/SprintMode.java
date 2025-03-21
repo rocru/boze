@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum SprintMode {
+public enum SprintMode {
     NCP,
     Grim,
     Ghost;

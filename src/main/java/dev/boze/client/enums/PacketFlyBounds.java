@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum PacketFlyBounds {
+public enum PacketFlyBounds {
     Normal,
     World,
     Strict;

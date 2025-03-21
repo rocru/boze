@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum PacketFlyLimit {
+public enum PacketFlyLimit {
     Off,
     Tick,
     Speed,

@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum JesusMode {
+public enum JesusMode {
     Normal,
     Strict;
 

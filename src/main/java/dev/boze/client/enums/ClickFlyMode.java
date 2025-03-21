@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum ClickFlyMode {
+public enum ClickFlyMode {
     Once,
     RightClick,
     Bind;

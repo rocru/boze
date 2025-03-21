@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum PacketFlyMode {
+public enum PacketFlyMode {
     Factor,
     Fast,
     Setback,

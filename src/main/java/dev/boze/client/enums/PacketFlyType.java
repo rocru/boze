@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum PacketFlyType {
+public enum PacketFlyType {
     Up,
     Preserve,
     Down,

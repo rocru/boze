@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum JesusNoSetback {
+public enum JesusNoSetback {
     Off,
     Water,
     Lava,

@@ -29,212 +29,212 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 
 public class Velocity extends Module {
-   public static final Velocity INSTANCE = new Velocity();
-   public final EnumSetting<AnticheatMode> field3366 = new EnumSetting<AnticheatMode>("Mode", AnticheatMode.NCP, "Velocity mode");
-   public final EnumSetting<VelocityCancel> field3367 = new EnumSetting<VelocityCancel>("Knockback", VelocityCancel.Always, "Cancel velocity from hits");
-   private final EnumSetting<VelocityCancel> field3368 = new EnumSetting<VelocityCancel>(
-      "Entities", VelocityCancel.Always, "Cancel velocity from entity collision"
-   );
-   public final EnumSetting<VelocityCancel> field3369 = new EnumSetting<VelocityCancel>("Explosions", VelocityCancel.Always, "Cancel velocity from explosions");
-   public final BooleanSetting field3370 = new BooleanSetting("BlockStrict", false, "2b2t in-block Velocity bypass\n", this::lambda$new$0);
-   private final BooleanSetting field3371 = new BooleanSetting(
-      "ModulePriority", false, "Give other modules priority over velocity\nWill reduce velocity's consistency\n", this::lambda$new$1
-   );
-   private final BooleanSetting field3372 = new BooleanSetting("Blocks", true, "Cancel velocity from being pushed out of blocks");
-   private final BooleanSetting field3373 = new BooleanSetting("Pistons", false, "No piston push");
-   private final BooleanSetting field3374 = new BooleanSetting("InWater", true, "Cancel velocity in water");
-   private final BooleanSetting field3375 = new BooleanSetting("InLava", true, "Cancel velocity in lava");
-   private Timer field3376 = new Timer();
-   private int field3377;
-   public boolean field3378 = false;
-   private int field3379;
+    public static final Velocity INSTANCE = new Velocity();
+    public final EnumSetting<AnticheatMode> field3366 = new EnumSetting<AnticheatMode>("Mode", AnticheatMode.NCP, "Velocity mode");
+    public final EnumSetting<VelocityCancel> field3367 = new EnumSetting<VelocityCancel>("Knockback", VelocityCancel.Always, "Cancel velocity from hits");
+    private final EnumSetting<VelocityCancel> field3368 = new EnumSetting<VelocityCancel>(
+            "Entities", VelocityCancel.Always, "Cancel velocity from entity collision"
+    );
+    public final EnumSetting<VelocityCancel> field3369 = new EnumSetting<VelocityCancel>("Explosions", VelocityCancel.Always, "Cancel velocity from explosions");
+    public final BooleanSetting field3370 = new BooleanSetting("BlockStrict", false, "2b2t in-block Velocity bypass\n", this::lambda$new$0);
+    private final BooleanSetting field3371 = new BooleanSetting(
+            "ModulePriority", false, "Give other modules priority over velocity\nWill reduce velocity's consistency\n", this::lambda$new$1
+    );
+    private final BooleanSetting field3372 = new BooleanSetting("Blocks", true, "Cancel velocity from being pushed out of blocks");
+    private final BooleanSetting field3373 = new BooleanSetting("Pistons", false, "No piston push");
+    private final BooleanSetting field3374 = new BooleanSetting("InWater", true, "Cancel velocity in water");
+    private final BooleanSetting field3375 = new BooleanSetting("InLava", true, "Cancel velocity in lava");
+    private final Timer field3376 = new Timer();
+    private int field3377;
+    public boolean field3378 = false;
+    private int field3379;
 
-   public Velocity() {
-      super("Velocity", "Cancels unwanted velocity", Category.Movement);
-   }
+    public Velocity() {
+        super("Velocity", "Cancels unwanted velocity", Category.Movement);
+    }
 
-   @Override
-   public void onEnable() {
-      this.field3377 = Boze.lastTeleportId;
-   }
+    @Override
+    public void onEnable() {
+        this.field3377 = Boze.lastTeleportId;
+    }
 
-   @Override
-   public String method1322() {
-      return this.field3366.getValue().toString();
-   }
+    @Override
+    public String method1322() {
+        return this.field3366.getValue().toString();
+    }
 
-   @EventHandler
-   public void method1884(PreTickEvent event) {
-      if (this.field3366.getValue() == AnticheatMode.Grim && this.field3378 && MinecraftUtils.isClientActive()) {
-         this.field3378 = false;
-         if (this.field3379 <= 0) {
-            Box var5 = mc.player.getBoundingBox();
-            BlockPos var6 = BlockPos.ofFloored(var5.getCenter().getX(), var5.minY, var5.getCenter().getZ());
-            mc.player
-               .networkHandler
-               .getConnection()
-               .send(
-                  new Full(
-                     mc.player.getX(),
-                     mc.player.getY(),
-                     mc.player.getZ(),
-                     ((ClientPlayerEntityAccessor)mc.player).getLastYaw(),
-                     this.field3370.getValue() ? 89.0F : ((ClientPlayerEntityAccessor)mc.player).getLastPitch(),
-                     mc.player.isOnGround()
-                  ),
-                  null
-               );
-            mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.STOP_DESTROY_BLOCK, var6, Direction.DOWN, 0));
-         }
-      }
-   }
-
-   @EventHandler(
-      priority = 10000
-   )
-   public void method1885(ACRotationEvent event) {
-      if (!this.field3371.getValue()) {
-         this.method1887(event);
-      }
-   }
-
-   @EventHandler(
-      priority = 21
-   )
-   public void method1886(ACRotationEvent event) {
-      if (this.field3371.getValue()) {
-         this.method1887(event);
-      }
-   }
-
-   private void method1887(ACRotationEvent var1) {
-      if (var1.method1017() == AnticheatMode.Grim && this.field3366.getValue() == AnticheatMode.Grim && this.field3370.getValue() && this.method1895()) {
-         var1.yaw = mc.player.getYaw();
-         var1.pitch = 89.0F;
-         var1.method1020();
-      }
-   }
-
-   @EventHandler
-   public void method1888(MovementEvent event) {
-      if (!this.field3376.hasElapsed(1000.0)) {
-         event.field1934 = true;
-         mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), mc.player.isOnGround()));
-         mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + 69.0, mc.player.getZ(), mc.player.isOnGround()));
-         this.field3377++;
-         this.field3377 = Math.max(this.field3377, Boze.lastTeleportId);
-         mc.player.networkHandler.sendPacket(new TeleportConfirmC2SPacket(this.field3377));
-      }
-   }
-
-   @EventHandler
-   public void method1889(GameJoinEvent event) {
-      this.field3377 = 0;
-   }
-
-   @EventHandler
-   public void method1890(PlayerVelocityEvent event) {
-      if (MinecraftUtils.isClientActive()) {
-         if (mc.player.age >= 5) {
-            if (this.field3372.getValue() && this.method1892()) {
-               if (this.field3366.getValue() == AnticheatMode.Grim && event.field1898) {
-                  return;
-               }
-
-               event.method1021(true);
+    @EventHandler
+    public void method1884(PreTickEvent event) {
+        if (this.field3366.getValue() == AnticheatMode.Grim && this.field3378 && MinecraftUtils.isClientActive()) {
+            this.field3378 = false;
+            if (this.field3379 <= 0) {
+                Box var5 = mc.player.getBoundingBox();
+                BlockPos var6 = BlockPos.ofFloored(var5.getCenter().getX(), var5.minY, var5.getCenter().getZ());
+                mc.player
+                        .networkHandler
+                        .getConnection()
+                        .send(
+                                new Full(
+                                        mc.player.getX(),
+                                        mc.player.getY(),
+                                        mc.player.getZ(),
+                                        ((ClientPlayerEntityAccessor) mc.player).getLastYaw(),
+                                        this.field3370.getValue() ? 89.0F : ((ClientPlayerEntityAccessor) mc.player).getLastPitch(),
+                                        mc.player.isOnGround()
+                                ),
+                                null
+                        );
+                mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.STOP_DESTROY_BLOCK, var6, Direction.DOWN, 0));
             }
-         }
-      }
-   }
+        }
+    }
 
-   @EventHandler
-   public void method1891(PlayerPushEvent event) {
-      if (MinecraftUtils.isClientActive()) {
-         if (mc.player.age >= 5) {
-            if (this.field3368.getValue().method2114()) {
-               event.method1020();
+    @EventHandler(
+            priority = 10000
+    )
+    public void method1885(ACRotationEvent event) {
+        if (!this.field3371.getValue()) {
+            this.method1887(event);
+        }
+    }
+
+    @EventHandler(
+            priority = 21
+    )
+    public void method1886(ACRotationEvent event) {
+        if (this.field3371.getValue()) {
+            this.method1887(event);
+        }
+    }
+
+    private void method1887(ACRotationEvent var1) {
+        if (var1.method1017() == AnticheatMode.Grim && this.field3366.getValue() == AnticheatMode.Grim && this.field3370.getValue() && this.method1895()) {
+            var1.yaw = mc.player.getYaw();
+            var1.pitch = 89.0F;
+            var1.method1020();
+        }
+    }
+
+    @EventHandler
+    public void method1888(MovementEvent event) {
+        if (!this.field3376.hasElapsed(1000.0)) {
+            event.field1934 = true;
+            mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY(), mc.player.getZ(), mc.player.isOnGround()));
+            mc.player.networkHandler.sendPacket(new PositionAndOnGround(mc.player.getX(), mc.player.getY() + 69.0, mc.player.getZ(), mc.player.isOnGround()));
+            this.field3377++;
+            this.field3377 = Math.max(this.field3377, Boze.lastTeleportId);
+            mc.player.networkHandler.sendPacket(new TeleportConfirmC2SPacket(this.field3377));
+        }
+    }
+
+    @EventHandler
+    public void method1889(GameJoinEvent event) {
+        this.field3377 = 0;
+    }
+
+    @EventHandler
+    public void method1890(PlayerVelocityEvent event) {
+        if (MinecraftUtils.isClientActive()) {
+            if (mc.player.age >= 5) {
+                if (this.field3372.getValue() && this.method1892()) {
+                    if (this.field3366.getValue() == AnticheatMode.Grim && event.field1898) {
+                        return;
+                    }
+
+                    event.method1021(true);
+                }
             }
-         }
-      }
-   }
+        }
+    }
 
-   public boolean method1892() {
-      if (!MinecraftUtils.isClientActive()) {
-         return false;
-      } else if (mc.player.isTouchingWater() || mc.player.isSubmergedInWater()) {
-         return this.field3374.getValue();
-      } else {
-         return mc.player.isInLava() ? this.field3375.getValue() : true;
-      }
-   }
+    @EventHandler
+    public void method1891(PlayerPushEvent event) {
+        if (MinecraftUtils.isClientActive()) {
+            if (mc.player.age >= 5) {
+                if (this.field3368.getValue().method2114()) {
+                    event.method1020();
+                }
+            }
+        }
+    }
 
-   @EventHandler
-   public void method1893(PlayerMoveEvent event) {
-      if (event.movementType == MovementType.PISTON && this.field3373.getValue() && this.method1892()) {
-         if (mc.world.getBlockState(BlockPos.ofFloored(mc.player.getPos()).down()).getBlock() == Blocks.SLIME_BLOCK) {
-            return;
-         }
+    public boolean method1892() {
+        if (!MinecraftUtils.isClientActive()) {
+            return false;
+        } else if (mc.player.isTouchingWater() || mc.player.isSubmergedInWater()) {
+            return this.field3374.getValue();
+        } else {
+            return mc.player.isInLava() ? this.field3375.getValue() : true;
+        }
+    }
 
-         this.field3376.reset();
-         event.method1020();
-      } else if (!this.field3376.hasElapsed(1000.0)) {
-         event.method1020();
-      }
-   }
+    @EventHandler
+    public void method1893(PlayerMoveEvent event) {
+        if (event.movementType == MovementType.PISTON && this.field3373.getValue() && this.method1892()) {
+            if (mc.world.getBlockState(BlockPos.ofFloored(mc.player.getPos()).down()).getBlock() == Blocks.SLIME_BLOCK) {
+                return;
+            }
 
-   @EventHandler
-   public void method1894(PacketBundleEvent event) {
-      if (MinecraftUtils.isClientActive()) {
-         if (mc.player.age >= 5) {
-            if (this.field3379 > 0) {
-               this.field3379--;
+            this.field3376.reset();
+            event.method1020();
+        } else if (!this.field3376.hasElapsed(1000.0)) {
+            event.method1020();
+        }
+    }
+
+    @EventHandler
+    public void method1894(PacketBundleEvent event) {
+        if (MinecraftUtils.isClientActive()) {
+            if (mc.player.age >= 5) {
+                if (this.field3379 > 0) {
+                    this.field3379--;
+                } else {
+                    if (event.packet instanceof EntityVelocityUpdateS2CPacket
+                            && ((EntityVelocityUpdateS2CPacket) event.packet).getEntityId() == mc.player.getId()
+                            && this.field3367.getValue().method2114()) {
+                        this.field3378 = true;
+                        event.method1020();
+                    } else if (event.packet instanceof PlayerPositionLookS2CPacket && MinecraftUtils.isClientActive()) {
+                        if (this.field3366.getValue() == AnticheatMode.Grim) {
+                            this.field3379 = 5;
+                        }
+
+                        if (!this.field3376.hasElapsed(1500.0)) {
+                            PlayerPositionLookS2CPacket var5 = (PlayerPositionLookS2CPacket) event.packet;
+                            ((PlayerPositionLookS2CPacketAccessor) var5).setYaw(mc.player.getYaw());
+                            ((PlayerPositionLookS2CPacketAccessor) var5).setPitch(mc.player.getPitch());
+                            var5.getFlags().remove(PositionFlag.X_ROT);
+                            var5.getFlags().remove(PositionFlag.Y_ROT);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public boolean method1895() {
+        if (this.field3366.getValue() == AnticheatMode.Grim && this.field3370.getValue()) {
+            if (mc.world.isSpaceEmpty(mc.player.getBoundingBox())) {
+                return false;
             } else {
-               if (event.packet instanceof EntityVelocityUpdateS2CPacket
-                  && ((EntityVelocityUpdateS2CPacket)event.packet).getEntityId() == mc.player.getId()
-                  && this.field3367.getValue().method2114()) {
-                  this.field3378 = true;
-                  event.method1020();
-               } else if (event.packet instanceof PlayerPositionLookS2CPacket && MinecraftUtils.isClientActive()) {
-                  if (this.field3366.getValue() == AnticheatMode.Grim) {
-                     this.field3379 = 5;
-                  }
+                for (BlockPos var6 : Class5924.method348(mc.player.getPos())) {
+                    if (mc.world.getBlockState(var6).getBlock() == Blocks.AIR) {
+                        return true;
+                    }
+                }
 
-                  if (!this.field3376.hasElapsed(1500.0)) {
-                     PlayerPositionLookS2CPacket var5 = (PlayerPositionLookS2CPacket)event.packet;
-                     ((PlayerPositionLookS2CPacketAccessor)var5).setYaw(mc.player.getYaw());
-                     ((PlayerPositionLookS2CPacketAccessor)var5).setPitch(mc.player.getPitch());
-                     var5.getFlags().remove(PositionFlag.X_ROT);
-                     var5.getFlags().remove(PositionFlag.Y_ROT);
-                  }
-               }
+                return false;
             }
-         }
-      }
-   }
+        } else {
+            return true;
+        }
+    }
 
-   public boolean method1895() {
-      if (this.field3366.getValue() == AnticheatMode.Grim && this.field3370.getValue()) {
-         if (mc.world.isSpaceEmpty(mc.player.getBoundingBox())) {
-            return false;
-         } else {
-            for (BlockPos var6 : Class5924.method348(mc.player.getPos())) {
-               if (mc.world.getBlockState(var6).getBlock() == Blocks.AIR) {
-                  return true;
-               }
-            }
+    private boolean lambda$new$1() {
+        return this.field3366.getValue() == AnticheatMode.Grim && this.field3370.getValue();
+    }
 
-            return false;
-         }
-      } else {
-         return true;
-      }
-   }
-
-   private boolean lambda$new$1() {
-      return this.field3366.getValue() == AnticheatMode.Grim && this.field3370.getValue();
-   }
-
-   private boolean lambda$new$0() {
-      return this.field3366.getValue() == AnticheatMode.Grim;
-   }
+    private boolean lambda$new$0() {
+        return this.field3366.getValue() == AnticheatMode.Grim;
+    }
 }

@@ -6,14 +6,14 @@ import dev.boze.client.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
 
 public class SafeWalk extends Module {
-   public static final SafeWalk INSTANCE = new SafeWalk();
+    public static final SafeWalk INSTANCE = new SafeWalk();
 
-   public SafeWalk() {
-      super("SafeWalk", "Prevents you from falling off edges", Category.Movement);
-   }
+    public SafeWalk() {
+        super("SafeWalk", "Prevents you from falling off edges", Category.Movement);
+    }
 
-   @EventHandler
-   public void method1866(ClipAtLedgeEvent event) {
-      event.method1020();
-   }
+    @EventHandler
+    public void method1866(ClipAtLedgeEvent event) {
+        event.method1020();
+    }
 }
