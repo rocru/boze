@@ -14,11 +14,9 @@ import dev.boze.client.utils.render.color.ChangingColor;
 import dev.boze.client.utils.render.color.GradientColor;
 import dev.boze.client.utils.render.color.StaticColor;
 import mapped.Class5903;
-import net.fabricmc.loader.impl.launch.knot.Knot;
 import net.minecraft.command.CommandSource;
 
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.HashMap;
 
 public class ColorsCommand extends Command {
@@ -169,7 +167,8 @@ public class ColorsCommand extends Command {
             String[] var9 = StringArgumentType.getString(var1, "colors").split(" ");
             File var10 = new File(mc.runDirectory, "versions/" + mc.getGameVersion() + "/" + mc.getGameVersion() + ".json");
             if (!var10.exists()) {
-                var10 = new File(Paths.get(Knot.programArgs[5]).getParent().toString(), "patches" + File.separator + "dev.boze.json");
+//                var10 = new File(Paths.get(Knot.programArgs[5]).getParent().toString(), "patches" + File.separator + "dev.boze.json");
+                // Program args ??
             }
 
             if (var9.length % 3 == 0 && var9.length >= 6 && var10.exists()) {

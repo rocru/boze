@@ -109,35 +109,35 @@ public class NCP implements Anticheat {
     }
 
     private List<Direction> method945(int var1, int var2, int var3, boolean var4) {
-       List<Direction> var8 = new ArrayList<>(6);
-       if (!var4) {
-          if (var1 == 0) {
-             var8.add(Direction.EAST);
-             var8.add(Direction.WEST);
-          }
+        List<Direction> var8 = new ArrayList<>(6);
+        if (!var4) {
+            if (var1 == 0) {
+                var8.add(Direction.EAST);
+                var8.add(Direction.WEST);
+            }
 
-          if (var3 == 0) {
-             var8.add(Direction.SOUTH);
-             var8.add(Direction.NORTH);
-          }
-       }
+            if (var3 == 0) {
+                var8.add(Direction.SOUTH);
+                var8.add(Direction.NORTH);
+            }
+        }
 
-       if (var2 == 0) {
-          var8.add(Direction.UP);
-          var8.add(Direction.DOWN);
-       } else {
-          var8.add(var2 > 0 ? Direction.UP : Direction.DOWN);
-       }
+        if (var2 == 0) {
+            var8.add(Direction.UP);
+            var8.add(Direction.DOWN);
+        } else {
+            var8.add(var2 > 0 ? Direction.UP : Direction.DOWN);
+        }
 
-       if (var1 != 0) {
-          var8.add(var1 > 0 ? Direction.EAST : Direction.WEST);
-       }
+        if (var1 != 0) {
+            var8.add(var1 > 0 ? Direction.EAST : Direction.WEST);
+        }
 
-       if (var3 != 0) {
-          var8.add(var3 > 0 ? Direction.SOUTH : Direction.NORTH);
-       }
+        if (var3 != 0) {
+            var8.add(var3 > 0 ? Direction.SOUTH : Direction.NORTH);
+        }
 
-       return var8;
+        return var8;
     }
 
     private boolean method946(BlockPos var1, List<Direction> var2, Direction var3, boolean var4) {

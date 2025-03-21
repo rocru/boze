@@ -27,9 +27,9 @@ public class EventInput {
      * Gets the event instance - this is called by Boze, and should not be called by addons
      *
      * @param movementSideways Current sideways movement
-     * @param movementForward Current forwards movement
-     * @param jumping If the player is jumping
-     * @param sneaking IF the player is sneaking
+     * @param movementForward  Current forwards movement
+     * @param jumping          If the player is jumping
+     * @param sneaking         IF the player is sneaking
      * @return The event instance
      */
     public static EventInput get(float movementSideways, float movementForward, boolean jumping, boolean sneaking) {

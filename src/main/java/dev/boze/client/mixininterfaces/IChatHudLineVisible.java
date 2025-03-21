@@ -1,7 +1,7 @@
 package dev.boze.client.mixininterfaces;
 
 public interface IChatHudLineVisible extends IChatHudLine {
-   boolean boze$isFirst();
+    boolean boze$isFirst();
 
-   void boze$setFirst(boolean var1);
+    void boze$setFirst(boolean var1);
 }

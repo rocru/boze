@@ -7,6 +7,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({FireworkRocketEntity.class})
 public interface FireworkRocketEntityAccessor {
-   @Accessor
-   LivingEntity getShooter();
+    @Accessor
+    LivingEntity getShooter();
 }

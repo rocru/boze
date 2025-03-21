@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 /**
  * Boze (API) Instance
- *
+ * <p>
  * This class keeps track of all the addons and modules registered by addons
  * It also provides addons a way to register packages and subscribe to events
  */
@@ -28,7 +28,7 @@ public final class BozeInstance {
 
     private final ArrayList<Addon> addons = new ArrayList<>();
 
-    private IEventBus EVENT_BUS = new EventBus();
+    private final IEventBus EVENT_BUS = new EventBus();
 
     private BozeInstance() {
 

@@ -23,7 +23,7 @@ public class ModuleHelper {
      * Set the state of a module
      *
      * @param module The name of the module to set the state of
-     * @param state The state to set the module to
+     * @param state  The state to set the module to
      * @throws ModuleNotFoundException If the module is not found
      */
     public static void setState(String module, boolean state) throws ModuleNotFoundException {

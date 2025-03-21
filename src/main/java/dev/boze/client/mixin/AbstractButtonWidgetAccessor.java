@@ -7,6 +7,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({ClickableWidget.class})
 public interface AbstractButtonWidgetAccessor {
-   @Accessor("message")
-   void setText(Text var1);
+    @Accessor("message")
+    void setText(Text var1);
 }

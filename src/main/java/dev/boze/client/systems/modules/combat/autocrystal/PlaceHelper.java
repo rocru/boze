@@ -228,7 +228,7 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
     }
 
     private IPlace method120() {
-        return (IPlace) (this.field205.getValue() == AnticheatMode.Grim ? this.grim : this.ncp);
+        return this.field205.getValue() == AnticheatMode.Grim ? this.grim : this.ncp;
     }
 
     private boolean lambda$new$4() {

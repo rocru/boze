@@ -3,22 +3,22 @@ package dev.boze.client.jumptable;
 import dev.boze.client.enums.ToggleStyle;
 
 public class hU {
-   public static final int[] field2105 = new int[ToggleStyle.values().length];
+    public static final int[] field2105 = new int[ToggleStyle.values().length];
 
-   static {
-      try {
-         field2105[ToggleStyle.Switch.ordinal()] = 1;
-      } catch (NoSuchFieldError var5) {
-      }
+    static {
+        try {
+            field2105[ToggleStyle.Switch.ordinal()] = 1;
+        } catch (NoSuchFieldError var5) {
+        }
 
-      try {
-         field2105[ToggleStyle.Circle.ordinal()] = 2;
-      } catch (NoSuchFieldError var4) {
-      }
+        try {
+            field2105[ToggleStyle.Circle.ordinal()] = 2;
+        } catch (NoSuchFieldError var4) {
+        }
 
-      try {
-         field2105[ToggleStyle.Check.ordinal()] = 3;
-      } catch (NoSuchFieldError var3) {
-      }
-   }
+        try {
+            field2105[ToggleStyle.Check.ordinal()] = 3;
+        } catch (NoSuchFieldError var3) {
+        }
+    }
 }

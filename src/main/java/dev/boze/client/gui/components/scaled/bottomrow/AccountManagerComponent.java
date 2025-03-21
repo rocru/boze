@@ -102,7 +102,7 @@ public class AccountManagerComponent extends BottomRowScaledComponent {
             this.field1448.method1132(var18);
             return true;
         } else {
-            BozeExecutor.method2200(() -> lambda$handleItemClick$0(var18));
+            BozeExecutor.method2200(() -> lhic0(var18));
             return true;
         }
     }
@@ -113,10 +113,10 @@ public class AccountManagerComponent extends BottomRowScaledComponent {
     }
 
     public static void method642(Account<?> account, AccountSetting accountSetting) {
-        BozeExecutor.method2200(() -> AccountManagerComponent.lambda$addAccount$1(account, accountSetting));
+        BozeExecutor.method2200(() -> AccountManagerComponent.laa1(account, accountSetting));
     }
 
-    private static void lambda$addAccount$1(Account var0, AccountSetting var1) {
+    private static void laa1(Account var0, AccountSetting var1) {
         if (var0.method2114()) {
             Boze.getAccounts().method1130(var0);
             if (var0.method2115()) {
@@ -126,7 +126,7 @@ public class AccountManagerComponent extends BottomRowScaledComponent {
         }
     }
 
-    private void lambda$handleItemClick$0(Account var1) {
+    private void lhic0(Account var1) {
         if (var1.method2115()) {
             this.field1447.setValue(var1.method210());
             Boze.getPlayerManager().method2142();

@@ -6,6 +6,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({BlockHitResult.class})
 public interface BlockHitResultAccessor {
-   @Accessor
-   boolean isMissed();
+    @Accessor
+    boolean isMissed();
 }

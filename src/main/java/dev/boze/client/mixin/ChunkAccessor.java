@@ -10,6 +10,6 @@ import java.util.Map;
 
 @Mixin({Chunk.class})
 public interface ChunkAccessor {
-   @Accessor("blockEntities")
-   Map<BlockPos, BlockEntity> getBlockEntities();
+    @Accessor("blockEntities")
+    Map<BlockPos, BlockEntity> getBlockEntities();
 }

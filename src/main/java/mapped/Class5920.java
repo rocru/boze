@@ -1,7 +1,6 @@
 package mapped;
 
 import dev.boze.client.utils.IMinecraft;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import org.joml.Vector3d;
 

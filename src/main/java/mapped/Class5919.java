@@ -8,7 +8,6 @@ import dev.boze.client.mixininterfaces.IVec3d;
 import dev.boze.client.utils.IMinecraft;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.ChargedProjectilesComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.entity.projectile.thrown.*;
@@ -22,11 +21,8 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
-import net.minecraft.world.World;
 import org.joml.Quaterniond;
-import org.joml.Quaterniondc;
 import org.joml.Vector3d;
-import org.joml.Vector3dc;
 
 public class Class5919 implements IMinecraft {
     private static final BlockPos.Mutable field10;

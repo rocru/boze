@@ -94,7 +94,7 @@ public class InventoryUtil
             if (n2 >= 0) {
                 InventoryUtil.mc.player.getInventory().selectedSlot = n2;
                 Class2839.field111 = n2;
-                ((ClientPlayerInteractionManagerAccessor)InventoryUtil.mc.interactionManager).callSyncSelectedSlot();
+                ((ClientPlayerInteractionManagerAccessor) InventoryUtil.mc.interactionManager).callSyncSelectedSlot();
                 return true;
             }
             return false;
@@ -150,7 +150,7 @@ public class InventoryUtil
             field1250 = n;
             field1252 = n2;
             field1251 = SlotSwapMode.Normal;
-            mc.getNetworkHandler().sendPacket((Packet)new UpdateSelectedSlotC2SPacket(n2));
+            mc.getNetworkHandler().sendPacket(new UpdateSelectedSlotC2SPacket(n2));
             return true;
         }
         return false;
@@ -160,7 +160,7 @@ public class InventoryUtil
         if (field1253 >= 0) {
             Class2839.field111 = InventoryUtil.mc.player.getInventory().selectedSlot;
             if (AntiCheat.INSTANCE.field2320.getValue().booleanValue()) {
-                ((ClientPlayerInteractionManagerAccessor)InventoryUtil.mc.interactionManager).callSyncSelectedSlot();
+                ((ClientPlayerInteractionManagerAccessor) InventoryUtil.mc.interactionManager).callSyncSelectedSlot();
             }
             field1253 = -1;
         }
@@ -174,7 +174,7 @@ public class InventoryUtil
             field1251 = SlotSwapMode.Alt;
             ScreenHandler screenHandler = InventoryUtil.mc.player.currentScreenHandler;
             Int2ObjectArrayMap<ItemStack> int2ObjectArrayMap = new Int2ObjectArrayMap<ItemStack>();
-            int n3 = ((ClientPlayerInteractionManagerAccessor)InventoryUtil.mc.interactionManager).getLastSelectedSlot();
+            int n3 = ((ClientPlayerInteractionManagerAccessor) InventoryUtil.mc.interactionManager).getLastSelectedSlot();
             ItemStack itemStack = screenHandler.getSlot(n2).getStack();
             ItemStack itemStack2 = screenHandler.getSlot(n3).getStack();
             int2ObjectArrayMap.put(n2, itemStack);
@@ -182,14 +182,14 @@ public class InventoryUtil
                 int n4 = n2;
                 int n5 = n3;
                 ItemTracker.method1964(n4, n5);
-                mc.getNetworkHandler().sendPacket((Packet)new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), n4, n5, SlotActionType.SWAP, itemStack, int2ObjectArrayMap));
+                mc.getNetworkHandler().sendPacket(new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), n4, n5, SlotActionType.SWAP, itemStack, int2ObjectArrayMap));
             } else {
                 int n6 = 36 + n3;
                 int n7 = n2;
                 ItemTracker.method1964(n6, n7);
-                mc.getNetworkHandler().sendPacket((Packet)new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), n6, n7, SlotActionType.SWAP, itemStack, int2ObjectArrayMap));
+                mc.getNetworkHandler().sendPacket(new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), n6, n7, SlotActionType.SWAP, itemStack, int2ObjectArrayMap));
             }
-            ((ClientPlayerInteractionManagerAccessor)InventoryUtil.mc.interactionManager).callSyncSelectedSlot();
+            ((ClientPlayerInteractionManagerAccessor) InventoryUtil.mc.interactionManager).callSyncSelectedSlot();
             field1254 = new int[]{n2, n3};
             return true;
         }
@@ -205,11 +205,11 @@ public class InventoryUtil
             ItemStack itemStack2 = screenHandler.getSlot(field1254[1]).getStack();
             if (field1254[0] > 8) {
                 int2ObjectArrayMap.put(field1254[1], itemStack2);
-                mc.getNetworkHandler().sendPacket((Packet)new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), field1254[0], field1254[1], SlotActionType.SWAP, itemStack2.copy(), int2ObjectArrayMap));
+                mc.getNetworkHandler().sendPacket(new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), field1254[0], field1254[1], SlotActionType.SWAP, itemStack2.copy(), int2ObjectArrayMap));
             } else {
                 int2ObjectArrayMap.put(field1254[0], itemStack);
                 int n = 36 + field1254[1];
-                mc.getNetworkHandler().sendPacket((Packet)new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), n, field1254[0], SlotActionType.SWAP, itemStack.copy(), int2ObjectArrayMap));
+                mc.getNetworkHandler().sendPacket(new ClickSlotC2SPacket(screenHandler.syncId, screenHandler.getRevision(), n, field1254[0], SlotActionType.SWAP, itemStack.copy(), int2ObjectArrayMap));
             }
             field1254 = null;
         }

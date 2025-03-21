@@ -10,7 +10,6 @@ import net.minecraft.SharedConstants;
 import net.minecraft.client.input.Input;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.recipebook.ClientRecipeBook;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.stat.StatHandler;
 import net.minecraft.util.Pair;
@@ -75,7 +74,7 @@ public class Class5918 implements IMinecraft {
         }
         ((IParticleManager) Class5918.mc.particleManager).boze$setPaused(paused2);
         baseEntity.setVelocity(velocity);
-        if (Class5918.mc.player != null && baseEntity.equals(Class5918.mc.player)) {
+        if (baseEntity.equals(Class5918.mc.player)) {
             Class5918.mc.player.setVelocity(velocity2);
         }
         soundSystem.boze$setPaused(paused);

@@ -7,7 +7,6 @@ import dev.boze.client.utils.MinecraftUtils;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.BlockView;
 
 public class Class5914 implements IMinecraft {
     public Class5914() {

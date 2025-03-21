@@ -8,7 +8,6 @@ import dev.boze.api.interaction.PlaceInteraction;
  * Grim rotation/interaction event
  * <p>
  * This event should be used for 2b2t/GrimAC features
- *
  */
 public class EventGrim {
 
@@ -24,9 +23,9 @@ public class EventGrim {
         /**
          * Gets the event instance - this is called once a tick by Boze, and should not be called by addons
          *
-         * @param yaw Current yaw
+         * @param yaw   Current yaw
          * @param pitch Current pitch
-         * @param set If rotations are already set by Boze
+         * @param set   If rotations are already set by Boze
          * @return The event instance
          */
         public static Rotate get(float yaw, float pitch, boolean set) {
@@ -37,8 +36,7 @@ public class EventGrim {
         }
 
         /**
-         *
-         * @param yaw New yaw
+         * @param yaw   New yaw
          * @param pitch New pitch
          */
         public void set(float yaw, float pitch) {

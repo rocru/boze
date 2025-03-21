@@ -14,15 +14,15 @@ import java.util.Optional;
 
 @Mixin({Item.class})
 public class ItemMixin {
-   @Inject(
-      method = {"getTooltipData"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void onTooltipData(ItemStack var1, CallbackInfoReturnable<Optional<TooltipData>> var2) {
-      TooltipDataEvent var3 = (TooltipDataEvent) Boze.EVENT_BUS.post(TooltipDataEvent.method1097(var1));
-      if (var3.field1958 != null) {
-         var2.setReturnValue(Optional.of(var3.field1958));
-      }
-   }
+    @Inject(
+            method = {"getTooltipData"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void onTooltipData(ItemStack var1, CallbackInfoReturnable<Optional<TooltipData>> var2) {
+        TooltipDataEvent var3 = Boze.EVENT_BUS.post(TooltipDataEvent.method1097(var1));
+        if (var3.field1958 != null) {
+            var2.setReturnValue(Optional.of(var3.field1958));
+        }
+    }
 }

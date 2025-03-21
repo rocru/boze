@@ -251,7 +251,7 @@ public class Ghost implements Anticheat {
                     }
             }
 
-            return (Vec3d[]) var9.toArray(new Vec3d[0]);
+            return var9.toArray(new Vec3d[0]);
         }
     }
 }

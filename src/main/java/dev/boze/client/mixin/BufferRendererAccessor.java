@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({BufferRenderer.class})
 public interface BufferRendererAccessor {
-   @Accessor("currentVertexBuffer")
-   static void setCurrentVertexBuffer(VertexBuffer vertexBuffer) {
-   }
+    @Accessor("currentVertexBuffer")
+    static void setCurrentVertexBuffer(VertexBuffer vertexBuffer) {
+    }
 }

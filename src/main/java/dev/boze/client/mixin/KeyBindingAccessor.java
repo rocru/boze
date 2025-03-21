@@ -9,17 +9,17 @@ import java.util.Map;
 
 @Mixin({KeyBinding.class})
 public interface KeyBindingAccessor {
-   @Accessor("CATEGORY_ORDER_MAP")
-   static Map<String, Integer> getCategoryOrderMap() {
-      return null;
-   }
+    @Accessor("CATEGORY_ORDER_MAP")
+    static Map<String, Integer> getCategoryOrderMap() {
+        return null;
+    }
 
-   @Accessor("boundKey")
-   Key getKey();
+    @Accessor("boundKey")
+    Key getKey();
 
-   @Accessor
-   void setTimesPressed(int var1);
+    @Accessor
+    void setTimesPressed(int var1);
 
-   @Accessor
-   int getTimesPressed();
+    @Accessor
+    int getTimesPressed();
 }

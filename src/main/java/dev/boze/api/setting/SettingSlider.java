@@ -16,7 +16,7 @@ public class SettingSlider extends SettingBase<Double> {
     public final double step;
 
     public SettingSlider(ToggleableModule owner, String name, String description, double value, double min, double max, double step) {
-       super(owner, name, description);
+        super(owner, name, description);
         this.value = value;
         this.min = min;
         this.max = max;

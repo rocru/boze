@@ -1,33 +1,25 @@
 package mapped;
 
-import java.nio.file.*;
-import net.fabricmc.loader.impl.gui.*;
-import java.net.*;
-import java.lang.management.*;
-import sun.misc.*;
-import java.nio.charset.*;
-import org.spongepowered.asm.launch.*;
-import netutil.*;
-import javax.crypto.*;
-import net.fabricmc.loader.impl.util.log.*;
-import java.lang.reflect.*;
-import com.sun.management.*;
-import java.util.function.*;
-import java.util.stream.*;
-import java.util.*;
-import java.io.*;
-import javax.crypto.spec.*;
-import java.security.*;
-import java.security.spec.*;
+import netutil.Count;
 
-class Class5941
-{
+import javax.crypto.Cipher;
+import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import java.io.File;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.HashMap;
+
+class Class5941 {
     Class5941() {
         super();
     }
 
     HashMap<String, byte[]> method11524(final String v1, final String v2) {
-        return  null;//
+        return null;//
         /*final boolean field4012 = Count.field4012;
         try {
             String s = "";
@@ -460,7 +452,6 @@ class Class5941
     }
 
     private void method11525(final File v1, final String v2) {
-        return;
         /*final boolean field4012 = Count.field4012;
         final File file = new File(v1, "dt");
         final boolean b = field4012;
@@ -643,8 +634,7 @@ class Class5941
     public static String method11531(final String v0) {
         try {
             return Base64.getEncoder().encodeToString(MessageDigest.getInstance("MD5").digest(v0.getBytes(StandardCharsets.UTF_8)));
-        }
-        catch (final NoSuchAlgorithmException ex) {
+        } catch (final NoSuchAlgorithmException ex) {
             return "null";
         }
     }
@@ -722,7 +712,7 @@ class Class5941
             if (b) {
                 return array2;
             }
-            array2[i] = (byte)(v0[i] ^ v1.charAt(i % v1.length()));
+            array2[i] = (byte) (v0[i] ^ v1.charAt(i % v1.length()));
             ++i;
             if (b) {
                 break;
@@ -742,7 +732,7 @@ class Class5941
             if (b) {
                 return array2;
             }
-            array2[i] = (byte)(v0[i] ^ v1[i % v1.length]);
+            array2[i] = (byte) (v0[i] ^ v1[i % v1.length]);
             ++i;
             if (b) {
                 break;
@@ -763,8 +753,8 @@ class Class5941
         final GCMParameterSpec params = new GCMParameterSpec(128, src);
         try {
             v1.init(2, new SecretKeySpec(v0, 0, v0.length, "AES"), params);
+        } catch (final Exception ex) {
         }
-        catch (final Exception ex) {}
     }
 
     private static byte[] lambda$load$0(final HashMap v0, final byte[] v1) {

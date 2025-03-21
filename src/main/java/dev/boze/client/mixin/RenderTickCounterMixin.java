@@ -11,22 +11,22 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({Dynamic.class})
 public class RenderTickCounterMixin {
-   @Shadow
-   private float lastFrameDuration;
+    @Shadow
+    private float lastFrameDuration;
 
-   @Inject(
-      method = {"beginRenderTick(J)I"},
-      at = {@At(
-         value = "FIELD",
-         target = "Lnet/minecraft/client/render/RenderTickCounter$Dynamic;prevTimeMillis:J",
-         opcode = 181
-      )}
-   )
-   private void onBeingRenderTick(long var1, CallbackInfoReturnable<Integer> var3) {
-      if (MinecraftUtils.isClientActive()) {
-         this.lastFrameDuration = this.lastFrameDuration * Class3076.method6027();
-      } else {
-         Class3076.method6026();
-      }
-   }
+    @Inject(
+            method = {"beginRenderTick(J)I"},
+            at = {@At(
+                    value = "FIELD",
+                    target = "Lnet/minecraft/client/render/RenderTickCounter$Dynamic;prevTimeMillis:J",
+                    opcode = 181
+            )}
+    )
+    private void onBeingRenderTick(long var1, CallbackInfoReturnable<Integer> var3) {
+        if (MinecraftUtils.isClientActive()) {
+            this.lastFrameDuration = this.lastFrameDuration * Class3076.method6027();
+        } else {
+            Class3076.method6026();
+        }
+    }
 }

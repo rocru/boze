@@ -11,36 +11,36 @@ import org.spongepowered.asm.mixin.Unique;
 
 @Mixin({ChatHudLine.class})
 public abstract class ChatHudLineMixin implements IChatHudLine {
-   @Shadow
-   @Final
-   private Text content;
-   @Unique
-   private GameProfile sender;
-   @Unique
-   private int iD;
+    @Shadow
+    @Final
+    private Text content;
+    @Unique
+    private GameProfile sender;
+    @Unique
+    private int iD;
 
-   @Override
-   public int boze$getID() {
-      return this.iD;
-   }
+    @Override
+    public int boze$getID() {
+        return this.iD;
+    }
 
-   @Override
-   public void boze$setID(int iD) {
-      this.iD = iD;
-   }
+    @Override
+    public void boze$setID(int iD) {
+        this.iD = iD;
+    }
 
-   @Override
-   public String boze$getText() {
-      return this.content.getString();
-   }
+    @Override
+    public String boze$getText() {
+        return this.content.getString();
+    }
 
-   @Override
-   public GameProfile boze$getSenderProfile() {
-      return this.sender;
-   }
+    @Override
+    public GameProfile boze$getSenderProfile() {
+        return this.sender;
+    }
 
-   @Override
-   public void boze$setSenderProfile(GameProfile sender) {
-      this.sender = sender;
-   }
+    @Override
+    public void boze$setSenderProfile(GameProfile sender) {
+        this.sender = sender;
+    }
 }

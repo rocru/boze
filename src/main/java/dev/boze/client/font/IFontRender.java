@@ -5,11 +5,11 @@ import dev.boze.client.utils.RGBAColor;
 import net.minecraft.client.gui.DrawContext;
 
 public interface IFontRender {
-    public static IFontRender method499() {
+    static IFontRender method499() {
         return FontManager.method1106() ? FontManager.method1105() : FontManager.method1102();
     }
 
-    public static IFontRender method500(boolean custom) {
+    static IFontRender method500(boolean custom) {
         return custom ? FontManager.method1102() : FontRenderer.field1075;
     }
 

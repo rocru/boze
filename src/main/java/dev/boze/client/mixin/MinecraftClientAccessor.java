@@ -21,62 +21,62 @@ import java.util.concurrent.CompletableFuture;
 
 @Mixin({MinecraftClient.class})
 public interface MinecraftClientAccessor {
-   @Accessor("currentFps")
-   int getCurrentFps();
+    @Accessor("currentFps")
+    int getCurrentFps();
 
-   @Mutable
-   @Accessor("session")
-   void setSession(Session var1);
+    @Mutable
+    @Accessor("session")
+    void setSession(Session var1);
 
-   @Accessor("networkProxy")
-   Proxy getProxy();
+    @Accessor("networkProxy")
+    Proxy getProxy();
 
-   @Accessor("itemUseCooldown")
-   void setItemUseCooldown(int var1);
+    @Accessor("itemUseCooldown")
+    void setItemUseCooldown(int var1);
 
-   @Accessor("itemUseCooldown")
-   int getItemUseCooldown();
+    @Accessor("itemUseCooldown")
+    int getItemUseCooldown();
 
-   @Invoker
-   boolean callDoAttack();
+    @Invoker
+    boolean callDoAttack();
 
-   @Invoker("doItemUse")
-   void callDoItemUse();
+    @Invoker("doItemUse")
+    void callDoItemUse();
 
-   @Mutable
-   @Accessor("profileKeys")
-   void setProfileKeys(ProfileKeys var1);
+    @Mutable
+    @Accessor("profileKeys")
+    void setProfileKeys(ProfileKeys var1);
 
-   @Mutable
-   @Accessor
-   void setUserApiService(UserApiService var1);
+    @Mutable
+    @Accessor
+    void setUserApiService(UserApiService var1);
 
-   @Invoker("createUserApiService")
-   UserApiService callCreateUserApiService(YggdrasilAuthenticationService var1, RunArgs var2);
+    @Invoker("createUserApiService")
+    UserApiService callCreateUserApiService(YggdrasilAuthenticationService var1, RunArgs var2);
 
-   @Accessor("authenticationService")
-   YggdrasilAuthenticationService getAuthenticationService();
+    @Accessor("authenticationService")
+    YggdrasilAuthenticationService getAuthenticationService();
 
-   @Mutable
-   @Accessor("socialInteractionsManager")
-   void setSocialInteractionsManager(SocialInteractionsManager var1);
+    @Mutable
+    @Accessor("socialInteractionsManager")
+    void setSocialInteractionsManager(SocialInteractionsManager var1);
 
-   @Accessor("abuseReportContext")
-   void setAbuseReportContext(AbuseReportContext var1);
+    @Accessor("abuseReportContext")
+    void setAbuseReportContext(AbuseReportContext var1);
 
-   @Mutable
-   @Accessor("gameProfileFuture")
-   void setGameProfileFuture(CompletableFuture<ProfileResult> var1);
+    @Mutable
+    @Accessor("gameProfileFuture")
+    void setGameProfileFuture(CompletableFuture<ProfileResult> var1);
 
-   @Mutable
-   @Accessor
-   void setAuthenticationService(YggdrasilAuthenticationService var1);
+    @Mutable
+    @Accessor
+    void setAuthenticationService(YggdrasilAuthenticationService var1);
 
-   @Mutable
-   @Accessor
-   void setSessionService(MinecraftSessionService var1);
+    @Mutable
+    @Accessor
+    void setSessionService(MinecraftSessionService var1);
 
-   @Mutable
-   @Accessor
-   void setSkinProvider(PlayerSkinProvider var1);
+    @Mutable
+    @Accessor
+    void setSkinProvider(PlayerSkinProvider var1);
 }

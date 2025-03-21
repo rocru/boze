@@ -76,8 +76,7 @@ public class AccountManager implements IJsonSerializable<AccountManager> {
 
                     Account<?> var10 = switch (var9) {
                         case AccountType.Cracked -> new CrackedAccount(null).deserialize(var8);
-                        case AccountType.Altening ->
-                                new TheAlteningAccount(null).deserialize(var8);
+                        case AccountType.Altening -> new TheAlteningAccount(null).deserialize(var8);
                         case AccountType.Microsoft -> new MicrosoftAccount(null).deserialize(var8);
                         default -> throw new IncompatibleClassChangeError();
                     };

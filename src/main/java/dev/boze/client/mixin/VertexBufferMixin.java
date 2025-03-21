@@ -14,18 +14,18 @@ import java.nio.ByteBuffer;
 
 @Mixin({VertexBuffer.class})
 public class VertexBufferMixin {
-   @Shadow
-   private int indexBufferId;
+    @Shadow
+    private int indexBufferId;
 
-   @Inject(
-      method = {"uploadIndexBuffer(Lnet/minecraft/client/render/BuiltBuffer$DrawParameters;Ljava/nio/ByteBuffer;)Lcom/mojang/blaze3d/systems/RenderSystem$ShapeIndexBuffer;"},
-      at = {@At("RETURN")}
-   )
-   private void onUploadIndexBuffer(DrawParameters var1, ByteBuffer var2, CallbackInfoReturnable<ShapeIndexBuffer> var3) {
-      if (var3.getReturnValue() == null) {
-         GL.field2162 = this.indexBufferId;
-      } else {
-         GL.field2162 = ((ShapeIndexBufferAccessor)var3.getReturnValue()).getId();
-      }
-   }
+    @Inject(
+            method = {"uploadIndexBuffer(Lnet/minecraft/client/render/BuiltBuffer$DrawParameters;Ljava/nio/ByteBuffer;)Lcom/mojang/blaze3d/systems/RenderSystem$ShapeIndexBuffer;"},
+            at = {@At("RETURN")}
+    )
+    private void onUploadIndexBuffer(DrawParameters var1, ByteBuffer var2, CallbackInfoReturnable<ShapeIndexBuffer> var3) {
+        if (var3.getReturnValue() == null) {
+            GL.field2162 = this.indexBufferId;
+        } else {
+            GL.field2162 = ((ShapeIndexBufferAccessor) (Object) var3.getReturnValue()).getId();
+        }
+    }
 }

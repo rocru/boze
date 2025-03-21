@@ -18,7 +18,7 @@ public class BozeLogger
         if (BozeLogger.mc.player != null) {
             object = source + "@" + BozeLogger.mc.player.age;
         }
-        field1235.computeIfAbsent(module, BozeLogger::lambda$log$0).add(new LogMessage((String)object, message));
+        field1235.computeIfAbsent(module, BozeLogger::lambda$log$0).add(new LogMessage((String) object, message));
         BozeLogger.method396(module);
     }
 

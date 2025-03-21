@@ -5,9 +5,8 @@ import dev.boze.api.internal.Instances;
 
 /**
  * DrawColor
- *
+ * <p>
  * This is used for specifying colors for rendering
- *
  */
 public interface DrawColor extends Serializable<DrawColor> {
 

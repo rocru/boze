@@ -17,121 +17,121 @@ import meteordevelopment.orbit.EventHandler;
 import java.io.File;
 
 public class Options extends Module {
-   public static final Options INSTANCE = new Options();
-   private final EnumSetting<PacketRenderMode> field983 = new EnumSetting<PacketRenderMode>(
-      "PacketRender", PacketRenderMode.Auto, "Render rotations in third person"
-   );
-   private final BooleanSetting field984 = new BooleanSetting("GhostMode", false, "Ghost Mode - Only show Ghost modules");
-   public final BooleanSetting field985 = new BooleanSetting("MainMenu", true, "Show the Boze button in the main menu");
-   public final BooleanSetting field986 = new BooleanSetting("ServerMenu", true, "Show the Accounts button in the multiplayer menu and disconnected screen");
-   public final BooleanSetting field987 = new BooleanSetting("NoPause", false, "Don't pause the game when tabbed out");
-   public final WeirdSettingString field988 = new WeirdSettingString("Watermark", "Boze", "Client's watermark, displayed in HUD and Chat");
-   public final WeirdSettingString field989 = new WeirdSettingString("Prefix", ".", "Prefix for client commands");
-   public final FloatSetting field990 = new FloatSetting("MineDuration", 1.0F, 0.5F, 1.1F, 0.05F, "Duration to assume for predicting mining");
-   public final BooleanSetting field991 = new BooleanSetting("CmdToggleNotis", true, "Show chat notifications when toggling toggle settings with commands");
-   public final BooleanSetting field992 = new BooleanSetting(
-      "NoSwapKeys", false, "Disable swap keys for hotbar\nPrevents number keys from swapping items into hotbar\n"
-   );
-   public static boolean field993 = false;
-   public static final Timer field994 = new Timer();
-   private static boolean field995 = Math.random() < 0.001;
+    public static final Options INSTANCE = new Options();
+    private final EnumSetting<PacketRenderMode> field983 = new EnumSetting<PacketRenderMode>(
+            "PacketRender", PacketRenderMode.Auto, "Render rotations in third person"
+    );
+    private final BooleanSetting field984 = new BooleanSetting("GhostMode", false, "Ghost Mode - Only show Ghost modules");
+    public final BooleanSetting field985 = new BooleanSetting("MainMenu", true, "Show the Boze button in the main menu");
+    public final BooleanSetting field986 = new BooleanSetting("ServerMenu", true, "Show the Accounts button in the multiplayer menu and disconnected screen");
+    public final BooleanSetting field987 = new BooleanSetting("NoPause", false, "Don't pause the game when tabbed out");
+    public final WeirdSettingString field988 = new WeirdSettingString("Watermark", "Boze", "Client's watermark, displayed in HUD and Chat");
+    public final WeirdSettingString field989 = new WeirdSettingString("Prefix", ".", "Prefix for client commands");
+    public final FloatSetting field990 = new FloatSetting("MineDuration", 1.0F, 0.5F, 1.1F, 0.05F, "Duration to assume for predicting mining");
+    public final BooleanSetting field991 = new BooleanSetting("CmdToggleNotis", true, "Show chat notifications when toggling toggle settings with commands");
+    public final BooleanSetting field992 = new BooleanSetting(
+            "NoSwapKeys", false, "Disable swap keys for hotbar\nPrevents number keys from swapping items into hotbar\n"
+    );
+    public static boolean field993 = false;
+    public static final Timer field994 = new Timer();
+    private static final boolean field995 = Math.random() < 0.001;
 
-   public Options() {
-      super("Options", "Change client options", Category.Client, ConfigCategory.Main);
-      if (!new File(System.getProperty("user.home"), "Boze").exists() && !new File(mc.runDirectory, "cache").exists()) {
-         this.field989.setValue("qwertyuiop[]");
-      }
+    public Options() {
+        super("Options", "Change client options", Category.Client, ConfigCategory.Main);
+        if (!new File(System.getProperty("user.home"), "Boze").exists() && !new File(mc.runDirectory, "cache").exists()) {
+            this.field989.setValue("qwertyuiop[]");
+        }
 
-      this.field984.method401(Options::lambda$new$0);
-      this.setNotificationLengthLimited();
-   }
+        this.field984.method401(Options::lambda$new$0);
+        this.setNotificationLengthLimited();
+    }
 
-   public static String method1562() {
-      return field995 ? "Bozo" : INSTANCE.field988.getValue();
-   }
+    public static String method1562() {
+        return field995 ? "Bozo" : INSTANCE.field988.getValue();
+    }
 
-   public static String method1563() {
-      return INSTANCE.field989.getValue();
-   }
+    public static String method1563() {
+        return INSTANCE.field989.getValue();
+    }
 
-   @EventHandler(
-      priority = 9999
-   )
-   private void method2041(MovementEvent param1) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot read field "classStruct" because "classNode" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifyNewEnumSwitch(SwitchHelper.java:319)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplify(SwitchHelper.java:41)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:30)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
-      //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:376)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: getfield dev/boze/client/systems/modules/client/Options.field983 Ldev/boze/client/settings/EnumSetting;
-      // 04: invokevirtual dev/boze/client/settings/EnumSetting.method461 ()Ljava/lang/Enum;
-      // 07: checkcast dev/boze/client/enums/PacketRenderMode
-      // 0a: invokevirtual dev/boze/client/enums/PacketRenderMode.ordinal ()I
-      // 0d: tableswitch 53 0 2 27 34 41
-      // 28: bipush 1
-      // 29: putstatic dev/boze/client/systems/modules/client/Options.field993 Z
-      // 2c: goto 42
-      // 2f: bipush 0
-      // 30: putstatic dev/boze/client/systems/modules/client/Options.field993 Z
-      // 33: goto 42
-      // 36: getstatic dev/boze/client/systems/modules/client/Options.field994 Ldev/boze/client/utils/Timer;
-      // 39: ldc2_w 100.0
-      // 3c: invokevirtual dev/boze/client/utils/Timer.hasElapsed (D)Z
-      // 3f: putstatic dev/boze/client/systems/modules/client/Options.field993 Z
-      // 42: return
-   }
+    @EventHandler(
+            priority = 9999
+    )
+    private void method2041(MovementEvent param1) {
+        // $VF: Couldn't be decompiled
+        // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+        // java.lang.NullPointerException: Cannot read field "classStruct" because "classNode" is null
+        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifyNewEnumSwitch(SwitchHelper.java:319)
+        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplify(SwitchHelper.java:41)
+        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:30)
+        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
+        //   at org.jetbrains.java.decompiler.modules.decompiler.SwitchHelper.simplifySwitches(SwitchHelper.java:34)
+        //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:376)
+        //
+        // Bytecode:
+        // 00: aload 0
+        // 01: getfield dev/boze/client/systems/modules/client/Options.field983 Ldev/boze/client/settings/EnumSetting;
+        // 04: invokevirtual dev/boze/client/settings/EnumSetting.method461 ()Ljava/lang/Enum;
+        // 07: checkcast dev/boze/client/enums/PacketRenderMode
+        // 0a: invokevirtual dev/boze/client/enums/PacketRenderMode.ordinal ()I
+        // 0d: tableswitch 53 0 2 27 34 41
+        // 28: bipush 1
+        // 29: putstatic dev/boze/client/systems/modules/client/Options.field993 Z
+        // 2c: goto 42
+        // 2f: bipush 0
+        // 30: putstatic dev/boze/client/systems/modules/client/Options.field993 Z
+        // 33: goto 42
+        // 36: getstatic dev/boze/client/systems/modules/client/Options.field994 Ldev/boze/client/utils/Timer;
+        // 39: ldc2_w 100.0
+        // 3c: invokevirtual dev/boze/client/utils/Timer.hasElapsed (D)Z
+        // 3f: putstatic dev/boze/client/systems/modules/client/Options.field993 Z
+        // 42: return
+    }
 
-   @Override
-   public boolean setEnabled(boolean newState) {
-      return false;
-   }
+    @Override
+    public boolean setEnabled(boolean newState) {
+        return false;
+    }
 
-   public static boolean method477(boolean multitask) {
-      try {
-         Options.class.getProtectionDomain().getCodeSource().getLocation().toString();
-         return true;
-      } catch (Throwable var5) {
-         if (multitask) {
-            return false;
-         } else {
-            return mc.player.isUsingItem() ? true : AntiCheat.INSTANCE.field2319.getValue() && mc.interactionManager.isBreakingBlock();
-         }
-      }
-   }
-
-   public boolean method1971() {
-      return this.field984.getValue();
-   }
-
-   public BooleanSetting method478() {
-      return this.field984;
-   }
-
-   private static void lambda$new$0(Boolean var0) {
-      if (var0) {
-         for (Module var5 : Boze.getModules().modules) {
-            if (!var5.field435) {
-               if (var5.moduleState == null) {
-                  var5.moduleState = var5.isEnabled() ? ModuleState.On : ModuleState.Off;
-               }
-
-               var5.setEnabled(false);
+    public static boolean method477(boolean multitask) {
+        try {
+            Options.class.getProtectionDomain().getCodeSource().getLocation().toString();
+            return true;
+        } catch (Throwable var5) {
+            if (multitask) {
+                return false;
+            } else {
+                return mc.player.isUsingItem() || AntiCheat.INSTANCE.field2319.getValue() && mc.interactionManager.isBreakingBlock();
             }
-         }
-      } else {
-         for (Module var7 : Boze.getModules().modules) {
-            if (!var7.field435 && var7.moduleState != null) {
-               var7.setEnabled(var7.moduleState == ModuleState.On);
-               var7.moduleState = null;
+        }
+    }
+
+    public boolean method1971() {
+        return this.field984.getValue();
+    }
+
+    public BooleanSetting method478() {
+        return this.field984;
+    }
+
+    private static void lambda$new$0(Boolean var0) {
+        if (var0) {
+            for (Module var5 : Boze.getModules().modules) {
+                if (!var5.field435) {
+                    if (var5.moduleState == null) {
+                        var5.moduleState = var5.isEnabled() ? ModuleState.On : ModuleState.Off;
+                    }
+
+                    var5.setEnabled(false);
+                }
             }
-         }
-      }
-   }
+        } else {
+            for (Module var7 : Boze.getModules().modules) {
+                if (!var7.field435 && var7.moduleState != null) {
+                    var7.setEnabled(var7.moduleState == ModuleState.On);
+                    var7.moduleState = null;
+                }
+            }
+        }
+    }
 }

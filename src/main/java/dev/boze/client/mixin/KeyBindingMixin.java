@@ -12,27 +12,27 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({KeyBinding.class})
 public abstract class KeyBindingMixin {
-   @Shadow
-   private int timesPressed;
-   @Unique
-   private boolean prevState = true;
+    @Shadow
+    private int timesPressed;
+    @Unique
+    private boolean prevState = true;
 
-   @Inject(
-      method = {"isPressed"},
-      at = {@At("RETURN")},
-      cancellable = true
-   )
-   public void hookEventKeyBindingIsPressed(CallbackInfoReturnable<Boolean> cir) {
-      boolean var2 = (Boolean)cir.getReturnValue();
-      KeyPressedEvent var3 = KeyPressedEvent.method1066((KeyBinding)this, (Boolean)cir.getReturnValue());
-      Boze.EVENT_BUS.post(var3);
-      if (var3.method1069() && !this.prevState && !(Boolean)cir.getReturnValue() && var3.method1068()) {
-         this.timesPressed++;
-      }
+    @Inject(
+            method = {"isPressed"},
+            at = {@At("RETURN")},
+            cancellable = true
+    )
+    public void hookEventKeyBindingIsPressed(CallbackInfoReturnable<Boolean> cir) {
+        boolean var2 = cir.getReturnValue();
+        KeyPressedEvent var3 = KeyPressedEvent.method1066((KeyBinding) (Object) this, cir.getReturnValue());
+        Boze.EVENT_BUS.post(var3);
+        if (var3.method1069() && !this.prevState && !(Boolean) cir.getReturnValue() && var3.method1068()) {
+            this.timesPressed++;
+        }
 
-      this.prevState = var3.method1068();
-      if (this.prevState != var2) {
-         cir.setReturnValue(this.prevState);
-      }
-   }
+        this.prevState = var3.method1068();
+        if (this.prevState != var2) {
+            cir.setReturnValue(this.prevState);
+        }
+    }
 }

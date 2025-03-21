@@ -53,7 +53,8 @@ public class PhaseESP extends Module {
             for (Direction direction : Direction.values()) {
                 BlockPos blockPos2;
                 BlockState blockState;
-                if (direction.getAxis() == Direction.Axis.Y || (blockState = PhaseESP.mc.world.getBlockState(blockPos2 = blockPos.offset(direction))).getBlock() != Blocks.BEDROCK && blockState.getBlock() != Blocks.OBSIDIAN) continue;
+                if (direction.getAxis() == Direction.Axis.Y || (blockState = PhaseESP.mc.world.getBlockState(blockPos2 = blockPos.offset(direction))).getBlock() != Blocks.BEDROCK && blockState.getBlock() != Blocks.OBSIDIAN)
+                    continue;
                 BlockPos blockPos3 = blockPos2.down();
                 BlockState blockState2 = PhaseESP.mc.world.getBlockState(blockPos3);
                 if (blockState2.isAir() || blockState2.getBlock() == Blocks.LAVA || blockState2.getBlock() == Blocks.WATER) {
@@ -73,7 +74,7 @@ public class PhaseESP extends Module {
         }
         this.field469.method1219(event.matrix);
         if (this.field462.getValue()) {
-            Map<BlockPos, Vec3i> map = Map.of(BlockPos.ofFloored((double)(box.minX - 1.0), (double)box.minY, (double)(box.minZ - 1.0)), new Vec3i(1, 0, 1), BlockPos.ofFloored((double)(box.minX - 1.0), (double)box.minY, (double)(box.maxZ + 1.0)), new Vec3i(1, 0, 0), BlockPos.ofFloored((double)(box.maxX + 1.0), (double)box.minY, (double)(box.minZ - 1.0)), new Vec3i(0, 0, 1), BlockPos.ofFloored((double)(box.maxX + 1.0), (double)box.minY, (double)(box.maxZ + 1.0)), new Vec3i(0, 0, 0));
+            Map<BlockPos, Vec3i> map = Map.of(BlockPos.ofFloored(box.minX - 1.0, box.minY, box.minZ - 1.0), new Vec3i(1, 0, 1), BlockPos.ofFloored(box.minX - 1.0, box.minY, box.maxZ + 1.0), new Vec3i(1, 0, 0), BlockPos.ofFloored(box.maxX + 1.0, box.minY, box.minZ - 1.0), new Vec3i(0, 0, 1), BlockPos.ofFloored(box.maxX + 1.0, box.minY, box.maxZ + 1.0), new Vec3i(0, 0, 0));
             map.forEach((arg_0, arg_1) -> this.lambda$onRender3D$2(event, arg_0, arg_1));
         }
         event.field1950.field2166.field1594 = 1.0f;

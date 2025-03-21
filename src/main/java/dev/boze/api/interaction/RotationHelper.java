@@ -12,7 +12,6 @@ public final class RotationHelper {
 
     /**
      * @param to the vector to calculate the angle to
-     *
      * @return the angle between the player's eyes and the given vector
      */
     public static Rotation calculateAngle(Vec3d to) {
@@ -21,8 +20,7 @@ public final class RotationHelper {
 
     /**
      * @param from the vector to calculate the angle from
-     * @param to the vector to calculate the angle to
-     *
+     * @param to   the vector to calculate the angle to
      * @return the angle between the given vectors
      */
     public static Rotation calculateAngle(Vec3d from, Vec3d to) {

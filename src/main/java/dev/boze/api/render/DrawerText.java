@@ -4,7 +4,7 @@ import net.minecraft.client.gui.DrawContext;
 
 /**
  * DrawerText
- *
+ * <p>
  * Draws text
  */
 public interface DrawerText {
@@ -33,10 +33,10 @@ public interface DrawerText {
     /**
      * Draw text
      *
-     * @param text text to render
-     * @param x x position
-     * @param y y position
-     * @param color color of the text
+     * @param text   text to render
+     * @param x      x position
+     * @param y      y position
+     * @param color  color of the text
      * @param shadow if the text should have a shadow
      * @return the width of the text
      */
@@ -45,9 +45,9 @@ public interface DrawerText {
     /**
      * Draw text
      *
-     * @param text text to render
-     * @param x x position
-     * @param y y position
+     * @param text  text to render
+     * @param x     x position
+     * @param y     y position
      * @param color color of the text
      * @return the width of the text
      */
@@ -57,7 +57,7 @@ public interface DrawerText {
 
     /**
      * Start sizing
-     *
+     * <p>
      * Lets you use the width and height methods, without rendering the text
      *
      * @param size size of the text
@@ -72,7 +72,7 @@ public interface DrawerText {
     /**
      * Get the width of the text
      *
-     * @param text text to get the width of
+     * @param text   text to get the width of
      * @param shadow if the text has a shadow
      * @return the width of the text
      */
@@ -101,5 +101,7 @@ public interface DrawerText {
      *
      * @return the height of the text
      */
-    default double getHeight() { return getHeight(false); }
+    default double getHeight() {
+        return getHeight(false);
+    }
 }

@@ -32,7 +32,7 @@ public class ConfigComponent extends BottomRowScaledComponent {
         super(module.getName(), BottomRow.TextAddClose, 0.1, 0.4);
         this.field1992 = module;
         this.field1993 = "";
-        this.field1994 = new ArrayList(Arrays.asList(ConfigManager.get(ConfigType.CONFIG)).stream().filter(arg_0 -> ConfigComponent.lambda$new$0(module, arg_0)).collect(Collectors.toList()));
+        this.field1994 = new ArrayList(Arrays.asList(ConfigManager.get(ConfigType.CONFIG)).stream().filter(arg_0 -> ConfigComponent.ln0(module, arg_0)).collect(Collectors.toList()));
     }
 
     @Override
@@ -137,7 +137,7 @@ public class ConfigComponent extends BottomRowScaledComponent {
         }
     }
 
-    private static boolean lambda$new$0(Module var0, String var1) {
+    private static boolean ln0(Module var0, String var1) {
         return var1.endsWith(var0.internalName);
     }
 }

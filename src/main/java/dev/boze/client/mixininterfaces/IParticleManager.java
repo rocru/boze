@@ -1,7 +1,7 @@
 package dev.boze.client.mixininterfaces;
 
 public interface IParticleManager {
-   boolean boze$isPaused();
+    boolean boze$isPaused();
 
-   void boze$setPaused(boolean var1);
+    void boze$setPaused(boolean var1);
 }

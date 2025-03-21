@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({ChatMessageC2SPacket.class})
 public interface ChatMessageC2SPacketAccessor {
-   @Mutable
-   @Accessor("chatMessage")
-   void setChatMessage(String var1);
+    @Mutable
+    @Accessor("chatMessage")
+    void setChatMessage(String var1);
 }

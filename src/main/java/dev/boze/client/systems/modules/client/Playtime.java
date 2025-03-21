@@ -18,73 +18,73 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class Playtime extends Module {
-   public static final Playtime INSTANCE = new Playtime();
-   public final HashMap<String, Long> field2406 = new HashMap();
-   private boolean field2407 = true;
+    public static final Playtime INSTANCE = new Playtime();
+    public final HashMap<String, Long> field2406 = new HashMap();
+    private boolean field2407 = true;
 
-   public Playtime() {
-      super("Playtime", "Keeps track of server playtimes", Category.Client);
-      this.setEnabled(true);
-   }
+    public Playtime() {
+        super("Playtime", "Keeps track of server playtimes", Category.Client);
+        this.setEnabled(true);
+    }
 
-   @Override
-   public void onEnable() {
-      this.field2407 = true;
-   }
+    @Override
+    public void onEnable() {
+        this.field2407 = true;
+    }
 
-   @EventHandler
-   public void method1345(GameJoinEvent event) {
-      this.field2407 = true;
-   }
+    @EventHandler
+    public void method1345(GameJoinEvent event) {
+        this.field2407 = true;
+    }
 
-   @EventHandler
-   public void method1346(MovementEvent event) {
-      if (mc.player.age % 20 == 0) {
-         if (this.field2407) {
-            mc.getNetworkHandler().sendPacket(new ClientStatusC2SPacket(Mode.REQUEST_STATS));
-            this.field2407 = false;
-         }
-
-         if (mc.getCurrentServerEntry() != null && mc.getCurrentServerEntry().address != null) {
-            String var5 = mc.getCurrentServerEntry().address;
-            if (mc.player.getStatHandler() != null && mc.player.getStatHandler().getStat(Stats.CUSTOM.getOrCreateStat(Stats.PLAY_TIME)) / 20 > 20) {
-               this.field2406.put(var5, (long)(mc.player.getStatHandler().getStat(Stats.CUSTOM.getOrCreateStat(Stats.PLAY_TIME)) / 20));
+    @EventHandler
+    public void method1346(MovementEvent event) {
+        if (mc.player.age % 20 == 0) {
+            if (this.field2407) {
+                mc.getNetworkHandler().sendPacket(new ClientStatusC2SPacket(Mode.REQUEST_STATS));
+                this.field2407 = false;
             }
-         }
-      }
-   }
 
-   @Override
-   public NbtCompound toTag() {
-      try {
-         JsonObject var3 = new JsonObject();
-         this.field2406.forEach(var3::addProperty);
-         ConfigManager.writeFile(Boze.FOLDER, "playtime", var3);
-      } catch (Exception var4) {
-      }
+            if (mc.getCurrentServerEntry() != null && mc.getCurrentServerEntry().address != null) {
+                String var5 = mc.getCurrentServerEntry().address;
+                if (mc.player.getStatHandler() != null && mc.player.getStatHandler().getStat(Stats.CUSTOM.getOrCreateStat(Stats.PLAY_TIME)) / 20 > 20) {
+                    this.field2406.put(var5, (long) (mc.player.getStatHandler().getStat(Stats.CUSTOM.getOrCreateStat(Stats.PLAY_TIME)) / 20));
+                }
+            }
+        }
+    }
 
-      return super.toTag();
-   }
+    @Override
+    public NbtCompound toTag() {
+        try {
+            JsonObject var3 = new JsonObject();
+            this.field2406.forEach(var3::addProperty);
+            ConfigManager.writeFile(Boze.FOLDER, "playtime", var3);
+        } catch (Exception var4) {
+        }
 
-   @Override
-   public Module fromTag(NbtCompound tag) {
-      try {
-         JsonObject var4 = ConfigManager.readFile(Boze.FOLDER, "playtime");
-         var4.entrySet().forEach(this::lambda$fromTag$0);
-      } catch (Exception var5) {
-      }
+        return super.toTag();
+    }
 
-      return super.fromTag(tag);
-   }
+    @Override
+    public Module fromTag(NbtCompound tag) {
+        try {
+            JsonObject var4 = ConfigManager.readFile(Boze.FOLDER, "playtime");
+            var4.entrySet().forEach(this::lambda$fromTag$0);
+        } catch (Exception var5) {
+        }
 
-   // $VF: synthetic method
-   // $VF: bridge method
-   //@Override
-   //public Object fromTag(NbtCompound nbtCompound) {
-   //   return this.fromTag(nbtCompound);
-   //}
+        return super.fromTag(tag);
+    }
 
-   private void lambda$fromTag$0(Entry var1) {
-      this.field2406.put((String)var1.getKey(), ((JsonElement)var1.getValue()).getAsLong());
-   }
+    // $VF: synthetic method
+    // $VF: bridge method
+    //@Override
+    //public Object fromTag(NbtCompound nbtCompound) {
+    //   return this.fromTag(nbtCompound);
+    //}
+
+    private void lambda$fromTag$0(Entry var1) {
+        this.field2406.put((String) var1.getKey(), ((JsonElement) var1.getValue()).getAsLong());
+    }
 }

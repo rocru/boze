@@ -12,20 +12,20 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin({PlayerInteractEntityC2SPacket.class})
 public class PlayerInteractEntityC2SPacketMixin implements IPlayerInteractEntityC2SPacket {
-   @Shadow
-   @Final
-   private InteractTypeHandler type;
-   @Shadow
-   @Final
-   private int entityId;
+    @Shadow
+    @Final
+    private InteractTypeHandler type;
+    @Shadow
+    @Final
+    private int entityId;
 
-   @Override
-   public InteractType boze$getType() {
-      return this.type.getType();
-   }
+    @Override
+    public InteractType boze$getType() {
+        return this.type.getType();
+    }
 
-   @Override
-   public Entity boze$getEntity() {
-      return IMinecraft.mc.world == null ? null : IMinecraft.mc.world.getEntityById(this.entityId);
-   }
+    @Override
+    public Entity boze$getEntity() {
+        return IMinecraft.mc.world == null ? null : IMinecraft.mc.world.getEntityById(this.entityId);
+    }
 }

@@ -14,21 +14,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({AbstractHorseEntity.class})
 public abstract class HorseBaseEntityMixin extends AnimalEntity {
-   @Shadow
-   public abstract LivingEntity getControllingPassenger();
+    @Shadow
+    public abstract LivingEntity getControllingPassenger();
 
-   protected HorseBaseEntityMixin(EntityType<? extends AnimalEntity> entityType, World world) {
-      super(entityType, world);
-   }
+    protected HorseBaseEntityMixin(EntityType<? extends AnimalEntity> entityType, World world) {
+        super(entityType, world);
+    }
 
-   @Inject(
-      method = {"isSaddled"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   public void onIsSaddled(CallbackInfoReturnable<Boolean> cir) {
-      if (EntityControl.INSTANCE.isEnabled()) {
-         cir.setReturnValue(true);
-      }
-   }
+    @Inject(
+            method = {"isSaddled"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    public void onIsSaddled(CallbackInfoReturnable<Boolean> cir) {
+        if (EntityControl.INSTANCE.isEnabled()) {
+            cir.setReturnValue(true);
+        }
+    }
 }

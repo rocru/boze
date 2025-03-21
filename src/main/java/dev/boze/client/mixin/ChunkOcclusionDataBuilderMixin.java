@@ -11,15 +11,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({ChunkOcclusionDataBuilder.class})
 public class ChunkOcclusionDataBuilderMixin {
-   @Inject(
-      method = {"markClosed"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void onMarkClosed(BlockPos var1, CallbackInfo var2) {
-      OcclusionEvent var3 = (OcclusionEvent) Boze.EVENT_BUS.post(OcclusionEvent.method1076());
-      if (var3.method1022()) {
-         var2.cancel();
-      }
-   }
+    @Inject(
+            method = {"markClosed"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void onMarkClosed(BlockPos var1, CallbackInfo var2) {
+        OcclusionEvent var3 = Boze.EVENT_BUS.post(OcclusionEvent.method1076());
+        if (var3.method1022()) {
+            var2.cancel();
+        }
+    }
 }

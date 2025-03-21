@@ -47,225 +47,226 @@ import java.io.File;
 
 @Mixin({MinecraftClient.class})
 public abstract class MinecraftClientMixin {
-   @Shadow
-   @Final
-   public static boolean IS_SYSTEM_MAC;
-   @Shadow
-   @Nullable
-   public ClientPlayerInteractionManager interactionManager;
-   @Shadow
-   private int itemUseCooldown;
-   @Shadow
-   @Nullable
-   public ClientPlayerEntity player;
-   @Shadow
-   @Nullable
-   public HitResult crosshairTarget;
-   @Shadow
-   @Final
-   private static Logger LOGGER;
-   @Shadow
-   @Nullable
-   public ClientWorld world;
-   @Shadow
-   @Final
-   public GameRenderer gameRenderer;
-   @Shadow
-   @Nullable
-   private Overlay overlay;
-   @Shadow
-   @Nullable
-   public Screen currentScreen;
-   @Shadow
-   @Final
-   public GameOptions options;
+    @Shadow
+    @Final
+    public static boolean IS_SYSTEM_MAC;
+    @Shadow
+    @Nullable
+    public ClientPlayerInteractionManager interactionManager;
+    @Shadow
+    private int itemUseCooldown;
+    @Shadow
+    @Nullable
+    public ClientPlayerEntity player;
+    @Shadow
+    @Nullable
+    public HitResult crosshairTarget;
+    @Shadow
+    @Final
+    private static Logger LOGGER;
+    @Shadow
+    @Nullable
+    public ClientWorld world;
+    @Shadow
+    @Final
+    public GameRenderer gameRenderer;
+    @Shadow
+    @Nullable
+    private Overlay overlay;
+    @Shadow
+    @Nullable
+    public Screen currentScreen;
+    @Shadow
+    @Final
+    public GameOptions options;
 
-   @Shadow
-   public abstract boolean isWindowFocused();
+    @Shadow
+    public abstract boolean isWindowFocused();
 
-   @Shadow
-   public abstract Framebuffer getFramebuffer();
+    @Shadow
+    public abstract Framebuffer getFramebuffer();
 
-   @Inject(
-      method = {"<init>"},
-      at = {@At(
-         value = "FIELD",
-         target = "Lnet/minecraft/client/MinecraftClient;instance:Lnet/minecraft/client/MinecraftClient;"
-      )}
-   )
-   public void onInitPre(RunArgs args, CallbackInfo ci) {
-      Boze.FOLDER = new File(args.directories.runDir, "boze");
-      BozeAPI.method951();
-      BozeInstances.method1127();
-   }
+    @Inject(
+            method = {"<init>"},
+            at = {@At(
+                    value = "FIELD",
+                    target = "Lnet/minecraft/client/MinecraftClient;instance:Lnet/minecraft/client/MinecraftClient;"
+            )}
+    )
+    public void onInitPre(RunArgs args, CallbackInfo ci) {
+        Boze.FOLDER = new File(args.directories.runDir, "boze");
+        BozeAPI.method951();
+        BozeInstances.method1127();
+    }
 
-   @Inject(
-      method = {"<init>"},
-      at = {@At("TAIL")}
-   )
-   public void onInit(RunArgs args, CallbackInfo ci) {
-      new Boze().initialize();
-   }
+    @Inject(
+            method = {"<init>"},
+            at = {@At("TAIL")}
+    )
+    public void onInit(RunArgs args, CallbackInfo ci) {
+        // new Boze().initialize();
+        // ^ oninitialize
+    }
 
-   @Inject(
-      method = {"getFramerateLimit"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void onGetFramerateLimit(CallbackInfoReturnable<Integer> var1) {
-      if (NoRender.method1971() && !this.isWindowFocused()) {
-         var1.setReturnValue(1);
-      }
-   }
+    @Inject(
+            method = {"getFramerateLimit"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void onGetFramerateLimit(CallbackInfoReturnable<Integer> var1) {
+        if (NoRender.method1971() && !this.isWindowFocused()) {
+            var1.setReturnValue(1);
+        }
+    }
 
-   @Inject(
-      method = {"isWindowFocused"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void onIsWindowFocused(CallbackInfoReturnable<Boolean> var1) {
-      if (Options.INSTANCE.field987.getValue()) {
-         var1.setReturnValue(true);
-      }
-   }
+    @Inject(
+            method = {"isWindowFocused"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void onIsWindowFocused(CallbackInfoReturnable<Boolean> var1) {
+        if (Options.INSTANCE.field987.getValue()) {
+            var1.setReturnValue(true);
+        }
+    }
 
-   @Redirect(
-      method = {"handleBlockBreaking"},
-      at = @At(
-         value = "INVOKE",
-         target = "Lnet/minecraft/client/network/ClientPlayerEntity;isUsingItem()Z"
-      )
-   )
-   private boolean onIsUsingItemBlockBreaking(ClientPlayerEntity var1) {
-      return MultiTask.INSTANCE.isEnabled() ? false : var1.isUsingItem();
-   }
+    @Redirect(
+            method = {"handleBlockBreaking"},
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/ClientPlayerEntity;isUsingItem()Z"
+            )
+    )
+    private boolean onIsUsingItemBlockBreaking(ClientPlayerEntity var1) {
+        return !MultiTask.INSTANCE.isEnabled() && var1.isUsingItem();
+    }
 
-   @Redirect(
-      method = {"doItemUse"},
-      at = @At(
-         value = "INVOKE",
-         target = "Lnet/minecraft/client/network/ClientPlayerInteractionManager;isBreakingBlock()Z"
-      )
-   )
-   private boolean onIsBreakingBlockItemUse(ClientPlayerInteractionManager var1) {
-      return MultiTask.INSTANCE.isEnabled() ? false : var1.isBreakingBlock();
-   }
+    @Redirect(
+            method = {"doItemUse"},
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/ClientPlayerInteractionManager;isBreakingBlock()Z"
+            )
+    )
+    private boolean onIsBreakingBlockItemUse(ClientPlayerInteractionManager var1) {
+        return !MultiTask.INSTANCE.isEnabled() && var1.isBreakingBlock();
+    }
 
-   @Inject(
-      method = {"doItemPick"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void onItemPick(CallbackInfo var1) {
-      if (MiddleClickAction.INSTANCE.isEnabled() && MiddleClickAction.INSTANCE.field492.getValue()) {
-         var1.cancel();
-      }
-   }
+    @Inject(
+            method = {"doItemPick"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void onItemPick(CallbackInfo var1) {
+        if (MiddleClickAction.INSTANCE.isEnabled() && MiddleClickAction.INSTANCE.field492.getValue()) {
+            var1.cancel();
+        }
+    }
 
-   @Inject(
-      method = {"setScreen"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void onSetScreen(Screen var1, CallbackInfo var2) {
-      if (((OpenScreenEvent) Boze.EVENT_BUS.post(OpenScreenEvent.method1037(var1))).method1022()) {
-         var2.cancel();
-      }
-   }
+    @Inject(
+            method = {"setScreen"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void onSetScreen(Screen var1, CallbackInfo var2) {
+        if (Boze.EVENT_BUS.post(OpenScreenEvent.method1037(var1)).method1022()) {
+            var2.cancel();
+        }
+    }
 
-   @Inject(
-      method = {"tick"},
-      at = {@At("HEAD")}
-   )
-   private void tick(CallbackInfo var1) {
-      RotationHandler.field1546.method2142();
-      Boze.EVENT_BUS.post(PreTickEvent.method1092());
-      Pre var2 = Pre.get();
-      BozeInstance.INSTANCE.post(var2);
-   }
+    @Inject(
+            method = {"tick"},
+            at = {@At("HEAD")}
+    )
+    private void tick(CallbackInfo var1) {
+        RotationHandler.field1546.method2142();
+        Boze.EVENT_BUS.post(PreTickEvent.method1092());
+        Pre var2 = Pre.get();
+        BozeInstance.INSTANCE.post(var2);
+    }
 
-   @Inject(
-      method = {"tick"},
-      at = {@At("TAIL")}
-   )
-   private void tickPost(CallbackInfo var1) {
-      Boze.EVENT_BUS.post(PostTickEvent.method1088());
-      Post var2 = Post.get();
-      BozeInstance.INSTANCE.post(var2);
-   }
+    @Inject(
+            method = {"tick"},
+            at = {@At("TAIL")}
+    )
+    private void tickPost(CallbackInfo var1) {
+        Boze.EVENT_BUS.post(PostTickEvent.method1088());
+        Post var2 = Post.get();
+        BozeInstance.INSTANCE.post(var2);
+    }
 
-   @Inject(
-      method = {"doAttack"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void onDoAttack(CallbackInfoReturnable<Boolean> var1) {
-      if (NoMissDelay.INSTANCE.isEnabled() && NoMissDelay.INSTANCE.method1611() && this.crosshairTarget != null && this.crosshairTarget.getType() == Type.MISS) {
-         if (AutoClicker.INSTANCE.isEnabled()
-            && AutoClicker.INSTANCE.field2732.getValue()
-            && AutoClicker.INSTANCE.field2734.getValue()
-            && this.options.attackKey.isPressed()) {
-            return;
-         }
+    @Inject(
+            method = {"doAttack"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void onDoAttack(CallbackInfoReturnable<Boolean> var1) {
+        if (NoMissDelay.INSTANCE.isEnabled() && NoMissDelay.INSTANCE.method1611() && this.crosshairTarget != null && this.crosshairTarget.getType() == Type.MISS) {
+            if (AutoClicker.INSTANCE.isEnabled()
+                    && AutoClicker.INSTANCE.field2732.getValue()
+                    && AutoClicker.INSTANCE.field2734.getValue()
+                    && this.options.attackKey.isPressed()) {
+                return;
+            }
 
-         var1.setReturnValue(false);
-      }
-   }
+            var1.setReturnValue(false);
+        }
+    }
 
-   @Inject(
-      method = {"handleInputEvents"},
-      at = {@At(
-         value = "INVOKE",
-         target = "Lnet/minecraft/client/network/ClientPlayerEntity;isUsingItem()Z"
-      )},
-      slice = {@Slice(
-         to = @At(
-            value = "INVOKE",
-            target = "Lnet/minecraft/client/MinecraftClient;doAttack()Z"
-         )
-      )}
-   )
-   public void onHandleInputEvents(CallbackInfo ci) {
-      RotationHandler.field1546.method1416();
-   }
+    @Inject(
+            method = {"handleInputEvents"},
+            at = {@At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/ClientPlayerEntity;isUsingItem()Z"
+            )},
+            slice = {@Slice(
+                    to = @At(
+                            value = "INVOKE",
+                            target = "Lnet/minecraft/client/MinecraftClient;doAttack()Z"
+                    )
+            )}
+    )
+    public void onHandleInputEvents(CallbackInfo ci) {
+        RotationHandler.field1546.method1416();
+    }
 
-   @Inject(
-      method = {"handleInputEvents"},
-      at = {@At("HEAD")}
-   )
-   public void onHandleInputEventsHead(CallbackInfo ci) {
-      HandleInputEvent var2 = HandleInputEvent.method1064();
-      Boze.EVENT_BUS.post(var2);
-   }
+    @Inject(
+            method = {"handleInputEvents"},
+            at = {@At("HEAD")}
+    )
+    public void onHandleInputEventsHead(CallbackInfo ci) {
+        HandleInputEvent var2 = HandleInputEvent.method1064();
+        Boze.EVENT_BUS.post(var2);
+    }
 
-   @Inject(
-      method = {"tick"},
-      at = {@At(
-         value = "FIELD",
-         target = "Lnet/minecraft/client/MinecraftClient;overlay:Lnet/minecraft/client/gui/screen/Overlay;"
-      )}
-   )
-   public void onHandleInputEventsGui(CallbackInfo ci) {
-      if (this.overlay != null || this.currentScreen != null) {
-         RotationHandler.field1546.method1416();
-      }
-   }
+    @Inject(
+            method = {"tick"},
+            at = {@At(
+                    value = "FIELD",
+                    target = "Lnet/minecraft/client/MinecraftClient;overlay:Lnet/minecraft/client/gui/screen/Overlay;"
+            )}
+    )
+    public void onHandleInputEventsGui(CallbackInfo ci) {
+        if (this.overlay != null || this.currentScreen != null) {
+            RotationHandler.field1546.method1416();
+        }
+    }
 
-   @Inject(
-      method = {"render"},
-      at = {@At("HEAD")}
-   )
-   public void renderPre(boolean tick, CallbackInfo ci) {
-      Class3092.field219 = System.nanoTime();
-   }
+    @Inject(
+            method = {"render"},
+            at = {@At("HEAD")}
+    )
+    public void renderPre(boolean tick, CallbackInfo ci) {
+        Class3092.field219 = System.nanoTime();
+    }
 
-   @Inject(
-      method = {"render"},
-      at = {@At("TAIL")}
-   )
-   private void renderPost(boolean var1, CallbackInfo var2) {
-      Class3092.field218 = (double)(System.nanoTime() - Class3092.field219) / 1000000.0;
-      Framerate.INSTANCE.method1555();
-      dev.boze.client.systems.modules.hud.graph.Framerate.INSTANCE.method1568();
-   }
+    @Inject(
+            method = {"render"},
+            at = {@At("TAIL")}
+    )
+    private void renderPost(boolean var1, CallbackInfo var2) {
+        Class3092.field218 = (double) (System.nanoTime() - Class3092.field219) / 1000000.0;
+        Framerate.INSTANCE.method1555();
+        dev.boze.client.systems.modules.hud.graph.Framerate.INSTANCE.method1568();
+    }
 }

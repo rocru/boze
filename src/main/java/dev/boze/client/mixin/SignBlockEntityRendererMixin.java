@@ -13,24 +13,24 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({SignBlockEntityRenderer.class})
 public class SignBlockEntityRendererMixin {
-   @Inject(
-      method = {"renderText"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   public void onRenderText(
-      BlockPos pos,
-      SignText signText,
-      MatrixStack matrices,
-      VertexConsumerProvider vertexConsumers,
-      int light,
-      int lineHeight,
-      int lineWidth,
-      boolean front,
-      CallbackInfo ci
-   ) {
-      if (NoRender.method1986()) {
-         ci.cancel();
-      }
-   }
+    @Inject(
+            method = {"renderText"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    public void onRenderText(
+            BlockPos pos,
+            SignText signText,
+            MatrixStack matrices,
+            VertexConsumerProvider vertexConsumers,
+            int light,
+            int lineHeight,
+            int lineWidth,
+            boolean front,
+            CallbackInfo ci
+    ) {
+        if (NoRender.method1986()) {
+            ci.cancel();
+        }
+    }
 }

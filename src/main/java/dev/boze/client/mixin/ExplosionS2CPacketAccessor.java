@@ -7,24 +7,24 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({ExplosionS2CPacket.class})
 public interface ExplosionS2CPacketAccessor {
-   @Accessor
-   float getPlayerVelocityX();
+    @Accessor
+    float getPlayerVelocityX();
 
-   @Mutable
-   @Accessor
-   void setPlayerVelocityX(float var1);
+    @Mutable
+    @Accessor
+    void setPlayerVelocityX(float var1);
 
-   @Accessor
-   float getPlayerVelocityY();
+    @Accessor
+    float getPlayerVelocityY();
 
-   @Mutable
-   @Accessor
-   void setPlayerVelocityY(float var1);
+    @Mutable
+    @Accessor
+    void setPlayerVelocityY(float var1);
 
-   @Accessor
-   float getPlayerVelocityZ();
+    @Accessor
+    float getPlayerVelocityZ();
 
-   @Mutable
-   @Accessor
-   void setPlayerVelocityZ(float var1);
+    @Mutable
+    @Accessor
+    void setPlayerVelocityZ(float var1);
 }

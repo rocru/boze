@@ -15,49 +15,49 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin({Explosion.class})
 public class ExplosionMixin implements IExplosion {
-   @Shadow
-   @Final
-   @Mutable
-   private World world;
-   @Shadow
-   @Final
-   @Mutable
-   @Nullable
-   private Entity entity;
-   @Shadow
-   @Final
-   @Mutable
-   private double x;
-   @Shadow
-   @Final
-   @Mutable
-   private double y;
-   @Shadow
-   @Final
-   @Mutable
-   private double z;
-   @Shadow
-   @Final
-   @Mutable
-   private float power;
-   @Shadow
-   @Final
-   @Mutable
-   private boolean createFire;
-   @Shadow
-   @Final
-   @Mutable
-   private DestructionType destructionType;
+    @Shadow
+    @Final
+    @Mutable
+    private World world;
+    @Shadow
+    @Final
+    @Mutable
+    @Nullable
+    private Entity entity;
+    @Shadow
+    @Final
+    @Mutable
+    private double x;
+    @Shadow
+    @Final
+    @Mutable
+    private double y;
+    @Shadow
+    @Final
+    @Mutable
+    private double z;
+    @Shadow
+    @Final
+    @Mutable
+    private float power;
+    @Shadow
+    @Final
+    @Mutable
+    private boolean createFire;
+    @Shadow
+    @Final
+    @Mutable
+    private DestructionType destructionType;
 
-   @Override
-   public void boze$set(Vec3d pos, float power, boolean createFire) {
-      this.world = IMinecraft.mc.world;
-      this.entity = null;
-      this.x = pos.x;
-      this.y = pos.y;
-      this.z = pos.z;
-      this.power = power;
-      this.createFire = createFire;
-      this.destructionType = DestructionType.DESTROY;
-   }
+    @Override
+    public void boze$set(Vec3d pos, float power, boolean createFire) {
+        this.world = IMinecraft.mc.world;
+        this.entity = null;
+        this.x = pos.x;
+        this.y = pos.y;
+        this.z = pos.z;
+        this.power = power;
+        this.createFire = createFire;
+        this.destructionType = DestructionType.DESTROY;
+    }
 }

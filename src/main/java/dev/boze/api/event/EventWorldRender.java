@@ -25,9 +25,9 @@ public class EventWorldRender {
     /**
      * Get the event instance - this is called onm world render by Boze, and should not be called by addons
      *
-     * @param drawer 3D Drawer
-     * @param matrices MatrixStack
-     * @param camera Camera
+     * @param drawer    3D Drawer
+     * @param matrices  MatrixStack
+     * @param camera    Camera
      * @param tickDelta Tick delta
      * @return The event instance
      */

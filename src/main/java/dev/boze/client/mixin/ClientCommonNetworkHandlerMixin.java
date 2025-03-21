@@ -11,14 +11,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({ClientCommonNetworkHandler.class})
 public class ClientCommonNetworkHandlerMixin {
-   @Inject(
-      method = {"sendPacket"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   public void onSendPacket(Packet<?> packet, CallbackInfo ci) {
-      if (packet instanceof PlayerMoveC2SPacket && FastUse.field2947 && FastUse.INSTANCE.isEnabled() && FastUse.INSTANCE.field2948.getValue()) {
-         ci.cancel();
-      }
-   }
+    @Inject(
+            method = {"sendPacket"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    public void onSendPacket(Packet<?> packet, CallbackInfo ci) {
+        if (packet instanceof PlayerMoveC2SPacket && FastUse.field2947 && FastUse.INSTANCE.isEnabled() && FastUse.INSTANCE.field2948.getValue()) {
+            ci.cancel();
+        }
+    }
 }

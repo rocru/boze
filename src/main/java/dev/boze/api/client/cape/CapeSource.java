@@ -26,8 +26,8 @@ public abstract class CapeSource {
     /**
      * Gets called once a profile's cape gets loaded (if URL not null)
      *
-     * @param profile Profile which got loaded
-     * @param result Cape load result
+     * @param profile    Profile which got loaded
+     * @param result     Cape load result
      * @param identifier Identifier of the cape (null if not loaded successfully)
      */
     public abstract void callback(GameProfile profile, CapeLoadResult result, @Nullable Identifier identifier);

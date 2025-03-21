@@ -7,7 +7,10 @@ import dev.boze.client.utils.IMinecraft;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
-import org.joml.*;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
+import org.joml.Vector3d;
+import org.joml.Vector4f;
 
 public class Class5922 implements IMinecraft {
     private static final Vector4f field22;

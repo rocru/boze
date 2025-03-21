@@ -35,9 +35,9 @@ public class EventHudRender {
     /**
      * Gets the event instance - this is called when the HUD is being rendered by Boze, and should not be called by addons
      *
-     * @param context The current draw context
-     * @param drawer The drawer for 2d rendering
-     * @param text The drawer for text rendering
+     * @param context   The current draw context
+     * @param drawer    The drawer for 2d rendering
+     * @param text      The drawer for text rendering
      * @param tickDelta The current tick delta
      * @return The event instance
      */

@@ -10,8 +10,8 @@ import java.net.Proxy;
 
 @Mixin({YggdrasilMinecraftSessionService.class})
 public interface YggdrasilMinecraftSessionServiceAccessor {
-   @Invoker("<init>")
-   static YggdrasilMinecraftSessionService initYggdrasilMinecraftSessionService(ServicesKeySet servicesKeySet, Proxy proxy, Environment env) {
-      throw new UnsupportedOperationException();
-   }
+    @Invoker("<init>")
+    static YggdrasilMinecraftSessionService initYggdrasilMinecraftSessionService(ServicesKeySet servicesKeySet, Proxy proxy, Environment env) {
+        throw new UnsupportedOperationException();
+    }
 }

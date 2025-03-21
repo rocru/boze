@@ -131,7 +131,8 @@ public class Scaffold extends Module {
         } else {
             if (this.field3092.getValue() == ScaffoldFilter.Blacklist) {
                 return !this.field3091.method2032().contains(var1);
-            } else return this.field3092.getValue() != ScaffoldFilter.Whitelist || this.field3091.method2032().contains(var1);
+            } else
+                return this.field3092.getValue() != ScaffoldFilter.Whitelist || this.field3091.method2032().contains(var1);
         }
     }
 

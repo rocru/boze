@@ -9,38 +9,38 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin({Box.class})
 public class BoxMixin implements IBox {
-   @Shadow
-   @Final
-   @Mutable
-   public double minX;
-   @Shadow
-   @Final
-   @Mutable
-   public double minY;
-   @Shadow
-   @Final
-   @Mutable
-   public double minZ;
-   @Shadow
-   @Final
-   @Mutable
-   public double maxX;
-   @Shadow
-   @Final
-   @Mutable
-   public double maxY;
-   @Shadow
-   @Final
-   @Mutable
-   public double maxZ;
+    @Shadow
+    @Final
+    @Mutable
+    public double minX;
+    @Shadow
+    @Final
+    @Mutable
+    public double minY;
+    @Shadow
+    @Final
+    @Mutable
+    public double minZ;
+    @Shadow
+    @Final
+    @Mutable
+    public double maxX;
+    @Shadow
+    @Final
+    @Mutable
+    public double maxY;
+    @Shadow
+    @Final
+    @Mutable
+    public double maxZ;
 
-   @Override
-   public void boze$expand(double expand) {
-      this.minX -= expand;
-      this.minY -= expand;
-      this.minZ -= expand;
-      this.maxX += expand;
-      this.maxY += expand;
-      this.maxZ += expand;
-   }
+    @Override
+    public void boze$expand(double expand) {
+        this.minX -= expand;
+        this.minY -= expand;
+        this.minZ -= expand;
+        this.maxX += expand;
+        this.maxY += expand;
+        this.maxZ += expand;
+    }
 }

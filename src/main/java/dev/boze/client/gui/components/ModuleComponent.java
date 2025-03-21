@@ -141,14 +141,14 @@ public class ModuleComponent extends BaseComponent implements IMinecraft {
             }
 
             if (module.getNotificationLength() == NotificationLength.Normal) {
-                this.field337[0] = new Class2774(Notifications.POWER, () -> ModuleComponent.lambda$new$0(module), Theme.INSTANCE.field2435);
-                this.field337[1] = new Class2774(Notifications.TUNE, () -> ModuleComponent.lambda$new$1(module), Theme.INSTANCE.field2436);
+                this.field337[0] = new Class2774(Notifications.POWER, () -> ModuleComponent.ln0(module), Theme.INSTANCE.field2435);
+                this.field337[1] = new Class2774(Notifications.TUNE, () -> ModuleComponent.ln1(module), Theme.INSTANCE.field2436);
             }
             if (module != Profiles.INSTANCE && module != Fonts.INSTANCE) {
-                this.field337[2] = new Class2774(Notifications.VIEW_LIST, () -> ModuleComponent.lambda$new$2(module), Theme.INSTANCE.aa);
+                this.field337[2] = new Class2774(Notifications.VIEW_LIST, () -> ModuleComponent.ln2(module), Theme.INSTANCE.aa);
             }
 
-            this.field337[3] = new Class2774(this.field338 ? Notifications.EXPAND_LESS : Notifications.EXPAND_MORE, this::lambda$new$3, Theme.INSTANCE.ab);
+            this.field337[3] = new Class2774(this.field338 ? Notifications.EXPAND_LESS : Notifications.EXPAND_MORE, this::ln3, Theme.INSTANCE.ab);
         }
     }
 
@@ -667,22 +667,22 @@ public class ModuleComponent extends BaseComponent implements IMinecraft {
         return super.keyReleased(keyCode, scanCode, modifiers);
     }
 
-    private void lambda$new$3() {
+    private void ln3() {
         this.field338 = !this.field338;
         this.field337[3].field80 = this.field338 ? Notifications.EXPAND_LESS : Notifications.EXPAND_MORE;
     }
 
-    private static void lambda$new$2(Module var0) {
+    private static void ln2(Module var0) {
         ClickGUI.field1335.method580(new ConfigComponent(var0));
         mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
     }
 
-    private static void lambda$new$1(Module var0) {
+    private static void ln1(Module var0) {
         ClickGUI.field1335.method580(new dev.boze.client.gui.components.scaled.ModuleComponent(var0));
         mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
     }
 
-    private static void lambda$new$0(Module var0) {
+    private static void ln0(Module var0) {
         var0.toggle();
         mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
     }

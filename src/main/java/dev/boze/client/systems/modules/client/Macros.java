@@ -7,20 +7,20 @@ import dev.boze.client.systems.modules.Category;
 import dev.boze.client.systems.modules.Module;
 
 public class Macros extends Module {
-   public static final Macros INSTANCE = new Macros();
-   public final MacroManagerSetting field2400 = new MacroManagerSetting("Manage", "Manage macros");
+    public static final Macros INSTANCE = new Macros();
+    public final MacroManagerSetting field2400 = new MacroManagerSetting("Manage", "Manage macros");
 
-   public Macros() {
-      super("Macros", "Manage macros", Category.Client);
-      this.method219(this::lambda$new$0);
-   }
+    public Macros() {
+        super("Macros", "Manage macros", Category.Client);
+        this.method219(this::lambda$new$0);
+    }
 
-   @Override
-   public boolean setEnabled(boolean newState) {
-      return false;
-   }
+    @Override
+    public boolean setEnabled(boolean newState) {
+        return false;
+    }
 
-   private ScaledBaseComponent lambda$new$0() {
-      return new MacroManagerComponent(this.field2400);
-   }
+    private ScaledBaseComponent lambda$new$0() {
+        return new MacroManagerComponent(this.field2400);
+    }
 }

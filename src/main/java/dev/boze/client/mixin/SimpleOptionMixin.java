@@ -12,19 +12,19 @@ import java.util.function.Consumer;
 
 @Mixin({SimpleOption.class})
 public class SimpleOptionMixin implements ISimpleOption {
-   @Shadow
-   Object value;
-   @Shadow
-   @Final
-   private Consumer<Object> changeCallback;
+    @Shadow
+    Object value;
+    @Shadow
+    @Final
+    private Consumer<Object> changeCallback;
 
-   @Override
-   public void boze$setOptionValue(Object value) {
-      if (!MinecraftClient.getInstance().isRunning()) {
-         this.value = value;
-      } else if (!Objects.equals(this.value, value)) {
-         this.value = value;
-         this.changeCallback.accept(this.value);
-      }
-   }
+    @Override
+    public void boze$setOptionValue(Object value) {
+        if (!MinecraftClient.getInstance().isRunning()) {
+            this.value = value;
+        } else if (!Objects.equals(this.value, value)) {
+            this.value = value;
+            this.changeCallback.accept(this.value);
+        }
+    }
 }

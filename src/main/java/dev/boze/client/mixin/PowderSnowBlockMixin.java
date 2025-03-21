@@ -10,14 +10,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({PowderSnowBlock.class})
 public class PowderSnowBlockMixin {
-   @Inject(
-      method = {"canWalkOnPowderSnow"},
-      at = {@At("RETURN")},
-      cancellable = true
-   )
-   private static void onCanWalkOnPowderSnow(Entity var0, CallbackInfoReturnable<Boolean> var1) {
-      if (Jesus.INSTANCE.isEnabled() && Jesus.INSTANCE.field3291.getValue()) {
-         var1.setReturnValue(true);
-      }
-   }
+    @Inject(
+            method = {"canWalkOnPowderSnow"},
+            at = {@At("RETURN")},
+            cancellable = true
+    )
+    private static void onCanWalkOnPowderSnow(Entity var0, CallbackInfoReturnable<Boolean> var1) {
+        if (Jesus.INSTANCE.isEnabled() && Jesus.INSTANCE.field3291.getValue()) {
+            var1.setReturnValue(true);
+        }
+    }
 }

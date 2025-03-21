@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({HandSwingC2SPacket.class})
 public interface HandSwingC2SPacketAccessor {
-   @Accessor("hand")
-   @Mutable
-   void setHand(Hand var1);
+    @Accessor("hand")
+    @Mutable
+    void setHand(Hand var1);
 }

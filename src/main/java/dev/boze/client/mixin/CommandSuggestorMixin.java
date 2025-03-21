@@ -26,94 +26,94 @@ import java.util.concurrent.CompletableFuture;
 
 @Mixin({ChatInputSuggestor.class})
 public abstract class CommandSuggestorMixin {
-   @Shadow
-   private ParseResults<CommandSource> parse;
-   @Shadow
-   @Final
-   TextFieldWidget textField;
-   @Shadow
-   @Final
-   MinecraftClient client;
-   @Shadow
-   boolean completingSuggestions;
-   @Shadow
-   private CompletableFuture<Suggestions> pendingSuggestions;
-   @Shadow
-   private SuggestionWindow window;
+    @Shadow
+    private ParseResults<CommandSource> parse;
+    @Shadow
+    @Final
+    TextFieldWidget textField;
+    @Shadow
+    @Final
+    MinecraftClient client;
+    @Shadow
+    boolean completingSuggestions;
+    @Shadow
+    private CompletableFuture<Suggestions> pendingSuggestions;
+    @Shadow
+    private SuggestionWindow window;
 
-   @Shadow
-   public abstract void show(boolean var1);
+    @Shadow
+    public abstract void show(boolean var1);
 
-   @Inject(
-           method = {"refresh"},
-           at = {@At(
-                   value = "INVOKE",
-                   target = "Lcom/mojang/brigadier/StringReader;canRead()Z",
-                   remap = false
-           )},
-           cancellable = true
-   )
-   public void onRefresh(CallbackInfo ci, @Local StringReader reader) {
-      String var6 = Options.method1563();
-      int var7 = var6.length();
-      if (reader.canRead(var7) && reader.getString().startsWith(var6, reader.getCursor())) {
-         for (AddonDispatcher var9 : BozeInstance.INSTANCE.getDispatchers()) {
-            String var10 = var9.getPrefix() + "-";
-            if (!var10.isEmpty()) {
-               int var11 = var10.length();
-               if (reader.canRead(var7 + var11) && reader.getString().startsWith(var6 + var10, reader.getCursor())) {
-                  reader.setCursor(reader.getCursor() + var7 + var11);
-                  if (this.client.player == null) {
-                     return;
-                  }
+    @Inject(
+            method = {"refresh"},
+            at = {@At(
+                    value = "INVOKE",
+                    target = "Lcom/mojang/brigadier/StringReader;canRead()Z",
+                    remap = false
+            )},
+            cancellable = true
+    )
+    public void onRefresh(CallbackInfo ci, @Local StringReader reader) {
+        String var6 = Options.method1563();
+        int var7 = var6.length();
+        if (reader.canRead(var7) && reader.getString().startsWith(var6, reader.getCursor())) {
+            for (AddonDispatcher var9 : BozeInstance.INSTANCE.getDispatchers()) {
+                String var10 = var9.getPrefix() + "-";
+                if (!var10.isEmpty()) {
+                    int var11 = var10.length();
+                    if (reader.canRead(var7 + var11) && reader.getString().startsWith(var6 + var10, reader.getCursor())) {
+                        reader.setCursor(reader.getCursor() + var7 + var11);
+                        if (this.client.player == null) {
+                            return;
+                        }
 
-                  if (this.parse == null) {
-                     this.parse = var9.getDispatcher().parse(reader, Boze.getCommands().method1141());
-                  }
+                        if (this.parse == null) {
+                            this.parse = var9.getDispatcher().parse(reader, Boze.getCommands().method1141());
+                        }
 
-                  int var12 = this.textField.getCursor();
-                  if (var12 >= 1 && (this.window == null || !this.completingSuggestions)) {
-                     this.pendingSuggestions = var9.getDispatcher().getCompletionSuggestions(this.parse, var12);
-                     this.pendingSuggestions.thenRun(this::lambda$onRefresh$0);
-                  }
+                        int var12 = this.textField.getCursor();
+                        if (var12 >= 1 && (this.window == null || !this.completingSuggestions)) {
+                            this.pendingSuggestions = var9.getDispatcher().getCompletionSuggestions(this.parse, var12);
+                            this.pendingSuggestions.thenRun(this::lambda$onRefresh$0);
+                        }
 
-                  ci.cancel();
-                  return;
-               }
+                        ci.cancel();
+                        return;
+                    }
+                }
             }
-         }
 
-         reader.setCursor(reader.getCursor() + var7);
-         if (this.client.player == null) {
-            return;
-         }
+            reader.setCursor(reader.getCursor() + var7);
+            if (this.client.player == null) {
+                return;
+            }
 
-         CommandDispatcher var13 = Boze.getCommands().method1140();
-         if (this.parse == null) {
-            this.parse = var13.parse(reader, Boze.getCommands().method1141());
-         }
+            CommandDispatcher var13 = Boze.getCommands().method1140();
+            if (this.parse == null) {
+                this.parse = var13.parse(reader, Boze.getCommands().method1141());
+            }
 
-         int var14 = this.textField.getCursor();
-         if (var14 >= 1 && (this.window == null || !this.completingSuggestions)) {
-            this.pendingSuggestions = var13.getCompletionSuggestions(this.parse, var14);
-            this.pendingSuggestions.thenRun(this::lambda$onRefresh$1);
-         }
+            int var14 = this.textField.getCursor();
+            if (var14 >= 1 && (this.window == null || !this.completingSuggestions)) {
+                this.pendingSuggestions = var13.getCompletionSuggestions(this.parse, var14);
+                this.pendingSuggestions.thenRun(this::lambda$onRefresh$1);
+            }
 
-         ci.cancel();
-      }
-   }
+            ci.cancel();
+        }
+    }
 
-   @Unique
-   private void lambda$onRefresh$1() {
-      if (this.pendingSuggestions.isDone()) {
-         this.show(false);
-      }
-   }
+    @Unique
+    private void lambda$onRefresh$1() {
+        if (this.pendingSuggestions.isDone()) {
+            this.show(false);
+        }
+    }
 
-   @Unique
-   private void lambda$onRefresh$0() {
-      if (this.pendingSuggestions.isDone()) {
-         this.show(false);
-      }
-   }
+    @Unique
+    private void lambda$onRefresh$0() {
+        if (this.pendingSuggestions.isDone()) {
+            this.show(false);
+        }
+    }
 }

@@ -11,8 +11,6 @@ import dev.boze.client.systems.modules.client.Theme;
 import dev.boze.client.utils.render.RenderUtil;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
-import net.minecraft.client.sound.SoundInstance;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvents;
 import org.lwjgl.glfw.GLFW;
 

@@ -3,8 +3,7 @@ package mapped;
 import dev.boze.client.utils.*;
 import net.minecraft.util.math.*;
 
-public class Class1202
-{
+public class Class1202 {
     public Class1202() {
         super();
     }
@@ -22,7 +21,7 @@ public class Class1202
     }
 
     public static float method2394(final double deltaX, final double deltaZ) {
-        return (float)Math.toDegrees(Math.atan2(deltaZ, deltaX)) - 90.0f;
+        return (float) Math.toDegrees(Math.atan2(deltaZ, deltaX)) - 90.0f;
     }
 
     public static float method2395(final Vec3d delta) {
@@ -30,10 +29,10 @@ public class Class1202
     }
 
     public static float method2396(final Vec2f delta) {
-        return (float)Math.toDegrees(Math.atan2(delta.y, delta.x)) - 90.0f;
+        return (float) Math.toDegrees(Math.atan2(delta.y, delta.x)) - 90.0f;
     }
 
     private static float method2397(final double y, final double x) {
-        return (float)(-Math.toDegrees(Math.atan2(y, x)));
+        return (float) (-Math.toDegrees(Math.atan2(y, x)));
     }
 }

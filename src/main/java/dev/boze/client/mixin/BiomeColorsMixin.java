@@ -11,36 +11,36 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({BiomeColors.class})
 public class BiomeColorsMixin {
-   @Inject(
-      method = {"getWaterColor"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private static void onGetWaterColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3755.getValue()) {
-         var2.setReturnValue(Tint.INSTANCE.field3756.getValue().method2010());
-      }
-   }
+    @Inject(
+            method = {"getWaterColor"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private static void onGetWaterColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {
+        if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.field3755.getValue()) {
+            var2.setReturnValue(Tint.INSTANCE.field3756.getValue().method2010());
+        }
+    }
 
-   @Inject(
-      method = {"getGrassColor"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private static void onGetGrassColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ac.getValue()) {
-         var2.setReturnValue(Tint.INSTANCE.ad.getValue().method2010());
-      }
-   }
+    @Inject(
+            method = {"getGrassColor"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private static void onGetGrassColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {
+        if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ac.getValue()) {
+            var2.setReturnValue(Tint.INSTANCE.ad.getValue().method2010());
+        }
+    }
 
-   @Inject(
-      method = {"getFoliageColor"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private static void onGetFoliageColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.getValue()) {
-         var2.setReturnValue(Tint.INSTANCE.af.getValue().method2010());
-      }
-   }
+    @Inject(
+            method = {"getFoliageColor"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private static void onGetFoliageColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {
+        if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.getValue()) {
+            var2.setReturnValue(Tint.INSTANCE.af.getValue().method2010());
+        }
+    }
 }

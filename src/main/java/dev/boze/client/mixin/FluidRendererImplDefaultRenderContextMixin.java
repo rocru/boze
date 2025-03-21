@@ -19,23 +19,23 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Arrays;
 
 @Mixin(
-   targets = {"net.caffeinemc.mods.sodium.fabric.render.FluidRendererImpl$DefaultRenderContext"},
-   remap = false
+        targets = {"net.caffeinemc.mods.sodium.fabric.render.FluidRendererImpl$DefaultRenderContext"},
+        remap = false
 )
 public abstract class FluidRendererImplDefaultRenderContextMixin {
-   @Inject(
-      method = {"getColorProvider"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void onGetColorProvider(Fluid var1, CallbackInfoReturnable<ColorProvider<FluidState>> var2) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.aa.getValue() && var1.getDefaultState().isIn(FluidTags.LAVA)) {
-         var2.setReturnValue(this::lavaTintProvider);
-      }
-   }
+    @Inject(
+            method = {"getColorProvider"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void onGetColorProvider(Fluid var1, CallbackInfoReturnable<ColorProvider<FluidState>> var2) {
+        if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.aa.getValue() && var1.getDefaultState().isIn(FluidTags.LAVA)) {
+            var2.setReturnValue(this::lavaTintProvider);
+        }
+    }
 
-   @Unique
-   private void lavaTintProvider(LevelSlice var1, BlockPos var2, Mutable var3, FluidState var4, ModelQuadView var5, int[] var6) {
-      Arrays.fill(var6, ColorABGR.withAlpha(Tint.INSTANCE.ab.getValue().method2010(), 255));
-   }
+    @Unique
+    private void lavaTintProvider(LevelSlice var1, BlockPos var2, Mutable var3, FluidState var4, ModelQuadView var5, int[] var6) {
+        Arrays.fill(var6, ColorABGR.withAlpha(Tint.INSTANCE.ab.getValue().method2010(), 255));
+    }
 }

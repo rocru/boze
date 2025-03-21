@@ -13,13 +13,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({GameMenuScreen.class})
 public class GameMenuScreenMixin {
-   @Inject(
-      method = {"disconnect"},
-      at = {@At("HEAD")}
-   )
-   private void onDisconnect(CallbackInfo var1) {
-      if (AntiCheat.INSTANCE.field2321.getValue() && !Options.INSTANCE.method1971() && MinecraftUtils.isClientActive()) {
-         MinecraftClient.getInstance().player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(1000));
-      }
-   }
+    @Inject(
+            method = {"disconnect"},
+            at = {@At("HEAD")}
+    )
+    private void onDisconnect(CallbackInfo var1) {
+        if (AntiCheat.INSTANCE.field2321.getValue() && !Options.INSTANCE.method1971() && MinecraftUtils.isClientActive()) {
+            MinecraftClient.getInstance().player.networkHandler.sendPacket(new UpdateSelectedSlotC2SPacket(1000));
+        }
+    }
 }

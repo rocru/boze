@@ -11,18 +11,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({DimensionType.class})
 public class DimensionTypeMixin {
-   @Shadow
-   @Final
-   private float ambientLight;
+    @Shadow
+    @Final
+    private float ambientLight;
 
-   @Inject(
-      method = {"ambientLight"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void ambientLight(CallbackInfoReturnable<Float> var1) {
-      if (FullBright.INSTANCE.isEnabled()) {
-         var1.setReturnValue(Math.max(this.ambientLight, FullBright.INSTANCE.field3567.getValue()));
-      }
-   }
+    @Inject(
+            method = {"ambientLight"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void ambientLight(CallbackInfoReturnable<Float> var1) {
+        if (FullBright.INSTANCE.isEnabled()) {
+            var1.setReturnValue(Math.max(this.ambientLight, FullBright.INSTANCE.field3567.getValue()));
+        }
+    }
 }

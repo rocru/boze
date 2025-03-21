@@ -8,7 +8,6 @@ package dev.boze.api.interaction;
 public interface RotateInteraction extends Interaction {
 
     /**
-     *
      * @return Rotation to rotate to
      * @see Rotation
      */

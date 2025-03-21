@@ -12,21 +12,21 @@ import java.util.function.IntSupplier;
 
 @Mixin({SplashOverlay.class})
 public class SplashOverlayMixin {
-   @Mutable
-   @Shadow
-   @Final
-   private static IntSupplier BRAND_ARGB;
+    @Mutable
+    @Shadow
+    @Final
+    private static IntSupplier BRAND_ARGB;
 
-   @Inject(
-      method = {"init"},
-      at = {@At("HEAD")}
-   )
-   private static void onInit(MinecraftClient var0, CallbackInfo var1) {
-      BRAND_ARGB = SplashOverlayMixin::lambda$onInit$0;
-   }
+    @Inject(
+            method = {"init"},
+            at = {@At("HEAD")}
+    )
+    private static void onInit(MinecraftClient var0, CallbackInfo var1) {
+        BRAND_ARGB = SplashOverlayMixin::lambda$onInit$0;
+    }
 
-   @Unique
-   private static int lambda$onInit$0() {
-      return Version.isBeta ? 0 : 6179555;
-   }
+    @Unique
+    private static int lambda$onInit$0() {
+        return Version.isBeta ? 0 : 6179555;
+    }
 }

@@ -2,7 +2,6 @@ package mapped;
 
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
-import net.minecraft.entity.player.PlayerEntity;
 
 import java.util.ArrayList;
 import java.util.List;

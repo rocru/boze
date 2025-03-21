@@ -10,7 +10,7 @@ public class SettingToggle extends SettingBase<Boolean> {
     private final boolean defaultValue;
 
     public SettingToggle(ToggleableModule owner, String name, String description) {
-       this(owner, name, description, false);
+        this(owner, name, description, false);
     }
 
     public SettingToggle(ToggleableModule owner, String name, String description, boolean value) {

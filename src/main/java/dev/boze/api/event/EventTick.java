@@ -6,7 +6,6 @@ package dev.boze.api.event;
  * Tick event
  * <p>
  * This event should be used for features that need to be called at the start/end of ticks
- *
  */
 public class EventTick {
 

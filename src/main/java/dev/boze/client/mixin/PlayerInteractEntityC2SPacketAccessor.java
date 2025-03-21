@@ -8,13 +8,13 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({PlayerInteractEntityC2SPacket.class})
 public interface PlayerInteractEntityC2SPacketAccessor {
-   @Mutable
-   @Accessor
-   void setEntityId(int var1);
+    @Mutable
+    @Accessor
+    void setEntityId(int var1);
 
-   @Accessor
-   InteractTypeHandler getType();
+    @Accessor
+    InteractTypeHandler getType();
 
-   @Accessor
-   int getEntityId();
+    @Accessor
+    int getEntityId();
 }

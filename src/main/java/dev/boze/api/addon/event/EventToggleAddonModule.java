@@ -21,7 +21,7 @@ public class EventToggleAddonModule {
     /**
      * Gets the event instance - this is called when a ToggleableModule is toggled by Boze, and should not be called by addons
      *
-     * @param module The module that was toggled
+     * @param module   The module that was toggled
      * @param newState The new state of the module
      * @return The event instance
      */

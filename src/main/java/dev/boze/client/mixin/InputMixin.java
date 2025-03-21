@@ -6,12 +6,12 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin({Input.class})
 public class InputMixin {
-   @Shadow
-   public float movementSideways;
-   @Shadow
-   public float movementForward;
-   @Shadow
-   public boolean jumping;
-   @Shadow
-   public boolean sneaking;
+    @Shadow
+    public float movementSideways;
+    @Shadow
+    public float movementForward;
+    @Shadow
+    public boolean jumping;
+    @Shadow
+    public boolean sneaking;
 }

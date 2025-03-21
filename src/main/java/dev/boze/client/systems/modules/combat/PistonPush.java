@@ -100,7 +100,8 @@ public class PistonPush extends Module {
                 break;
             }
             case 1: {
-                if (!this.method1508(InventoryHelper.method163(Blocks.PISTON, Blocks.STICKY_PISTON), this.field2558, event)) break;
+                if (!this.method1508(InventoryHelper.method163(Blocks.PISTON, Blocks.STICKY_PISTON), this.field2558, event))
+                    break;
                 this.stage = PistonPushStage.Redstone;
                 break;
             }

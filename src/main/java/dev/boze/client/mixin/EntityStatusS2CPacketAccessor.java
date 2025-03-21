@@ -6,6 +6,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({EntityStatusS2CPacket.class})
 public interface EntityStatusS2CPacketAccessor {
-   @Accessor
-   int getEntityId();
+    @Accessor
+    int getEntityId();
 }

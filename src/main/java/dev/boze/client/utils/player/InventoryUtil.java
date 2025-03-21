@@ -6,6 +6,6 @@ import net.minecraft.client.gui.screen.ingame.HandledScreen;
 
 public class InventoryUtil implements IMinecraft {
     public static boolean isInventoryOpen() {
-        return !MinecraftUtils.isClientActive() ? false : mc.currentScreen instanceof HandledScreen;
+        return MinecraftUtils.isClientActive() && mc.currentScreen instanceof HandledScreen;
     }
 }

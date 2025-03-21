@@ -14,39 +14,39 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({InGameOverlayRenderer.class})
 public class InGameOverlayRendererMixin {
-   @Inject(
-      method = {"renderFireOverlay"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private static void onRenderFireOverlay(MinecraftClient var0, MatrixStack var1, CallbackInfo var2) {
-      PlayerOverlayEvent var3 = (PlayerOverlayEvent) Boze.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Fire));
-      if (var3.method1022()) {
-         var2.cancel();
-      }
-   }
+    @Inject(
+            method = {"renderFireOverlay"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private static void onRenderFireOverlay(MinecraftClient var0, MatrixStack var1, CallbackInfo var2) {
+        PlayerOverlayEvent var3 = Boze.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Fire));
+        if (var3.method1022()) {
+            var2.cancel();
+        }
+    }
 
-   @Inject(
-      method = {"renderUnderwaterOverlay"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private static void onRenderUnderwaterOverlay(MinecraftClient var0, MatrixStack var1, CallbackInfo var2) {
-      PlayerOverlayEvent var3 = (PlayerOverlayEvent) Boze.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Liquid));
-      if (var3.method1022()) {
-         var2.cancel();
-      }
-   }
+    @Inject(
+            method = {"renderUnderwaterOverlay"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private static void onRenderUnderwaterOverlay(MinecraftClient var0, MatrixStack var1, CallbackInfo var2) {
+        PlayerOverlayEvent var3 = Boze.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Liquid));
+        if (var3.method1022()) {
+            var2.cancel();
+        }
+    }
 
-   @Inject(
-      method = {"renderInWallOverlay"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private static void render(Sprite var0, MatrixStack var1, CallbackInfo var2) {
-      PlayerOverlayEvent var3 = (PlayerOverlayEvent) Boze.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Wall));
-      if (var3.method1022()) {
-         var2.cancel();
-      }
-   }
+    @Inject(
+            method = {"renderInWallOverlay"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private static void render(Sprite var0, MatrixStack var1, CallbackInfo var2) {
+        PlayerOverlayEvent var3 = Boze.EVENT_BUS.post(PlayerOverlayEvent.method1080(PlayerOverlay.Wall));
+        if (var3.method1022()) {
+            var2.cancel();
+        }
+    }
 }

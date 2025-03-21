@@ -13,13 +13,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({ItemStack.class})
 public class ItemStackMixin {
-   @Inject(
-      method = {"finishUsing"},
-      at = {@At("HEAD")}
-   )
-   private void onFinishUsing(World var1, LivingEntity var2, CallbackInfoReturnable<ItemStack> var3) {
-      if (var2 == IMinecraft.mc.player) {
-         Boze.EVENT_BUS.post(FinishUsingEvent.method1061((ItemStack)this));
-      }
-   }
+    @Inject(
+            method = {"finishUsing"},
+            at = {@At("HEAD")}
+    )
+    private void onFinishUsing(World var1, LivingEntity var2, CallbackInfoReturnable<ItemStack> var3) {
+        if (var2 == IMinecraft.mc.player) {
+            Boze.EVENT_BUS.post(FinishUsingEvent.method1061((ItemStack) (Object) this));
+        }
+    }
 }

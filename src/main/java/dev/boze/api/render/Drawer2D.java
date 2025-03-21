@@ -26,10 +26,10 @@ public interface Drawer2D {
     /**
      * Draw a quad
      *
-     * @param topLeft top left color
-     * @param topRight top right color
+     * @param topLeft     top left color
+     * @param topRight    top right color
      * @param bottomRight bottom right color
-     * @param bottomLeft bottom left color
+     * @param bottomLeft  bottom left color
      */
     void quad(double x, double y, double width, double height, DrawColor topLeft, DrawColor topRight, DrawColor bottomRight, DrawColor bottomLeft);
 

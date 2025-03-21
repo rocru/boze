@@ -8,9 +8,9 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin({Entity.class})
 public interface EntityAccessor {
-   @Accessor
-   EntityDimensions getDimensions();
+    @Accessor
+    EntityDimensions getDimensions();
 
-   @Invoker
-   boolean callGetFlag(int var1);
+    @Invoker
+    boolean callGetFlag(int var1);
 }

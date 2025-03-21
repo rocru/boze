@@ -9,6 +9,6 @@ import java.util.List;
 
 @Mixin({ToastManager.class})
 public interface ToastManagerAccessor {
-   @Accessor
-   List<Entry<?>> getVisibleEntries();
+    @Accessor
+    List<Entry<?>> getVisibleEntries();
 }

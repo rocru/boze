@@ -23,7 +23,7 @@ public final class ChatHelper {
      * <p>
      * It's recommended to use this method when sending messages from a module
      *
-     * @param title The title of the message/the module name
+     * @param title   The title of the message/the module name
      * @param message The message
      */
     public static void sendMsg(String title, String message) {
@@ -44,7 +44,7 @@ public final class ChatHelper {
      * <p>
      * It's recommended to use this method when sending warnings from a module
      *
-     * @param title The title of the warning/the module name
+     * @param title   The title of the warning/the module name
      * @param warning The warning
      */
     public static void sendWarning(String title, String warning) {

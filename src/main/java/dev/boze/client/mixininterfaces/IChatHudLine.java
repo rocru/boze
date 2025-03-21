@@ -3,13 +3,13 @@ package dev.boze.client.mixininterfaces;
 import com.mojang.authlib.GameProfile;
 
 public interface IChatHudLine {
-   String boze$getText();
+    String boze$getText();
 
-   int boze$getID();
+    int boze$getID();
 
-   void boze$setID(int var1);
+    void boze$setID(int var1);
 
-   GameProfile boze$getSenderProfile();
+    GameProfile boze$getSenderProfile();
 
-   void boze$setSenderProfile(GameProfile var1);
+    void boze$setSenderProfile(GameProfile var1);
 }

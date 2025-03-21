@@ -10,15 +10,15 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({WorldRenderer.class})
 public interface WorldRendererAccessor {
-   @Accessor("blockBreakingInfos")
-   Int2ObjectMap<BlockBreakingInfo> getBlockBreakingInfos();
+    @Accessor("blockBreakingInfos")
+    Int2ObjectMap<BlockBreakingInfo> getBlockBreakingInfos();
 
-   @Accessor("entityOutlinesFramebuffer")
-   Framebuffer getEntityOutlinesFramebuffer();
+    @Accessor("entityOutlinesFramebuffer")
+    Framebuffer getEntityOutlinesFramebuffer();
 
-   @Accessor
-   void setEntityOutlinesFramebuffer(Framebuffer var1);
+    @Accessor
+    void setEntityOutlinesFramebuffer(Framebuffer var1);
 
-   @Accessor("frustum")
-   Frustum getFrustum();
+    @Accessor("frustum")
+    Frustum getFrustum();
 }

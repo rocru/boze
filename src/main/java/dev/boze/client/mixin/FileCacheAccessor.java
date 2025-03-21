@@ -8,6 +8,6 @@ import java.nio.file.Path;
 
 @Mixin({FileCache.class})
 public interface FileCacheAccessor {
-   @Accessor
-   Path getDirectory();
+    @Accessor
+    Path getDirectory();
 }

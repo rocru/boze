@@ -5,7 +5,6 @@ import net.minecraft.util.math.Box;
 
 /**
  * 3D Drawer interface (for 3D rendering)
- *
  */
 public interface Drawer3D {
 
@@ -23,7 +22,7 @@ public interface Drawer3D {
 
     /**
      * Stop drawing
-     *<p></p>
+     * <p></p>
      * If you wish to render in the world, do not use this; instead, use the other stopDrawing method with matrices from EventWorldRender
      */
     default void stopDrawing() {
@@ -33,12 +32,12 @@ public interface Drawer3D {
     /**
      * Draw a line
      *
-     * @param x1 Origin x
-     * @param y1 Origin y
-     * @param z1 Origin z
-     * @param x2 Destination x
-     * @param y2 Destination y
-     * @param z2 Destination z
+     * @param x1     Origin x
+     * @param y1     Origin y
+     * @param z1     Origin z
+     * @param x2     Destination x
+     * @param y2     Destination y
+     * @param z2     Destination z
      * @param color1 Origin color
      * @param color2 Destination color
      */
@@ -47,12 +46,12 @@ public interface Drawer3D {
     /**
      * Draw a line
      *
-     * @param x1 Origin x
-     * @param y1 Origin y
-     * @param z1 Origin z
-     * @param x2 Destination x
-     * @param y2 Destination y
-     * @param z2 Destination z
+     * @param x1    Origin x
+     * @param y1    Origin y
+     * @param z1    Origin z
+     * @param x2    Destination x
+     * @param y2    Destination y
+     * @param z2    Destination z
      * @param color Color (for both origin and destination)
      */
     default void line(double x1, double y1, double z1, double x2, double y2, double z2, DrawColor color) {
@@ -62,10 +61,10 @@ public interface Drawer3D {
     /**
      * Draw a quad
      *
-     * @param topLeft Top left color
-     * @param topRight Top right color
+     * @param topLeft     Top left color
+     * @param topRight    Top right color
      * @param bottomRight Bottom right color
-     * @param bottomLeft Bottom left color
+     * @param bottomLeft  Bottom left color
      */
     void quad(double x1, double y1, double z1, double x2, double y2, double z2, double x3, double y3, double z3, double x4, double y4, double z4, DrawColor topLeft, DrawColor topRight, DrawColor bottomRight, DrawColor bottomLeft);
 
@@ -81,7 +80,7 @@ public interface Drawer3D {
     /**
      * Draw a box
      *
-     * @param box Box to draw
+     * @param box   Box to draw
      * @param color Color of the box
      */
     void box(Box box, DrawColor color);
@@ -89,7 +88,7 @@ public interface Drawer3D {
     /**
      * Draw an outlined box
      *
-     * @param box Box to draw
+     * @param box       Box to draw
      * @param quadColor Color of the box's quads (sides)
      * @param lineColor Color of the box's lines
      */

@@ -9,25 +9,25 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({World.class})
 public class WorldMixin {
-   @Inject(
-      method = {"getRainGradient"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void getRainGradient(CallbackInfoReturnable<Float> var1) {
-      if (NoRender.method1984()) {
-         var1.setReturnValue(0.0F);
-      }
-   }
+    @Inject(
+            method = {"getRainGradient"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void getRainGradient(CallbackInfoReturnable<Float> var1) {
+        if (NoRender.method1984()) {
+            var1.setReturnValue(0.0F);
+        }
+    }
 
-   @Inject(
-      method = {"getThunderGradient"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void getThunderGradient(CallbackInfoReturnable<Float> var1) {
-      if (NoRender.method1984()) {
-         var1.setReturnValue(0.0F);
-      }
-   }
+    @Inject(
+            method = {"getThunderGradient"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void getThunderGradient(CallbackInfoReturnable<Float> var1) {
+        if (NoRender.method1984()) {
+            var1.setReturnValue(0.0F);
+        }
+    }
 }

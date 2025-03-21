@@ -69,9 +69,9 @@ public class AddonComponent extends BaseComponent implements IMinecraft {
             }
         }
 
-        this.field365[0] = new Class2773(Notifications.POWER, () -> lambda$new$0(addonModule), Theme.INSTANCE.field2435);
-        this.field365[1] = new Class2773(Notifications.TUNE, () -> lambda$new$1(addonModule), Theme.INSTANCE.field2436);
-        this.field365[2] = new Class2773(this.field366 ? Notifications.EXPAND_LESS : Notifications.EXPAND_MORE, this::lambda$new$2, Theme.INSTANCE.ab);
+        this.field365[0] = new Class2773(Notifications.POWER, () -> ln0(addonModule), Theme.INSTANCE.field2435);
+        this.field365[1] = new Class2773(Notifications.TUNE, () -> ln1(addonModule), Theme.INSTANCE.field2436);
+        this.field365[2] = new Class2773(this.field366 ? Notifications.EXPAND_LESS : Notifications.EXPAND_MORE, this::ln2, Theme.INSTANCE.ab);
     }
 
     // $VF: Unable to simplify switch on enum
@@ -424,17 +424,17 @@ public class AddonComponent extends BaseComponent implements IMinecraft {
         return super.keyReleased(keyCode, scanCode, modifiers);
     }
 
-    private void lambda$new$2() {
+    private void ln2() {
         this.field366 = !this.field366;
         this.field365[2].field74 = this.field366 ? Notifications.EXPAND_LESS : Notifications.EXPAND_MORE;
     }
 
-    private static void lambda$new$1(ToggleableModule var0) {
+    private static void ln1(ToggleableModule var0) {
         ClickGUI.field1335.method580(new ToggleableModuleSettingComponent(var0));
         mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
     }
 
-    private static void lambda$new$0(ToggleableModule var0) {
+    private static void ln0(ToggleableModule var0) {
         var0.setState(!var0.getState());
         mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
     }

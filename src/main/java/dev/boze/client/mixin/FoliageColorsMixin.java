@@ -9,27 +9,27 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({FoliageColors.class})
 public class FoliageColorsMixin {
-   @Inject(
-      method = {"getBirchColor"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private static void onGetBirchColor(CallbackInfoReturnable<Integer> var0) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.getValue()) {
-         var0.setReturnValue(Tint.INSTANCE.af.getValue().method2010());
-         var0.cancel();
-      }
-   }
+    @Inject(
+            method = {"getBirchColor"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private static void onGetBirchColor(CallbackInfoReturnable<Integer> var0) {
+        if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.getValue()) {
+            var0.setReturnValue(Tint.INSTANCE.af.getValue().method2010());
+            var0.cancel();
+        }
+    }
 
-   @Inject(
-      method = {"getSpruceColor"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private static void onGetSpruceColor(CallbackInfoReturnable<Integer> var0) {
-      if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.getValue()) {
-         var0.setReturnValue(Tint.INSTANCE.af.getValue().method2010());
-         var0.cancel();
-      }
-   }
+    @Inject(
+            method = {"getSpruceColor"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private static void onGetSpruceColor(CallbackInfoReturnable<Integer> var0) {
+        if (Tint.INSTANCE.isEnabled() && Tint.INSTANCE.ae.getValue()) {
+            var0.setReturnValue(Tint.INSTANCE.af.getValue().method2010());
+            var0.cancel();
+        }
+    }
 }

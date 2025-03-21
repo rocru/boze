@@ -8,9 +8,9 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({BufferBuilder.class})
 public interface BufferBuilderAccessor {
-   @Accessor("allocator")
-   BufferAllocator getAllocator();
+    @Accessor("allocator")
+    BufferAllocator getAllocator();
 
-   @Accessor("format")
-   VertexFormat getVertexFormat();
+    @Accessor("format")
+    VertexFormat getVertexFormat();
 }

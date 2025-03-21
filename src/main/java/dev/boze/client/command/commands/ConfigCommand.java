@@ -55,7 +55,7 @@ public class ConfigCommand extends Command {
     }
 
     private int lambda$build$11(Category var1, CommandContext<CommandSource> var2) throws CommandSyntaxException {
-        String var6 = (String) var2.getArgument("title", String.class);
+        String var6 = var2.getArgument("title", String.class);
         NbtCompound var7 = ConfigNBTSerializer.method2140(var6, var1);
         NbtCompound var8 = new NbtCompound();
 
@@ -186,7 +186,7 @@ public class ConfigCommand extends Command {
         }
 
         if (!var5.isEmpty()) {
-            this.method624("Loaded config " + (String)var1.getArgument("title", String.class) + " for:", new Object[0]);
+            this.method624("Loaded config " + var1.getArgument("title", String.class) + " for:");
             var5.forEach(this::lambda$build$6);
         }
 
@@ -198,8 +198,8 @@ public class ConfigCommand extends Command {
     }
 
     private int lambda$build$5(CommandContext commandContext) throws CommandSyntaxException {
-        String string = StringArgumentType.getString((CommandContext)commandContext, (String)"title");
-        String string2 = StringArgumentType.getString((CommandContext)commandContext, (String)"codes");
+        String string = StringArgumentType.getString(commandContext, "title");
+        String string2 = StringArgumentType.getString(commandContext, "codes");
         String[] stringArray = string2.split(" ");
         BozeExecutor.method2200(() -> this.lambda$build$4(stringArray, string));
         return 1;

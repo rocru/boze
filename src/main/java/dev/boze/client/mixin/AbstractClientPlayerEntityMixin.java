@@ -16,21 +16,21 @@ import java.util.Locale;
 
 @Mixin({AbstractClientPlayerEntity.class})
 public abstract class AbstractClientPlayerEntityMixin {
-   @Shadow
-   @Nullable
-   protected abstract PlayerListEntry getPlayerListEntry();
+    @Shadow
+    @Nullable
+    protected abstract PlayerListEntry getPlayerListEntry();
 
-   @Inject(
-      method = {"getSkinTextures"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   public void onGetSkinTextures(CallbackInfoReturnable<SkinTextures> info) {
-      if (this.getPlayerListEntry() != null
-         && Media.INSTANCE.isEnabled()
-         && Media.INSTANCE.field2402.getValue()
-         && Media.INSTANCE.field2403.getValue().containsKey(this.getPlayerListEntry().getProfile().getName().toLowerCase(Locale.ROOT))) {
-         info.setReturnValue(DefaultSkinHelper.getSkinTextures(this.getPlayerListEntry().getProfile().getId()));
-      }
-   }
+    @Inject(
+            method = {"getSkinTextures"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    public void onGetSkinTextures(CallbackInfoReturnable<SkinTextures> info) {
+        if (this.getPlayerListEntry() != null
+                && Media.INSTANCE.isEnabled()
+                && Media.INSTANCE.field2402.getValue()
+                && Media.INSTANCE.field2403.getValue().containsKey(this.getPlayerListEntry().getProfile().getName().toLowerCase(Locale.ROOT))) {
+            info.setReturnValue(DefaultSkinHelper.getSkinTextures(this.getPlayerListEntry().getProfile().getId()));
+        }
+    }
 }

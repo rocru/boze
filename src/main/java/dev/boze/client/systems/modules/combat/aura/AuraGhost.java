@@ -135,12 +135,12 @@ public class AuraGhost extends GhostModule {
         }
         final ArrayList<Pair<Entity, Vec3d>> list = new ArrayList(this.field2496);
         this.field2496.clear();
-        final RotationHelper rotationHelper = (GhostRotations.INSTANCE.field760 == null) ? new RotationHelper((Entity)AuraGhost.mc.player) : GhostRotations.INSTANCE.field760;
+        final RotationHelper rotationHelper = (GhostRotations.INSTANCE.field760 == null) ? new RotationHelper(AuraGhost.mc.player) : GhostRotations.INSTANCE.field760;
         for (Entity entity : AuraGhost.mc.world.getEntities()) {
             if (!this.method1426(entity)) {
                 continue;
             }
-            final Box expand = entity.getBoundingBox().expand((double) entity.getTargetingMargin());
+            final Box expand = entity.getBoundingBox().expand(entity.getTargetingMargin());
             Vec3d to = expand.getCenter();
             switch (this.field2473.getValue().ordinal()) {
                 case 0:
@@ -171,7 +171,7 @@ public class AuraGhost extends GhostModule {
             if (this.field2475.getValue() != TrackMode.Attack && (this.field2475.getValue() == TrackMode.Off || !list.stream().noneMatch(arg_0 -> AuraGhost.lambda$onRotate$2(entity, arg_0))) && !Class5924.method117(AuraGhost.mc.player.getEyePos(), vec3d)) {
                 continue;
             }
-            this.field2496.add((Pair<Entity, Vec3d>) new Pair((Object) entity, (Object) vec3d));
+            this.field2496.add((Pair<Entity, Vec3d>) new Pair(entity, vec3d));
         }
         if (!this.field2496.isEmpty()) {
             this.field2496.sort(Comparator.comparing(AuraGhost::lambda$onRotate$3).thenComparing(this::lambda$onRotate$4).thenComparing(this::lambda$onRotate$5).thenComparing(this.field2500));
@@ -179,15 +179,14 @@ public class AuraGhost extends GhostModule {
                 return;
             }
             final Pair pair = this.field2496.get(0);
-            final RotationHelper method2391 = Class1202.method2391(AuraGhost.mc.player.getEyePos(), (Vec3d)pair.getRight());
+            final RotationHelper method2391 = Class1202.method2391(AuraGhost.mc.player.getEyePos(), (Vec3d) pair.getRight());
             RotationHelper method2392 = rotationHelper.method603(method2391, this.field2470.getValue());
             final HitResult method2393 = Class5924.method73(this.field2469.method1295(), method2392, true);
-            if (this.field2477.getValue() && !(method2393 instanceof EntityHitResult) && ((Vec3d)pair.getRight()).squaredDistanceTo(AuraGhost.mc.player.getEyePos()) <= this.field2469.method1295() * this.field2469.method1295()) {
+            if (this.field2477.getValue() && !(method2393 instanceof EntityHitResult) && ((Vec3d) pair.getRight()).squaredDistanceTo(AuraGhost.mc.player.getEyePos()) <= this.field2469.method1295() * this.field2469.method1295()) {
                 method2392 = method2391;
             }
             event.method1099(method2392.method600(this::lambda$onRotate$6));
-        }
-        else {
+        } else {
             this.method1416();
             this.method1430(event, rotationHelper);
         }
@@ -329,7 +328,8 @@ public class AuraGhost extends GhostModule {
                     for (d = 0.0; d <= 1.0 && n++ < 1000; d += GhostRotations.INSTANCE.field746.getValue().doubleValue()) {
                         double d5;
                         Vec3d vec3d3 = new Vec3d(box.minX + (box.maxX - box.minX) * d3, box.minY + (box.maxY - box.minY) * d4, box.minZ + (box.maxZ - box.minZ) * d);
-                        if (!Class5924.method117(AuraGhost.mc.player.getEyePos(), vec3d3) || !((d5 = AuraGhost.mc.player.getEyePos().squaredDistanceTo(vec3d3)) < d2)) continue;
+                        if (!Class5924.method117(AuraGhost.mc.player.getEyePos(), vec3d3) || !((d5 = AuraGhost.mc.player.getEyePos().squaredDistanceTo(vec3d3)) < d2))
+                            continue;
                         vec3d = vec3d3;
                         d2 = d5;
                     }
@@ -347,12 +347,12 @@ public class AuraGhost extends GhostModule {
         Vec3d vec3d5 = new Vec3d(AuraGhost.mc.player.prevX - AuraGhost.mc.player.getX(), AuraGhost.mc.player.prevY - AuraGhost.mc.player.getY(), AuraGhost.mc.player.prevZ - AuraGhost.mc.player.getZ());
         Vec3d vec3d6 = vec3d5.subtract(entity.prevX - entity.getX(), entity.prevY - entity.getY(), entity.prevZ - entity.getZ());
         if (vec3d6.lengthSquared() > 0.0) {
-            double d7 = GhostRotations.INSTANCE.field752.getValue() != false ? vec3d6.horizontalLength() : 1.0;
-            vec3d = vec3d.add(Math.sin((double)System.currentTimeMillis() * GhostRotations.INSTANCE.field755.getValue() * 0.01) * d7, Math.cos((double)System.currentTimeMillis() * GhostRotations.INSTANCE.field756.getValue() * 0.01) * (vec3d6.y + d7 * GhostRotations.INSTANCE.field753.getValue()), Math.sin((double)System.currentTimeMillis() * GhostRotations.INSTANCE.field755.getValue() * 0.01) * d7);
+            double d7 = GhostRotations.INSTANCE.field752.getValue() ? vec3d6.horizontalLength() : 1.0;
+            vec3d = vec3d.add(Math.sin((double) System.currentTimeMillis() * GhostRotations.INSTANCE.field755.getValue() * 0.01) * d7, Math.cos((double) System.currentTimeMillis() * GhostRotations.INSTANCE.field756.getValue() * 0.01) * (vec3d6.y + d7 * GhostRotations.INSTANCE.field753.getValue()), Math.sin((double) System.currentTimeMillis() * GhostRotations.INSTANCE.field755.getValue() * 0.01) * d7);
         }
         vec3d = vec3d.subtract(vec3d6.multiply(GhostRotations.INSTANCE.field751.getValue()));
-        RotationHelper rotationHelper2 = GhostRotations.INSTANCE.field760 != null ? GhostRotations.INSTANCE.field760 : new RotationHelper((Entity)AuraGhost.mc.player);
-        d = (double)rotationHelper2.method605(Class1202.method2391(AuraGhost.mc.player.getEyePos(), vec3d)) / 255.0;
+        RotationHelper rotationHelper2 = GhostRotations.INSTANCE.field760 != null ? GhostRotations.INSTANCE.field760 : new RotationHelper(AuraGhost.mc.player);
+        d = (double) rotationHelper2.method605(Class1202.method2391(AuraGhost.mc.player.getEyePos(), vec3d)) / 255.0;
         vec3d = vec3d.add(0.0, -d * box.getLengthY() * (GhostRotations.INSTANCE.field750.getValue() - 1.0), 0.0);
         while (bl && !Class5924.method117(AuraGhost.mc.player.getEyePos(), vec3d) && this.field2476.getValue() && n++ < 1000) {
             vec3d = new Vec3d(Class5917.method35(vec3d.x, vec3d2.x, GhostRotations.INSTANCE.field746.getValue()), Class5917.method35(vec3d.y, vec3d2.y, GhostRotations.INSTANCE.field746.getValue()), Class5917.method35(vec3d.z, vec3d2.z, GhostRotations.INSTANCE.field746.getValue()));
@@ -363,7 +363,7 @@ public class AuraGhost extends GhostModule {
                 vec3d = new Vec3d(Class5917.method35(vec3d.x, vec3d2.x, GhostRotations.INSTANCE.field746.getValue()), Class5917.method35(vec3d.y, vec3d2.y, GhostRotations.INSTANCE.field746.getValue()), Class5917.method35(vec3d.z, vec3d2.z, GhostRotations.INSTANCE.field746.getValue()));
             }
             HitResult hitResult = Class5924.method73(this.field2469.method1295(), Class1202.method2391(AuraGhost.mc.player.getEyePos(), vec3d), true);
-            if (hitResult == null || !(hitResult instanceof EntityHitResult) || ((EntityHitResult)hitResult).getEntity() == null) {
+            if (hitResult == null || !(hitResult instanceof EntityHitResult) || ((EntityHitResult) hitResult).getEntity() == null) {
                 vec3d = vec3d2;
             }
         } else if (this.field2469.method1295() > this.field2469.method1295()) {

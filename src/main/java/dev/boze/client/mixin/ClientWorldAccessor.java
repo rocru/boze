@@ -7,6 +7,6 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin({ClientWorld.class})
 public interface ClientWorldAccessor {
-   @Invoker("getPendingUpdateManager")
-   PendingUpdateManager callGetPendingUpdateManager();
+    @Invoker("getPendingUpdateManager")
+    PendingUpdateManager callGetPendingUpdateManager();
 }

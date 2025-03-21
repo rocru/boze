@@ -7,6 +7,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({PlayerSkinProvider.class})
 public interface PlayerSkinProviderAccessor {
-   @Accessor("skinCache")
-   FileCache getSkinCache();
+    @Accessor("skinCache")
+    FileCache getSkinCache();
 }

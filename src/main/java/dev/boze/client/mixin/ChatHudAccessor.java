@@ -7,6 +7,6 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin({ChatHud.class})
 public interface ChatHudAccessor {
-   @Invoker("addMessage")
-   void iAddMessage(Text var1);
+    @Invoker("addMessage")
+    void iAddMessage(Text var1);
 }

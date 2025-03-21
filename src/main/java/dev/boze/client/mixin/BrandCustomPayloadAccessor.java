@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({BrandCustomPayload.class})
 public interface BrandCustomPayloadAccessor {
-   @Mutable
-   @Accessor
-   void setBrand(String var1);
+    @Mutable
+    @Accessor
+    void setBrand(String var1);
 }

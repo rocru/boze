@@ -9,14 +9,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({Screen.class})
 public abstract class ScreenMixin {
-   @Inject(
-      method = {"renderBackground"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void onRenderBackground(CallbackInfo var1) {
-      if (NoRender.method1979()) {
-         var1.cancel();
-      }
-   }
+    @Inject(
+            method = {"renderBackground"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void onRenderBackground(CallbackInfo var1) {
+        if (NoRender.method1979()) {
+            var1.cancel();
+        }
+    }
 }

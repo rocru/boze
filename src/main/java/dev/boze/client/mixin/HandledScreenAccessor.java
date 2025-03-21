@@ -6,15 +6,15 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({HandledScreen.class})
 public interface HandledScreenAccessor {
-   @Accessor
-   int getBackgroundWidth();
+    @Accessor
+    int getBackgroundWidth();
 
-   @Accessor
-   int getBackgroundHeight();
+    @Accessor
+    int getBackgroundHeight();
 
-   @Accessor("x")
-   int getX();
+    @Accessor("x")
+    int getX();
 
-   @Accessor("y")
-   int getY();
+    @Accessor("y")
+    int getY();
 }

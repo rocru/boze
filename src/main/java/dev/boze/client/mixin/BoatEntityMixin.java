@@ -15,54 +15,54 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({BoatEntity.class})
 public abstract class BoatEntityMixin extends Entity {
-   @Unique
-   private boolean ignore = false;
+    @Unique
+    private boolean ignore = false;
 
-   public BoatEntityMixin(EntityType<?> type, World world) {
-      super(type, world);
-   }
+    public BoatEntityMixin(EntityType<?> type, World world) {
+        super(type, world);
+    }
 
-   @Shadow
-   public abstract void setInputs(boolean var1, boolean var2, boolean var3, boolean var4);
+    @Shadow
+    public abstract void setInputs(boolean var1, boolean var2, boolean var3, boolean var4);
 
-   @Inject(
-      method = {"setInputs"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void onSetInput(boolean var1, boolean var2, boolean var3, boolean var4, CallbackInfo var5) {
-      if (!this.ignore) {
-         if (AutoWalk.INSTANCE.isEnabled()) {
-            this.ignore = true;
-            this.setInputs(var1, var2, var3 || !AutoWalk.INSTANCE.field3147.getValue(), var4 || AutoWalk.INSTANCE.field3147.getValue());
-            var5.cancel();
-            this.ignore = false;
-         }
-      }
-   }
+    @Inject(
+            method = {"setInputs"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void onSetInput(boolean var1, boolean var2, boolean var3, boolean var4, CallbackInfo var5) {
+        if (!this.ignore) {
+            if (AutoWalk.INSTANCE.isEnabled()) {
+                this.ignore = true;
+                this.setInputs(var1, var2, var3 || !AutoWalk.INSTANCE.field3147.getValue(), var4 || AutoWalk.INSTANCE.field3147.getValue());
+                var5.cancel();
+                this.ignore = false;
+            }
+        }
+    }
 
-   @Inject(
-      method = {"tick"},
-      at = {@At(
-         value = "INVOKE",
-         target = "Lnet/minecraft/entity/vehicle/BoatEntity;move(Lnet/minecraft/entity/MovementType;Lnet/minecraft/util/math/Vec3d;)V"
-      )},
-      cancellable = true
-   )
-   private void onTickInvokeMove(CallbackInfo var1) {
-      if (BoatFly.INSTANCE.method1797()) {
-         var1.cancel();
-      }
-   }
+    @Inject(
+            method = {"tick"},
+            at = {@At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/entity/vehicle/BoatEntity;move(Lnet/minecraft/entity/MovementType;Lnet/minecraft/util/math/Vec3d;)V"
+            )},
+            cancellable = true
+    )
+    private void onTickInvokeMove(CallbackInfo var1) {
+        if (BoatFly.INSTANCE.method1797()) {
+            var1.cancel();
+        }
+    }
 
-   @Inject(
-      method = {"updatePaddles"},
-      at = {@At("HEAD")},
-      cancellable = true
-   )
-   private void onUpdatePaddles(CallbackInfo var1) {
-      if (BoatFly.INSTANCE.method1792()) {
-         var1.cancel();
-      }
-   }
+    @Inject(
+            method = {"updatePaddles"},
+            at = {@At("HEAD")},
+            cancellable = true
+    )
+    private void onUpdatePaddles(CallbackInfo var1) {
+        if (BoatFly.INSTANCE.method1792()) {
+            var1.cancel();
+        }
+    }
 }

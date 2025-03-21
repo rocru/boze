@@ -2,7 +2,6 @@ package dev.boze.api.client.cape;
 
 /**
  * Enum for cape load results
- *
  */
 public enum CapeLoadResult {
     /**

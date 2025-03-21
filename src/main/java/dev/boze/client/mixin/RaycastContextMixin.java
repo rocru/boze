@@ -14,33 +14,33 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin({RaycastContext.class})
 public class RaycastContextMixin implements IRaycastContext {
-   @Shadow
-   @Final
-   @Mutable
-   private Vec3d start;
-   @Shadow
-   @Final
-   @Mutable
-   private Vec3d end;
-   @Shadow
-   @Final
-   @Mutable
-   private ShapeType shapeType;
-   @Shadow
-   @Final
-   @Mutable
-   private FluidHandling fluid;
-   @Mutable
-   @Shadow
-   @Final
-   private ShapeContext shapeContext;
+    @Shadow
+    @Final
+    @Mutable
+    private Vec3d start;
+    @Shadow
+    @Final
+    @Mutable
+    private Vec3d end;
+    @Shadow
+    @Final
+    @Mutable
+    private ShapeType shapeType;
+    @Shadow
+    @Final
+    @Mutable
+    private FluidHandling fluid;
+    @Mutable
+    @Shadow
+    @Final
+    private ShapeContext shapeContext;
 
-   @Override
-   public void boze$set(Vec3d start, Vec3d end, ShapeType shapeType, FluidHandling fluidHandling, Entity entity) {
-      this.start = start;
-      this.end = end;
-      this.shapeType = shapeType;
-      this.fluid = fluidHandling;
-      this.shapeContext = ShapeContext.of(entity);
-   }
+    @Override
+    public void boze$set(Vec3d start, Vec3d end, ShapeType shapeType, FluidHandling fluidHandling, Entity entity) {
+        this.start = start;
+        this.end = end;
+        this.shapeType = shapeType;
+        this.fluid = fluidHandling;
+        this.shapeContext = ShapeContext.of(entity);
+    }
 }

@@ -7,16 +7,16 @@ import org.spongepowered.asm.mixin.Unique;
 
 @Mixin({MutableText.class})
 public class MutableTextMixin implements IMutableText {
-   @Unique
-   private int id;
+    @Unique
+    private int id;
 
-   @Override
-   public void boze$setId(int id) {
-      this.id = id;
-   }
+    @Override
+    public void boze$setId(int id) {
+        this.id = id;
+    }
 
-   @Override
-   public int boze$getId() {
-      return this.id;
-   }
+    @Override
+    public int boze$getId() {
+        return this.id;
+    }
 }

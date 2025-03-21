@@ -30,11 +30,11 @@ class NCPPlace implements IPlace, IMinecraft {
     @Override
     public BlockHitResult method113(BlockPos candidatePos) {
         Box var4 = new Box(candidatePos);
-        ClientPlayerEntityAccessor var5 = (ClientPlayerEntityAccessor)mc.player;
+        ClientPlayerEntityAccessor var5 = (ClientPlayerEntityAccessor) mc.player;
         Vec3d var6 = new Vec3d(var5.getLastX(), var5.getLastY(), var5.getLastZ());
         Vec3d var7 = this.method145(var5.getLastPitch(), var5.getLastYaw());
         Pair var8 = this.method135(var4, var6, var7);
-        return var8 != null ? new BlockHitResult((Vec3d)var8.getLeft(), (Direction)var8.getRight(), candidatePos, var4.contains(var6)) : null;
+        return var8 != null ? new BlockHitResult((Vec3d) var8.getLeft(), (Direction) var8.getRight(), candidatePos, var4.contains(var6)) : null;
     }
 
     @Override
@@ -50,13 +50,13 @@ class NCPPlace implements IPlace, IMinecraft {
         boolean var14 = candidatePos.getY() == mc.world.getTopY() - 1;
         Box var7 = new Box(candidatePos);
         Vec3d var8 = mc.player.getPos();
-        Vec3d var9 = var8.add(0.0, (double)mc.player.getEyeHeight(mc.player.getPose()), 0.0);
+        Vec3d var9 = var8.add(0.0, mc.player.getEyeHeight(mc.player.getPose()), 0.0);
         Vec3d var10 = this.method123(var7, var9);
         double var11 = var9.distanceTo(var10);
-        if (var11 > (double)this.field219.autoCrystalPlace.field138.getValue()) {
+        if (var11 > (double) this.field219.autoCrystalPlace.field138.getValue()) {
             return null;
         } else {
-            if (var11 > (double)this.field219.autoCrystalPlace.field139.getValue()) {
+            if (var11 > (double) this.field219.autoCrystalPlace.field139.getValue()) {
                 BlockHitResult var13 = mc.world.raycast(new RaycastContext(var9, var10, ShapeType.COLLIDER, FluidHandling.NONE, mc.player));
                 if (var13 != null && var13.getType() == Type.BLOCK && !var13.getBlockPos().equals(candidatePos)) {
                     return null;
@@ -85,21 +85,21 @@ class NCPPlace implements IPlace, IMinecraft {
     }
 
     BlockHitResult method122(BlockPos var1, Set<Direction> var2) {
-        Vec3d var6 = new Vec3d((double)var1.getX() + 0.5, (double)var1.getY() + 1.0, (double)var1.getZ() + 0.5);
+        Vec3d var6 = new Vec3d((double) var1.getX() + 0.5, (double) var1.getY() + 1.0, (double) var1.getZ() + 0.5);
         Box var7 = EntityType.END_CRYSTAL.getDimensions().getBoxAt(var6);
         BlockHitResult var8 = null;
         double var9 = Double.MAX_VALUE;
         Box var11 = new Box(var1);
         Vec3d var12 = mc.player.getPos();
-        Vec3d var13 = var12.add(0.0, (double)mc.player.getEyeHeight(mc.player.getPose()), 0.0);
+        Vec3d var13 = var12.add(0.0, mc.player.getEyeHeight(mc.player.getPose()), 0.0);
 
         for (Direction var15 : var2) {
             Vec3d[] var16 = BlockSelection.method1452(var1, var15, 0.05);
 
             for (Vec3d var20 : var16) {
                 double var21 = var13.distanceTo(var20);
-                if (!(var21 > (double)this.field219.autoCrystalPlace.field138.getValue())) {
-                    if (var21 > (double)this.field219.autoCrystalPlace.field139.getValue()) {
+                if (!(var21 > (double) this.field219.autoCrystalPlace.field138.getValue())) {
+                    if (var21 > (double) this.field219.autoCrystalPlace.field139.getValue()) {
                         BlockHitResult var23 = mc.world.raycast(new RaycastContext(var13, var20, ShapeType.COLLIDER, FluidHandling.NONE, mc.player));
                         if (var23 != null && var23.getType() == Type.BLOCK && !var23.getBlockPos().equals(var1)) {
                             continue;
@@ -108,12 +108,12 @@ class NCPPlace implements IPlace, IMinecraft {
 
                     Pair var26 = this.method138(var7, var12, var20);
                     if (var26 != null && var26.getLeft() != null && var26.getRight() != null) {
-                        double var24 = var13.distanceTo((Vec3d)var26.getLeft());
+                        double var24 = var13.distanceTo((Vec3d) var26.getLeft());
                         if (var24 < var9
-                                && var24 <= (double)this.field219.autoCrystalBreak.field178.getValue()
+                                && var24 <= (double) this.field219.autoCrystalBreak.field178.getValue()
                                 && (
-                                var24 <= (double)this.field219.autoCrystalBreak.field179.getValue()
-                                        || RaycastUtil.method117(var13, (Vec3d)var26.getLeft())
+                                var24 <= (double) this.field219.autoCrystalBreak.field179.getValue()
+                                        || RaycastUtil.method117(var13, (Vec3d) var26.getLeft())
                         )) {
                             var8 = new BlockHitResult(var20, var15, var1, var11.contains(var13));
                             var9 = var24;
@@ -130,14 +130,14 @@ class NCPPlace implements IPlace, IMinecraft {
     public Vec3d method115(Vec3d endCrystalPos) {
         Box var5 = EntityType.END_CRYSTAL.getDimensions().getBoxAt(endCrystalPos);
         Vec3d var6 = mc.player.getPos();
-        Vec3d var7 = var6.add(0.0, (double)mc.player.getEyeHeight(mc.player.getPose()), 0.0);
+        Vec3d var7 = var6.add(0.0, mc.player.getEyeHeight(mc.player.getPose()), 0.0);
         double var8 = var7.distanceTo(endCrystalPos);
-        if (!(var8 <= (double)this.field219.autoCrystalBreak.field178.getValue())
-                || !(var8 <= (double)this.field219.autoCrystalBreak.field179.getValue()) && !RaycastUtil.method117(var7, endCrystalPos)) {
-            Vec3d var10 = this.method123(var5, var6.add(0.0, (double)mc.player.getEyeHeight(mc.player.getPose()), 0.0));
+        if (!(var8 <= (double) this.field219.autoCrystalBreak.field178.getValue())
+                || !(var8 <= (double) this.field219.autoCrystalBreak.field179.getValue()) && !RaycastUtil.method117(var7, endCrystalPos)) {
+            Vec3d var10 = this.method123(var5, var6.add(0.0, mc.player.getEyeHeight(mc.player.getPose()), 0.0));
             double var11 = var7.distanceTo(var10);
-            return !(var11 <= (double)this.field219.autoCrystalBreak.field178.getValue())
-                    || !(var11 <= (double)this.field219.autoCrystalBreak.field179.getValue()) && !RaycastUtil.method117(var7, var10)
+            return !(var11 <= (double) this.field219.autoCrystalBreak.field178.getValue())
+                    || !(var11 <= (double) this.field219.autoCrystalBreak.field179.getValue()) && !RaycastUtil.method117(var7, var10)
                     ? null
                     : var10;
         } else {
@@ -147,7 +147,7 @@ class NCPPlace implements IPlace, IMinecraft {
 
     @Override
     public boolean method116(Vec3d endCrystalPos) {
-        ClientPlayerEntityAccessor var4 = (ClientPlayerEntityAccessor)mc.player;
+        ClientPlayerEntityAccessor var4 = (ClientPlayerEntityAccessor) mc.player;
         Vec3d var5 = new Vec3d(var4.getLastX(), var4.getLastY(), var4.getLastZ());
         return this.method119(endCrystalPos, var5, new float[]{var4.getLastYaw(), var4.getLastPitch()});
     }
@@ -166,10 +166,10 @@ class NCPPlace implements IPlace, IMinecraft {
         if (var9 == null) {
             return false;
         } else {
-            Vec3d var10 = playerPos.add(0.0, (double)mc.player.getEyeHeight(mc.player.getPose()), 0.0);
+            Vec3d var10 = playerPos.add(0.0, mc.player.getEyeHeight(mc.player.getPose()), 0.0);
             double var11 = var10.distanceTo(var9);
-            return var11 <= (double)this.field219.autoCrystalBreak.field178.getValue()
-                    && (var11 <= (double)this.field219.autoCrystalBreak.field179.getValue() || RaycastUtil.method117(var10, var9));
+            return var11 <= (double) this.field219.autoCrystalBreak.field178.getValue()
+                    && (var11 <= (double) this.field219.autoCrystalBreak.field179.getValue() || RaycastUtil.method117(var10, var9));
         }
     }
 
@@ -185,7 +185,7 @@ class NCPPlace implements IPlace, IMinecraft {
     private Pair<Vec3d, Direction> method135(Box var1, Vec3d var2, Vec3d var3) {
         Pair var7 = null;
         double var8 = Double.MAX_VALUE;
-        Vec3d var10 = var2.add(0.0, (double)mc.player.getEyeHeight(mc.player.getPose()), 0.0);
+        Vec3d var10 = var2.add(0.0, mc.player.getEyeHeight(mc.player.getPose()), 0.0);
         Vec3d var11 = var10.add(var3.getX() * 6.0, var3.getY() * 6.0, var3.getZ() * 6.0);
         Pair var12 = this.method138(var1, var10, var11);
         if (var12.getLeft() != null) {
@@ -194,20 +194,20 @@ class NCPPlace implements IPlace, IMinecraft {
                 var7 = var12;
             }
 
-            double var13 = var10.distanceTo((Vec3d)var12.getLeft());
+            double var13 = var10.distanceTo((Vec3d) var12.getLeft());
             if (var13 < var8) {
                 var7 = var12;
                 var8 = var13;
             }
         }
 
-        return var8 > (double)this.field219.autoCrystalPlace.field138.getValue() ? null : var7;
+        return var8 > (double) this.field219.autoCrystalPlace.field138.getValue() ? null : var7;
     }
 
     private Vec3d method136(Box var1, Vec3d var2, Vec3d var3) {
-        Vec3d var6 = var2.add(0.0, (double)mc.player.getEyeHeight(mc.player.getPose()), 0.0);
+        Vec3d var6 = var2.add(0.0, mc.player.getEyeHeight(mc.player.getPose()), 0.0);
         Vec3d var7 = var6.add(var3.getX() * 6.0, var3.getY() * 6.0, var3.getZ() * 6.0);
-        return (Vec3d)this.method138(var1, var6, var7).getLeft();
+        return this.method138(var1, var6, var7).getLeft();
     }
 
     private boolean method137(Box var1, Vec3d var2) {
@@ -342,6 +342,6 @@ class NCPPlace implements IPlace, IMinecraft {
         float var6 = MathHelper.sin(var4);
         float var7 = MathHelper.cos(var3);
         float var8 = MathHelper.sin(var3);
-        return new Vec3d((double)(var6 * var7), (double)(-var8), (double)(var5 * var7));
+        return new Vec3d(var6 * var7, -var8, var5 * var7);
     }
 }

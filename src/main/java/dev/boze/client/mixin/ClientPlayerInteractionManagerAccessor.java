@@ -8,27 +8,27 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin({ClientPlayerInteractionManager.class})
 public interface ClientPlayerInteractionManagerAccessor {
-   @Accessor
-   float getCurrentBreakingProgress();
+    @Accessor
+    float getCurrentBreakingProgress();
 
-   @Accessor
-   void setCurrentBreakingProgress(float var1);
+    @Accessor
+    void setCurrentBreakingProgress(float var1);
 
-   @Accessor
-   boolean isBreakingBlock();
+    @Accessor
+    boolean isBreakingBlock();
 
-   @Accessor
-   void setBreakingBlock(boolean var1);
+    @Accessor
+    void setBreakingBlock(boolean var1);
 
-   @Accessor
-   int getLastSelectedSlot();
+    @Accessor
+    int getLastSelectedSlot();
 
-   @Accessor
-   void setLastSelectedSlot(int var1);
+    @Accessor
+    void setLastSelectedSlot(int var1);
 
-   @Invoker
-   void callSyncSelectedSlot();
+    @Invoker
+    void callSyncSelectedSlot();
 
-   @Accessor
-   BlockPos getCurrentBreakingPos();
+    @Accessor
+    BlockPos getCurrentBreakingPos();
 }
