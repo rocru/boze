@@ -38,16 +38,24 @@ public class FontLoader implements IFontRender, IMinecraft {
     private final double field1074;
 
     public FontLoader(File file) {
-        if (!file.exists()) throw new RuntimeException(file.getAbsolutePath());
-        byte[] var5 = FontReader.read(file);
-        if (var5.length == 0) {
+//        if (!file.exists()) throw new RuntimeException(file.getAbsolutePath());
+        byte[] var5 = new byte[0];
+        if (file.exists()) {
+            var5 = FontReader.read(file);
+            if (var5.length == 0)
+                try {
+                    var5 = Files.readAllBytes(file.toPath());
+                } catch (Throwable _t) {
+                    _t.printStackTrace(System.err);
+                }
+        }
+        if (var5.length == 0)
             try {
-                var5 = Files.readAllBytes(file.toPath());
+                var5 = FontLoader.class.getClassLoader().getResourceAsStream("assets/boze/fonts/lexend.ttf").readAllBytes();
             } catch (Throwable _t) {
                 _t.printStackTrace(System.err);
             }
-            if (var5.length == 0) throw new RuntimeException(file.getAbsolutePath());
-        }
+        if (var5.length == 0) throw new RuntimeException(file.getAbsolutePath());
         ByteBuffer var6 = BufferUtils.createByteBuffer(var5.length).put(var5);
         this.field1068 = new GlyphBuffer[9];
 
