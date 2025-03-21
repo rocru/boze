@@ -20,78 +20,78 @@ import javax.sound.sampled.FloatControl.Type;
 import java.io.File;
 
 public class SoundFX extends Module {
-   public static final SoundFX INSTANCE = new SoundFX();
-   private final FloatSetting field3116 = new FloatSetting("Volume", 2.5F, 0.1F, 5.0F, 0.1F, "Volume for sound effects");
-   private final SoundStringSetting field3117 = new SoundStringSetting("Kill", "", "Kill sound");
-   private final SoundStringSetting field3118 = new SoundStringSetting("Shoot", "", "Bow shoot sound");
-   public final SoundStringSetting field3119 = new SoundStringSetting("Enable", "", "Module enable sound");
-   public final SoundStringSetting field3120 = new SoundStringSetting("Disable", "", "Module disable sound");
-   public final SoundStringSetting field3121 = new SoundStringSetting("VisualEnter", "", "Player entering visual range sound", SoundFX::lambda$new$0);
-   public final SoundStringSetting field3122 = new SoundStringSetting("VisualLeave", "", "Player leaving visual range sound", SoundFX::lambda$new$1);
+    public static final SoundFX INSTANCE = new SoundFX();
+    private final FloatSetting field3116 = new FloatSetting("Volume", 2.5F, 0.1F, 5.0F, 0.1F, "Volume for sound effects");
+    private final SoundStringSetting field3117 = new SoundStringSetting("Kill", "", "Kill sound");
+    private final SoundStringSetting field3118 = new SoundStringSetting("Shoot", "", "Bow shoot sound");
+    public final SoundStringSetting field3119 = new SoundStringSetting("Enable", "", "Module enable sound");
+    public final SoundStringSetting field3120 = new SoundStringSetting("Disable", "", "Module disable sound");
+    public final SoundStringSetting field3121 = new SoundStringSetting("VisualEnter", "", "Player entering visual range sound", SoundFX::lambda$new$0);
+    public final SoundStringSetting field3122 = new SoundStringSetting("VisualLeave", "", "Player leaving visual range sound", SoundFX::lambda$new$1);
 
-   public SoundFX() {
-      super("SoundFX", "Plays custom sound effects", Category.Misc);
-   }
+    public SoundFX() {
+        super("SoundFX", "Plays custom sound effects", Category.Misc);
+    }
 
-   public void method1771(boolean state) {
-      if (mc.player != null) {
-         if (state) {
-            if (this.field3119.getValue().isEmpty()) {
-               return;
+    public void method1771(boolean state) {
+        if (mc.player != null) {
+            if (state) {
+                if (this.field3119.getValue().isEmpty()) {
+                    return;
+                }
+
+                this.method1775(new File(ConfigManager.sounds, this.field3119.getValue() + ".wav"));
+            } else {
+                if (this.field3120.getValue().isEmpty()) {
+                    return;
+                }
+
+                this.method1775(new File(ConfigManager.sounds, this.field3120.getValue() + ".wav"));
             }
+        }
+    }
 
-            this.method1775(new File(ConfigManager.sounds, this.field3119.getValue() + ".wav"));
-         } else {
-            if (this.field3120.getValue().isEmpty()) {
-               return;
+    public void method1772(float health, LivingEntity entity) {
+        if (!this.field3117.getValue().isEmpty() && mc.world != null && health <= 0.0F && entity != null && TargetTracker.method2055(entity)) {
+            this.method1775(new File(ConfigManager.sounds, this.field3117.getValue() + ".wav"));
+        }
+    }
+
+    public void method1773(ItemStack stack, int remainingUseTicks) {
+        if (!this.field3118.getValue().isEmpty()) {
+            if (!((double) BowItem.getPullProgress(Items.BOW.getMaxUseTime(stack, mc.player) - remainingUseTicks) < 0.1)) {
+                this.method1775(new File(ConfigManager.sounds, this.field3118.getValue() + ".wav"));
             }
+        }
+    }
 
-            this.method1775(new File(ConfigManager.sounds, this.field3120.getValue() + ".wav"));
-         }
-      }
-   }
+    private ItemStack method1774() {
+        if (mc.player.getMainHandStack().getItem() instanceof BowItem) {
+            return mc.player.getMainHandStack();
+        } else {
+            return mc.player.getOffHandStack().getItem() instanceof BowItem ? mc.player.getOffHandStack() : null;
+        }
+    }
 
-   public void method1772(float health, LivingEntity entity) {
-      if (!this.field3117.getValue().isEmpty() && mc.world != null && health <= 0.0F && entity != null && TargetTracker.method2055(entity)) {
-         this.method1775(new File(ConfigManager.sounds, this.field3117.getValue() + ".wav"));
-      }
-   }
+    public void method1775(File file) {
+        if (file.exists()) {
+            try {
+                AudioInputStream var4 = AudioSystem.getAudioInputStream(file);
+                Clip var5 = AudioSystem.getClip();
+                var5.open(var4);
+                FloatControl var6 = (FloatControl) var5.getControl(Type.MASTER_GAIN);
+                var6.setValue(-50.0F + this.field3116.getValue() * 10.0F);
+                var5.start();
+            } catch (Exception var7) {
+            }
+        }
+    }
 
-   public void method1773(ItemStack stack, int remainingUseTicks) {
-      if (!this.field3118.getValue().isEmpty()) {
-         if (!((double)BowItem.getPullProgress(Items.BOW.getMaxUseTime(stack, mc.player) - remainingUseTicks) < 0.1)) {
-            this.method1775(new File(ConfigManager.sounds, this.field3118.getValue() + ".wav"));
-         }
-      }
-   }
+    private static boolean lambda$new$1() {
+        return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field847.getValue();
+    }
 
-   private ItemStack method1774() {
-      if (mc.player.getMainHandStack().getItem() instanceof BowItem) {
-         return mc.player.getMainHandStack();
-      } else {
-         return mc.player.getOffHandStack().getItem() instanceof BowItem ? mc.player.getOffHandStack() : null;
-      }
-   }
-
-   public void method1775(File file) {
-      if (file.exists()) {
-         try {
-            AudioInputStream var4 = AudioSystem.getAudioInputStream(file);
-            Clip var5 = AudioSystem.getClip();
-            var5.open(var4);
-            FloatControl var6 = (FloatControl)var5.getControl(Type.MASTER_GAIN);
-            var6.setValue(-50.0F + this.field3116.getValue() * 10.0F);
-            var5.start();
-         } catch (Exception var7) {
-         }
-      }
-   }
-
-   private static boolean lambda$new$1() {
-      return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field847.getValue();
-   }
-
-   private static boolean lambda$new$0() {
-      return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field846.getValue();
-   }
+    private static boolean lambda$new$0() {
+        return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field846.getValue();
+    }
 }

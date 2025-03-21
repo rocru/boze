@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AutoUpgradeMode {
+public enum AutoUpgradeMode {
     Anarchy,
     Ghost;
 

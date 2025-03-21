@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AntiAFKMode {
+public enum AntiAFKMode {
     Jump,
     Sneak;
 

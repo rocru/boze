@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum SwingModeMode {
+public enum SwingModeMode {
     Offhand,
     Mainhand,
     Opposite,

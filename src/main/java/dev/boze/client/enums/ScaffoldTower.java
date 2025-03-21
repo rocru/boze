@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum ScaffoldTower {
+public enum ScaffoldTower {
     Off,
     Normal,
     Fast;

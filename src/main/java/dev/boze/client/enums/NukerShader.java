@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum NukerShader {
+public enum NukerShader {
     Normal,
     Image;
 

@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum SwingCancel {
+public enum SwingCancel {
     Off,
     Normal,
     Strict;

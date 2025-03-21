@@ -1,13 +1,13 @@
 package dev.boze.client.enums;
 
-enum KeyClick {
+public enum KeyClick {
     None(false),
     Friend(false),
     XP(true),
     EP(true),
     Rocket(true);
 
-    final boolean field1730;
+    public final boolean field1730;
     private static final KeyClick[] field1731 = method848();
 
     KeyClick(boolean var3) {

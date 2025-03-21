@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AntiAimYaw {
+public enum AntiAimYaw {
     Off,
     Jitter,
     FOVJitter,

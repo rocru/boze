@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AutoCraftMode {
+public enum AutoCraftMode {
     Store,
     Drop;
 

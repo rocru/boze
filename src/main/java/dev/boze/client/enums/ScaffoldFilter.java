@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum ScaffoldFilter {
+public enum ScaffoldFilter {
     Off,
     Whitelist,
     Blacklist;

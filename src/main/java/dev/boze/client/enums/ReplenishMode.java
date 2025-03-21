@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum ReplenishMode {
+public enum ReplenishMode {
     Anarchy,
     Ghost;
 

@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum SmartMineInventoryMode {
+public enum SmartMineInventoryMode {
     Logout,
     Stay,
     Return,

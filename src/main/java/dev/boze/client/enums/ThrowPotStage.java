@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum ThrowPotStage {
+public enum ThrowPotStage {
     Throw,
     SwapBack;
 

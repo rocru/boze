@@ -10,7 +10,7 @@ public enum ArmorEnchantMode {
     Fire(Enchantments.FIRE_PROTECTION),
     Proj(Enchantments.PROJECTILE_PROTECTION);
 
-    private final RegistryKey<Enchantment> field1809;
+    public final RegistryKey<Enchantment> field1809;
     private static final ArmorEnchantMode[] field1810 = method919();
 
     ArmorEnchantMode(RegistryKey<Enchantment> var3) {

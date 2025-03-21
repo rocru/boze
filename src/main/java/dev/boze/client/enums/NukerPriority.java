@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum NukerPriority {
+public enum NukerPriority {
     Closest,
     Furthest,
     Highest,

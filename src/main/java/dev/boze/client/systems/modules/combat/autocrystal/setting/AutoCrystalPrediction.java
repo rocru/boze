@@ -84,7 +84,7 @@ public class AutoCrystalPrediction implements IMinecraft {
         }
     }
 
-    private static Vec3d method512(PlayerEntity var0, int var1) {
+    public static Vec3d method512(PlayerEntity var0, int var1) {
         if (var0.prevX == var0.getX() && var0.prevY == var0.getY() && var0.prevZ == var0.getZ()) {
             return new Vec3d(var0.getX(), var0.getY(), var0.getZ());
         } else {

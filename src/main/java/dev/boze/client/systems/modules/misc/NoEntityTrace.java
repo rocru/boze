@@ -11,26 +11,26 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.util.hit.HitResult.Type;
 
 public class NoEntityTrace extends Module {
-   public static final NoEntityTrace INSTANCE = new NoEntityTrace();
-   private BooleanSetting picOnly = new BooleanSetting("PickaxeOnly", true, "Only skip trace when holding a pickaxe");
-   private BooleanSetting swordOnly = new BooleanSetting("SwordOnly", false, "Only skip trace when holding a sword");
+    public static final NoEntityTrace INSTANCE = new NoEntityTrace();
+    private final BooleanSetting picOnly = new BooleanSetting("PickaxeOnly", true, "Only skip trace when holding a pickaxe");
+    private final BooleanSetting swordOnly = new BooleanSetting("SwordOnly", false, "Only skip trace when holding a sword");
 
-   public NoEntityTrace() {
-      super("NoEntityTrace", "Skip entity tracing", Category.Misc);
-   }
+    public NoEntityTrace() {
+        super("NoEntityTrace", "Skip entity tracing", Category.Misc);
+    }
 
-   @EventHandler
-   public void method1728(CrosshairEvent event) {
-      if (MinecraftUtils.isClientActive()) {
-         if (!mc.options.pickItemKey.isPressed() || !MiddleClickAction.INSTANCE.isEnabled()) {
-            if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.BLOCK) {
-               if (!this.picOnly.getValue()
-                  || mc.player.getMainHandStack().getItem() instanceof PickaxeItem
-                  || this.swordOnly.getValue() && mc.player.getMainHandStack().getItem() instanceof SwordItem) {
-                  event.method1021(true);
-               }
+    @EventHandler
+    public void method1728(CrosshairEvent event) {
+        if (MinecraftUtils.isClientActive()) {
+            if (!mc.options.pickItemKey.isPressed() || !MiddleClickAction.INSTANCE.isEnabled()) {
+                if (mc.crosshairTarget != null && mc.crosshairTarget.getType() == Type.BLOCK) {
+                    if (!this.picOnly.getValue()
+                            || mc.player.getMainHandStack().getItem() instanceof PickaxeItem
+                            || this.swordOnly.getValue() && mc.player.getMainHandStack().getItem() instanceof SwordItem) {
+                        event.method1021(true);
+                    }
+                }
             }
-         }
-      }
-   }
+        }
+    }
 }

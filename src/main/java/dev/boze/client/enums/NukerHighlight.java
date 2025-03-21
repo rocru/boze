@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum NukerHighlight {
+public enum NukerHighlight {
     Normal,
     Complex;
 

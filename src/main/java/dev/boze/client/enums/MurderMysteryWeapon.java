@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum MurderMysteryWeapon {
+public enum MurderMysteryWeapon {
     Hypixel,
     Sword,
     Custom;

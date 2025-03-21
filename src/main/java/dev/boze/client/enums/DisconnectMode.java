@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum DisconnectMode {
+public enum DisconnectMode {
     LogOut,
     Macro,
     Both;

@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum ExtraChatMode {
+public enum ExtraChatMode {
     Anarchy,
     Ghost;
 

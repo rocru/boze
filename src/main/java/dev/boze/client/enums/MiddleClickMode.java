@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum MiddleClickMode {
+public enum MiddleClickMode {
     Anarchy,
     Ghost;
 

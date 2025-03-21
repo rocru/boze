@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum NukerFilter {
+public enum NukerFilter {
     Off,
     Whitelist,
     Blacklist;

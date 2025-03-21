@@ -10,20 +10,19 @@ import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
 import net.minecraft.network.packet.s2c.play.PositionFlag;
 
 public class NoRotate extends Module {
-   public static final NoRotate INSTANCE = new NoRotate();
+    public static final NoRotate INSTANCE = new NoRotate();
 
-   public NoRotate() {
-      super("NoRotate", "Prevent server packets from rotating you", Category.Misc);
-   }
+    public NoRotate() {
+        super("NoRotate", "Prevent server packets from rotating you", Category.Misc);
+    }
 
-   @EventHandler
-   public void method1730(PacketBundleEvent event) {
-      if (event.packet instanceof PlayerPositionLookS2CPacket && MinecraftUtils.isClientActive()) {
-         PlayerPositionLookS2CPacket var5 = (PlayerPositionLookS2CPacket)event.packet;
-         ((PlayerPositionLookS2CPacketAccessor)var5).setYaw(mc.player.getYaw());
-         ((PlayerPositionLookS2CPacketAccessor)var5).setPitch(mc.player.getPitch());
-         var5.getFlags().remove(PositionFlag.X_ROT);
-         var5.getFlags().remove(PositionFlag.Y_ROT);
-      }
-   }
+    @EventHandler
+    public void method1730(PacketBundleEvent event) {
+        if (event.packet instanceof PlayerPositionLookS2CPacket var5 && MinecraftUtils.isClientActive()) {
+            ((PlayerPositionLookS2CPacketAccessor) var5).setYaw(mc.player.getYaw());
+            ((PlayerPositionLookS2CPacketAccessor) var5).setPitch(mc.player.getPitch());
+            var5.getFlags().remove(PositionFlag.X_ROT);
+            var5.getFlags().remove(PositionFlag.Y_ROT);
+        }
+    }
 }

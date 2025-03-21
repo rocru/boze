@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum WTapMode {
+public enum WTapMode {
     field1761,
     field1762;
 

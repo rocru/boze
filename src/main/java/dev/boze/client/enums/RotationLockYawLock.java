@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum RotationLockYawLock {
+public enum RotationLockYawLock {
     Off,
     Angle,
     Cardinal,

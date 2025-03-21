@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum AutoArmorMode {
+public enum AutoArmorMode {
     Anarchy,
     Ghost;
 

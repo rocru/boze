@@ -1,6 +1,6 @@
 package dev.boze.client.enums;
 
-enum SwingMode {
+public enum SwingMode {
     Anarchy,
     Ghost;
 
