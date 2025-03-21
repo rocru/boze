@@ -85,7 +85,7 @@ public class nk extends nj {
     }
 
     @Override
-    void method2142() {
+    public void method2142() {
         if (MinecraftUtils.isClientActive()) {
             this.method1198();
         }
@@ -115,7 +115,7 @@ public class nk extends nj {
     }
 
     @Override
-    void method1416() {
+    public void method1416() {
         if (this.field1566 != null) {
             this.field1566.setNoGravity(false);
         }
@@ -256,7 +256,7 @@ public class nk extends nj {
     }
 
     @Override
-    void method2072(PreTickEvent var1) {
+    public void method2072(PreTickEvent var1) {
         this.field1570++;
         if (this.field1570 % this.field1556.field3167.getValue() == 0) {
             this.method1854();
@@ -271,11 +271,11 @@ public class nk extends nj {
     }
 
     @Override
-    void method2042(PacketBundleEvent var1) {
+    public void method2042(PacketBundleEvent var1) {
     }
 
     @Override
-    boolean method1798(VehicleMoveS2CPacket var1) {
+    public boolean method1798(VehicleMoveS2CPacket var1) {
         this.method700(var1);
         return true;
     }
@@ -298,7 +298,7 @@ public class nk extends nj {
     }
 
     @Override
-    boolean method2114() {
+    public boolean method2114() {
         if (MinecraftUtils.isClientActive() && this.field1566 != null) {
             if (this.method2116()) {
                 this.field1571++;
@@ -322,12 +322,12 @@ public class nk extends nj {
     }
 
     @Override
-    boolean method2115() {
+    public boolean method2115() {
         return true;
     }
 
     @Override
-    void method2071(Render3DEvent var1) {
+    public void method2071(Render3DEvent var1) {
         if (this.field1576 != null && this.field1556.field3178.getValue() && this.field1556.field3169.getValue()) {
             this.field1576.method2097(var1, this.field1556.field3179.getValue());
         }
@@ -341,7 +341,7 @@ public class nk extends nj {
     }
 
     @Override
-    void method1853(PrePacketSendEvent var1) {
+    public void method1853(PrePacketSendEvent var1) {
         if (var1.packet instanceof PlayerMoveC2SPacket || var1.packet instanceof BoatPaddleStateC2SPacket) {
             var1.method1020();
         }

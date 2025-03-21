@@ -38,16 +38,16 @@ public class nl extends nj {
     }
 
     @Override
-    void method2142() {
+    public void method2142() {
         this.field1589 = 0;
     }
 
     @Override
-    void method1416() {
+    public void method1416() {
     }
 
     @Override
-    void method1794(PlayerTravelEvent var1) {
+    public void method1794(PlayerTravelEvent var1) {
         if (this.method2116()) {
             if (mc.player.getVehicle() instanceof BoatEntity var5) {
                 if (mc.player.age % 20 == 0) {
@@ -130,7 +130,7 @@ public class nl extends nj {
     }
 
     @Override
-    void method2042(PacketBundleEvent var1) {
+    public void method2042(PacketBundleEvent var1) {
         if (this.method2116()) {
             if (!this.field1556.field3158.getValue()) {
                 this.method704(var1);
@@ -177,7 +177,7 @@ public class nl extends nj {
     }
 
     @Override
-    void method1853(PrePacketSendEvent var1) {
+    public void method1853(PrePacketSendEvent var1) {
         if (this.method2116() && mc.player.isRiding() && !this.field1591 && this.field1556.field3159.getValue()) {
             if (var1.packet instanceof VehicleMoveC2SPacket && !this.field1592.get()) {
                 this.method1904();
