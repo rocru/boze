@@ -51,7 +51,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJsonSerializable2<ModuleManager> {
-    public final List<Module> modules = new ArrayList();
+    public final List<Module> modules = new ArrayList<>();
     public MovementHandler field905;
     public PacketHandler field906;
     public ServerConnectionHandler field907;
@@ -307,7 +307,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
     }
 
     public ArrayList<String> method2120() {
-        ArrayList var4 = new ArrayList();
+        ArrayList<String> var4 = new ArrayList<>();
 
         for (Module var6 : this.modules) {
             var4.add(var6.getName());
@@ -353,9 +353,9 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
             try {
                 if (Setting.class.isAssignableFrom(var8.getType())) {
                     var8.setAccessible(true);
-                    Setting var9 = (Setting) var8.get(module);
+                    Setting<?> var9 = (Setting<?>) var8.get(module);
                     if (var9 instanceof SettingBlock) {
-                        for (Setting var13 : ((SettingBlock) var9).method472()) {
+                        for (Setting<?> var13 : ((SettingBlock) var9).method472()) {
                             module.method1144().add(var13);
                             if (module.method221() != null) {
                                 var13.method404(module.method221(), false);
@@ -371,7 +371,7 @@ public class ModuleManager implements Class5925, ISerializable, IMinecraft, IJso
                     var8.setAccessible(true);
                     SettingsGroup var15 = (SettingsGroup) var8.get(module);
 
-                    for (Setting var19 : var15.get()) {
+                    for (Setting<?> var19 : var15.get()) {
                         module.method1144().add(var19);
                         if (module.method221() != null) {
                             var19.method404(module.method221(), false);
