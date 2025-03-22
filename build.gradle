@@ -41,7 +41,7 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "dev.babbaj:nether-pathfinder:1.5"
+    compileMod "dev.babbaj:nether-pathfinder:1.5"
     compileMod "meteordevelopment:baritone:${project.baritone_version}-SNAPSHOT"
     modCompileOnly "maven.modrinth:sodium:${project.sodium_version}"
 
