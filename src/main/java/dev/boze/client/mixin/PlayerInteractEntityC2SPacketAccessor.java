@@ -7,12 +7,16 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(PlayerInteractEntityC2SPacket.class)
 public interface PlayerInteractEntityC2SPacketAccessor {
-    @Accessor("type")  // Explicitly reference the private 'type' field
+    // Accessor for the 'type' field, assuming it is of type InteractType
+    @Accessor
     InteractType getType();
-
-    @Accessor("entityId") // Explicitly reference 'entityId'
+    
+    // Accessor for entityId field (already confirmed to exist)
+    @Accessor
     int getEntityId();
 
-    @Accessor("entityId") // Ensure correct field name
-    void setEntityId(int var1);
+    // Mutable accessor to set entityId
+    @Accessor
+    void setEntityId(int entityId);
 }
+
