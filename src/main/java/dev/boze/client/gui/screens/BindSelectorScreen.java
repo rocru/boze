@@ -10,8 +10,8 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
 public class BindSelectorScreen extends Screen implements IMinecraft {
-    private final Module field2081;
     private static final String field2082 = "Please press a key or mouse button to bind";
+    private final Module field2081;
 
     public BindSelectorScreen(Module module) {
         super(Text.literal("Bind Selector"));

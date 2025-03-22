@@ -15,12 +15,12 @@ public class HoldBindComponent extends ToggleComponent {
     }
 
     @Override
-    protected void setToggled(boolean value) {
-        this.field2084.setHoldBind(value);
+    protected boolean isToggled() {
+        return this.field2084.getHoldBind();
     }
 
     @Override
-    protected boolean isToggled() {
-        return this.field2084.getHoldBind();
+    protected void setToggled(boolean value) {
+        this.field2084.setHoldBind(value);
     }
 }

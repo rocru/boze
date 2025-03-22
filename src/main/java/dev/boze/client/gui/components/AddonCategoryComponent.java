@@ -25,14 +25,14 @@ public class AddonCategoryComponent extends BaseComponent implements IMinecraft 
     private final double field350;
     private final double field351;
     private final ArrayList<BaseComponent> field352 = new ArrayList();
+    private final double field359;
+    private final double field360;
     private boolean field353 = false;
     private AddonComponent field354 = null;
     private double field355;
     private long field356;
     private double field357;
     private double field358;
-    private final double field359;
-    private final double field360;
 
     public AddonCategoryComponent(BaseComponent parent, double defaultX, double defaultY, double x, double y, double width, double scrollOffset) {
         super("Addons", parent, Class2779.field88 ? defaultX : x, Class2779.field88 ? defaultY : y, width, (double) Theme.method1357() * scaleFactor);

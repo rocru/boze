@@ -51,6 +51,13 @@ import java.util.LinkedList;
 
 public class NoSlow extends Module {
     public static final NoSlow INSTANCE = new NoSlow();
+    public final EnumSetting<NoSlowWebs> field3308 = new EnumSetting<NoSlowWebs>(
+            "Webs", NoSlowWebs.Off, "Mode to use for webs\n - Off: Don't NoSlow in webs\n - Vanilla: Vanilla web NoSlow\n - Grim: Grim web NoSlow\n"
+    );
+    private final BooleanSetting field3309 = new BooleanSetting("SoulSand", false, "Prevents Soul Sand from slowing you down");
+    private final BooleanSetting field3310 = new BooleanSetting("SlimeBlocks", false, "Prevents Slime Blocks from slowing you down");
+    private final BooleanSetting field3311 = new BooleanSetting("Ladders", false, "Prevents Ladders from slowing you down");
+    private final LinkedList<Packet<?>> field3320 = new LinkedList();
     public EnumSetting<NoSlowItems> field3304 = new EnumSetting<NoSlowItems>(
             "Items",
             NoSlowItems.On,
@@ -59,12 +66,6 @@ public class NoSlow extends Module {
     private final BooleanSetting field3305 = new BooleanSetting("OnlyOffhand", false, "Only apply noslow to offhand items", this.field3304);
     private final BooleanSetting field3306 = new BooleanSetting("GroundCheck", false, "Only start noslowing when on ground", this::lambda$new$0, this.field3304);
     private final BooleanSetting field3307 = new BooleanSetting("Render", false, "Render server position", this::lambda$new$1, this.field3304);
-    public final EnumSetting<NoSlowWebs> field3308 = new EnumSetting<NoSlowWebs>(
-            "Webs", NoSlowWebs.Off, "Mode to use for webs\n - Off: Don't NoSlow in webs\n - Vanilla: Vanilla web NoSlow\n - Grim: Grim web NoSlow\n"
-    );
-    private final BooleanSetting field3309 = new BooleanSetting("SoulSand", false, "Prevents Soul Sand from slowing you down");
-    private final BooleanSetting field3310 = new BooleanSetting("SlimeBlocks", false, "Prevents Slime Blocks from slowing you down");
-    private final BooleanSetting field3311 = new BooleanSetting("Ladders", false, "Prevents Ladders from slowing you down");
     public EnumSetting<NoSlowInvMove> field3312 = new EnumSetting<NoSlowInvMove>(
             "InvMove",
             NoSlowInvMove.On,
@@ -78,13 +79,12 @@ public class NoSlow extends Module {
     public BooleanSetting field3316 = new BooleanSetting("Sneaking", false, "Prevents sneaking from slowing you down");
     public BooleanSetting field3317 = new BooleanSetting("Crawling", false, "Prevents crawling from slowing you down");
     public BlockPos field3318 = null;
+    public boolean field3325 = false;
     private long field3319 = 0L;
-    private final LinkedList<Packet<?>> field3320 = new LinkedList();
     private boolean field3321 = false;
     private boolean field3322 = false;
     private FakePlayerEntity field3323;
     private nh field3324 = null;
-    public boolean field3325 = false;
 
     public NoSlow() {
         super("NoSlow", "Prevents items and blocks from slowing you down", Category.Movement);

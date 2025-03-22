@@ -35,6 +35,10 @@ public class ConfigComponent extends BottomRowScaledComponent {
         this.field1994 = new ArrayList(Arrays.asList(ConfigManager.get(ConfigType.CONFIG)).stream().filter(arg_0 -> ConfigComponent.ln0(module, arg_0)).collect(Collectors.toList()));
     }
 
+    private static boolean ln0(Module var0, String var1) {
+        return var1.endsWith(var0.internalName);
+    }
+
     @Override
     protected int method2010() {
         return this.field1994.size();
@@ -135,9 +139,5 @@ public class ConfigComponent extends BottomRowScaledComponent {
                 mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             }
         }
-    }
-
-    private static boolean ln0(Module var0, String var1) {
-        return var1.endsWith(var0.internalName);
     }
 }

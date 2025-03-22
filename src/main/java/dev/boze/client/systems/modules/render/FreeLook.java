@@ -27,6 +27,10 @@ public class FreeLook extends Module {
         super("FreeLook", "Look around in third person, without rotating player", Category.Render);
     }
 
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
+
     @Override
     public void onEnable() {
         if (MinecraftUtils.isClientActive()) {
@@ -93,9 +97,5 @@ public class FreeLook extends Module {
                 mc.player.setPitch(MathHelper.clamp(mc.player.getPitch() + var7, -90.0F, 90.0F));
             }
         }
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

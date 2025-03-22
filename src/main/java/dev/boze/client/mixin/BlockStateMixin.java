@@ -13,7 +13,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 
-@Mixin({BlockState.class})
+@Mixin(BlockState.class)
 public abstract class BlockStateMixin extends AbstractBlockState {
     public BlockStateMixin(Block block, Reference2ObjectArrayMap<Property<?>, Comparable<?>> propertyMap, MapCodec<BlockState> mapCodec) {
         super(block, propertyMap, mapCodec);

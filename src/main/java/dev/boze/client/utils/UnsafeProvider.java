@@ -7,10 +7,6 @@ import java.lang.reflect.Field;
 public class UnsafeProvider {
     private static final Unsafe unsafe;
 
-    public static Unsafe get() {
-        return unsafe;
-    }
-
     static {
         try {
             Field var11 = Unsafe.class.getDeclaredField("theUnsafe");
@@ -19,5 +15,9 @@ public class UnsafeProvider {
         } catch (IllegalAccessException | NoSuchFieldException var12) {
             throw new RuntimeException("Error initializing UnsafeProvider", var12);
         }
+    }
+
+    public static Unsafe get() {
+        return unsafe;
     }
 }

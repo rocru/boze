@@ -4,6 +4,7 @@
 <img src="https://i.postimg.cc/R0JF9xJK/image.png" alt="logo" width="40%" align="center" />
 
 # [ credits ]
+
 </div>
 
 + GL_DONT_CARE/Sunsets, Darki, auto - making this client
@@ -16,19 +17,19 @@
 + javac - useless enum switch tables
 
 <div align="center">
-  
+
 # [ gallery of autism ]
 
 </div>
 <img src="https://i.postimg.cc/T35NkRXr/image-47.png" alt=""/>
 
 <div align="center">
-  
+
 # [ how to dump ]
 
 </div>
 
-So, I heard you want to dump boze yourself. 
+So, I heard you want to dump boze yourself.
 
 #### Step 1: Access the *unsafe* (this isn't safe, be careful).
 

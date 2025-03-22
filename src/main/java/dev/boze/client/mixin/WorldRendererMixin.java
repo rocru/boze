@@ -42,19 +42,19 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({WorldRenderer.class})
+@Mixin(WorldRenderer.class)
 public abstract class WorldRendererMixin implements IWorldRenderer {
-    @Shadow
-    @Nullable
-    private Framebuffer entityOutlinesFramebuffer;
     @Shadow
     @Final
     private static Identifier SNOW;
     @Shadow
-    private int ticks;
-    @Shadow
     @Final
     private static Identifier RAIN;
+    @Shadow
+    @Nullable
+    private Framebuffer entityOutlinesFramebuffer;
+    @Shadow
+    private int ticks;
     @Shadow
     @Final
     private float[] NORMAL_LINE_DX;
@@ -81,6 +81,24 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
     @Nullable
     private Framebuffer entityFramebuffer;
 
+    @ModifyVariable(
+            method = "getLightmapCoordinates(Lnet/minecraft/world/BlockRenderView;Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/BlockPos;)I",
+            at = @At("STORE"),
+            ordinal = 0
+    )
+    private static int getLightmapCoordinatesModifySkyLight(int var0) {
+        return Math.max(FullBright.field3569, var0);
+    }
+
+    @ModifyVariable(
+            method = "getLightmapCoordinates(Lnet/minecraft/world/BlockRenderView;Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/BlockPos;)I",
+            at = @At("STORE"),
+            ordinal = 1
+    )
+    private static int getLightmapCoordinatesModifyBlockLight(int var0) {
+        return Math.max(FullBright.field3569, var0);
+    }
+
     @Shadow
     protected abstract void renderEntity(Entity var1, double var2, double var4, double var6, float var8, MatrixStack var9, VertexConsumerProvider var10);
 
@@ -91,8 +109,8 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
     public abstract boolean isRenderingReady(BlockPos var1);
 
     @Inject(
-            method = {"render"},
-            at = {@At("RETURN")}
+            method = "render",
+            at = @At("RETURN")
     )
     private void afterRender(
             RenderTickCounter var1, boolean var2, Camera var3, GameRenderer var4, LightmapTextureManager var5, Matrix4f var6, Matrix4f var7, CallbackInfo var8
@@ -103,8 +121,8 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
     }
 
     @Inject(
-            method = {"renderWorldBorder"},
-            at = {@At("HEAD")},
+            method = "renderWorldBorder",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void onRenderWorldBorder(Camera camera, CallbackInfo ci) {
@@ -114,8 +132,8 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
     }
 
     @Inject(
-            method = {"drawBlockOutline"},
-            at = {@At("HEAD")},
+            method = "drawBlockOutline",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onDrawBlockOutline(
@@ -127,8 +145,8 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
     }
 
     @Inject(
-            method = {"render"},
-            at = {@At("HEAD")}
+            method = "render",
+            at = @At("HEAD")
     )
     private void onRenderHead(
             RenderTickCounter var1, boolean var2, Camera var3, GameRenderer var4, LightmapTextureManager var5, Matrix4f var6, Matrix4f var7, CallbackInfo var8
@@ -141,8 +159,8 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
     }
 
     @Inject(
-            method = {"renderEntity"},
-            at = {@At("HEAD")},
+            method = "renderEntity",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void renderEntity(Entity var1, double var2, double var4, double var6, float var8, MatrixStack var9, VertexConsumerProvider var10, CallbackInfo var11) {
@@ -216,13 +234,13 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
     }
 
     @Inject(
-            method = {"render"},
-            at = {@At(
+            method = "render",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/OutlineVertexConsumerProvider;draw()V",
                     ordinal = 0,
                     shift = Shift.BEFORE
-            )}
+            )
     )
     private void onRender(
             RenderTickCounter var1, boolean var2, Camera var3, GameRenderer var4, LightmapTextureManager var5, Matrix4f var6, Matrix4f var7, CallbackInfo var8
@@ -235,8 +253,8 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
     }
 
     @Inject(
-            method = {"onResized"},
-            at = {@At("HEAD")}
+            method = "onResized",
+            at = @At("HEAD")
     )
     private void onResized(int var1, int var2, CallbackInfo var3) {
         Class3032.method1964(var1, var2);
@@ -249,8 +267,8 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
     }
 
     @Inject(
-            method = {"hasBlindnessOrDarkness(Lnet/minecraft/client/render/Camera;)Z"},
-            at = {@At("HEAD")},
+            method = "hasBlindnessOrDarkness(Lnet/minecraft/client/render/Camera;)Z",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void hasBlindnessOrDarkness(Camera var1, CallbackInfoReturnable<Boolean> var2) {
@@ -259,26 +277,8 @@ public abstract class WorldRendererMixin implements IWorldRenderer {
         }
     }
 
-    @ModifyVariable(
-            method = {"getLightmapCoordinates(Lnet/minecraft/world/BlockRenderView;Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/BlockPos;)I"},
-            at = @At("STORE"),
-            ordinal = 0
-    )
-    private static int getLightmapCoordinatesModifySkyLight(int var0) {
-        return Math.max(FullBright.field3569, var0);
-    }
-
-    @ModifyVariable(
-            method = {"getLightmapCoordinates(Lnet/minecraft/world/BlockRenderView;Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/BlockPos;)I"},
-            at = @At("STORE"),
-            ordinal = 1
-    )
-    private static int getLightmapCoordinatesModifyBlockLight(int var0) {
-        return Math.max(FullBright.field3569, var0);
-    }
-
     @ModifyArg(
-            method = {"render"},
+            method = "render",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/WorldRenderer;setupTerrain(Lnet/minecraft/client/render/Camera;Lnet/minecraft/client/render/Frustum;ZZ)V"

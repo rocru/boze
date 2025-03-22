@@ -19,18 +19,19 @@ import java.util.HashMap;
 
 public class AutoClicker extends Module {
     public static final AutoClicker INSTANCE = new AutoClicker();
-    private final FloatSetting field2731 = new FloatSetting("Jitter", 0.0F, 0.0F, 2.0F, 0.01F, "Mouse jitter amount");
     public final BooleanSetting field2732 = new BooleanSetting("LeftClick", true, "Left Click");
-    private final BooleanSetting field2733 = new BooleanSetting("OnlyWeapon", false, "Only left click when holding a weapon", this.field2732);
     public final BooleanSetting field2734 = new BooleanSetting("OnlyWhenHolding", false, "Only click when holding left click", this.field2732);
     private final MinMaxDoubleSetting field2735 = new MinMaxDoubleSetting(
             "StartDelay", new double[]{0.0, 0.0}, 0.0, 10.0, 0.1, "Delay before clicking on hold for OnlyWhenHolding", this.field2734::getValue, this.field2732
     );
+    private final FloatSetting field2731 = new FloatSetting("Jitter", 0.0F, 0.0F, 2.0F, 0.01F, "Mouse jitter amount");
+    private final BooleanSetting field2733 = new BooleanSetting("OnlyWeapon", false, "Only left click when holding a weapon", this.field2732);
     private final EnumSetting<ClickMethod> field2736 = new EnumSetting<ClickMethod>("Mode", ClickMethod.Normal, "Left Click Mode", this.field2732);
-    private final IntArraySetting field2737 = new IntArraySetting("CPS", new int[]{6, 10}, 1, 20, 1, "Left clicks per second", this.field2732);
     private final FloatSetting field2738 = new FloatSetting(
             "CooldownOffset", 0.0F, -2.5F, 2.5F, 0.05F, "The offset for vanilla clicking", this::lambda$new$0, this.field2732
     );
+    private final IntArraySetting field2737 = new IntArraySetting("CPS", new int[]{6, 10}, 1, 20, 1, "Left clicks per second", this.field2732);
+    private final ClickManager field2747 = new ClickManager(this.field2736, this.field2737, this.field2738);
     private final BooleanSetting field2739 = new BooleanSetting("RightClick", false, "Right Click");
     private final BooleanSetting field2740 = new BooleanSetting("NoPearls", false, "Don't right click when holding pearls", this.field2739);
     private final BooleanSetting field2741 = new BooleanSetting("NoRods", false, "Don't right click when holding fishing rods", this.field2739);
@@ -39,15 +40,14 @@ public class AutoClicker extends Module {
             "StartDelay", new double[]{0.0, 0.0}, 0.0, 10.0, 0.1, "Delay before clicking on hold for OnlyWhenHolding", this.field2742::getValue, this.field2739
     );
     private final EnumSetting<ClickMethod> field2744 = new EnumSetting<ClickMethod>("RightMode", ClickMethod.Normal, "Right Click Mode", this.field2739);
-    private final IntArraySetting field2745 = new IntArraySetting("CPS", new int[]{6, 10}, 1, 20, 1, "Right clicks per second", this.field2739);
     private final FloatSetting field2746 = new FloatSetting(
             "CooldownOffset", 0.0F, -2.5F, 2.5F, 0.05F, "The offset for vanilla clicking", this::lambda$new$1, this.field2739
     );
-    private final ClickManager field2747 = new ClickManager(this.field2736, this.field2737, this.field2738);
+    private final IntArraySetting field2745 = new IntArraySetting("CPS", new int[]{6, 10}, 1, 20, 1, "Right clicks per second", this.field2739);
     private final ClickManager field2748 = new ClickManager(this.field2744, this.field2745, this.field2746);
-    private float field2749 = 0.0F;
     private final HashMap<KeyBinding, Timer> field2750 = new HashMap();
     private final HashMap<KeyBinding, MinMaxDoubleSetting> field2751;
+    private float field2749 = 0.0F;
 
     public AutoClicker() {
         super("AutoClicker", "Automatically clicks for you", Category.Legit);

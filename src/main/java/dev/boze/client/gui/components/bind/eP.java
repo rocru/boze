@@ -17,12 +17,12 @@ public class eP extends BindComponent {
     }
 
     @Override
-    protected void setBind(Bind value) {
-        this.field1990.setBind(new BozeBind(!value.isKey(), value.getBind()));
+    protected Bind getBind() {
+        return new Bind(!this.field1990.getBind().isButton(), this.field1990.getBind().getBind());
     }
 
     @Override
-    protected Bind getBind() {
-        return new Bind(!this.field1990.getBind().isButton(), this.field1990.getBind().getBind());
+    protected void setBind(Bind value) {
+        this.field1990.setBind(new BozeBind(!value.isKey(), value.getBind()));
     }
 }

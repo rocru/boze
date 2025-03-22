@@ -37,21 +37,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Nuker extends Module {
     public static final Nuker INSTANCE = new Nuker();
+    public final StringModeSetting field3000 = new StringModeSetting("Blocks", "Blocks to filter");
     private final BooleanSetting field2976 = new BooleanSetting("Render", true, "Render block being mined");
+    public final ColorSetting field2978 = new ColorSetting("Color", new BozeDrawColor(105015015), "Color for fill", this.field2976);
+    public final ColorSetting field2979 = new ColorSetting("Outline", new BozeDrawColor(-891161), "Color for outline", this.field2976);
     private final EnumSetting<NukerHighlight> field2977 = new EnumSetting<NukerHighlight>(
             "Mode", NukerHighlight.Normal, "Mode for drawing highlight", this.field2976
     );
-    public final ColorSetting field2978 = new ColorSetting("Color", new BozeDrawColor(105015015), "Color for fill", this.field2976);
-    public final ColorSetting field2979 = new ColorSetting("Outline", new BozeDrawColor(-891161), "Color for outline", this.field2976);
     private final BooleanSetting field2980 = new BooleanSetting("Shader", false, "Use a shader", this.field2976::getValue);
     public final EnumSetting<NukerShader> field2981 = new EnumSetting<NukerShader>("Shader", NukerShader.Normal, "Shader to use", this.field2980);
+    public final StringSetting field2988 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field2980);
     public final BooleanSetting field2982 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field2980);
     public final IntSetting field2983 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field2980);
     public final FloatSetting field2984 = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.field2980);
     public final FloatSetting field2985 = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$0, this.field2980);
     private final IntSetting field2986 = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.field2980);
     private final FloatSetting field2987 = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.field2980);
-    public final StringSetting field2988 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field2980);
     private final BooleanSetting field2989 = new BooleanSetting("Fade", true, "Fade placement renders", this::lambda$new$2);
     private final IntSetting field2990 = new IntSetting("Ticks", 2, 1, 20, 1, "Amount of ticks to render placements for", this::lambda$new$3, this.field2989);
     private final BooleanSetting field2991 = new BooleanSetting("Rotate", true, "Rotate");
@@ -63,14 +64,13 @@ public class Nuker extends Module {
     private final BooleanSetting field2997 = new BooleanSetting("PacketMine", false, "Packet mine blocks");
     private final BooleanSetting field2998 = new BooleanSetting("Flatten", true, "Flatten");
     private final EnumSetting<NukerPriority> field2999 = new EnumSetting<NukerPriority>("Priority", NukerPriority.Closest, "Block priority");
-    public final StringModeSetting field3000 = new StringModeSetting("Blocks", "Blocks to filter");
     private final EnumSetting<NukerFilter> field3001 = new EnumSetting<NukerFilter>("Filter", NukerFilter.Off, "Block filter");
-    private boolean field3002;
-    private int field3003;
-    private int field3004;
     private final Mutable aa = new Mutable();
     private final ConcurrentHashMap<BlockPos, Long> ab = new ConcurrentHashMap();
     private final ConcurrentHashMap<Box, Long> ac = new ConcurrentHashMap();
+    private boolean field3002;
+    private int field3003;
+    private int field3004;
     private Renderer3D ad = null;
     private ByteTexture ae;
     private String af = "";
@@ -79,6 +79,10 @@ public class Nuker extends Module {
         super("Nuker", "Destroys blocks around you", Category.Misc);
         this.field3000.field951 = false;
         this.addSettings(this.field2976, this.field2980);
+    }
+
+    private static double lambda$onSendMovementPackets$9(BlockPos var0) {
+        return -1 * var0.getY();
     }
 
     @EventHandler
@@ -247,7 +251,6 @@ public class Nuker extends Module {
         this.field3002 = false;
     }
 
-
     private boolean method1737(Block var1) {
         if (this.field3001.getValue() == NukerFilter.Blacklist) {
             return !this.field3000.method2032().contains(var1);
@@ -269,10 +272,6 @@ public class Nuker extends Module {
     private double lambda$onSendMovementPackets$10(Vec3d var1, BlockPos var2) {
         return var1.squaredDistanceTo((double) var2.getX() + 0.5, (double) var2.getY() + 0.5, (double) var2.getZ() + 0.5)
                 * (double) (this.field2999.getValue() == NukerPriority.Closest ? 1 : -1);
-    }
-
-    private static double lambda$onSendMovementPackets$9(BlockPos var0) {
-        return -1 * var0.getY();
     }
 
     private void lambda$onRender3D$8(Render3DEvent var1) {

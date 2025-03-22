@@ -15,21 +15,9 @@ import java.util.function.Function;
  * Default implementation of {@link IEventBus}.
  */
 public class EventBus implements IEventBus {
-    private static class LambdaFactoryInfo {
-        public final String packagePrefix;
-        public final LambdaListener.Factory factory;
-
-        public LambdaFactoryInfo(String packagePrefix, LambdaListener.Factory factory) {
-            this.packagePrefix = packagePrefix;
-            this.factory = factory;
-        }
-    }
-
     private final Map<Object, List<IListener>> listenerCache = new ConcurrentHashMap<>();
     private final Map<Class<?>, List<IListener>> staticListenerCache = new ConcurrentHashMap<>();
-
     private final Map<Class<?>, List<IListener>> listenerMap = new ConcurrentHashMap<>();
-
     private final List<LambdaFactoryInfo> lambdaFactoryInfos = new ArrayList<>();
 
     @Override
@@ -186,5 +174,15 @@ public class EventBus implements IEventBus {
         }
 
         throw new NoLambdaFactoryException(klass);
+    }
+
+    private static class LambdaFactoryInfo {
+        public final String packagePrefix;
+        public final LambdaListener.Factory factory;
+
+        public LambdaFactoryInfo(String packagePrefix, LambdaListener.Factory factory) {
+            this.packagePrefix = packagePrefix;
+            this.factory = factory;
+        }
     }
 }

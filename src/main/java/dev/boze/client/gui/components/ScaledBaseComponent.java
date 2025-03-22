@@ -26,6 +26,10 @@ public abstract class ScaledBaseComponent implements IMinecraft {
         this.field1389 = (double) mc.getWindow().getScaledHeight() * 0.5 - this.field1391 * 0.5;
     }
 
+    public static boolean isMouseWithinBounds(double mouseX, double mouseY, double x, double y, double width, double height) {
+        return mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
+    }
+
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
     }
 
@@ -56,9 +60,5 @@ public abstract class ScaledBaseComponent implements IMinecraft {
     }
 
     public void method2142() {
-    }
-
-    public static boolean isMouseWithinBounds(double mouseX, double mouseY, double x, double y, double width, double height) {
-        return mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
     }
 }

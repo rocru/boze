@@ -12,10 +12,10 @@ import net.minecraft.entity.Entity;
 
 public class Coordinates extends HUDModule {
     public static final Coordinates INSTANCE = new Coordinates();
+    public final BooleanSetting field2609 = new BooleanSetting("Custom", false, "Use custom theme settings");
     private final BooleanSetting field2606 = new BooleanSetting("FreecamCoords", true, "Show freecam coords when in freecam");
     private final BooleanSetting field2607 = new BooleanSetting("NetherCoords", true, "Show nether coords when in overworld and vice-versa");
     private final BooleanSetting field2608 = new BooleanSetting("NoDecimal", false, "Hide decimals");
-    public final BooleanSetting field2609 = new BooleanSetting("Custom", false, "Use custom theme settings");
     private final ColorSetting field2610 = new ColorSetting(
             "XYZ", new BozeDrawColor(100, 35, 250, 255, true, 0.3, 0.0, new double[]{0.0, -0.065}, new double[]{0.5, 0.6}), "XYZ color", this.field2609
     );

@@ -39,8 +39,10 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import java.util.List;
 
-@Mixin({ChatHud.class})
+@Mixin(ChatHud.class)
 public abstract class ChatHudMixin implements IChatHud {
+    @Unique
+    private static int lastAge;
     @Shadow
     @Final
     private MinecraftClient client;
@@ -51,11 +53,24 @@ public abstract class ChatHudMixin implements IChatHud {
     @Final
     private List<Visible> visibleMessages;
     @Unique
-    private static int lastAge;
-    @Unique
     private boolean internalAdd;
     @Unique
     private int addId;
+
+    @Inject(
+            method = "getMessageOpacityMultiplier",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private static void onGetMessageOpacityMultiplier(int var0, CallbackInfoReturnable<Double> var1) {
+        lastAge = var0;
+        if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.field2934.getValue() && var0 < ExtraChat.INSTANCE.field2935.getValue()) {
+            double var4 = Class3071.method6022(0.0, 1.0, (double) var0 / (double) ExtraChat.INSTANCE.field2935.getValue().intValue());
+            var4 = MathHelper.clamp(var4, 0.0, 1.0);
+            var4 *= var4;
+            var1.setReturnValue(var4);
+        }
+    }
 
     @Shadow
     public abstract boolean isChatFocused();
@@ -77,12 +92,12 @@ public abstract class ChatHudMixin implements IChatHud {
     }
 
     @Inject(
-            method = {"addVisibleMessage"},
-            at = {@At(
+            method = "addVisibleMessage",
+            at = @At(
                     value = "INVOKE",
                     target = "Ljava/util/List;add(ILjava/lang/Object;)V",
                     shift = Shift.AFTER
-            )}
+            )
     )
     private void onAddMessageAfterNewChatHudLineVisible(ChatHudLine var1, CallbackInfo var2) {
         if (!this.visibleMessages.isEmpty()) {
@@ -91,12 +106,12 @@ public abstract class ChatHudMixin implements IChatHud {
     }
 
     @Inject(
-            method = {"addMessage(Lnet/minecraft/client/gui/hud/ChatHudLine;)V"},
-            at = {@At(
+            method = "addMessage(Lnet/minecraft/client/gui/hud/ChatHudLine;)V",
+            at = @At(
                     value = "INVOKE",
                     target = "Ljava/util/List;add(ILjava/lang/Object;)V",
                     shift = Shift.AFTER
-            )}
+            )
     )
     private void onAddMessageAfterNewChatHudLine(ChatHudLine var1, CallbackInfo var2) {
         if (!this.messages.isEmpty()) {
@@ -105,8 +120,8 @@ public abstract class ChatHudMixin implements IChatHud {
     }
 
     @Inject(
-            at = {@At("HEAD")},
-            method = {"addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V"},
+            at = @At("HEAD"),
+            method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V",
             cancellable = true
     )
     private void onAddMessage(Text var1, MessageSignatureData var2, MessageIndicator var3, CallbackInfo var4) {
@@ -133,23 +148,8 @@ public abstract class ChatHudMixin implements IChatHud {
         }
     }
 
-    @Inject(
-            method = {"getMessageOpacityMultiplier"},
-            at = {@At("HEAD")},
-            cancellable = true
-    )
-    private static void onGetMessageOpacityMultiplier(int var0, CallbackInfoReturnable<Double> var1) {
-        lastAge = var0;
-        if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.field2934.getValue() && var0 < ExtraChat.INSTANCE.field2935.getValue()) {
-            double var4 = Class3071.method6022(0.0, 1.0, (double) var0 / (double) ExtraChat.INSTANCE.field2935.getValue().intValue());
-            var4 = MathHelper.clamp(var4, 0.0, 1.0);
-            var4 *= var4;
-            var1.setReturnValue(var4);
-        }
-    }
-
     @ModifyArgs(
-            method = {"render"},
+            method = "render",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/DrawContext;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/OrderedText;III)I"
@@ -175,11 +175,11 @@ public abstract class ChatHudMixin implements IChatHud {
     }
 
     @ModifyExpressionValue(
-            method = {"render"},
-            at = {@At(
+            method = "render",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/util/math/MathHelper;ceil(F)I"
-            )}
+            )
     )
     private int modifyChatWidth(int var1) {
         if (ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.field2939.getValue()) {
@@ -190,11 +190,11 @@ public abstract class ChatHudMixin implements IChatHud {
     }
 
     @ModifyReceiver(
-            method = {"render"},
-            at = {@At(
+            method = "render",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/DrawContext;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/OrderedText;III)I"
-            )}
+            )
     )
     private DrawContext addHeads(DrawContext var1, TextRenderer var2, OrderedText var3, int var4, int var5, int var6, @Local Visible var7) {
         ExtraChat.INSTANCE.method1702(var1, var7, var5, var6);
@@ -202,11 +202,11 @@ public abstract class ChatHudMixin implements IChatHud {
     }
 
     @ModifyExpressionValue(
-            method = {"addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V"},
-            at = {@At(
+            method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V",
+            at = @At(
                     value = "NEW",
                     target = "(ILnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)Lnet/minecraft/client/gui/hud/ChatHudLine;"
-            )}
+            )
     )
     private ChatHudLine getSenderProfileFromLine(ChatHudLine var1) {
         Class2780 var2 = (Class2780) this.client.getMessageHandler();
@@ -219,11 +219,11 @@ public abstract class ChatHudMixin implements IChatHud {
     }
 
     @ModifyExpressionValue(
-            method = {"addVisibleMessage"},
-            at = {@At(
+            method = "addVisibleMessage",
+            at = @At(
                     value = "NEW",
                     target = "(ILnet/minecraft/text/OrderedText;Lnet/minecraft/client/gui/hud/MessageIndicator;Z)Lnet/minecraft/client/gui/hud/ChatHudLine$Visible;"
-            )}
+            )
     )
     private Visible getSenderProfileFromVisible(Visible var1, @Local(ordinal = 1) int var2) {
         Class2780 var3 = (Class2780) this.client.getMessageHandler();

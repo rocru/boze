@@ -26,13 +26,13 @@ public class AutoFish extends Module {
     private final IntSetting catchDelay = new IntSetting("CatchDelay", 5, 0, 20, 1, "Delay for catching fish");
     private final MinMaxSetting soundRadius = new MinMaxSetting("SoundRadius", 2.5, 0.1, 10.0, 0.1, "Radius for detecting fish sounds");
     private final IntSetting timeout = new IntSetting("Timeout", 0, 0, 240, 10, "Timeout in seconds for catching fish\nSet to 0 to disable check\n");
+    private final dev.boze.client.utils.Timer timer = new dev.boze.client.utils.Timer();
     private boolean field2890;
     private boolean field2891;
     private int field2892;
     private int field2893;
     private int field2894;
     private int field2895;
-    private final dev.boze.client.utils.Timer timer = new dev.boze.client.utils.Timer();
 
     public AutoFish() {
         super("AutoFish", "Automatically fish", Category.Misc);

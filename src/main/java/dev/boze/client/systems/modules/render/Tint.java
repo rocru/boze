@@ -20,8 +20,6 @@ import java.util.Random;
 
 public class Tint extends Module {
     public static final Tint INSTANCE = new Tint();
-    private final BooleanSetting field3728 = new BooleanSetting("TimeChanger", false, "Change time");
-    private final IntSetting field3729 = new IntSetting("Time", 0, -24000, 24000, 1, "Time", this.field3728);
     public final BooleanSetting field3730 = new BooleanSetting("PopParticles", false, "Tint totem pop particles");
     public final FloatSetting field3731 = new FloatSetting("YellowR", 0.8F, 0.0F, 1.0F, 0.1F, "Redness for yellow particles", this.field3730);
     public final FloatSetting field3732 = new FloatSetting("YellowRRand", 0.25F, 0.0F, 1.0F, 0.05F, "Randomness for redness of yellow particles", this.field3730);
@@ -57,12 +55,14 @@ public class Tint extends Module {
     public final RGBASetting ad = new RGBASetting("Color", new RGBAColor(128, 0, 255, 25), "Grass tint color", this.ac);
     public final BooleanSetting ae = new BooleanSetting("Foliage", false, "Tint foliage");
     public final RGBASetting af = new RGBASetting("Color", new RGBAColor(128, 0, 255, 25), "Foliage tint color", this.ae);
+    public final Random ai = new Random();
+    private final BooleanSetting field3728 = new BooleanSetting("TimeChanger", false, "Change time");
+    private final IntSetting field3729 = new IntSetting("Time", 0, -24000, 24000, 1, "Time", this.field3728);
     private final BooleanSetting ag = new BooleanSetting("Screen", false, "Tint the screen");
     private final RGBASetting ah = new RGBASetting("Color", new RGBAColor(128, 0, 255, 25), "Screen tint color", this.ag);
-    public final Random ai = new Random();
+    private final Timer al = new Timer();
     private boolean aj;
     private int ak;
-    private final Timer al = new Timer();
     private long am;
 
     public Tint() {

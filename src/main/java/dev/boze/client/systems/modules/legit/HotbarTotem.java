@@ -37,9 +37,9 @@ public class HotbarTotem extends Module {
             "PopAwait", false, "Swap on pop until Offhand confirms swap\nWorks when Offhand is enabled in Anarchy mode\n", this::lambda$new$0
     );
     private final Timer field2803 = new Timer();
+    private final Timer field2806 = new Timer();
     private boolean field2804 = false;
     private int field2805 = -1;
-    private final Timer field2806 = new Timer();
 
     public HotbarTotem() {
         super("HotbarTotem", "Swaps to a totem in your hotbar when you're low on health", Category.Legit);

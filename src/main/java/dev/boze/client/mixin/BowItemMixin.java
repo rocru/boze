@@ -11,14 +11,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({BowItem.class})
+@Mixin(BowItem.class)
 public abstract class BowItemMixin {
     @Shadow
     public abstract void onStoppedUsing(ItemStack var1, World var2, LivingEntity var3, int var4);
 
     @Inject(
-            method = {"onStoppedUsing"},
-            at = {@At("HEAD")}
+            method = "onStoppedUsing",
+            at = @At("HEAD")
     )
     private void onStoppedUsingBow(ItemStack var1, World var2, LivingEntity var3, int var4, CallbackInfo var5) {
         if (SoundFX.INSTANCE.isEnabled()) {

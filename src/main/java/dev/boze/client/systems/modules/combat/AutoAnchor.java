@@ -62,16 +62,24 @@ public class AutoAnchor extends Module {
     private final FloatSetting minHealth = new FloatSetting("MinHealth", 2.0F, 0.0F, 10.0F, 0.5F, "Min health for AutoAnchor to work");
     private final FloatSetting maxSelfDamage = new FloatSetting("MaxSelfDamage", 12.0F, 0.0F, 30.0F, 0.5F, "Max self damage");
     private final Timer field2501 = new Timer();
-    private Vec3d field2502;
     private final Timer field2503 = new Timer();
-    private PlayerEntity field2504 = null;
     private final Timer field2505 = new Timer();
+    private Vec3d field2502;
+    private PlayerEntity field2504 = null;
     private Runnable field2506 = null;
     private Runnable field2507 = null;
     private Runnable field2508 = null;
 
     public AutoAnchor() {
         super("AutoAnchor", "Automatically attacks enemies using anchor explosions", Category.Combat);
+    }
+
+    private static Float lambda$getTargetsInRange$3(PlayerEntity var0) {
+        return var0.distanceTo(mc.player);
+    }
+
+    private static void lambda$generateActions$2(PlaceAction var0) {
+        var0.method2167().run();
     }
 
     @Override
@@ -280,14 +288,6 @@ public class AutoAnchor extends Module {
         }
 
         return var4;
-    }
-
-    private static Float lambda$getTargetsInRange$3(PlayerEntity var0) {
-        return var0.distanceTo(mc.player);
-    }
-
-    private static void lambda$generateActions$2(PlaceAction var0) {
-        var0.method2167().run();
     }
 
     private void lambda$generateActions$1(Vec3d var1, Direction var2, BlockPos var3) {

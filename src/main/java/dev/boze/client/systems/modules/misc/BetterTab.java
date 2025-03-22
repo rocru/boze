@@ -19,8 +19,8 @@ public class BetterTab extends Module {
     public final IntSetting field2914 = new IntSetting("MaxSize", 250, 50, 500, 10, "Max players to show in tab");
     public final IntSetting field2915 = new IntSetting("MaxHeight", 30, 5, 50, 1, "Max players per column");
     public final BooleanSetting field2916 = new BooleanSetting("ShowPing", true, "Show players' ping instead of bars");
-    private final RGBASetting field2917 = new RGBASetting("Friends", new RGBAColor(-15277290), "Color for friends");
     public final RGBASetting field2918 = new RGBASetting("Users", new RGBAColor(-7046189), "Color for Boze users", Capes.INSTANCE::isEnabled);
+    private final RGBASetting field2917 = new RGBASetting("Friends", new RGBAColor(-15277290), "Color for friends");
 
     public BetterTab() {
         super("BetterTab", "Better player tab", Category.Misc);

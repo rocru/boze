@@ -8,10 +8,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin({TridentItem.class})
+@Mixin(TridentItem.class)
 public class TridentItemMixin {
     @ModifyArgs(
-            method = {"onStoppedUsing"},
+            method = "onStoppedUsing",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/player/PlayerEntity;addVelocity(DDD)V"
@@ -32,17 +32,17 @@ public class TridentItemMixin {
     }
 
     @ModifyConstant(
-            method = {"onStoppedUsing"},
-            constant = {@Constant(
+            method = "onStoppedUsing",
+            constant = @Constant(
                     intValue = 10
-            )}
+            )
     )
     public int modifyDelay(int original) {
         return TridentPlus.INSTANCE.isEnabled() ? 0 : original;
     }
 
     @Redirect(
-            method = {"use"},
+            method = "use",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/player/PlayerEntity;isTouchingWaterOrRain()Z"
@@ -53,7 +53,7 @@ public class TridentItemMixin {
     }
 
     @Redirect(
-            method = {"onStoppedUsing"},
+            method = "onStoppedUsing",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/player/PlayerEntity;isTouchingWaterOrRain()Z"

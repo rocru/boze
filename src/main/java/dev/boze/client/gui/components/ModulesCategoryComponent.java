@@ -27,17 +27,17 @@ import java.util.stream.Collectors;
 
 public class ModulesCategoryComponent extends BaseComponent implements IMinecraft {
     private final double field322;
-    private Category field323 = Category.Combat;
     private final HashMap<Category, ArrayList<BaseComponent>> field324 = new HashMap();
     private final HashMap<Category, Class3084> field325 = new HashMap();
+    private final double field331;
+    private final double field332;
+    private final double field333;
+    private Category field323 = Category.Combat;
     private boolean field326 = false;
     private ModuleComponent field327 = null;
     private double field328;
     private double field329;
     private double field330;
-    private final double field331;
-    private final double field332;
-    private final double field333;
 
     public ModulesCategoryComponent(BaseComponent parent, double x, double y, double width, double scrollOffset) {
         super("Modules", parent, x, y, width, width * 0.22);

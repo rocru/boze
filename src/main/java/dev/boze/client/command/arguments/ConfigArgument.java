@@ -20,17 +20,17 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 public class ConfigArgument implements ArgumentType<String> {
+    private static final DynamicCommandExceptionType field1857 = new DynamicCommandExceptionType(ConfigArgument::lambda$static$0);
     private static CopyOnWriteArrayList<String> field1855;
     private static Collection<String> field1856;
-    private static final DynamicCommandExceptionType field1857 = new DynamicCommandExceptionType(ConfigArgument::lambda$static$0);
-
-    public static ConfigArgument method987() {
-        return new ConfigArgument();
-    }
 
     private ConfigArgument() {
         field1855 = new CopyOnWriteArrayList(Arrays.asList(ConfigManager.get(ConfigType.CONFIG)));
         field1856 = field1855.stream().limit(3L).collect(Collectors.toList());
+    }
+
+    public static ConfigArgument method987() {
+        return new ConfigArgument();
     }
 
     public static void method988(String config) {
@@ -50,6 +50,10 @@ public class ConfigArgument implements ArgumentType<String> {
 
     public static String method990(CommandContext<?> context, String name) {
         return context.getArgument(name, String.class);
+    }
+
+    private static Message lambda$static$0(Object var0) {
+        return Text.literal("Config with name " + var0 + " doesn't exist");
     }
 
     @Override
@@ -75,17 +79,13 @@ public class ConfigArgument implements ArgumentType<String> {
         return CommandSource.suggestMatching(field1855, builder);
     }
 
-    public Collection<String> getExamples() {
-        return field1856;
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     //public Object parse(StringReader stringReader) throws CommandSyntaxException {
     //   return this.method991(stringReader);
     //}
 
-    private static Message lambda$static$0(Object var0) {
-        return Text.literal("Config with name " + var0 + " doesn't exist");
+    public Collection<String> getExamples() {
+        return field1856;
     }
 }

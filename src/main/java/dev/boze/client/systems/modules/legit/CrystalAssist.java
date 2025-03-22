@@ -61,6 +61,10 @@ public class CrystalAssist extends Module {
         super("CrystalAssist", "Assists in targeting crystals", Category.Legit);
     }
 
+    private static boolean lambda$onSendMovementPackets$1(Entry var0) {
+        return System.currentTimeMillis() - (Long) var0.getValue() > 10000L;
+    }
+
     @EventHandler
     public void method1596(PrePacketSendEvent event) {
         if (this.field2772.getValue()
@@ -174,10 +178,6 @@ public class CrystalAssist extends Module {
         } else {
             return false;
         }
-    }
-
-    private static boolean lambda$onSendMovementPackets$1(Entry var0) {
-        return System.currentTimeMillis() - (Long) var0.getValue() > 10000L;
     }
 
     private Double lambda$new$0(Entity param1) {

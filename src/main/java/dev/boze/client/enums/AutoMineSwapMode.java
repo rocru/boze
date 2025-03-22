@@ -6,9 +6,9 @@ public enum AutoMineSwapMode {
     Silent(SwapMode.Silent, true),
     Alt(SwapMode.Alt, true);
 
+    private static final AutoMineSwapMode[] field1783 = method894();
     public final SwapMode swapMode;
     public final boolean swapBack;
-    private static final AutoMineSwapMode[] field1783 = method894();
 
     AutoMineSwapMode(SwapMode var3, boolean var4) {
         this.swapMode = var3;

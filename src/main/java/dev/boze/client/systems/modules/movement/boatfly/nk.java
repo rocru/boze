@@ -40,6 +40,7 @@ public class nk extends nj {
     private static final float field1563 = 180.0F;
     private static final float field1564 = 45.0F;
     private static final float field1565 = 135.0F;
+    private final Timer field1575 = new Timer();
     private Entity field1566 = null;
     private boolean field1567 = false;
     private int field1568 = 0;
@@ -49,7 +50,6 @@ public class nk extends nj {
     private Vec3d field1572 = null;
     private Vec3d field1573 = null;
     private int field1574 = 0;
-    private final Timer field1575 = new Timer();
     private Path field1576 = null;
     private Vec3d field1577 = null;
     private Vec3d field1578 = null;
@@ -58,6 +58,17 @@ public class nk extends nj {
 
     public nk(BoatFly module) {
         super(module);
+    }
+
+    private static VehicleMoveC2SPacket method698(@NotNull Entity var0, double var1) {
+        VehicleMoveC2SPacket var3 = new VehicleMoveC2SPacket(var0);
+        VehicleMoveC2SPacketAccessor var4 = (VehicleMoveC2SPacketAccessor) var3;
+        var4.setY(var3.getY() + var1);
+        return var3;
+    }
+
+    private static boolean lambda$pathFind$0(Entity var0) {
+        return !(var0 instanceof BoatEntity) && !(var0 instanceof EndCrystalEntity);
     }
 
     private boolean method2055(Entity var1) {
@@ -150,13 +161,6 @@ public class nk extends nj {
             this.field1567 = true;
             this.field1568 = 0;
         }
-    }
-
-    private static VehicleMoveC2SPacket method698(@NotNull Entity var0, double var1) {
-        VehicleMoveC2SPacket var3 = new VehicleMoveC2SPacket(var0);
-        VehicleMoveC2SPacketAccessor var4 = (VehicleMoveC2SPacketAccessor) var3;
-        var4.setY(var3.getY() + var1);
-        return var3;
     }
 
     private boolean method2116() {
@@ -425,9 +429,5 @@ public class nk extends nj {
         }
 
         return var9;
-    }
-
-    private static boolean lambda$pathFind$0(Entity var0) {
-        return !(var0 instanceof BoatEntity) && !(var0 instanceof EndCrystalEntity);
     }
 }

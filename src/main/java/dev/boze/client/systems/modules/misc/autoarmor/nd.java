@@ -13,12 +13,12 @@ import net.minecraft.item.Items;
 import net.minecraft.screen.slot.Slot;
 
 public class nd {
+    final AutoArmor field2883;
     private final int field2878;
     private int field2879;
     private int field2880;
     private int field2881;
     private int field2882;
-    final AutoArmor field2883;
 
     public nd(final AutoArmor arg, final int id) {
         super();

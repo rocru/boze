@@ -35,6 +35,7 @@ import java.math.RoundingMode;
 
 public class Speed extends Module {
     public static final Speed INSTANCE = new Speed();
+    public static boolean field742 = false;
     private final EnumSetting<SpeedMode> field715 = new EnumSetting<SpeedMode>(
             "Mode",
             SpeedMode.Strafe,
@@ -57,6 +58,9 @@ public class Speed extends Module {
     private final IntSetting field730 = new IntSetting(
             "Ticks", 5, 1, 20, 1, "Amount of ticks to simulate\nHigher value = less chance of rubber-banding", this::lambda$new$11, this.field729
     );
+    private final Timer field738 = new Timer();
+    private final Timer field740 = new Timer();
+    private final Timer field741 = new Timer();
     private double field731 = 0.0;
     private double field732 = 0.0;
     private boolean field733 = false;
@@ -64,11 +68,7 @@ public class Speed extends Module {
     private int field735;
     private int field736 = 0;
     private int field737 = 0;
-    private final Timer field738 = new Timer();
     private double field739 = 0.0;
-    private final Timer field740 = new Timer();
-    private final Timer field741 = new Timer();
-    public static boolean field742 = false;
     private float field743;
     private float aa;
     private float ab;

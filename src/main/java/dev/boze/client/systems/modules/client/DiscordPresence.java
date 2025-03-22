@@ -16,6 +16,10 @@ public class DiscordPresence extends Module {
         super("DiscordPresence", "Boze Discord Presence", Category.Client);
     }
 
+    private static void lambda$onEnable$0() {
+        System.out.println("Started Discord Presence Controller");
+    }
+
     @Override
     public void onEnable() {
         if (!DiscordIPC.method2283() && !DiscordIPC.method2282(Version.isBeta ? 1085603982304608337L : 853740617964322826L, DiscordPresence::lambda$onEnable$0)) {
@@ -64,9 +68,5 @@ public class DiscordPresence extends Module {
         if (this.field2344 != null) {
             this.field2344.method2294(key, text);
         }
-    }
-
-    private static void lambda$onEnable$0() {
-        System.out.println("Started Discord Presence Controller");
     }
 }

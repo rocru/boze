@@ -29,11 +29,11 @@ public class RenderUtil {
     public static RenderUtil field3966;
     public static RenderUtil field3967;
     public static boolean field3968 = false;
-    private boolean field3969;
+    private static boolean field3973 = false;
     public final Mesh field3970;
     public final Mesh field3971;
     public final Mesh field3972;
-    private static boolean field3973 = false;
+    private boolean field3969;
 
     public RenderUtil(RenderMode var1) {
         if (var1 == RenderMode.GRADIENT) {
@@ -80,27 +80,6 @@ public class RenderUtil {
         field3967 = new RenderUtil(RenderMode.TEXTURE);
     }
 
-    public void method2233() {
-        this.field3971.method2142();
-        this.field3970.method2142();
-        this.field3972.method2142();
-        this.field3969 = true;
-    }
-
-    public void method2234() {
-        this.field3971.method1198();
-        this.field3970.method1198();
-        this.field3972.method1198();
-        this.field3969 = false;
-    }
-
-    public void method2235(DrawContext var1) {
-        this.field3971.method720(var1 == null ? null : var1.getMatrices());
-        this.field3970.method720(var1 == null ? null : var1.getMatrices());
-        this.field3972.method720(var1 == null ? null : var1.getMatrices());
-        this.field3969 = false;
-    }
-
     public static void method2236() {
         field3973 = true;
     }
@@ -142,6 +121,27 @@ public class RenderUtil {
                 field3963.method2241(var0, var2, var4, var6, var14, var8.field3911);
             }
         }
+    }
+
+    public void method2233() {
+        this.field3971.method2142();
+        this.field3970.method2142();
+        this.field3972.method2142();
+        this.field3969 = true;
+    }
+
+    public void method2234() {
+        this.field3971.method1198();
+        this.field3970.method1198();
+        this.field3972.method1198();
+        this.field3969 = false;
+    }
+
+    public void method2235(DrawContext var1) {
+        this.field3971.method720(var1 == null ? null : var1.getMatrices());
+        this.field3970.method720(var1 == null ? null : var1.getMatrices());
+        this.field3972.method720(var1 == null ? null : var1.getMatrices());
+        this.field3969 = false;
     }
 
     public void method2241(double var1, double var3, double var5, double var7, StaticColor var9, float var10) {

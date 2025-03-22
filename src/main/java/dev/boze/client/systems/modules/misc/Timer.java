@@ -15,12 +15,12 @@ import java.text.DecimalFormat;
 
 public class Timer extends Module {
     public static final Timer INSTANCE = new Timer();
+    public final SettingCategory field1034 = new SettingCategory("Pause", "Choose when to pause Timer");
     private final FloatSetting field1029 = new FloatSetting("Speed", 1.1F, 0.2F, 50.0F, 0.1F, "Timer speed");
     private final BooleanSetting field1030 = new BooleanSetting("Switch", false, "Timer Switch");
     private final IntSetting field1031 = new IntSetting("Active", 5, 1, 20, 1, "Active ticks", this.field1030);
     private final IntSetting field1032 = new IntSetting("Inactive", 5, 1, 20, 1, "Inactive ticks", this.field1030);
     private final FloatSetting field1033 = new FloatSetting("InactiveSpeed", 0.9F, 0.2F, 50.0F, 0.1F, "Inactive speed", this.field1030);
-    public final SettingCategory field1034 = new SettingCategory("Pause", "Choose when to pause Timer");
     private final BooleanSetting field1035 = new BooleanSetting("WhileEating", false, "Pause while eating", this.field1034);
     private final BooleanSetting field1036 = new BooleanSetting("WhileMining", false, "Pause while mining", this.field1034);
     private int field1037 = 0;

@@ -57,6 +57,26 @@ public class BowAim extends Module {
         this.field435 = true;
     }
 
+    private static Float lambda$getTarget$5(LivingEntity var0) {
+        return var0.distanceTo(mc.player);
+    }
+
+    private static Float lambda$getTarget$4(LivingEntity var0) {
+        return var0.getHealth() + var0.getAbsorptionAmount();
+    }
+
+    private static Float lambda$getTarget$3(LivingEntity var0) {
+        return var0.distanceTo(mc.player);
+    }
+
+    private static Float lambda$getTarget$2(LivingEntity var0) {
+        return var0.getHealth() + var0.getAbsorptionAmount();
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
+
     private InteractionMode method260() {
         return Options.INSTANCE.method1971() ? InteractionMode.Ghost : this.interactionMode.getValue();
     }
@@ -262,27 +282,7 @@ public class BowAim extends Module {
         }
     }
 
-    private static Float lambda$getTarget$5(LivingEntity var0) {
-        return var0.distanceTo(mc.player);
-    }
-
-    private static Float lambda$getTarget$4(LivingEntity var0) {
-        return var0.getHealth() + var0.getAbsorptionAmount();
-    }
-
-    private static Float lambda$getTarget$3(LivingEntity var0) {
-        return var0.distanceTo(mc.player);
-    }
-
-    private static Float lambda$getTarget$2(LivingEntity var0) {
-        return var0.getHealth() + var0.getAbsorptionAmount();
-    }
-
     private boolean lambda$new$1() {
         return Options.INSTANCE.method1971() || this.interactionMode.getValue() == InteractionMode.Ghost;
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

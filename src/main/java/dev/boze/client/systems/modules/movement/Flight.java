@@ -21,6 +21,7 @@ import org.joml.Vector3d;
 
 public class Flight extends Module {
     public static final Flight INSTANCE = new Flight();
+    public final BooleanSetting field3279 = new BooleanSetting("NoClip", false, "NoClip mode - lets you fly through blocks\nThis won't work on most servers\n");
     private final MinMaxSetting field3271 = new MinMaxSetting("Speed", 1.0, 0.1, 50.0, 0.1, "Horizontal speed");
     private final MinMaxSetting field3272 = new MinMaxSetting("UpSpeed", 1.0, 0.1, 10.0, 0.1, "Up speed");
     private final MinMaxSetting field3273 = new MinMaxSetting("DownSpeed", 1.0, 0.1, 10.0, 0.1, "Down speed");
@@ -31,7 +32,6 @@ public class Flight extends Module {
     private final IntSetting field3278 = new IntSetting(
             "Ticks", 5, 1, 20, 1, "Amount of ticks to simulate\nHigher value = less chance of rubber-banding", this.field3277
     );
-    public final BooleanSetting field3279 = new BooleanSetting("NoClip", false, "NoClip mode - lets you fly through blocks\nThis won't work on most servers\n");
     private final Timer field3280 = new Timer();
     private Vec3d field3281 = null;
     private boolean field3282 = false;

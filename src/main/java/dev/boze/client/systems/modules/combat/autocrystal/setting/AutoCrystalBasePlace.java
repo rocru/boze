@@ -37,19 +37,19 @@ public class AutoCrystalBasePlace implements IMinecraft, Class5912, SettingsGrou
     private final BooleanSetting field124 = new BooleanSetting("AirPlace", false, "Air place obsidian", this.field122);
     private final Setting<?>[] field125;
     private final AutoCrystal field126;
-    private Class3086 field127 = null;
     private final Timer field128 = new Timer();
     private final Timer field129 = new Timer();
+    private Class3086 field127 = null;
+
+    public AutoCrystalBasePlace(AutoCrystal var1) {
+        this.field126 = var1;
+        this.field125 = new Setting[]{this.field122, this.field123, this.field124};
+    }
 
     private static void method1800(String var0) {
         if (AutoCrystal.field1038 && mc.player != null) {
             System.out.println("[AutoCrystal.BasePlace @" + mc.player.age + "] " + var0);
         }
-    }
-
-    public AutoCrystalBasePlace(AutoCrystal var1) {
-        this.field126 = var1;
-        this.field125 = new Setting[]{this.field122, this.field123, this.field124};
     }
 
     @Override

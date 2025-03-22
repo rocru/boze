@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.Iterator;
 
-@Mixin({FlowableFluid.class})
+@Mixin(FlowableFluid.class)
 public class FlowableFluidMixin {
     @Redirect(
-            method = {"getVelocity"},
+            method = "getVelocity",
             at = @At(
                     value = "INVOKE",
                     target = "Ljava/util/Iterator;hasNext()Z",

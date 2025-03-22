@@ -32,9 +32,9 @@ public class Step extends Module {
     private final IntSetting field3354 = new IntSetting("Delay", 0, 0, 500, 50, "Delays each step", this.field3352);
     private final BooleanSetting field3355 = new BooleanSetting("UseTimer", false, "Use timer to minimize flagging");
     private final BooleanSetting field3356 = new BooleanSetting("SurroundDisable", false, "Disables step when surrounding");
-    private boolean field3357 = false;
     private final Timer field3358 = new Timer();
     private final Timer field3359 = new Timer();
+    private boolean field3357 = false;
 
     public Step() {
         super("Step", "Automatically steps up blocks", Category.Movement);

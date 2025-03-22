@@ -23,9 +23,9 @@ public class ClientSpoof extends Module {
 
     @EventHandler
     private void method1333(PrePacketSendEvent var1) {
-        if (var1.packet instanceof CustomPayloadC2SPacket var5) {
-            if (this.field2341.getValue() && var5.payload() instanceof BrandCustomPayload) {
-                BrandCustomPayloadAccessor var6 = (BrandCustomPayloadAccessor) var5.payload();
+        if (var1.packet instanceof CustomPayloadC2SPacket(net.minecraft.network.packet.CustomPayload payload)) {
+            if (this.field2341.getValue() && payload instanceof BrandCustomPayload) {
+                BrandCustomPayloadAccessor var6 = (BrandCustomPayloadAccessor) payload;
                 var6.setBrand("vanilla");
             }
         }

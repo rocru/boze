@@ -19,6 +19,24 @@ public class RotationHandler implements IMinecraft {
     private float field1548;
     private float field1549;
 
+    public static Vec3d method1954() {
+        float var3 = method520() * (float) (Math.PI / 180.0);
+        float var4 = -method215() * (float) (Math.PI / 180.0);
+        float var5 = MathHelper.cos(var4);
+        float var6 = MathHelper.sin(var4);
+        float var7 = MathHelper.cos(var3);
+        float var8 = MathHelper.sin(var3);
+        return new Vec3d(var6 * var7, -var8, var5 * var7);
+    }
+
+    public static float method215() {
+        return ((ClientPlayerEntityAccessor) mc.player).getLastYaw();
+    }
+
+    public static float method520() {
+        return ((ClientPlayerEntityAccessor) mc.player).getLastPitch();
+    }
+
     public void method2142() {
         if (mc.player != null && mc.interactionManager != null) {
             ACRotationEvent var4 = ACRotationEvent.method1016(AnticheatMode.Grim, method215(), method520());
@@ -55,23 +73,5 @@ public class RotationHandler implements IMinecraft {
 
     public float method1385() {
         return this.method2114() ? this.field1549 : mc.player.getPitch();
-    }
-
-    public static Vec3d method1954() {
-        float var3 = method520() * (float) (Math.PI / 180.0);
-        float var4 = -method215() * (float) (Math.PI / 180.0);
-        float var5 = MathHelper.cos(var4);
-        float var6 = MathHelper.sin(var4);
-        float var7 = MathHelper.cos(var3);
-        float var8 = MathHelper.sin(var3);
-        return new Vec3d(var6 * var7, -var8, var5 * var7);
-    }
-
-    public static float method215() {
-        return ((ClientPlayerEntityAccessor) mc.player).getLastYaw();
-    }
-
-    public static float method520() {
-        return ((ClientPlayerEntityAccessor) mc.player).getLastPitch();
     }
 }

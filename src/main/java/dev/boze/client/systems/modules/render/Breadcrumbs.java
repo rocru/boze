@@ -19,8 +19,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Breadcrumbs extends Module {
     public static final Breadcrumbs INSTANCE = new Breadcrumbs();
-    public ConcurrentHashMap<Vec3d, Long> field3422 = new ConcurrentHashMap();
-    public CopyOnWriteArrayList<Vec3d> field3423 = new CopyOnWriteArrayList();
     public final BooleanSetting field3424 = new BooleanSetting("OnlyRender", false, "Keep rendering but stop adding breadcrumbs");
     private final IntSetting field3425 = new IntSetting("Delay", 0, 0, 20, 1, "Delay for adding breadcrumb vertices");
     private final EnumSetting<BreadcrumbsLimit> field3426 = new EnumSetting<BreadcrumbsLimit>("Limit", BreadcrumbsLimit.Length, "Limit for breadcrumbs");
@@ -35,8 +33,10 @@ public class Breadcrumbs extends Module {
     private final FloatSetting field3431 = new FloatSetting(
             "Speed", 0.01F, 0.0F, 0.1F, 0.005F, "Gradient color change speed", this.field3430::getValue, this.field3429
     );
-    private int field3432 = 0;
     private final Timer field3433 = new Timer();
+    public ConcurrentHashMap<Vec3d, Long> field3422 = new ConcurrentHashMap();
+    public CopyOnWriteArrayList<Vec3d> field3423 = new CopyOnWriteArrayList();
+    private int field3432 = 0;
 
     public Breadcrumbs() {
         super("Breadcrumbs", "Draws a line where you've walked", Category.Render);

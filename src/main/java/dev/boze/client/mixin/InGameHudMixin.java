@@ -26,15 +26,15 @@ import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin({InGameHud.class})
+@Mixin(InGameHud.class)
 public abstract class InGameHudMixin {
     @Shadow
     @Final
     private static Identifier PUMPKIN_BLUR;
 
     @Inject(
-            method = {"renderHeldItemTooltip"},
-            at = {@At("HEAD")},
+            method = "renderHeldItemTooltip",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderHeldItemTooltip(DrawContext var1, CallbackInfo var2) {
@@ -44,8 +44,8 @@ public abstract class InGameHudMixin {
     }
 
     @Inject(
-            method = {"renderPortalOverlay"},
-            at = {@At("HEAD")},
+            method = "renderPortalOverlay",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderPortalOverlay(DrawContext var1, float var2, CallbackInfo var3) {
@@ -55,8 +55,8 @@ public abstract class InGameHudMixin {
     }
 
     @Inject(
-            method = {"renderSpyglassOverlay"},
-            at = {@At("HEAD")},
+            method = "renderSpyglassOverlay",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderSpyglassOverlay(DrawContext var1, float var2, CallbackInfo var3) {
@@ -66,7 +66,7 @@ public abstract class InGameHudMixin {
     }
 
     @ModifyArgs(
-            method = {"renderMiscOverlays"},
+            method = "renderMiscOverlays",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/hud/InGameHud;renderOverlay(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/util/Identifier;F)V",
@@ -80,8 +80,8 @@ public abstract class InGameHudMixin {
     }
 
     @Inject(
-            method = {"renderScoreboardSidebar(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/client/render/RenderTickCounter;)V"},
-            at = {@At("HEAD")}
+            method = "renderScoreboardSidebar(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/client/render/RenderTickCounter;)V",
+            at = @At("HEAD")
     )
     private void onRenderPre(DrawContext var1, RenderTickCounter var2, CallbackInfo var3) {
         if (RenderUtil.field3968 && MinecraftUtils.isClientActive()) {
@@ -91,8 +91,8 @@ public abstract class InGameHudMixin {
     }
 
     @Inject(
-            method = {"render"},
-            at = {@At("TAIL")}
+            method = "render",
+            at = @At("TAIL")
     )
     private void onRenderPost(DrawContext var1, RenderTickCounter var2, CallbackInfo var3) {
         if (RenderSystem.isOnRenderThread()) {
@@ -107,8 +107,8 @@ public abstract class InGameHudMixin {
     }
 
     @Inject(
-            method = {"renderScoreboardSidebar(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/scoreboard/ScoreboardObjective;)V"},
-            at = {@At("HEAD")},
+            method = "renderScoreboardSidebar(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/scoreboard/ScoreboardObjective;)V",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderScoreboard(DrawContext var1, ScoreboardObjective var2, CallbackInfo var3) {
@@ -118,8 +118,8 @@ public abstract class InGameHudMixin {
     }
 
     @Inject(
-            method = {"renderOverlay"},
-            at = {@At("HEAD")},
+            method = "renderOverlay",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderPumpkinOverlay(DrawContext var1, Identifier var2, float var3, CallbackInfo var4) {
@@ -132,8 +132,8 @@ public abstract class InGameHudMixin {
     }
 
     @Inject(
-            method = {"renderStatusEffectOverlay"},
-            at = {@At("HEAD")},
+            method = "renderStatusEffectOverlay",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderStatusEffectOverlay(DrawContext var1, RenderTickCounter var2, CallbackInfo var3) {
@@ -143,8 +143,8 @@ public abstract class InGameHudMixin {
     }
 
     @Inject(
-            method = {"renderCrosshair"},
-            at = {@At("HEAD")},
+            method = "renderCrosshair",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderCrosshair(DrawContext var1, RenderTickCounter var2, CallbackInfo var3) {

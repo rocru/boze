@@ -9,9 +9,8 @@ import java.util.List;
 public class SettingMode extends SettingBase<Integer> {
 
     private final List<String> modes;
-    private int mode;
-
     private final int defaultMode;
+    private int mode;
 
     public SettingMode(ToggleableModule owner, String name, String description, List<String> modes) {
         this(owner, name, description, modes, 0);

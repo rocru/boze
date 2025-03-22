@@ -3,8 +3,8 @@ package netutil;
 import java.util.concurrent.TimeUnit;
 
 public class uselessloaderclass3 {
-    private final uselessloaderclass1 field2;
     public static boolean field3;
+    private final uselessloaderclass1 field2;
 
     public uselessloaderclass3(final int n) {
         if (n < 0) {

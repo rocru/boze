@@ -29,16 +29,16 @@ import java.io.File;
 import java.io.FileInputStream;
 
 public class ChamsShaderRenderer implements IMinecraft {
-    private static ShaderProgram field2239;
-    private static ShaderProgram field2240;
-    private static ShaderProgram field2241;
-    private static ShaderProgram field2242;
     public static Framebuffer field2243;
     public static Framebuffer field2244;
     public static Framebuffer field2245;
     public static OutlineVertexConsumerProvider field2246;
     public static boolean field2247;
     public static boolean field2248;
+    private static ShaderProgram field2239;
+    private static ShaderProgram field2240;
+    private static ShaderProgram field2241;
+    private static ShaderProgram field2242;
 
     public static void method1305() {
         field2239 = new ShaderProgram("chams.vert", "chams_colored.frag");

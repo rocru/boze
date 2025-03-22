@@ -13,11 +13,6 @@ import java.util.Calendar;
 
 public class Welcomer extends HUDModule {
     public static final Welcomer INSTANCE = new Welcomer();
-    private final BooleanSetting field2662 = new BooleanSetting(
-            "CustomText",
-            false,
-            "Use custom text for greeting\nUse .welcomer text <text> to set custom text\nPut {name} as placeholder for your name\nExample: .welcomer text Hello, {name}!\n"
-    );
     public final WeirdSettingString field2663 = new WeirdSettingString("Text", "Hello, {name}", "Custom text for greeting");
     public final BooleanSetting field2664 = new BooleanSetting("Custom", false, "Use custom theme settings");
     public final ColorSetting field2665 = new ColorSetting(
@@ -27,6 +22,11 @@ public class Welcomer extends HUDModule {
             "Name", new BozeDrawColor(100, 35, 250, 255, true, 0.3, 0.0, new double[]{0.0, -0.065}, new double[]{0.5, 0.6}), "Name color", this.field2664
     );
     public final BooleanSetting field2667 = new BooleanSetting("Shadow", false, "Text shadow", this.field2664);
+    private final BooleanSetting field2662 = new BooleanSetting(
+            "CustomText",
+            false,
+            "Use custom text for greeting\nUse .welcomer text <text> to set custom text\nPut {name} as placeholder for your name\nExample: .welcomer text Hello, {name}!\n"
+    );
 
     public Welcomer() {
         super("Welcomer", "Greets you", 20.0, 20.0);

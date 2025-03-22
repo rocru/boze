@@ -22,10 +22,6 @@ import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
 
 public class GhostRotations extends Module {
     public static final GhostRotations INSTANCE = new GhostRotations();
-    private final BooleanSetting field744 = new BooleanSetting("Silent", true, "Silent rotation");
-    private final MinMaxDoubleSetting field745 = new MinMaxDoubleSetting(
-            "BackSpeed", new double[]{0.15, 0.3}, 0.1, 10.0, 0.1, "Aim speed to rotate back (for silent rotations)"
-    );
     public final MinMaxSetting field746 = new MinMaxSetting("PointScale", 0.1, 0.01, 1.0, 0.01, "Aim point scaling");
     public final SettingCategory field747 = new SettingCategory("Tracking", "Tracking options");
     public final MinMaxSetting field748 = new MinMaxSetting("TrackStrength", 0.4, 0.0, 1.0, 0.01, "Tracking strength", this.field747);
@@ -41,9 +37,13 @@ public class GhostRotations extends Module {
     public final MinMaxSetting field756 = new MinMaxSetting("Vertical", 0.5, 0.0, 1.0, 0.01, "Vertical noise", this.field754);
     public final MinMaxSetting field757 = new MinMaxSetting("VDeviation", 0.2, 0.0, 1.0, 0.01, "Vertical noise caused deviation from eyes", this.field754);
     public final BooleanSetting field758 = new BooleanSetting("DistanceScale", false, "Scale noise with distance", this.field754);
+    private final BooleanSetting field744 = new BooleanSetting("Silent", true, "Silent rotation");
+    private final MinMaxDoubleSetting field745 = new MinMaxDoubleSetting(
+            "BackSpeed", new double[]{0.15, 0.3}, 0.1, 10.0, 0.1, "Aim speed to rotate back (for silent rotations)"
+    );
     private final IntSetting field759 = new IntSetting("Timeout", 20, 5, 50, 1, "Timeout for rotations  - if ghost rotating fails, set client-side rotation");
-    public RotationHelper field760 = null;
     private final Timer field761 = new Timer();
+    public RotationHelper field760 = null;
 
     public GhostRotations() {
         super("GhostRotations", "Ghost rotations", Category.Client, ConfigCategory.Main);

@@ -28,17 +28,17 @@ public interface DrawColor extends Serializable<DrawColor> {
 
     int getR();
 
-    int getG();
-
-    int getB();
-
-    int getA();
-
     void setR(int r);
+
+    int getG();
 
     void setG(int g);
 
+    int getB();
+
     void setB(int b);
+
+    int getA();
 
     void setA(int a);
 

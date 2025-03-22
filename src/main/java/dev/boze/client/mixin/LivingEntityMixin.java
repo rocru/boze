@@ -28,12 +28,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({LivingEntity.class})
+@Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends EntityMixin implements ILivingEntityClientAttack, ILivingEntity {
-    @Unique
-    private long damageSyncTime = 0L;
-    @Unique
-    private Vec3d lastServerPos;
     @Shadow
     public int jumpingCooldown;
     @Shadow
@@ -42,6 +38,10 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
     protected double serverY;
     @Shadow
     protected double serverZ;
+    @Unique
+    private long damageSyncTime = 0L;
+    @Unique
+    private Vec3d lastServerPos;
 
     @Shadow
     public abstract float getHealth();
@@ -69,23 +69,23 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
     }
 
     @Inject(
-            method = {"updateTrackedPositionAndAngles"},
-            at = {@At("HEAD")}
+            method = "updateTrackedPositionAndAngles",
+            at = @At("HEAD")
     )
     public void updateLastServerPos(double x, double y, double z, float yaw, float pitch, int interpolationSteps, CallbackInfo ci) {
         this.lastServerPos = new Vec3d(this.serverX, this.serverY, this.serverZ);
     }
 
     @Inject(
-            method = {"consumeItem"},
-            at = {@At("HEAD")}
+            method = "consumeItem",
+            at = @At("HEAD")
     )
     private void onConsumeItem(CallbackInfo var1) {
         NoSlow.INSTANCE.method1852();
     }
 
     @Redirect(
-            method = {"damage"},
+            method = "damage",
             at = @At(
                     value = "FIELD",
                     target = "Lnet/minecraft/world/World;isClient:Z"
@@ -96,8 +96,8 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
     }
 
     @Inject(
-            method = {"setHealth"},
-            at = {@At("HEAD")}
+            method = "setHealth",
+            at = @At("HEAD")
     )
     private void onSetHealth(float var1, CallbackInfo var2) {
         if (SoundFX.INSTANCE.isEnabled()) {
@@ -106,8 +106,8 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
     }
 
     @Inject(
-            method = {"travel"},
-            at = {@At("HEAD")},
+            method = "travel",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onTravel(Vec3d var1, CallbackInfo var2) {
@@ -121,8 +121,8 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
     }
 
     @Inject(
-            method = {"isFallFlying"},
-            at = {@At("TAIL")},
+            method = "isFallFlying",
+            at = @At("TAIL"),
             cancellable = true
     )
     public void recastIfLanded(CallbackInfoReturnable<Boolean> cir) {
@@ -146,8 +146,8 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
     }
 
     @Inject(
-            method = {"tickMovement"},
-            at = {@At("HEAD")},
+            method = "tickMovement",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void boze$tickMovement$head(CallbackInfo ci) {
@@ -161,7 +161,7 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
     }
 
     @Redirect(
-            method = {"travel"},
+            method = "travel",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/LivingEntity;hasStatusEffect(Lnet/minecraft/registry/entry/RegistryEntry;)Z"
@@ -172,8 +172,8 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
     }
 
     @Inject(
-            method = {"canWalkOnFluid"},
-            at = {@At("HEAD")},
+            method = "canWalkOnFluid",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onCanWalkOnFluid(FluidState var1, CallbackInfoReturnable<Boolean> var2) {
@@ -184,8 +184,8 @@ public abstract class LivingEntityMixin extends EntityMixin implements ILivingEn
     }
 
     @Inject(
-            method = {"getHandSwingDuration"},
-            at = {@At("HEAD")},
+            method = "getHandSwingDuration",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onGetHandSwingDuration(CallbackInfoReturnable<Integer> var1) {

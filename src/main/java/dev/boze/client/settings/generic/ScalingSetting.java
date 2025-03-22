@@ -5,12 +5,6 @@ import dev.boze.client.settings.MinMaxSetting;
 import dev.boze.client.settings.Setting;
 
 public class ScalingSetting implements SettingsGroup {
-    public enum ScalingMode {
-        Dist,
-        Const
-    }
-
-
     public final EnumSetting<ScalingMode> field2234 = new EnumSetting<>(
             "Scaling", ScalingMode.Dist, "Scaling Mode\n - Dist: Scale based on distance\n - Const: Constant scale\n"
     );
@@ -55,5 +49,10 @@ public class ScalingSetting implements SettingsGroup {
 
     private boolean lambda$new$0() {
         return this.field2234.getValue() == ScalingMode.Dist;
+    }
+
+    public enum ScalingMode {
+        Dist,
+        Const
     }
 }

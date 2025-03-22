@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({BoatEntity.class})
+@Mixin(BoatEntity.class)
 public abstract class BoatEntityMixin extends Entity {
     @Unique
     private boolean ignore = false;
@@ -26,8 +26,8 @@ public abstract class BoatEntityMixin extends Entity {
     public abstract void setInputs(boolean var1, boolean var2, boolean var3, boolean var4);
 
     @Inject(
-            method = {"setInputs"},
-            at = {@At("HEAD")},
+            method = "setInputs",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onSetInput(boolean var1, boolean var2, boolean var3, boolean var4, CallbackInfo var5) {
@@ -42,11 +42,11 @@ public abstract class BoatEntityMixin extends Entity {
     }
 
     @Inject(
-            method = {"tick"},
-            at = {@At(
+            method = "tick",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/vehicle/BoatEntity;move(Lnet/minecraft/entity/MovementType;Lnet/minecraft/util/math/Vec3d;)V"
-            )},
+            ),
             cancellable = true
     )
     private void onTickInvokeMove(CallbackInfo var1) {
@@ -56,8 +56,8 @@ public abstract class BoatEntityMixin extends Entity {
     }
 
     @Inject(
-            method = {"updatePaddles"},
-            at = {@At("HEAD")},
+            method = "updatePaddles",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onUpdatePaddles(CallbackInfo var1) {

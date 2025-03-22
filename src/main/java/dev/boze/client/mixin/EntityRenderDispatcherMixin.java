@@ -25,40 +25,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-@Mixin({EntityRenderDispatcher.class})
+@Mixin(EntityRenderDispatcher.class)
 public class EntityRenderDispatcherMixin {
     @Inject(
-            method = {"shouldRender"},
-            at = {@At("HEAD")},
-            cancellable = true
-    )
-    private void shouldRender(Entity var1, Frustum var2, double var3, double var5, double var7, CallbackInfoReturnable<Boolean> var9) {
-        if (var1 instanceof LivingEntity && NoRender.method1990() && ((LivingEntity) var1).getHealth() <= 0.0F) {
-            var9.setReturnValue(false);
-        }
-    }
-
-    @Inject(
-            method = {"render"},
-            at = {@At("HEAD")},
-            cancellable = true
-    )
-    private <E extends Entity> void render(
-            E var1, double var2, double var4, double var6, float var8, float var9, MatrixStack var10, VertexConsumerProvider var11, int var12, CallbackInfo var13
-    ) {
-        if ((var1 instanceof FakePlayerEntity var16 && var16.field1265 || NoRender.method1991() && var1 != MinecraftClient.getInstance().player)
-                && var1.getBoundingBox().contains(MinecraftClient.getInstance().cameraEntity.getPos())) {
-            var13.cancel();
-        }
-    }
-
-    @Inject(
-            method = {"renderHitbox"},
-            at = {@At(
+            method = "renderHitbox",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/WorldRenderer;drawBox(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/util/math/Box;FFFF)V",
                     ordinal = 0
-            )},
+            ),
             locals = LocalCapture.CAPTURE_FAILSOFT
     )
     private static void onRenderHitbox(
@@ -71,8 +46,8 @@ public class EntityRenderDispatcherMixin {
     }
 
     @Inject(
-            method = {"renderShadow"},
-            at = {@At("HEAD")},
+            method = "renderShadow",
+            at = @At("HEAD"),
             cancellable = true
     )
     private static void onRenderShadowHead(
@@ -93,7 +68,7 @@ public class EntityRenderDispatcherMixin {
     }
 
     @ModifyArg(
-            method = {"renderShadow"},
+            method = "renderShadow",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/entity/EntityRenderDispatcher;renderShadowPart(Lnet/minecraft/client/util/math/MatrixStack$Entry;Lnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/world/chunk/Chunk;Lnet/minecraft/world/WorldView;Lnet/minecraft/util/math/BlockPos;DDDFF)V"
@@ -105,8 +80,33 @@ public class EntityRenderDispatcherMixin {
     }
 
     @Inject(
-            method = {"render"},
-            at = {@At("HEAD")},
+            method = "shouldRender",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private void shouldRender(Entity var1, Frustum var2, double var3, double var5, double var7, CallbackInfoReturnable<Boolean> var9) {
+        if (var1 instanceof LivingEntity && NoRender.method1990() && ((LivingEntity) var1).getHealth() <= 0.0F) {
+            var9.setReturnValue(false);
+        }
+    }
+
+    @Inject(
+            method = "render",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private <E extends Entity> void render(
+            E var1, double var2, double var4, double var6, float var8, float var9, MatrixStack var10, VertexConsumerProvider var11, int var12, CallbackInfo var13
+    ) {
+        if ((var1 instanceof FakePlayerEntity var16 && var16.field1265 || NoRender.method1991() && var1 != MinecraftClient.getInstance().player)
+                && var1.getBoundingBox().contains(MinecraftClient.getInstance().cameraEntity.getPos())) {
+            var13.cancel();
+        }
+    }
+
+    @Inject(
+            method = "render",
+            at = @At("HEAD"),
             cancellable = true
     )
     public <E extends Entity> void onRenderPre(

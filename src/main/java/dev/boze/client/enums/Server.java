@@ -11,10 +11,6 @@ public enum Server implements IMinecraft {
 
     private final MCServer field1256;
 
-    public MCServer method538() {
-        return this.field1256;
-    }
-
     Server(MCServer var3) {
         this.field1256 = var3;
     }
@@ -30,5 +26,9 @@ public enum Server implements IMinecraft {
     // $VF: synthetic method
     private static Server[] method540() {
         return new Server[]{Hypixel, Generic};
+    }
+
+    public MCServer method538() {
+        return this.field1256;
     }
 }

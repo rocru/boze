@@ -21,6 +21,14 @@ public class ProneEscape implements IMinecraft, SettingsGroup {
         this.field1634.setVisibility(var1.advanced::getValue);
     }
 
+    private static Boolean lambda$update$1(BlockPos var0) {
+        return mc.player.isInSwimmingPose();
+    }
+
+    private static boolean lambda$new$0() {
+        return AutoMine.INSTANCE.advanced.getValue();
+    }
+
     @Override
     public Setting<?>[] get() {
         return this.field1634.method472();
@@ -30,13 +38,5 @@ public class ProneEscape implements IMinecraft, SettingsGroup {
         return mc.player.isInSwimmingPose()
                 ? new BlockLocationInfo(BlockPos.ofFloored(mc.player.getPos().add(0.0, 1.0, 0.0)), false).method1468(ProneEscape::lambda$update$1)
                 : null;
-    }
-
-    private static Boolean lambda$update$1(BlockPos var0) {
-        return mc.player.isInSwimmingPose();
-    }
-
-    private static boolean lambda$new$0() {
-        return AutoMine.INSTANCE.advanced.getValue();
     }
 }

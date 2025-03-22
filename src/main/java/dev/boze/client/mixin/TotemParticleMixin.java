@@ -6,10 +6,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin({TotemParticle.class})
+@Mixin(TotemParticle.class)
 public class TotemParticleMixin {
     @Redirect(
-            method = {"<init>"},
+            method = "<init>",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/particle/TotemParticle;setColor(FFF)V",
@@ -30,7 +30,7 @@ public class TotemParticleMixin {
     }
 
     @Redirect(
-            method = {"<init>"},
+            method = "<init>",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/particle/TotemParticle;setColor(FFF)V",

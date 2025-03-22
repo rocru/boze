@@ -21,16 +21,24 @@ import java.io.File;
 
 public class SoundFX extends Module {
     public static final SoundFX INSTANCE = new SoundFX();
-    private final FloatSetting field3116 = new FloatSetting("Volume", 2.5F, 0.1F, 5.0F, 0.1F, "Volume for sound effects");
-    private final SoundStringSetting field3117 = new SoundStringSetting("Kill", "", "Kill sound");
-    private final SoundStringSetting field3118 = new SoundStringSetting("Shoot", "", "Bow shoot sound");
     public final SoundStringSetting field3119 = new SoundStringSetting("Enable", "", "Module enable sound");
     public final SoundStringSetting field3120 = new SoundStringSetting("Disable", "", "Module disable sound");
     public final SoundStringSetting field3121 = new SoundStringSetting("VisualEnter", "", "Player entering visual range sound", SoundFX::lambda$new$0);
     public final SoundStringSetting field3122 = new SoundStringSetting("VisualLeave", "", "Player leaving visual range sound", SoundFX::lambda$new$1);
+    private final FloatSetting field3116 = new FloatSetting("Volume", 2.5F, 0.1F, 5.0F, 0.1F, "Volume for sound effects");
+    private final SoundStringSetting field3117 = new SoundStringSetting("Kill", "", "Kill sound");
+    private final SoundStringSetting field3118 = new SoundStringSetting("Shoot", "", "Bow shoot sound");
 
     public SoundFX() {
         super("SoundFX", "Plays custom sound effects", Category.Misc);
+    }
+
+    private static boolean lambda$new$1() {
+        return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field847.getValue();
+    }
+
+    private static boolean lambda$new$0() {
+        return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field846.getValue();
     }
 
     public void method1771(boolean state) {
@@ -85,13 +93,5 @@ public class SoundFX extends Module {
             } catch (Exception var7) {
             }
         }
-    }
-
-    private static boolean lambda$new$1() {
-        return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field847.getValue();
-    }
-
-    private static boolean lambda$new$0() {
-        return Notifications.INSTANCE.isEnabled() && Notifications.INSTANCE.field846.getValue();
     }
 }

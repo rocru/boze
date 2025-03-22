@@ -18,9 +18,9 @@ import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.PositionAndOnGr
 
 public class FastProjectile extends Module {
     public static final FastProjectile INSTANCE = new FastProjectile();
+    public final MinMaxSetting factor = new MinMaxSetting("Factor", 1.0, 0.1, 20.0, 0.1, "Factor");
     private final BooleanSetting rotate = new BooleanSetting("Rotate", false, "Rotate");
     private final BooleanSetting minimize = new BooleanSetting("Minimize", false, "Minimizes movement");
-    public final MinMaxSetting factor = new MinMaxSetting("Factor", 1.0, 0.1, 20.0, 0.1, "Factor");
     private final MinMaxSetting cooldown = new MinMaxSetting("Cooldown", 5.0, 0.0, 10.0, 0.1, "Cooldown in seconds");
     private final SettingCategory selection = new SettingCategory("Selection", "Projectile selection");
     private final BooleanSetting bows = new BooleanSetting("Bows", true, "Apply on bows", this.selection);

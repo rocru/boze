@@ -45,6 +45,22 @@ public class KeyClickAction extends Module {
         super("KCA", "Key Click Action", Category.Misc);
     }
 
+    private static boolean lambda$doAction$4(ItemStack var0) {
+        return var0.getItem() == Items.FIREWORK_ROCKET;
+    }
+
+    private static boolean lambda$doAction$3(ItemStack var0) {
+        return var0.getItem() == Items.EXPERIENCE_BOTTLE;
+    }
+
+    private static boolean lambda$doAction$2(ItemStack var0) {
+        return var0.getItem() == Items.ENDER_PEARL;
+    }
+
+    private static boolean lambda$doActionIfXp$1(ItemStack var0) {
+        return var0.getItem() == Items.EXPERIENCE_BOTTLE;
+    }
+
     @EventHandler
     public void method1723(KeyEvent event) {
         if (MinecraftUtils.isClientActive()) {
@@ -163,22 +179,6 @@ public class KeyClickAction extends Module {
                 InventoryUtil.method396(this);
             }
         }
-    }
-
-    private static boolean lambda$doAction$4(ItemStack var0) {
-        return var0.getItem() == Items.FIREWORK_ROCKET;
-    }
-
-    private static boolean lambda$doAction$3(ItemStack var0) {
-        return var0.getItem() == Items.EXPERIENCE_BOTTLE;
-    }
-
-    private static boolean lambda$doAction$2(ItemStack var0) {
-        return var0.getItem() == Items.ENDER_PEARL;
-    }
-
-    private static boolean lambda$doActionIfXp$1(ItemStack var0) {
-        return var0.getItem() == Items.EXPERIENCE_BOTTLE;
     }
 
     private boolean lambda$new$0() {

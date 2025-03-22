@@ -42,24 +42,28 @@ public class OreScanner extends Module {
     public final ColorSetting field3033 = new ColorSetting("Outline", new BozeDrawColor(-12392715), "Color for outline", this.field3031::getValue);
     private final BooleanSetting field3034 = new BooleanSetting("Shader", false, "Use a shader", this.field3031::getValue);
     public final EnumSetting<OreScannerShader> field3035 = new EnumSetting<OreScannerShader>("Shader", OreScannerShader.Normal, "Shader to use", this.field3034);
+    public final StringSetting field3042 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3034);
     public final BooleanSetting field3036 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field3034);
     public final IntSetting field3037 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field3034);
     public final FloatSetting field3038 = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.field3034);
     public final FloatSetting field3039 = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$0, this.field3034);
     private final IntSetting field3040 = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.field3034);
     private final FloatSetting field3041 = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.field3034);
-    public final StringSetting field3042 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3034);
+    private final dev.boze.client.utils.Timer field3046 = new dev.boze.client.utils.Timer();
+    private final ArrayList<BlockPos> field3047 = new ArrayList();
+    private final dev.boze.client.utils.Timer field3049 = new dev.boze.client.utils.Timer();
     private Renderer3D field3043 = null;
     private ByteTexture field3044;
     private String field3045 = "";
-    private final dev.boze.client.utils.Timer field3046 = new dev.boze.client.utils.Timer();
-    private final ArrayList<BlockPos> field3047 = new ArrayList();
     private BlockPos field3048 = null;
-    private final dev.boze.client.utils.Timer field3049 = new dev.boze.client.utils.Timer();
 
     public OreScanner() {
         super("OreScanner", "Anti ore obfuscation", Category.Misc);
         this.addSettings(this.field3031, this.field3034);
+    }
+
+    private static boolean lambda$onSendMovementPackets$3(BlockPos var0) {
+        return !mc.world.isChunkLoaded(ChunkSectionPos.getSectionCoord(var0.getX()), ChunkSectionPos.getSectionCoord(var0.getZ()));
     }
 
     @Override
@@ -165,10 +169,6 @@ public class OreScanner extends Module {
         }
 
         return ShaderMode.Rainbow;
-    }
-
-    private static boolean lambda$onSendMovementPackets$3(BlockPos var0) {
-        return !mc.world.isChunkLoaded(ChunkSectionPos.getSectionCoord(var0.getX()), ChunkSectionPos.getSectionCoord(var0.getZ()));
     }
 
     private void lambda$onRender3D$2(Render3DEvent var1) {

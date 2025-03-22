@@ -15,12 +15,12 @@ public class ToggleNotificationsComponent extends ToggleComponent {
     }
 
     @Override
-    protected void setToggled(boolean value) {
-        this.field2090.setNotify(value);
+    protected boolean isToggled() {
+        return this.field2090.getNotify();
     }
 
     @Override
-    protected boolean isToggled() {
-        return this.field2090.getNotify();
+    protected void setToggled(boolean value) {
+        this.field2090.setNotify(value);
     }
 }

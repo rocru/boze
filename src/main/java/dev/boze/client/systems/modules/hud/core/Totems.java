@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
 public class Totems extends HUDModule implements Class5929 {
+    public static final Totems INSTANCE = new Totems();
     private final BooleanSetting field644 = new BooleanSetting("Item", false, "Show as item stack");
     public final BooleanSetting field645 = new BooleanSetting("Custom", false, "Use custom theme settings", this::lambda$new$0);
     public final ColorSetting field646 = new ColorSetting(
@@ -22,7 +23,6 @@ public class Totems extends HUDModule implements Class5929 {
             "Secondary", new BozeDrawColor(100, 35, 250, 255, true, 0.3, 0.0, new double[]{0.0, -0.065}, new double[]{0.5, 0.6}), "Text color", this.field645
     );
     public final BooleanSetting field648 = new BooleanSetting("Shadow", false, "Text shadow", this.field645);
-    public static final Totems INSTANCE = new Totems();
 
     public Totems() {
         super("Totems", "Shows your totem count", 40.0, 40.0);

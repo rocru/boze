@@ -21,11 +21,11 @@ import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
 public class GlyphBuffer {
-    public AbstractTexture field1974;
     private final int field1975;
     private final float field1976;
     private final float field1977;
     private final Class3059[] field1978;
+    public AbstractTexture field1974;
 
     public GlyphBuffer(ByteBuffer buffer, int height) {
         this.field1975 = height;

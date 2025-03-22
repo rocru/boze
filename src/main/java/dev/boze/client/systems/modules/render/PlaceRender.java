@@ -50,10 +50,10 @@ public class PlaceRender extends Module {
     private final MinMaxSetting field3634 = new MinMaxSetting("GrowDuration", 0.1, 0.1, 0.5, 0.05, "Grow duration as a fraction of ticks");
     private final BooleanSetting field3635 = new BooleanSetting("Shrink", true, "Shrink placements");
     private final MinMaxSetting field3636 = new MinMaxSetting("ShrinkDuration", 0.1, 0.1, 0.5, 0.05, "shrink duration as a fraction of ticks");
+    private final Class3064<Placement> field3640 = new Class3064<Placement>(Placement::new);
     private Renderer3D field3637;
     private ByteTexture field3638;
     private String field3639 = "";
-    private final Class3064<Placement> field3640 = new Class3064<Placement>(Placement::new);
 
     public PlaceRender() {
         super("PlaceRender", "Renders placements for modules", Category.Render);

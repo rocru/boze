@@ -21,20 +21,28 @@ public class ProfileListArgument implements ArgumentType<String> {
     private static final DynamicCommandExceptionType field1866 = new DynamicCommandExceptionType(ProfileListArgument::lambda$static$0);
     private final CurrentProfileSetting field1867;
 
-    public static ProfileListArgument method1012(CurrentProfileSetting setting) {
-        return new ProfileListArgument(setting);
-    }
-
     private ProfileListArgument(CurrentProfileSetting var1) {
         this.field1867 = var1;
     }
 
-    private Set<String> method1013() {
-        return this.field1867.field968.stream().map(ProfileListArgument::lambda$getProfiles$1).collect(Collectors.toUnmodifiableSet());
+    public static ProfileListArgument method1012(CurrentProfileSetting setting) {
+        return new ProfileListArgument(setting);
     }
 
     public static String method1014(CommandContext<?> context, String name) {
         return context.getArgument(name, String.class);
+    }
+
+    private static String lambda$getProfiles$1(String var0) {
+        return var0.substring(var0.lastIndexOf(46) + 1);
+    }
+
+    private static Message lambda$static$0(Object var0) {
+        return Text.literal("Profile with name " + var0 + " doesn't exist");
+    }
+
+    private Set<String> method1013() {
+        return this.field1867.field968.stream().map(ProfileListArgument::lambda$getProfiles$1).collect(Collectors.toUnmodifiableSet());
     }
 
     @Override
@@ -56,25 +64,17 @@ public class ProfileListArgument implements ArgumentType<String> {
         }
     }
 
-    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
-        return CommandSource.suggestMatching(this.method1013(), builder);
-    }
-
-    public Collection<String> getExamples() {
-        return this.method1013().stream().limit(3L).collect(Collectors.toList());
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     //public Object parse(StringReader stringReader) throws CommandSyntaxException {
     //   return this.method1015(stringReader);
     //}
 
-    private static String lambda$getProfiles$1(String var0) {
-        return var0.substring(var0.lastIndexOf(46) + 1);
+    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
+        return CommandSource.suggestMatching(this.method1013(), builder);
     }
 
-    private static Message lambda$static$0(Object var0) {
-        return Text.literal("Profile with name " + var0 + " doesn't exist");
+    public Collection<String> getExamples() {
+        return this.method1013().stream().limit(3L).collect(Collectors.toList());
     }
 }

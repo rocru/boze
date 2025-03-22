@@ -9,9 +9,9 @@ import net.minecraft.client.network.ServerInfo;
 import net.minecraft.network.packet.s2c.play.GameJoinS2CPacket;
 
 public class ServerConnectionHandler implements IMinecraft {
-    public ServerInfo field1613;
     private final Timer field1614 = new Timer();
     private final Timer field1615 = new Timer();
+    public ServerInfo field1613;
 
     @EventHandler
     private void method2042(PacketBundleEvent var1) {

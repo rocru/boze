@@ -16,11 +16,6 @@ public class PeekCommand extends Command {
         super("peek", "Peek", "Peek into shulkers and ender chests");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.executes(PeekCommand::lambda$build$0);
-    }
-
     private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
         if (PeekScreen.method589(mc.player.getMainHandStack(), field1868, true)) {
             return 1;
@@ -30,5 +25,10 @@ public class PeekCommand extends Command {
             PeekScreen.method589(Items.ENDER_CHEST.getDefaultStack(), new ItemStack[27], true);
             return 1;
         }
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.executes(PeekCommand::lambda$build$0);
     }
 }

@@ -21,6 +21,15 @@ public class Class1201 {
     public static final HashSet<String> field61;
     private static boolean field62;
 
+    static {
+        field57 = new HashSet<String>();
+        field58 = new HashSet<String>();
+        field59 = new HashSet<String>();
+        field60 = new HashSet<String>();
+        field61 = new HashSet<String>();
+        Class1201.field62 = false;
+    }
+
     public Class1201() {
         super();
     }
@@ -255,14 +264,5 @@ public class Class1201 {
 
     private static void lambda$swap$0(final String name, final NbtCompound tag) {
         method2386(name, tag);
-    }
-
-    static {
-        field57 = new HashSet<String>();
-        field58 = new HashSet<String>();
-        field59 = new HashSet<String>();
-        field60 = new HashSet<String>();
-        field61 = new HashSet<String>();
-        Class1201.field62 = false;
     }
 }

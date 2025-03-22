@@ -16,6 +16,8 @@ import net.minecraft.util.math.MathHelper;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public abstract class GraphHUDModule extends HUDModule {
+    public static final int field2309 = 100;
+    public static final int field2310 = 60;
     public final BooleanSetting field2300 = new BooleanSetting("FromZero", false, "Start graph from zero");
     public final BooleanSetting field2301 = new BooleanSetting("Custom", false, "Use custom theme settings");
     public final IntSetting field2302 = new IntSetting("Length", 100, 10, 1200, 1, "Scale modifier for this HUD module", this.field2301);
@@ -25,8 +27,6 @@ public abstract class GraphHUDModule extends HUDModule {
     public final ColorSetting field2306 = new ColorSetting("Header", new BozeDrawColor(-1), "Header color", this::lambda$new$0, this.field2301);
     public final ColorSetting field2307 = new ColorSetting("Values", new BozeDrawColor(-1), "Values color", this::lambda$new$1, this.field2301);
     public final BooleanSetting field2308 = new BooleanSetting("Shadow", true, "Text shadow", this::lambda$new$2, this.field2301);
-    public static final int field2309 = 100;
-    public static final int field2310 = 60;
     private final CopyOnWriteArrayList<Double> field2311 = new CopyOnWriteArrayList();
 
     public GraphHUDModule(String name, String description) {

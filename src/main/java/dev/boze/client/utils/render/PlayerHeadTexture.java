@@ -5,7 +5,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import dev.boze.client.renderer.Texture;
 import dev.boze.client.utils.IMinecraft;
 import dev.boze.client.utils.http.HttpUtil;
-import net.minecraft.util.Identifier;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.stb.STBImage;
 import org.lwjgl.system.MemoryStack;

@@ -15,12 +15,12 @@ public class ToggleRGBASettingComponent extends ToggleComponent {
     }
 
     @Override
-    protected void setToggled(boolean value) {
-        this.field2055.method206(value);
+    protected boolean isToggled() {
+        return this.field2055.method2118();
     }
 
     @Override
-    protected boolean isToggled() {
-        return this.field2055.method2118();
+    protected void setToggled(boolean value) {
+        this.field2055.method206(value);
     }
 }

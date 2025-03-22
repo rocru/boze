@@ -34,6 +34,10 @@ public class MacroArgument implements ArgumentType<Macro> {
         return context.getArgument(name, Macro.class);
     }
 
+    private static Message lambda$static$0(Object var0) {
+        return Text.literal("Macro with name " + var0 + " doesn't exist");
+    }
+
     @Override
     public Macro parse(StringReader reader) throws CommandSyntaxException {
         String var5 = reader.readString();
@@ -57,17 +61,13 @@ public class MacroArgument implements ArgumentType<Macro> {
         return CommandSource.suggestMatching(Boze.getMacros().field2140.stream().map(Macro::method210).collect(Collectors.toList()), builder);
     }
 
-    public Collection<String> getExamples() {
-        return field1861;
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     //public Object parse(StringReader stringReader) throws CommandSyntaxException {
     //   return this.method1002(stringReader);
     //}
 
-    private static Message lambda$static$0(Object var0) {
-        return Text.literal("Macro with name " + var0 + " doesn't exist");
+    public Collection<String> getExamples() {
+        return field1861;
     }
 }

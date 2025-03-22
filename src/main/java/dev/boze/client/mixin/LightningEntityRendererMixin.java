@@ -10,11 +10,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({LightningEntityRenderer.class})
+@Mixin(LightningEntityRenderer.class)
 public class LightningEntityRendererMixin {
     @Inject(
-            method = {"drawBranch"},
-            at = {@At("HEAD")},
+            method = "drawBranch",
+            at = @At("HEAD"),
             cancellable = true
     )
     private static void onDrawBranch(

@@ -41,13 +41,13 @@ public class Search extends Module {
     public final ColorSetting field3668 = new ColorSetting("Outline", new BozeDrawColor(-8662124), "Color for outline");
     public final BooleanSetting field3669 = new BooleanSetting("Shader", false, "Use a shader");
     public final EnumSetting<SearchShader> field3670 = new EnumSetting<SearchShader>("Shader", SearchShader.Normal, "Shader to use", this.field3669);
+    public final StringSetting field3677 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3669);
     public final BooleanSetting field3671 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field3669);
     public final IntSetting field3672 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field3669);
     public final FloatSetting field3673 = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.field3669);
     public final FloatSetting field3674 = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$0, this.field3669);
     public final IntSetting field3675 = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.field3669);
     public final FloatSetting field3676 = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.field3669);
-    public final StringSetting field3677 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3669);
     private final BooleanSetting field3678 = new BooleanSetting("Tracers", false, "Draw tracers to blocks");
     private final FloatSetting field3679 = new FloatSetting("Width", 1.0F, 1.0F, 5.0F, 0.1F, "Line width", Search::lambda$new$2, this.field3678);
     private final IntSetting field3680 = new IntSetting("MaxDist", 250, 10, 500, 1, "Max distance", this.field3678);
@@ -67,10 +67,10 @@ public class Search extends Module {
     private final FloatSetting field3688 = new FloatSetting(
             "Factor", 0.005F, 0.002F, 0.1F, 0.002F, "Factor for fading", this.field3686::getValue, this.field3678
     );
+    public CopyOnWriteArrayList<BlockPos> field3692 = new CopyOnWriteArrayList();
     private Renderer3D field3689;
     private ByteTexture field3690;
     private String field3691 = "";
-    public CopyOnWriteArrayList<BlockPos> field3692 = new CopyOnWriteArrayList();
     private Renderer3D field3693 = null;
 
     public Search() {
@@ -79,6 +79,10 @@ public class Search extends Module {
                 "Add block: .search add <block name>\nRemove block: .search del <block name>\nList blocks: .search list\nClear blocks: .search clear\n",
                 Category.Render
         );
+    }
+
+    private static boolean lambda$new$2() {
+        return !MinecraftClient.IS_SYSTEM_MAC;
     }
 
     public boolean method2023(Block block) {
@@ -242,10 +246,6 @@ public class Search extends Module {
 
     private boolean lambda$new$3() {
         return !this.field3682.getValue();
-    }
-
-    private static boolean lambda$new$2() {
-        return !MinecraftClient.IS_SYSTEM_MAC;
     }
 
     private boolean lambda$new$1() {

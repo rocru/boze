@@ -11,8 +11,8 @@ import net.minecraft.entity.damage.DamageSource;
 import java.util.function.BooleanSupplier;
 
 public class FakeClientPlayerEntity extends OtherClientPlayerEntity implements IMinecraft, IOtherClientPlayerEntity, ILivingEntityClientAttack {
-    private BooleanSupplier field1304 = FakeClientPlayerEntity::lambda$new$0;
     public FakePositions field1305;
+    private BooleanSupplier field1304 = FakeClientPlayerEntity::lambda$new$0;
 
     public FakeClientPlayerEntity(ClientWorld clientWorld) {
         this(clientWorld, mc.player.getGameProfile());
@@ -20,6 +20,10 @@ public class FakeClientPlayerEntity extends OtherClientPlayerEntity implements I
 
     public FakeClientPlayerEntity(ClientWorld clientWorld, GameProfile gameProfile) {
         super(clientWorld, gameProfile);
+    }
+
+    private static boolean lambda$new$0() {
+        return true;
     }
 
     protected void scheduleVelocityUpdate() {
@@ -80,9 +84,5 @@ public class FakeClientPlayerEntity extends OtherClientPlayerEntity implements I
 
     public void method561(BooleanSupplier shouldClientAttack) {
         this.field1304 = shouldClientAttack;
-    }
-
-    private static boolean lambda$new$0() {
-        return true;
     }
 }

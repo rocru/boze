@@ -20,9 +20,9 @@ public class TridentPlus extends Module {
     public static final TridentPlus INSTANCE = new TridentPlus();
     public final MinMaxSetting field3360 = new MinMaxSetting("Velocity", 1.0, 0.1, 10.0, 0.1, "Velocity multiplier\nAbove 1.0 won't work on most servers");
     public final BooleanSetting field3361 = new BooleanSetting("AlwaysBoost", true, "Make trident work outside water/rain");
+    public final BindSetting field3364 = new BindSetting("Hover", Bind.create(), "Hover in the air with trident");
     private final BooleanSetting field3362 = new BooleanSetting("Spam", false, "Spam click trident");
     private final IntSetting field3363 = new IntSetting("Delay", 3, 0, 20, 1, "Delay between trident uses", this.field3362::getValue);
-    public final BindSetting field3364 = new BindSetting("Hover", Bind.create(), "Hover in the air with trident");
     private int field3365 = 0;
 
     public TridentPlus() {

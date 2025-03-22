@@ -21,8 +21,8 @@ import java.util.function.BooleanSupplier;
 
 public class StringModeSetting extends Setting<List<String>> implements IMinecraft {
     private final List<Block> field949 = new ArrayList();
-    private List<String> field950 = new ArrayList();
     public boolean field951 = true;
+    private List<String> field950 = new ArrayList();
 
     public StringModeSetting(String name, String description) {
         super(name, description);
@@ -38,6 +38,30 @@ public class StringModeSetting extends Setting<List<String>> implements IMinecra
 
     public StringModeSetting(String name, String description, BooleanSupplier visibility, Setting parent) {
         super(name, description, visibility, parent);
+    }
+
+    public static Block method445(String name) {
+        for (Block var5 : Registries.BLOCK) {
+            if (var5.getName().getString().equalsIgnoreCase(name)) {
+                return var5;
+            }
+        }
+
+        return null;
+    }
+
+    private static void lambda$addValueToTag$7(NbtList var0, String var1) {
+        if (!var0.contains(NbtString.of(var1))) {
+            var0.add(NbtString.of(var1));
+        }
+    }
+
+    private static void lambda$build$4(Block var0) {
+        ChatInstance.method624(" - (highlight)" + var0.getName().getString());
+    }
+
+    private static void lambda$getBlocksAsString$1(List var0, Block var1) {
+        var0.add(var1.getName().getString());
     }
 
     public void method439(ArrayList<String> blockNames) {
@@ -72,16 +96,6 @@ public class StringModeSetting extends Setting<List<String>> implements IMinecra
         return var1;
     }
 
-    public static Block method445(String name) {
-        for (Block var5 : Registries.BLOCK) {
-            if (var5.getName().getString().equalsIgnoreCase(name)) {
-                return var5;
-            }
-        }
-
-        return null;
-    }
-
     public List<Block> method2032() {
         return this.field949;
     }
@@ -108,6 +122,34 @@ public class StringModeSetting extends Setting<List<String>> implements IMinecra
 
         return this.field950;
     }
+
+    // $VF: synthetic method
+    // $VF: bridge method
+    //  @Override
+    // public Object load(NbtCompound nbtCompound) {
+//      return this.method444(nbtCompound);
+    //  }
+
+    // $VF: synthetic method
+    // $VF: bridge method
+    //@Override
+    //public Object setValue(Object object) {
+    //    return this.method443((List<String>)object);
+    //  }
+
+    // $VF: synthetic method
+    // $VF: bridge method
+    //@Override
+    // public Object resetValue() {
+    //    return this.method2033();
+    // }
+//
+    // $VF: synthetic method
+    // $VF: bridge method
+    //@Override
+    //public Object getValue() {
+    //   return this.method442();
+    //}
 
     @Override
     public boolean buildCommand(LiteralArgumentBuilder<CommandSource> builder) {
@@ -150,40 +192,6 @@ public class StringModeSetting extends Setting<List<String>> implements IMinecra
         return this.field950;
     }
 
-    // $VF: synthetic method
-    // $VF: bridge method
-    //  @Override
-    // public Object load(NbtCompound nbtCompound) {
-//      return this.method444(nbtCompound);
-    //  }
-
-    // $VF: synthetic method
-    // $VF: bridge method
-    //@Override
-    //public Object setValue(Object object) {
-    //    return this.method443((List<String>)object);
-    //  }
-
-    // $VF: synthetic method
-    // $VF: bridge method
-    //@Override
-    // public Object resetValue() {
-    //    return this.method2033();
-    // }
-//
-    // $VF: synthetic method
-    // $VF: bridge method
-    //@Override
-    //public Object getValue() {
-    //   return this.method442();
-    //}
-
-    private static void lambda$addValueToTag$7(NbtList var0, String var1) {
-        if (!var0.contains(NbtString.of(var1))) {
-            var0.add(NbtString.of(var1));
-        }
-    }
-
     private int lambda$build$6(CommandContext var1) throws CommandSyntaxException {
         ChatInstance.method624("Clearing all blocks...");
         this.resetValue();
@@ -198,10 +206,6 @@ public class StringModeSetting extends Setting<List<String>> implements IMinecra
         ChatInstance.method624("Blocks: " + this.method2032().size());
         this.method2032().forEach(StringModeSetting::lambda$build$4);
         return 1;
-    }
-
-    private static void lambda$build$4(Block var0) {
-        ChatInstance.method624(" - (highlight)" + var0.getName().getString());
     }
 
     private int lambda$build$3(CommandContext var1) throws CommandSyntaxException {
@@ -236,10 +240,6 @@ public class StringModeSetting extends Setting<List<String>> implements IMinecra
             ChatInstance.method626("Block not found!");
             return 0;
         }
-    }
-
-    private static void lambda$getBlocksAsString$1(List var0, Block var1) {
-        var0.add(var1.getName().getString());
     }
 
     private void lambda$refreshBlocks$0(String var1) {

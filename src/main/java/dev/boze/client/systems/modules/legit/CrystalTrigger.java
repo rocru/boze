@@ -45,10 +45,11 @@ public class CrystalTrigger extends Module {
     private final BooleanSetting field690 = new BooleanSetting("OnlyOwn", false, "Only break crystals that you placed", this.field689);
     private final BooleanSetting field691 = new BooleanSetting("OnlyWhenHolding", false, "Only break when holding left click", this.field689);
     private final EnumSetting<ClickMethod> field692 = new EnumSetting<ClickMethod>("BreakClicking", ClickMethod.Normal, "Break (left) click mode", this.field689);
-    private final IntArraySetting field693 = new IntArraySetting("CPS", new int[]{6, 10}, 1, 20, 1, "Left clicks per second", this.field689);
     private final FloatSetting field694 = new FloatSetting(
             "CooldownOffset", 0.0F, -2.5F, 2.5F, 0.05F, "The offset for vanilla clicking", this::lambda$new$1, this.field689
     );
+    private final IntArraySetting field693 = new IntArraySetting("CPS", new int[]{6, 10}, 1, 20, 1, "Left clicks per second", this.field689);
+    private final ClickManager ad = new ClickManager(this.field692, this.field693, this.field694);
     private final IntArraySetting field695 = new IntArraySetting("SwapDelay", new int[]{4, 6}, 0, 20, 1, "Delay after swapping to break", this.field689);
     private final MinMaxDoubleSetting field696 = new MinMaxDoubleSetting(
             "OnsetDelay", new double[]{1.0, 3.0}, 0.0, 10.0, 0.01, "Delay after looking at crystal to start trying to break", this.field689
@@ -61,10 +62,11 @@ public class CrystalTrigger extends Module {
     private final EnumSetting<ClickMethod> field700 = new EnumSetting<ClickMethod>(
             "PlaceClicking", ClickMethod.Normal, "Place (right) click mode", this.field698
     );
-    private final IntArraySetting field701 = new IntArraySetting("CPS", new int[]{4, 8}, 1, 20, 1, "Right clicks per second", this.field698);
     private final FloatSetting field702 = new FloatSetting(
             "CooldownOffset", 0.0F, -2.5F, 2.5F, 0.05F, "The offset for vanilla clicking", this::lambda$new$2, this.field698
     );
+    private final IntArraySetting field701 = new IntArraySetting("CPS", new int[]{4, 8}, 1, 20, 1, "Right clicks per second", this.field698);
+    private final ClickManager ae = new ClickManager(this.field700, this.field701, this.field702);
     private final IntArraySetting field703 = new IntArraySetting("SwapDelay", new int[]{2, 5}, 0, 20, 1, "Delay after swapping to place", this.field698);
     private final MinMaxDoubleSetting field704 = new MinMaxDoubleSetting(
             "OnsetDelay", new double[]{1.0, 3.0}, 0.0, 10.0, 0.01, "Delay after looking at crystal to start trying to place", this.field698
@@ -83,28 +85,30 @@ public class CrystalTrigger extends Module {
     private final BooleanSetting field714 = new BooleanSetting("Friends", false, "Target friends", this.field712);
     private final BooleanSetting aa = new BooleanSetting("Animals", false, "Target animals", this.field712);
     private final BooleanSetting ab = new BooleanSetting("Monsters", false, "Target monsters", this.field712);
-    private float ac = 0.0F;
-    private final ClickManager ad = new ClickManager(this.field692, this.field693, this.field694);
-    private final ClickManager ae = new ClickManager(this.field700, this.field701, this.field702);
-    private boolean af = false;
     private final Timer ag = new Timer();
-    private long ah = 0L;
-    private long ai = 0L;
     private final Timer aj = new Timer();
     private final Timer ak = new Timer();
-    private long al = 0L;
-    private long am = 0L;
     private final Timer an = new Timer();
     private final Timer ao = new Timer();
-    private long ap = 0L;
-    private long aq = 0L;
     private final Timer ar = new Timer();
     private final Timer as = new Timer();
-    private long at = 0L;
     private final ConcurrentHashMap<BlockPos, Long> au = new ConcurrentHashMap();
+    private float ac = 0.0F;
+    private boolean af = false;
+    private long ah = 0L;
+    private long ai = 0L;
+    private long al = 0L;
+    private long am = 0L;
+    private long ap = 0L;
+    private long aq = 0L;
+    private long at = 0L;
 
     public CrystalTrigger() {
         super("CrystalTrigger", "Automatically left-and-right clicks for crystal pvp", Category.Legit);
+    }
+
+    private static boolean lambda$onSendMovementPackets$3(Entry var0) {
+        return System.currentTimeMillis() - (Long) var0.getValue() > 10000L;
     }
 
     @EventHandler
@@ -389,10 +393,6 @@ public class CrystalTrigger extends Module {
                 }
             }
         }
-    }
-
-    private static boolean lambda$onSendMovementPackets$3(Entry var0) {
-        return System.currentTimeMillis() - (Long) var0.getValue() > 10000L;
     }
 
     private boolean lambda$new$2() {

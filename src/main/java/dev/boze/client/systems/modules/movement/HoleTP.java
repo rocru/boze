@@ -48,10 +48,10 @@ public class HoleTP extends Module {
     private final BooleanSetting field454 = new BooleanSetting("LagBackDisable", true, "Disable on lag-back");
     private final PathRules field455 = new PathRules(true, true, true, false);
     private final Mutable field456 = new Mutable();
+    private final Timer field460 = new Timer();
     private PathFinder field457 = null;
     private Path field458 = null;
     private boolean field459 = false;
-    private final Timer field460 = new Timer();
 
     public HoleTP() {
         super("HoleTP", "Get into holes easier", Category.Movement);

@@ -7,11 +7,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({ChunkSkyLightProvider.class})
+@Mixin(ChunkSkyLightProvider.class)
 public class ChunkSkylightProviderMixin {
     @Inject(
-            at = {@At("HEAD")},
-            method = {"method_51531"},
+            at = @At("HEAD"),
+            method = "method_51531",
             cancellable = true
     )
     private void recalculateLevel(long var1, long var3, int var5, CallbackInfo var6) {

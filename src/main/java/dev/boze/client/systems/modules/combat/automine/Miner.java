@@ -21,23 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Miner implements IMinecraft, SettingsGroup {
-    final BooleanSetting field185 = new BooleanSetting("MultiTask", false, "Whether or not to multi-task");
-    final EnumSetting<AutoMineItemResetMode> field186 = new EnumSetting<AutoMineItemResetMode>(
-            "ItemReset",
-            AutoMineItemResetMode.Delay,
-            "Reset mining if using an item\n - Off: Don't reset\n - On: Reset\n - Delay: Don't reset, but delay swap until done using item\n"
-    );
     public final EnumSetting<AnticheatMode> field187 = new EnumSetting<AnticheatMode>(
             "Mode", AnticheatMode.Grim, "The anti-cheat mode to use\n - Grim: For 2b2t.org, 2bpvp.com, etc.\n - NCP: For crystalpvp.cc, 6b6t.org, etc."
     );
     public final BooleanSetting field188 = new BooleanSetting(
             "AllowAbort", true, "Allow aborting current mine to mine another block\nThis doesn't work on some servers\n", this::lambda$new$0
     );
-    final BooleanSetting field189 = new BooleanSetting("Rotate", true, "Whether or not to rotate to the block when mining", this::lambda$new$1);
-    final BooleanSetting field190 = new BooleanSetting("Swing", true, "Swing arm when mining", this::lambda$new$2);
-    final BooleanSetting field191 = new BooleanSetting("StrictDirection", true, "Only mine blocks from sides you could in vanilla");
-    final BooleanSetting field192 = new BooleanSetting("Strict", true, "Packet mining bypass for strict servers");
-    final MinMaxSetting field193 = new MinMaxSetting("Range", 4.5, 0.0, 6.0, 0.1, "The maximum range to mine blocks at");
     public final MinMaxSetting field194 = new MinMaxSetting(
             "Duration",
             1.0,
@@ -46,6 +35,20 @@ public class Miner implements IMinecraft, SettingsGroup {
             0.05,
             "Mining duration\nLower values are faster but may cause desync on some servers\n0.7 works on 2b2t, but is slightly inconsistent"
     );
+    public final BooleanSetting field197 = new BooleanSetting("DoubleMine", false, "Allows you to mine two blocks at once");
+    public final List<TaskLogger> field201 = new ArrayList();
+    public final List<TaskLogger> field204 = new ArrayList();
+    final BooleanSetting field185 = new BooleanSetting("MultiTask", false, "Whether or not to multi-task");
+    final EnumSetting<AutoMineItemResetMode> field186 = new EnumSetting<AutoMineItemResetMode>(
+            "ItemReset",
+            AutoMineItemResetMode.Delay,
+            "Reset mining if using an item\n - Off: Don't reset\n - On: Reset\n - Delay: Don't reset, but delay swap until done using item\n"
+    );
+    final BooleanSetting field189 = new BooleanSetting("Rotate", true, "Whether or not to rotate to the block when mining", this::lambda$new$1);
+    final BooleanSetting field190 = new BooleanSetting("Swing", true, "Swing arm when mining", this::lambda$new$2);
+    final BooleanSetting field191 = new BooleanSetting("StrictDirection", true, "Only mine blocks from sides you could in vanilla");
+    final BooleanSetting field192 = new BooleanSetting("Strict", true, "Packet mining bypass for strict servers");
+    final MinMaxSetting field193 = new MinMaxSetting("Range", 4.5, 0.0, 6.0, 0.1, "The maximum range to mine blocks at");
     final EnumSetting<AutoMineTpsSync> field195 = new EnumSetting<AutoMineTpsSync>(
             "TPSSync", AutoMineTpsSync.Off, "Sync mining time to server tick rate", this.field194
     );
@@ -55,7 +58,6 @@ public class Miner implements IMinecraft, SettingsGroup {
             "Vanilla mining is slower when you're not standing on ground\nThis setting allows you to mine at full speed even when not standing on ground\nThis won't work on all servers\n",
             this.field194
     );
-    public final BooleanSetting field197 = new BooleanSetting("DoubleMine", false, "Allows you to mine two blocks at once");
     private final EnumSetting<AutoMineSwapbackMode> field198 = new EnumSetting<AutoMineSwapbackMode>(
             "Await",
             AutoMineSwapbackMode.Dynamic,
@@ -80,10 +82,12 @@ public class Miner implements IMinecraft, SettingsGroup {
             this.field198
     );
     private final AutoMine field200;
-    public final List<TaskLogger> field201 = new ArrayList();
     private int field202 = 0;
     private boolean field203;
-    public final List<TaskLogger> field204 = new ArrayList();
+
+    public Miner(AutoMine var1) {
+        this.field200 = var1;
+    }
 
     static void method1800(String var0) {
         if (AutoMine.field2518 && mc.player != null) {
@@ -94,10 +98,6 @@ public class Miner implements IMinecraft, SettingsGroup {
     @Override
     public Setting<?>[] get() {
         return this.field199.method472();
-    }
-
-    public Miner(AutoMine var1) {
-        this.field200 = var1;
     }
 
     public void method99(BlockDirectionInfo var1) {

@@ -8,8 +8,8 @@ public enum AAMode {
     MSAA4x(4),
     MSAA8x(MinecraftClient.IS_SYSTEM_MAC ? 4 : 8);
 
-    public int samples;
     private static final AAMode[] field13 = method8();
+    public int samples;
 
     AAMode(int var3) {
         this.samples = var3;

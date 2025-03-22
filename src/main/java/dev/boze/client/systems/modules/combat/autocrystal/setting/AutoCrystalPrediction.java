@@ -17,8 +17,12 @@ import net.minecraft.util.math.Vec3d;
 import java.util.Map.Entry;
 
 public class AutoCrystalPrediction implements IMinecraft {
-    private final AutoCrystal field1091;
     private static final double field1092 = 0.0784;
+    private final AutoCrystal field1091;
+
+    public AutoCrystalPrediction(AutoCrystal var1) {
+        this.field1091 = var1;
+    }
 
     private static void method1800(String var0) {
         if (AutoCrystal.field1038 && mc.player != null) {
@@ -26,8 +30,47 @@ public class AutoCrystalPrediction implements IMinecraft {
         }
     }
 
-    public AutoCrystalPrediction(AutoCrystal var1) {
-        this.field1091 = var1;
+    public static Vec3d method512(PlayerEntity var0, int var1) {
+        if (var0.prevX == var0.getX() && var0.prevY == var0.getY() && var0.prevZ == var0.getZ()) {
+            return new Vec3d(var0.getX(), var0.getY(), var0.getZ());
+        } else {
+            Pair var5 = Class5918.method38(var1, var0);
+            if (var5 != null) {
+                return ((ClientPlayerEntity) var5.getLeft()).getPos();
+            } else {
+                double var6 = var0.getX() - var0.prevX;
+                double var8 = var0.getY() - var0.prevY;
+                double var10 = var0.getZ() - var0.prevZ;
+                double var12 = 0.0;
+                double var14 = 0.0;
+                double var16 = 0.0;
+
+                for (int var18 = 0; var18 < var1; var18++) {
+                    double var19 = var12 + var6;
+                    double var21 = var14 + var8;
+                    double var23 = var16 + var10;
+                    if (!mc.world.isSpaceEmpty(var0, var0.getBoundingBox().offset(var19, var21, var23))) {
+                        if (mc.world.isSpaceEmpty(var0, var0.getBoundingBox().offset(0.0, var21, 0.0))) {
+                            var19 = var12;
+                            var23 = var16;
+                        } else if (mc.world.isSpaceEmpty(var0, var0.getBoundingBox().offset(var19, 0.0, var23))) {
+                            var21 = var14;
+                        } else {
+                            var19 = var12;
+                            var21 = var14;
+                            var23 = var16;
+                        }
+                    }
+
+                    var12 = var19;
+                    var14 = var21;
+                    var16 = var23;
+                    var8 -= field1092;
+                }
+
+                return new Vec3d(var0.getX() + var12, var0.getY() + var14, var0.getZ() + var16);
+            }
+        }
     }
 
     public void method2071(Render3DEvent var1) {
@@ -80,49 +123,6 @@ public class AutoCrystalPrediction implements IMinecraft {
         if (AutoCrystal.field1038 && FakePlayer.INSTANCE.isEnabled() && FakePlayer.INSTANCE.fakePlayer != null) {
             for (AutoCrystalAction var13 : AutoCrystalAction.values()) {
                 var13.method887(FakePlayer.INSTANCE.fakePlayer);
-            }
-        }
-    }
-
-    public static Vec3d method512(PlayerEntity var0, int var1) {
-        if (var0.prevX == var0.getX() && var0.prevY == var0.getY() && var0.prevZ == var0.getZ()) {
-            return new Vec3d(var0.getX(), var0.getY(), var0.getZ());
-        } else {
-            Pair var5 = Class5918.method38(var1, var0);
-            if (var5 != null) {
-                return ((ClientPlayerEntity) var5.getLeft()).getPos();
-            } else {
-                double var6 = var0.getX() - var0.prevX;
-                double var8 = var0.getY() - var0.prevY;
-                double var10 = var0.getZ() - var0.prevZ;
-                double var12 = 0.0;
-                double var14 = 0.0;
-                double var16 = 0.0;
-
-                for (int var18 = 0; var18 < var1; var18++) {
-                    double var19 = var12 + var6;
-                    double var21 = var14 + var8;
-                    double var23 = var16 + var10;
-                    if (!mc.world.isSpaceEmpty(var0, var0.getBoundingBox().offset(var19, var21, var23))) {
-                        if (mc.world.isSpaceEmpty(var0, var0.getBoundingBox().offset(0.0, var21, 0.0))) {
-                            var19 = var12;
-                            var23 = var16;
-                        } else if (mc.world.isSpaceEmpty(var0, var0.getBoundingBox().offset(var19, 0.0, var23))) {
-                            var21 = var14;
-                        } else {
-                            var19 = var12;
-                            var21 = var14;
-                            var23 = var16;
-                        }
-                    }
-
-                    var12 = var19;
-                    var14 = var21;
-                    var16 = var23;
-                    var8 -= field1092;
-                }
-
-                return new Vec3d(var0.getX() + var12, var0.getY() + var14, var0.getZ() + var16);
             }
         }
     }

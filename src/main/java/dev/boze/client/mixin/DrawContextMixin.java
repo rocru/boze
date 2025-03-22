@@ -18,14 +18,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Mixin({DrawContext.class})
+@Mixin(DrawContext.class)
 public abstract class DrawContextMixin {
     @Shadow
     protected abstract void drawTooltip(TextRenderer var1, List<TooltipComponent> var2, int var3, int var4, TooltipPositioner var5);
 
     @Inject(
-            method = {"drawTooltip(Lnet/minecraft/client/font/TextRenderer;Ljava/util/List;Ljava/util/Optional;II)V"},
-            at = {@At("HEAD")},
+            method = "drawTooltip(Lnet/minecraft/client/font/TextRenderer;Ljava/util/List;Ljava/util/Optional;II)V",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onDrawTooltip(TextRenderer var1, List<Text> var2, Optional<TooltipData> var3, int var4, int var5, CallbackInfo var6) {

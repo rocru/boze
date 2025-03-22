@@ -22,6 +22,18 @@ public class AccountArgument implements ArgumentType<Account<?>> {
         return new AccountArgument();
     }
 
+    public static Account<?> method974(CommandContext<?> context, String name) {
+        return (Account<?>) context.getArgument(name, Account.class);
+    }
+
+    private static String lambda$getExamples$1(Account var0) {
+        return var0.method210();
+    }
+
+    private static String lambda$listSuggestions$0(Account var0) {
+        return var0.method210();
+    }
+
     @Override
     public Account<?> parse(StringReader reader) throws CommandSyntaxException {
         String var5 = reader.readString();
@@ -35,9 +47,11 @@ public class AccountArgument implements ArgumentType<Account<?>> {
         return null;
     }
 
-    public static Account<?> method974(CommandContext<?> context, String name) {
-        return (Account<?>) context.getArgument(name, Account.class);
-    }
+    // $VF: synthetic method
+    // $VF: bridge method
+    //public Object parse(StringReader stringReader) throws CommandSyntaxException {
+    //   return this.method973(stringReader);
+    //}
 
     public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
         return CommandSource.suggestMatching(
@@ -47,19 +61,5 @@ public class AccountArgument implements ArgumentType<Account<?>> {
 
     public Collection<String> getExamples() {
         return Boze.getAccounts().method1135().stream().limit(3L).map(AccountArgument::lambda$getExamples$1).collect(Collectors.toList());
-    }
-
-    // $VF: synthetic method
-    // $VF: bridge method
-    //public Object parse(StringReader stringReader) throws CommandSyntaxException {
-    //   return this.method973(stringReader);
-    //}
-
-    private static String lambda$getExamples$1(Account var0) {
-        return var0.method210();
-    }
-
-    private static String lambda$listSuggestions$0(Account var0) {
-        return var0.method210();
     }
 }

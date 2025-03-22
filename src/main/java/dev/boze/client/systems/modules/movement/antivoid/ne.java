@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ne {
+    final AntiVoid field3144;
     private final List<Vector3d> field3138;
     private final Vector3d field3139;
     private final Timer field3140;
     public BlockHitResult field3141;
     public Entity field3142;
     private int field3143;
-    final AntiVoid field3144;
 
     public ne(final AntiVoid this$0) {
         this.field3144 = this$0;

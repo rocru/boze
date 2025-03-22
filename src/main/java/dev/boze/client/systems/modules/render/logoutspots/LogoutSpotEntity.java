@@ -11,13 +11,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import java.util.UUID;
 
 public class LogoutSpotEntity extends FakePlayerEntity {
+    final LogoutSpots field1272;
     private final UUID field1266;
     private final long field1267;
     private final double field1268;
     private final float field1269;
     private final float field1270;
     private final float field1271;
-    final LogoutSpots field1272;
 
     public LogoutSpotEntity(final LogoutSpots arg, PlayerEntity player) {
         super(player, player.getName().toString() + "'s Logout Spot", 20.0F, false);

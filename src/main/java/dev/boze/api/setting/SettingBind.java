@@ -6,11 +6,10 @@ import dev.boze.api.input.Bind;
 
 public class SettingBind extends SettingBase<Bind> implements Bind {
 
-    private int bind;
-    private boolean isButton;
-
     private final int defaultBind;
     private final boolean defaultIsButton;
+    private int bind;
+    private boolean isButton;
 
     public SettingBind(ToggleableModule owner, String name, String description) {
         this(owner, name, description, -1, false);
@@ -49,14 +48,14 @@ public class SettingBind extends SettingBase<Bind> implements Bind {
         return bind;
     }
 
-    @Override
-    public boolean isButton() {
-        return isButton;
-    }
-
     public void setBind(Bind bind) {
         this.bind = bind.getBind();
         this.isButton = bind.isButton();
+    }
+
+    @Override
+    public boolean isButton() {
+        return isButton;
     }
 
     public void setBind(int bind, boolean isButton) {

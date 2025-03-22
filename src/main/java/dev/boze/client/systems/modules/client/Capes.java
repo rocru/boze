@@ -34,7 +34,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Capes extends Module implements IMinecraft {
     public static final Capes INSTANCE = new Capes();
-    private final BooleanSetting field1289 = new BooleanSetting("Anonymous", false, "Hide your cape from other users");
     public static final HashMap<String, String> field1290 = new HashMap();
     public static final List<String> field1291 = new ArrayList();
     public static final List<GameProfile> field1292 = new ArrayList();
@@ -42,6 +41,7 @@ public class Capes extends Module implements IMinecraft {
     public static Identifier field1294 = Identifier.of("boze", "capes/default");
     public static Identifier field1295 = Identifier.of("boze", "capes/beta");
     public static HashMap<String, Identifier> field1296 = new HashMap();
+    private final BooleanSetting field1289 = new BooleanSetting("Anonymous", false, "Hide your cape from other users");
 
     private Capes() {
         super("Capes", "Shows capes on other Boze users", Category.Client);
@@ -49,15 +49,6 @@ public class Capes extends Module implements IMinecraft {
         field1293.scheduleAtFixedRate(Capes::method1854, 0L, 10L, TimeUnit.SECONDS);
         this.setEnabled(true);
         this.field1289.method401(this::lambda$new$0);
-    }
-
-    @Override
-    public void onEnable() {
-        if (mc.player != null) {
-            this.method1966(null);
-            field1291.add(mc.player.getUuidAsString());
-            field1292.add(mc.player.getGameProfile());
-        }
     }
 
     public static void method1904() {
@@ -202,6 +193,15 @@ public class Capes extends Module implements IMinecraft {
 
         var0.close();
         return var8;
+    }
+
+    @Override
+    public void onEnable() {
+        if (mc.player != null) {
+            this.method1966(null);
+            field1291.add(mc.player.getUuidAsString());
+            field1292.add(mc.player.getGameProfile());
+        }
     }
 
     @EventHandler

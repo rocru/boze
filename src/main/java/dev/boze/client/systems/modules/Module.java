@@ -32,47 +32,26 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 public abstract class Module implements Class5925, ISerializable<Module>, Comparable<Module>, IMinecraft, IJsonSerializable2<Module> {
-    protected boolean enabled = false;
     public final String internalName;
-    private String name;
     public final String description;
-    public boolean field433 = false;
     public final Category category;
     public final RGBAColor rgbaColor;
     public final BozeDrawColor color;
     public final ConfigCategory configCategory;
     public final Bind bind = Bind.create();
+    private final List<Setting> field437 = new ArrayList();
+    private final List<Setting> field438 = new ArrayList();
+    public boolean field433 = false;
+    public boolean field435 = false;
+    public ModuleState moduleState = null;
+    protected boolean enabled = false;
+    private String name;
     private boolean onlyWhileHolding = false;
     private boolean visible = true;
     private boolean notify = false;
     private boolean field434 = false;
-    public boolean field435 = false;
-    public ModuleState moduleState = null;
     private NotificationLength notificationLength = NotificationLength.Normal;
     private Supplier<ScaledBaseComponent> field436 = null;
-    private final List<Setting> field437 = new ArrayList();
-    private final List<Setting> field438 = new ArrayList();
-
-    public NotificationLength getNotificationLength() {
-        return this.notificationLength;
-    }
-
-    public Supplier<ScaledBaseComponent> method218() {
-        return this.field436;
-    }
-
-    protected void setNotificationLengthLimited() {
-        this.notificationLength = NotificationLength.Limited;
-    }
-
-    protected void method219(Supplier<ScaledBaseComponent> popupSupplier) {
-        this.notificationLength = NotificationLength.Popup;
-        this.field436 = popupSupplier;
-    }
-
-    protected void addSettings(Setting<?>... settings) {
-        this.field438.addAll(Arrays.asList(settings));
-    }
 
     public Module(String name, String description, Category category) {
         this(name, description, category, category.configCategory);
@@ -94,6 +73,27 @@ public abstract class Module implements Class5925, ISerializable<Module>, Compar
                 || category == Category.Hud) {
             this.field435 = true;
         }
+    }
+
+    public NotificationLength getNotificationLength() {
+        return this.notificationLength;
+    }
+
+    public Supplier<ScaledBaseComponent> method218() {
+        return this.field436;
+    }
+
+    protected void setNotificationLengthLimited() {
+        this.notificationLength = NotificationLength.Limited;
+    }
+
+    protected void method219(Supplier<ScaledBaseComponent> popupSupplier) {
+        this.notificationLength = NotificationLength.Popup;
+        this.field436 = popupSupplier;
+    }
+
+    protected void addSettings(Setting<?>... settings) {
+        this.field438.addAll(Arrays.asList(settings));
     }
 
     public void onEnable() {

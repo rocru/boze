@@ -33,6 +33,13 @@ public class AutoCrystal extends Module {
     public final AutoCrystalBreak autoCrystalBreak = new AutoCrystalBreak(this);
     public final AutoCrystalPlace autoCrystalPlace = new AutoCrystalPlace(this);
     public final AutoCrystalBasePlace autoCrystalBasePlace = new AutoCrystalBasePlace(this);
+    public final BooleanSetting dontPredict = new BooleanSetting("DontPredict", false, "Don't predict enemy movement");
+    public final CrystalSelectionHandler field1044 = new CrystalSelectionHandler(this);
+    public final CrystalHelper field1045 = new CrystalHelper(this);
+    public final CrystalHitter field1046 = new CrystalHitter(this);
+    public final DamageCalculator field1047 = new DamageCalculator(this);
+    public final AutoCrystalPrediction ac = new AutoCrystalPrediction(this);
+    public final AutoCrystalTracker autoCrystalTracker = new AutoCrystalTracker(this);
     final BooleanSetting proMode = new BooleanSetting("ProMode", false, "Show advanced options", AutoCrystal::lambda$new$0);
     final SettingCategory advancedSettings = new SettingCategory(
             "Advanced", "Advanced options\nDon't touch them unless you know what you're doing\n.set autocrystal promode false to hide\n", this.proMode::getValue
@@ -53,7 +60,6 @@ public class AutoCrystal extends Module {
             "Amount of ticks to assume the enemy hit their (new) crystal for\nWhen a crystal spawns, even if you don't hit it, it will be considered dead\n",
             this.advancedSettings
     );
-    public final BooleanSetting dontPredict = new BooleanSetting("DontPredict", false, "Don't predict enemy movement");
     public final BooleanSetting protocol = new BooleanSetting("Protocol", false, "1.12 Placement", this.advancedSettings);
     public final BooleanSetting damageSync = new BooleanSetting("DamageSync", false, "Sync damage calculations to server damage ticks", this.advancedSettings);
     public final IntSetting extraLimit = new IntSetting("ExtraLimit", 0, 0, 3, 1, "Additional attack limit", this.advancedSettings);
@@ -80,21 +86,9 @@ public class AutoCrystal extends Module {
     public final FloatSetting movingMinDamage = new FloatSetting(
             "MovingMinDmg", 7.0F, 0.0F, 20.0F, 0.1F, "Minimum amount of damage for moving players", this.minDamage::getValue, this.advancedSettings
     );
-    public final CrystalSelectionHandler field1044 = new CrystalSelectionHandler(this);
-    public final CrystalHelper field1045 = new CrystalHelper(this);
-    public final CrystalHitter field1046 = new CrystalHitter(this);
-    public final DamageCalculator field1047 = new DamageCalculator(this);
-    public CrystalEntityTracker aa = new CrystalEntityTracker();
     final AutoCrystalDisplayInfo ab = new AutoCrystalDisplayInfo(this);
-    public final AutoCrystalPrediction ac = new AutoCrystalPrediction(this);
     private final CrystalProcessor ad = new CrystalProcessor(this);
-    public final AutoCrystalTracker autoCrystalTracker = new AutoCrystalTracker(this);
-
-    private static void method1750(String var0) {
-        if (field1038 && mc.player != null) {
-            System.out.println("[AutoCrystal.Core @" + mc.player.age + "] " + var0);
-        }
-    }
+    public CrystalEntityTracker aa = new CrystalEntityTracker();
 
     public AutoCrystal() {
         super(
@@ -105,6 +99,16 @@ public class AutoCrystal extends Module {
         Boze.EVENT_BUS.subscribe(this.field1047);
         Boze.EVENT_BUS.subscribe(this.field1040);
         this.addSettings(this.field1040.field168);
+    }
+
+    private static void method1750(String var0) {
+        if (field1038 && mc.player != null) {
+            System.out.println("[AutoCrystal.Core @" + mc.player.age + "] " + var0);
+        }
+    }
+
+    private static boolean lambda$new$0() {
+        return false;
     }
 
     @Override
@@ -276,9 +280,5 @@ public class AutoCrystal extends Module {
 
     public float method1384() {
         return this.autoCrystalTracker.method1384();
-    }
-
-    private static boolean lambda$new$0() {
-        return false;
     }
 }

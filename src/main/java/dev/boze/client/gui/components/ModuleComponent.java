@@ -34,12 +34,12 @@ public class ModuleComponent extends BaseComponent implements IMinecraft {
     private final double field335;
     private final ArrayList<BaseComponent> field336 = new ArrayList();
     private final Class2774[] field337 = new Class2774[4];
-    public boolean field338;
-    private boolean field339 = false;
     private final Timer field340 = new Timer();
+    public boolean field338;
+    public SettingBlock field343 = null;
+    private boolean field339 = false;
     private double field341;
     private double field342;
-    public SettingBlock field343 = null;
     private double field344;
     private double field345;
     private double field346;
@@ -150,6 +150,21 @@ public class ModuleComponent extends BaseComponent implements IMinecraft {
 
             this.field337[3] = new Class2774(this.field338 ? Notifications.EXPAND_LESS : Notifications.EXPAND_MORE, this::ln3, Theme.INSTANCE.ab);
         }
+    }
+
+    private static void ln2(Module var0) {
+        ClickGUI.field1335.method580(new ConfigComponent(var0));
+        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+    }
+
+    private static void ln1(Module var0) {
+        ClickGUI.field1335.method580(new dev.boze.client.gui.components.scaled.ModuleComponent(var0));
+        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+    }
+
+    private static void ln0(Module var0) {
+        var0.toggle();
+        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
     }
 
     // $VF: Unable to simplify switch on enum
@@ -670,20 +685,5 @@ public class ModuleComponent extends BaseComponent implements IMinecraft {
     private void ln3() {
         this.field338 = !this.field338;
         this.field337[3].field80 = this.field338 ? Notifications.EXPAND_LESS : Notifications.EXPAND_MORE;
-    }
-
-    private static void ln2(Module var0) {
-        ClickGUI.field1335.method580(new ConfigComponent(var0));
-        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-    }
-
-    private static void ln1(Module var0) {
-        ClickGUI.field1335.method580(new dev.boze.client.gui.components.scaled.ModuleComponent(var0));
-        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-    }
-
-    private static void ln0(Module var0) {
-        var0.toggle();
-        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
     }
 }

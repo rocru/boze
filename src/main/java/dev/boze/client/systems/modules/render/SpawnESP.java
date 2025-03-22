@@ -27,15 +27,47 @@ import java.util.List;
 
 public class SpawnESP extends Module {
     public static final SpawnESP INSTANCE = new SpawnESP();
-    private final IntSetting field767 = new IntSetting("Range", 4, 3, 20, 1, "Range for renders");
     public final ColorSetting field768 = new ColorSetting("Current", new BozeDrawColor(-65536), "Color for blocks where mobs can currently spawn");
     public final ColorSetting field769 = new ColorSetting("Later", new BozeDrawColor(-256), "Color for blocks where mobs might spawn later (i.e. at night)");
+    private final IntSetting field767 = new IntSetting("Range", 4, 3, 20, 1, "Range for renders");
     private final Class3064<BlockRenderer> field770 = new Class3064<BlockRenderer>(this::lambda$new$0);
     private final List<BlockRenderer> field771 = new ArrayList();
     private final Mesh field772 = new ShaderMesh(ShaderRegistry.field2257, DrawMode.Lines, Attrib.Vec3, Attrib.Color);
 
     private SpawnESP() {
         super("SpawnESP", "Shows where mobs can spawn", Category.Render);
+    }
+
+    private static int method359(BlockPos var0, BlockState var1) {
+        if (!(var1.getBlock() instanceof AirBlock)) {
+            return 0;
+        } else {
+            BlockPos var5 = var0.down();
+            BlockState var6 = mc.world.getBlockState(var5);
+            if (var6.getBlock() == Blocks.BEDROCK) {
+                return 0;
+            } else {
+                if (!method360(var6)) {
+                    if (var6.getCollisionShape(mc.world, var5) != VoxelShapes.fullCube()) {
+                        return 0;
+                    }
+
+                    if (var6.isTransparent(mc.world, var5)) {
+                        return 0;
+                    }
+                }
+
+                if (mc.world.getLightLevel(LightType.BLOCK, var0) > 0) {
+                    return 0;
+                } else {
+                    return mc.world.getLightLevel(LightType.SKY, var0) > 0 ? 1 : 2;
+                }
+            }
+        }
+    }
+
+    private static boolean method360(BlockState var0) {
+        return var0.getBlock() instanceof SlabBlock && var0.get(SlabBlock.TYPE) == SlabType.TOP || var0.getBlock() instanceof StairsBlock && var0.get(StairsBlock.HALF) == BlockHalf.TOP;
     }
 
     @EventHandler
@@ -70,38 +102,6 @@ public class SpawnESP extends Module {
                 var6.method2029(var1);
             }
         }
-    }
-
-    private static int method359(BlockPos var0, BlockState var1) {
-        if (!(var1.getBlock() instanceof AirBlock)) {
-            return 0;
-        } else {
-            BlockPos var5 = var0.down();
-            BlockState var6 = mc.world.getBlockState(var5);
-            if (var6.getBlock() == Blocks.BEDROCK) {
-                return 0;
-            } else {
-                if (!method360(var6)) {
-                    if (var6.getCollisionShape(mc.world, var5) != VoxelShapes.fullCube()) {
-                        return 0;
-                    }
-
-                    if (var6.isTransparent(mc.world, var5)) {
-                        return 0;
-                    }
-                }
-
-                if (mc.world.getLightLevel(LightType.BLOCK, var0) > 0) {
-                    return 0;
-                } else {
-                    return mc.world.getLightLevel(LightType.SKY, var0) > 0 ? 1 : 2;
-                }
-            }
-        }
-    }
-
-    private static boolean method360(BlockState var0) {
-        return var0.getBlock() instanceof SlabBlock && var0.get(SlabBlock.TYPE) == SlabType.TOP || var0.getBlock() instanceof StairsBlock && var0.get(StairsBlock.HALF) == BlockHalf.TOP;
     }
 
     private BlockRenderer lambda$new$0() {

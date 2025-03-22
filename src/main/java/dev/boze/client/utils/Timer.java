@@ -15,11 +15,11 @@ public final class Timer {
         return this.field3929;
     }
 
-    public long getElapsedTime() {
-        return System.currentTimeMillis() - this.field3929;
-    }
-
     public void setLastTime(long time) {
         this.field3929 = time;
+    }
+
+    public long getElapsedTime() {
+        return System.currentTimeMillis() - this.field3929;
     }
 }

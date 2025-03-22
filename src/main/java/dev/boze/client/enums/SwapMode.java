@@ -5,8 +5,8 @@ public enum SwapMode {
     Silent(SlotSwapMode.Normal),
     Alt(SlotSwapMode.Alt);
 
-    public final SlotSwapMode field8;
     private static final SwapMode[] field9 = method4();
+    public final SlotSwapMode field8;
 
     SwapMode(SlotSwapMode var3) {
         this.field8 = var3;

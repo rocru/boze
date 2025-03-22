@@ -17,20 +17,6 @@ public class SetSettingsCommand extends Command {
         super("set", "Set", "Set settings");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        for (Module var6 : Boze.getModules().modules) {
-            LiteralArgumentBuilder<CommandSource> var7 = LiteralArgumentBuilder.literal(var6.internalName.toLowerCase(Locale.ROOT));
-            var7.then(method403("reset").executes(arg_0 -> SetSettingsCommand.lambda$build$0(var6, arg_0)));
-
-            for (Setting<?> var9 : var6.method1144()) {
-                var9.buildCommand(var7);
-            }
-
-            builder.then(var7);
-        }
-    }
-
     private static int lambda$build$0(Module var0, CommandContext var1) throws CommandSyntaxException {
         for (Setting<?> var6 : var0.method1144()) {
             var6.resetValue();
@@ -43,5 +29,19 @@ public class SetSettingsCommand extends Command {
         }
 
         return 1;
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        for (Module var6 : Boze.getModules().modules) {
+            LiteralArgumentBuilder<CommandSource> var7 = LiteralArgumentBuilder.literal(var6.internalName.toLowerCase(Locale.ROOT));
+            var7.then(method403("reset").executes(arg_0 -> SetSettingsCommand.lambda$build$0(var6, arg_0)));
+
+            for (Setting<?> var9 : var6.method1144()) {
+                var9.buildCommand(var7);
+            }
+
+            builder.then(var7);
+        }
     }
 }

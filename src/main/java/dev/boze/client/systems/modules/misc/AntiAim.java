@@ -37,6 +37,12 @@ public class AntiAim extends Module {
         super("AntiAim", "Spoof your rotations in various different ways", Category.Misc);
     }
 
+    private static void lambda$handleEvent$7() {
+    }
+
+    private static void lambda$handleEvent$6() {
+    }
+
     @Override
     public void onEnable() {
         this.field2863 = 0;
@@ -156,12 +162,6 @@ public class AntiAim extends Module {
         } else {
             movementEvent.method1074(new ActionWrapper(AntiAim::lambda$handleEvent$7, this.field2864, this.field2865));
         }
-    }
-
-    private static void lambda$handleEvent$7() {
-    }
-
-    private static void lambda$handleEvent$6() {
     }
 
     private boolean lambda$new$5() {

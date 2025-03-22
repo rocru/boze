@@ -23,6 +23,15 @@ public class ProtectedNamesSetting extends Setting<HashMap<String, String>> {
         super(name, description);
     }
 
+    private static void lambda$addValueToTag$4(NbtList var0, String var1, String var2) {
+        String var3 = var1 + ":" + var2;
+        var0.add(NbtString.of(var3));
+    }
+
+    private static void lambda$build$2(String var0, String var1) {
+        ChatInstance.method740("Media", " - (highlight)%s(default) - %s", var0, var1);
+    }
+
     @Override
     public HashMap<String, String> getValue() {
         return this.field976;
@@ -56,33 +65,6 @@ public class ProtectedNamesSetting extends Setting<HashMap<String, String>> {
         return true;
     }
 
-    @Override
-    public NbtCompound save(NbtCompound tag) {
-        NbtList nbtList = new NbtList();
-        this.field976.forEach((arg_0, arg_1) -> ProtectedNamesSetting.lambda$addValueToTag$4(nbtList, arg_0, arg_1));
-        tag.put("Names", nbtList);
-        return tag;
-    }
-
-    @Override
-    public HashMap<String, String> load(NbtCompound tag) {
-        if (tag.contains("Names")) {
-            NbtList var5 = tag.getList("Names", 8);
-            this.field976.clear();
-
-            for (NbtElement var7 : var5) {
-                if (var7 instanceof NbtString) {
-                    String[] var8 = var7.asString().split(":");
-                    if (var8.length == 2) {
-                        this.field976.put(var8[0], var8[1]);
-                    }
-                }
-            }
-        }
-
-        return this.field976;
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     // @Override
@@ -111,19 +93,37 @@ public class ProtectedNamesSetting extends Setting<HashMap<String, String>> {
     //   return this.method1282();
     // }
 
-    private static void lambda$addValueToTag$4(NbtList var0, String var1, String var2) {
-        String var3 = var1 + ":" + var2;
-        var0.add(NbtString.of(var3));
+    @Override
+    public NbtCompound save(NbtCompound tag) {
+        NbtList nbtList = new NbtList();
+        this.field976.forEach((arg_0, arg_1) -> ProtectedNamesSetting.lambda$addValueToTag$4(nbtList, arg_0, arg_1));
+        tag.put("Names", nbtList);
+        return tag;
+    }
+
+    @Override
+    public HashMap<String, String> load(NbtCompound tag) {
+        if (tag.contains("Names")) {
+            NbtList var5 = tag.getList("Names", 8);
+            this.field976.clear();
+
+            for (NbtElement var7 : var5) {
+                if (var7 instanceof NbtString) {
+                    String[] var8 = var7.asString().split(":");
+                    if (var8.length == 2) {
+                        this.field976.put(var8[0], var8[1]);
+                    }
+                }
+            }
+        }
+
+        return this.field976;
     }
 
     private int lambda$build$3(CommandContext var1) throws CommandSyntaxException {
         ChatInstance.method624("Protected Names: " + this.field976.size());
         this.field976.forEach(ProtectedNamesSetting::lambda$build$2);
         return 1;
-    }
-
-    private static void lambda$build$2(String var0, String var1) {
-        ChatInstance.method740("Media", " - (highlight)%s(default) - %s", var0, var1);
     }
 
     private int lambda$build$1(CommandContext var1) throws CommandSyntaxException {

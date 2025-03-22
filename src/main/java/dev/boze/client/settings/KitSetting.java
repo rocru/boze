@@ -24,8 +24,8 @@ import java.util.HashMap;
 import java.util.function.BooleanSupplier;
 
 public class KitSetting extends Setting<String> implements IMinecraft {
-    private String field2195;
     private final String field2196;
+    private String field2195;
     private HashMap<String, Integer> field2197 = null;
 
     public KitSetting(String name, String value, String description) {
@@ -50,6 +50,74 @@ public class KitSetting extends Setting<String> implements IMinecraft {
         super(name, description, visibility, parent);
         this.field2195 = value;
         this.field2196 = value;
+    }
+
+    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
+        ChatInstance.method624("Kits: " + ConfigManager.kits.listFiles().length);
+
+        for (File var7 : ConfigManager.kits.listFiles()) {
+            ChatInstance.method624(" - (highlight)" + com.google.common.io.Files.getNameWithoutExtension(var7.getName()));
+        }
+
+        return 1;
+    }
+
+    private static int lambda$build$2(CommandContext var0) throws CommandSyntaxException {
+        File var4 = new File(ConfigManager.kits, var0.getArgument("title", String.class) + ".json");
+        if (var4.exists()) {
+            var4.delete();
+            ChatInstance.method624("Deleted kit " + var0.getArgument("title", String.class));
+        } else {
+            ChatInstance.method625("Kit " + var0.getArgument("title", String.class) + " does not exist");
+        }
+
+        return 1;
+    }
+
+    private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
+        JsonObject var4 = new JsonObject();
+
+        for (int var5 = 0; var5 < mc.player.getInventory().size(); var5++) {
+            ItemStack var6 = mc.player.getInventory().getStack(var5);
+            if (!var6.isEmpty()) {
+                String var7 = var6.getItem().getName().getString();
+                if (var7 != null) {
+                    for (int var8 = 0; var8 <= 36; var8++) {
+                        if (!var4.has(var7 + ">" + var8)) {
+                            var4.add(var7 + ">" + var8, new JsonPrimitive(var5));
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        try {
+            BufferedWriter var12 = Files.newBufferedWriter(new File(ConfigManager.kits, var0.getArgument("title", String.class) + ".json").toPath());
+
+            try {
+                new GsonBuilder().setPrettyPrinting().create().toJson(var4, var12);
+                ChatInstance.method624("Saved kit " + var0.getArgument("title", String.class));
+            } catch (Throwable var10) {
+                if (var12 != null) {
+                    try {
+                        var12.close();
+                    } catch (Throwable var9) {
+                        var10.addSuppressed(var9);
+                    }
+                }
+
+                throw var10;
+            }
+
+            if (var12 != null) {
+                var12.close();
+            }
+        } catch (IOException var11) {
+            ChatInstance.method626("Error saving kit " + var0.getArgument("title", String.class));
+        }
+
+        return 1;
     }
 
     public HashMap<String, Integer> method1282() {
@@ -105,30 +173,6 @@ public class KitSetting extends Setting<String> implements IMinecraft {
         }
     }
 
-    @Override
-    public boolean buildCommand(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.then(method403("save").then(method402("title", StringArgumentType.string()).executes(KitSetting::lambda$build$0)));
-        builder.then(method403("select").then(method402("title", StringArgumentType.string()).executes(this::lambda$build$1)));
-        builder.then(method403("delete").then(method402("title", StringArgumentType.string()).executes(KitSetting::lambda$build$2)));
-        builder.then(method403("list").executes(KitSetting::lambda$build$3));
-        return true;
-    }
-
-    @Override
-    public NbtCompound save(NbtCompound tag) {
-        tag.putString("Value", this.field2195);
-        return tag;
-    }
-
-    @Override
-    public String load(NbtCompound tag) {
-        if (tag.contains("Value")) {
-            this.setValue(tag.getString("Value"));
-        }
-
-        return this.field2195;
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     // @Override
@@ -157,26 +201,28 @@ public class KitSetting extends Setting<String> implements IMinecraft {
     //   return this.method1283();
     //}
 
-    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
-        ChatInstance.method624("Kits: " + ConfigManager.kits.listFiles().length);
-
-        for (File var7 : ConfigManager.kits.listFiles()) {
-            ChatInstance.method624(" - (highlight)" + com.google.common.io.Files.getNameWithoutExtension(var7.getName()));
-        }
-
-        return 1;
+    @Override
+    public boolean buildCommand(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.then(method403("save").then(method402("title", StringArgumentType.string()).executes(KitSetting::lambda$build$0)));
+        builder.then(method403("select").then(method402("title", StringArgumentType.string()).executes(this::lambda$build$1)));
+        builder.then(method403("delete").then(method402("title", StringArgumentType.string()).executes(KitSetting::lambda$build$2)));
+        builder.then(method403("list").executes(KitSetting::lambda$build$3));
+        return true;
     }
 
-    private static int lambda$build$2(CommandContext var0) throws CommandSyntaxException {
-        File var4 = new File(ConfigManager.kits, var0.getArgument("title", String.class) + ".json");
-        if (var4.exists()) {
-            var4.delete();
-            ChatInstance.method624("Deleted kit " + var0.getArgument("title", String.class));
-        } else {
-            ChatInstance.method625("Kit " + var0.getArgument("title", String.class) + " does not exist");
+    @Override
+    public NbtCompound save(NbtCompound tag) {
+        tag.putString("Value", this.field2195);
+        return tag;
+    }
+
+    @Override
+    public String load(NbtCompound tag) {
+        if (tag.contains("Value")) {
+            this.setValue(tag.getString("Value"));
         }
 
-        return 1;
+        return this.field2195;
     }
 
     private int lambda$build$1(CommandContext var1) throws CommandSyntaxException {
@@ -190,52 +236,6 @@ public class KitSetting extends Setting<String> implements IMinecraft {
             }
         } else {
             ChatInstance.method625("Kit " + var1.getArgument("title", String.class) + " does not exist");
-        }
-
-        return 1;
-    }
-
-    private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
-        JsonObject var4 = new JsonObject();
-
-        for (int var5 = 0; var5 < mc.player.getInventory().size(); var5++) {
-            ItemStack var6 = mc.player.getInventory().getStack(var5);
-            if (!var6.isEmpty()) {
-                String var7 = var6.getItem().getName().getString();
-                if (var7 != null) {
-                    for (int var8 = 0; var8 <= 36; var8++) {
-                        if (!var4.has(var7 + ">" + var8)) {
-                            var4.add(var7 + ">" + var8, new JsonPrimitive(var5));
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        try {
-            BufferedWriter var12 = Files.newBufferedWriter(new File(ConfigManager.kits, var0.getArgument("title", String.class) + ".json").toPath());
-
-            try {
-                new GsonBuilder().setPrettyPrinting().create().toJson(var4, var12);
-                ChatInstance.method624("Saved kit " + var0.getArgument("title", String.class));
-            } catch (Throwable var10) {
-                if (var12 != null) {
-                    try {
-                        var12.close();
-                    } catch (Throwable var9) {
-                        var10.addSuppressed(var9);
-                    }
-                }
-
-                throw var10;
-            }
-
-            if (var12 != null) {
-                var12.close();
-            }
-        } catch (IOException var11) {
-            ChatInstance.method626("Error saving kit " + var0.getArgument("title", String.class));
         }
 
         return 1;

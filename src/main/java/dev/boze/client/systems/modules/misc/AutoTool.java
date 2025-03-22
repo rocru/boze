@@ -44,10 +44,66 @@ public class AutoTool extends Module {
     );
     private final EnumSetting<AutoToolPrefer> field2905 = new EnumSetting<AutoToolPrefer>("EChests", AutoToolPrefer.Fortune, "Preferred tool for e-chests");
     private final BooleanSetting field2906 = new BooleanSetting("Preserve", false, "Don't equip tools if they're about to break");
-    public int field2907 = -1;
-    private int field2908 = -1;
     private final dev.boze.client.utils.Timer field2909 = new dev.boze.client.utils.Timer();
     private final dev.boze.client.utils.Timer field2910 = new dev.boze.client.utils.Timer();
+    public int field2907 = -1;
+    private int field2908 = -1;
+
+    public AutoTool() {
+        super("AutoTool", "Automatically swaps to the best tool tool when you mine", Category.Misc);
+        this.field435 = true;
+    }
+
+    public static float method1683(ItemStack itemStack, BlockState state) {
+        if (!(itemStack.getItem() instanceof ToolItem) && !(itemStack.getItem() instanceof ShearsItem)) {
+            return -1.0F;
+        } else if (INSTANCE.field2906.getValue() && itemStack.getMaxDamage() - itemStack.getDamage() <= 15) {
+            return -1.0F;
+        } else {
+            float var5 = 0.0F;
+            var5 += itemStack.getMiningSpeedMultiplier(state);
+            if (var5 <= mc.player.getMainHandStack().getMiningSpeedMultiplier(state)) {
+                return -1.0F;
+            } else {
+                var5 *= 1000.0F;
+                var5 += (float) ItemEnchantmentUtils.getEnchantmentLevel(itemStack, Enchantments.UNBREAKING);
+                var5 += (float) ItemEnchantmentUtils.getEnchantmentLevel(itemStack, Enchantments.EFFICIENCY);
+                var5 += (float) ItemEnchantmentUtils.getEnchantmentLevel(itemStack, Enchantments.MENDING);
+                AutoToolPrefer var6 = method1684(state.getBlock());
+                if (var6 == AutoToolPrefer.Fortune) {
+                    var5 += (float) ItemEnchantmentUtils.getEnchantmentLevel(itemStack, Enchantments.FORTUNE);
+                }
+
+                if (var6 == AutoToolPrefer.SilkTouch) {
+                    var5 += (float) ItemEnchantmentUtils.getEnchantmentLevel(itemStack, Enchantments.SILK_TOUCH);
+                }
+
+                return var5;
+            }
+        }
+    }
+
+    private static AutoToolPrefer method1684(Block var0) {
+        if (var0 instanceof ExperienceDroppingBlock || var0 instanceof RedstoneOreBlock || var0 == Blocks.NETHER_QUARTZ_ORE) {
+            return INSTANCE.field2903.getValue();
+        } else if (var0 == Blocks.GLOWSTONE) {
+            return INSTANCE.field2904.getValue();
+        } else {
+            return var0 == Blocks.ENDER_CHEST ? INSTANCE.field2905.getValue() : INSTANCE.field2902.getValue();
+        }
+    }
+
+    private static Float lambda$onMinePre$2(PreBlockBreakEvent var0, ItemStack var1) {
+        return method1683(var1, mc.world.getBlockState(var0.method1024()));
+    }
+
+    private static Float lambda$handleHotbar$1(BlockPos var0, ItemStack var1) {
+        return method1683(var1, mc.world.getBlockState(var0));
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
 
     private boolean method1678() {
         return Options.INSTANCE.method1971() || this.field2898.getValue() == AutoToolMode.Ghost;
@@ -55,11 +111,6 @@ public class AutoTool extends Module {
 
     private boolean method1679() {
         return !this.method1678();
-    }
-
-    public AutoTool() {
-        super("AutoTool", "Automatically swaps to the best tool tool when you mine", Category.Misc);
-        this.field435 = true;
     }
 
     @Override
@@ -122,56 +173,5 @@ public class AutoTool extends Module {
                 }
             }
         }
-    }
-
-    public static float method1683(ItemStack itemStack, BlockState state) {
-        if (!(itemStack.getItem() instanceof ToolItem) && !(itemStack.getItem() instanceof ShearsItem)) {
-            return -1.0F;
-        } else if (INSTANCE.field2906.getValue() && itemStack.getMaxDamage() - itemStack.getDamage() <= 15) {
-            return -1.0F;
-        } else {
-            float var5 = 0.0F;
-            var5 += itemStack.getMiningSpeedMultiplier(state);
-            if (var5 <= mc.player.getMainHandStack().getMiningSpeedMultiplier(state)) {
-                return -1.0F;
-            } else {
-                var5 *= 1000.0F;
-                var5 += (float) ItemEnchantmentUtils.getEnchantmentLevel(itemStack, Enchantments.UNBREAKING);
-                var5 += (float) ItemEnchantmentUtils.getEnchantmentLevel(itemStack, Enchantments.EFFICIENCY);
-                var5 += (float) ItemEnchantmentUtils.getEnchantmentLevel(itemStack, Enchantments.MENDING);
-                AutoToolPrefer var6 = method1684(state.getBlock());
-                if (var6 == AutoToolPrefer.Fortune) {
-                    var5 += (float) ItemEnchantmentUtils.getEnchantmentLevel(itemStack, Enchantments.FORTUNE);
-                }
-
-                if (var6 == AutoToolPrefer.SilkTouch) {
-                    var5 += (float) ItemEnchantmentUtils.getEnchantmentLevel(itemStack, Enchantments.SILK_TOUCH);
-                }
-
-                return var5;
-            }
-        }
-    }
-
-    private static AutoToolPrefer method1684(Block var0) {
-        if (var0 instanceof ExperienceDroppingBlock || var0 instanceof RedstoneOreBlock || var0 == Blocks.NETHER_QUARTZ_ORE) {
-            return INSTANCE.field2903.getValue();
-        } else if (var0 == Blocks.GLOWSTONE) {
-            return INSTANCE.field2904.getValue();
-        } else {
-            return var0 == Blocks.ENDER_CHEST ? INSTANCE.field2905.getValue() : INSTANCE.field2902.getValue();
-        }
-    }
-
-    private static Float lambda$onMinePre$2(PreBlockBreakEvent var0, ItemStack var1) {
-        return method1683(var1, mc.world.getBlockState(var0.method1024()));
-    }
-
-    private static Float lambda$handleHotbar$1(BlockPos var0, ItemStack var1) {
-        return method1683(var1, mc.world.getBlockState(var0));
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

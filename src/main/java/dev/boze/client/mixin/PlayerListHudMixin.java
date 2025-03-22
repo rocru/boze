@@ -15,25 +15,25 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({PlayerListHud.class})
+@Mixin(PlayerListHud.class)
 public abstract class PlayerListHudMixin {
     @Shadow
     @Final
     private MinecraftClient client;
 
     @ModifyConstant(
-            constant = {@Constant(
+            constant = @Constant(
                     longValue = 80L
-            )},
-            method = {"collectPlayerEntries"}
+            ),
+            method = "collectPlayerEntries"
     )
     private long modifyCount(long var1) {
         return BetterTab.INSTANCE.isEnabled() ? (long) BetterTab.INSTANCE.field2914.getValue().intValue() : var1;
     }
 
     @Inject(
-            method = {"getPlayerName"},
-            at = {@At("HEAD")},
+            method = "getPlayerName",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void getPlayerName(PlayerListEntry playerListEntry, CallbackInfoReturnable<Text> info) {
@@ -43,7 +43,7 @@ public abstract class PlayerListHudMixin {
     }
 
     @ModifyArg(
-            method = {"render"},
+            method = "render",
             at = @At(
                     value = "INVOKE",
                     target = "Ljava/lang/Math;min(II)I"
@@ -55,18 +55,18 @@ public abstract class PlayerListHudMixin {
     }
 
     @ModifyConstant(
-            constant = {@Constant(
+            constant = @Constant(
                     intValue = 20
-            )},
-            method = {"render"}
+            ),
+            method = "render"
     )
     private int modifyHeight(int var1) {
         return BetterTab.INSTANCE.isEnabled() ? BetterTab.INSTANCE.field2915.getValue() : var1;
     }
 
     @Inject(
-            method = {"renderLatencyIcon"},
-            at = {@At("HEAD")},
+            method = "renderLatencyIcon",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderLatencyIcon(DrawContext var1, int var2, int var3, int var4, PlayerListEntry var5, CallbackInfo var6) {

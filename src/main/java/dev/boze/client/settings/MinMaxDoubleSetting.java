@@ -11,13 +11,13 @@ import java.util.Locale;
 import java.util.function.BooleanSupplier;
 
 public class MinMaxDoubleSetting extends Setting<double[]> {
-    private final double[] field2198;
-    private final double[] field2199;
-    private double field2200;
     public final double field2201;
     public final double field2202;
     public final double field2203;
     public final boolean field2204;
+    private final double[] field2198;
+    private final double[] field2199;
+    private double field2200;
 
     public MinMaxDoubleSetting(String name, double[] value, double min, double max, double step, String description) {
         super(name, description);

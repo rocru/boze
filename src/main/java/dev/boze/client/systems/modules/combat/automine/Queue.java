@@ -10,7 +10,6 @@ import net.minecraft.util.math.BlockPos;
 import java.util.LinkedList;
 
 public class Queue implements IMinecraft, SettingsGroup {
-    final LinkedList<BlockDirectionInfo> field87 = new LinkedList();
     public final IntSetting field88 = new IntSetting("MaxQueue", 0, 0, 10, 1, "The max queue size\nIf 0, forces instant mining of manually selected blocks");
     public final EnumSetting<AutoMineManualPriorityMode> field89 = new EnumSetting<AutoMineManualPriorityMode>(
             "ManualPriority",
@@ -20,16 +19,17 @@ public class Queue implements IMinecraft, SettingsGroup {
     public final BooleanSetting field90 = new BooleanSetting(
             "Repetitive", false, "Add blocks repetitively when holding down left click\nLets you mine several blocks without clicking several times\n"
     );
+    final LinkedList<BlockDirectionInfo> field87 = new LinkedList();
     private final SettingBlock field91 = new SettingBlock("Queue", "Queue settings", this.field88, this.field89, this.field90);
+
+    public Queue(AutoMine var1) {
+        this.field91.setVisibility(var1.advanced::getValue);
+    }
 
     private static void method1800(String var0) {
         if (AutoMine.field2518 && mc.player != null) {
             System.out.println("[AutoMine.Queue @" + mc.player.age + "] " + var0);
         }
-    }
-
-    public Queue(AutoMine var1) {
-        this.field91.setVisibility(var1.advanced::getValue);
     }
 
     @Override

@@ -7,11 +7,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({PlayerInventory.class})
+@Mixin(PlayerInventory.class)
 public class PlayerInventoryMixin {
     @Inject(
-            method = {"getBlockBreakingSpeed"},
-            at = {@At("RETURN")},
+            method = "getBlockBreakingSpeed",
+            at = @At("RETURN"),
             cancellable = true
     )
     private void onGetBlockBreakingSpeed(CallbackInfoReturnable<Float> var1) {

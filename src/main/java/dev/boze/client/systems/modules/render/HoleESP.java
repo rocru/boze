@@ -34,18 +34,7 @@ import java.util.List;
 
 public class HoleESP extends Module {
     public static final HoleESP INSTANCE = new HoleESP();
-    private final EnumSetting<HoleESPOptimization> field851 = new EnumSetting<HoleESPOptimization>(
-            "Optimization", HoleESPOptimization.Normal, "Mode for hole scanning"
-    );
-    private final IntSetting field852 = new IntSetting("ScanInterval", 5, 1, 10, 1, "Interval in ticks for scanning for holes", this::lambda$new$0);
-    private final BooleanSetting field853 = new BooleanSetting("FrustumCheck", false, "Check if holes are in your FOV when scanning");
-    private final BooleanSetting field854 = new BooleanSetting("Double", true, "Scan double holes");
-    private final EnumSetting<HoleESPIgnoreOwn> field855 = new EnumSetting<HoleESPIgnoreOwn>("IgnoreOwn", HoleESPIgnoreOwn.Off, "Don't render your own hole");
-    private final IntSetting field856 = new IntSetting("Range", 16, 4, 56, 1, "Horizontal range for hole scanning");
-    private final IntSetting field857 = new IntSetting("DownRange", 5, 0, 50, 1, "Downwards range for hole scanning");
-    private final IntSetting field858 = new IntSetting("UpRange", 2, 0, 50, 1, "Upwards range for hole scanning");
     public final EnumSetting<HoleESPMode> field859 = new EnumSetting<HoleESPMode>("Mode", HoleESPMode.Simple, "Mode for drawing holes");
-    private final BooleanSetting field860 = new BooleanSetting("SidesOnly", false, "Only render sides of holes");
     public final EnumSetting<ShaderMode> field861 = new EnumSetting<ShaderMode>("Shader", ShaderMode.Colored, "Shader to use", this::lambda$new$1);
     public final BooleanSetting field862 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field861);
     public final IntSetting field863 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field861);
@@ -56,6 +45,17 @@ public class HoleESP extends Module {
     public final StringSetting field868 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$3, this.field861);
     public final ColorSetting field869 = new ColorSetting("Fill", new BozeDrawColor(1681640397), "Color for shader fill", this::lambda$new$4, this.field861);
     public final ColorSetting field870 = new ColorSetting("Outline", new BozeDrawColor(-12858419), "Color for shader outline", this::lambda$new$5, this.field861);
+    private final EnumSetting<HoleESPOptimization> field851 = new EnumSetting<HoleESPOptimization>(
+            "Optimization", HoleESPOptimization.Normal, "Mode for hole scanning"
+    );
+    private final IntSetting field852 = new IntSetting("ScanInterval", 5, 1, 10, 1, "Interval in ticks for scanning for holes", this::lambda$new$0);
+    private final BooleanSetting field853 = new BooleanSetting("FrustumCheck", false, "Check if holes are in your FOV when scanning");
+    private final BooleanSetting field854 = new BooleanSetting("Double", true, "Scan double holes");
+    private final EnumSetting<HoleESPIgnoreOwn> field855 = new EnumSetting<HoleESPIgnoreOwn>("IgnoreOwn", HoleESPIgnoreOwn.Off, "Don't render your own hole");
+    private final IntSetting field856 = new IntSetting("Range", 16, 4, 56, 1, "Horizontal range for hole scanning");
+    private final IntSetting field857 = new IntSetting("DownRange", 5, 0, 50, 1, "Downwards range for hole scanning");
+    private final IntSetting field858 = new IntSetting("UpRange", 2, 0, 50, 1, "Upwards range for hole scanning");
+    private final BooleanSetting field860 = new BooleanSetting("SidesOnly", false, "Only render sides of holes");
     private final BooleanSetting field871 = new BooleanSetting("Shrink", false, "Shrink hole height");
     private final FloatSetting field872 = new FloatSetting("MinDist", 10.0F, 0.0F, 20.0F, 0.5F, "Min distance for shrinking", this.field871);
     private final FloatSetting field873 = new FloatSetting("Factor", 0.15F, 0.01F, 0.5F, 0.01F, "Factor for shrinking", this.field871);
@@ -96,6 +96,37 @@ public class HoleESP extends Module {
 
     public HoleESP() {
         super("HoleESP", "Shows safe holes for Crystal PVP", Category.Render);
+    }
+
+    public static boolean method2101(BlockPos pos) {
+        if (mc.world.getBlockState(pos).isAir() && mc.world.getBlockState(pos.up()).isAir() && mc.world.getBlockState(pos.up(2)).isAir()) {
+            for (Direction var7 : Direction.values()) {
+                if (var7 != Direction.UP && mc.world.getBlockState(pos.offset(var7)).getBlock() != Blocks.BEDROCK) {
+                    return false;
+                }
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean method2102(BlockPos pos) {
+        if (mc.world.getBlockState(pos).isAir() && mc.world.getBlockState(pos.up()).isAir() && mc.world.getBlockState(pos.up(2)).isAir()) {
+            for (Direction var7 : Direction.values()) {
+                if (var7 != Direction.UP) {
+                    Block var8 = mc.world.getBlockState(pos.offset(var7)).getBlock();
+                    if (var8 != Blocks.BEDROCK && var8 != Blocks.OBSIDIAN && var8 != Blocks.CRYING_OBSIDIAN) {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -405,37 +436,6 @@ public class HoleESP extends Module {
                 var5 -= this.field872.getValue().floatValue();
                 return 1.0 - MathHelper.clamp(var5 / (1.0 / (double) this.field873.getValue().floatValue()), 0.0, 1.0);
             }
-        }
-    }
-
-    public static boolean method2101(BlockPos pos) {
-        if (mc.world.getBlockState(pos).isAir() && mc.world.getBlockState(pos.up()).isAir() && mc.world.getBlockState(pos.up(2)).isAir()) {
-            for (Direction var7 : Direction.values()) {
-                if (var7 != Direction.UP && mc.world.getBlockState(pos.offset(var7)).getBlock() != Blocks.BEDROCK) {
-                    return false;
-                }
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static boolean method2102(BlockPos pos) {
-        if (mc.world.getBlockState(pos).isAir() && mc.world.getBlockState(pos.up()).isAir() && mc.world.getBlockState(pos.up(2)).isAir()) {
-            for (Direction var7 : Direction.values()) {
-                if (var7 != Direction.UP) {
-                    Block var8 = mc.world.getBlockState(pos.offset(var7)).getBlock();
-                    if (var8 != Blocks.BEDROCK && var8 != Blocks.OBSIDIAN && var8 != Blocks.CRYING_OBSIDIAN) {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        } else {
-            return false;
         }
     }
 

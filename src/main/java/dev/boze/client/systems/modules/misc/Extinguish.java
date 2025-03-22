@@ -38,11 +38,11 @@ public class Extinguish extends Module {
     private final InteractionHandler field2920 = new InteractionHandler();
     private final BooleanSetting field2921 = new BooleanSetting("MultiTask", false, "Extinguish while already using items");
     private final SwapHandler field2922 = new SwapHandler(this, 250);
+    private final dev.boze.client.utils.Timer field2926 = new dev.boze.client.utils.Timer();
+    private final dev.boze.client.utils.Timer field2927 = new dev.boze.client.utils.Timer();
     private HitResult[] field2923 = null;
     private BlockHitResult field2924 = null;
     private RotationHelper field2925;
-    private final dev.boze.client.utils.Timer field2926 = new dev.boze.client.utils.Timer();
-    private final dev.boze.client.utils.Timer field2927 = new dev.boze.client.utils.Timer();
     private Entity field2928 = null;
 
     private Extinguish() {

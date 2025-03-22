@@ -42,6 +42,7 @@ import java.util.LinkedList;
 public class ElytraRecast extends Module {
     public static final ElytraRecast INSTANCE = new ElytraRecast();
     public final IntSetting field566 = new IntSetting("Pitch", 75, 0, 90, 1, "Pitch");
+    public final Timer field580 = new Timer();
     private final EnumSetting<ElytraRecastDirection> field567 = new EnumSetting<ElytraRecastDirection>(
             "YawSnap", ElytraRecastDirection.Off, "Snap yaw to specified direction"
     );
@@ -68,16 +69,15 @@ public class ElytraRecast extends Module {
             "AutoMend", true, "Automatically mend elytra\nThis uses the AutoMend module, make sure it's configured properly"
     );
     private final BooleanSetting field579 = new BooleanSetting("FreeLook", false, "Look around without rotating");
-    public final Timer field580 = new Timer();
-    public boolean field581;
-    public boolean field582 = false;
     private final Timer field583 = new Timer();
-    private int field584 = 0;
-    private double field585 = 0.0;
-    private boolean field586 = true;
     private final LinkedList<Packet<?>> field587 = new LinkedList();
     private final LinkedList<Packet<?>> field588 = new LinkedList();
     private final Timer field589 = new Timer();
+    public boolean field581;
+    public boolean field582 = false;
+    private int field584 = 0;
+    private double field585 = 0.0;
+    private boolean field586 = true;
     private boolean field590 = false;
     private double field591 = 0.0;
     private Vec3d field592 = null;
@@ -95,6 +95,46 @@ public class ElytraRecast extends Module {
     public ElytraRecast() {
         super("ElytraRecast", "Fast elytra travel on highways", Category.Movement);
         this.field579.method401(this::lambda$new$0);
+    }
+
+    public static boolean method286(Vec3d bottom, float yaw, double range) {
+        Vec3d var7 = method289(0.0F, yaw).multiply(range);
+        Vec3d var8 = method289(0.0F, yaw + 90.0F).multiply((double) mc.player.getWidth() * 0.75);
+        Vec3d var9 = method289(0.0F, yaw - 90.0F).multiply((double) mc.player.getWidth() * 0.75);
+        Vec3d var10 = bottom.add(0.0, mc.player.getBoundingBox().maxY - mc.player.getBoundingBox().minY, 0.0);
+        Vec3d var11 = bottom.add(var8);
+        Vec3d var12 = var10.add(var8);
+        Vec3d var13 = bottom.add(var9);
+        Vec3d var14 = var10.add(var9);
+        return method117(bottom, bottom.add(var7))
+                || method117(var10, var10.add(var7))
+                || method117(var11, var11.add(var7))
+                || method117(var12, var12.add(var7))
+                || method117(var13, var13.add(var7))
+                || method117(var14, var14.add(var7));
+    }
+
+    private static boolean method117(Vec3d var0, Vec3d var1) {
+        return mc.world.raycast(new RaycastContext(var0, var1, ShapeType.COLLIDER, FluidHandling.NONE, mc.player)).getType() != Type.MISS;
+    }
+
+    public static boolean method1972() {
+        ItemStack var3 = mc.player.getEquippedStack(EquipmentSlot.CHEST);
+        return !mc.player.getAbilities().flying && !mc.player.hasVehicle() && !mc.player.isClimbing() && var3.isOf(Items.ELYTRA) && ElytraItem.isUsable(var3);
+    }
+
+    private static Vec3d method289(float var0, float var1) {
+        float var2 = var0 * (float) (Math.PI / 180.0);
+        float var3 = -var1 * (float) (Math.PI / 180.0);
+        float var4 = MathHelper.cos(var3);
+        float var5 = MathHelper.sin(var3);
+        float var6 = MathHelper.cos(var2);
+        float var7 = MathHelper.sin(var2);
+        return new Vec3d(var5 * var6, -var7, var4 * var6);
+    }
+
+    public static boolean method1974() {
+        return INSTANCE.isEnabled() && INSTANCE.field579.getValue() && mc.player != null && mc.player.isFallFlying();
     }
 
     @Override
@@ -350,27 +390,6 @@ public class ElytraRecast extends Module {
         }
     }
 
-    public static boolean method286(Vec3d bottom, float yaw, double range) {
-        Vec3d var7 = method289(0.0F, yaw).multiply(range);
-        Vec3d var8 = method289(0.0F, yaw + 90.0F).multiply((double) mc.player.getWidth() * 0.75);
-        Vec3d var9 = method289(0.0F, yaw - 90.0F).multiply((double) mc.player.getWidth() * 0.75);
-        Vec3d var10 = bottom.add(0.0, mc.player.getBoundingBox().maxY - mc.player.getBoundingBox().minY, 0.0);
-        Vec3d var11 = bottom.add(var8);
-        Vec3d var12 = var10.add(var8);
-        Vec3d var13 = bottom.add(var9);
-        Vec3d var14 = var10.add(var9);
-        return method117(bottom, bottom.add(var7))
-                || method117(var10, var10.add(var7))
-                || method117(var11, var11.add(var7))
-                || method117(var12, var12.add(var7))
-                || method117(var13, var13.add(var7))
-                || method117(var14, var14.add(var7));
-    }
-
-    private static boolean method117(Vec3d var0, Vec3d var1) {
-        return mc.world.raycast(new RaycastContext(var0, var1, ShapeType.COLLIDER, FluidHandling.NONE, mc.player)).getType() != Type.MISS;
-    }
-
     private double method1389(double var1) {
         return var1 - Math.floor(var1);
     }
@@ -407,11 +426,6 @@ public class ElytraRecast extends Module {
         return method1972() && this.method1973();
     }
 
-    public static boolean method1972() {
-        ItemStack var3 = mc.player.getEquippedStack(EquipmentSlot.CHEST);
-        return !mc.player.getAbilities().flying && !mc.player.hasVehicle() && !mc.player.isClimbing() && var3.isOf(Items.ELYTRA) && ElytraItem.isUsable(var3);
-    }
-
     private boolean method1973() {
         if (!mc.player.isTouchingWater() && !mc.player.hasStatusEffect(StatusEffects.LEVITATION)) {
             ItemStack var4 = mc.player.getEquippedStack(EquipmentSlot.CHEST);
@@ -424,16 +438,6 @@ public class ElytraRecast extends Module {
         } else {
             return false;
         }
-    }
-
-    private static Vec3d method289(float var0, float var1) {
-        float var2 = var0 * (float) (Math.PI / 180.0);
-        float var3 = -var1 * (float) (Math.PI / 180.0);
-        float var4 = MathHelper.cos(var3);
-        float var5 = MathHelper.sin(var3);
-        float var6 = MathHelper.cos(var2);
-        float var7 = MathHelper.sin(var2);
-        return new Vec3d(var5 * var6, -var7, var4 * var6);
     }
 
     public void method1955(double dX, double dY) {
@@ -478,10 +482,6 @@ public class ElytraRecast extends Module {
             mc.player.setYaw(mc.player.getYaw() + var6);
             mc.player.setPitch(MathHelper.clamp(mc.player.getPitch() + var7, -90.0F, 90.0F));
         }
-    }
-
-    public static boolean method1974() {
-        return INSTANCE.isEnabled() && INSTANCE.field579.getValue() && mc.player != null && mc.player.isFallFlying();
     }
 
     private void lambda$new$0(Boolean var1) {

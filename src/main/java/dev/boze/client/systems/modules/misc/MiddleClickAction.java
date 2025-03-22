@@ -36,13 +36,38 @@ public class MiddleClickAction extends Module {
             "Mode", MiddleClickMode.Anarchy, "Mode for middle click action", MiddleClickAction::lambda$new$0
     );
     private final IntSetting field491 = new IntSetting("XpDelay", 0, 0, 5, 1, "Delay for throwing xp when middle clicking", this::method1972);
-    public BooleanSetting field492 = new BooleanSetting("NoMCPick", true, "Cancel vanilla block middle click pick", this::method1972);
     private final EnumSetting<MiddleClick> field493 = new EnumSetting<MiddleClick>("Air", MiddleClick.XP, "What to do when facing the air", this::method1972);
     private final EnumSetting<MiddleClick> field494 = new EnumSetting<MiddleClick>("Entity", MiddleClick.Friend, "What to do when facing an entity", this::method1972);
     private final EnumSetting<MiddleClick> field495 = new EnumSetting<MiddleClick>("Block", MiddleClick.XP, "What to do when facing a block", this::method1972);
     private final EnumSetting<MiddleClick> field496 = new EnumSetting<MiddleClick>("Flying", MiddleClick.Rocket, "What to do when elytra flying", this::method1972);
     private final EnumSetting<SwapMode> field497 = new EnumSetting<SwapMode>("Swap", SwapMode.Silent, "Swap mode for item actions", this::lambda$new$1);
     private final dev.boze.client.utils.Timer field498 = new dev.boze.client.utils.Timer();
+    public BooleanSetting field492 = new BooleanSetting("NoMCPick", true, "Cancel vanilla block middle click pick", this::method1972);
+
+    public MiddleClickAction() {
+        super("MCA", "Middle Click Action\nIn Ghost mode, this is just middle click friend\n", Category.Misc);
+        this.field435 = true;
+    }
+
+    private static boolean lambda$doAction$5(ItemStack var0) {
+        return var0.getItem() == Items.FIREWORK_ROCKET;
+    }
+
+    private static boolean lambda$doAction$4(ItemStack var0) {
+        return var0.getItem() == Items.EXPERIENCE_BOTTLE;
+    }
+
+    private static boolean lambda$doAction$3(ItemStack var0) {
+        return var0.getItem() == Items.ENDER_PEARL;
+    }
+
+    private static boolean lambda$doActionIfXp$2(ItemStack var0) {
+        return var0.getItem() == Items.EXPERIENCE_BOTTLE;
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
 
     private boolean method1971() {
         return Options.INSTANCE.method1971() || this.field490.getValue() == MiddleClickMode.Ghost;
@@ -50,11 +75,6 @@ public class MiddleClickAction extends Module {
 
     private boolean method1972() {
         return !this.method1971();
-    }
-
-    public MiddleClickAction() {
-        super("MCA", "Middle Click Action\nIn Ghost mode, this is just middle click friend\n", Category.Misc);
-        this.field435 = true;
     }
 
     @EventHandler
@@ -160,22 +180,6 @@ public class MiddleClickAction extends Module {
         }
     }
 
-    private static boolean lambda$doAction$5(ItemStack var0) {
-        return var0.getItem() == Items.FIREWORK_ROCKET;
-    }
-
-    private static boolean lambda$doAction$4(ItemStack var0) {
-        return var0.getItem() == Items.EXPERIENCE_BOTTLE;
-    }
-
-    private static boolean lambda$doAction$3(ItemStack var0) {
-        return var0.getItem() == Items.ENDER_PEARL;
-    }
-
-    private static boolean lambda$doActionIfXp$2(ItemStack var0) {
-        return var0.getItem() == Items.EXPERIENCE_BOTTLE;
-    }
-
     private boolean lambda$new$1() {
         return this.method1972()
                 && (
@@ -184,9 +188,5 @@ public class MiddleClickAction extends Module {
                         || this.field495.getValue().field1797
                         || this.field496.getValue().field1797
         );
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

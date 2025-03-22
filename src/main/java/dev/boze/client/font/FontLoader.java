@@ -18,36 +18,43 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.file.Files;
-import java.util.Arrays;
 
 public class FontLoader implements IFontRender, IMinecraft {
-    public static boolean field1062 = false;
     public static final RGBAColor field1063 = new RGBAColor(60, 60, 60, 180);
     public static final BozeDrawColor field1064 = new BozeDrawColor(60, 60, 60, 180);
+    public static boolean field1062 = false;
     private final Mesh field1065 = new ShaderMesh(ShaderRegistry.field2258, DrawMode.Triangles, Attrib.Vec2, Attrib.Vec2, Attrib.Color);
     private final Mesh field1066 = new TextureShaderMesh(ShaderRegistry.field2259, DrawMode.Triangles, Attrib.Vec2, Attrib.Vec2, Attrib.Color);
     private final Mesh field1067 = new ShaderMesh(
             ShaderRegistry.field2261, DrawMode.Triangles, Attrib.Vec2, Attrib.Vec2, Attrib.Color, Attrib.Float, Attrib.Vec2, Attrib.Float, Attrib.Vec2
     );
     private final GlyphBuffer[] field1068;
+    private final int field1073;
+    private final double field1074;
     private GlyphBuffer field1069;
     private boolean field1070;
     private boolean field1071;
     private double field1072 = 1.0;
-    private final int field1073;
-    private final double field1074;
 
     public FontLoader(File file) {
-        if (!file.exists()) throw new RuntimeException(file.getAbsolutePath());
-        byte[] var5 = FontReader.read(file);
-        if (var5.length == 0) {
+//        if (!file.exists()) throw new RuntimeException(file.getAbsolutePath());
+        byte[] var5 = new byte[0];
+        if (file.exists()) {
+            var5 = FontReader.read(file);
+            if (var5.length == 0)
+                try {
+                    var5 = Files.readAllBytes(file.toPath());
+                } catch (Throwable _t) {
+                    _t.printStackTrace(System.err);
+                }
+        }
+        if (var5.length == 0)
             try {
-                var5 = Files.readAllBytes(file.toPath());
+                var5 = FontLoader.class.getClassLoader().getResourceAsStream("assets/boze/fonts/lexend.ttf").readAllBytes();
             } catch (Throwable _t) {
                 _t.printStackTrace(System.err);
             }
-            if (var5.length == 0) throw new RuntimeException(file.getAbsolutePath());
-        }
+        if (var5.length == 0) throw new RuntimeException(file.getAbsolutePath());
         ByteBuffer var6 = BufferUtils.createByteBuffer(var5.length).put(var5);
         this.field1068 = new GlyphBuffer[9];
 
@@ -72,6 +79,24 @@ public class FontLoader implements IFontRender, IMinecraft {
 
         this.field1073 = 18;
         this.field1074 = 1.0;
+    }
+
+    private static byte[] readInputStream(InputStream var0) {
+        try {
+            ByteArrayOutputStream var4 = new ByteArrayOutputStream();
+            byte[] var5 = new byte[256];
+
+            int var6;
+            while ((var6 = var0.read(var5)) > 0) {
+                var4.write(var5, 0, var6);
+            }
+
+            var0.close();
+            return var4.toByteArray();
+        } catch (IOException var7) {
+            Boze.LOG.error("Failed to read bytes from input stream for font");
+            return new byte[0];
+        }
     }
 
     @Override
@@ -201,24 +226,6 @@ public class FontLoader implements IFontRender, IMinecraft {
 
             this.field1070 = false;
             this.field1072 = 1.0;
-        }
-    }
-
-    private static byte[] readInputStream(InputStream var0) {
-        try {
-            ByteArrayOutputStream var4 = new ByteArrayOutputStream();
-            byte[] var5 = new byte[256];
-
-            int var6;
-            while ((var6 = var0.read(var5)) > 0) {
-                var4.write(var5, 0, var6);
-            }
-
-            var0.close();
-            return var4.toByteArray();
-        } catch (IOException var7) {
-            Boze.LOG.error("Failed to read bytes from input stream for font");
-            return new byte[0];
         }
     }
 

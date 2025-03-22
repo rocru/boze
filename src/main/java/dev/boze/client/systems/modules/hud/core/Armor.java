@@ -15,6 +15,8 @@ import net.minecraft.item.ElytraItem;
 import net.minecraft.item.ItemStack;
 
 public class Armor extends HUDModule {
+    public static final Armor INSTANCE = new Armor();
+    private static final MatrixStack field2592 = new MatrixStack();
     private final BooleanSetting field2585 = new BooleanSetting("Bar", false, "Show durability as bar");
     private final BooleanSetting field2586 = new BooleanSetting("Text", true, "Show durability as text");
     private final BooleanSetting field2587 = new BooleanSetting("Percentage", true, "Show armor durability as a percentage", this.field2586);
@@ -24,8 +26,6 @@ public class Armor extends HUDModule {
     private final BooleanSetting field2591 = new BooleanSetting(
             "Background", false, "Draw background, like on other HUD modules", HUD.INSTANCE.field2394::getValue
     );
-    public static final Armor INSTANCE = new Armor();
-    private static final MatrixStack field2592 = new MatrixStack();
 
     public Armor() {
         super("Armor", "Shows your current Armor", 100.0, 24.0);

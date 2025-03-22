@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-@Mixin({ParticleManager.class})
+@Mixin(ParticleManager.class)
 public class ParticleManagerMixin implements IParticleManager {
     @Shadow
     @Final
@@ -47,7 +47,7 @@ public class ParticleManagerMixin implements IParticleManager {
     private boolean paused;
 
     @Redirect(
-            method = {"renderParticles"},
+            method = "renderParticles",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/particle/Particle;buildGeometry(Lnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/client/render/Camera;F)V"
@@ -60,8 +60,8 @@ public class ParticleManagerMixin implements IParticleManager {
     }
 
     @Inject(
-            method = {"renderParticles"},
-            at = {@At("TAIL")}
+            method = "renderParticles",
+            at = @At("TAIL")
     )
     public void onRenderParticlesTail(LightmapTextureManager lightmapTextureManager, Camera camera, float tickDelta, CallbackInfo ci) {
         if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ax.getValue()) {
@@ -82,8 +82,8 @@ public class ParticleManagerMixin implements IParticleManager {
     }
 
     @Inject(
-            at = {@At("HEAD")},
-            method = {"addParticle(Lnet/minecraft/particle/ParticleEffect;DDDDDD)Lnet/minecraft/client/particle/Particle;"},
+            at = @At("HEAD"),
+            method = "addParticle(Lnet/minecraft/particle/ParticleEffect;DDDDDD)Lnet/minecraft/client/particle/Particle;",
             cancellable = true
     )
     public void onAddParticleWithParams(
@@ -95,8 +95,8 @@ public class ParticleManagerMixin implements IParticleManager {
     }
 
     @Inject(
-            at = {@At("HEAD")},
-            method = {"addParticle(Lnet/minecraft/client/particle/Particle;)V"},
+            at = @At("HEAD"),
+            method = "addParticle(Lnet/minecraft/client/particle/Particle;)V",
             cancellable = true
     )
     public void onAddParticle(Particle particle, CallbackInfo ci) {
@@ -110,8 +110,8 @@ public class ParticleManagerMixin implements IParticleManager {
     }
 
     @Inject(
-            at = {@At("HEAD")},
-            method = {"addEmitter(Lnet/minecraft/entity/Entity;Lnet/minecraft/particle/ParticleEffect;)V"},
+            at = @At("HEAD"),
+            method = "addEmitter(Lnet/minecraft/entity/Entity;Lnet/minecraft/particle/ParticleEffect;)V",
             cancellable = true
     )
     public void onAddEmmiter(Entity entity, ParticleEffect particleEffect, CallbackInfo ci) {
@@ -122,8 +122,8 @@ public class ParticleManagerMixin implements IParticleManager {
     }
 
     @Inject(
-            at = {@At("HEAD")},
-            method = {"addEmitter(Lnet/minecraft/entity/Entity;Lnet/minecraft/particle/ParticleEffect;I)V"},
+            at = @At("HEAD"),
+            method = "addEmitter(Lnet/minecraft/entity/Entity;Lnet/minecraft/particle/ParticleEffect;I)V",
             cancellable = true
     )
     public void onAddEmmiterAged(Entity entity, ParticleEffect particleEffect, int maxAge, CallbackInfo ci) {

@@ -19,30 +19,14 @@ import org.lwjgl.system.MemoryUtil;
 import java.nio.ByteBuffer;
 
 public class Mesh implements IMinecraft {
-    public enum Attrib {
-        Int(1),
-        Float(1),
-        Vec2(2),
-        Vec3(3),
-        Color(4),
-        Hsba(4);
-
-        public final int size;
-
-        Attrib(int var3) {
-            this.size = var3;
-        }
-    }
-
-
-    public double field1593 = 1.0;
-    public float field1594 = 1.0F;
-    public boolean field1595 = true;
     private final DrawMode field1596;
     private final int field1597;
     private final int field1598;
     private final int field1599;
     private final int field1600;
+    public double field1593 = 1.0;
+    public float field1594 = 1.0F;
+    public boolean field1595 = true;
     private ByteBuffer field1601;
     private long field1602;
     private int field1603;
@@ -335,5 +319,20 @@ public class Mesh implements IMinecraft {
     }
 
     protected void beforeRender() {
+    }
+
+    public enum Attrib {
+        Int(1),
+        Float(1),
+        Vec2(2),
+        Vec3(3),
+        Color(4),
+        Hsba(4);
+
+        public final int size;
+
+        Attrib(int var3) {
+            this.size = var3;
+        }
     }
 }

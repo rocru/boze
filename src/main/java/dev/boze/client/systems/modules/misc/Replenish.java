@@ -54,24 +54,14 @@ public class Replenish extends Module {
     private final BooleanSetting field3072 = new BooleanSetting("Stackable", true, "Replenish all other stackable stacks");
     private final BooleanSetting field3073 = new BooleanSetting("UnStackable", false, "Replenish all other unstackable stacks");
     private final ItemStack[] field3074 = new ItemStack[10];
-    private boolean field3075 = false;
-    private boolean field3076 = false;
     private final HashMap<Integer, Long> field3077 = new HashMap();
     private final dev.boze.client.utils.Timer field3078 = new dev.boze.client.utils.Timer();
+    public boolean field3082 = false;
+    private boolean field3075 = false;
+    private boolean field3076 = false;
     private boolean field3079 = true;
     private Vec2f field3080 = null;
     private long field3081 = 0L;
-    public boolean field3082 = false;
-
-    private static void method1750(String var0) {
-        if (mc.player != null) {
-            BozeLogger.method529(INSTANCE, var0);
-        }
-    }
-
-    private ReplenishMode method1751() {
-        return Options.INSTANCE.method1971() ? ReplenishMode.Ghost : this.field3059.getValue();
-    }
 
     public Replenish() {
         super("Replenish", "Automatically refills stacks in your hotbar", Category.Misc);
@@ -81,6 +71,20 @@ public class Replenish extends Module {
         }
 
         this.field435 = true;
+    }
+
+    private static void method1750(String var0) {
+        if (mc.player != null) {
+            BozeLogger.method529(INSTANCE, var0);
+        }
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
+
+    private ReplenishMode method1751() {
+        return Options.INSTANCE.method1971() ? ReplenishMode.Ghost : this.field3059.getValue();
     }
 
     @Override
@@ -340,9 +344,5 @@ public class Replenish extends Module {
 
     private boolean lambda$new$1() {
         return this.method1751() == ReplenishMode.Anarchy;
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

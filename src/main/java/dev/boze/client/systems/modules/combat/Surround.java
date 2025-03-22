@@ -46,8 +46,15 @@ import java.util.HashMap;
 
 public class Surround extends Module {
     public static Surround INSTANCE = new Surround();
-    private final PlacementRenderer field2570 = new PlacementRenderer();
     public final PlaceHandler field2571 = new PlaceHandler();
+    public final SettingCategory autoDisable = new SettingCategory("AutoDisable", "Auto disable settings");
+    public final BooleanSetting autoEnable = new BooleanSetting(
+            "AutoEnable", false, "Auto enable surround when in semi/full hole\nTo make it only auto-enable in full holes, set all sub-settings to max (4/6/8)"
+    );
+    public final IntSetting min1x1 = new IntSetting("Min1x1", 3, 2, 4, 1, "Minimum existing blocks to auto-enable in 1x1 holes", this.autoEnable);
+    public final IntSetting min2x1 = new IntSetting("Min2x1", 4, 3, 6, 1, "Minimum existing blocks to auto-enable in 2x1 holes", this.autoEnable);
+    public final IntSetting min2x2 = new IntSetting("Min2x2", 6, 4, 8, 1, "Minimum existing blocks to auto-enable in 2x2 holes", this.autoEnable);
+    private final PlacementRenderer field2570 = new PlacementRenderer();
     private final BooleanSetting multiTask = new BooleanSetting("MultiTask", false, "Surround while already using items");
     private final EnumSetting<SurroundReactMode> react = new EnumSetting<SurroundReactMode>(
             "React",
@@ -55,30 +62,17 @@ public class Surround extends Module {
             "When to react to changes in the world\n - Tick: React to everything during game ticks, most consistent\n - Packet: Reacts to everything instantly, as soon as it's received from the server\n"
     );
     private final BooleanSetting autoCenter = new BooleanSetting("AutoCenter", true, "Automatically center on block", this::lambda$new$0);
-    public final SettingCategory autoDisable = new SettingCategory("AutoDisable", "Auto disable settings");
     private final BooleanSetting onJump = new BooleanSetting("OnJump", false, "Disable when you jump", this.autoDisable);
     private final BooleanSetting onStep = new BooleanSetting("OnStep", false, "Disable when you step", this.autoDisable);
     private final BooleanSetting onTP = new BooleanSetting("OnTP", false, "Disable when you teleport/chorus", this.autoDisable);
     private final BooleanSetting whenDone = new BooleanSetting("WhenDone", false, "Disable when done surrounding", this.autoDisable);
-    public final BooleanSetting autoEnable = new BooleanSetting(
-            "AutoEnable", false, "Auto enable surround when in semi/full hole\nTo make it only auto-enable in full holes, set all sub-settings to max (4/6/8)"
-    );
-    public final IntSetting min1x1 = new IntSetting("Min1x1", 3, 2, 4, 1, "Minimum existing blocks to auto-enable in 1x1 holes", this.autoEnable);
-    public final IntSetting min2x1 = new IntSetting("Min2x1", 4, 3, 6, 1, "Minimum existing blocks to auto-enable in 2x1 holes", this.autoEnable);
-    public final IntSetting min2x2 = new IntSetting("Min2x2", 6, 4, 8, 1, "Minimum existing blocks to auto-enable in 2x2 holes", this.autoEnable);
     private final SwapHandler field2572 = new SwapHandler(this, 150);
     private final AutoEnable field2573 = new AutoEnable();
+    private final Timer field2577 = new Timer();
+    private final Timer field2578 = new Timer();
     private HitResult[] field2574 = null;
     private BlockHitResult field2575 = null;
     private RotationHelper field2576;
-    private final Timer field2577 = new Timer();
-    private final Timer field2578 = new Timer();
-
-    private static void method1530(String var0) {
-        if (mc.player != null) {
-            BozeLogger.method529(INSTANCE, var0);
-        }
-    }
 
     private Surround() {
         super(
@@ -90,6 +84,12 @@ public class Surround extends Module {
         Boze.EVENT_BUS.subscribe(this.field2573);
         this.field435 = true;
         this.addSettings(this.field2570.field224);
+    }
+
+    private static void method1530(String var0) {
+        if (mc.player != null) {
+            BozeLogger.method529(INSTANCE, var0);
+        }
     }
 
     @Override

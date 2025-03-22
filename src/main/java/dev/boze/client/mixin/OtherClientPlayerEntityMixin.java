@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({OtherClientPlayerEntity.class})
+@Mixin(OtherClientPlayerEntity.class)
 public abstract class OtherClientPlayerEntityMixin extends PlayerEntityMixin implements IOtherClientPlayerEntity {
     @Unique
     private boolean hasMoved = false;
@@ -21,8 +21,8 @@ public abstract class OtherClientPlayerEntityMixin extends PlayerEntityMixin imp
     }
 
     @Inject(
-            method = {"damage"},
-            at = {@At("HEAD")},
+            method = "damage",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onDamage(DamageSource var1, float var2, CallbackInfoReturnable<Boolean> var3) {
@@ -32,8 +32,8 @@ public abstract class OtherClientPlayerEntityMixin extends PlayerEntityMixin imp
     }
 
     @Inject(
-            method = {"setVelocityClient"},
-            at = {@At("HEAD")}
+            method = "setVelocityClient",
+            at = @At("HEAD")
     )
     private void onSetVelocityClient(double var1, double var3, double var5, CallbackInfo var7) {
         if (this.age >= 20 && (var1 != 0.0 || var5 != 0.0)) {

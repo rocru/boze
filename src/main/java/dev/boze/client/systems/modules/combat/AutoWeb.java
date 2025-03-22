@@ -51,6 +51,7 @@ import java.util.stream.Collectors;
 
 public class AutoWeb extends Module {
     public static final AutoWeb INSTANCE = new AutoWeb();
+    public final SettingCategory targets = new SettingCategory("Targets", "Entities to target");
     private final PlacementRenderer field1016 = new PlacementRenderer();
     private final InteractionHandler field1017 = new InteractionHandler();
     private final BooleanSetting multiTask = new BooleanSetting("MultiTask", false, "AutoWeb while already using items");
@@ -61,17 +62,16 @@ public class AutoWeb extends Module {
     private final BooleanSetting onStep = new BooleanSetting("OnStep", false, "Disable when you step", this.autoDisableSettings);
     private final BooleanSetting onTP = new BooleanSetting("OnTP", false, "Disable when you teleport/chorus", this.autoDisableSettings);
     private final BooleanSetting whenDone = new BooleanSetting("WhenDone", false, "Disable when done webbing", this.autoDisableSettings);
-    public final SettingCategory targets = new SettingCategory("Targets", "Entities to target");
     private final BooleanSetting players = new BooleanSetting("Players", true, "Target players", this.targets);
     private final BooleanSetting friends = new BooleanSetting("Friends", false, "Target friends", this.targets);
     private final BooleanSetting animals = new BooleanSetting("Animals", false, "Target animals", this.targets);
     private final BooleanSetting monsters = new BooleanSetting("Monsters", false, "Target monsters", this.targets);
     private final SwapHandler field1018 = new SwapHandler(this, 76);
+    private final Timer field1022 = new Timer();
+    private final Timer field1023 = new Timer();
     private HitResult[] field1019 = null;
     private BlockHitResult field1020 = null;
     private RotationHelper field1021;
-    private final Timer field1022 = new Timer();
-    private final Timer field1023 = new Timer();
     private Entity field1024 = null;
 
     private AutoWeb() {
@@ -79,6 +79,10 @@ public class AutoWeb extends Module {
         Boze.EVENT_BUS.subscribe(this.field1016);
         this.field435 = true;
         this.addSettings(this.field1016.field224);
+    }
+
+    private static Float lambda$getTargets$1(LivingEntity var0) {
+        return var0.distanceTo(mc.player);
     }
 
     private boolean method1971() {
@@ -415,10 +419,6 @@ public class AutoWeb extends Module {
                     return false;
             }
         }
-    }
-
-    private static Float lambda$getTargets$1(LivingEntity var0) {
-        return var0.distanceTo(mc.player);
     }
 
     private Boolean lambda$onGhostRotate$0(RotationHelper var1) {

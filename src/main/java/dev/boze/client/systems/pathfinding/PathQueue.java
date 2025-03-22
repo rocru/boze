@@ -7,6 +7,10 @@ import java.util.PriorityQueue;
 public class PathQueue {
     private final PriorityQueue<PathSegment> field3897 = new PriorityQueue(Comparator.comparing(PathQueue::lambda$new$0));
 
+    private static Float lambda$new$0(PathSegment var0) {
+        return var0.field3899;
+    }
+
     public boolean method2123() {
         return this.field3897.isEmpty();
     }
@@ -36,9 +40,5 @@ public class PathQueue {
 
     public PathPos method2128() {
         return this.field3897.poll().field3898;
-    }
-
-    private static Float lambda$new$0(PathSegment var0) {
-        return var0.field3899;
     }
 }

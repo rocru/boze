@@ -17,8 +17,8 @@ import dev.boze.client.systems.modules.client.Friends;
 import dev.boze.client.systems.modules.client.Options;
 import dev.boze.client.systems.modules.combat.autobed.mu;
 import dev.boze.client.systems.modules.render.PlaceRender;
-import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.*;
+import dev.boze.client.utils.Timer;
 import dev.boze.client.utils.entity.fakeplayer.FakePlayerEntity;
 import dev.boze.client.utils.player.InvUtils;
 import dev.boze.client.utils.player.InventoryUtil;
@@ -60,41 +60,15 @@ import java.util.stream.Collectors;
 
 public class AutoBed extends Module {
     public static final AutoBed INSTANCE = new AutoBed();
-    private final BooleanSetting renderPlacements = new BooleanSetting("Render", true, "Render placements");
-    private final ColorSetting fillColor = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill", this.renderPlacements);
-    private final ColorSetting outlineColor = new ColorSetting("Outline", new BozeDrawColor(-7046189), "Color for outline", this.renderPlacements);
-    private final BooleanSetting multitask = new BooleanSetting("MultiTask", false, "Multi Task");
-    private final EnumSetting<AnticheatMode> interactionMode = new EnumSetting<AnticheatMode>("Mode", AnticheatMode.NCP, "Interaction mode");
-    private final BooleanSetting swing = new BooleanSetting("Swing", true, "Swing hand");
     public final BooleanSetting strictDirection = new BooleanSetting("StrictDirection", true, "Strict direction");
-    private final BooleanSetting strictPlace = new BooleanSetting("StrictPlace", false, "Stricter placing checks");
-    private final BooleanSetting sequential = new BooleanSetting("Sequential", true, "Sequential");
     public final FloatSetting wallRange = new FloatSetting("WallsRange", 2.0F, 0.0F, 6.0F, 0.1F, "Walls range");
-    private final BooleanSetting autoMove = new BooleanSetting("AutoMove", true, "Automatically move beds to your hotbar");
-    private final BooleanSetting autoCraft = new BooleanSetting("AutoCraft", true, "Automatically craft beds with nearby crafting tables");
-    private final BooleanSetting strictAutoCraft = new BooleanSetting("Strict", false, "Strict Auto Craft", this.autoCraft);
-    private final BooleanSetting openTable = new BooleanSetting("OpenTable", true, "Automatically open tables", this.autoCraft);
-    private final BooleanSetting placeTable = new BooleanSetting("PlaceTable", true, "Automatically place tables", this.openTable::getValue, this.autoCraft);
-    private final EnumSetting<YPriority> yPriority = new EnumSetting<YPriority>(
-            "YPriority", YPriority.EyeLevel, "Y-Level priority for placing tables", this.openTable::getValue, this.autoCraft
-    );
-    private final BooleanSetting airPlace = new BooleanSetting("AirPlace", false, "Air place crafting tables", this.openTable::getValue, this.autoCraft);
     public final SettingCategory breakSettings = new SettingCategory("Break", "Break settings");
-    private final BooleanSetting breakRotate = new BooleanSetting("Rotate", false, "Rotate when breaking beds", this.breakSettings);
     public final FloatSetting breakSpeed = new FloatSetting("Speed", 20.0F, 1.0F, 20.0F, 0.1F, "Bed break speed", this.breakSettings);
     public final FloatSetting breakRange = new FloatSetting("Range", 4.3F, 1.0F, 6.0F, 0.1F, "Break range for breaking visible bed", this.breakSettings);
-    private final SettingCategory placeSettings = new SettingCategory("Place", "Place settings");
-    private final BooleanSetting placeRotate = new BooleanSetting("Rotate", false, "Rotate when placing beds", this.placeSettings);
-    private final FloatSetting placeSpeed = new FloatSetting("Speed", 20.0F, 1.0F, 20.0F, 0.1F, "Place speed", this.placeSettings);
-    private final FloatSetting placeRange = new FloatSetting("Range", 4.0F, 1.0F, 6.0F, 0.1F, "Place range for visible blocks", this.placeSettings);
-    private final FloatSetting strictPlaceRange = new FloatSetting(
-            "StrictRange", 0.0F, 0.0F, 6.0F, 0.1F, "Strict place range for visible blocks", this.placeSettings
-    );
     public final SettingCategory targetSettings = new SettingCategory("Targeting", "Targeting settings");
     public final EnumSetting<BedTargetMode> targetMode = new EnumSetting<BedTargetMode>(
             "Inside", BedTargetMode.Full, "Tries placing beds inside players", this.targetSettings
     );
-    private final BooleanSetting antiSuicide = new BooleanSetting("AntiSuicide", true, "Prevents suicide", this.targetSettings);
     public final FloatSetting bedRange = new FloatSetting("BedRange", 6.0F, 1.0F, 16.0F, 0.5F, "Max range between placements and targets", this.targetSettings);
     public final FloatSetting targetRange = new FloatSetting("TargetRange", 8.0F, 4.0F, 16.0F, 0.5F, "Range from which to select targets", this.targetSettings);
     public final FloatSetting breakSelfDamage = new FloatSetting(
@@ -108,27 +82,127 @@ public class AutoBed extends Module {
     );
     public final FloatSetting lethalHP = new FloatSetting("LethalHP", 4.0F, 0.0F, 20.0F, 0.1F, "Health at which to ignore min damage", this.targetSettings);
     public final BindSetting forceBind = new BindSetting("Force", Bind.fromKey(342), "Keybind to ignore min damage", this.targetSettings);
+    public final Timer an = new Timer();
+    private final BooleanSetting renderPlacements = new BooleanSetting("Render", true, "Render placements");
+    private final ColorSetting fillColor = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill", this.renderPlacements);
+    private final ColorSetting outlineColor = new ColorSetting("Outline", new BozeDrawColor(-7046189), "Color for outline", this.renderPlacements);
+    private final BooleanSetting multitask = new BooleanSetting("MultiTask", false, "Multi Task");
+    private final EnumSetting<AnticheatMode> interactionMode = new EnumSetting<AnticheatMode>("Mode", AnticheatMode.NCP, "Interaction mode");
+    private final BooleanSetting swing = new BooleanSetting("Swing", true, "Swing hand");
+    private final BooleanSetting strictPlace = new BooleanSetting("StrictPlace", false, "Stricter placing checks");
+    private final BooleanSetting sequential = new BooleanSetting("Sequential", true, "Sequential");
+    private final BooleanSetting autoMove = new BooleanSetting("AutoMove", true, "Automatically move beds to your hotbar");
+    private final BooleanSetting autoCraft = new BooleanSetting("AutoCraft", true, "Automatically craft beds with nearby crafting tables");
+    private final BooleanSetting strictAutoCraft = new BooleanSetting("Strict", false, "Strict Auto Craft", this.autoCraft);
+    private final BooleanSetting openTable = new BooleanSetting("OpenTable", true, "Automatically open tables", this.autoCraft);
+    private final BooleanSetting placeTable = new BooleanSetting("PlaceTable", true, "Automatically place tables", this.openTable::getValue, this.autoCraft);
+    private final EnumSetting<YPriority> yPriority = new EnumSetting<YPriority>(
+            "YPriority", YPriority.EyeLevel, "Y-Level priority for placing tables", this.openTable::getValue, this.autoCraft
+    );
+    private final BooleanSetting airPlace = new BooleanSetting("AirPlace", false, "Air place crafting tables", this.openTable::getValue, this.autoCraft);
+    private final BooleanSetting breakRotate = new BooleanSetting("Rotate", false, "Rotate when breaking beds", this.breakSettings);
+    private final SettingCategory placeSettings = new SettingCategory("Place", "Place settings");
+    private final BooleanSetting placeRotate = new BooleanSetting("Rotate", false, "Rotate when placing beds", this.placeSettings);
+    private final FloatSetting placeSpeed = new FloatSetting("Speed", 20.0F, 1.0F, 20.0F, 0.1F, "Place speed", this.placeSettings);
+    private final FloatSetting placeRange = new FloatSetting("Range", 4.0F, 1.0F, 6.0F, 0.1F, "Place range for visible blocks", this.placeSettings);
+    private final FloatSetting strictPlaceRange = new FloatSetting(
+            "StrictRange", 0.0F, 0.0F, 6.0F, 0.1F, "Strict place range for visible blocks", this.placeSettings
+    );
+    private final BooleanSetting antiSuicide = new BooleanSetting("AntiSuicide", true, "Prevents suicide", this.targetSettings);
     private final SettingCategory targets = new SettingCategory("Targets", "Entities to target");
     private final BooleanSetting players = new BooleanSetting("Players", true, "Target players", this.targets);
     private final BooleanSetting friends = new BooleanSetting("Friends", false, "Target friends", this.targets);
     private final BooleanSetting animals = new BooleanSetting("Animals", false, "Target animals", this.targets);
     private final BooleanSetting monsters = new BooleanSetting("Monsters", false, "Target monsters", this.targets);
     private final Timer am = new Timer();
-    public final Timer an = new Timer();
     private final Timer ao = new Timer();
     private final Timer ap = new Timer();
-    private String aq;
     private final Timer ar = new Timer();
-    private boolean as = false;
-    private ActionWrapper at = null;
     private final Queue<Runnable> au = new LinkedList();
-    private mu av = null;
     private final ConcurrentHashMap<mu, Long> aw = new ConcurrentHashMap();
     private final LinkedList<ActionWrapper> ax = new LinkedList();
+    private String aq;
+    private boolean as = false;
+    private ActionWrapper at = null;
+    private mu av = null;
 
     public AutoBed() {
         super("AutoBed", "Attacks players by blowing up beds", Category.Combat);
         this.addSettings(this.renderPlacements);
+    }
+
+    private static boolean lambda$getBedSlot$13(ItemStack var0) {
+        return var0.getItem() instanceof BlockItem && ((BlockItem) var0.getItem()).getBlock() == Blocks.CRAFTING_TABLE;
+    }
+
+    private static void lambda$getBedSlot$10() {
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 0, 0, SlotActionType.QUICK_MOVE, mc.player);
+    }
+
+    private static void lambda$getBedSlot$9(int var0) {
+        boolean var4 = mc.player.currentScreenHandler.getCursorStack().isEmpty();
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
+        mc.interactionManager
+                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(0, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 4, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 5, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 6, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager
+                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(2, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        if (var4 && !mc.player.currentScreenHandler.getCursorStack().isEmpty()) {
+            mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
+        }
+    }
+
+    private static void lambda$getBedSlot$8(int var0) {
+        boolean var4 = mc.player.currentScreenHandler.getCursorStack().isEmpty();
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
+        mc.interactionManager
+                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(0, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 1, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 2, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 3, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager
+                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(2, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        if (var4 && !mc.player.currentScreenHandler.getCursorStack().isEmpty()) {
+            mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
+        }
+    }
+
+    private static boolean lambda$getBedSlot$7(ItemStack var0) {
+        if (var0.getCount() < 3) {
+            return false;
+        } else if (!(var0.getItem() instanceof BlockItem)) {
+            return false;
+        } else {
+            Block var4 = ((BlockItem) var0.getItem()).getBlock();
+            return var4 == Blocks.OAK_PLANKS
+                    || var4 == Blocks.ACACIA_PLANKS
+                    || var4 == Blocks.BIRCH_PLANKS
+                    || var4 == Blocks.CRIMSON_PLANKS
+                    || var4 == Blocks.JUNGLE_PLANKS
+                    || var4 == Blocks.DARK_OAK_PLANKS
+                    || var4 == Blocks.SPRUCE_PLANKS
+                    || var4 == Blocks.WARPED_PLANKS;
+        }
+    }
+
+    private static boolean lambda$getBedSlot$6(ItemStack var0) {
+        return var0.getItem() instanceof BlockItem
+                && var0.getCount() >= 3
+                && ((BlockItem) var0.getItem()).getBlock().getDefaultState().getSoundGroup() == BlockSoundGroup.WOOL;
+    }
+
+    private static boolean lambda$getBedSlot$5(ItemStack var0) {
+        return var0.getItem() instanceof BedItem;
+    }
+
+    private static Float lambda$getTargetsInRange$2(LivingEntity var0) {
+        return var0.distanceTo(mc.player);
+    }
+
+    private static boolean lambda$onRotateEvent$1(ItemStack var0) {
+        return var0.getItem() instanceof BedItem;
     }
 
     @EventHandler
@@ -704,10 +778,6 @@ public class AutoBed extends Module {
                 : (double) this.placeRange.getValue().floatValue();
     }
 
-    private static boolean lambda$getBedSlot$13(ItemStack var0) {
-        return var0.getItem() instanceof BlockItem && ((BlockItem) var0.getItem()).getBlock() == Blocks.CRAFTING_TABLE;
-    }
-
     private void lambda$getBedSlot$12(Vec3d var1, BlockPos var2) {
         Class5913.method17(this.method1445() ? Hand.MAIN_HAND : Hand.OFF_HAND, new BlockHitResult(var1, Direction.UP, var2, false));
         if (this.swing.getValue()) {
@@ -722,68 +792,6 @@ public class AutoBed extends Module {
         }
     }
 
-    private static void lambda$getBedSlot$10() {
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 0, 0, SlotActionType.QUICK_MOVE, mc.player);
-    }
-
-    private static void lambda$getBedSlot$9(int var0) {
-        boolean var4 = mc.player.currentScreenHandler.getCursorStack().isEmpty();
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
-        mc.interactionManager
-                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(0, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 4, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 5, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 6, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager
-                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(2, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        if (var4 && !mc.player.currentScreenHandler.getCursorStack().isEmpty()) {
-            mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
-        }
-    }
-
-    private static void lambda$getBedSlot$8(int var0) {
-        boolean var4 = mc.player.currentScreenHandler.getCursorStack().isEmpty();
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
-        mc.interactionManager
-                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(0, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 1, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 2, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 3, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager
-                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(2, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        if (var4 && !mc.player.currentScreenHandler.getCursorStack().isEmpty()) {
-            mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
-        }
-    }
-
-    private static boolean lambda$getBedSlot$7(ItemStack var0) {
-        if (var0.getCount() < 3) {
-            return false;
-        } else if (!(var0.getItem() instanceof BlockItem)) {
-            return false;
-        } else {
-            Block var4 = ((BlockItem) var0.getItem()).getBlock();
-            return var4 == Blocks.OAK_PLANKS
-                    || var4 == Blocks.ACACIA_PLANKS
-                    || var4 == Blocks.BIRCH_PLANKS
-                    || var4 == Blocks.CRIMSON_PLANKS
-                    || var4 == Blocks.JUNGLE_PLANKS
-                    || var4 == Blocks.DARK_OAK_PLANKS
-                    || var4 == Blocks.SPRUCE_PLANKS
-                    || var4 == Blocks.WARPED_PLANKS;
-        }
-    }
-
-    private static boolean lambda$getBedSlot$6(ItemStack var0) {
-        return var0.getItem() instanceof BlockItem
-                && var0.getCount() >= 3
-                && ((BlockItem) var0.getItem()).getBlock().getDefaultState().getSoundGroup() == BlockSoundGroup.WOOL;
-    }
-
-    private static boolean lambda$getBedSlot$5(ItemStack var0) {
-        return var0.getItem() instanceof BedItem;
-    }
-
     private void lambda$generateBreak$4(Vec3d var1, BlockPos var2) {
         Class5913.method17(this.method1445() ? Hand.MAIN_HAND : Hand.OFF_HAND, new BlockHitResult(var1, Direction.UP, var2, false));
         if (this.swing.getValue()) {
@@ -796,14 +804,6 @@ public class AutoBed extends Module {
         if (this.swing.getValue()) {
             mc.getNetworkHandler().sendPacket(new HandSwingC2SPacket(this.method1445() ? Hand.MAIN_HAND : Hand.OFF_HAND));
         }
-    }
-
-    private static Float lambda$getTargetsInRange$2(LivingEntity var0) {
-        return var0.distanceTo(mc.player);
-    }
-
-    private static boolean lambda$onRotateEvent$1(ItemStack var0) {
-        return var0.getItem() instanceof BedItem;
     }
 
     private void lambda$onRender$0(Render3DEvent var1, mu var2, Long var3) {

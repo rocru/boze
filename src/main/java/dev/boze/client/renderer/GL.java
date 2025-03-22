@@ -24,12 +24,20 @@ public class GL implements IMinecraft {
     private static final CapabilityTrackerAccessor field2155;
     private static final CapabilityTrackerAccessor field2156;
     private static final CapabilityTrackerAccessor field2157;
+    public static int field2162;
     private static boolean field2158;
     private static boolean field2159;
     private static boolean field2160;
     private static boolean field2161;
-    public static int field2162;
     private static int field2163;
+
+    static {
+        field2153 = BufferUtils.createFloatBuffer(16);
+        field2154 = method1212("DEPTH");
+        field2155 = method1212("BLEND");
+        field2156 = method1212("CULL");
+        field2157 = method1212("SCISSOR");
+    }
 
     public GL() {
         super();
@@ -310,13 +318,5 @@ public class GL implements IMinecraft {
 
     public static void method1214(final int x, final int y, final int width, final int height) {
         GlStateManager._viewport(x, y, width, height);
-    }
-
-    static {
-        field2153 = BufferUtils.createFloatBuffer(16);
-        field2154 = method1212("DEPTH");
-        field2155 = method1212("BLEND");
-        field2156 = method1212("CULL");
-        field2157 = method1212("SCISSOR");
     }
 }

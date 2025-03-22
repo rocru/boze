@@ -32,7 +32,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin({HeldItemRenderer.class})
+@Mixin(HeldItemRenderer.class)
 public class HeldItemRendererMixin {
     @Shadow
     @Final
@@ -43,8 +43,8 @@ public class HeldItemRendererMixin {
     private ItemStack offHand;
 
     @Inject(
-            method = {"renderItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V"},
-            at = {@At("HEAD")},
+            method = "renderItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void onRenderItem(
@@ -70,13 +70,13 @@ public class HeldItemRendererMixin {
     }
 
     @Inject(
-            method = {"renderFirstPersonItem"},
-            at = {@At(
+            method = "renderFirstPersonItem",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/item/HeldItemRenderer;renderItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
                     shift = Shift.BEFORE,
                     ordinal = 1
-            )}
+            )
     )
     public void onRenderItemBlockingTransform(
             AbstractClientPlayerEntity player,
@@ -103,8 +103,8 @@ public class HeldItemRendererMixin {
     }
 
     @Inject(
-            method = {"applySwingOffset"},
-            at = {@At("HEAD")},
+            method = "applySwingOffset",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onApplySwingOffset(MatrixStack var1, Arm var2, float var3, CallbackInfo var4) {
@@ -132,7 +132,7 @@ public class HeldItemRendererMixin {
     }
 
     @Redirect(
-            method = {"renderItem(FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;Lnet/minecraft/client/network/ClientPlayerEntity;I)V"},
+            method = "renderItem(FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;Lnet/minecraft/client/network/ClientPlayerEntity;I)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/util/math/MatrixStack;multiply(Lorg/joml/Quaternionf;)V",
@@ -146,7 +146,7 @@ public class HeldItemRendererMixin {
     }
 
     @Redirect(
-            method = {"renderItem(FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;Lnet/minecraft/client/network/ClientPlayerEntity;I)V"},
+            method = "renderItem(FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;Lnet/minecraft/client/network/ClientPlayerEntity;I)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/util/math/MatrixStack;multiply(Lorg/joml/Quaternionf;)V",
@@ -160,7 +160,7 @@ public class HeldItemRendererMixin {
     }
 
     @ModifyArgs(
-            method = {"renderItem(FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;Lnet/minecraft/client/network/ClientPlayerEntity;I)V"},
+            method = "renderItem(FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;Lnet/minecraft/client/network/ClientPlayerEntity;I)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/item/HeldItemRenderer;renderFirstPersonItem(Lnet/minecraft/client/network/AbstractClientPlayerEntity;FFLnet/minecraft/util/Hand;FLnet/minecraft/item/ItemStack;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V"
@@ -177,8 +177,8 @@ public class HeldItemRendererMixin {
     }
 
     @Inject(
-            method = {"updateHeldItems"},
-            at = {@At("TAIL")}
+            method = "updateHeldItems",
+            at = @At("TAIL")
     )
     private void onUpdateHeldItems(CallbackInfo var1) {
         if (HandTweaks.INSTANCE.isEnabled() && HandTweaks.INSTANCE.field3579.getValue()) {
@@ -188,7 +188,7 @@ public class HeldItemRendererMixin {
     }
 
     @Redirect(
-            method = {"renderFirstPersonItem"},
+            method = "renderFirstPersonItem",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;getMainArm()Lnet/minecraft/util/Arm;"
@@ -199,8 +199,8 @@ public class HeldItemRendererMixin {
     }
 
     @Inject(
-            method = {"renderFirstPersonItem"},
-            at = {@At("HEAD")}
+            method = "renderFirstPersonItem",
+            at = @At("HEAD")
     )
     private void onRenderFirstPersonItemPre(
             AbstractClientPlayerEntity var1,
@@ -240,8 +240,8 @@ public class HeldItemRendererMixin {
     }
 
     @Inject(
-            method = {"applyEatOrDrinkTransformation"},
-            at = {@At("HEAD")},
+            method = "applyEatOrDrinkTransformation",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onApplyEatOrDrinkTransformation(MatrixStack var1, float var2, Arm var3, ItemStack var4, PlayerEntity var5, CallbackInfo var6) {
@@ -271,8 +271,8 @@ public class HeldItemRendererMixin {
     }
 
     @Inject(
-            method = {"renderFirstPersonItem"},
-            at = {@At("RETURN")}
+            method = "renderFirstPersonItem",
+            at = @At("RETURN")
     )
     private void onRenderFirstPersonItemPost(
             AbstractClientPlayerEntity var1,
@@ -293,7 +293,7 @@ public class HeldItemRendererMixin {
     }
 
     @Redirect(
-            method = {"updateHeldItems"},
+            method = "updateHeldItems",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/ClientPlayerEntity;getAttackCooldownProgress(F)F"

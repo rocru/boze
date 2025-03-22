@@ -11,13 +11,13 @@ import java.util.Locale;
 import java.util.function.BooleanSupplier;
 
 public class IntArraySetting extends Setting<int[]> {
-    private final int[] field917;
-    private final int[] field918;
-    private int field919;
     public final int field920;
     public final int field921;
     public final int field922;
     public final boolean field923;
+    private final int[] field917;
+    private final int[] field918;
+    private int field919;
 
     public IntArraySetting(String name, int[] value, int min, int max, int step, String description) {
         super(name, description);

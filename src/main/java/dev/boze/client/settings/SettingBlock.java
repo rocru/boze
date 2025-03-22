@@ -5,8 +5,8 @@ import net.minecraft.nbt.NbtCompound;
 import java.util.function.BooleanSupplier;
 
 public class SettingBlock extends Setting<Boolean> {
-    private boolean field977 = false;
     private final Setting<?>[] field978;
+    private boolean field977 = false;
 
     public SettingBlock(String name, String description, Setting<?>... subSettings) {
         super(name, description);

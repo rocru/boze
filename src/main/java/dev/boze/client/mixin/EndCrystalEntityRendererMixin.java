@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin({EndCrystalEntityRenderer.class})
+@Mixin(EndCrystalEntityRenderer.class)
 public class EndCrystalEntityRendererMixin {
     @Shadow
     @Final
@@ -34,8 +34,23 @@ public class EndCrystalEntityRendererMixin {
     public ModelPart frame;
 
     @Inject(
-            method = {"render*"},
-            at = {@At("HEAD")},
+            method = "getYOffset",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private static void onGetYOffset(EndCrystalEntity var0, float var1, CallbackInfoReturnable<Float> var2) {
+        if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.getValue() && Class2839.field114) {
+            var2.cancel();
+            float var5 = (float) var0.endCrystalAge + var1;
+            float var6 = MathHelper.sin(var5 * 0.2F) / 2.0F + 0.5F;
+            var6 = (var6 * var6 + var6) * 0.4F * Chams.INSTANCE.ah.getValue();
+            var2.setReturnValue(var6 - 1.4F);
+        }
+    }
+
+    @Inject(
+            method = "render*",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRender(EndCrystalEntity var1, float var2, float var3, MatrixStack var4, VertexConsumerProvider var5, int var6, CallbackInfo var7) {
@@ -55,7 +70,7 @@ public class EndCrystalEntityRendererMixin {
     }
 
     @ModifyArgs(
-            method = {"render*"},
+            method = "render*",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/util/math/MatrixStack;scale(FFF)V",
@@ -71,7 +86,7 @@ public class EndCrystalEntityRendererMixin {
     }
 
     @ModifyArgs(
-            method = {"render(Lnet/minecraft/entity/decoration/EndCrystalEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V"},
+            method = "render(Lnet/minecraft/entity/decoration/EndCrystalEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/util/math/RotationAxis;rotationDegrees(F)Lorg/joml/Quaternionf;"
@@ -83,23 +98,8 @@ public class EndCrystalEntityRendererMixin {
         }
     }
 
-    @Inject(
-            method = {"getYOffset"},
-            at = {@At("HEAD")},
-            cancellable = true
-    )
-    private static void onGetYOffset(EndCrystalEntity var0, float var1, CallbackInfoReturnable<Float> var2) {
-        if (Chams.INSTANCE.isEnabled() && Chams.INSTANCE.ad.getValue() && Class2839.field114) {
-            var2.cancel();
-            float var5 = (float) var0.endCrystalAge + var1;
-            float var6 = MathHelper.sin(var5 * 0.2F) / 2.0F + 0.5F;
-            var6 = (var6 * var6 + var6) * 0.4F * Chams.INSTANCE.ah.getValue();
-            var2.setReturnValue(var6 - 1.4F);
-        }
-    }
-
     @Redirect(
-            method = {"render(Lnet/minecraft/entity/decoration/EndCrystalEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V"},
+            method = "render(Lnet/minecraft/entity/decoration/EndCrystalEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/model/ModelPart;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;II)V",
@@ -116,7 +116,7 @@ public class EndCrystalEntityRendererMixin {
     }
 
     @Redirect(
-            method = {"render(Lnet/minecraft/entity/decoration/EndCrystalEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V"},
+            method = "render(Lnet/minecraft/entity/decoration/EndCrystalEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/model/ModelPart;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;II)V",
@@ -133,7 +133,7 @@ public class EndCrystalEntityRendererMixin {
     }
 
     @Redirect(
-            method = {"render(Lnet/minecraft/entity/decoration/EndCrystalEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V"},
+            method = "render(Lnet/minecraft/entity/decoration/EndCrystalEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/model/ModelPart;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;II)V",

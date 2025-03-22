@@ -29,8 +29,9 @@ import net.minecraft.util.math.Vec3d;
 import org.joml.Vector3d;
 
 public class AutoCrystalRender implements IMinecraft, SettingsGroup {
-    private final AutoCrystal field146;
     final BooleanSetting field147 = new BooleanSetting("Render", true, "Render placements");
+    final Timer field175 = new Timer();
+    private final AutoCrystal field146;
     private final ColorSetting field148 = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill");
     private final ColorSetting field149 = new ColorSetting("Outline", new BozeDrawColor(-7046189), "Color for outline");
     private final BooleanSetting field150 = new BooleanSetting("DamageRender", false, "Render damage");
@@ -39,13 +40,14 @@ public class AutoCrystalRender implements IMinecraft, SettingsGroup {
     private final EnumSetting<AutoCrystalShaderMode> field153 = new EnumSetting<AutoCrystalShaderMode>(
             "Shader", AutoCrystalShaderMode.Normal, "Shader to use", this.field152
     );
+    private final StringSetting field160 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field152);
+    private final ShaderRenderer field169 = new ShaderRenderer(this.field153, this.field160);
     private final BooleanSetting field154 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field152);
     private final IntSetting field155 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field152);
     private final FloatSetting field156 = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.field152);
     private final FloatSetting field157 = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$0, this.field152);
     private final IntSetting field158 = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.field152);
     private final FloatSetting field159 = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.field152);
-    private final StringSetting field160 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field152);
     private final BooleanSetting field161 = new BooleanSetting("Interpolate", true, "Interpolate renders");
     private final MinMaxSetting field162 = new MinMaxSetting("Speed", 1.0, 0.01, 1.0, 0.01, "Interpolation speed", this.field161);
     private final BooleanSetting field163 = new BooleanSetting("Proportional", false, "Interpolate proportional to distance", this.field161);
@@ -82,14 +84,12 @@ public class AutoCrystalRender implements IMinecraft, SettingsGroup {
             this.field159,
             this.field160
     );
-    private final ShaderRenderer field169 = new ShaderRenderer(this.field153, this.field160);
-    private Renderer3D field170;
+    public Vec3d field176 = null;
     Box field171 = null;
     double field172 = 0.0;
     Box field173 = null;
     Box field174 = null;
-    final Timer field175 = new Timer();
-    public Vec3d field176 = null;
+    private Renderer3D field170;
 
     public AutoCrystalRender(AutoCrystal var1) {
         this.field146 = var1;

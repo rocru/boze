@@ -22,6 +22,7 @@ import java.util.Queue;
 
 public class TickShift extends Module {
     public static final TickShift INSTANCE = new TickShift();
+    public static boolean field898 = false;
     private final BooleanSetting field881 = new BooleanSetting("OnlyStill", true, "Only start burst when was standing still");
     private final BooleanSetting field882 = new BooleanSetting("OnGround", false, "Only start burst when on ground");
     private final IntSetting field883 = new IntSetting("MovingTicks", 0, 0, 10, 1, "Min ticks moving before burst");
@@ -36,13 +37,12 @@ public class TickShift extends Module {
     private final FloatSetting field892 = new FloatSetting("Factor", 0.5F, 0.1F, 1.0F, 0.1F, "Delay factor", this.field891);
     private final BooleanSetting field893 = new BooleanSetting("OnlyOnce", false, "Disable after a burst");
     private final BooleanSetting field894 = new BooleanSetting("AutoDisable", true, "Disable on setback");
+    private final Timer field897 = new Timer();
+    private final Timer field899 = new Timer();
+    private final Queue<Packet> field901 = new LinkedList();
     private boolean field895 = false;
     private int field896 = 0;
-    private final Timer field897 = new Timer();
-    public static boolean field898 = false;
-    private final Timer field899 = new Timer();
     private int field900 = 0;
-    private final Queue<Packet> field901 = new LinkedList();
     private boolean field902;
     private boolean field903;
     private int field904;

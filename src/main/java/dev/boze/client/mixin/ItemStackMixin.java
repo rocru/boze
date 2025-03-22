@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({ItemStack.class})
+@Mixin(ItemStack.class)
 public class ItemStackMixin {
     @Inject(
-            method = {"finishUsing"},
-            at = {@At("HEAD")}
+            method = "finishUsing",
+            at = @At("HEAD")
     )
     private void onFinishUsing(World var1, LivingEntity var2, CallbackInfoReturnable<ItemStack> var3) {
         if (var2 == IMinecraft.mc.player) {

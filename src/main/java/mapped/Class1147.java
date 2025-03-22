@@ -6,8 +6,8 @@ import dev.boze.client.utils.misc.ISerializable;
 import net.minecraft.nbt.NbtCompound;
 
 public class Class1147 extends ColorManager implements ISerializable<Class1147> {
-    private int field47;
     public final int field48;
+    private int field47;
 
     public Class1147(BozeDrawColor color) {
         super(color);

@@ -6,11 +6,11 @@ import dev.boze.client.systems.modules.render.SpawnESP;
 import net.minecraft.util.math.BlockPos;
 
 public class BlockRenderer {
+    final SpawnESP field3698;
     private int field3694;
     private int field3695;
     private int field3696;
     private boolean field3697;
-    final SpawnESP field3698;
 
     public BlockRenderer(SpawnESP var1) {
         this.field3698 = var1;

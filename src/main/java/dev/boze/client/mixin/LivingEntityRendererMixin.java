@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin({LivingEntityRenderer.class})
+@Mixin(LivingEntityRenderer.class)
 public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extends EntityModel<T>> {
     @Unique
     private float lastPartialTick;
@@ -38,8 +38,8 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
     protected abstract RenderLayer getRenderLayer(T var1, boolean var2, boolean var3, boolean var4);
 
     @Inject(
-            method = {"hasLabel(Lnet/minecraft/entity/LivingEntity;)Z"},
-            at = {@At("HEAD")},
+            method = "hasLabel(Lnet/minecraft/entity/LivingEntity;)Z",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onHasLabel(T var1, CallbackInfoReturnable<Boolean> var2) {
@@ -49,7 +49,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
     }
 
     @ModifyVariable(
-            method = {"render*"},
+            method = "render*",
             ordinal = 2,
             at = @At(
                     value = "STORE",
@@ -65,7 +65,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
     }
 
     @ModifyVariable(
-            method = {"render*"},
+            method = "render*",
             ordinal = 3,
             at = @At(
                     value = "STORE",
@@ -81,7 +81,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
     }
 
     @ModifyVariable(
-            method = {"render*"},
+            method = "render*",
             ordinal = 5,
             at = @At(
                     value = "STORE",
@@ -97,8 +97,8 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
     }
 
     @Inject(
-            method = {"render*"},
-            at = {@At("HEAD")},
+            method = "render*",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderHead(T var1, float var2, float var3, MatrixStack var4, VertexConsumerProvider var5, int var6, CallbackInfo var7) {
@@ -117,7 +117,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
     }
 
     @ModifyArgs(
-            method = {"render(Lnet/minecraft/entity/LivingEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V"},
+            method = "render(Lnet/minecraft/entity/LivingEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/entity/model/EntityModel;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;III)V"

@@ -31,13 +31,16 @@ import java.util.List;
 
 public class Trajectories extends Module {
     public static final Trajectories INSTANCE = new Trajectories();
+    private static final double field3804 = Math.toRadians(10.0);
+    public final ColorSetting field3783 = new ColorSetting("Color", new BozeDrawColor(1694433280), "Color for hit fill");
+    public final ColorSetting field3784 = new ColorSetting("Outline", new BozeDrawColor(-65536), "Color for hit outline");
+    public final Class5919 field3805 = new Class5919();
+    public final Class3064<Vector3d> field3806 = new Class3064<Vector3d>(Vector3d::new);
     private final RGBASetting field3778 = new RGBASetting("HeldOrigin", new RGBAColor(-21760), "Color for held origin");
     private final RGBASetting field3779 = new RGBASetting("HeldHit", new RGBAColor(-65536), "Color for held hit");
     private final RGBASetting field3780 = new RGBASetting("ThrownOrigin", new RGBAColor(-13958913), "Color for thrown origin");
     private final RGBASetting field3781 = new RGBASetting("ThrownHit", new RGBAColor(-65536), "Color for thrown hit");
     private final RGBASetting field3782 = new RGBASetting("Trail", new RGBAColor(-13958913), "Color for trails");
-    public final ColorSetting field3783 = new ColorSetting("Color", new BozeDrawColor(1694433280), "Color for hit fill");
-    public final ColorSetting field3784 = new ColorSetting("Outline", new BozeDrawColor(-65536), "Color for hit outline");
     private final FloatSetting field3785 = new FloatSetting("Width", 1.5F, 0.5F, 5.0F, 0.1F, "Line width", Trajectories::lambda$new$0);
     private final FloatSetting field3786 = new FloatSetting("TrailLinger", 0.0F, 0.0F, 5.0F, 0.05F, "Trail linger time in seconds");
     private final BooleanSetting field3787 = new BooleanSetting("AllPlayers", true, "Predict trajectories for all players");
@@ -57,15 +60,16 @@ public class Trajectories extends Module {
     private final BooleanSetting field3801 = new BooleanSetting("FishingRods", false, "Predict fishing rod trajectories");
     private final BooleanSetting field3802 = new BooleanSetting("Fireballs", false, "Predict fireball trajectories");
     private final BooleanSetting field3803 = new BooleanSetting("WitherSkulls", false, "Predict wither skull trajectories");
-    private static final double field3804 = Math.toRadians(10.0);
-    public final Class5919 field3805 = new Class5919();
-    public final Class3064<Vector3d> field3806 = new Class3064<Vector3d>(Vector3d::new);
     private final List<nz> aa = new ArrayList();
     private final List<nz> ab = new ArrayList();
     public Renderer3D ac;
 
     public Trajectories() {
         super("Trajectories", "Predicts projectile trajectories", Category.Render);
+    }
+
+    private static boolean lambda$new$0() {
+        return !MinecraftClient.IS_SYSTEM_MAC;
     }
 
     @EventHandler
@@ -250,9 +254,5 @@ public class Trajectories extends Module {
         if (this.field3805.method46(var1, var2)) {
             this.method2056().method2062(false);
         }
-    }
-
-    private static boolean lambda$new$0() {
-        return !MinecraftClient.IS_SYSTEM_MAC;
     }
 }

@@ -60,14 +60,14 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.function.Predicate;
 
-@Mixin({GameRenderer.class})
+@Mixin(GameRenderer.class)
 public abstract class GameRendererMixin {
     @Shadow
     @Final
-    MinecraftClient client;
+    public HeldItemRenderer firstPersonRenderer;
     @Shadow
     @Final
-    public HeldItemRenderer firstPersonRenderer;
+    MinecraftClient client;
     @Shadow
     @Final
     private BufferBuilderStorage buffers;
@@ -85,6 +85,21 @@ public abstract class GameRendererMixin {
     @Unique
     private MatrixStack matrices = new MatrixStack();
 
+    @Unique
+    private static boolean lambda$onUpdateTargetedEntity$2(Entity var0) {
+        return !var0.isSpectator() && var0.canHit();
+    }
+
+    @Unique
+    private static boolean lambda$onRaycastEntity$1(Entity var0) {
+        return !var0.isSpectator() && var0.canHit();
+    }
+
+    @Unique
+    private static void lorhr0(HeldItemRenderer var0, float var1, MatrixStack var2, Immediate var3, ClientPlayerEntity var4, int var5) {
+        var0.renderItem(var1, var2, var3, var4, var5);
+    }
+
     @Shadow
     public abstract void reset();
 
@@ -98,8 +113,8 @@ public abstract class GameRendererMixin {
     protected abstract void bobView(MatrixStack var1, float var2);
 
     @ModifyReturnValue(
-            method = {"getFov"},
-            at = {@At("RETURN")}
+            method = "getFov",
+            at = @At("RETURN")
     )
     private double boze$getFov$return(double var1) {
         GetFovEvent var3 = Boze.EVENT_BUS.post(GetFovEvent.method1063(var1));
@@ -107,8 +122,8 @@ public abstract class GameRendererMixin {
     }
 
     @Inject(
-            method = {"tiltViewWhenHurt"},
-            at = {@At("HEAD")},
+            method = "tiltViewWhenHurt",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onTiltViewWhenHurt(MatrixStack var1, float var2, CallbackInfo var3) {
@@ -118,8 +133,8 @@ public abstract class GameRendererMixin {
     }
 
     @Inject(
-            method = {"showFloatingItem"},
-            at = {@At("HEAD")},
+            method = "showFloatingItem",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onShowFloatingItem(ItemStack var1, CallbackInfo var2) {
@@ -129,7 +144,7 @@ public abstract class GameRendererMixin {
     }
 
     @Redirect(
-            method = {"renderWorld"},
+            method = "renderWorld",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/GameRenderer;getBasicProjectionMatrix(D)Lorg/joml/Matrix4f;",
@@ -165,11 +180,11 @@ public abstract class GameRendererMixin {
     }
 
     @Inject(
-            method = {"renderWorld"},
+            method = "renderWorld",
             at = {@At(
                     value = "INVOKE_STRING",
                     target = "Lnet/minecraft/util/profiler/Profiler;swap(Ljava/lang/String;)V",
-                    args = {"ldc=hand"}
+                    args = "ldc=hand"
             )},
             locals = LocalCapture.CAPTURE_FAILEXCEPTION
     )
@@ -217,7 +232,7 @@ public abstract class GameRendererMixin {
     }
 
     @Redirect(
-            method = {"renderHand"},
+            method = "renderHand",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/item/HeldItemRenderer;renderItem(FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider$Immediate;Lnet/minecraft/client/network/ClientPlayerEntity;I)V"
@@ -250,7 +265,7 @@ public abstract class GameRendererMixin {
     }
 
     @Redirect(
-            method = {"renderWorld"},
+            method = "renderWorld",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/util/math/MathHelper;lerp(FFF)F",
@@ -263,16 +278,16 @@ public abstract class GameRendererMixin {
     }
 
     @Inject(
-            method = {"renderWorld"},
-            at = {@At("TAIL")}
+            method = "renderWorld",
+            at = @At("TAIL")
     )
     public void onRenderWorldTail(CallbackInfo ci) {
         RenderManager.field1618.renderGUI();
     }
 
     @Inject(
-            method = {"findCrosshairTarget"},
-            at = {@At("HEAD")},
+            method = "findCrosshairTarget",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void onFindCrosshairTarget(
@@ -288,7 +303,7 @@ public abstract class GameRendererMixin {
     }
 
     @Redirect(
-            method = {"findCrosshairTarget"},
+            method = "findCrosshairTarget",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/projectile/ProjectileUtil;raycast(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Box;Ljava/util/function/Predicate;D)Lnet/minecraft/util/hit/EntityHitResult;"
@@ -306,8 +321,8 @@ public abstract class GameRendererMixin {
     }
 
     @Inject(
-            method = {"renderHand"},
-            at = {@At("HEAD")},
+            method = "renderHand",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderHand(Camera var1, float var2, Matrix4f var3, CallbackInfo var4) {
@@ -317,8 +332,8 @@ public abstract class GameRendererMixin {
     }
 
     @Inject(
-            method = {"findCrosshairTarget"},
-            at = {@At("HEAD")},
+            method = "findCrosshairTarget",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void onUpdateTargetedEntity(
@@ -360,20 +375,5 @@ public abstract class GameRendererMixin {
         float var7 = MathHelper.cos(var3);
         float var8 = MathHelper.sin(var3);
         return new Vec3d(var6 * var7, -var8, var5 * var7);
-    }
-
-    @Unique
-    private static boolean lambda$onUpdateTargetedEntity$2(Entity var0) {
-        return !var0.isSpectator() && var0.canHit();
-    }
-
-    @Unique
-    private static boolean lambda$onRaycastEntity$1(Entity var0) {
-        return !var0.isSpectator() && var0.canHit();
-    }
-
-    @Unique
-    private static void lorhr0(HeldItemRenderer var0, float var1, MatrixStack var2, Immediate var3, ClientPlayerEntity var4, int var5) {
-        var0.renderItem(var1, var2, var3, var4, var5);
     }
 }

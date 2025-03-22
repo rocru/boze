@@ -13,13 +13,13 @@ public class OpenFolderCommand extends Command {
         super("folder", "Folder", "Open the Boze folder");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.executes(OpenFolderCommand::lambda$build$0);
-    }
-
     private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
         FileUtil.openFile(Boze.FOLDER);
         return 1;
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.executes(OpenFolderCommand::lambda$build$0);
     }
 }

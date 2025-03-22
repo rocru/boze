@@ -46,11 +46,14 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class AutoArmor extends Module {
     public static final AutoArmor INSTANCE = new AutoArmor();
+    public final BooleanSetting bindState = new BooleanSetting("BindState", false, "Bind state", AutoArmor::lambda$new$1);
+    public final BooleanSetting avoidBinding = new BooleanSetting("AvoidBinding", true, "Avoid the binding curse");
+    public final Object2IntMap<RegistryEntry<Enchantment>> field2871 = new Object2IntOpenHashMap();
     private final EnumSetting<AutoArmorMode> mode = new EnumSetting<AutoArmorMode>("Mode", AutoArmorMode.Anarchy, "Mode for auto armor", AutoArmor::lambda$new$0);
+    public final BooleanSetting preserve = new BooleanSetting("Preserve", false, "Take off armor pieces if they're about to break", this::lambda$new$9);
     private final EnumSetting<AutoArmorElytra> elytra = new EnumSetting<AutoArmorElytra>(
             "Elytra", AutoArmorElytra.ElytraFly, "Put Elytra on instead of chestplate"
     );
-    public final BooleanSetting bindState = new BooleanSetting("BindState", false, "Bind state", AutoArmor::lambda$new$1);
     public final BooleanSetting awaitLanding = new BooleanSetting("AwaitLanding", false, "Await landing before swapping from Elytra", this::lambda$new$2);
     private final BindSetting swap = new BindSetting("Swap", Bind.create(), "Key to swap chest armor", this::lambda$new$3);
     private final IntSetting interval = new IntSetting("Interval", 0, 0, 5, 1, "Interval for equipping armor", this::lambda$new$4);
@@ -74,28 +77,17 @@ public class AutoArmor extends Module {
     private final EnumSetting<ArmorEnchantMode> preferFeet = new EnumSetting<ArmorEnchantMode>(
             "PreferFeet", ArmorEnchantMode.Prot, "Protection preference for feet"
     );
-    public final BooleanSetting preserve = new BooleanSetting("Preserve", false, "Take off armor pieces if they're about to break", this::lambda$new$9);
-    public final BooleanSetting avoidBinding = new BooleanSetting("AvoidBinding", true, "Avoid the binding curse");
     private final dev.boze.client.utils.Timer timer = new dev.boze.client.utils.Timer();
-    private boolean field2867 = true;
-    private Vec2f field2868 = null;
-    private long field2869 = 0L;
-    public boolean field2870 = false;
-    public final Object2IntMap<RegistryEntry<Enchantment>> field2871 = new Object2IntOpenHashMap();
     private final nd[] field2872 = new nd[4];
     private final nd field2873 = new nd(this, 3);
     private final nd field2874 = new nd(this, 2);
     private final nd field2875 = new nd(this, 1);
     private final nd field2876 = new nd(this, 0);
+    public boolean field2870 = false;
+    private boolean field2867 = true;
+    private Vec2f field2868 = null;
+    private long field2869 = 0L;
     private int field2877 = 0;
-
-    private AutoArmorMode method1637() {
-        return Options.INSTANCE.method1971() ? AutoArmorMode.Ghost : this.mode.getValue();
-    }
-
-    public AutoArmorElytra method1638() {
-        return this.elytra.getValue();
-    }
 
     public AutoArmor() {
         super("AutoArmor", "Automatically equips armor", Category.Misc);
@@ -104,6 +96,22 @@ public class AutoArmor extends Module {
         this.field2872[2] = this.field2875;
         this.field2872[3] = this.field2876;
         this.field435 = true;
+    }
+
+    private static boolean lambda$new$1() {
+        return false;
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
+
+    private AutoArmorMode method1637() {
+        return Options.INSTANCE.method1971() ? AutoArmorMode.Ghost : this.mode.getValue();
+    }
+
+    public AutoArmorElytra method1638() {
+        return this.elytra.getValue();
     }
 
     @Override
@@ -433,13 +441,5 @@ public class AutoArmor extends Module {
 
     private boolean lambda$new$2() {
         return this.elytra.getValue() == AutoArmorElytra.ElytraFly;
-    }
-
-    private static boolean lambda$new$1() {
-        return false;
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

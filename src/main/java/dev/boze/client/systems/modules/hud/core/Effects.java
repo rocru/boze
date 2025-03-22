@@ -32,6 +32,13 @@ public class Effects extends HUDModule {
         super("Effects", "Shows your current potion effects", 40.0, 40.0);
     }
 
+    public static String method1554(int ticks) {
+        int var4 = ticks / 20;
+        int var5 = var4 / 60;
+        var4 %= 60;
+        return var4 < 10 ? var5 + ":0" + var4 : var5 + ":" + var4;
+    }
+
     @Override
     public void method295(DrawContext context) {
         boolean var5 = this.method2010() == 1 || this.method2010() == 2;
@@ -118,13 +125,6 @@ public class Effects extends HUDModule {
             int var6 = MathHelper.floor((float) var1.getDuration() * var2);
             return method1554(var6);
         }
-    }
-
-    public static String method1554(int ticks) {
-        int var4 = ticks / 20;
-        int var5 = var4 / 60;
-        var4 %= 60;
-        return var4 < 10 ? var5 + ":0" + var4 : var5 + ":" + var4;
     }
 
     private int lambda$new$1(String var1, String var2) {

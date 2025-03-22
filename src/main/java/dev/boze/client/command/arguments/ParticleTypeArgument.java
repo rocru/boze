@@ -23,6 +23,14 @@ public class ParticleTypeArgument implements ArgumentType<ParticleType<?>> {
         return new ParticleTypeArgument();
     }
 
+    public static ParticleType<?> method1008(CommandContext<?> context, String name) {
+        return (ParticleType<?>) context.getArgument(name, ParticleType.class);
+    }
+
+    private static String lambda$listSuggestions$0(ParticleType var0) {
+        return Registries.PARTICLE_TYPE.getId(var0).getPath();
+    }
+
     @Override
     public ParticleType<?> parse(StringReader reader) {
         String var2 = reader.getRemaining();
@@ -30,21 +38,9 @@ public class ParticleTypeArgument implements ArgumentType<ParticleType<?>> {
         return StringListSetting.method453(var2);
     }
 
-    public static ParticleType<?> method1008(CommandContext<?> context, String name) {
-        return (ParticleType<?>) context.getArgument(name, ParticleType.class);
-    }
-
     public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
         return CommandSource.suggestMatching(
                 Registries.PARTICLE_TYPE.stream().map(ParticleTypeArgument::lambda$listSuggestions$0).collect(Collectors.toList()), builder
-        );
-    }
-
-    public Collection<String> getExamples() {
-        return Arrays.asList(
-                Registries.PARTICLE_TYPE.getId(Registries.PARTICLE_TYPE.get(0)).getPath(),
-                Registries.PARTICLE_TYPE.getId(Registries.PARTICLE_TYPE.get(1)).getPath(),
-                Registries.PARTICLE_TYPE.getId(Registries.PARTICLE_TYPE.get(2)).getPath()
         );
     }
 
@@ -54,7 +50,11 @@ public class ParticleTypeArgument implements ArgumentType<ParticleType<?>> {
     //   return this.method1007(stringReader);
     //}
 
-    private static String lambda$listSuggestions$0(ParticleType var0) {
-        return Registries.PARTICLE_TYPE.getId(var0).getPath();
+    public Collection<String> getExamples() {
+        return Arrays.asList(
+                Registries.PARTICLE_TYPE.getId(Registries.PARTICLE_TYPE.get(0)).getPath(),
+                Registries.PARTICLE_TYPE.getId(Registries.PARTICLE_TYPE.get(1)).getPath(),
+                Registries.PARTICLE_TYPE.getId(Registries.PARTICLE_TYPE.get(2)).getPath()
+        );
     }
 }

@@ -17,7 +17,9 @@ import net.minecraft.network.packet.c2s.play.PlayerInteractBlockC2SPacket;
 public class FastUse extends Module {
     public static final FastUse INSTANCE = new FastUse();
     public static boolean field2947 = false;
+    public static boolean field2960 = false;
     public final BooleanSetting field2948 = new BooleanSetting("NCPStrict", true, "NCP Strict");
+    public final BooleanSetting field2957 = new BooleanSetting("PacketEat", false, "Keep eating if you stop right clicking");
     private final BooleanSetting field2949 = new BooleanSetting("GhostFix", true, "Ghost Fix");
     private final IntSetting field2950 = new IntSetting("Delay", 0, 0, 5, 0, "Delay for fast use");
     private final IntSetting field2951 = new IntSetting("StartDelay", 0, 0, 10, 0, "Delay to start fast use");
@@ -26,10 +28,8 @@ public class FastUse extends Module {
     private final BooleanSetting field2954 = new BooleanSetting("FastCrystal", false, "Place crystals faster");
     private final BooleanSetting field2955 = new BooleanSetting("FastEat", false, "Remove eat delay");
     private final BooleanSetting field2956 = new BooleanSetting("NoCrystalPlace", false, "Prevent manual crystal placing");
-    public final BooleanSetting field2957 = new BooleanSetting("PacketEat", false, "Keep eating if you stop right clicking");
     private int field2958;
     private int field2959;
-    public static boolean field2960 = false;
 
     public FastUse() {
         super("FastUse", "Removes item use delay", Category.Misc);

@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 import java.nio.file.Path;
 
-@Mixin({FileCache.class})
+@Mixin(FileCache.class)
 public interface FileCacheAccessor {
     @Accessor
     Path getDirectory();

@@ -18,13 +18,13 @@ import net.minecraft.screen.slot.SlotActionType;
 
 public class InventoryUtil
         implements IMinecraft {
+    public static int field1253 = -1;
+    public static int[] field1254 = null;
+    public static int[] field1255 = null;
     private static Module field1249 = null;
     private static int field1250 = -1;
     private static SlotSwapMode field1251 = null;
     private static int field1252 = -1;
-    public static int field1253 = -1;
-    public static int[] field1254 = null;
-    public static int[] field1255 = null;
 
     public static boolean method2114() {
         return field1250 != -1;
@@ -103,9 +103,9 @@ public class InventoryUtil
 
     private static boolean method535(Module module, int n, SlotSwapMode slotSwapMode, int n2) {
         return switch (slotSwapMode.ordinal()) {
-            default -> throw new IncompatibleClassChangeError();
             case 0 -> InventoryUtil.method536(module, n, n2);
             case 1 -> InventoryUtil.method537(module, n, n2);
+            default -> throw new IncompatibleClassChangeError();
         };
     }
 

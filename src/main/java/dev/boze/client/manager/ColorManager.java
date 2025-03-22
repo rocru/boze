@@ -4,10 +4,10 @@ import dev.boze.client.api.BozeDrawColor;
 import dev.boze.client.systems.modules.client.OldColors;
 
 public abstract class ColorManager {
-    private BozeDrawColor field412;
-    private boolean field413;
     public final BozeDrawColor field414;
     public final boolean field415;
+    private BozeDrawColor field412;
+    private boolean field413;
 
     protected ColorManager(BozeDrawColor color) {
         this.field412 = color;

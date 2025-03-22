@@ -45,8 +45,8 @@ public class Jesus extends Module {
             "NoSetback", JesusNoSetback.Water, "Don't jesus when falling into liquid at high speeds"
     );
     private final IntSetting field3290 = new IntSetting("Height", 10, 1, 50, 1, "Min height for NoSetback", this.field3289);
-    public BooleanSetting field3291 = new BooleanSetting("Snow", true, "Walk on powdered snow");
     private final Mutable field3292 = new Mutable();
+    public BooleanSetting field3291 = new BooleanSetting("Snow", true, "Walk on powdered snow");
     private int field3293 = 10;
     private int field3294 = 0;
     private boolean field3295;

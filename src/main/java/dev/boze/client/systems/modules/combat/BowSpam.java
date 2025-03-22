@@ -28,17 +28,29 @@ public class BowSpam extends Module {
     private boolean field2550 = false;
     private int field2551 = 0;
 
+    public BowSpam() {
+        super("BowSpam", "Spams your bow\nCan also be used as perfect bow release\n", Category.Combat);
+        this.field435 = true;
+    }
+
+    private static boolean lambda$onSendMovementPackets$2(ItemStack var0) {
+        return var0.getItem() instanceof ArrowItem;
+    }
+
+    private static boolean lambda$onInteract$1(ItemStack var0) {
+        return var0.getItem() instanceof ArrowItem;
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
+
     private boolean method1493() {
         return Options.INSTANCE.method1971() || this.mode.getValue() == BowspamMode.Ghost;
     }
 
     private boolean method1494() {
         return !this.method1493();
-    }
-
-    public BowSpam() {
-        super("BowSpam", "Spams your bow\nCan also be used as perfect bow release\n", Category.Combat);
-        this.field435 = true;
     }
 
     @Override
@@ -110,17 +122,5 @@ public class BowSpam extends Module {
 
     private void method1497(boolean var1) {
         mc.options.useKey.setPressed(var1);
-    }
-
-    private static boolean lambda$onSendMovementPackets$2(ItemStack var0) {
-        return var0.getItem() instanceof ArrowItem;
-    }
-
-    private static boolean lambda$onInteract$1(ItemStack var0) {
-        return var0.getItem() instanceof ArrowItem;
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

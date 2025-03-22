@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-@Mixin({PlayerInteractEntityC2SPacket.class})
+@Mixin(PlayerInteractEntityC2SPacket.class)
 public class PlayerInteractEntityC2SPacketMixin implements IPlayerInteractEntityC2SPacket {
     @Shadow
     @Final

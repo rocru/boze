@@ -33,6 +33,10 @@ public class FriendArgument implements ArgumentType<Class3063> {
         return context.getArgument(name, Class3063.class);
     }
 
+    private static Message lambda$static$0(Object var0) {
+        return Text.literal("Friend with name " + var0 + " doesn't exist");
+    }
+
     @Override
     public Class3063 parse(StringReader reader) throws CommandSyntaxException {
         String var5 = reader.readString();
@@ -56,17 +60,13 @@ public class FriendArgument implements ArgumentType<Class3063> {
         return CommandSource.suggestMatching(Friends.method2120().stream().map(Class3063::method5992).collect(Collectors.toList()), builder);
     }
 
-    public Collection<String> getExamples() {
-        return field1859;
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     //public Object parse(StringReader stringReader) throws CommandSyntaxException {
     //   return this.method996(stringReader);
     //}
 
-    private static Message lambda$static$0(Object var0) {
-        return Text.literal("Friend with name " + var0 + " doesn't exist");
+    public Collection<String> getExamples() {
+        return field1859;
     }
 }

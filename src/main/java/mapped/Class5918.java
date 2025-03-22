@@ -24,6 +24,15 @@ import java.util.List;
 public class Class5918 implements IMinecraft {
     private static final List<Input> field9;
 
+    static {
+        field9 = new ArrayList<Input>();
+        for (int i = -1; i <= 1; ++i) {
+            for (int j = -1; j <= 1; ++j) {
+                Class5918.field9.add(method41((float) i, (float) j));
+            }
+        }
+    }
+
     public Class5918() {
         super();
     }
@@ -159,14 +168,5 @@ public class Class5918 implements IMinecraft {
         }
         ((IParticleManager) Class5918.mc.particleManager).boze$setPaused(paused);
         return (Pair<ClientPlayerEntity, ArrayList<Vec3d>>) new Pair(baseEntity, list);
-    }
-
-    static {
-        field9 = new ArrayList<Input>();
-        for (int i = -1; i <= 1; ++i) {
-            for (int j = -1; j <= 1; ++j) {
-                Class5918.field9.add(method41((float) i, (float) j));
-            }
-        }
     }
 }

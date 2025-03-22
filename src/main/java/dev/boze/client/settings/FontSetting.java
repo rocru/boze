@@ -8,8 +8,8 @@ import java.io.File;
 import java.util.function.BooleanSupplier;
 
 public class FontSetting extends Setting<String> {
-    private String field2177;
     private final String field2178;
+    private String field2177;
 
     public FontSetting(String name, String value, String description) {
         super(name, description);

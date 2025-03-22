@@ -15,12 +15,25 @@ import java.util.WeakHashMap;
 
 public class BossStack extends Module {
     public static final BossStack INSTANCE = new BossStack();
+    public static final WeakHashMap<ClientBossBar, Integer> field3421 = new WeakHashMap();
     private final BooleanSetting field3419 = new BooleanSetting("Stack", true, "Stack the bars");
     private final BooleanSetting field3420 = new BooleanSetting("HideName", true, "Hide the boss' names");
-    public static final WeakHashMap<ClientBossBar, Integer> field3421 = new WeakHashMap();
 
     public BossStack() {
         super("BossStack", "Stacks bo$$ bars", Category.Render);
+    }
+
+    private static void lambda$onGetBars$1(HashMap var0, ClientBossBar var1) {
+        String var5 = var1.getName().getString();
+        if (var0.containsKey(var5)) {
+            field3421.compute((ClientBossBar) var0.get(var5), BossStack::lambda$onGetBars$0);
+        } else {
+            var0.put(var5, var1);
+        }
+    }
+
+    private static Integer lambda$onGetBars$0(ClientBossBar var0, Integer var1) {
+        return var1 == null ? 2 : var1 + 1;
     }
 
     @EventHandler
@@ -51,18 +64,5 @@ public class BossStack extends Module {
             var1.field1904.forEachRemaining(boss -> lambda$onGetBars$1(var4, boss));
             var1.field1904 = var4.values().iterator();
         }
-    }
-
-    private static void lambda$onGetBars$1(HashMap var0, ClientBossBar var1) {
-        String var5 = var1.getName().getString();
-        if (var0.containsKey(var5)) {
-            field3421.compute((ClientBossBar) var0.get(var5), BossStack::lambda$onGetBars$0);
-        } else {
-            var0.put(var5, var1);
-        }
-    }
-
-    private static Integer lambda$onGetBars$0(ClientBossBar var0, Integer var1) {
-        return var1 == null ? 2 : var1 + 1;
     }
 }

@@ -51,6 +51,12 @@ public class InteractionHandler implements SettingsGroup, IMinecraft {
             "Place type\n - Vanilla: Place blocks like Vanilla, may cause ghost blocks\n - Packet: Place blocks using packets, will never cause de-sync\n",
             this::method2114
     );
+    public final EnumSetting<SwapMode> field241 = new EnumSetting<SwapMode>(
+            "Swap",
+            SwapMode.Silent,
+            "Mode for swapping to blocks\nHot-bar only modes:\n - Normal: Vanilla swap, hot-bar only\n - Silent: Instantaneously swap to block and back\nWhole inventory modes (you don't need to keep the block(s) in your hot-bar):\n - Alt: Alternative silent swap mode, may work where mode silent is patched\nNote: Whole inventory modes may not work on some servers\n",
+            this::lambda$new$5
+    );
     public final BooleanSetting field235 = new BooleanSetting("Rotate", true, "Rotate to place blocks", this::lambda$new$0);
     public final MinMaxSetting field236 = new MinMaxSetting(
             "Reach", 4.5, 3.0, 6.0, 0.1, "Reach to place blocks within\n4.5 is vanilla\n5-6 may work on some servers\n", this::lambda$new$1
@@ -62,12 +68,6 @@ public class InteractionHandler implements SettingsGroup, IMinecraft {
     );
     protected final IntSetting field240 = new IntSetting(
             "PlaceRate", 4, 1, 8, 1, "Maximum blocks to place per tick\n1 is most consistent, but 3-4 tends to work on most servers\n", this::method2114
-    );
-    public final EnumSetting<SwapMode> field241 = new EnumSetting<SwapMode>(
-            "Swap",
-            SwapMode.Silent,
-            "Mode for swapping to blocks\nHot-bar only modes:\n - Normal: Vanilla swap, hot-bar only\n - Silent: Instantaneously swap to block and back\nWhole inventory modes (you don't need to keep the block(s) in your hot-bar):\n - Alt: Alternative silent swap mode, may work where mode silent is patched\nNote: Whole inventory modes may not work on some servers\n",
-            this::lambda$new$5
     );
     protected final EnumSetting<CrystalAttackMode> field242 = new EnumSetting<CrystalAttackMode>(
             "AttackCrystals",

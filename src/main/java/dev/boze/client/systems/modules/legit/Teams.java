@@ -13,10 +13,10 @@ import java.util.regex.Pattern;
 
 public class Teams extends Module {
     public static final Teams INSTANCE = new Teams();
+    private static final Pattern field2829 = Pattern.compile("(?i)§[0-9A-F]");
     private final BooleanSetting field2826 = new BooleanSetting("Vanilla", true, "Detect team members using vanilla team system");
     private final BooleanSetting field2827 = new BooleanSetting("NameStyle", false, "Detect team members using their name formatting style");
     private final BooleanSetting field2828 = new BooleanSetting("NameColor", false, "Detect team members using their name color");
-    private static final Pattern field2829 = Pattern.compile("(?i)§[0-9A-F]");
 
     public Teams() {
         super("Teams", "Automatically marks your team members as friends", Category.Legit);

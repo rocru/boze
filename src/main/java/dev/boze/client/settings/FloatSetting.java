@@ -11,12 +11,12 @@ import java.util.Locale;
 import java.util.function.BooleanSupplier;
 
 public class FloatSetting extends Setting<Float> {
-    private float field928;
-    private final float field929;
     public final float field930;
     public final float field931;
     public final float field932;
     public final boolean field933;
+    private final float field929;
+    private float field928;
 
     public FloatSetting(String name, float value, float min, float max, float step, String description) {
         super(name, description);

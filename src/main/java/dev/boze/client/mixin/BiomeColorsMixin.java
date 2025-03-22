@@ -9,11 +9,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({BiomeColors.class})
+@Mixin(BiomeColors.class)
 public class BiomeColorsMixin {
     @Inject(
-            method = {"getWaterColor"},
-            at = {@At("HEAD")},
+            method = "getWaterColor",
+            at = @At("HEAD"),
             cancellable = true
     )
     private static void onGetWaterColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {
@@ -23,8 +23,8 @@ public class BiomeColorsMixin {
     }
 
     @Inject(
-            method = {"getGrassColor"},
-            at = {@At("HEAD")},
+            method = "getGrassColor",
+            at = @At("HEAD"),
             cancellable = true
     )
     private static void onGetGrassColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {
@@ -34,8 +34,8 @@ public class BiomeColorsMixin {
     }
 
     @Inject(
-            method = {"getFoliageColor"},
-            at = {@At("HEAD")},
+            method = "getFoliageColor",
+            at = @At("HEAD"),
             cancellable = true
     )
     private static void onGetFoliageColor(BlockRenderView var0, BlockPos var1, CallbackInfoReturnable<Integer> var2) {

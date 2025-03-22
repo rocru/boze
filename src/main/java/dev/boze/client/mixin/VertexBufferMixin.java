@@ -12,14 +12,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.nio.ByteBuffer;
 
-@Mixin({VertexBuffer.class})
+@Mixin(VertexBuffer.class)
 public class VertexBufferMixin {
     @Shadow
     private int indexBufferId;
 
     @Inject(
-            method = {"uploadIndexBuffer(Lnet/minecraft/client/render/BuiltBuffer$DrawParameters;Ljava/nio/ByteBuffer;)Lcom/mojang/blaze3d/systems/RenderSystem$ShapeIndexBuffer;"},
-            at = {@At("RETURN")}
+            method = "uploadIndexBuffer(Lnet/minecraft/client/render/BuiltBuffer$DrawParameters;Ljava/nio/ByteBuffer;)Lcom/mojang/blaze3d/systems/RenderSystem$ShapeIndexBuffer;",
+            at = @At("RETURN")
     )
     private void onUploadIndexBuffer(DrawParameters var1, ByteBuffer var2, CallbackInfoReturnable<ShapeIndexBuffer> var3) {
         if (var3.getReturnValue() == null) {

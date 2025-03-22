@@ -17,6 +17,17 @@ import java.util.stream.Collectors;
 public class PlayerListArgument implements ArgumentType<PlayerListEntry>, IMinecraft {
     private static Collection<String> field1523;
 
+    static {
+        if (mc.getNetworkHandler() != null) {
+            field1523 = mc.getNetworkHandler()
+                    .getPlayerList()
+                    .stream()
+                    .limit(3L)
+                    .map(PlayerListArgument::lambda$static$0)
+                    .collect(Collectors.toList());
+        }
+    }
+
     public static PlayerListArgument method678() {
         return new PlayerListArgument();
     }
@@ -24,6 +35,20 @@ public class PlayerListArgument implements ArgumentType<PlayerListEntry>, IMinec
     public static PlayerListEntry method679(CommandContext<?> context) {
         return context.getArgument("player", PlayerListEntry.class);
     }
+
+    private static String lambda$listSuggestions$1(PlayerListEntry var0) {
+        return var0.getProfile().getName();
+    }
+
+    private static String lambda$static$0(PlayerListEntry var0) {
+        return var0.getProfile().getName();
+    }
+
+    // $VF: synthetic method
+    // $VF: bridge method
+    //public Object parse(StringReader stringReader) throws CommandSyntaxException {
+    //   return this.method680(stringReader);
+    //}
 
     @Override
     public PlayerListEntry parse(StringReader reader) throws CommandSyntaxException {
@@ -46,30 +71,5 @@ public class PlayerListArgument implements ArgumentType<PlayerListEntry>, IMinec
 
     public Collection<String> getExamples() {
         return field1523;
-    }
-
-    // $VF: synthetic method
-    // $VF: bridge method
-    //public Object parse(StringReader stringReader) throws CommandSyntaxException {
-    //   return this.method680(stringReader);
-    //}
-
-    private static String lambda$listSuggestions$1(PlayerListEntry var0) {
-        return var0.getProfile().getName();
-    }
-
-    private static String lambda$static$0(PlayerListEntry var0) {
-        return var0.getProfile().getName();
-    }
-
-    static {
-        if (mc.getNetworkHandler() != null) {
-            field1523 = mc.getNetworkHandler()
-                    .getPlayerList()
-                    .stream()
-                    .limit(3L)
-                    .map(PlayerListArgument::lambda$static$0)
-                    .collect(Collectors.toList());
-        }
     }
 }

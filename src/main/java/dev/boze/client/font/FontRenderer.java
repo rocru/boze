@@ -36,17 +36,24 @@ public class FontRenderer implements IFontRender, IMinecraft {
     private final Immediate field1079 = VertexConsumerProvider.immediate(this.field1078);
     private final BufferAllocator field1080 = new BufferAllocator(2048);
     private final Immediate field1081 = VertexConsumerProvider.immediate(this.field1080);
-    private BaseFramebuffer field1082;
     private final Matrix4f field1083 = new Matrix4f();
-    private double field1084 = 1.7;
-    private double field1085 = 1.0;
-    private boolean field1086;
     private final double field1087 = 1.0;
     private final List<FontDescriptor> field1088 = new LinkedList<>();
     private final List<FontDescriptor> field1089 = new LinkedList<>();
     private final List<FontDescriptor> field1090 = new LinkedList<>();
+    private BaseFramebuffer field1082;
+    private double field1084 = 1.7;
+    private double field1085 = 1.0;
+    private boolean field1086;
 
     private FontRenderer() {
+    }
+
+    public static void method1964(int width, int height) {
+        FontRenderer var5 = field1075;
+        if (var5.field1082 != null) {
+            var5.field1082.resize(width, height, false);
+        }
     }
 
     @Override
@@ -264,13 +271,6 @@ public class FontRenderer implements IFontRender, IMinecraft {
             this.field1084 = 1.7;
             this.field1085 = 1.0;
             this.field1086 = false;
-        }
-    }
-
-    public static void method1964(int width, int height) {
-        FontRenderer var5 = field1075;
-        if (var5.field1082 != null) {
-            var5.field1082.resize(width, height, false);
         }
     }
 

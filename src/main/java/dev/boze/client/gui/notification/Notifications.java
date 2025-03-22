@@ -33,23 +33,11 @@ public enum Notifications {
     POPUP("P"),
     DUPLICATE("Q");
 
-    private final String field1736;
     private static final Notifications[] field1737 = initializeValues();
+    private final String field1736;
 
     Notifications(String var3) {
         this.field1736 = var3;
-    }
-
-    public void render(double x, double y, RGBAColor color) {
-        IconManager.field1979.drawShadowedText(this.field1736, x, y, color, false);
-    }
-
-    public double method2091() {
-        return IconManager.field1979.method501(this.field1736);
-    }
-
-    public double method1614() {
-        return IconManager.field1979.method1390();
     }
 
     private static Notifications[] initializeValues() {
@@ -83,5 +71,17 @@ public enum Notifications {
                 POPUP,
                 DUPLICATE
         };
+    }
+
+    public void render(double x, double y, RGBAColor color) {
+        IconManager.field1979.drawShadowedText(this.field1736, x, y, color, false);
+    }
+
+    public double method2091() {
+        return IconManager.field1979.method501(this.field1736);
+    }
+
+    public double method1614() {
+        return IconManager.field1979.method1390();
     }
 }

@@ -34,10 +34,6 @@ public class SettingColorComponent extends ScaledBaseComponent {
     private final ArrayList<InputBaseComponent> field1407 = new ArrayList<>();
     private final ArrayList<InputBaseComponent> field1408 = new ArrayList<>();
 
-    public BozeDrawColor method1362() {
-        return (BozeDrawColor) this.field1405.getValue();
-    }
-
     public SettingColorComponent(SettingColor colorPicker) {
         super(colorPicker.name, 324.0 * BaseComponent.scaleFactor, 154.0 * BaseComponent.scaleFactor, true);
         this.field1405 = colorPicker;
@@ -228,6 +224,10 @@ public class SettingColorComponent extends ScaledBaseComponent {
                                 20.0 * BaseComponent.scaleFactor
                         )
                 );
+    }
+
+    public BozeDrawColor method1362() {
+        return (BozeDrawColor) this.field1405.getValue();
     }
 
     @Override

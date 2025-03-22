@@ -83,9 +83,9 @@ public class AimAssist extends Module {
     private final BooleanSetting field2698 = new BooleanSetting("Friends", false, "Target friends", this.field2695);
     private final BooleanSetting field2699 = new BooleanSetting("Animals", false, "Target animals", this.field2695);
     private final BooleanSetting field2700 = new BooleanSetting("Monsters", false, "Target monsters", this.field2695);
+    private final Timer field2703 = new Timer();
     private Entity field2701;
     private final Comparator<Entity> field2702 = Comparator.comparing(this::lambda$new$2);
-    private final Timer field2703 = new Timer();
 
     public AimAssist() {
         super("AimAssist", "Assists your aim", Category.Legit);

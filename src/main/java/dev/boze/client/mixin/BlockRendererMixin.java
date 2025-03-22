@@ -18,13 +18,13 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(
-        value = {BlockRenderer.class},
+        value = BlockRenderer.class,
         remap = false
 )
 public class BlockRendererMixin {
     @Inject(
-            method = {"renderModel"},
-            at = {@At("HEAD")},
+            method = "renderModel",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderModel(BakedModel var1, BlockState var2, BlockPos var3, BlockPos var4, CallbackInfo var5) {
@@ -44,7 +44,7 @@ public class BlockRendererMixin {
     }
 
     @Redirect(
-            method = {"bufferQuad"},
+            method = "bufferQuad",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/caffeinemc/mods/sodium/api/util/ColorARGB;toABGR(I)I"

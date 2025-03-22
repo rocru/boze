@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({PlayerEntity.class})
+@Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntityMixin {
     @Shadow
     public boolean damage(DamageSource source, float amount) {
@@ -32,13 +32,13 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     public abstract void remove(RemovalReason var1);
 
     @Inject(
-            method = {"tick"},
-            at = {@At(
+            method = "tick",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/player/PlayerEntity;isSpectator()Z",
                     ordinal = 1,
                     shift = Shift.BEFORE
-            )}
+            )
     )
     private void noClipHook(CallbackInfo var1) {
         if (!this.noClip && Flight.INSTANCE.isEnabled() && Flight.INSTANCE.field3279.getValue()) {
@@ -47,8 +47,8 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     }
 
     @Inject(
-            method = {"clipAtLedge"},
-            at = {@At("HEAD")},
+            method = "clipAtLedge",
+            at = @At("HEAD"),
             cancellable = true
     )
     protected void clipAtLedge(CallbackInfoReturnable<Boolean> info) {
@@ -61,8 +61,8 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     }
 
     @Inject(
-            method = {"travel"},
-            at = {@At("HEAD")}
+            method = "travel",
+            at = @At("HEAD")
     )
     private void onTravelPre(Vec3d var1, CallbackInfo var2) {
         if (MinecraftClient.getInstance().player != null) {
@@ -83,8 +83,8 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     }
 
     @Inject(
-            method = {"travel"},
-            at = {@At("RETURN")}
+            method = "travel",
+            at = @At("RETURN")
     )
     private void onTravelPost(Vec3d var1, CallbackInfo var2) {
         if (MinecraftClient.getInstance().player != null) {
@@ -95,8 +95,8 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     }
 
     @Inject(
-            method = {"jump"},
-            at = {@At("HEAD")}
+            method = "jump",
+            at = @At("HEAD")
     )
     private void onJumpPre(CallbackInfo var1) {
         if (MinecraftClient.getInstance().player != null) {
@@ -117,8 +117,8 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     }
 
     @Inject(
-            method = {"jump"},
-            at = {@At("RETURN")}
+            method = "jump",
+            at = @At("RETURN")
     )
     private void onJumpPost(CallbackInfo var1) {
         if (MinecraftClient.getInstance().player != null) {
@@ -129,16 +129,16 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     }
 
     @ModifyReturnValue(
-            method = {"getBlockInteractionRange"},
-            at = {@At("RETURN")}
+            method = "getBlockInteractionRange",
+            at = @At("RETURN")
     )
     private double modifyReturnBlockInteractionRange(double var1) {
         return Reach.method1614();
     }
 
     @ModifyReturnValue(
-            method = {"getEntityInteractionRange"},
-            at = {@At("RETURN")}
+            method = "getEntityInteractionRange",
+            at = @At("RETURN")
     )
     private double modifyReturnEntityInteractionRange(double var1) {
         return Reach.method1613();

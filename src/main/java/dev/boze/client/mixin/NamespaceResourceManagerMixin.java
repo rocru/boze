@@ -15,17 +15,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
 
-@Mixin({NamespaceResourceManager.class})
+@Mixin(NamespaceResourceManager.class)
 public class NamespaceResourceManagerMixin {
-    @Inject(method = {"getResource"}, at = {@At(value = "HEAD")}, cancellable = true)
+    @Unique
+    private static InputStream $lambda$onGetResource$0(Identifier var0) throws IOException {
+        return MinecraftClient.class.getClassLoader().getResourceAsStream("assets/boze/" + var0.getPath());
+    }
+
+    @Inject(method = "getResource", at = @At(value = "HEAD"), cancellable = true)
     private void onGetResource(Identifier identifier, CallbackInfoReturnable callbackInfoReturnable) {
         if (identifier.getNamespace().equals("boze")) {
             callbackInfoReturnable.setReturnValue(Optional.of(new Resource(new BozeResourcePack(), () -> NamespaceResourceManagerMixin.$lambda$onGetResource$0(identifier))));
         }
-    }
-
-    @Unique
-    private static InputStream $lambda$onGetResource$0(Identifier var0) throws IOException {
-        return MinecraftClient.class.getClassLoader().getResourceAsStream("assets/boze/" + var0.getPath());
     }
 }

@@ -44,6 +44,28 @@ public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMi
         this.field924 = value;
     }
 
+    private static void lambda$saveLocalData$9(JsonArray var0, WayPoint var1) {
+        var0.add(var1.serialize());
+    }
+
+    private static boolean lambda$build$7(WayPoint var0) {
+        return var0.field912.equals(mc.world.getRegistryKey().getValue().getPath()) && var0.field913.equalsIgnoreCase(mc.getServer().getServerIp());
+    }
+
+    private static void lambda$build$5(WayPoint var0) {
+        if (var0.field912.equals(mc.world.getRegistryKey().getValue().getPath()) && var0.field913.equalsIgnoreCase(mc.getCurrentServerEntry().address)) {
+            int var4 = var0.field911;
+            int var5 = var0.field910;
+            int var6 = var0.field909;
+            String var7 = var0.field908;
+            ChatInstance.method624(" - " + var7 + " X" + var6 + " Y" + var5 + " Z" + var4);
+        }
+    }
+
+    private static boolean lambda$build$2(String var0, WayPoint var1) {
+        return var1.field908.equalsIgnoreCase(var0);
+    }
+
     @Override
     public ArrayList<WayPoint> getValue() {
         return this.field924;
@@ -98,6 +120,41 @@ public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMi
         return true;
     }
 
+    // $VF: synthetic method
+    // $VF: bridge method
+    // @Override
+    //  public Object load(NbtCompound nbtCompound) {
+    //    return this.method407(nbtCompound);
+    // }
+//
+    // $VF: synthetic method
+    //  // $VF: bridge method
+    //  @Override
+    //  public Object setValue(Object object) {
+    //    return this.method406((ArrayList<WayPoint>)object);
+    // }
+//
+    // $VF: synthetic method
+    // $VF: bridge method
+    // @Override
+    //public Object resetValue() {
+    //    return this.method405();
+    // }
+
+    // $VF: synthetic method
+    // $VF: bridge method
+    // @Override
+    // public Object getValue() {
+    //    return this.method2120();
+    // }
+
+    // $VF: synthetic method
+    // $VF: bridge method
+    // @Override
+    //public Object deserialize(JsonObject jsonObject) {
+    //    return this.deserialize(jsonObject);
+    // }
+
     @Override
     public NbtCompound save(NbtCompound tag) {
         return tag;
@@ -138,41 +195,6 @@ public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMi
         return super.deserialize(data);
     }
 
-    // $VF: synthetic method
-    // $VF: bridge method
-    // @Override
-    //  public Object load(NbtCompound nbtCompound) {
-    //    return this.method407(nbtCompound);
-    // }
-//
-    // $VF: synthetic method
-    //  // $VF: bridge method
-    //  @Override
-    //  public Object setValue(Object object) {
-    //    return this.method406((ArrayList<WayPoint>)object);
-    // }
-//
-    // $VF: synthetic method
-    // $VF: bridge method
-    // @Override
-    //public Object resetValue() {
-    //    return this.method405();
-    // }
-
-    // $VF: synthetic method
-    // $VF: bridge method
-    // @Override
-    // public Object getValue() {
-    //    return this.method2120();
-    // }
-
-    // $VF: synthetic method
-    // $VF: bridge method
-    // @Override
-    //public Object deserialize(JsonObject jsonObject) {
-    //    return this.deserialize(jsonObject);
-    // }
-
     private void lambda$loadLocalData$10(JsonElement var1) {
         WayPoint var5 = new WayPoint().deserialize(var1.getAsJsonObject());
         if (!this.field924.contains(var5)) {
@@ -180,18 +202,10 @@ public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMi
         }
     }
 
-    private static void lambda$saveLocalData$9(JsonArray var0, WayPoint var1) {
-        var0.add(var1.serialize());
-    }
-
     private int lambda$build$8(CommandContext var1) throws CommandSyntaxException {
         ChatInstance.method624("Clearing all waypoints for the current server/dimension...");
         this.field924.removeIf(WaypointSetting::lambda$build$7);
         return 1;
-    }
-
-    private static boolean lambda$build$7(WayPoint var0) {
-        return var0.field912.equals(mc.world.getRegistryKey().getValue().getPath()) && var0.field913.equalsIgnoreCase(mc.getServer().getServerIp());
     }
 
     private int lambda$build$6(CommandContext var1) throws CommandSyntaxException {
@@ -202,16 +216,6 @@ public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMi
             return 1;
         } else {
             return 0;
-        }
-    }
-
-    private static void lambda$build$5(WayPoint var0) {
-        if (var0.field912.equals(mc.world.getRegistryKey().getValue().getPath()) && var0.field913.equalsIgnoreCase(mc.getCurrentServerEntry().address)) {
-            int var4 = var0.field911;
-            int var5 = var0.field910;
-            int var6 = var0.field909;
-            String var7 = var0.field908;
-            ChatInstance.method624(" - " + var7 + " X" + var6 + " Y" + var5 + " Z" + var4);
         }
     }
 
@@ -241,10 +245,6 @@ public class WaypointSetting extends Setting<ArrayList<WayPoint>> implements IMi
         String string = (String) commandContext.getArgument("name", String.class);
         this.field924.removeIf(arg_0 -> WaypointSetting.lambda$build$2(string, arg_0));
         return 1;
-    }
-
-    private static boolean lambda$build$2(String var0, WayPoint var1) {
-        return var1.field908.equalsIgnoreCase(var0);
     }
 
     private int lambda$build$1(CommandContext var1) throws CommandSyntaxException {

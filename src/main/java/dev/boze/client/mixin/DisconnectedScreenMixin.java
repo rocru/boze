@@ -27,7 +27,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-@Mixin({DisconnectedScreen.class})
+@Mixin(DisconnectedScreen.class)
 public abstract class DisconnectedScreenMixin extends Screen {
     @Shadow
     @Final
@@ -52,12 +52,12 @@ public abstract class DisconnectedScreenMixin extends Screen {
     }
 
     @Inject(
-            method = {"init"},
-            at = {@At(
+            method = "init",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/widget/DirectionalLayoutWidget;refreshPositions()V",
                     shift = Shift.BEFORE
-            )},
+            ),
             locals = LocalCapture.CAPTURE_FAILHARD
     )
     private void onInitPre(CallbackInfo var1, ButtonWidget var2) {

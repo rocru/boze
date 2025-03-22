@@ -12,14 +12,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({SoundSystem.class})
+@Mixin(SoundSystem.class)
 public class SoundSystemMixin implements ISoundSystem {
     @Unique
     private boolean paused;
 
     @Inject(
-            method = {"play(Lnet/minecraft/client/sound/SoundInstance;)V"},
-            at = {@At("HEAD")},
+            method = "play(Lnet/minecraft/client/sound/SoundInstance;)V",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void play(SoundInstance soundInstance, CallbackInfo ci) {
@@ -34,8 +34,8 @@ public class SoundSystemMixin implements ISoundSystem {
     }
 
     @Inject(
-            method = {"play(Lnet/minecraft/client/sound/SoundInstance;I)V"},
-            at = {@At("HEAD")},
+            method = "play(Lnet/minecraft/client/sound/SoundInstance;I)V",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void play(SoundInstance soundInstance, int delay, CallbackInfo ci) {
@@ -50,8 +50,8 @@ public class SoundSystemMixin implements ISoundSystem {
     }
 
     @Inject(
-            method = {"playNextTick"},
-            at = {@At("HEAD")},
+            method = "playNextTick",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void playNextTick(TickableSoundInstance sound, CallbackInfo ci) {

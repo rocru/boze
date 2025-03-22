@@ -16,15 +16,15 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({MultiplayerScreen.class})
+@Mixin(MultiplayerScreen.class)
 public class MultiplayerScreenMixin extends Screen {
     protected MultiplayerScreenMixin(Text title) {
         super(title);
     }
 
     @Inject(
-            method = {"init"},
-            at = {@At("TAIL")}
+            method = "init",
+            at = @At("TAIL")
     )
     public void onInit(CallbackInfo ci) {
         if (Options.INSTANCE.field986.getValue()) {
@@ -34,8 +34,8 @@ public class MultiplayerScreenMixin extends Screen {
     }
 
     @Inject(
-            method = {"render"},
-            at = {@At("TAIL")}
+            method = "render",
+            at = @At("TAIL")
     )
     public void onRender(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         if (Options.INSTANCE.field986.getValue()) {

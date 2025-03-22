@@ -17,13 +17,13 @@ import java.util.function.Consumer;
 public abstract class Setting<T> implements ISerializable<T>, IJsonSerializable2<Setting<T>> {
     public final String name;
     public final String desc;
-    public boolean descriptionSeen = false;
-    private boolean expanded;
-    public SettingBlock block = null;
-    private BooleanSupplier visibility = Setting::lambda$new$0;
     public final Setting parent;
-    protected Consumer<T> callback = null;
     private final ArrayList<Setting<?>> children = new ArrayList();
+    public boolean descriptionSeen = false;
+    public SettingBlock block = null;
+    protected Consumer<T> callback = null;
+    private boolean expanded;
+    private BooleanSupplier visibility = Setting::lambda$new$0;
     private boolean field914 = false;
     private GhostModule field915 = null;
 
@@ -57,6 +57,22 @@ public abstract class Setting<T> implements ISerializable<T>, IJsonSerializable2
         if (parent != null) {
             parent.addChild(this);
         }
+    }
+
+    protected static <T> RequiredArgumentBuilder<CommandSource, T> method402(String name, ArgumentType<T> type) {
+        return RequiredArgumentBuilder.argument(name, type);
+    }
+
+    protected static LiteralArgumentBuilder<CommandSource> method403(String name) {
+        return LiteralArgumentBuilder.literal(name);
+    }
+
+    private static boolean lambda$hide$1() {
+        return false;
+    }
+
+    private static boolean lambda$new$0() {
+        return true;
     }
 
     public boolean hasChildren() {
@@ -120,14 +136,6 @@ public abstract class Setting<T> implements ISerializable<T>, IJsonSerializable2
         return false;
     }
 
-    protected static <T> RequiredArgumentBuilder<CommandSource, T> method402(String name, ArgumentType<T> type) {
-        return RequiredArgumentBuilder.argument(name, type);
-    }
-
-    protected static LiteralArgumentBuilder<CommandSource> method403(String name) {
-        return LiteralArgumentBuilder.literal(name);
-    }
-
     public void method404(GhostModule ghostModule, boolean isGhost) {
         this.field915 = ghostModule;
         this.field914 = isGhost;
@@ -165,13 +173,5 @@ public abstract class Setting<T> implements ISerializable<T>, IJsonSerializable2
         }
 
         return this;
-    }
-
-    private static boolean lambda$hide$1() {
-        return false;
-    }
-
-    private static boolean lambda$new$0() {
-        return true;
     }
 }

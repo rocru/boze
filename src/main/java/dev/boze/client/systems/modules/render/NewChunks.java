@@ -35,16 +35,16 @@ import java.util.concurrent.Executors;
 
 public class NewChunks extends Module {
     public static final NewChunks INSTANCE = new NewChunks();
-    private final EnumSetting<NewChunksScan> field3597 = new EnumSetting<NewChunksScan>("Scan", NewChunksScan.New, "Mode for scanning chunks");
     public final BooleanSetting field3598 = new BooleanSetting("OreMethod", false, "Use ore method to detect new 1.17+ chunks - assumes all are new");
     public final ColorSetting field3599 = new ColorSetting("NewFill", new BozeDrawColor(1694448443), "Color for new chunk fill");
     public final ColorSetting field3600 = new ColorSetting("NewOutline", new BozeDrawColor(-50373), "Color for new chunk outline");
     public final ColorSetting field3601 = new ColorSetting("OldFill", new BozeDrawColor(1681603583), "Color for old chunk fill");
     public final ColorSetting field3602 = new ColorSetting("OldOutline", new BozeDrawColor(-12895233), "Color for old chunk outline");
+    private final EnumSetting<NewChunksScan> field3597 = new EnumSetting<NewChunksScan>("Scan", NewChunksScan.New, "Mode for scanning chunks");
     private final BooleanSetting field3603 = new BooleanSetting("DisregardNegative", false, "Disregard negative (<y0) blocks");
-    private ExecutorService field3604;
     private final Set<ChunkPos> field3605 = Collections.synchronizedSet(new HashSet());
     private final Set<ChunkPos> field3606 = Collections.synchronizedSet(new HashSet());
+    private ExecutorService field3604;
 
     public NewChunks() {
         super("NewChunks", "Guesses where new/old chunks are", Category.Render);

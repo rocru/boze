@@ -11,12 +11,12 @@ import java.util.Locale;
 import java.util.function.BooleanSupplier;
 
 public class IntSetting extends Setting<Integer> {
-    private int value;
-    private final int defaultValue;
     public final int min;
     public final int max;
     public final int step;
     public final boolean field937;
+    private final int defaultValue;
+    private int value;
 
     public IntSetting(String name, int value, int min, int max, int step, String description) {
         super(name, description);
@@ -143,6 +143,7 @@ public class IntSetting extends Setting<Integer> {
     // $VF: bridge method
     // @Override
     // public Object load(NbtCompound nbtCompound) {
+
     ///     return this.method437(nbtCompound);
     // }
 
@@ -165,7 +166,6 @@ public class IntSetting extends Setting<Integer> {
 
     // $VF: synthetic method
     // $VF: bridge method
-
     private int lambda$build$0(CommandContext var1) throws CommandSyntaxException {
         this.setValue((Integer) var1.getArgument("value", Integer.class));
         return 1;

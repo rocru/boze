@@ -6,10 +6,10 @@ import net.minecraft.client.render.VertexConsumerProvider.Immediate;
 import net.minecraft.client.util.BufferAllocator;
 
 class FontRenderContext {
+    final FontRenderer field1973;
     BufferAllocator field1970;
     Immediate field1971;
     BozeDrawColor field1972;
-    final FontRenderer field1973;
 
     FontRenderContext(FontRenderer var1) {
         this.field1973 = var1;

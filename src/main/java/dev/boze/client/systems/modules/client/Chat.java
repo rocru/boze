@@ -39,12 +39,12 @@ public class Chat extends Module {
     public static final Chat INSTANCE = new Chat();
     public final WeirdSettingString field773 = new WeirdSettingString("ChatPrefix", "-", "Prefix for Boze Chat");
     private final Queue<String> field774 = new LinkedList();
+    private final AtomicBoolean field779 = new AtomicBoolean(false);
+    private final AtomicBoolean field780 = new AtomicBoolean(false);
     private Socket field775 = null;
     private DataInputStream field776 = null;
     private DataOutputStream field777 = null;
     private SecretKey field778 = null;
-    private final AtomicBoolean field779 = new AtomicBoolean(false);
-    private final AtomicBoolean field780 = new AtomicBoolean(false);
 
     public Chat() {
         super("Chat", "Private chat for Boze users", Category.Client);

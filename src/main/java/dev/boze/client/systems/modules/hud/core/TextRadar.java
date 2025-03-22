@@ -29,6 +29,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TextRadar extends HUDModule implements Class5929 {
+    public static final TextRadar INSTANCE = new TextRadar();
+    public final BooleanSetting field634 = new BooleanSetting("Custom", false, "Use custom theme settings");
+    public final BooleanSetting field639 = new BooleanSetting("Shadow", false, "Text shadow", this.field634);
+    public final LinkedList<Class2895> ac = new LinkedList();
     private final IntSetting field626 = new IntSetting("Range", 64, 8, 256, 1, "Range to display players");
     private final BooleanSetting field627 = new BooleanSetting("Limit", false, "Limit players to display");
     private final IntSetting field628 = new IntSetting("MaxPlayers", 10, 1, 25, 1, "Max amount of nearest players to display", this.field627);
@@ -37,7 +41,6 @@ public class TextRadar extends HUDModule implements Class5929 {
     private final BooleanSetting field631 = new BooleanSetting("ColorCode", true, "Color codes health", this.field630);
     private final BooleanSetting field632 = new BooleanSetting("Ping", true, "Show player ping");
     private final BooleanSetting field633 = new BooleanSetting("Pops", true, "Show player pops");
-    public final BooleanSetting field634 = new BooleanSetting("Custom", false, "Use custom theme settings");
     private final ColorSetting field635 = new ColorSetting(
             "Name", new BozeDrawColor(100, 35, 250, 255, true, 0.3, 0.0, new double[]{0.0, -0.065}, new double[]{0.5, 0.6}), "Name color", this.field634
     );
@@ -50,19 +53,20 @@ public class TextRadar extends HUDModule implements Class5929 {
     private final ColorSetting field638 = new ColorSetting(
             "Brackets", new BozeDrawColor(100, 35, 250, 255, true, 0.3, 0.0, new double[]{0.0, -0.065}, new double[]{0.5, 0.6}), "Bracket color", this.field634
     );
-    public final BooleanSetting field639 = new BooleanSetting("Shadow", false, "Text shadow", this.field634);
     private final MinMaxSetting field640 = new MinMaxSetting("Spacing", 1.5, 0.0, 3.0, 0.1, "Spacing between lines", this.field634);
-    public static final TextRadar INSTANCE = new TextRadar();
     private final BozeDrawColor field641 = new BozeDrawColor(-47032);
     private final BozeDrawColor field642 = new BozeDrawColor(-12728);
     private final BozeDrawColor field643 = new BozeDrawColor(-14169088);
-    float aa = 0.0F;
     private final java.util.ArrayList<PlayerEntity> ab = new java.util.ArrayList();
-    public final LinkedList<Class2895> ac = new LinkedList();
+    float aa = 0.0F;
 
     public TextRadar() {
         super("TextRadar", "Shows a list of nearby players", 40.0, 40.0);
         this.field595.setValue(0.75);
+    }
+
+    private static boolean lambda$onRender$1(PlayerEntity var0) {
+        return !pt.method1561(var0);
     }
 
     @EventHandler
@@ -201,10 +205,6 @@ public class TextRadar extends HUDModule implements Class5929 {
 
     private double lambda$onRender$2(List var1) {
         return this.method338(var1);
-    }
-
-    private static boolean lambda$onRender$1(PlayerEntity var0) {
-        return !pt.method1561(var0);
     }
 
     private boolean lambda$onSendMovementPackets$0(AbstractClientPlayerEntity var1) {

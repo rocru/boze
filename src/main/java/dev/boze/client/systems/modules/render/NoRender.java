@@ -31,6 +31,10 @@ public class NoRender extends Module {
     private final StringListSetting field3614 = new StringListSetting("Particles", "Don't render these particles");
     private final MiscSettings field3615 = new MiscSettings();
 
+    private NoRender() {
+        super("NoRender", "Removes specified things from rendering", Category.Render);
+    }
+
     public static boolean method1971() {
         return INSTANCE.isEnabled() && INSTANCE.field3608.field2218.getValue();
     }
@@ -146,10 +150,6 @@ public class NoRender extends Module {
         }
 
         return false;
-    }
-
-    private NoRender() {
-        super("NoRender", "Removes specified things from rendering", Category.Render);
     }
 
     public static boolean method1999(Entity entity) {

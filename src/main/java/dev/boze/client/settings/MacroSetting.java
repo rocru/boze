@@ -7,8 +7,8 @@ import net.minecraft.nbt.NbtCompound;
 import java.util.function.BooleanSupplier;
 
 public class MacroSetting extends Setting<String> {
-    private String field974 = "";
     private final String field975 = "";
+    private String field974 = "";
 
     public MacroSetting(String name, String description) {
         super(name, description);

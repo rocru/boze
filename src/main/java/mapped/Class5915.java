@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class Class5915 extends BottomRowScaledComponent {
     private final FriendsSetting field5;
-    private String field6;
     private final ArrayList<Class3063> field7;
+    private String field6;
 
     public Class5915(final FriendsSetting setting) {
         super(setting.name, BottomRow.TextAddClose, 0.1, 0.4);

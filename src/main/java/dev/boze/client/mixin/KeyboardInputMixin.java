@@ -12,11 +12,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({KeyboardInput.class})
+@Mixin(KeyboardInput.class)
 public class KeyboardInputMixin extends InputMixin {
     @Inject(
-            method = {"tick"},
-            at = {@At("TAIL")}
+            method = "tick",
+            at = @At("TAIL")
     )
     private void onTickInputPost(boolean var1, float var2, CallbackInfo var3) {
         TickInputPostEvent var4 = TickInputPostEvent.method1096(this.movementSideways, this.movementForward, this.jumping, this.sneaking);

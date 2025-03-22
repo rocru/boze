@@ -3,11 +3,11 @@ package dev.boze.client.systems.modules.combat.automine;
 import dev.boze.client.utils.Timer;
 
 public class TaskLogger {
-    BlockDirectionInfo field2532;
-    public float field2533;
-    int field2534;
     final Timer field2535;
     final Miner field2536;
+    public float field2533;
+    BlockDirectionInfo field2532;
+    int field2534;
 
     TaskLogger(Miner var1, BlockDirectionInfo var2) {
         this.field2536 = var1;

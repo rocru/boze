@@ -26,6 +26,10 @@ import java.util.List;
 public class Class2784 implements IMinecraft {
     public static final List<Class<? extends Item>> field98;
 
+    static {
+        field98 = Arrays.asList(ArmorStandItem.class, AxeItem.class, BlockItem.class, BoneMealItem.class, CompassItem.class, DebugStickItem.class, DecorationItem.class, EndCrystalItem.class, EnderEyeItem.class, FilledMapItem.class, FireChargeItem.class, FireworkRocketItem.class, FlintAndSteelItem.class, HoeItem.class, HoneycombItem.class, LeadItem.class, MinecartItem.class, PowderSnowBucketItem.class, ShearsItem.class, ShovelItem.class, SpawnEggItem.class, WritableBookItem.class, WrittenBookItem.class);
+    }
+
     public Class2784() {
         super();
     }
@@ -132,9 +136,5 @@ public class Class2784 implements IMinecraft {
 
     private static boolean lambda$canPlaceBlock$0(final Entity entity) {
         return entity instanceof EndCrystalEntity;
-    }
-
-    static {
-        field98 = Arrays.asList(ArmorStandItem.class, AxeItem.class, BlockItem.class, BoneMealItem.class, CompassItem.class, DebugStickItem.class, DecorationItem.class, EndCrystalItem.class, EnderEyeItem.class, FilledMapItem.class, FireChargeItem.class, FireworkRocketItem.class, FlintAndSteelItem.class, HoeItem.class, HoneycombItem.class, LeadItem.class, MinecartItem.class, PowderSnowBucketItem.class, ShearsItem.class, ShovelItem.class, SpawnEggItem.class, WritableBookItem.class, WrittenBookItem.class);
     }
 }

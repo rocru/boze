@@ -7,8 +7,8 @@ public enum MiddleClick {
     EP(true),
     Rocket(true);
 
-    public final boolean field1797;
     private static final MiddleClick[] field1798 = method908();
+    public final boolean field1797;
 
     MiddleClick(boolean var3) {
         this.field1797 = var3;

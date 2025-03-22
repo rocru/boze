@@ -5,7 +5,7 @@ import net.minecraft.text.MutableText;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
-@Mixin({MutableText.class})
+@Mixin(MutableText.class)
 public class MutableTextMixin implements IMutableText {
     @Unique
     private int id;

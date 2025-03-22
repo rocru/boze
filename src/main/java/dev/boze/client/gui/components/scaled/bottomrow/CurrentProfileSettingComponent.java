@@ -35,6 +35,10 @@ public class CurrentProfileSettingComponent extends BottomRowScaledComponent {
         this.field1465 = new ArrayList(setting.field968);
     }
 
+    private static void lambda$deleteProfile$0(String var0) {
+        ConfigManager.delete(var0, ConfigType.PROFILE);
+    }
+
     @Override
     protected int method2010() {
         return this.field1465.size();
@@ -182,9 +186,5 @@ public class CurrentProfileSettingComponent extends BottomRowScaledComponent {
             this.method647("Error sharing profile: " + var1);
             var10.printStackTrace();
         }
-    }
-
-    private static void lambda$deleteProfile$0(String var0) {
-        ConfigManager.delete(var0, ConfigType.PROFILE);
     }
 }

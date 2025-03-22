@@ -7,10 +7,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin({PlayerEntityModel.class})
+@Mixin(PlayerEntityModel.class)
 public class PlayerEntityModelMixin {
     @Redirect(
-            method = {"setAngles*"},
+            method = "setAngles*",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/LivingEntity;isInSneakingPose()Z"

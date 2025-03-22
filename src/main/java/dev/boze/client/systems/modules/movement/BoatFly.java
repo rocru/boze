@@ -13,13 +13,13 @@ import net.minecraft.network.packet.s2c.play.VehicleMoveS2CPacket;
 
 public class BoatFly extends Module {
     public static final BoatFly INSTANCE = new BoatFly();
+    public final BindSetting field3155 = new BindSetting("Down", Bind.fromKey(341), "Key to go down");
     private final EnumSetting<BoatFlyMode> field3151 = new EnumSetting<BoatFlyMode>(
             "Mode", BoatFlyMode.NCP, "The mode to use\n - Grim: Grim BoatFly for 2b2t\n - NCP: 1.12.2 NCP BoatFly - may work on some servers\n"
     );
     public final FloatSetting field3152 = new FloatSetting("Speed", 1.0F, 0.1F, 50.0F, 0.1F, "Speed", this::lambda$new$0);
     public final FloatSetting field3153 = new FloatSetting("UpSpeed", 0.5F, 0.0F, 10.0F, 0.1F, "Upwards speed", this::lambda$new$1);
     public final FloatSetting field3154 = new FloatSetting("DownSpeed", 1.0F, 0.0F, 10.0F, 0.1F, "Downwards speed", this::lambda$new$2);
-    public final BindSetting field3155 = new BindSetting("Down", Bind.fromKey(341), "Key to go down");
     public final BooleanSetting field3156 = new BooleanSetting("Sync", true, "Sync with server position", this::lambda$new$3);
     public final BooleanSetting field3157 = new BooleanSetting("Hover", true, "Hover", this::lambda$new$4);
     public final BooleanSetting field3158 = new BooleanSetting("Vanilla", false, "Vanilla boatfly", this::lambda$new$5);

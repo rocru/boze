@@ -45,18 +45,43 @@ public class FakePlayer extends Module {
     public static final FakePlayer INSTANCE = new FakePlayer();
     public final BooleanSetting move = new BooleanSetting("Move", false, "Move the player along path");
     public final BooleanSetting loop = new BooleanSetting("Loop", true, "Loop the path");
+    public final List<FakePositions> positions = new ArrayList();
+    public final dev.boze.client.utils.Timer timer = new dev.boze.client.utils.Timer();
     private final BindSetting recordPositions = new BindSetting("Record", Bind.create(), "Bind to record path", this.move);
     private final BooleanSetting damage = new BooleanSetting("Damage", true, "Apply damage to player");
     private final BooleanSetting gApple = new BooleanSetting("GApple", true, "Make player eat gapples");
     private final FloatSetting gAppleDelay = new FloatSetting("Delay", 1.5F, 1.5F, 5.0F, 0.1F, "Delay for eating gapples", this.gApple);
-    public final List<FakePositions> positions = new ArrayList();
-    public final dev.boze.client.utils.Timer timer = new dev.boze.client.utils.Timer();
     public FakeClientPlayerEntity fakePlayer = null;
     public int field2946;
 
     public FakePlayer() {
         super("FakePlayer", "Spawns a fake player", Category.Misc);
         this.field435 = true;
+    }
+
+    private static OtherClientPlayerEntity method1713(GameProfile var0, BiFunction<ClientWorld, GameProfile, OtherClientPlayerEntity> var1) {
+        OtherClientPlayerEntity var5 = var1.apply(mc.world, var0);
+        ((PlayerEntityAccessor) var5).setInventory(mc.player.getInventory());
+        ((PlayerEntityAccessor) var5).setPlayerScreenHandler(mc.player.playerScreenHandler);
+        var5.updatePositionAndAngles(mc.player.getX(), mc.player.getY(), mc.player.getZ(), mc.player.getYaw(), mc.player.getPitch());
+        var5.setHeadYaw(mc.player.getHeadYaw());
+        var5.prevHeadYaw = mc.player.getHeadYaw();
+        var5.setYaw(mc.player.getYaw());
+        var5.prevYaw = mc.player.getYaw();
+        var5.setBodyYaw(mc.player.bodyYaw);
+        var5.prevBodyYaw = mc.player.bodyYaw;
+        var5.setPitch(mc.player.getPitch());
+        var5.prevPitch = mc.player.getPitch();
+        var5.setOnGround(mc.player.isOnGround());
+        var5.setSneaking(mc.player.isSneaking());
+        var5.setHealth(mc.player.getHealth());
+        var5.setAbsorptionAmount(mc.player.getAbsorptionAmount());
+
+        for (StatusEffectInstance var7 : mc.player.getActiveStatusEffects().values()) {
+            var5.addStatusEffect(var7);
+        }
+
+        return var5;
     }
 
     @Override
@@ -233,31 +258,6 @@ public class FakePlayer extends Module {
             mc.world.addEntity(var6);
             return var6;
         }
-    }
-
-    private static OtherClientPlayerEntity method1713(GameProfile var0, BiFunction<ClientWorld, GameProfile, OtherClientPlayerEntity> var1) {
-        OtherClientPlayerEntity var5 = var1.apply(mc.world, var0);
-        ((PlayerEntityAccessor) var5).setInventory(mc.player.getInventory());
-        ((PlayerEntityAccessor) var5).setPlayerScreenHandler(mc.player.playerScreenHandler);
-        var5.updatePositionAndAngles(mc.player.getX(), mc.player.getY(), mc.player.getZ(), mc.player.getYaw(), mc.player.getPitch());
-        var5.setHeadYaw(mc.player.getHeadYaw());
-        var5.prevHeadYaw = mc.player.getHeadYaw();
-        var5.setYaw(mc.player.getYaw());
-        var5.prevYaw = mc.player.getYaw();
-        var5.setBodyYaw(mc.player.bodyYaw);
-        var5.prevBodyYaw = mc.player.bodyYaw;
-        var5.setPitch(mc.player.getPitch());
-        var5.prevPitch = mc.player.getPitch();
-        var5.setOnGround(mc.player.isOnGround());
-        var5.setSneaking(mc.player.isSneaking());
-        var5.setHealth(mc.player.getHealth());
-        var5.setAbsorptionAmount(mc.player.getAbsorptionAmount());
-
-        for (StatusEffectInstance var7 : mc.player.getActiveStatusEffects().values()) {
-            var5.addStatusEffect(var7);
-        }
-
-        return var5;
     }
 
     public JsonObject recordPositions() {

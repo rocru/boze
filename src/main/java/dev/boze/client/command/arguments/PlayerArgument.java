@@ -17,6 +17,12 @@ import java.util.stream.Collectors;
 public class PlayerArgument implements ArgumentType<AbstractClientPlayerEntity>, IMinecraft {
     private static Collection<String> field1629;
 
+    static {
+        if (mc.getNetworkHandler() != null) {
+            field1629 = mc.world.getPlayers().stream().limit(3L).map(PlayerArgument::lambda$static$0).collect(Collectors.toList());
+        }
+    }
+
     public static PlayerArgument method731() {
         return new PlayerArgument();
     }
@@ -24,6 +30,20 @@ public class PlayerArgument implements ArgumentType<AbstractClientPlayerEntity>,
     public static AbstractClientPlayerEntity method732(CommandContext<?> context) {
         return context.getArgument("player", AbstractClientPlayerEntity.class);
     }
+
+    private static String lambda$listSuggestions$1(AbstractClientPlayerEntity var0) {
+        return var0.getName().getString();
+    }
+
+    private static String lambda$static$0(AbstractClientPlayerEntity var0) {
+        return var0.getName().getString();
+    }
+
+    // $VF: synthetic method
+    // $VF: bridge method
+    //public Object parse(StringReader stringReader) throws CommandSyntaxException {
+    //   return this.method733(stringReader);
+    //}
 
     @Override
     public AbstractClientPlayerEntity parse(StringReader reader) throws CommandSyntaxException {
@@ -46,25 +66,5 @@ public class PlayerArgument implements ArgumentType<AbstractClientPlayerEntity>,
 
     public Collection<String> getExamples() {
         return field1629;
-    }
-
-    // $VF: synthetic method
-    // $VF: bridge method
-    //public Object parse(StringReader stringReader) throws CommandSyntaxException {
-    //   return this.method733(stringReader);
-    //}
-
-    private static String lambda$listSuggestions$1(AbstractClientPlayerEntity var0) {
-        return var0.getName().getString();
-    }
-
-    private static String lambda$static$0(AbstractClientPlayerEntity var0) {
-        return var0.getName().getString();
-    }
-
-    static {
-        if (mc.getNetworkHandler() != null) {
-            field1629 = mc.world.getPlayers().stream().limit(3L).map(PlayerArgument::lambda$static$0).collect(Collectors.toList());
-        }
     }
 }

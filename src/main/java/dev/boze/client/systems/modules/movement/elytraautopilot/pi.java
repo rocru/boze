@@ -23,8 +23,6 @@ public class pi implements IMinecraft {
     public static double field1105 = 2.3250866;
     public static boolean field1106;
     public static boolean field1107;
-    private static int field1108 = 0;
-    private static boolean field1109;
     public static double field1110 = 1.0;
     public static Vec3d field1111;
     public static double field1112;
@@ -32,8 +30,6 @@ public class pi implements IMinecraft {
     public static boolean field1114;
     public static boolean field1115;
     public static boolean field1116;
-    private static double field1117 = 0.0;
-    private static double field1118 = 0.0;
     public static int field1119;
     public static int field1120;
     public static boolean field1121 = false;
@@ -43,6 +39,10 @@ public class pi implements IMinecraft {
     public static boolean field1125 = false;
     public static double field1126 = 0.0;
     public static double field1127;
+    private static int field1108 = 0;
+    private static boolean field1109;
+    private static double field1117 = 0.0;
+    private static double field1118 = 0.0;
 
     public static void method2142() {
         field1106 = false;

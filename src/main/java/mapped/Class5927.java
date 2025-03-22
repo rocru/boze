@@ -9,6 +9,10 @@ import java.util.List;
 public class Class5927 implements IMinecraft {
     private static final List<FakePlayerEntity> field43;
 
+    static {
+        field43 = new ArrayList<FakePlayerEntity>();
+    }
+
     public Class5927() {
         super();
     }
@@ -33,9 +37,5 @@ public class Class5927 implements IMinecraft {
 
     public static int method2010() {
         return Class5927.field43.size();
-    }
-
-    static {
-        field43 = new ArrayList<FakePlayerEntity>();
     }
 }

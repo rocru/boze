@@ -9,11 +9,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({ChatMessages.class})
+@Mixin(ChatMessages.class)
 public class ChatMessagesMixin {
     @Inject(
-            method = {"getRenderedChatMessage"},
-            at = {@At("HEAD")},
+            method = "getRenderedChatMessage",
+            at = @At("HEAD"),
             cancellable = true
     )
     private static void onGetRenderedChatMessage(String var0, CallbackInfoReturnable<String> var1) {

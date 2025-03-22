@@ -17,10 +17,15 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 public class BozeMixins extends SecureClassLoader {
+    public static boolean field7;
     private static BozeMixins field4;
     private static Function<byte[], byte[]> field5;
     private static BiConsumer<Cipher, byte[]> field6;
-    public static boolean field7;
+
+    static {
+        BozeMixins.field5 = null;
+        BozeMixins.field6 = null;
+    }
 
     BozeMixins(final ClassLoader parent) {
         super(parent);
@@ -113,10 +118,5 @@ public class BozeMixins extends SecureClassLoader {
             }
         }
         return null;
-    }
-
-    static {
-        BozeMixins.field5 = null;
-        BozeMixins.field6 = null;
     }
 }

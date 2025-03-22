@@ -12,8 +12,8 @@ import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.Nullable;
 
 public class ChatInstance implements IMinecraft, IChat {
-    private static Text field1635;
     public static MessageIndicator field1636;
+    private static Text field1635;
 
     public static void method2142() {
         field1635 = Text.literal("[Boze] ").setStyle(Style.EMPTY.withColor(-7046189));

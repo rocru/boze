@@ -74,10 +74,10 @@ public class StorageESP extends Module {
     private final BooleanSetting ac = new BooleanSetting("Other", false, "Apply ESP to other containers");
     private final RGBASetting ad = new RGBASetting("Color", new RGBAColor(1087635277), "Color for container boxes", this::lambda$new$11, this.ac);
     private final RGBASetting ae = new RGBASetting("Outline", new RGBAColor(-2883763), "Color for container outline", this.ac);
-    private int af;
-    private Renderer3D ag = null;
     public ByteTexture ah;
     public String ai = "";
+    private int af;
+    private Renderer3D ag = null;
 
     public StorageESP() {
         super("StorageESP", "Draws boxes around containers", Category.Render);

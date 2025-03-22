@@ -13,6 +13,11 @@ public enum ShapeMode {
         this.drawModes = var3;
     }
 
+    // $VF: synthetic method
+    private static ShapeMode[] method796() {
+        return new ShapeMode[]{Lines, Triangles, Full};
+    }
+
     public boolean method795(DrawMode drawMode) {
         for (DrawMode var8 : this.drawModes) {
             if (var8 == drawMode) {
@@ -29,10 +34,5 @@ public enum ShapeMode {
 
     public boolean method2115() {
         return this == Triangles || this == Full;
-    }
-
-    // $VF: synthetic method
-    private static ShapeMode[] method796() {
-        return new ShapeMode[]{Lines, Triangles, Full};
     }
 }

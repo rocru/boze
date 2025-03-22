@@ -14,8 +14,8 @@ import org.lwjgl.glfw.GLFW;
 
 public class EditableComponent extends BaseComponent implements IMinecraft {
     public String field387 = "";
-    private boolean field388 = false;
     public boolean field389 = true;
+    private boolean field388 = false;
     private double field390;
     private double field391;
     private double field392;

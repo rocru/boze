@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-@Mixin({PlayerPositionLookS2CPacket.class})
+@Mixin(PlayerPositionLookS2CPacket.class)
 public interface PlayerPositionLookS2CPacketAccessor {
     @Mutable
     @Accessor("yaw")

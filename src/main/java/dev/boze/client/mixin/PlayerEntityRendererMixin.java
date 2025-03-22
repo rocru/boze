@@ -15,33 +15,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({PlayerEntityRenderer.class})
+@Mixin(PlayerEntityRenderer.class)
 public class PlayerEntityRendererMixin {
-    @Redirect(
-            method = {"getPositionOffset(Lnet/minecraft/client/network/AbstractClientPlayerEntity;F)Lnet/minecraft/util/math/Vec3d;"},
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;isInSneakingPose()Z"
-            )
-    )
-    private boolean onIsInSneakingPose(AbstractClientPlayerEntity var1) {
-        return NoRender.method1992() || var1.isSneaking();
-    }
-
-    @Redirect(
-            method = {"setModelPose"},
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;isInSneakingPose()Z"
-            )
-    )
-    private boolean onIsInSneakingPoseModel(AbstractClientPlayerEntity var1) {
-        return NoRender.method1992() || var1.isSneaking();
-    }
-
     @Inject(
-            method = {"getArmPose"},
-            at = {@At("RETURN")},
+            method = "getArmPose",
+            at = @At("RETURN"),
             cancellable = true
     )
     private static void onGetArmPose(AbstractClientPlayerEntity var0, Hand var1, CallbackInfoReturnable<ArmPose> var2) {
@@ -59,5 +37,27 @@ public class PlayerEntityRendererMixin {
                 }
             }
         }
+    }
+
+    @Redirect(
+            method = "getPositionOffset(Lnet/minecraft/client/network/AbstractClientPlayerEntity;F)Lnet/minecraft/util/math/Vec3d;",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;isInSneakingPose()Z"
+            )
+    )
+    private boolean onIsInSneakingPose(AbstractClientPlayerEntity var1) {
+        return NoRender.method1992() || var1.isSneaking();
+    }
+
+    @Redirect(
+            method = "setModelPose",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;isInSneakingPose()Z"
+            )
+    )
+    private boolean onIsInSneakingPoseModel(AbstractClientPlayerEntity var1) {
+        return NoRender.method1992() || var1.isSneaking();
     }
 }

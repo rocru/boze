@@ -31,24 +31,28 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({TitleScreen.class})
+@Mixin(TitleScreen.class)
 public abstract class TitleScreenMixin extends Screen {
+    @Shadow
+    @Final
+    private static Text COPYRIGHT;
+    @Unique
+    private static int aTX;
+    @Unique
+    private static int aTY;
+    @Shadow
+    @Nullable
+    public SplashTextRenderer splashText;
     @Unique
     private int copyrightTextWidth;
     @Unique
     private int copyrightTextX;
     @Shadow
     private RealmsNotificationsScreen realmsNotificationGui;
-    @Shadow
-    @Final
-    private static Text COPYRIGHT;
-    @Shadow
-    @Nullable
-    public SplashTextRenderer splashText;
-    @Unique
-    private static int aTX;
-    @Unique
-    private static int aTY;
+
+    protected TitleScreenMixin(Text title) {
+        super(title);
+    }
 
     @Shadow
     protected abstract void initWidgetsDemo(int var1, int var2);
@@ -59,13 +63,9 @@ public abstract class TitleScreenMixin extends Screen {
     @Shadow
     protected abstract boolean isRealmsNotificationsGuiDisplayed();
 
-    protected TitleScreenMixin(Text title) {
-        super(title);
-    }
-
     @Inject(
-            method = {"init"},
-            at = {@At("HEAD")},
+            method = "init",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void onInit(CallbackInfo ci) {
@@ -118,8 +118,8 @@ public abstract class TitleScreenMixin extends Screen {
     }
 
     @Inject(
-            method = {"render"},
-            at = {@At("TAIL")}
+            method = "render",
+            at = @At("TAIL")
     )
     public void onRender(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         if (Options.INSTANCE.field985.getValue()) {
@@ -142,8 +142,8 @@ public abstract class TitleScreenMixin extends Screen {
     }
 
     @Inject(
-            method = {"render"},
-            at = {@At("HEAD")}
+            method = "render",
+            at = @At("HEAD")
     )
     public void beforeRenderTitle(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         if (!ShaderRegistry.field2273) {

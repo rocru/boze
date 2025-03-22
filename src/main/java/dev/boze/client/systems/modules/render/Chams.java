@@ -47,54 +47,54 @@ public class Chams extends Module {
             "Outline", new BozeDrawColor(-12858419), "Color for shader outline", this::lambda$new$7, this.field3465
     );
     public final IntSetting field3476 = new IntSetting("Range", 250, 10, 500, 10, "Range for chams");
-    private final BooleanSetting field3477 = new BooleanSetting("Players", true, "Apply Chams to players");
-    private final BooleanSetting field3478 = new BooleanSetting("Self", true, "Apply chams to self", this.field3477);
-    private final RGBASetting field3479 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for players", this.field3462::getValue, this.field3477);
-    private final RGBASetting field3480 = new RGBASetting("Color", new RGBAColor(-12858419), "Color for player shader", this::lambda$new$8, this.field3477);
-    private final BooleanSetting field3481 = new BooleanSetting("Friends", true, "Apply Chams to friends");
-    private final RGBASetting field3482 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for friends", this.field3462::getValue, this.field3481);
-    private final RGBASetting field3483 = new RGBASetting("Color", new RGBAColor(-15277290), "Color for friend shader", this::lambda$new$9, this.field3481);
-    private final BooleanSetting field3484 = new BooleanSetting("Targets", true, "Apply Chams to targets");
-    private final RGBASetting field3485 = new RGBASetting("Tint", new RGBAColor(-1), "Color for targets", this.field3484);
-    private final RGBASetting field3486 = new RGBASetting("Color", new RGBAColor(-1894890), "Color for target shader", this.field3484);
-    private final BooleanSetting field3487 = new BooleanSetting("Animals", false, "Apply Chams to animals");
-    private final RGBASetting field3488 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for animals", this.field3462::getValue, this.field3487);
-    private final RGBASetting field3489 = new RGBASetting("Color", new RGBAColor(-15277196), "Color for animal shader", this::lambda$new$10, this.field3487);
-    private final BooleanSetting aa = new BooleanSetting("Monsters", false, "Apply Chams to monsters");
-    private final RGBASetting ab = new RGBASetting("Tint", new RGBAColor(-1), "Tint for monsters", this.field3462::getValue, this.field3487);
-    private final RGBASetting ac = new RGBASetting("Color", new RGBAColor(-1894890), "Color for monster shader", this::lambda$new$11, this.aa);
     public final BooleanSetting ad = new BooleanSetting("Crystals", false, "Apply Chams to crystals");
+    public final RGBASetting ak = new RGBASetting("Color", new RGBAColor(-56932), "Color for crystal shader", this::lambda$new$12, this.ad);
     public final FloatSetting ae = new FloatSetting("Scale", 1.0F, -5.0F, 5.0F, 0.1F, "Scale for crystals", this.ad);
     public final FloatSetting af = new FloatSetting("VScale", 1.0F, -5.0F, 5.0F, 0.1F, "Vertical scale for crystals", this.ad);
     public final FloatSetting ag = new FloatSetting("Spin", 1.0F, -5.0F, 5.0F, 0.1F, "Spin multiplier for crystals", this.ad);
     public final FloatSetting ah = new FloatSetting("Bounce", 1.0F, -5.0F, 5.0F, 0.1F, "Bounce multiplier for crystals", this.ad);
     public final RGBASetting ai = new RGBASetting("CoreTint", new RGBAColor(-1), "Tint for crystal cores", this.field3462::getValue, this.ad);
     public final RGBASetting aj = new RGBASetting("FrameTint", new RGBAColor(-1), "Tint for crystal frames", this.field3462::getValue, this.ad);
-    public final RGBASetting ak = new RGBASetting("Color", new RGBAColor(-56932), "Color for crystal shader", this::lambda$new$12, this.ad);
     public final BooleanSetting al = new BooleanSetting("Hands", false, "Apply chams to hands");
     public final BooleanSetting am = new BooleanSetting("Textured", true, "Textured hands", this.al);
     public final ColorSetting an = new ColorSetting("Fill", new BozeDrawColor(1691587707), "Color for hand fill", this.al);
     public final ColorSetting ao = new ColorSetting("Outline", new BozeDrawColor(-2911109), "Color for hand outline", this.al);
     public final EnumSetting<ChamsShaderMode> ap = new EnumSetting<ChamsShaderMode>("Shader", ChamsShaderMode.Normal, "Shader to use", this.al);
+    public final StringSetting aw = new StringSetting("Image", "", "Fill for image shader", this::lambda$new$14, this.al);
     public final BooleanSetting aq = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.al);
     public final IntSetting ar = new IntSetting("Blur", 0, 0, 5, 1, "Blur for shader", this.al);
     public final FloatSetting as = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.al);
     public final FloatSetting at = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$13, this.al);
     public final IntSetting au = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.al);
     public final FloatSetting av = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.al);
-    public final StringSetting aw = new StringSetting("Image", "", "Fill for image shader", this::lambda$new$14, this.al);
     public final BooleanSetting ax = new BooleanSetting("Explosions", false, "Apply chams to explosions");
     public final BooleanSetting ay = new BooleanSetting("Textured", false, "Textured explosions", this.ax);
     public final ColorSetting az = new ColorSetting("Fill", new BozeDrawColor(816595199), "Color for explosion fill", this.ax);
     public final ColorSetting aA = new ColorSetting("Outline", new BozeDrawColor(-1599323905), "Color for explosion outline", this.ax);
     public final EnumSetting<ChamsShaderMode> aB = new EnumSetting<ChamsShaderMode>("Shader", ChamsShaderMode.Normal, "Shader to use", this.ax);
+    public final StringSetting aI = new StringSetting("Image", "", "Fill for image shader", this::lambda$new$16, this.ax);
     public final BooleanSetting aC = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.ax);
     public final IntSetting aD = new IntSetting("Blur", 0, 0, 5, 1, "Blur for shader", this.ax);
     public final FloatSetting aE = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.ax);
     public final FloatSetting aF = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$15, this.ax);
     public final IntSetting aG = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.ax);
     public final FloatSetting aH = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.ax);
-    public final StringSetting aI = new StringSetting("Image", "", "Fill for image shader", this::lambda$new$16, this.ax);
+    private final BooleanSetting field3477 = new BooleanSetting("Players", true, "Apply Chams to players");
+    private final RGBASetting field3480 = new RGBASetting("Color", new RGBAColor(-12858419), "Color for player shader", this::lambda$new$8, this.field3477);
+    private final BooleanSetting field3478 = new BooleanSetting("Self", true, "Apply chams to self", this.field3477);
+    private final RGBASetting field3479 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for players", this.field3462::getValue, this.field3477);
+    private final BooleanSetting field3481 = new BooleanSetting("Friends", true, "Apply Chams to friends");
+    private final RGBASetting field3483 = new RGBASetting("Color", new RGBAColor(-15277290), "Color for friend shader", this::lambda$new$9, this.field3481);
+    private final RGBASetting field3482 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for friends", this.field3462::getValue, this.field3481);
+    private final BooleanSetting field3484 = new BooleanSetting("Targets", true, "Apply Chams to targets");
+    private final RGBASetting field3485 = new RGBASetting("Tint", new RGBAColor(-1), "Color for targets", this.field3484);
+    private final RGBASetting field3486 = new RGBASetting("Color", new RGBAColor(-1894890), "Color for target shader", this.field3484);
+    private final BooleanSetting field3487 = new BooleanSetting("Animals", false, "Apply Chams to animals");
+    private final RGBASetting field3489 = new RGBASetting("Color", new RGBAColor(-15277196), "Color for animal shader", this::lambda$new$10, this.field3487);
+    private final RGBASetting field3488 = new RGBASetting("Tint", new RGBAColor(-1), "Tint for animals", this.field3462::getValue, this.field3487);
+    private final BooleanSetting aa = new BooleanSetting("Monsters", false, "Apply Chams to monsters");
+    private final RGBASetting ac = new RGBASetting("Color", new RGBAColor(-1894890), "Color for monster shader", this::lambda$new$11, this.aa);
+    private final RGBASetting ab = new RGBASetting("Tint", new RGBAColor(-1), "Tint for monsters", this.field3462::getValue, this.field3487);
     public ByteTexture aJ;
     public String aK = "";
     public ByteTexture aL;
@@ -201,9 +201,9 @@ public class Chams extends Module {
             }
         } else {
             return switch (e.getType().getSpawnGroup()) {
-                default -> this.field3488.getValue();
                 case SpawnGroup.MONSTER -> this.ab.getValue();
                 case SpawnGroup.MISC -> RGBAColor.field402;
+                default -> this.field3488.getValue();
             };
         }
     }
@@ -221,9 +221,9 @@ public class Chams extends Module {
             return this.ak.getValue();
         } else {
             return switch (e.getType().getSpawnGroup()) {
-                default -> this.field3489.getValue();
                 case SpawnGroup.MONSTER -> this.ac.getValue();
                 case SpawnGroup.MISC -> RGBAColor.field402;
+                default -> this.field3489.getValue();
             };
         }
     }

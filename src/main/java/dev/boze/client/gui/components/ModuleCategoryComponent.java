@@ -27,14 +27,14 @@ public class ModuleCategoryComponent extends BaseComponent implements IMinecraft
     private final double field376;
     private final double field377;
     private final ArrayList<BaseComponent> field378 = new ArrayList();
+    private final double field385;
+    private final double field386;
     private boolean field379 = false;
     private ModuleComponent field380 = null;
     private double field381;
     private long field382;
     private double field383;
     private double field384;
-    private final double field385;
-    private final double field386;
 
     public ModuleCategoryComponent(Category category, BaseComponent parent, double x, double y, double width, double scrollOffset) {
         this(category, parent, x, y, x, y, width, scrollOffset);

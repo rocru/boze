@@ -11,6 +11,11 @@ public enum BoatFlyMode {
 
     private nj field1792;
 
+    // $VF: synthetic method
+    private static BoatFlyMode[] method904() {
+        return new BoatFlyMode[]{Grim, NCP};
+    }
+
     public nj method903(BoatFly var1) {
         if (this.field1792 == null) {
             this.field1792 = switch (this) {
@@ -20,10 +25,5 @@ public enum BoatFlyMode {
         }
 
         return this.field1792;
-    }
-
-    // $VF: synthetic method
-    private static BoatFlyMode[] method904() {
-        return new BoatFlyMode[]{Grim, NCP};
     }
 }

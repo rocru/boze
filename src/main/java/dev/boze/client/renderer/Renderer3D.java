@@ -18,6 +18,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 
 public class Renderer3D {
+    public static final long field2172 = System.currentTimeMillis();
     public final Mesh field2166 = new ShaderMesh(ShaderRegistry.field2249, DrawMode.Lines, Attrib.Vec3, Attrib.Color);
     public final Mesh field2167 = new ShaderMesh(ShaderRegistry.field2249, DrawMode.Triangles, Attrib.Vec3, Attrib.Color);
     public final Mesh field2168 = new TextureShaderMesh(ShaderRegistry.field2252, DrawMode.Lines, Attrib.Vec3, Attrib.Color);
@@ -28,7 +29,6 @@ public class Renderer3D {
     public final Mesh field2171 = new ShaderMesh(
             ShaderRegistry.field2257, DrawMode.Triangles, Attrib.Vec3, Attrib.Color, Attrib.Float, Attrib.Vec2, Attrib.Float, Attrib.Vec2
     );
-    public static final long field2172 = System.currentTimeMillis();
     public final boolean field2173;
     public final boolean field2174;
 

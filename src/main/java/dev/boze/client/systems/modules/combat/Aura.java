@@ -51,10 +51,13 @@ import java.util.Comparator;
 public class Aura extends Module {
     public static final Aura INSTANCE = new Aura();
     public final EnumSetting<InteractionMode> mode = new EnumSetting<InteractionMode>("Mode", InteractionMode.NCP, "Interaction mode", Aura::lambda$new$0);
-    private final AuraGhost field2459 = new AuraGhost(this);
     public final BooleanSetting render = new BooleanSetting("Render", true, "Render target");
     public final ColorSetting color = new ColorSetting("Color", new BozeDrawColor(1691624484), "Color for fill", this.render);
     public final ColorSetting outline = new ColorSetting("Outline", new BozeDrawColor(-2874332), "Color for outline", this.render);
+    public final BooleanSetting yawStep = new BooleanSetting("YawStep", false, "Slow down rotations");
+    public final FloatSetting yawAngle = new FloatSetting("YawAngle", 0.3F, 0.1F, 1.0F, 0.05F, "Maximum angle fraction to rotate by per tick", this.yawStep);
+    public final IntSetting yawTicks = new IntSetting("YawTicks", 1, 1, 5, 1, "Rotate slower by this amount of ticks", this.yawStep);
+    private final AuraGhost field2459 = new AuraGhost(this);
     private final BooleanSetting multitask = new BooleanSetting("MultiTask", false, "Multi Task");
     private final BooleanSetting rotate = new BooleanSetting("Rotate", true, "Rotate");
     private final BooleanSetting grimSilent = new BooleanSetting("GrimSilent", false, "Silent rotate mode for Grim", this::lambda$new$1);
@@ -66,9 +69,6 @@ public class Aura extends Module {
     private final MinMaxSetting range = new MinMaxSetting("Range", 4.5, 0.5, 6.0, 0.1, "Max range");
     private final MinMaxSetting wallsRange = new MinMaxSetting("WallsRange", 1.5, 0.5, 6.0, 0.1, "Max range through walls", this::lambda$new$2);
     private final BooleanSetting raycast = new BooleanSetting("RayCast", true, "Ray cast look to check if looking at target entity", this::lambda$new$3);
-    public final BooleanSetting yawStep = new BooleanSetting("YawStep", false, "Slow down rotations");
-    public final FloatSetting yawAngle = new FloatSetting("YawAngle", 0.3F, 0.1F, 1.0F, 0.05F, "Maximum angle fraction to rotate by per tick", this.yawStep);
-    public final IntSetting yawTicks = new IntSetting("YawTicks", 1, 1, 5, 1, "Rotate slower by this amount of ticks", this.yawStep);
     private final EnumSetting<TargetMode> target = new EnumSetting<TargetMode>("Target", TargetMode.Health, "Target algorithm");
     private final EnumSetting<TargetPriority> priority = new EnumSetting<TargetPriority>("Priority", TargetPriority.Lowest, "Target priority");
     private final EnumSetting<DelayMode> delay = new EnumSetting<DelayMode>("Delay", DelayMode.Dynamic, "Delay mode");
@@ -95,11 +95,40 @@ public class Aura extends Module {
     private final BooleanSetting minecarts = new BooleanSetting("Minecarts", false, "Target minecarts", this.targets);
     private final Timer ai = new Timer();
     private final Timer aj = new Timer();
+    private final Timer am = new Timer();
+    private final boolean ao = false;
     private boolean ak;
     private Entity al;
-    private final Timer am = new Timer();
     private float[] an = null;
-    private final boolean ao = false;
+
+    public Aura() {
+        super("Aura", "Attacks nearby enemies with sword/axe/hand", Category.Combat);
+        this.addSettings(this.render, this.field2459.field2462);
+    }
+
+    private static Float lambda$getTarget$10(Entity var0) {
+        return var0.distanceTo(mc.player);
+    }
+
+    private static Float lambda$getTarget$9(LivingEntity var0) {
+        return var0.getHealth() + var0.getAbsorptionAmount();
+    }
+
+    private static Float lambda$getTarget$8(Entity var0) {
+        return var0.distanceTo(mc.player);
+    }
+
+    private static Float lambda$getTarget$7(LivingEntity var0) {
+        return var0.getHealth() + var0.getAbsorptionAmount();
+    }
+
+    private static boolean lambda$handle$6(Entity var0) {
+        return !var0.isSpectator() && var0.canHit();
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
 
     @Override
     public GhostModule method221() {
@@ -116,11 +145,6 @@ public class Aura extends Module {
 
     private boolean method1399() {
         return !this.infinite.getValue() && this.raycast.getValue();
-    }
-
-    public Aura() {
-        super("Aura", "Attacks nearby enemies with sword/axe/hand", Category.Combat);
-        this.addSettings(this.render, this.field2459.field2462);
     }
 
     @Override
@@ -511,26 +535,6 @@ public class Aura extends Module {
                 || var1 instanceof AxeItem && this.swapWeapon.getValue() != AutoSwapMode.Sword;
     }
 
-    private static Float lambda$getTarget$10(Entity var0) {
-        return var0.distanceTo(mc.player);
-    }
-
-    private static Float lambda$getTarget$9(LivingEntity var0) {
-        return var0.getHealth() + var0.getAbsorptionAmount();
-    }
-
-    private static Float lambda$getTarget$8(Entity var0) {
-        return var0.distanceTo(mc.player);
-    }
-
-    private static Float lambda$getTarget$7(LivingEntity var0) {
-        return var0.getHealth() + var0.getAbsorptionAmount();
-    }
-
-    private static boolean lambda$handle$6(Entity var0) {
-        return !var0.isSpectator() && var0.canHit();
-    }
-
     private boolean lambda$new$5() {
         return this.swap.getValue() != AuraSwapMode.Silent;
     }
@@ -549,9 +553,5 @@ public class Aura extends Module {
 
     private boolean lambda$new$1() {
         return this.rotate.getValue() && this.mode.getValue() == InteractionMode.Grim;
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

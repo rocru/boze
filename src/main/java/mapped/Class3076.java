@@ -9,6 +9,10 @@ public class Class3076 {
     private static float field172;
     private static boolean field173;
 
+    static {
+        Class3076.field173 = false;
+    }
+
     public Class3076() {
         super();
     }
@@ -44,9 +48,5 @@ public class Class3076 {
             Class3076.field173 = false;
         }
         return Class3076.field173 ? Class3076.field172 : 1.0f;
-    }
-
-    static {
-        Class3076.field173 = false;
     }
 }

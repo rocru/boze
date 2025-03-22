@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 import java.net.Proxy;
 import java.util.concurrent.CompletableFuture;
 
-@Mixin({MinecraftClient.class})
+@Mixin(MinecraftClient.class)
 public interface MinecraftClientAccessor {
     @Accessor("currentFps")
     int getCurrentFps();
@@ -32,10 +32,10 @@ public interface MinecraftClientAccessor {
     Proxy getProxy();
 
     @Accessor("itemUseCooldown")
-    void setItemUseCooldown(int var1);
+    int getItemUseCooldown();
 
     @Accessor("itemUseCooldown")
-    int getItemUseCooldown();
+    void setItemUseCooldown(int var1);
 
     @Invoker
     boolean callDoAttack();
@@ -58,6 +58,10 @@ public interface MinecraftClientAccessor {
     YggdrasilAuthenticationService getAuthenticationService();
 
     @Mutable
+    @Accessor
+    void setAuthenticationService(YggdrasilAuthenticationService var1);
+
+    @Mutable
     @Accessor("socialInteractionsManager")
     void setSocialInteractionsManager(SocialInteractionsManager var1);
 
@@ -67,10 +71,6 @@ public interface MinecraftClientAccessor {
     @Mutable
     @Accessor("gameProfileFuture")
     void setGameProfileFuture(CompletableFuture<ProfileResult> var1);
-
-    @Mutable
-    @Accessor
-    void setAuthenticationService(YggdrasilAuthenticationService var1);
 
     @Mutable
     @Accessor

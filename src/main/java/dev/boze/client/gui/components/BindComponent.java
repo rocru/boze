@@ -121,7 +121,7 @@ public abstract class BindComponent extends InputBaseComponent {
         Class3077.field174 = false;
     }
 
-    protected abstract void setBind(Bind var1);
-
     protected abstract Bind getBind();
+
+    protected abstract void setBind(Bind var1);
 }

@@ -22,23 +22,23 @@ import java.util.HashMap;
 
 public class PathFinder implements IMinecraft {
     private static final EntityDimensions field3879 = EntityDimensions.fixed(1.375F, 0.5625F);
-    private final PathPos field3880;
-    protected PathPos field3881;
     public final BlockPos field3882;
+    protected final HashMap<PathPos, PathPos> field3889 = new HashMap();
+    private final PathPos field3880;
+    private final PathRules field3887;
+    private final HashMap<PathPos, Float> field3888 = new HashMap();
+    private final PathQueue field3890 = new PathQueue();
+    private final ArrayList<PathPos> field3896 = new ArrayList();
+    protected PathPos field3881;
+    protected int field3891 = 8192;
+    protected int field3892 = 20;
+    protected boolean field3894;
+    protected boolean field3895;
     private Vec3d field3883;
     private Vec3d field3884;
     private double field3885;
     private boolean field3886;
-    private final PathRules field3887;
-    private final HashMap<PathPos, Float> field3888 = new HashMap();
-    protected final HashMap<PathPos, PathPos> field3889 = new HashMap();
-    private final PathQueue field3890 = new PathQueue();
-    protected int field3891 = 8192;
-    protected int field3892 = 20;
     private int field3893;
-    protected boolean field3894;
-    protected boolean field3895;
-    private final ArrayList<PathPos> field3896 = new ArrayList();
 
     public PathFinder(BlockPos goal, PathRules rules) {
         if (mc.player.isOnGround()) {
@@ -59,6 +59,10 @@ public class PathFinder implements IMinecraft {
         this.field3887 = rules;
         this.field3888.put(new PathPos(this.field3880), 0.0F);
         this.field3890.method2124(this.field3880, this.method2119(this.field3880));
+    }
+
+    private static boolean lambda$canGoThrough$0(Entity var0) {
+        return !(var0 instanceof BoatEntity) && !(var0 instanceof EndCrystalEntity);
     }
 
     public void method2098() {
@@ -434,9 +438,5 @@ public class PathFinder implements IMinecraft {
         Vec3d var4 = var1.subtract(var2);
         double var5 = var4.dotProduct(var3);
         return var2.add(var3.multiply(var5));
-    }
-
-    private static boolean lambda$canGoThrough$0(Entity var0) {
-        return !(var0 instanceof BoatEntity) && !(var0 instanceof EndCrystalEntity);
     }
 }

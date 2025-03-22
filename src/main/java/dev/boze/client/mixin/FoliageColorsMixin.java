@@ -7,11 +7,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({FoliageColors.class})
+@Mixin(FoliageColors.class)
 public class FoliageColorsMixin {
     @Inject(
-            method = {"getBirchColor"},
-            at = {@At("HEAD")},
+            method = "getBirchColor",
+            at = @At("HEAD"),
             cancellable = true
     )
     private static void onGetBirchColor(CallbackInfoReturnable<Integer> var0) {
@@ -22,8 +22,8 @@ public class FoliageColorsMixin {
     }
 
     @Inject(
-            method = {"getSpruceColor"},
-            at = {@At("HEAD")},
+            method = "getSpruceColor",
+            at = @At("HEAD"),
             cancellable = true
     )
     private static void onGetSpruceColor(CallbackInfoReturnable<Integer> var0) {

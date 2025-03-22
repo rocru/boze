@@ -39,6 +39,20 @@ public class StringListSetting extends Setting<List<String>> implements IMinecra
         super(name, description, visibility, parent);
     }
 
+    public static ParticleType<?> method453(String name) {
+        for (ParticleType var5 : Registries.PARTICLE_TYPE) {
+            if (Registries.PARTICLE_TYPE.getId(var5).getPath().equalsIgnoreCase(name)) {
+                return var5;
+            }
+        }
+
+        return null;
+    }
+
+    private static void lambda$build$3(ParticleType var0) {
+        ChatInstance.method624(" - (highlight)" + Registries.PARTICLE_TYPE.getId(var0).getPath());
+    }
+
     public void method439(ArrayList<String> particleTypes) {
         for (String var6 : particleTypes) {
             if (!this.field956.contains(var6.toUpperCase(Locale.ENGLISH)) && method453(var6) != null) {
@@ -67,16 +81,6 @@ public class StringListSetting extends Setting<List<String>> implements IMinecra
 
     public List<String> method1144() {
         return this.field956;
-    }
-
-    public static ParticleType<?> method453(String name) {
-        for (ParticleType var5 : Registries.PARTICLE_TYPE) {
-            if (Registries.PARTICLE_TYPE.getId(var5).getPath().equalsIgnoreCase(name)) {
-                return var5;
-            }
-        }
-
-        return null;
     }
 
     public List<ParticleType<?>> method2032() {
@@ -156,10 +160,6 @@ public class StringListSetting extends Setting<List<String>> implements IMinecra
         ChatInstance.method624("Particles: " + this.method2032().size());
         this.method2032().forEach(StringListSetting::lambda$build$3);
         return 1;
-    }
-
-    private static void lambda$build$3(ParticleType var0) {
-        ChatInstance.method624(" - (highlight)" + Registries.PARTICLE_TYPE.getId(var0).getPath());
     }
 
     private int lambda$build$2(CommandContext var1) throws CommandSyntaxException {

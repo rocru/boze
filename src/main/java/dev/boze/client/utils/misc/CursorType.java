@@ -9,6 +9,11 @@ public enum CursorType {
     private boolean field1707;
     private long field1708;
 
+    // $VF: synthetic method
+    private static CursorType[] method827() {
+        return new CursorType[]{Normal, IBeam};
+    }
+
     public long method826() {
         if (!this.field1707) {
             switch (this) {
@@ -20,10 +25,5 @@ public enum CursorType {
         }
 
         return this.field1708;
-    }
-
-    // $VF: synthetic method
-    private static CursorType[] method827() {
-        return new CursorType[]{Normal, IBeam};
     }
 }

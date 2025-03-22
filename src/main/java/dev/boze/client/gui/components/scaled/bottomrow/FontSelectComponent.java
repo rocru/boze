@@ -21,9 +21,9 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class FontSelectComponent extends BottomRowScaledComponent {
+    private static final String[] field1430 = new String[]{"lexend", "vanilla"};
     private final FontSetting field1428;
     private final ArrayList<Font> field1429 = new ArrayList();
-    private static final String[] field1430 = new String[]{"lexend", "vanilla"};
 
     public FontSelectComponent(FontSetting setting) {
         super(setting.name, BottomRow.AddClose, 0.1, 0.4);

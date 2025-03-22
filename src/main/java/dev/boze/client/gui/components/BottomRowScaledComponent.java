@@ -10,21 +10,19 @@ import dev.boze.client.utils.render.RenderUtil;
 import dev.boze.client.utils.render.Scissor;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
-import net.minecraft.client.sound.SoundInstance;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 
 public abstract class BottomRowScaledComponent extends ScaledBaseComponent {
+    private final BottomRow field1423;
+    private final int field1424;
+    private final boolean field1426;
+    protected String field1427;
     private double field1419;
     private double field1420;
     private double field1421;
     private int field1422;
-    private final BottomRow field1423;
-    private final int field1424;
     private Runnable field1425;
-    private final boolean field1426;
-    protected String field1427;
 
     public BottomRowScaledComponent(final String name, final BottomRow bottomRow, final double widthRatio, final double heightRatio) {
         this(name, bottomRow, widthRatio, heightRatio, 0);
@@ -150,7 +148,7 @@ public abstract class BottomRowScaledComponent extends ScaledBaseComponent {
         if (method501 > width - BaseComponent.scaleFactor * 4.0) {
             x2 -= method501 - (width - BaseComponent.scaleFactor * 4.0);
         }
-        if (System.currentTimeMillis() % 1000L >= 500L) {
+        if (System.currentTimeMillis() % 1000L >= 500L && !substring.isEmpty()) {
             substring = substring.substring(0, substring.length() - 1);
         }
         IFontRender.method499().drawShadowedText(substring, x2, y + height * 0.5 - IFontRender.method499().method1390() * 0.5, Theme.method1350());

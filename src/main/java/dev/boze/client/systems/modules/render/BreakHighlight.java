@@ -41,31 +41,31 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class BreakHighlight extends Module {
     public static final BreakHighlight INSTANCE = new BreakHighlight();
+    public final ColorSetting field3438 = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill");
+    public final ColorSetting field3439 = new ColorSetting("Outline", new BozeDrawColor(-7046189), "Color for outline");
     private final BooleanSetting field3434 = new BooleanSetting("Predict", false, "Predicts block breaking");
     private final BooleanSetting field3435 = new BooleanSetting("BreakAlert", false, "Alerts you when a block besides is being broken");
     private final BooleanSetting field3436 = new BooleanSetting("Self", false, "Highlights blocks you're breaking");
     private final EnumSetting<BreakHighlightMode> field3437 = new EnumSetting<BreakHighlightMode>("Mode", BreakHighlightMode.Grow, "Render mode");
-    public final ColorSetting field3438 = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill");
-    public final ColorSetting field3439 = new ColorSetting("Outline", new BozeDrawColor(-7046189), "Color for outline");
     private final BooleanSetting field3440 = new BooleanSetting("Shader", false, "Use a shader");
     public final EnumSetting<BreakHighlightShader> field3441 = new EnumSetting<BreakHighlightShader>(
             "Shader", BreakHighlightShader.Normal, "Shader to use", this.field3440
     );
+    public final StringSetting field3448 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3440);
     public final BooleanSetting field3442 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field3440);
     public final IntSetting field3443 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field3440);
     public final FloatSetting field3444 = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.field3440);
     public final FloatSetting field3445 = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$0, this.field3440);
     private final IntSetting field3446 = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.field3440);
     private final FloatSetting field3447 = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.field3440);
-    public final StringSetting field3448 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3440);
     private final BooleanSetting field3449 = new BooleanSetting("Percentage", false, "Show mining percentage");
     private final BooleanSetting field3450 = new BooleanSetting("Player", false, "Show mining player's name");
     private final ScalingSetting field3451 = new ScalingSetting();
+    private final ConcurrentHashMap<BlockPos, Long> field3455 = new ConcurrentHashMap();
+    private final ConcurrentHashMap<BlockPos, Long> field3456 = new ConcurrentHashMap();
     private Renderer3D field3452;
     private ByteTexture field3453;
     private String field3454 = "";
-    private final ConcurrentHashMap<BlockPos, Long> field3455 = new ConcurrentHashMap();
-    private final ConcurrentHashMap<BlockPos, Long> field3456 = new ConcurrentHashMap();
 
     public BreakHighlight() {
         super("BreakHighlight", "Highlights blocks being broken", Category.Render);

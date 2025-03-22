@@ -16,6 +16,10 @@ public class SearchCommand extends Command {
         super("search", "Search", "Manage Search blocks");
     }
 
+    private static void lambda$build$2(Block var0) {
+        ChatInstance.method624(" - (highlight)" + var0.getName().getString());
+    }
+
     @Override
     public void method621(LiteralArgumentBuilder<CommandSource> builder) {
         builder.then(method403("add").then(method402("block", BlockArgument.method975()).executes(this::lambda$build$0)));
@@ -35,10 +39,6 @@ public class SearchCommand extends Command {
         this.method624("Blocks: " + Search.INSTANCE.field3666.method2032().size());
         Search.INSTANCE.field3666.method2032().forEach(SearchCommand::lambda$build$2);
         return 1;
-    }
-
-    private static void lambda$build$2(Block var0) {
-        ChatInstance.method624(" - (highlight)" + var0.getName().getString());
     }
 
     private int lambda$build$1(CommandContext var1) throws CommandSyntaxException {

@@ -48,6 +48,10 @@ public class Tracers extends Module {
         super("Tracers", "Draws lines to entities", Category.Render);
     }
 
+    private static boolean lambda$new$0() {
+        return !MinecraftClient.IS_SYSTEM_MAC;
+    }
+
     @Override
     public String method1322() {
         return Integer.toString(this.field681);
@@ -123,9 +127,9 @@ public class Tracers extends Module {
             return this.field679.getValue();
         } else {
             return switch (var1.getType().getSpawnGroup()) {
-                default -> this.field675.getValue();
                 case SpawnGroup.MONSTER -> this.field677.getValue();
                 case SpawnGroup.MISC -> false;
+                default -> this.field675.getValue();
             };
         }
     }
@@ -143,14 +147,10 @@ public class Tracers extends Module {
             return this.field680.getValue();
         } else {
             return switch (var1.getType().getSpawnGroup()) {
-                default -> this.field676.getValue();
                 case SpawnGroup.MONSTER -> this.field678.getValue();
                 case SpawnGroup.MISC -> RGBAColor.field402;
+                default -> this.field676.getValue();
             };
         }
-    }
-
-    private static boolean lambda$new$0() {
-        return !MinecraftClient.IS_SYSTEM_MAC;
     }
 }

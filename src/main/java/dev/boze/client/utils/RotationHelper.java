@@ -31,6 +31,36 @@ public class RotationHelper implements IMinecraft {
         this.field1364 = entity.getPitch();
     }
 
+    public static double method2091() {
+        double var3 = mc.options.getMouseSensitivity().getValue() * 0.6 + 0.2;
+        double var5 = var3 * var3 * var3;
+        double var7 = var5 * 8.0;
+        return mc.options.getPerspective().isFirstPerson() && mc.player != null && mc.player.isUsingSpyglass() ? var5 : var7;
+    }
+
+    public static RotationHelper method613(RotationHelper prevRotation, Pair<Double, Double> cursorDeltas) {
+        double var2 = method2091();
+        RotationHelper var4 = new RotationHelper((float) (cursorDeltas.getLeft() * var2 * 0.15), (float) (cursorDeltas.getRight() * var2 * 0.15));
+        RotationHelper var5 = prevRotation.method610(var4);
+        return var5.method609(Math.max(-90.0F, Math.min(90.0F, var5.field1364)));
+    }
+
+    public static Pair<Double, Double>[] method614(RotationHelper deltaRotation) {
+        double var4 = method2091() * 0.15;
+        double var6 = (double) (-deltaRotation.method1384()) / var4;
+        double var8 = (double) (-deltaRotation.method1385()) / var4;
+        return new Pair[]{
+                new Pair(Math.floor(var6), Math.floor(var8)),
+                new Pair(Math.ceil(var6), Math.floor(var8)),
+                new Pair(Math.ceil(var6), Math.ceil(var8)),
+                new Pair(Math.floor(var6), Math.ceil(var8))
+        };
+    }
+
+    private static RotationHelper lambda$correctSensitivity$0(RotationHelper var0, Pair<Double, Double> var1) {
+        return method613(var0, var1);
+    }
+
     public float method1384() {
         return this.field1363;
     }
@@ -166,32 +196,6 @@ public class RotationHelper implements IMinecraft {
         return new RotationHelper((float) ((double) this.method1384() * scalar), (float) ((double) this.method1385() * scalar));
     }
 
-    public static double method2091() {
-        double var3 = mc.options.getMouseSensitivity().getValue() * 0.6 + 0.2;
-        double var5 = var3 * var3 * var3;
-        double var7 = var5 * 8.0;
-        return mc.options.getPerspective().isFirstPerson() && mc.player != null && mc.player.isUsingSpyglass() ? var5 : var7;
-    }
-
-    public static RotationHelper method613(RotationHelper prevRotation, Pair<Double, Double> cursorDeltas) {
-        double var2 = method2091();
-        RotationHelper var4 = new RotationHelper((float) (cursorDeltas.getLeft() * var2 * 0.15), (float) (cursorDeltas.getRight() * var2 * 0.15));
-        RotationHelper var5 = prevRotation.method610(var4);
-        return var5.method609(Math.max(-90.0F, Math.min(90.0F, var5.field1364)));
-    }
-
-    public static Pair<Double, Double>[] method614(RotationHelper deltaRotation) {
-        double var4 = method2091() * 0.15;
-        double var6 = (double) (-deltaRotation.method1384()) / var4;
-        double var8 = (double) (-deltaRotation.method1385()) / var4;
-        return new Pair[]{
-                new Pair(Math.floor(var6), Math.floor(var8)),
-                new Pair(Math.ceil(var6), Math.floor(var8)),
-                new Pair(Math.ceil(var6), Math.ceil(var8)),
-                new Pair(Math.floor(var6), Math.ceil(var8))
-        };
-    }
-
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -209,9 +213,5 @@ public class RotationHelper implements IMinecraft {
 
     private int lambda$correctSensitivity$1(RotationHelper var1, RotationHelper var2) {
         return Double.compare(this.method605(var1), this.method605(var2));
-    }
-
-    private static RotationHelper lambda$correctSensitivity$0(RotationHelper var0, Pair<Double, Double> var1) {
-        return method613(var0, var1);
     }
 }

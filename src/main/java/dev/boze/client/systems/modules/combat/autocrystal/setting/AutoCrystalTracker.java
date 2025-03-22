@@ -20,27 +20,31 @@ import java.util.Map.Entry;
 
 public class AutoCrystalTracker implements IMinecraft {
     private final AutoCrystal field1524;
-    public float field1525 = 1.0F;
     private final float[] field1526 = new float[20];
-    private int field1527 = 0;
-    private long field1528;
-    public EndCrystalEntity field1529 = null;
-    Entity[] field1530 = null;
-    public boolean field1531 = false;
     private final Timer field1532 = new Timer();
-    BlockPos field1533 = null;
-    public Class3087 field1534 = null;
-    boolean field1535 = false;
-    public double field1536 = 0.0;
-    public double field1537 = 0.0;
-    public LivingEntity field1538 = null;
     private final HashMap<BlockPos, Long> field1539 = new HashMap();
     private final int[] field1540 = new int[10];
-    private int field1541 = 0;
     private final HashMap<BlockPos, Long> field1542 = new HashMap();
     private final HashMap<BlockPos, Integer> field1543 = new HashMap();
     private final int[] field1544 = new int[10];
+    public float field1525 = 1.0F;
+    public EndCrystalEntity field1529 = null;
+    public boolean field1531 = false;
+    public Class3087 field1534 = null;
+    public double field1536 = 0.0;
+    public double field1537 = 0.0;
+    public LivingEntity field1538 = null;
+    Entity[] field1530 = null;
+    BlockPos field1533 = null;
+    boolean field1535 = false;
+    private int field1527 = 0;
+    private long field1528;
+    private int field1541 = 0;
     private int field1545 = 0;
+
+    public AutoCrystalTracker(AutoCrystal var1) {
+        this.field1524 = var1;
+    }
 
     private static void method1800(String var0) {
         if (AutoCrystal.field1038 && mc.player != null) {
@@ -48,8 +52,8 @@ public class AutoCrystalTracker implements IMinecraft {
         }
     }
 
-    public AutoCrystalTracker(AutoCrystal var1) {
-        this.field1524 = var1;
+    private static boolean lambda$update$0(Entry var0) {
+        return System.currentTimeMillis() - (Long) var0.getValue() > 1000L;
     }
 
     public void update() {
@@ -222,9 +226,5 @@ public class AutoCrystalTracker implements IMinecraft {
         } else {
             return false;
         }
-    }
-
-    private static boolean lambda$update$0(Entry var0) {
-        return System.currentTimeMillis() - (Long) var0.getValue() > 1000L;
     }
 }

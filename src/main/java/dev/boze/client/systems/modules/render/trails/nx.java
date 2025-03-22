@@ -12,9 +12,9 @@ import java.util.List;
 
 public class nx {
     public final List<Vector3d> field3774;
+    final Trails field3777;
     private final List<Long> field3775;
     public int field3776;
-    final Trails field3777;
 
     public nx(Trails var1) {
         this.field3777 = var1;

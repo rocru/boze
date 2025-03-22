@@ -23,10 +23,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-@Mixin({BlockItem.class})
+@Mixin(BlockItem.class)
 public class BlockItemMixin {
+    @Unique
+    private static boolean lambda$redirectCanPlace$0(Entity var0) {
+        return var0 instanceof EndCrystalEntity;
+    }
+
     @Redirect(
-            method = {"canPlace"},
+            method = "canPlace",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/World;canPlace(Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/ShapeContext;)Z"
@@ -46,21 +51,16 @@ public class BlockItemMixin {
     }
 
     @Inject(
-            method = {"place(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/util/ActionResult;"},
-            at = {@At(
+            method = "place(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/util/ActionResult;",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/item/ItemPlacementContext;getBlockPos()Lnet/minecraft/util/math/BlockPos;"
-            )},
+            ),
             cancellable = true
     )
     private void onPlace(ItemPlacementContext var1, CallbackInfoReturnable<ActionResult> var2) {
         if (NoGhostBlocks.INSTANCE.isEnabled()) {
             var2.setReturnValue(ActionResult.success(MinecraftClient.getInstance().world.isClient));
         }
-    }
-
-    @Unique
-    private static boolean lambda$redirectCanPlace$0(Entity var0) {
-        return var0 instanceof EndCrystalEntity;
     }
 }

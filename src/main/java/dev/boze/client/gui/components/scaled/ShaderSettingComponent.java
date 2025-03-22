@@ -25,18 +25,11 @@ public class ShaderSettingComponent extends ScaledBaseComponent {
     private static final double field1472 = 2.0;
     private static final double field1473 = 4.0;
     private static final double field1474 = 8.0;
+    public final ShaderSetting field1479;
     private final ColorPanel field1475;
     private final ColorPanel field1476;
     private final ArrayList<InputBaseComponent> field1477 = new ArrayList();
     private final ShaderSetting field1478;
-    public final ShaderSetting field1479;
-
-    private static double method2091() {
-        IFontRender.method499().startBuilding(BaseComponent.scaleFactor, true);
-        double var0 = IFontRender.method499().method1390();
-        IFontRender.method499().endBuilding();
-        return var0;
-    }
 
     public ShaderSettingComponent(ShaderSetting original) {
         super(original.name, 328.0 * BaseComponent.scaleFactor, method2091() * 3.0 + 396.0 * BaseComponent.scaleFactor, true);
@@ -69,6 +62,13 @@ public class ShaderSettingComponent extends ScaledBaseComponent {
         this.field1477.add(new e3(this, "Cancel", var4, var6, var14, 24.0 * BaseComponent.scaleFactor));
         var4 += 8.0 * BaseComponent.scaleFactor + var14;
         this.field1477.add(new e4(this, "Apply", var4, var6, var14, 24.0 * BaseComponent.scaleFactor, original));
+    }
+
+    private static double method2091() {
+        IFontRender.method499().startBuilding(BaseComponent.scaleFactor, true);
+        double var0 = IFontRender.method499().method1390();
+        IFontRender.method499().endBuilding();
+        return var0;
     }
 
     @Override

@@ -32,6 +32,16 @@ import net.minecraft.util.math.Vec3d;
 
 public class PearlPhase extends Module {
     public static final PearlPhase INSTANCE = new PearlPhase();
+    private static final Vec3d[] field565 = new Vec3d[]{
+            new Vec3d(1.0, 0.0, 0.0),
+            new Vec3d(-1.0, 0.0, 0.0),
+            new Vec3d(0.0, 0.0, 1.0),
+            new Vec3d(0.0, 0.0, -1.0),
+            new Vec3d(0.75, 0.0, 0.75),
+            new Vec3d(0.75, 0.0, -0.75),
+            new Vec3d(-0.75, 0.0, 0.75),
+            new Vec3d(-0.75, 0.0, -0.75)
+    };
     private final EnumSetting<PearlMode> pearlMode = new EnumSetting<PearlMode>(
             "Mode",
             PearlMode.Forward,
@@ -48,21 +58,27 @@ public class PearlPhase extends Module {
             "Bypass", false, "Bypass for PearlPhase where it's patched\nOnly bypasses on some servers, try and see\n"
     );
     private final EnumSetting<SwapMode> swapMode = new EnumSetting<SwapMode>("Swap", SwapMode.Silent, "Auto swap mode");
-    private boolean field563;
     private final Timer field564 = new Timer();
-    private static final Vec3d[] field565 = new Vec3d[]{
-            new Vec3d(1.0, 0.0, 0.0),
-            new Vec3d(-1.0, 0.0, 0.0),
-            new Vec3d(0.0, 0.0, 1.0),
-            new Vec3d(0.0, 0.0, -1.0),
-            new Vec3d(0.75, 0.0, 0.75),
-            new Vec3d(0.75, 0.0, -0.75),
-            new Vec3d(-0.75, 0.0, 0.75),
-            new Vec3d(-0.75, 0.0, -0.75)
-    };
+    private boolean field563;
 
     public PearlPhase() {
         super("PearlPhase", "Automatically pearl phases", Category.Combat);
+    }
+
+    private static Vec3d method285() {
+        return new Vec3d(Math.floor(mc.player.getX()) + 0.5, mc.player.getY(), Math.floor(mc.player.getZ()) + 0.5);
+    }
+
+    private static boolean lambda$getVec$2(EndCrystalEntity var0) {
+        return true;
+    }
+
+    private static boolean lambda$onInteract$1(ItemStack var0) {
+        return var0.getItem() == Items.ENDER_PEARL;
+    }
+
+    private static boolean lambda$onInteract$0(ItemStack var0) {
+        return var0.getItem() instanceof BlockItem;
     }
 
     @Override
@@ -205,21 +221,5 @@ public class PearlPhase extends Module {
 
     private boolean method284(BlockState var1) {
         return var1.isAir() || var1.getBlock() == Blocks.LAVA || var1.getBlock() == Blocks.WATER;
-    }
-
-    private static Vec3d method285() {
-        return new Vec3d(Math.floor(mc.player.getX()) + 0.5, mc.player.getY(), Math.floor(mc.player.getZ()) + 0.5);
-    }
-
-    private static boolean lambda$getVec$2(EndCrystalEntity var0) {
-        return true;
-    }
-
-    private static boolean lambda$onInteract$1(ItemStack var0) {
-        return var0.getItem() == Items.ENDER_PEARL;
-    }
-
-    private static boolean lambda$onInteract$0(ItemStack var0) {
-        return var0.getItem() instanceof BlockItem;
     }
 }

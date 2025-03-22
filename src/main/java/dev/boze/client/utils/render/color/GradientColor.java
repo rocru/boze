@@ -12,9 +12,9 @@ import java.util.Objects;
 
 public class GradientColor extends Class5903<GradientColor> {
     public static final HashMap<String, GradientColor> field420 = new HashMap();
-    private final Class3003 field421;
     public final ArrayList<StaticColor> field422 = new ArrayList();
     public final String field423;
+    private final Class3003 field421;
     public boolean field424;
     public boolean field425;
     public float field426;

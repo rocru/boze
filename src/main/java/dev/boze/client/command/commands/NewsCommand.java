@@ -28,32 +28,6 @@ public class NewsCommand extends Command {
         super("news", "News", "Get the latest news from the 2b2t times");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.executes(this::lambda$build$2);
-    }
-
-    @EventHandler
-    public void method2071(Render3DEvent event) {
-        if (mc.currentScreen == null && this.field1379 != null) {
-            mc.setScreen(new NewsScreen(this.field1379));
-            Boze.EVENT_BUS.unsubscribe(this);
-            this.field1379 = null;
-        }
-    }
-
-    private int lambda$build$2(CommandContext var1) throws CommandSyntaxException {
-        BozeExecutor.method2200(this::lambda$build$1);
-        return 1;
-    }
-
-    private void lambda$build$1() {
-        List<String> var1 = NewsUtil.getNews();
-        var1.removeIf(NewsCommand::lambda$build$0);
-        this.field1379 = var1.toArray(new String[0]);
-        Boze.EVENT_BUS.subscribe(this);
-    }
-
     private static boolean lambda$build$0(String var0) {
         String var4;
         try {
@@ -88,5 +62,31 @@ public class NewsCommand extends Command {
         } else {
             return true;
         }
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.executes(this::lambda$build$2);
+    }
+
+    @EventHandler
+    public void method2071(Render3DEvent event) {
+        if (mc.currentScreen == null && this.field1379 != null) {
+            mc.setScreen(new NewsScreen(this.field1379));
+            Boze.EVENT_BUS.unsubscribe(this);
+            this.field1379 = null;
+        }
+    }
+
+    private int lambda$build$2(CommandContext var1) throws CommandSyntaxException {
+        BozeExecutor.method2200(this::lambda$build$1);
+        return 1;
+    }
+
+    private void lambda$build$1() {
+        List<String> var1 = NewsUtil.getNews();
+        var1.removeIf(NewsCommand::lambda$build$0);
+        this.field1379 = var1.toArray(new String[0]);
+        Boze.EVENT_BUS.subscribe(this);
     }
 }

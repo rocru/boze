@@ -16,12 +16,16 @@ public class AntiRegear implements IMinecraft, SettingsGroup {
     public final BindSetting field132 = new BindSetting("Bind", Bind.create(), "The bind to toggle anti regear (optional)", this.field131);
     private final MinMaxSetting field133 = new MinMaxSetting("Range", 4.5, 1.0, 6.0, 0.1, "The range to check for shulkers within");
     private final SettingBlock field134;
-    public BlockLocationInfo field135 = null;
     private final HashSet<BlockPos> field136 = new HashSet();
+    public BlockLocationInfo field135 = null;
 
     public AntiRegear(AutoMine var1) {
         this.field134 = new SettingBlock("AntiRegear", "Anti regear settings", this.field131, this.field132, this.field133);
         this.field134.setVisibility(var1.advanced::getValue);
+    }
+
+    private static boolean lambda$new$0() {
+        return AutoMine.INSTANCE.advanced.getValue();
     }
 
     @Override
@@ -70,9 +74,5 @@ public class AntiRegear implements IMinecraft, SettingsGroup {
         }
 
         this.field136.add(var1);
-    }
-
-    private static boolean lambda$new$0() {
-        return AutoMine.INSTANCE.advanced.getValue();
     }
 }

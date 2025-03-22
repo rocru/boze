@@ -32,21 +32,21 @@ public class Velocity extends Module {
     public static final Velocity INSTANCE = new Velocity();
     public final EnumSetting<AnticheatMode> field3366 = new EnumSetting<AnticheatMode>("Mode", AnticheatMode.NCP, "Velocity mode");
     public final EnumSetting<VelocityCancel> field3367 = new EnumSetting<VelocityCancel>("Knockback", VelocityCancel.Always, "Cancel velocity from hits");
-    private final EnumSetting<VelocityCancel> field3368 = new EnumSetting<VelocityCancel>(
-            "Entities", VelocityCancel.Always, "Cancel velocity from entity collision"
-    );
     public final EnumSetting<VelocityCancel> field3369 = new EnumSetting<VelocityCancel>("Explosions", VelocityCancel.Always, "Cancel velocity from explosions");
     public final BooleanSetting field3370 = new BooleanSetting("BlockStrict", false, "2b2t in-block Velocity bypass\n", this::lambda$new$0);
     private final BooleanSetting field3371 = new BooleanSetting(
             "ModulePriority", false, "Give other modules priority over velocity\nWill reduce velocity's consistency\n", this::lambda$new$1
+    );
+    private final EnumSetting<VelocityCancel> field3368 = new EnumSetting<VelocityCancel>(
+            "Entities", VelocityCancel.Always, "Cancel velocity from entity collision"
     );
     private final BooleanSetting field3372 = new BooleanSetting("Blocks", true, "Cancel velocity from being pushed out of blocks");
     private final BooleanSetting field3373 = new BooleanSetting("Pistons", false, "No piston push");
     private final BooleanSetting field3374 = new BooleanSetting("InWater", true, "Cancel velocity in water");
     private final BooleanSetting field3375 = new BooleanSetting("InLava", true, "Cancel velocity in lava");
     private final Timer field3376 = new Timer();
-    private int field3377;
     public boolean field3378 = false;
+    private int field3377;
     private int field3379;
 
     public Velocity() {

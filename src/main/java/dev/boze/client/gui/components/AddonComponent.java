@@ -32,9 +32,9 @@ public class AddonComponent extends BaseComponent implements IMinecraft {
     private final double field363;
     private final ArrayList<BaseComponent> field364 = new ArrayList();
     private final Class2773[] field365 = new Class2773[3];
+    private final Timer field368 = new Timer();
     public boolean field366;
     private boolean field367 = false;
-    private final Timer field368 = new Timer();
     private double field369;
     private double field370;
     private double field371;
@@ -72,6 +72,16 @@ public class AddonComponent extends BaseComponent implements IMinecraft {
         this.field365[0] = new Class2773(Notifications.POWER, () -> ln0(addonModule), Theme.INSTANCE.field2435);
         this.field365[1] = new Class2773(Notifications.TUNE, () -> ln1(addonModule), Theme.INSTANCE.field2436);
         this.field365[2] = new Class2773(this.field366 ? Notifications.EXPAND_LESS : Notifications.EXPAND_MORE, this::ln2, Theme.INSTANCE.ab);
+    }
+
+    private static void ln1(ToggleableModule var0) {
+        ClickGUI.field1335.method580(new ToggleableModuleSettingComponent(var0));
+        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+    }
+
+    private static void ln0(ToggleableModule var0) {
+        var0.setState(!var0.getState());
+        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
     }
 
     // $VF: Unable to simplify switch on enum
@@ -427,15 +437,5 @@ public class AddonComponent extends BaseComponent implements IMinecraft {
     private void ln2() {
         this.field366 = !this.field366;
         this.field365[2].field74 = this.field366 ? Notifications.EXPAND_LESS : Notifications.EXPAND_MORE;
-    }
-
-    private static void ln1(ToggleableModule var0) {
-        ClickGUI.field1335.method580(new ToggleableModuleSettingComponent(var0));
-        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-    }
-
-    private static void ln0(ToggleableModule var0) {
-        var0.setState(!var0.getState());
-        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
     }
 }

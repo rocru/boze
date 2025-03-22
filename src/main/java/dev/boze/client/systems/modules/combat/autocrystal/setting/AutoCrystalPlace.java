@@ -49,16 +49,20 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
     private final Timer field144 = new Timer();
     boolean field145;
 
+    public AutoCrystalPlace(AutoCrystal var1) {
+        this.field143 = var1;
+        this.field139.setVisibility(() -> $lambda$new$0(var1));
+        this.field142 = new Setting[]{this.field137, this.field138, this.field139, this.field140, this.field141};
+    }
+
     private static void method1800(String var0) {
         if (AutoCrystal.field1038 && mc.player != null) {
             System.out.println("[AutoCrystal.Place @" + mc.player.age + "] " + var0);
         }
     }
 
-    public AutoCrystalPlace(AutoCrystal var1) {
-        this.field143 = var1;
-        this.field139.setVisibility(() -> $lambda$new$0(var1));
-        this.field142 = new Setting[]{this.field137, this.field138, this.field139, this.field140, this.field141};
+    private static boolean $lambda$new$0(AutoCrystal var0) {
+        return var0.field1041.field205.getValue() == AnticheatMode.NCP;
     }
 
     @Override
@@ -313,9 +317,5 @@ public class AutoCrystalPlace implements IMinecraft, SettingsGroup {
         }
 
         return new Pair(var4, var16);
-    }
-
-    private static boolean $lambda$new$0(AutoCrystal var0) {
-        return var0.field1041.field205.getValue() == AnticheatMode.NCP;
     }
 }

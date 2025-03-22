@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({EndCrystalEntity.class})
+@Mixin(EndCrystalEntity.class)
 public class EndCrystalEntityMixin implements IEndCrystalEntity {
     @Unique
     private long lastAttackTime = 0L;
@@ -62,8 +62,8 @@ public class EndCrystalEntityMixin implements IEndCrystalEntity {
     }
 
     @Inject(
-            method = {"<init>(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/World;)V"},
-            at = {@At("TAIL")}
+            method = "<init>(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/World;)V",
+            at = @At("TAIL")
     )
     private void onInit(EntityType<? extends EndCrystalEntity> var1, World var2, CallbackInfo var3) {
         this.spawnTime = System.currentTimeMillis();

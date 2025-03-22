@@ -11,12 +11,12 @@ import java.util.Objects;
 
 public class BozeDrawColor extends RGBAColor implements DrawColor {
     public static final BozeDrawColor field1841 = new BozeDrawColor();
+    private static final double[] field1847 = new double[]{0.0, 0.0};
     public boolean field1842 = false;
     public double field1843 = 0.0;
     public double field1844 = 0.0;
     public double[] field1845 = new double[]{0.0, 0.0};
     public double[] field1846 = new double[]{0.0, 1.0};
-    private static final double[] field1847 = new double[]{0.0, 0.0};
 
     public BozeDrawColor() {
     }
@@ -128,8 +128,16 @@ public class BozeDrawColor extends RGBAColor implements DrawColor {
         return this.field1846[0];
     }
 
+    public void setMinHue(double minHue) {
+        this.field1846[0] = minHue;
+    }
+
     public double getMaxHue() {
         return this.field1846[1] < this.field1846[0] ? 1.0 + this.field1846[1] : this.field1846[1];
+    }
+
+    public void setMaxHue(double maxHue) {
+        this.field1846[1] = maxHue;
     }
 
     @Override
@@ -291,28 +299,28 @@ public class BozeDrawColor extends RGBAColor implements DrawColor {
         return this.field408;
     }
 
-    public int getG() {
-        return this.field409;
-    }
-
-    public int getB() {
-        return this.field410;
-    }
-
-    public int getA() {
-        return this.field411;
-    }
-
     public void setR(int r) {
         this.field408 = r;
+    }
+
+    public int getG() {
+        return this.field409;
     }
 
     public void setG(int g) {
         this.field409 = g;
     }
 
+    public int getB() {
+        return this.field410;
+    }
+
     public void setB(int b) {
         this.field410 = b;
+    }
+
+    public int getA() {
+        return this.field411;
     }
 
     public void setA(int a) {
@@ -349,14 +357,6 @@ public class BozeDrawColor extends RGBAColor implements DrawColor {
 
     public void setGradientY(double gradientY) {
         this.field1845[1] = gradientY;
-    }
-
-    public void setMinHue(double minHue) {
-        this.field1846[0] = minHue;
-    }
-
-    public void setMaxHue(double maxHue) {
-        this.field1846[1] = maxHue;
     }
 
     public DrawColor clone() {

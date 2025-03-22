@@ -21,26 +21,11 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
     public final EnumSetting<AnticheatMode> field205 = new EnumSetting<AnticheatMode>(
             "AntiCheat", AnticheatMode.Grim, "The anti-cheat mode to use\n - Grim: For 2b2t.org, 2bpvp.com, etc.\n - NCP: For crystalpvp.cc, 6b6t.org, etc."
     );
-    private final BooleanSetting field206 = new BooleanSetting("MultiTask", false, "Whether or not to multi-task", this.field205);
-    final BooleanSetting field207 = new BooleanSetting(
-            "Rotate", true, "Rotate\nOn NCP, toggles place and break\nOn Grim, toggles place (break is always on)\n", this.field205
-    );
-    private final EnumSetting<CrystalAuraYawStep> field208 = new EnumSetting<CrystalAuraYawStep>(
-            "YawStep", CrystalAuraYawStep.Off, "Mode for slowing down rotations", this::lambda$new$0, this.field205
-    );
-    private final FloatSetting field209 = new FloatSetting(
-            "YawAngle", 0.3F, 0.1F, 1.0F, 0.05F, "Maximum angle fraction to rotate by per tick", this::lambda$new$1, this.field205
-    );
     public final BooleanSetting field210 = new BooleanSetting(
             "StrictDirection", true, "Ensure placements pass Strict Direction check\nMost servers check for this\n", this.field205
     );
     public final BooleanSetting field211 = new BooleanSetting(
             "AssumeMaxArmor", true, "Assume armor has max enchants\n2b2t hides this\n", this::lambda$new$2, this.field205
-    );
-    final EnumSetting<CrystalAuraUpdateMode> field212 = new EnumSetting<CrystalAuraUpdateMode>(
-            "React",
-            CrystalAuraUpdateMode.Packet,
-            "When to react to changes in the world\n - Tick: React to everything during game ticks, most consistent\n - Spawn: Same as tick, but reacts to entity spawns right away\n - Packet: Reacts to everything instantly, as soon as it's received from the server"
     );
     public final EnumSetting<AutoMineSwapMode> field213 = new EnumSetting<AutoMineSwapMode>(
             "Swap",
@@ -50,10 +35,25 @@ public class PlaceHelper implements IMinecraft, SettingsGroup, IPlace {
     public final BooleanSetting field214 = new BooleanSetting("AntiWeakness", false, "Auto swap to sword to break crystals when weak", this.field213);
     public final IntSetting field215 = new IntSetting("Penalty", 10, 0, 20, 1, "Tick penalty for swapping\n10 on most NCP servers", this::lambda$new$3, this.field213);
     public final BooleanSetting field216 = new BooleanSetting("GrimBypass", true, "Bypass 2b2t/Grim's swap patch", this::lambda$new$4, this.field213);
-    private final Setting<?>[] field217;
-    private final AutoCrystal field218;
+    final BooleanSetting field207 = new BooleanSetting(
+            "Rotate", true, "Rotate\nOn NCP, toggles place and break\nOn Grim, toggles place (break is always on)\n", this.field205
+    );
+    final EnumSetting<CrystalAuraUpdateMode> field212 = new EnumSetting<CrystalAuraUpdateMode>(
+            "React",
+            CrystalAuraUpdateMode.Packet,
+            "When to react to changes in the world\n - Tick: React to everything during game ticks, most consistent\n - Spawn: Same as tick, but reacts to entity spawns right away\n - Packet: Reacts to everything instantly, as soon as it's received from the server"
+    );
     final GrimPlace grim = new GrimPlace();
     final NCPPlace ncp;
+    private final BooleanSetting field206 = new BooleanSetting("MultiTask", false, "Whether or not to multi-task", this.field205);
+    private final EnumSetting<CrystalAuraYawStep> field208 = new EnumSetting<CrystalAuraYawStep>(
+            "YawStep", CrystalAuraYawStep.Off, "Mode for slowing down rotations", this::lambda$new$0, this.field205
+    );
+    private final FloatSetting field209 = new FloatSetting(
+            "YawAngle", 0.3F, 0.1F, 1.0F, 0.05F, "Maximum angle fraction to rotate by per tick", this::lambda$new$1, this.field205
+    );
+    private final Setting<?>[] field217;
+    private final AutoCrystal field218;
 
     public PlaceHelper(AutoCrystal var1) {
         this.field218 = var1;

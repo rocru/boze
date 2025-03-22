@@ -52,7 +52,7 @@ public abstract class ToggleComponent extends InputBaseComponent {
         }
     }
 
-    protected abstract void setToggled(boolean var1);
-
     protected abstract boolean isToggled();
+
+    protected abstract void setToggled(boolean var1);
 }

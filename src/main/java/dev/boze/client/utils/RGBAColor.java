@@ -68,41 +68,6 @@ public class RGBAColor implements ICopyable<RGBAColor>, ISerializable<RGBAColor>
         this.field411 = var1.getAlpha();
     }
 
-    public RGBAColor method2025(double var1) {
-        return new RGBAColor(
-                Math.max((int) ((double) this.field408 * var1), 0),
-                Math.max((int) ((double) this.field409 * var1), 0),
-                Math.max((int) ((double) this.field410 * var1), 0),
-                this.field411
-        );
-    }
-
-    public RGBAColor method183(double var1) {
-        int var6 = (int) (1.0 / (1.0 - var1));
-        if (this.field408 == 0 && this.field409 == 0 && this.field410 == 0) {
-            return new RGBAColor(var6, var6, var6, this.field411);
-        } else {
-            if (this.field408 > 0 && this.field408 < var6) {
-                this.field408 = var6;
-            }
-
-            if (this.field409 > 0 && this.field409 < var6) {
-                this.field409 = var6;
-            }
-
-            if (this.field410 > 0 && this.field410 < var6) {
-                this.field410 = var6;
-            }
-
-            return new RGBAColor(
-                    Math.min((int) ((double) this.field408 / var1), 255),
-                    Math.min((int) ((double) this.field409 / var1), 255),
-                    Math.min((int) ((double) this.field410 / var1), 255),
-                    this.field411
-            );
-        }
-    }
-
     public static int method184(int var0, int var1, int var2, int var3) {
         return (var0 << 16) + (var1 << 8) + var2 + (var3 << 24);
     }
@@ -282,6 +247,41 @@ public class RGBAColor implements ICopyable<RGBAColor>, ISerializable<RGBAColor>
         var12[1] = (float) var8;
         var12[2] = (float) var10;
         return var12;
+    }
+
+    public RGBAColor method2025(double var1) {
+        return new RGBAColor(
+                Math.max((int) ((double) this.field408 * var1), 0),
+                Math.max((int) ((double) this.field409 * var1), 0),
+                Math.max((int) ((double) this.field410 * var1), 0),
+                this.field411
+        );
+    }
+
+    public RGBAColor method183(double var1) {
+        int var6 = (int) (1.0 / (1.0 - var1));
+        if (this.field408 == 0 && this.field409 == 0 && this.field410 == 0) {
+            return new RGBAColor(var6, var6, var6, this.field411);
+        } else {
+            if (this.field408 > 0 && this.field408 < var6) {
+                this.field408 = var6;
+            }
+
+            if (this.field409 > 0 && this.field409 < var6) {
+                this.field409 = var6;
+            }
+
+            if (this.field410 > 0 && this.field410 < var6) {
+                this.field410 = var6;
+            }
+
+            return new RGBAColor(
+                    Math.min((int) ((double) this.field408 / var1), 255),
+                    Math.min((int) ((double) this.field409 / var1), 255),
+                    Math.min((int) ((double) this.field410 / var1), 255),
+                    this.field411
+            );
+        }
     }
 
     public RGBAColor method192(int var1, int var2, int var3, int var4) {

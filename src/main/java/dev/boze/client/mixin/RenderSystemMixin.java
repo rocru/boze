@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({RenderSystem.class})
+@Mixin(RenderSystem.class)
 public class RenderSystemMixin {
     @Inject(
-            method = {"getShaderFogColor"},
-            at = {@At("HEAD")},
+            method = "getShaderFogColor",
+            at = @At("HEAD"),
             cancellable = true,
             remap = false
     )
@@ -33,8 +33,8 @@ public class RenderSystemMixin {
     }
 
     @Inject(
-            method = {"flipFrame"},
-            at = {@At("HEAD")}
+            method = "flipFrame",
+            at = @At("HEAD")
     )
     private static void onFlipFrame(long var0, CallbackInfo var2) {
         Boze.EVENT_BUS.post(FlipFrameEvent.method1039());

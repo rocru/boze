@@ -6,14 +6,11 @@ import net.minecraft.util.math.MathHelper;
 
 public class SettingSlider extends SettingBase<Double> {
 
-    private double value;
-
-    private final double defaultValue;
-
     public final double min;
     public final double max;
-
     public final double step;
+    private final double defaultValue;
+    private double value;
 
     public SettingSlider(ToggleableModule owner, String name, String description, double value, double min, double max, double step) {
         super(owner, name, description);

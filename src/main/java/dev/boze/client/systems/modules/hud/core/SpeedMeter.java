@@ -12,6 +12,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.math.Vec3d;
 
 public class SpeedMeter extends HUDModule {
+    public static final SpeedMeter INSTANCE = new SpeedMeter();
     private final BooleanSetting field2644 = new BooleanSetting("ShowPrefix", true, "Show prefix (Speed)");
     private final BooleanSetting field2645 = new BooleanSetting("BPS", false, "Show speed in bp/s");
     private final BooleanSetting field2646 = new BooleanSetting("Custom", false, "Use custom theme settings");
@@ -25,9 +26,8 @@ public class SpeedMeter extends HUDModule {
             "Suffix", new BozeDrawColor(100, 35, 250, 255, true, 0.3, 0.0, new double[]{0.0, -0.065}, new double[]{0.5, 0.6}), "Suffix color", this.field2646
     );
     private final BooleanSetting field2650 = new BooleanSetting("Shadow", false, "Text shadow", this.field2646);
-    public static final SpeedMeter INSTANCE = new SpeedMeter();
-    private double field2651 = 0.0;
     private final double[] field2652 = new double[30];
+    private double field2651 = 0.0;
     private int field2653 = 0;
     private Vec3d field2654 = null;
 

@@ -25,11 +25,14 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class ArrayList extends HUDModule {
-    private final BooleanSetting field649 = new BooleanSetting("OnlyBound", false, "Only show modules with binds");
-    private final BooleanSetting field650 = new BooleanSetting("Addons", true, "Show addon modules in the arraylist");
+    public static final ArrayList INSTANCE = new ArrayList();
     public final BooleanSetting field651 = new BooleanSetting(
             "Animations", false, "Enables animations\nNote: For this to work, ArrayList has to be on one side of the screen"
     );
+    public final HashMap<ArrayListModuleInfo, Long> field659 = new HashMap();
+    public final HashMap<ToggleableModule, Boolean> field660 = new HashMap();
+    private final BooleanSetting field649 = new BooleanSetting("OnlyBound", false, "Only show modules with binds");
+    private final BooleanSetting field650 = new BooleanSetting("Addons", true, "Show addon modules in the arraylist");
     private final MinMaxSetting field652 = new MinMaxSetting("Duration", 0.25, 0.1, 5.0, 0.1, "Animation duration in seconds", this.field651::getValue);
     private final BooleanSetting field653 = new BooleanSetting("Custom", false, "Use custom theme settings");
     private final ColorSetting field654 = new ColorSetting(
@@ -43,15 +46,24 @@ public class ArrayList extends HUDModule {
     );
     private final BooleanSetting field657 = new BooleanSetting("Shadow", false, "Text shadow", this.field653);
     private final MinMaxSetting field658 = new MinMaxSetting("Spacing", 1.5, 0.0, 3.0, 0.1, "Spacing between lines", this.field653);
-    public static final ArrayList INSTANCE = new ArrayList();
-    public final HashMap<ArrayListModuleInfo, Long> field659 = new HashMap();
-    public final HashMap<ToggleableModule, Boolean> field660 = new HashMap();
     float field661 = 0.0F;
 
     public ArrayList() {
         super("ArrayList", "Shows a list of enabled modules", Category.Hud, 0.0, 0.0, 2, 40.0, 40.0);
         this.field595.setValue(0.75);
         this.setEnabled(true);
+    }
+
+    private static ArrayListModuleInfo lambda$getLines$7(ToggleableModule var0) {
+        return new ArrayListModuleInfo(var0.getTitle(), "", var0.getState());
+    }
+
+    private static ArrayListModuleInfo lambda$getLines$6(Module var0) {
+        return new ArrayListModuleInfo(var0.getName(), var0.method1322(), var0.isEnabled());
+    }
+
+    private static boolean lambda$getLines$5(Module var0) {
+        return var0.category != Category.Hud && var0.category != Category.Graph;
     }
 
     @EventHandler
@@ -114,18 +126,6 @@ public class ArrayList extends HUDModule {
 
     private String method340(ArrayListModuleInfo var1) {
         return !var1.field2594.isEmpty() ? var1.field2593 + " [" + var1.field2594 + "]" : var1.field2593;
-    }
-
-    private static ArrayListModuleInfo lambda$getLines$7(ToggleableModule var0) {
-        return new ArrayListModuleInfo(var0.getTitle(), "", var0.getState());
-    }
-
-    private static ArrayListModuleInfo lambda$getLines$6(Module var0) {
-        return new ArrayListModuleInfo(var0.getName(), var0.method1322(), var0.isEnabled());
-    }
-
-    private static boolean lambda$getLines$5(Module var0) {
-        return var0.category != Category.Hud && var0.category != Category.Graph;
     }
 
     private boolean lambda$getLines$4(Module var1) {

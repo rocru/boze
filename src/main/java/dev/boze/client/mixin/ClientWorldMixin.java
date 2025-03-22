@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.function.Supplier;
 
-@Mixin({ClientWorld.class})
+@Mixin(ClientWorld.class)
 public abstract class ClientWorldMixin extends World {
     protected ClientWorldMixin(
             MutableWorldProperties properties,
@@ -41,16 +41,16 @@ public abstract class ClientWorldMixin extends World {
     }
 
     @Inject(
-            method = {"addEntity"},
-            at = {@At("HEAD")}
+            method = "addEntity",
+            at = @At("HEAD")
     )
     private void onAddEntity(Entity var1, CallbackInfo var2) {
         AutoCrystal.INSTANCE.method488(var1);
     }
 
     @Inject(
-            method = {"addEntity"},
-            at = {@At("TAIL")}
+            method = "addEntity",
+            at = @At("TAIL")
     )
     private void onAddedEntity(Entity var1, CallbackInfo var2) {
         if (var1 != null) {
@@ -59,8 +59,8 @@ public abstract class ClientWorldMixin extends World {
     }
 
     @Inject(
-            method = {"removeEntity"},
-            at = {@At("HEAD")}
+            method = "removeEntity",
+            at = @At("HEAD")
     )
     private void onRemoveEntity(int var1, RemovalReason var2, CallbackInfo var3) {
         if (this.getEntityById(var1) != null) {
@@ -69,8 +69,8 @@ public abstract class ClientWorldMixin extends World {
     }
 
     @Inject(
-            method = {"getSkyColor"},
-            at = {@At("HEAD")},
+            method = "getSkyColor",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onGetSkyColor(Vec3d var1, float var2, CallbackInfoReturnable<Vec3d> var3) {
@@ -90,8 +90,8 @@ public abstract class ClientWorldMixin extends World {
     }
 
     @Inject(
-            method = {"getCloudsColor"},
-            at = {@At("HEAD")},
+            method = "getCloudsColor",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onGetCloudsColor(float var1, CallbackInfoReturnable<Vec3d> var2) {

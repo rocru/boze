@@ -59,11 +59,11 @@ public class SelfTrap extends Module {
     private final BooleanSetting onTP = new BooleanSetting("OnTP", false, "Disable when you teleport/chorus", this.autoDisable);
     private final BooleanSetting whenDone = new BooleanSetting("WhenDone", false, "Disable when done selfTraping", this.autoDisable);
     private final SwapHandler field544 = new SwapHandler(this, 149);
+    private final Timer field548 = new Timer();
+    private final Timer field549 = new Timer();
     private HitResult[] field545 = null;
     private BlockHitResult field546 = null;
     private RotationHelper field547;
-    private final Timer field548 = new Timer();
-    private final Timer field549 = new Timer();
 
     private SelfTrap() {
         super(

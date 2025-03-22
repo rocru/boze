@@ -28,6 +28,13 @@ public class AutoScoreboard extends Module {
         super("AutoScoreboard", "Keeps track of your scores with others", Category.Misc);
     }
 
+    private static void lambda$saveLocalData$0(JsonObject var0, String var1, Pair var2) {
+        JsonObject var5 = new JsonObject();
+        var5.addProperty("kills", (Number) var2.getLeft());
+        var5.addProperty("deaths", (Number) var2.getRight());
+        var0.add(var1, var5);
+    }
+
     @EventHandler
     public void method1674(MovementEvent event) {
         for (Entity var6 : TargetTracker.method560()) {
@@ -100,18 +107,6 @@ public class AutoScoreboard extends Module {
         return jsonObject;
     }
 
-    @Override
-    public Module deserialize(JsonObject data) {
-        super.deserialize(data);
-        if (!data.has("Scores")) {
-            return this;
-        } else {
-            JsonObject var5 = data.getAsJsonObject("Scores");
-            var5.entrySet().forEach(this::lambda$loadLocalData$1);
-            return this;
-        }
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     //@Override
@@ -126,15 +121,20 @@ public class AutoScoreboard extends Module {
     //   return this.deserialize(jsonObject);
     //}
 
+    @Override
+    public Module deserialize(JsonObject data) {
+        super.deserialize(data);
+        if (!data.has("Scores")) {
+            return this;
+        } else {
+            JsonObject var5 = data.getAsJsonObject("Scores");
+            var5.entrySet().forEach(this::lambda$loadLocalData$1);
+            return this;
+        }
+    }
+
     private void lambda$loadLocalData$1(Entry var1) {
         JsonObject var4 = ((JsonElement) var1.getValue()).getAsJsonObject();
         this.field2897.put((String) var1.getKey(), new Pair(var4.get("kills").getAsInt(), var4.get("deaths").getAsInt()));
-    }
-
-    private static void lambda$saveLocalData$0(JsonObject var0, String var1, Pair var2) {
-        JsonObject var5 = new JsonObject();
-        var5.addProperty("kills", (Number) var2.getLeft());
-        var5.addProperty("deaths", (Number) var2.getRight());
-        var0.add(var1, var5);
     }
 }

@@ -15,12 +15,12 @@ public class ToggleColorPickerComponent extends ToggleComponent {
     }
 
     @Override
-    protected void setToggled(boolean value) {
-        this.field2047.field418 = value;
+    protected boolean isToggled() {
+        return this.field2047.field418;
     }
 
     @Override
-    protected boolean isToggled() {
-        return this.field2047.field418;
+    protected void setToggled(boolean value) {
+        this.field2047.field418 = value;
     }
 }

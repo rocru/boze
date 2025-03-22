@@ -19,15 +19,19 @@ import java.util.stream.Collectors;
 public class ColorArgument implements ArgumentType<String> {
     private static final DynamicCommandExceptionType field1854 = new DynamicCommandExceptionType(ColorArgument::lambda$static$0);
 
+    private ColorArgument() {
+    }
+
     public static ColorArgument method984() {
         return new ColorArgument();
     }
 
-    private ColorArgument() {
-    }
-
     public static String method985(CommandContext<?> context, String name) {
         return context.getArgument(name, String.class);
+    }
+
+    private static Message lambda$static$0(Object var0) {
+        return Text.literal("Color with name " + var0 + " doesn't exist");
     }
 
     @Override
@@ -53,17 +57,13 @@ public class ColorArgument implements ArgumentType<String> {
         return CommandSource.suggestMatching(Colors.INSTANCE.field2343.keySet(), builder);
     }
 
-    public Collection<String> getExamples() {
-        return Colors.INSTANCE.field2343.keySet().stream().limit(3L).collect(Collectors.toList());
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     //public Object parse(StringReader stringReader) throws CommandSyntaxException {
     //   return this.method986(stringReader);
     //}
 
-    private static Message lambda$static$0(Object var0) {
-        return Text.literal("Color with name " + var0 + " doesn't exist");
+    public Collection<String> getExamples() {
+        return Colors.INSTANCE.field2343.keySet().stream().limit(3L).collect(Collectors.toList());
     }
 }

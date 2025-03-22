@@ -32,11 +32,11 @@ import java.util.Comparator;
 
 public class PistonPush extends Module {
     public static final PistonPush INSTANCE = new PistonPush();
+    public static final BooleanSetting onlyWhileSneaking = new BooleanSetting("OnlyWhileSneaking", false, "Only push while sneaking");
     private final BooleanSetting multiTask = new BooleanSetting("MultiTask", false, "Multi Task");
     private final BooleanSetting swing = new BooleanSetting("Swing", true, "Swing");
     private final MinMaxSetting range = new MinMaxSetting("Range", 4.5, 1.0, 6.0, 0.1, "Range");
     private final BooleanSetting fillHole = new BooleanSetting("FillHole", false, "Fill hole after pushing player out");
-    public static final BooleanSetting onlyWhileSneaking = new BooleanSetting("OnlyWhileSneaking", false, "Only push while sneaking");
     private PlayerEntity field2557;
     private BlockPos field2558;
     private BlockPos field2559;
@@ -47,6 +47,14 @@ public class PistonPush extends Module {
 
     public PistonPush() {
         super("PistonPush", "Pushes players out of holes with pistons", Category.Combat);
+    }
+
+    private static double method1515(BlockPos var0) {
+        return new Vec3d((double) var0.getX() + 0.5, (double) var0.getY() + 0.5, (double) var0.getZ() + 0.5).distanceTo(mc.player.getEyePos());
+    }
+
+    private static Float lambda$getTarget$0(PlayerEntity var0) {
+        return var0.distanceTo(mc.player);
     }
 
     @Override
@@ -224,10 +232,6 @@ public class PistonPush extends Module {
         return !mc.world.canPlace(Blocks.DIRT.getDefaultState(), var1, ShapeContext.absent());
     }
 
-    private static double method1515(BlockPos var0) {
-        return new Vec3d((double) var0.getX() + 0.5, (double) var0.getY() + 0.5, (double) var0.getZ() + 0.5).distanceTo(mc.player.getEyePos());
-    }
-
     private Direction method1516(BlockPos var1, BlockPos var2) {
         for (Direction var9 : Direction.values()) {
             if (var9 != Direction.DOWN && var9 != Direction.UP && var1.offset(var9).equals(var2)) {
@@ -279,9 +283,5 @@ public class PistonPush extends Module {
         }
 
         return (PlayerEntity) var4.stream().min(Comparator.comparing(PistonPush::lambda$getTarget$0)).orElse(null);
-    }
-
-    private static Float lambda$getTarget$0(PlayerEntity var0) {
-        return var0.distanceTo(mc.player);
     }
 }

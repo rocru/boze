@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({BackgroundRenderer.class})
+@Mixin(BackgroundRenderer.class)
 public class BackgroundRendererMixin {
     @Redirect(
             method = {"render(Lnet/minecraft/client/render/Camera;FLnet/minecraft/client/world/ClientWorld;IF)V", "applyFog"},
@@ -29,8 +29,8 @@ public class BackgroundRendererMixin {
     }
 
     @Inject(
-            method = {"applyFog"},
-            at = {@At("TAIL")}
+            method = "applyFog",
+            at = @At("TAIL")
     )
     private static void onApplyFog(Camera var0, FogType var1, float var2, boolean var3, float var4, CallbackInfo var5) {
         if (XRay.INSTANCE.isEnabled() && var1 == FogType.FOG_TERRAIN || NoRender.method1983(var1)) {

@@ -21,6 +21,10 @@ public class BaseFramebuffer extends SimpleFramebuffer {
         super(width, height, useDepth, MinecraftClient.IS_SYSTEM_MAC);
     }
 
+    private static float[] lambda$new$0() {
+        return new float[]{0.0F, 0.0F, 0.0F, 0.0F};
+    }
+
     public void method1156(boolean setViewport, boolean clear) {
         super.beginWrite(setViewport);
         if (clear) {
@@ -41,9 +45,5 @@ public class BaseFramebuffer extends SimpleFramebuffer {
         this.field2149[1] = g;
         this.field2149[2] = b;
         this.field2149[3] = a;
-    }
-
-    private static float[] lambda$new$0() {
-        return new float[]{0.0F, 0.0F, 0.0F, 0.0F};
     }
 }

@@ -30,28 +30,7 @@ import java.util.*;
 
 public class AutoSelect implements IMinecraft, SettingsGroup {
     public final BooleanSetting field60 = new BooleanSetting("AutoSelect", false, "Automatically selects blocks to mine");
-    private final EnumSetting<AutoSelectMode> field61 = new EnumSetting<AutoSelectMode>(
-            "Mode",
-            AutoSelectMode.Smart,
-            "Automatically selects blocks to mine\n - Smart: Selects a block when no good block is selected\n - Always: Always selects a block\n - Bind: Selects a block when you press the select bind (SelectBind)\n",
-            this.field60
-    );
-    private final BooleanSetting field62 = new BooleanSetting(
-            "Sticky",
-            false,
-            "Special option for AutoSelect Always with DoubleMine\nOnly select twice, then keep last mined position until player moves\n",
-            this::lambda$new$0,
-            this.field60
-    );
     public final BindSetting field63 = new BindSetting("Bind", Bind.create(), "The bind to toggle auto select (optional)", this.field60);
-    public final BindSetting field64 = new BindSetting("SelectBind", Bind.create(), "The key to press to auto select a block", this::lambda$new$1);
-    private final EnumSetting<AutoSelectSortingMode> field65 = new EnumSetting<AutoSelectSortingMode>(
-            "Sorting", AutoSelectSortingMode.Distance, "How to sort the players"
-    );
-    private final BooleanSetting field66 = new BooleanSetting("OnlySurrounded", false, "Only auto selects blocks around players that are completely surrounded");
-    final BooleanSetting field67 = new BooleanSetting(
-            "AntiBurrow", true, "Auto select burrowed players' burrows\nIf they're burrowed in Bedrock, mines the block underneath if possible"
-    );
     public final BooleanSetting field68 = new BooleanSetting(
             "CrystalBomber",
             false,
@@ -65,6 +44,30 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
             "What to prioritise when both surround is minable and head is bombable\n - Bomber: Always bomb\n - SurroundPP: Only mine out pre-placeable Surrounds, bomb otherwise\n - Surround: Always mine surround\n",
             this.field68
     );
+    public final BooleanSetting field76 = new BooleanSetting(
+            "PrePlace", false, "This will tell AutoCrystal to place a crystal before mining the block\nThis is useful for mining out players' surrounds"
+    );
+    final BooleanSetting field67 = new BooleanSetting(
+            "AntiBurrow", true, "Auto select burrowed players' burrows\nIf they're burrowed in Bedrock, mines the block underneath if possible"
+    );
+    private final EnumSetting<AutoSelectMode> field61 = new EnumSetting<AutoSelectMode>(
+            "Mode",
+            AutoSelectMode.Smart,
+            "Automatically selects blocks to mine\n - Smart: Selects a block when no good block is selected\n - Always: Always selects a block\n - Bind: Selects a block when you press the select bind (SelectBind)\n",
+            this.field60
+    );
+    private final BooleanSetting field62 = new BooleanSetting(
+            "Sticky",
+            false,
+            "Special option for AutoSelect Always with DoubleMine\nOnly select twice, then keep last mined position until player moves\n",
+            this::lambda$new$0,
+            this.field60
+    );
+    public final BindSetting field64 = new BindSetting("SelectBind", Bind.create(), "The key to press to auto select a block", this::lambda$new$1);
+    private final EnumSetting<AutoSelectSortingMode> field65 = new EnumSetting<AutoSelectSortingMode>(
+            "Sorting", AutoSelectSortingMode.Distance, "How to sort the players"
+    );
+    private final BooleanSetting field66 = new BooleanSetting("OnlySurrounded", false, "Only auto selects blocks around players that are completely surrounded");
     private final EnumSetting<AutoSelectSafetyMode> field72 = new EnumSetting<AutoSelectSafetyMode>(
             "Safety",
             AutoSelectSafetyMode.Custom,
@@ -83,9 +86,6 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
     );
     private final FloatSetting field75 = new FloatSetting(
             "Balance", 1.0F, 0.0F, 1.0F, 0.05F, "Balance between self and target damage", this::lambda$new$4, this.field68
-    );
-    public final BooleanSetting field76 = new BooleanSetting(
-            "PrePlace", false, "This will tell AutoCrystal to place a crystal before mining the block\nThis is useful for mining out players' surrounds"
     );
     private final BooleanSetting field77 = new BooleanSetting("AvoidShared", false, "Don't auto select blocks besides you");
     private final SettingBlock field78 = new SettingBlock(
@@ -110,19 +110,38 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
             this.field75,
             this.field77
     );
+    private final ArrayList<BlockPos> field86 = new ArrayList();
     public BlockLocationInfo field79 = null;
     public BlockLocationInfo field80 = null;
-    private BlockLocationInfo field81 = null;
-    private BlockPos field82 = null;
     public int field83 = -1;
     public int field84 = 0;
     public boolean field85 = false;
-    private final ArrayList<BlockPos> field86 = new ArrayList();
+    private BlockLocationInfo field81 = null;
+    private BlockPos field82 = null;
 
     private static void method1800(String var0) {
         if (AutoMine.field2518 && mc.player != null) {
             System.out.println("[AutoMine.AutoSelect @" + mc.player.age + "] " + var0);
         }
+    }
+
+    private static boolean lambda$getPlayers$9(AbstractClientPlayerEntity var0) {
+        return mc.world.getBlockState(BlockPos.ofFloored(var0.getPos())).getBlock() != Blocks.BEDROCK;
+    }
+
+    private static boolean lambda$getPlayers$8(AbstractClientPlayerEntity var0) {
+        return var0 != mc.player
+                && !Friends.method2055(var0)
+                && !(var0 instanceof FakePlayerEntity)
+                && (double) var0.distanceTo(mc.player) <= AutoMine.INSTANCE.miner.field193.getValue() + 2.5;
+    }
+
+    private static boolean lambda$canBomb$7(EndCrystalEntity var0) {
+        return true;
+    }
+
+    private static boolean lambda$updateBomber$5(EndCrystalEntity var0) {
+        return true;
     }
 
     private AutoCrystalMaxDamage method54() {
@@ -520,27 +539,8 @@ public class AutoSelect implements IMinecraft, SettingsGroup {
         return this.field65.getValue() == AutoSelectSortingMode.Distance ? (double) var1.distanceTo(mc.player) : (double) var1.getHealth();
     }
 
-    private static boolean lambda$getPlayers$9(AbstractClientPlayerEntity var0) {
-        return mc.world.getBlockState(BlockPos.ofFloored(var0.getPos())).getBlock() != Blocks.BEDROCK;
-    }
-
-    private static boolean lambda$getPlayers$8(AbstractClientPlayerEntity var0) {
-        return var0 != mc.player
-                && !Friends.method2055(var0)
-                && !(var0 instanceof FakePlayerEntity)
-                && (double) var0.distanceTo(mc.player) <= AutoMine.INSTANCE.miner.field193.getValue() + 2.5;
-    }
-
-    private static boolean lambda$canBomb$7(EndCrystalEntity var0) {
-        return true;
-    }
-
     private Boolean lambda$getBomberTask$6(BlockPos var1) {
         return var1.equals(this.field79);
-    }
-
-    private static boolean lambda$updateBomber$5(EndCrystalEntity var0) {
-        return true;
     }
 
     private boolean lambda$new$4() {

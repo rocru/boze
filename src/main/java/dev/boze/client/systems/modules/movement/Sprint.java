@@ -25,7 +25,6 @@ public class Sprint extends Module {
     private final IntSetting field3335 = new IntSetting(
             "JumpDelay", 0, 0, 10, 1, "Ticks to wait after jumping before sprinting again\n0 to disable", this::method1868
     );
-    private final BooleanSetting field3336 = new BooleanSetting("Rage", true, "Sprint in every direction", this::lambda$new$1);
     private final BooleanSetting field3337 = new BooleanSetting("Instant", false, "Accelerate instantly", this::lambda$new$2);
     private final BooleanSetting field3338 = new BooleanSetting(
             "Pulsate",
@@ -39,6 +38,7 @@ public class Sprint extends Module {
     private final IntSetting field3340 = new IntSetting(
             "Interval", 10, 1, 80, 1, "Pulse interval\nThe ticks to wait in-between pulses of instant sprint", this::lambda$new$5, this.field3338
     );
+    private final BooleanSetting field3336 = new BooleanSetting("Rage", true, "Sprint in every direction", this::lambda$new$1);
     private final BindSetting field3341 = new BindSetting("NoSprint", Bind.create(), "Override sprint and walk normally when bind held");
     private float field3342;
     private float field3343;
@@ -47,6 +47,15 @@ public class Sprint extends Module {
     private int field3346 = 0;
     private int field3347 = 0;
     private boolean field3348 = false;
+
+    public Sprint() {
+        super("Sprint", "Makes you sprint automatically", Category.Movement);
+        this.field435 = true;
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
 
     private boolean method1867() {
         return Options.INSTANCE.method1971() || this.field3334.getValue() == SprintMode.Ghost;
@@ -58,11 +67,6 @@ public class Sprint extends Module {
 
     public boolean method1869() {
         return !this.method1867() && this.field3334.getValue() == SprintMode.Grim && this.isEnabled();
-    }
-
-    public Sprint() {
-        super("Sprint", "Makes you sprint automatically", Category.Movement);
-        this.field435 = true;
     }
 
     @Override
@@ -233,9 +237,5 @@ public class Sprint extends Module {
 
     private boolean lambda$new$1() {
         return this.method1868();
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

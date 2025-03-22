@@ -12,6 +12,7 @@ public enum Category {
     Legit(ConfigCategory.Main, Notifications.CATEGORY_LEGIT, 240.0, 0.45),
     Client(ConfigCategory.Client, Notifications.CATEGORY_CLIENT, 300.0, 0.3);
 
+    private static final Category[] field44 = method37();
     public final ConfigCategory configCategory;
     public final Notifications icon;
     public double hue;
@@ -21,7 +22,6 @@ public enum Category {
     public double field43 = -1.0;
     public boolean locked = true;
     public double scrollOffset = 0.0;
-    private static final Category[] field44 = method37();
 
     Category(ConfigCategory var3, Notifications var4, double var5, double var7) {
         this.configCategory = var3;

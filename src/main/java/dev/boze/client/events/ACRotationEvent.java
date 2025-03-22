@@ -6,9 +6,9 @@ import net.minecraft.util.math.Vec3d;
 
 public class ACRotationEvent extends CancelableEvent {
     private static final ACRotationEvent INSTANCE = new ACRotationEvent();
-    private AnticheatMode antiCheat = null;
     public float yaw;
     public float pitch;
+    private AnticheatMode antiCheat = null;
 
     public static ACRotationEvent method1016(AnticheatMode mode, float serverYaw, float severPitch) {
         INSTANCE.antiCheat = mode;

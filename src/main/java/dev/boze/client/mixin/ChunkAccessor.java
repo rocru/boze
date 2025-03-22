@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 import java.util.Map;
 
-@Mixin({Chunk.class})
+@Mixin(Chunk.class)
 public interface ChunkAccessor {
     @Accessor("blockEntities")
     Map<BlockPos, BlockEntity> getBlockEntities();

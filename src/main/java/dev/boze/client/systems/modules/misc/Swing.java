@@ -23,17 +23,21 @@ public class Swing extends Module {
     private final EnumSetting<SwingCancel> field3134 = new EnumSetting<SwingCancel>("Cancel", SwingCancel.Off, "Cancel swing packets", this::method1778);
     private boolean field3135 = false;
 
+    public Swing() {
+        super("Swing", "Modifies swinging", Category.Misc);
+        this.field435 = true;
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
+
     private boolean method1777() {
         return Options.INSTANCE.method1971() || this.field3131.getValue() == SwingMode.Ghost;
     }
 
     private boolean method1778() {
         return !this.method1777();
-    }
-
-    public Swing() {
-        super("Swing", "Modifies swinging", Category.Misc);
-        this.field435 = true;
     }
 
     @EventHandler
@@ -67,9 +71,5 @@ public class Swing extends Module {
                 }
             }
         }
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

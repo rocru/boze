@@ -7,9 +7,9 @@ import net.minecraft.nbt.NbtCompound;
 import java.util.function.BooleanSupplier;
 
 public class ColorSetting extends Setting<BozeDrawColor> {
+    public final BozeDrawColor field980;
     private boolean sync = false;
     private BozeDrawColor field979;
-    public final BozeDrawColor field980;
 
     public ColorSetting(String name, BozeDrawColor value, String description) {
         super(name, description);

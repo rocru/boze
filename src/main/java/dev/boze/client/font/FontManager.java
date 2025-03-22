@@ -1,8 +1,6 @@
 package dev.boze.client.font;
 
 import dev.boze.client.manager.ConfigManager;
-import dev.boze.client.utils.files.StreamUtils;
-import net.minecraft.client.MinecraftClient;
 
 import java.io.File;
 import java.io.InputStream;
@@ -44,7 +42,7 @@ public class FontManager {
         File var3 = new File(ConfigManager.fonts, field1968 + ".ttf");
         if (!var3.exists()) {
             if (field1968.equals("lexend")) {
-                try (InputStream is = FontManager.class.getResourceAsStream("assets/boze/fonts/lexend.ttf")) {
+                try (InputStream is = FontManager.class.getClassLoader().getResourceAsStream("assets/boze/fonts/lexend.ttf")) {
                     Files.write(var3.toPath(), Objects.requireNonNull(is).readAllBytes());
                 } catch (Exception var5) {
                     var5.printStackTrace(System.err);

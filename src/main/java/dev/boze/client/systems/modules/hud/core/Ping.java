@@ -10,6 +10,7 @@ import dev.boze.client.utils.trackers.LatencyTracker;
 import net.minecraft.client.gui.DrawContext;
 
 public class Ping extends HUDModule {
+    public static final Ping INSTANCE = new Ping();
     private final BooleanSetting field2638 = new BooleanSetting("ShowPrefix", false, "Show prefix (Ping)");
     private final BooleanSetting field2639 = new BooleanSetting("Custom", false, "Use custom theme settings");
     private final ColorSetting field2640 = new ColorSetting(
@@ -22,7 +23,6 @@ public class Ping extends HUDModule {
             "Suffix", new BozeDrawColor(100, 35, 250, 255, true, 0.3, 0.0, new double[]{0.0, -0.065}, new double[]{0.5, 0.6}), "Suffix color", this.field2639
     );
     private final BooleanSetting field2643 = new BooleanSetting("Shadow", false, "Text shadow", this.field2639);
-    public static final Ping INSTANCE = new Ping();
 
     public Ping() {
         super("Ping", "Shows your current ping", 40.0, 40.0);

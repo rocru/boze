@@ -21,30 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TexturePacker implements IMinecraft {
-    public class Image {
-        public final ByteBuffer field2069;
-        public final TextureRegion field2070;
-        public final int field2071;
-        public final int field2072;
-        public int field2073;
-        public int field2074;
-        private final boolean field2075;
-
-        public Image(ByteBuffer buffer, TextureRegion region, int width, int height, boolean stb) {
-            this.field2069 = buffer;
-            this.field2070 = region;
-            this.field2071 = width;
-            this.field2072 = height;
-            this.field2075 = stb;
-        }
-
-        public void method1125() {
-            if (this.field2075) {
-                STBImage.stbi_image_free(this.field2069);
-            }
-        }
-    }
-
     private static final int field1306 = 2048;
     private final List<Image> field1307 = new ArrayList();
 
@@ -162,5 +138,29 @@ public class TexturePacker implements IMinecraft {
 
         var15.rewind();
         return new ByteTexture(var4, var5, var15, Format.RGBA, Filter.Linear, Filter.Linear);
+    }
+
+    public class Image {
+        public final ByteBuffer field2069;
+        public final TextureRegion field2070;
+        public final int field2071;
+        public final int field2072;
+        private final boolean field2075;
+        public int field2073;
+        public int field2074;
+
+        public Image(ByteBuffer buffer, TextureRegion region, int width, int height, boolean stb) {
+            this.field2069 = buffer;
+            this.field2070 = region;
+            this.field2071 = width;
+            this.field2072 = height;
+            this.field2075 = stb;
+        }
+
+        public void method1125() {
+            if (this.field2075) {
+                STBImage.stbi_image_free(this.field2069);
+            }
+        }
     }
 }

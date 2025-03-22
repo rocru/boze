@@ -11,12 +11,18 @@ public enum CritMode implements IMinecraft {
     Force(CritMode::lambda$static$2);
 
     public static final String description = "Only attack when you can crit\n - Off: Don't wait for crits\n - Normal: Wait for crits when in air\n - Force: Always wait for crits\n";
-    private final BooleanSupplier field58;
     private static final CritMode[] field59 = method52();
 
-    public boolean method2114() {
-        return this.field58.getAsBoolean();
+    static {
+        String[] var0 = new String[]{
+                "Off",
+                "Normal",
+                "Force",
+                "Only attack when you can crit\n - Off: Don't wait for crits\n - Normal: Wait for crits when in air\n - Force: Always wait for crits\n"
+        };
     }
+
+    private final BooleanSupplier field58;
 
     CritMode(BooleanSupplier var3) {
         this.field58 = var3;
@@ -42,12 +48,7 @@ public enum CritMode implements IMinecraft {
         return new CritMode[]{Off, Normal, Force};
     }
 
-    static {
-        String[] var0 = new String[]{
-                "Off",
-                "Normal",
-                "Force",
-                "Only attack when you can crit\n - Off: Don't wait for crits\n - Normal: Wait for crits when in air\n - Force: Always wait for crits\n"
-        };
+    public boolean method2114() {
+        return this.field58.getAsBoolean();
     }
 }

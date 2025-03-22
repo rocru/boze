@@ -1,7 +1,6 @@
 package dev.boze.api.event;
 
 import dev.boze.api.interaction.PlaceInteraction;
-import mapped.Class28;
 
 /**
  * EventGrim

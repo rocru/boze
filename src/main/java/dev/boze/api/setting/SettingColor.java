@@ -6,9 +6,8 @@ import dev.boze.api.render.DrawColor;
 
 public class SettingColor extends SettingBase<DrawColor> {
 
-    private DrawColor value;
-
     private final DrawColor defaultValue;
+    private DrawColor value;
 
     public SettingColor(ToggleableModule owner, String name, String description, DrawColor value) {
         super(owner, name, description);

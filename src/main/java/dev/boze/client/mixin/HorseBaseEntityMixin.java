@@ -12,18 +12,18 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({AbstractHorseEntity.class})
+@Mixin(AbstractHorseEntity.class)
 public abstract class HorseBaseEntityMixin extends AnimalEntity {
-    @Shadow
-    public abstract LivingEntity getControllingPassenger();
-
     protected HorseBaseEntityMixin(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
     }
 
+    @Shadow
+    public abstract LivingEntity getControllingPassenger();
+
     @Inject(
-            method = {"isSaddled"},
-            at = {@At("HEAD")},
+            method = "isSaddled",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void onIsSaddled(CallbackInfoReturnable<Boolean> cir) {

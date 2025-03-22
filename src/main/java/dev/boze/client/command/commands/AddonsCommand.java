@@ -16,11 +16,6 @@ public class AddonsCommand extends Command {
         super("addons", "Addons", "Lists all addons");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.executes(AddonsCommand::lambda$build$1);
-    }
-
     private static int lambda$build$1(CommandContext var0) throws CommandSyntaxException {
         ArrayList<Addon> var3 = BozeInstance.INSTANCE.getAddons();
         ChatInstance.method740("Addons", "Addons: " + var3.size());
@@ -30,5 +25,10 @@ public class AddonsCommand extends Command {
 
     private static void lambda$build$0(Addon var0) {
         ChatInstance.method740("Addons", " - (highlight)%s(default) - %s", var0.name, var0.version);
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.executes(AddonsCommand::lambda$build$1);
     }
 }

@@ -5,7 +5,7 @@ import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-@Mixin({ClickableWidget.class})
+@Mixin(ClickableWidget.class)
 public interface AbstractButtonWidgetAccessor {
     @Accessor("message")
     void setText(Text var1);

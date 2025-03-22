@@ -28,10 +28,10 @@ public class nl extends nj {
     private static final double field1586 = -0.04;
     private static final double field1587 = -0.04F;
     private static final double field1588 = 32.0;
+    private final AtomicBoolean field1592 = new AtomicBoolean(false);
     private int field1589;
     private int field1590;
     private boolean field1591;
-    private final AtomicBoolean field1592 = new AtomicBoolean(false);
 
     public nl(BoatFly module) {
         super(module);

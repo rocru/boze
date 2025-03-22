@@ -11,6 +11,7 @@ import net.minecraft.client.gui.DrawContext;
 import java.text.DecimalFormat;
 
 public class Ticks extends HUDModule {
+    public static final Ticks INSTANCE = new Ticks();
     private final BooleanSetting field2656 = new BooleanSetting("ShowPrefix", false, "Show prefix (TickRate)");
     private final BooleanSetting field2657 = new BooleanSetting("Custom", false, "Use custom theme settings");
     private final ColorSetting field2658 = new ColorSetting(
@@ -23,7 +24,6 @@ public class Ticks extends HUDModule {
             "Suffix", new BozeDrawColor(100, 35, 250, 255, true, 0.3, 0.0, new double[]{0.0, -0.065}, new double[]{0.5, 0.6}), "Suffix color", this.field2657
     );
     private final BooleanSetting field2661 = new BooleanSetting("Shadow", false, "Text shadow", this.field2657);
-    public static final Ticks INSTANCE = new Ticks();
 
     public Ticks() {
         super("TPS", "Shows the server's current TickRate", 40.0, 40.0);

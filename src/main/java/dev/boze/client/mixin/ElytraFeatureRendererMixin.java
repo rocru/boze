@@ -15,18 +15,18 @@ import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin({ElytraFeatureRenderer.class})
+@Mixin(ElytraFeatureRenderer.class)
 public abstract class ElytraFeatureRendererMixin<T extends LivingEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
     public ElytraFeatureRendererMixin(FeatureRendererContext<T, M> context) {
         super(context);
     }
 
     @ModifyExpressionValue(
-            method = {"render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/entity/LivingEntity;FFFFFF)V"},
-            at = {@At(
+            method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/entity/LivingEntity;FFFFFF)V",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/util/SkinTextures;capeTexture()Lnet/minecraft/util/Identifier;"
-            )}
+            )
     )
     private Identifier modifyCapeTexture(
             Identifier var1,

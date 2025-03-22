@@ -29,6 +29,10 @@ public class CategoryArgument implements ArgumentType<Category> {
         return context.getArgument(name, Category.class);
     }
 
+    private static Message lambda$static$0(Object var0) {
+        return Text.literal("Category with name " + var0 + " doesn't exist.");
+    }
+
     @Override
     public Category parse(StringReader reader) throws CommandSyntaxException {
         String var5 = reader.readString();
@@ -52,17 +56,13 @@ public class CategoryArgument implements ArgumentType<Category> {
         return CommandSource.suggestMatching(Stream.of(Category.values()).map(Enum::name), builder);
     }
 
-    public Collection<String> getExamples() {
-        return field1852;
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     //public Object parse(StringReader stringReader) throws CommandSyntaxException {
     //   return this.method983(stringReader);
     //}
 
-    private static Message lambda$static$0(Object var0) {
-        return Text.literal("Category with name " + var0 + " doesn't exist.");
+    public Collection<String> getExamples() {
+        return field1852;
     }
 }

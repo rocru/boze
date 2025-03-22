@@ -16,6 +16,10 @@ public class Xray extends Command {
         super("xray", "XRay", "Manage XRay blocks");
     }
 
+    private static void lambda$build$2(Block var0) {
+        ChatInstance.method624(" - (highlight)" + var0.getName().getString());
+    }
+
     @Override
     public void method621(LiteralArgumentBuilder<CommandSource> builder) {
         builder.then(method403("add").then(method402("block", BlockArgument.method975()).executes(this::lambda$build$0)));
@@ -35,10 +39,6 @@ public class Xray extends Command {
         this.method624("Blocks: " + XRay.INSTANCE.field3867.method2032().size());
         XRay.INSTANCE.field3867.method2032().forEach(Xray::lambda$build$2);
         return 1;
-    }
-
-    private static void lambda$build$2(Block var0) {
-        ChatInstance.method624(" - (highlight)" + var0.getName().getString());
     }
 
     private int lambda$build$1(CommandContext var1) throws CommandSyntaxException {

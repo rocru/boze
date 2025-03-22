@@ -17,6 +17,11 @@ public class AutoPilot extends Command {
         super("autopilot", "AutoPilot", "Elytra Auto Pilot", "ap");
     }
 
+    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
+        ElytraAutoPilot.INSTANCE.field3206.elytraNetherSeed.value = LongArgumentType.getLong(var0, "value");
+        return 1;
+    }
+
     @Override
     public void method621(LiteralArgumentBuilder<CommandSource> builder) {
         builder.then(method403("flyforward").then(method402("getDistance", IntegerArgumentType.integer()).executes(this::lambda$build$0)));
@@ -26,11 +31,6 @@ public class AutoPilot extends Command {
         );
         builder.then(method403("land").executes(this::lambda$build$2));
         builder.then(method403("seed").then(method402("value", LongArgumentType.longArg()).executes(AutoPilot::lambda$build$3)));
-    }
-
-    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
-        ElytraAutoPilot.INSTANCE.field3206.elytraNetherSeed.value = LongArgumentType.getLong(var0, "value");
-        return 1;
     }
 
     private int lambda$build$2(CommandContext var1) throws CommandSyntaxException {

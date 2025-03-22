@@ -18,13 +18,6 @@ public class FriendsCommand extends Command {
         super("friends", "Friends", "Manage friends");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.then(method403("add").then(method402("player", PlayerListArgument.method678()).executes(FriendsCommand::lambda$build$0)));
-        builder.then(method403("del").then(method402("player", FriendArgument.method994()).executes(FriendsCommand::lambda$build$1)));
-        builder.then(method403("list").executes(FriendsCommand::lambda$build$3));
-    }
-
     private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
         ChatInstance.method624("Friends: " + Friends.method2120().size());
         Friends.method2120().forEach(FriendsCommand::lambda$build$2);
@@ -66,5 +59,12 @@ public class FriendsCommand extends Command {
         }
 
         return 1;
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.then(method403("add").then(method402("player", PlayerListArgument.method678()).executes(FriendsCommand::lambda$build$0)));
+        builder.then(method403("del").then(method402("player", FriendArgument.method994()).executes(FriendsCommand::lambda$build$1)));
+        builder.then(method403("list").executes(FriendsCommand::lambda$build$3));
     }
 }

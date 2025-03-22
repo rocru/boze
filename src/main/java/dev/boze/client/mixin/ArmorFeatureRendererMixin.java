@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({ArmorFeatureRenderer.class})
+@Mixin(ArmorFeatureRenderer.class)
 public abstract class ArmorFeatureRendererMixin<T extends LivingEntity, M extends BipedEntityModel<T>, A extends BipedEntityModel<T>>
         extends FeatureRenderer<T, M> {
     public ArmorFeatureRendererMixin(FeatureRendererContext<T, M> context) {
@@ -22,8 +22,8 @@ public abstract class ArmorFeatureRendererMixin<T extends LivingEntity, M extend
     }
 
     @Inject(
-            method = {"renderArmor"},
-            at = {@At("HEAD")},
+            method = "renderArmor",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onRenderArmor(MatrixStack var1, VertexConsumerProvider var2, T var3, EquipmentSlot var4, int var5, A var6, CallbackInfo var7) {

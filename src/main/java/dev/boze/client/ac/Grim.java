@@ -12,10 +12,10 @@ import java.util.ArrayList;
 
 public class Grim implements Anticheat {
     public static final Grim field1831 = new Grim();
-    private double field1832 = 4.5;
     private static final double field1833 = 0.4;
     private static final double field1834 = 1.62;
     private static final double field1835 = 2.0E-4;
+    private double field1832 = 4.5;
 
     private Grim() {
     }

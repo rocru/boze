@@ -14,15 +14,6 @@ public class TeleportCommand extends Command {
         super("tp", "TP", "Teleports to specified location");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.then(
-                method402("X", DoubleArgumentType.doubleArg())
-                        .then(method402("Y", DoubleArgumentType.doubleArg()).then(method402("Z", DoubleArgumentType.doubleArg()).executes(TeleportCommand::lambda$build$0)))
-        );
-        builder.then(method402("player", PlayerArgument.method731()).executes(TeleportCommand::lambda$build$1));
-    }
-
     private static int lambda$build$1(CommandContext var0) throws CommandSyntaxException {
         AbstractClientPlayerEntity var3 = PlayerArgument.method732(var0);
         if (var3 != null) {
@@ -36,5 +27,14 @@ public class TeleportCommand extends Command {
         mc.player
                 .setPosition((Double) var0.getArgument("X", Double.class), (Double) var0.getArgument("Y", Double.class), (Double) var0.getArgument("Z", Double.class));
         return 1;
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.then(
+                method402("X", DoubleArgumentType.doubleArg())
+                        .then(method402("Y", DoubleArgumentType.doubleArg()).then(method402("Z", DoubleArgumentType.doubleArg()).executes(TeleportCommand::lambda$build$0)))
+        );
+        builder.then(method402("player", PlayerArgument.method731()).executes(TeleportCommand::lambda$build$1));
     }
 }

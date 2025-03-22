@@ -15,12 +15,12 @@ public class ToggleEditGradientColorComponent extends ToggleComponent {
     }
 
     @Override
-    protected void setToggled(boolean value) {
-        this.field2051.field424 = value;
+    protected boolean isToggled() {
+        return this.field2051.field424;
     }
 
     @Override
-    protected boolean isToggled() {
-        return this.field2051.field424;
+    protected void setToggled(boolean value) {
+        this.field2051.field424 = value;
     }
 }

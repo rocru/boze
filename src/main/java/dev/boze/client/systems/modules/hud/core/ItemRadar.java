@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 
 public class ItemRadar extends HUDModule {
+    public static final ItemRadar INSTANCE = new ItemRadar();
     private final IntSetting field2629 = new IntSetting("Range", 64, 8, 256, 1, "Range to display players");
     private final BooleanSetting field2630 = new BooleanSetting("Custom", false, "Use custom theme settings");
     private final ColorSetting field2631 = new ColorSetting(
@@ -35,13 +36,20 @@ public class ItemRadar extends HUDModule {
     );
     private final BooleanSetting field2634 = new BooleanSetting("Shadow", false, "Text shadow", this.field2630);
     private final MinMaxSetting field2635 = new MinMaxSetting("Spacing", 1.5, 0.0, 3.0, 0.1, "Spacing between lines", this.field2630);
-    public static final ItemRadar INSTANCE = new ItemRadar();
-    float field2636 = 0.0F;
     private final java.util.ArrayList<ItemEntity> field2637 = new java.util.ArrayList();
+    float field2636 = 0.0F;
 
     public ItemRadar() {
         super("ItemRadar", "Shows a list of nearby items", 40.0, 40.0);
         this.field595.setValue(0.75);
+    }
+
+    private static ItemEntity lambda$onSendMovementPackets$1(Entity var0) {
+        return (ItemEntity) var0;
+    }
+
+    private static boolean lambda$onSendMovementPackets$0(Entity var0) {
+        return var0 instanceof ItemEntity;
     }
 
     @EventHandler
@@ -147,13 +155,5 @@ public class ItemRadar extends HUDModule {
 
     private boolean lambda$onSendMovementPackets$2(ItemEntity var1) {
         return mc.player.distanceTo(var1) <= (float) this.field2629.getValue().intValue();
-    }
-
-    private static ItemEntity lambda$onSendMovementPackets$1(Entity var0) {
-        return (ItemEntity) var0;
-    }
-
-    private static boolean lambda$onSendMovementPackets$0(Entity var0) {
-        return var0 instanceof ItemEntity;
     }
 }

@@ -13,8 +13,8 @@ public class LogoutPlayerEntity {
     public final UUID field3589;
     public final String field3590;
     public final float field3591;
-    public LogoutSpotEntity field3592;
     final LogoutSpots field3593;
+    public LogoutSpotEntity field3592;
 
     public LogoutPlayerEntity(LogoutSpots var1, PlayerEntity var2) {
         this.field3593 = var1;

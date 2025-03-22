@@ -41,9 +41,9 @@ public class AntiBed extends Module {
     private final BooleanSetting placeWebAtFeet = new BooleanSetting("Feet", false, "Place strings at feet");
     private final BooleanSetting placeWebAtHead = new BooleanSetting("Head", true, "Place strings at head");
     private final BooleanSetting placeWebAboveHead = new BooleanSetting("Above", false, "Place strings above head");
+    private final Timer field2458 = new Timer();
     private PlacePosition placePosition = PlacePosition.Above;
     private int field2457 = 10;
-    private final Timer field2458 = new Timer();
 
     public AntiBed() {
         super("AntiBed", "Prevents bed placements by placing strings in the way", Category.Combat);

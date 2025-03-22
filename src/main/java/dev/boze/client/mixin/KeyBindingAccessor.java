@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 import java.util.Map;
 
-@Mixin({KeyBinding.class})
+@Mixin(KeyBinding.class)
 public interface KeyBindingAccessor {
     @Accessor("CATEGORY_ORDER_MAP")
     static Map<String, Integer> getCategoryOrderMap() {
@@ -18,8 +18,8 @@ public interface KeyBindingAccessor {
     Key getKey();
 
     @Accessor
-    void setTimesPressed(int var1);
+    int getTimesPressed();
 
     @Accessor
-    int getTimesPressed();
+    void setTimesPressed(int var1);
 }

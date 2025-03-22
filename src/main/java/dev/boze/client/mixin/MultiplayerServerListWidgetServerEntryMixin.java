@@ -11,13 +11,13 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin({ServerEntry.class})
+@Mixin(ServerEntry.class)
 public abstract class MultiplayerServerListWidgetServerEntryMixin {
     @Shadow
     public abstract ServerInfo getServer();
 
     @Redirect(
-            method = {"render"},
+            method = "render",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/DrawContext;drawText(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/Text;IIIZ)I"

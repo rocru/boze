@@ -42,20 +42,24 @@ public class AnchorTrigger extends Module {
     private final EnumSetting<ClickMethod> field2714 = new EnumSetting<ClickMethod>("PlaceClicking", ClickMethod.Normal, "Place (right) click mode");
     private final IntArraySetting field2715 = new IntArraySetting("CPS", new int[]{4, 8}, 1, 20, 1, "Right clicks per second");
     private final FloatSetting field2716 = new FloatSetting("CooldownOffset", 0.0F, -2.5F, 2.5F, 0.05F, "The offset for vanilla clicking", this::lambda$new$1);
+    private final ClickManager field2720 = new ClickManager(this.field2714, this.field2715, this.field2716);
     private final IntArraySetting field2717 = new IntArraySetting("SwapDelay", new int[]{2, 5}, 0, 20, 1, "Delay after swapping to place");
     private final MinMaxDoubleSetting field2718 = new MinMaxDoubleSetting(
             "OnsetDelay", new double[]{1.0, 3.0}, 0.0, 10.0, 0.01, "Delay after looking at obsidian/bedrock to place"
     );
-    private float field2719 = 0.0F;
-    private final ClickManager field2720 = new ClickManager(this.field2714, this.field2715, this.field2716);
     private final Timer field2721 = new Timer();
     private final Timer field2722 = new Timer();
     private final Timer field2723 = new Timer();
     private final Timer field2724 = new Timer();
     private final ConcurrentHashMap<BlockPos, Long> field2725 = new ConcurrentHashMap();
+    private float field2719 = 0.0F;
 
     public AnchorTrigger() {
         super("AnchorTrigger", "Automatically clicks anchors", Category.Legit);
+    }
+
+    private static boolean lambda$onSendMovementPackets$2(Entry var0) {
+        return System.currentTimeMillis() - (Long) var0.getValue() > 10000L;
     }
 
     @Override
@@ -234,10 +238,6 @@ public class AnchorTrigger extends Module {
                 }
             }
         }
-    }
-
-    private static boolean lambda$onSendMovementPackets$2(Entry var0) {
-        return System.currentTimeMillis() - (Long) var0.getValue() > 10000L;
     }
 
     private boolean lambda$new$1() {

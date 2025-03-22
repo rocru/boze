@@ -52,6 +52,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class NameTags extends Module {
     public static final NameTags INSTANCE = new NameTags();
+    private static final MatrixStack aa = new MatrixStack();
     private final ScalingSetting field781 = new ScalingSetting();
     private final BooleanSetting field782 = new BooleanSetting("Players", true, "Render player nametags");
     private final BooleanSetting field783 = new BooleanSetting("Gamemode", false, "Show player gamemode", this.field782);
@@ -71,13 +72,13 @@ public class NameTags extends Module {
     private final ColorSetting field792 = new ColorSetting("Color", new BozeDrawColor(-1), "Font color", this.field790);
     private final MinMaxSetting field793 = new MinMaxSetting("ItemFontSize", 1.5, 0.5, 5.0, 0.05, "Font size", this.field790);
     private final SettingCategory field794 = new SettingCategory("Style", "Nametag style");
+    private final IntSetting field800 = new IntSetting("Gap", 5, 0, 25, 1, "Gap between armor and nameplate", this::lambda$new$0, this.field794);
+    private final IntSetting field801 = new IntSetting("ArmorSpacing", 35, 10, 100, 1, "Spacing between armors", this::lambda$new$1, this.field794);
     private final ColorSetting field795 = new ColorSetting("Fill", new BozeDrawColor(Integer.MIN_VALUE), "Nametag fill color", this.field794);
     private final ColorSetting field796 = new ColorSetting("Outline", new BozeDrawColor(-805306368), "Nametag outline color", this.field794);
     private final BooleanSetting field797 = new BooleanSetting("MatchName", false, "Match outline color to name color for player nametags", this.field794);
     private final IntSetting field798 = new IntSetting("Radius", 1, 1, 10, 1, "Outline radius", this.field794);
     private final IntSetting field799 = new IntSetting("Margin", 2, 0, 10, 1, "Nametag margin", this.field794);
-    private final IntSetting field800 = new IntSetting("Gap", 5, 0, 25, 1, "Gap between armor and nameplate", this::lambda$new$0, this.field794);
-    private final IntSetting field801 = new IntSetting("ArmorSpacing", 35, 10, 100, 1, "Spacing between armors", this::lambda$new$1, this.field794);
     private final MinMaxSetting field802 = new MinMaxSetting("FontSize", 1.6, 0.5, 5.0, 0.05, "Font size", this.field794);
     private final FloatSetting field803 = new FloatSetting("EnchantFontSize", 0.6F, 0.1F, 1.0F, 0.05F, "Enchant font size", this.field794);
     private final BooleanSetting field804 = new BooleanSetting("ShowBurrow", false, "Different colors for when player is burrowed");
@@ -86,7 +87,6 @@ public class NameTags extends Module {
     private final IntSetting field807 = new IntSetting("HRange", 256, 10, 512, 1, "Horizontal range");
     private final IntSetting field808 = new IntSetting("VRange", 384, 10, 384, 1, "Vertical range");
     private final ArrayList<String> field809 = new ArrayList(Arrays.asList("soon_1", "soon_2", "soon_3", "soon_4", "soon_5", "help_desk_npc"));
-    private static final MatrixStack aa = new MatrixStack();
 
     public NameTags() {
         super(
@@ -94,6 +94,10 @@ public class NameTags extends Module {
                 "Draws custom nametags above players\nWarning: Armor breaks with vanilla text\nModule will be rewritten before 2.0 release\n",
                 Category.Render
         );
+    }
+
+    private static boolean method377(Vector3d var0) {
+        return Class5922.method59(var0, INSTANCE.field781);
     }
 
     @EventHandler
@@ -629,10 +633,6 @@ public class NameTags extends Module {
         } else {
             return 0.0;
         }
-    }
-
-    private static boolean method377(Vector3d var0) {
-        return Class5922.method59(var0, INSTANCE.field781);
     }
 
     private boolean lambda$new$1() {

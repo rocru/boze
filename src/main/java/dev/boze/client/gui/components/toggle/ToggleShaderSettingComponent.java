@@ -12,12 +12,12 @@ public class ToggleShaderSettingComponent extends ToggleComponent {
     }
 
     @Override
-    protected void setToggled(boolean value) {
-        this.field1222.field1479.method458().method206(value);
+    protected boolean isToggled() {
+        return this.field1222.field1479.method458().method2115();
     }
 
     @Override
-    protected boolean isToggled() {
-        return this.field1222.field1479.method458().method2115();
+    protected void setToggled(boolean value) {
+        this.field1222.field1479.method458().method206(value);
     }
 }

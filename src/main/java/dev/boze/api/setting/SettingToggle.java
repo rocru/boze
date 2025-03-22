@@ -5,9 +5,8 @@ import dev.boze.api.addon.module.ToggleableModule;
 
 public class SettingToggle extends SettingBase<Boolean> {
 
-    private boolean value;
-
     private final boolean defaultValue;
+    private boolean value;
 
     public SettingToggle(ToggleableModule owner, String name, String description) {
         this(owner, name, description, false);

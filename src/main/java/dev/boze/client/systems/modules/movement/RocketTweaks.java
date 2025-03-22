@@ -40,12 +40,16 @@ public class RocketTweaks extends Module {
     private final Timer field3332 = new Timer();
     private Vec3d field3333 = null;
 
-    private boolean method1861() {
-        return this.field3328.getValue() > 0;
-    }
-
     private RocketTweaks() {
         super("RocketTweaks", "Tweaks for firework rockets", Category.Movement);
+    }
+
+    private static boolean lambda$onPlayerTick$0(FireworkRocketEntity var0) {
+        return ((FireworkRocketEntityAccessor) var0).getShooter() == mc.player;
+    }
+
+    private boolean method1861() {
+        return this.field3328.getValue() > 0;
     }
 
     @Override
@@ -143,9 +147,5 @@ public class RocketTweaks extends Module {
                 }
             }
         }
-    }
-
-    private static boolean lambda$onPlayerTick$0(FireworkRocketEntity var0) {
-        return ((FireworkRocketEntityAccessor) var0).getShooter() == mc.player;
     }
 }

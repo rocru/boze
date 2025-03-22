@@ -22,8 +22,8 @@ import net.minecraft.client.gui.DrawContext;
 import java.util.ArrayList;
 
 public class RGBASettingComponent extends ScaledBaseComponent {
-    public static RGBAColor field1482 = null;
     private static final double field1483 = 6.0;
+    public static RGBAColor field1482 = null;
     private final RGBASetting field1484;
     private final ArrayList<InputBaseComponent> field1485 = new ArrayList<>();
     private final ArrayList<InputBaseComponent> field1486 = new ArrayList<>();

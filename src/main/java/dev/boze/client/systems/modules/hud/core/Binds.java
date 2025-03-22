@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Binds extends HUDModule {
+    public static final Binds INSTANCE = new Binds();
     private final BooleanSetting field2596 = new BooleanSetting("Custom", false, "Use custom theme settings");
     private final ColorSetting field2597 = new ColorSetting(
             "OffText",
@@ -57,7 +58,6 @@ public class Binds extends HUDModule {
     );
     private final BooleanSetting field2603 = new BooleanSetting("Shadow", false, "Text shadow", this.field2596);
     private final MinMaxSetting field2604 = new MinMaxSetting("Spacing", 1.5, 0.0, 3.0, 0.1, "Spacing between lines", this.field2596);
-    public static final Binds INSTANCE = new Binds();
     float field2605 = 0.0F;
 
     public Binds() {
@@ -65,6 +65,10 @@ public class Binds extends HUDModule {
         this.field595.setValue(0.75);
         this.setEnabled(true);
         this.method312(true);
+    }
+
+    private static boolean lambda$onRender$0(Module var0) {
+        return var0.bind.isValid();
     }
 
     @Override
@@ -176,9 +180,5 @@ public class Binds extends HUDModule {
     private double lambda$onRender$1(Module var1) {
         return IFontRender.method499()
                 .measureTextHeight(this.method1551(var1), this.field2596.getValue() ? this.field2603.getValue() : HUD.INSTANCE.field2384.getValue());
-    }
-
-    private static boolean lambda$onRender$0(Module var0) {
-        return var0.bind.isValid();
     }
 }

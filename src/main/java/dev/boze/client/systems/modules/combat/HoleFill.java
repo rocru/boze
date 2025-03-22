@@ -45,6 +45,8 @@ import java.util.stream.Collectors;
 
 public class HoleFill extends Module {
     public static final HoleFill INSTANCE = new HoleFill();
+    public final FloatSetting wallsRange = new FloatSetting("WallsRange", 2.0F, 0.0F, 6.0F, 0.1F, "Walls range");
+    public final BooleanSetting onlyWhileSneaking = new BooleanSetting("OnlyWhileSneaking", false, "Only holefill while sneaking");
     private final BooleanSetting render = new BooleanSetting("Render", true, "Render placements");
     private final ColorSetting fillColor = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill", this.render);
     private final ColorSetting outlineColor = new ColorSetting("Outline", new BozeDrawColor(-7046189), "Color for outline", this.render);
@@ -58,7 +60,6 @@ public class HoleFill extends Module {
     private final IntSetting interval = new IntSetting("Interval", 0, 0, 5, 1, "Tick interval between placements");
     private final MinMaxSetting range = new MinMaxSetting("Range", 3.5, 1.0, 6.0, 0.1, "Horizontal range");
     private final IntSetting vRange = new IntSetting("VRange", 3, 1, 6, 1, "Vertical range");
-    public final FloatSetting wallsRange = new FloatSetting("WallsRange", 2.0F, 0.0F, 6.0F, 0.1F, "Walls range");
     private final EnumSetting<SwapMode> swapMode = new EnumSetting<SwapMode>("Swap", SwapMode.Silent, "Auto Swap mode");
     private final BooleanSetting proximity = new BooleanSetting("Proximity", false, "Only fill holes when enemies are nearby");
     private final MinMaxSetting hradius = new MinMaxSetting("HRadius", 1.5, 0.5, 5.0, 0.05, "Proximity horizontal radius", this.proximity);
@@ -68,24 +69,31 @@ public class HoleFill extends Module {
     private final BooleanSetting obsidian = new BooleanSetting("Obsidian", true, "Use Obsidian");
     private final BooleanSetting webs = new BooleanSetting("Webs", false, "Use Webs");
     private final BooleanSetting other = new BooleanSetting("Other", false, "Use other blocks");
-    public final BooleanSetting onlyWhileSneaking = new BooleanSetting("OnlyWhileSneaking", false, "Only holefill while sneaking");
     private final SettingCategory autoDisable = new SettingCategory("AutoDisable", "Auto Disable settings");
     public final BooleanSetting disableOnJump = new BooleanSetting("DisableOnJump", false, "Disable when you jump out of hole", this.autoDisable);
     public final BooleanSetting onStep = new BooleanSetting("OnStep", false, "Disable when you step", this.autoDisable);
     public final BooleanSetting disableOnTP = new BooleanSetting("DisableOnTP", true, "Disable when you teleport/chorus", this.autoDisable);
     public final BooleanSetting disableWhenDone = new BooleanSetting("DisableWhenDone", false, "Disable when done filling holes", this.autoDisable);
-    private int aa = 0;
-    private int ab = 0;
     private final Timer ac = new Timer();
     private final ArrayList<Placement> ad = new ArrayList();
-    private List<BlockPos> ae = new ArrayList();
-    private BlockInteraction af = null;
     private final Vector3d ag = new Vector3d(0.0, 0.0, 0.0);
     private final Vector3d ah = new Vector3d(0.0, 0.0, 0.0);
+    private int aa = 0;
+    private int ab = 0;
+    private List<BlockPos> ae = new ArrayList();
+    private BlockInteraction af = null;
 
     public HoleFill() {
         super("HoleFill", "Fills holes around you", Category.Combat);
         this.addSettings(this.render);
+    }
+
+    private static Double lambda$onRotate$1(BlockPos var0) {
+        return EntityUtil.method2144(mc.player).distanceTo(new Vec3d((double) var0.getX() + 0.5, (double) var0.getY() + 0.5, (double) var0.getZ() + 0.5));
+    }
+
+    private static boolean lambda$onRotate$0(Placement var0) {
+        return System.currentTimeMillis() - var0.method1159() > (long) PlaceRender.method2010();
     }
 
     @Override
@@ -352,13 +360,5 @@ public class HoleFill extends Module {
 
     private boolean method2088(Block var1) {
         return var1 == Blocks.OBSIDIAN && this.obsidian.getValue() || var1 == Blocks.COBWEB && this.webs.getValue() || this.other.getValue();
-    }
-
-    private static Double lambda$onRotate$1(BlockPos var0) {
-        return EntityUtil.method2144(mc.player).distanceTo(new Vec3d((double) var0.getX() + 0.5, (double) var0.getY() + 0.5, (double) var0.getZ() + 0.5));
-    }
-
-    private static boolean lambda$onRotate$0(Placement var0) {
-        return System.currentTimeMillis() - var0.method1159() > (long) PlaceRender.method2010();
     }
 }

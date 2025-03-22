@@ -45,14 +45,14 @@ import java.security.MessageDigest;
 import java.util.Base64;
 import java.util.UUID;
 
-@Mixin({ClientPlayNetworkHandler.class})
+@Mixin(ClientPlayNetworkHandler.class)
 public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkHandler {
     protected ClientPlayNetworkHandlerMixin(MinecraftClient client, ClientConnection connection, ClientConnectionState connectionState) {
         super(client, connection, connectionState);
     }
 
     @Redirect(
-            method = {"onPlayerList"},
+            method = "onPlayerList",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/SocialInteractionsManager;setPlayerOnline(Lnet/minecraft/client/network/PlayerListEntry;)V"
@@ -70,11 +70,11 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
     }
 
     @Inject(
-            method = {"handlePlayerListAction"},
-            at = {@At(
+            method = "handlePlayerListAction",
+            at = @At(
                     value = "INVOKE",
                     target = "Ljava/util/Set;remove(Ljava/lang/Object;)Z"
-            )}
+            )
     )
     private void onHandlePlayerListActionRemove(Action var1, Entry var2, PlayerListEntry var3, CallbackInfo var4) {
         if (Capes.INSTANCE.isEnabled()) {
@@ -84,7 +84,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
     }
 
     @Redirect(
-            method = {"onPlayerRemove"},
+            method = "onPlayerRemove",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/SocialInteractionsManager;setPlayerOffline(Ljava/util/UUID;)V"
@@ -100,8 +100,8 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
     }
 
     @Inject(
-            at = {@At("TAIL")},
-            method = {"onGameJoin"}
+            at = @At("TAIL"),
+            method = "onGameJoin"
     )
     private void onGameJoinTail(GameJoinS2CPacket var1, CallbackInfo var2) {
         Boze.EVENT_BUS.post(GameJoinEvent.method1062());
@@ -122,7 +122,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
     }
 
     @Redirect(
-            method = {"onExplosion"},
+            method = "onExplosion",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/ClientPlayerEntity;setVelocity(Lnet/minecraft/util/math/Vec3d;)V"
@@ -139,11 +139,11 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
     }
 
     @Inject(
-            method = {"onEntitiesDestroy"},
-            at = {@At(
+            method = "onEntitiesDestroy",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/network/packet/s2c/play/EntitiesDestroyS2CPacket;getEntityIds()Lit/unimi/dsi/fastutil/ints/IntList;"
-            )}
+            )
     )
     private void onEntitiesDestroy(EntitiesDestroyS2CPacket var1, CallbackInfo var2) {
         if (this.client.world != null) {
@@ -157,7 +157,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
     }
 
     @Redirect(
-            method = {"onGameJoin"},
+            method = "onGameJoin",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/ClientPlayNetworkHandler;isSecureChatEnforced()Z"
@@ -168,8 +168,8 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
     }
 
     @Inject(
-            method = {"sendChatMessage"},
-            at = {@At("HEAD")},
+            method = "sendChatMessage",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onSendChatMessage(String var1, CallbackInfo var2) {
@@ -210,7 +210,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
     }
 
     @ModifyArg(
-            method = {"sendChatMessage"},
+            method = "sendChatMessage",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/network/packet/c2s/play/ChatMessageC2SPacket;<init>(Ljava/lang/String;Ljava/time/Instant;JLnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/network/message/LastSeenMessageList$Acknowledgment;)V"
@@ -222,7 +222,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
     }
 
     @ModifyArg(
-            method = {"sendChatMessage"},
+            method = "sendChatMessage",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/network/message/MessageBody;<init>(Ljava/lang/String;Ljava/time/Instant;JLnet/minecraft/network/message/LastSeenMessageList;)V"
@@ -251,11 +251,11 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
     }
 
     @Inject(
-            method = {"onVehicleMove"},
-            at = {@At(
+            method = "onVehicleMove",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/Entity;updatePositionAndAngles(DDDFF)V"
-            )},
+            ),
             cancellable = true
     )
     private void onVehicleMove(VehicleMoveS2CPacket var1, CallbackInfo var2) {

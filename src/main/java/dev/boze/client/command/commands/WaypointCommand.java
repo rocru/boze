@@ -18,65 +18,8 @@ public class WaypointCommand extends Command {
         super("waypoints", "Waypoints", "Manage waypoints");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.then(
-                method403("add")
-                        .then(
-                                method402("name", StringArgumentType.string())
-                                        .then(
-                                                method402("x", IntegerArgumentType.integer())
-                                                        .then(
-                                                                method402("y", IntegerArgumentType.integer())
-                                                                        .then(method402("z", IntegerArgumentType.integer()).executes(WaypointCommand::lambda$build$0))
-                                                        )
-                                        )
-                        )
-        );
-        builder.then(method403("add").then(method402("name", StringArgumentType.string()).executes(WaypointCommand::lambda$build$1)));
-        builder.then(method403("del").then(method402("name", StringArgumentType.string()).executes(WaypointCommand::lambda$build$3)));
-        builder.then(
-                method403("share")
-                        .then(
-                                method402("name", StringArgumentType.string())
-                                        .then(method402("player", PlayerListArgument.method678()).executes(WaypointCommand::lambda$build$5))
-                        )
-        );
-        builder.then(method403("list").executes(this::lambda$build$7));
-        builder.then(method403("clear").executes(this::lambda$build$9));
-    }
-
-    private int lambda$build$9(CommandContext commandContext) throws CommandSyntaxException {
-        this.method624("Clearing all waypoints for the current server/dimension...");
-        String string = WaypointCommand.mc.world.getRegistryKey().getValue().getPath();
-        String string2 = WaypointCommand.mc.getCurrentServerEntry().address;
-        Waypoints.INSTANCE.field2437.getValue().removeIf(arg_0 -> WaypointCommand.lambda$build$8(string, string2, arg_0));
-        return 1;
-    }
-
     private static boolean lambda$build$8(String var0, String var1, WayPoint var2) {
         return var2.field912.equals(var0) && var2.field913.equalsIgnoreCase(var1);
-    }
-
-    private int lambda$build$7(CommandContext var1) throws CommandSyntaxException {
-        if (mc.getCurrentServerEntry() != null && mc.getCurrentServerEntry().address != null && !mc.getCurrentServerEntry().address.isEmpty() && mc.world != null
-        ) {
-            this.method624("Waypoints: ");
-            Waypoints.INSTANCE.field2437.getValue().forEach(this::lambda$build$6);
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-
-    private void lambda$build$6(WayPoint var1) {
-        if (var1.field912.equals(mc.world.getRegistryKey().getValue().getPath()) && var1.field913.equalsIgnoreCase(mc.getCurrentServerEntry().address)) {
-            int var5 = var1.field911;
-            int var6 = var1.field910;
-            int var7 = var1.field909;
-            String var8 = var1.field908;
-            this.method624(" - " + var8 + " X" + var7 + " Y" + var6 + " Z" + var5);
-        }
     }
 
     private static int lambda$build$5(CommandContext var0) throws CommandSyntaxException {
@@ -156,6 +99,63 @@ public class WaypointCommand extends Command {
             return 1;
         } else {
             return 0;
+        }
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.then(
+                method403("add")
+                        .then(
+                                method402("name", StringArgumentType.string())
+                                        .then(
+                                                method402("x", IntegerArgumentType.integer())
+                                                        .then(
+                                                                method402("y", IntegerArgumentType.integer())
+                                                                        .then(method402("z", IntegerArgumentType.integer()).executes(WaypointCommand::lambda$build$0))
+                                                        )
+                                        )
+                        )
+        );
+        builder.then(method403("add").then(method402("name", StringArgumentType.string()).executes(WaypointCommand::lambda$build$1)));
+        builder.then(method403("del").then(method402("name", StringArgumentType.string()).executes(WaypointCommand::lambda$build$3)));
+        builder.then(
+                method403("share")
+                        .then(
+                                method402("name", StringArgumentType.string())
+                                        .then(method402("player", PlayerListArgument.method678()).executes(WaypointCommand::lambda$build$5))
+                        )
+        );
+        builder.then(method403("list").executes(this::lambda$build$7));
+        builder.then(method403("clear").executes(this::lambda$build$9));
+    }
+
+    private int lambda$build$9(CommandContext commandContext) throws CommandSyntaxException {
+        this.method624("Clearing all waypoints for the current server/dimension...");
+        String string = WaypointCommand.mc.world.getRegistryKey().getValue().getPath();
+        String string2 = WaypointCommand.mc.getCurrentServerEntry().address;
+        Waypoints.INSTANCE.field2437.getValue().removeIf(arg_0 -> WaypointCommand.lambda$build$8(string, string2, arg_0));
+        return 1;
+    }
+
+    private int lambda$build$7(CommandContext var1) throws CommandSyntaxException {
+        if (mc.getCurrentServerEntry() != null && mc.getCurrentServerEntry().address != null && !mc.getCurrentServerEntry().address.isEmpty() && mc.world != null
+        ) {
+            this.method624("Waypoints: ");
+            Waypoints.INSTANCE.field2437.getValue().forEach(this::lambda$build$6);
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    private void lambda$build$6(WayPoint var1) {
+        if (var1.field912.equals(mc.world.getRegistryKey().getValue().getPath()) && var1.field913.equalsIgnoreCase(mc.getCurrentServerEntry().address)) {
+            int var5 = var1.field911;
+            int var6 = var1.field910;
+            int var7 = var1.field909;
+            String var8 = var1.field908;
+            this.method624(" - " + var8 + " X" + var7 + " Y" + var6 + " Z" + var5);
         }
     }
 }

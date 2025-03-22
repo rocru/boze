@@ -36,7 +36,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({ClientPlayerInteractionManager.class})
+@Mixin(ClientPlayerInteractionManager.class)
 public abstract class ClientPlayerInteractionManagerMixin {
     @Shadow
     private int blockBreakingCooldown;
@@ -50,8 +50,8 @@ public abstract class ClientPlayerInteractionManagerMixin {
     protected abstract void syncSelectedSlot();
 
     @Inject(
-            method = {"interactBlock"},
-            at = {@At("HEAD")}
+            method = "interactBlock",
+            at = @At("HEAD")
     )
     private void onInteractBlock(ClientPlayerEntity var1, Hand var2, BlockHitResult var3, CallbackInfoReturnable<ActionResult> var4) {
         if (AutoMine.INSTANCE.isEnabled()) {
@@ -60,7 +60,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Redirect(
-            method = {"tick"},
+            method = "tick",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/ClientPlayerInteractionManager;syncSelectedSlot()V"
@@ -73,7 +73,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Redirect(
-            method = {"updateBlockBreakingProgress"},
+            method = "updateBlockBreakingProgress",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/ClientPlayerInteractionManager;syncSelectedSlot()V"
@@ -86,16 +86,16 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Inject(
-            method = {"interactItem"},
-            at = {@At("HEAD")}
+            method = "interactItem",
+            at = @At("HEAD")
     )
     public void onInteract(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
         FastUse.field2947 = true;
     }
 
     @Inject(
-            method = {"cancelBlockBreaking"},
-            at = {@At("HEAD")},
+            method = "cancelBlockBreaking",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onCancelBlockBreaking(CallbackInfo var1) {
@@ -105,16 +105,16 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Inject(
-            method = {"interactItem"},
-            at = {@At("RETURN")}
+            method = "interactItem",
+            at = @At("RETURN")
     )
     public void onInteractPost(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
         FastUse.field2947 = false;
     }
 
     @Inject(
-            method = {"stopUsingItem"},
-            at = {@At("HEAD")},
+            method = "stopUsingItem",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onStoppedUsingItemInject(PlayerEntity var1, CallbackInfo var2) {
@@ -129,8 +129,8 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Inject(
-            method = {"attackBlock"},
-            at = {@At("HEAD")},
+            method = "attackBlock",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onAttackBlock(BlockPos var1, Direction var2, CallbackInfoReturnable<Boolean> var3) {
@@ -144,7 +144,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Redirect(
-            method = {"breakBlock"},
+            method = "breakBlock",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/block/BlockState;isAir()Z"
@@ -155,8 +155,8 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Inject(
-            method = {"attackBlock"},
-            at = {@At("RETURN")}
+            method = "attackBlock",
+            at = @At("RETURN")
     )
     private void onAttackBlockPost(BlockPos var1, Direction var2, CallbackInfoReturnable<Boolean> var3) {
         PostBlockBreakEvent var4 = PostBlockBreakEvent.method1032(var1, var2, this.blockBreakingCooldown, this.currentBreakingProgress);
@@ -164,8 +164,8 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Inject(
-            method = {"updateBlockBreakingProgress"},
-            at = {@At("HEAD")},
+            method = "updateBlockBreakingProgress",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onUpdateBlockBreakingProgress(BlockPos var1, Direction var2, CallbackInfoReturnable<Boolean> var3) {
@@ -179,8 +179,8 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Inject(
-            method = {"hasLimitedAttackSpeed"},
-            at = {@At("HEAD")},
+            method = "hasLimitedAttackSpeed",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onDoAttack(CallbackInfoReturnable<Boolean> var1) {
@@ -195,8 +195,8 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Inject(
-            method = {"updateBlockBreakingProgress"},
-            at = {@At("RETURN")}
+            method = "updateBlockBreakingProgress",
+            at = @At("RETURN")
     )
     private void onUpdateBlockBreakingProgressPost(BlockPos var1, Direction var2, CallbackInfoReturnable<Boolean> var3) {
         PostBlockBreakEvent var4 = PostBlockBreakEvent.method1032(var1, var2, this.blockBreakingCooldown, this.currentBreakingProgress);
@@ -204,7 +204,7 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Redirect(
-            method = {"updateBlockBreakingProgress"},
+            method = "updateBlockBreakingProgress",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/block/BlockState;calcBlockBreakingDelta(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)F"
@@ -217,8 +217,8 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Inject(
-            method = {"attackEntity"},
-            at = {@At("HEAD")},
+            method = "attackEntity",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onAttackEntityPre(PlayerEntity var1, Entity var2, CallbackInfo var3) {
@@ -228,8 +228,8 @@ public abstract class ClientPlayerInteractionManagerMixin {
     }
 
     @Inject(
-            method = {"attackEntity"},
-            at = {@At("TAIL")},
+            method = "attackEntity",
+            at = @At("TAIL"),
             cancellable = true
     )
     private void onAttackEntityPost(PlayerEntity var1, Entity var2, CallbackInfo var3) {

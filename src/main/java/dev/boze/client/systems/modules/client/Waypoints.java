@@ -37,24 +37,24 @@ import java.util.ArrayList;
 public class Waypoints extends Module {
     public static final Waypoints INSTANCE = new Waypoints();
     public final WaypointSetting field2437 = new WaypointSetting("Waypoints", new ArrayList(), "Waypoints");
-    private final BooleanSetting field2438 = new BooleanSetting("Nametags", true, "Show nametags for waypoints");
-    private final ScalingSetting field2439 = new ScalingSetting();
-    private final BooleanSetting field2440 = new BooleanSetting("Boxes", true, "Show boxes for waypoints");
     public final BooleanSetting field2441 = new BooleanSetting("LimitRange", false, "Limit range for rendering");
     public final IntArraySetting field2442 = new IntArraySetting("Range", new int[]{100, 10000}, 0, 100000, 10, "Range for rendering", this.field2441);
     public final ColorSetting field2443 = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill");
     public final ColorSetting field2444 = new ColorSetting("Outline", new BozeDrawColor(-7046189), "Color for outline");
+    private final BooleanSetting field2438 = new BooleanSetting("Nametags", true, "Show nametags for waypoints");
+    private final ScalingSetting field2439 = new ScalingSetting();
+    private final BooleanSetting field2440 = new BooleanSetting("Boxes", true, "Show boxes for waypoints");
     private final BooleanSetting field2445 = new BooleanSetting("Shader", false, "Use a shader");
     public final EnumSetting<WaypointShaderMode> field2446 = new EnumSetting<WaypointShaderMode>(
             "Shader", WaypointShaderMode.Normal, "Shader to use", this.field2445
     );
+    public final StringSetting field2453 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field2445);
     public final BooleanSetting field2447 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field2445);
     public final IntSetting field2448 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field2445);
     public final FloatSetting field2449 = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.field2445);
     public final FloatSetting field2450 = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$0, this.field2445);
     private final IntSetting field2451 = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.field2445);
     private final FloatSetting field2452 = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.field2445);
-    public final StringSetting field2453 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field2445);
     private Renderer3D field2454;
     private ByteTexture field2455;
     private String field2456 = "";

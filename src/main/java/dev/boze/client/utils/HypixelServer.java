@@ -11,6 +11,22 @@ import net.minecraft.screen.slot.Slot;
 public class HypixelServer implements MCServer, IMinecraft {
     private static final String[] field1264 = new String[]{"collectibles", "menu", "selector", "shop", "buy"};
 
+    private static boolean method546(Item var0) {
+        if (var0 != Items.GLASS_PANE && var0 != Items.BARRIER) {
+            return var0 instanceof BlockItem var4 && var4.getBlock() instanceof StainedGlassPaneBlock;
+        } else {
+            return true;
+        }
+    }
+
+    private static boolean lambda$isSpectator$1(ItemStack var0) {
+        return var0.getItem() == Items.PAPER;
+    }
+
+    private static boolean lambda$isInLobby$0(ItemStack var0) {
+        return var0.getItem() == Items.NETHER_STAR;
+    }
+
     @Override
     public boolean method2117() {
         int var4 = InventoryHelper.method168(HypixelServer::lambda$isInLobby$0);
@@ -44,21 +60,5 @@ public class HypixelServer implements MCServer, IMinecraft {
 
             return false;
         }
-    }
-
-    private static boolean method546(Item var0) {
-        if (var0 != Items.GLASS_PANE && var0 != Items.BARRIER) {
-            return var0 instanceof BlockItem var4 && var4.getBlock() instanceof StainedGlassPaneBlock;
-        } else {
-            return true;
-        }
-    }
-
-    private static boolean lambda$isSpectator$1(ItemStack var0) {
-        return var0.getItem() == Items.PAPER;
-    }
-
-    private static boolean lambda$isInLobby$0(ItemStack var0) {
-        return var0.getItem() == Items.NETHER_STAR;
     }
 }

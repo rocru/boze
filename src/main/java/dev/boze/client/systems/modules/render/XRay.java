@@ -20,9 +20,9 @@ import java.util.List;
 
 public class XRay extends Module {
     public static final XRay INSTANCE = new XRay();
+    private static final ThreadLocal<Mutable> field3869 = ThreadLocal.withInitial(Mutable::new);
     public final StringModeSetting field3867 = new StringModeSetting("Blocks", "Blocks to keep opaque");
     private final BooleanSetting field3868 = new BooleanSetting("Inverse", false, "Inverse block selection");
-    private static final ThreadLocal<Mutable> field3869 = ThreadLocal.withInitial(Mutable::new);
 
     public XRay() {
         super(
@@ -31,6 +31,22 @@ public class XRay extends Module {
                 Category.Render
         );
         this.field3867.method401(XRay::lambda$new$0);
+    }
+
+    public static boolean method2087(BlockPos blockPos) {
+        for (Direction var7 : Direction.values()) {
+            if (!mc.world.getBlockState(field3869.get().set(blockPos, var7)).isOpaque()) {
+                return true;
+            }
+        }
+
+        return true;
+    }
+
+    private static void lambda$new$0(List var0) {
+        if (MinecraftUtils.isClientActive()) {
+            mc.worldRenderer.reload();
+        }
     }
 
     @EventHandler
@@ -67,23 +83,7 @@ public class XRay extends Module {
         }
     }
 
-    public static boolean method2087(BlockPos blockPos) {
-        for (Direction var7 : Direction.values()) {
-            if (!mc.world.getBlockState(field3869.get().set(blockPos, var7)).isOpaque()) {
-                return true;
-            }
-        }
-
-        return true;
-    }
-
     public boolean method2088(Block block) {
         return this.field3868.getValue() != this.field3867.method2032().contains(block);
-    }
-
-    private static void lambda$new$0(List var0) {
-        if (MinecraftUtils.isClientActive()) {
-            mc.worldRenderer.reload();
-        }
     }
 }

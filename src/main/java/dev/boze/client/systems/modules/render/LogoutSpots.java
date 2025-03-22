@@ -46,36 +46,44 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class LogoutSpots extends Module {
     public static final LogoutSpots INSTANCE = new LogoutSpots();
-    private final BooleanSetting field810 = new BooleanSetting("Notify", true, "Notify when a player logs back in");
-    private final BooleanSetting field811 = new BooleanSetting("Model", true, "Use player model instead of box");
     public final ColorSetting field812 = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill");
     public final ColorSetting field813 = new ColorSetting("Outline", new BozeDrawColor(-7046189), "Color for outline");
+    private final BooleanSetting field810 = new BooleanSetting("Notify", true, "Notify when a player logs back in");
+    private final BooleanSetting field811 = new BooleanSetting("Model", true, "Use player model instead of box");
     private final BooleanSetting field814 = new BooleanSetting("Shader", false, "Use a shader");
     public final EnumSetting<LogoutSpotsShader> field815 = new EnumSetting<LogoutSpotsShader>("Shader", LogoutSpotsShader.Normal, "Shader to use", this.field814);
+    public final StringSetting field822 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field814);
     public final BooleanSetting field816 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field814);
     public final IntSetting field817 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field814);
     public final FloatSetting field818 = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.field814);
     public final FloatSetting field819 = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$0, this.field814);
     private final IntSetting field820 = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.field814);
     private final FloatSetting field821 = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.field814);
-    public final StringSetting field822 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field814);
     private final SettingCategory field823 = new SettingCategory("Nametag", "Nametag settings");
     private final BooleanSetting field824 = new BooleanSetting("ShowHealth", true, "Show logout health on nametag", this.field823);
     private final RGBASetting field825 = new RGBASetting("Color", new RGBAColor(-49088), "Color for name", this.field823);
     private final RGBASetting field826 = new RGBASetting("FriendColor", new RGBAColor(-24512), "Color for name", this.field823);
     private final ScalingSetting field827 = new ScalingSetting();
-    private Renderer3D field828;
-    private ByteTexture field829;
-    private String field830 = "";
     private final ArrayList<String> field831 = new ArrayList(Arrays.asList("soon_1", "soon_2", "soon_3", "soon_4", "soon_5", "help_desk_npc"));
     private final CopyOnWriteArrayList<LogoutPlayerEntity> field832 = new CopyOnWriteArrayList();
     private final List<PlayerListEntry> field833 = new ArrayList();
     private final List<PlayerEntity> field834 = new ArrayList();
+    private Renderer3D field828;
+    private ByteTexture field829;
+    private String field830 = "";
     private String field835;
     private boolean field836 = false;
 
     public LogoutSpots() {
         super("LogoutSpots", "Shows where players have logged out", Category.Render);
+    }
+
+    private static boolean lambda$add$4(LogoutPlayerEntity var0, LogoutPlayerEntity var1) {
+        return var1.field3589.equals(var0.field3589);
+    }
+
+    private static boolean lambda$onPlayerTick$3(PlayerListEntry var0, PlayerListEntry var1) {
+        return var1.getProfile().equals(var0.getProfile());
     }
 
     @Override
@@ -288,7 +296,6 @@ public class LogoutSpots extends Module {
         }
     }
 
-
     @EventHandler
     private void method1942(PostPlayerTickEvent postPlayerTickEvent) {
         if (this.field836) {
@@ -323,14 +330,6 @@ public class LogoutSpots extends Module {
         }
         this.field832.removeIf(arg_0 -> LogoutSpots.lambda$add$4(logoutPlayerEntity, arg_0));
         this.field832.add(logoutPlayerEntity);
-    }
-
-    private static boolean lambda$add$4(LogoutPlayerEntity var0, LogoutPlayerEntity var1) {
-        return var1.field3589.equals(var0.field3589);
-    }
-
-    private static boolean lambda$onPlayerTick$3(PlayerListEntry var0, PlayerListEntry var1) {
-        return var1.getProfile().equals(var0.getProfile());
     }
 
     private void lambda$onRender3D$2(Render3DEvent var1) {

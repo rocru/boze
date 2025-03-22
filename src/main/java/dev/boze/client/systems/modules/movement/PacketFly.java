@@ -39,11 +39,12 @@ public class PacketFly extends Module {
     private final BooleanSetting field507 = new BooleanSetting("AntiKick", true, "Slowly go down to not get kicked");
     private final EnumSetting<PacketFlyPhase> field508 = new EnumSetting<PacketFlyPhase>("Phase", PacketFlyPhase.Off, "Phase");
     private final BooleanSetting field509 = new BooleanSetting("Constrict", false, "Constrict flight");
+    private final ArrayList<PlayerMoveC2SPacket> field513 = new ArrayList();
+    private final ConcurrentHashMap<Integer, Class3090> field514 = new ConcurrentHashMap();
+    private final Random field526 = new Random();
     private int field510 = 0;
     private TeleportConfirmC2SPacket field511 = null;
     private PositionAndOnGround field512 = null;
-    private final ArrayList<PlayerMoveC2SPacket> field513 = new ArrayList();
-    private final ConcurrentHashMap<Integer, Class3090> field514 = new ConcurrentHashMap();
     private int field515 = 0;
     private int field516 = 0;
     private int field517 = 0;
@@ -55,7 +56,6 @@ public class PacketFly extends Module {
     private double field523 = 0.0;
     private double field524 = 0.0;
     private double field525 = 0.0;
-    private final Random field526 = new Random();
 
     public PacketFly() {
         super("PacketFly", "Fly using packets", Category.Movement);

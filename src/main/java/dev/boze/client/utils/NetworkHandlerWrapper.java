@@ -11,6 +11,14 @@ public class NetworkHandlerWrapper extends ClientPlayNetworkHandler implements I
         super(null, null, null);
     }
 
+    public static NetworkHandlerWrapper method739() {
+        try {
+            return (NetworkHandlerWrapper) UnsafeProvider.get().allocateInstance(NetworkHandlerWrapper.class);
+        } catch (Exception var3) {
+            throw new RuntimeException("Error creating dummy class", var3);
+        }
+    }
+
     public void sendPacket(Packet<?> packet) {
     }
 
@@ -20,13 +28,5 @@ public class NetworkHandlerWrapper extends ClientPlayNetworkHandler implements I
 
     public FeatureSet getEnabledFeatures() {
         return FeatureFlags.DEFAULT_ENABLED_FEATURES;
-    }
-
-    public static NetworkHandlerWrapper method739() {
-        try {
-            return (NetworkHandlerWrapper) UnsafeProvider.get().allocateInstance(NetworkHandlerWrapper.class);
-        } catch (Exception var3) {
-            throw new RuntimeException("Error creating dummy class", var3);
-        }
     }
 }

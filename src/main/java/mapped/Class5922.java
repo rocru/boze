@@ -20,8 +20,18 @@ public class Class5922 implements IMinecraft {
     private static final Vector3d field26;
     private static final Matrix4f field27;
     private static final Matrix4f field28;
-    private static int field29;
     public static double field30;
+    private static int field29;
+
+    static {
+        field22 = new Vector4f();
+        field23 = new Vector4f();
+        field24 = new Vector4f();
+        field25 = new Vector3d();
+        field26 = new Vector3d();
+        field27 = new Matrix4f();
+        field28 = new Matrix4f();
+    }
 
     public Class5922() {
         super();
@@ -101,15 +111,5 @@ public class Class5922 implements IMinecraft {
         vector4f.y = vector4f.y * w + 0.5f;
         vector4f.z = vector4f.z * w + 0.5f;
         vector4f.w = w;
-    }
-
-    static {
-        field22 = new Vector4f();
-        field23 = new Vector4f();
-        field24 = new Vector4f();
-        field25 = new Vector3d();
-        field26 = new Vector3d();
-        field27 = new Matrix4f();
-        field28 = new Matrix4f();
     }
 }

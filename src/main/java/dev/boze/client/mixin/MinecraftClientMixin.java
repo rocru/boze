@@ -45,25 +45,23 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.io.File;
 
-@Mixin({MinecraftClient.class})
+@Mixin(MinecraftClient.class)
 public abstract class MinecraftClientMixin {
     @Shadow
     @Final
     public static boolean IS_SYSTEM_MAC;
     @Shadow
+    @Final
+    private static Logger LOGGER;
+    @Shadow
     @Nullable
     public ClientPlayerInteractionManager interactionManager;
-    @Shadow
-    private int itemUseCooldown;
     @Shadow
     @Nullable
     public ClientPlayerEntity player;
     @Shadow
     @Nullable
     public HitResult crosshairTarget;
-    @Shadow
-    @Final
-    private static Logger LOGGER;
     @Shadow
     @Nullable
     public ClientWorld world;
@@ -72,13 +70,15 @@ public abstract class MinecraftClientMixin {
     public GameRenderer gameRenderer;
     @Shadow
     @Nullable
-    private Overlay overlay;
-    @Shadow
-    @Nullable
     public Screen currentScreen;
     @Shadow
     @Final
     public GameOptions options;
+    @Shadow
+    private int itemUseCooldown;
+    @Shadow
+    @Nullable
+    private Overlay overlay;
 
     @Shadow
     public abstract boolean isWindowFocused();
@@ -87,11 +87,11 @@ public abstract class MinecraftClientMixin {
     public abstract Framebuffer getFramebuffer();
 
     @Inject(
-            method = {"<init>"},
-            at = {@At(
+            method = "<init>",
+            at = @At(
                     value = "FIELD",
                     target = "Lnet/minecraft/client/MinecraftClient;instance:Lnet/minecraft/client/MinecraftClient;"
-            )}
+            )
     )
     public void onInitPre(RunArgs args, CallbackInfo ci) {
         Boze.FOLDER = new File(args.directories.runDir, "boze");
@@ -100,8 +100,8 @@ public abstract class MinecraftClientMixin {
     }
 
     @Inject(
-            method = {"<init>"},
-            at = {@At("TAIL")}
+            method = "<init>",
+            at = @At("TAIL")
     )
     public void onInit(RunArgs args, CallbackInfo ci) {
         // new Boze().initialize();
@@ -109,8 +109,8 @@ public abstract class MinecraftClientMixin {
     }
 
     @Inject(
-            method = {"getFramerateLimit"},
-            at = {@At("HEAD")},
+            method = "getFramerateLimit",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onGetFramerateLimit(CallbackInfoReturnable<Integer> var1) {
@@ -120,8 +120,8 @@ public abstract class MinecraftClientMixin {
     }
 
     @Inject(
-            method = {"isWindowFocused"},
-            at = {@At("HEAD")},
+            method = "isWindowFocused",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onIsWindowFocused(CallbackInfoReturnable<Boolean> var1) {
@@ -131,7 +131,7 @@ public abstract class MinecraftClientMixin {
     }
 
     @Redirect(
-            method = {"handleBlockBreaking"},
+            method = "handleBlockBreaking",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/ClientPlayerEntity;isUsingItem()Z"
@@ -142,7 +142,7 @@ public abstract class MinecraftClientMixin {
     }
 
     @Redirect(
-            method = {"doItemUse"},
+            method = "doItemUse",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/ClientPlayerInteractionManager;isBreakingBlock()Z"
@@ -153,8 +153,8 @@ public abstract class MinecraftClientMixin {
     }
 
     @Inject(
-            method = {"doItemPick"},
-            at = {@At("HEAD")},
+            method = "doItemPick",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onItemPick(CallbackInfo var1) {
@@ -164,8 +164,8 @@ public abstract class MinecraftClientMixin {
     }
 
     @Inject(
-            method = {"setScreen"},
-            at = {@At("HEAD")},
+            method = "setScreen",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onSetScreen(Screen var1, CallbackInfo var2) {
@@ -175,8 +175,8 @@ public abstract class MinecraftClientMixin {
     }
 
     @Inject(
-            method = {"tick"},
-            at = {@At("HEAD")}
+            method = "tick",
+            at = @At("HEAD")
     )
     private void tick(CallbackInfo var1) {
         RotationHandler.field1546.method2142();
@@ -186,8 +186,8 @@ public abstract class MinecraftClientMixin {
     }
 
     @Inject(
-            method = {"tick"},
-            at = {@At("TAIL")}
+            method = "tick",
+            at = @At("TAIL")
     )
     private void tickPost(CallbackInfo var1) {
         Boze.EVENT_BUS.post(PostTickEvent.method1088());
@@ -196,8 +196,8 @@ public abstract class MinecraftClientMixin {
     }
 
     @Inject(
-            method = {"doAttack"},
-            at = {@At("HEAD")},
+            method = "doAttack",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onDoAttack(CallbackInfoReturnable<Boolean> var1) {
@@ -214,25 +214,25 @@ public abstract class MinecraftClientMixin {
     }
 
     @Inject(
-            method = {"handleInputEvents"},
-            at = {@At(
+            method = "handleInputEvents",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/ClientPlayerEntity;isUsingItem()Z"
-            )},
-            slice = {@Slice(
+            ),
+            slice = @Slice(
                     to = @At(
                             value = "INVOKE",
                             target = "Lnet/minecraft/client/MinecraftClient;doAttack()Z"
                     )
-            )}
+            )
     )
     public void onHandleInputEvents(CallbackInfo ci) {
         RotationHandler.field1546.method1416();
     }
 
     @Inject(
-            method = {"handleInputEvents"},
-            at = {@At("HEAD")}
+            method = "handleInputEvents",
+            at = @At("HEAD")
     )
     public void onHandleInputEventsHead(CallbackInfo ci) {
         HandleInputEvent var2 = HandleInputEvent.method1064();
@@ -240,11 +240,11 @@ public abstract class MinecraftClientMixin {
     }
 
     @Inject(
-            method = {"tick"},
-            at = {@At(
+            method = "tick",
+            at = @At(
                     value = "FIELD",
                     target = "Lnet/minecraft/client/MinecraftClient;overlay:Lnet/minecraft/client/gui/screen/Overlay;"
-            )}
+            )
     )
     public void onHandleInputEventsGui(CallbackInfo ci) {
         if (this.overlay != null || this.currentScreen != null) {
@@ -253,16 +253,16 @@ public abstract class MinecraftClientMixin {
     }
 
     @Inject(
-            method = {"render"},
-            at = {@At("HEAD")}
+            method = "render",
+            at = @At("HEAD")
     )
     public void renderPre(boolean tick, CallbackInfo ci) {
         Class3092.field219 = System.nanoTime();
     }
 
     @Inject(
-            method = {"render"},
-            at = {@At("TAIL")}
+            method = "render",
+            at = @At("TAIL")
     )
     private void renderPost(boolean var1, CallbackInfo var2) {
         Class3092.field218 = (double) (System.nanoTime() - Class3092.field219) / 1000000.0;

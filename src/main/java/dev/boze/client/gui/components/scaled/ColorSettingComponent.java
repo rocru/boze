@@ -28,8 +28,8 @@ import net.minecraft.client.gui.DrawContext;
 import java.util.ArrayList;
 
 public class ColorSettingComponent extends ScaledBaseComponent {
-    public static BozeDrawColor field1396 = null;
     private static final double field1397 = 6.0;
+    public static BozeDrawColor field1396 = null;
     private final ColorSetting field1398;
     private final ArrayList<InputBaseComponent> field1399 = new ArrayList();
     private final ArrayList<InputBaseComponent> field1400 = new ArrayList();

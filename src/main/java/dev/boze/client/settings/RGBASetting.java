@@ -8,8 +8,8 @@ import java.awt.*;
 import java.util.function.BooleanSupplier;
 
 public class RGBASetting extends Setting<RGBAColor> {
-    private RGBAColor field957;
     public final RGBAColor field958;
+    private RGBAColor field957;
     private boolean field959 = false;
     private boolean field960 = false;
     private int field961 = 1;

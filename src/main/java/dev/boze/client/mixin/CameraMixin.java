@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin({Camera.class})
+@Mixin(Camera.class)
 public abstract class CameraMixin {
     @Shadow
     private boolean thirdPerson;
@@ -28,7 +28,7 @@ public abstract class CameraMixin {
     protected abstract float clipToSpace(float var1);
 
     @ModifyArgs(
-            method = {"update"},
+            method = "update",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/Camera;moveBy(FFF)V",
@@ -40,8 +40,8 @@ public abstract class CameraMixin {
     }
 
     @Inject(
-            method = {"clipToSpace"},
-            at = {@At("HEAD")},
+            method = "clipToSpace",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onClipToSpace(float var1, CallbackInfoReturnable<Float> var2) {
@@ -51,16 +51,16 @@ public abstract class CameraMixin {
     }
 
     @Inject(
-            method = {"update"},
-            at = {@At("HEAD")}
+            method = "update",
+            at = @At("HEAD")
     )
     private void onUpdateHead(BlockView var1, Entity var2, boolean var3, boolean var4, float var5, CallbackInfo var6) {
         this.tickDelta = var5;
     }
 
     @Inject(
-            method = {"update"},
-            at = {@At("TAIL")}
+            method = "update",
+            at = @At("TAIL")
     )
     private void onUpdateTail(BlockView var1, Entity var2, boolean var3, boolean var4, float var5, CallbackInfo var6) {
         if (FreeCam.INSTANCE.isEnabled()) {
@@ -69,7 +69,7 @@ public abstract class CameraMixin {
     }
 
     @ModifyArgs(
-            method = {"update"},
+            method = "update",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/Camera;setPos(DDD)V"
@@ -84,7 +84,7 @@ public abstract class CameraMixin {
     }
 
     @ModifyArgs(
-            method = {"update"},
+            method = "update",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/Camera;setRotation(FF)V"

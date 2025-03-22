@@ -6,14 +6,14 @@ import dev.boze.client.utils.misc.ISerializable;
 import net.minecraft.nbt.NbtCompound;
 
 public class Class1174 extends ColorManager implements ISerializable<Class1174> {
-    private boolean field49;
-    private int field50;
-    private float field51;
-    private float field52;
     public final boolean field53;
     public final int field54;
     public final float field55;
     public final float field56;
+    private boolean field49;
+    private int field50;
+    private float field51;
+    private float field52;
 
     public Class1174(BozeDrawColor color, boolean fastRender, int radius, float glowSize, float maxGlow) {
         this(color, false, fastRender, radius, glowSize, maxGlow);

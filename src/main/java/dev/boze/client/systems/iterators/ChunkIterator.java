@@ -21,6 +21,10 @@ public class ChunkIterator implements Iterator<Chunk>, IMinecraft {
         this.method541();
     }
 
+    public static Iterable<Chunk> method544(boolean onlyWithLoadedNeighbours) {
+        return () -> new ChunkIterator(onlyWithLoadedNeighbours);
+    }
+
     private Chunk method541() {
         Chunk var4 = this.field1261;
         this.field1261 = null;
@@ -69,10 +73,6 @@ public class ChunkIterator implements Iterator<Chunk>, IMinecraft {
     @Override
     public Chunk next() {
         return this.method541();
-    }
-
-    public static Iterable<Chunk> method544(boolean onlyWithLoadedNeighbours) {
-        return () -> new ChunkIterator(onlyWithLoadedNeighbours);
     }
 
     // $VF: synthetic method

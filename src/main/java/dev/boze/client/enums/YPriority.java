@@ -5,8 +5,8 @@ public enum YPriority {
     Up(6.0),
     Down(-6.0);
 
-    public final double field1704;
     private static final YPriority[] field1705 = method824();
+    public final double field1704;
 
     YPriority(double var3) {
         this.field1704 = var3;

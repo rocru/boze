@@ -28,6 +28,20 @@ public class AccountManagerComponent extends BottomRowScaledComponent {
         this.field1448 = Boze.getAccounts();
     }
 
+    public static void method642(Account<?> account, AccountSetting accountSetting) {
+        BozeExecutor.method2200(() -> AccountManagerComponent.laa1(account, accountSetting));
+    }
+
+    private static void laa1(Account var0, AccountSetting var1) {
+        if (var0.method2114()) {
+            Boze.getAccounts().method1130(var0);
+            if (var0.method2115()) {
+                var1.setValue(var0.method210());
+                Boze.getPlayerManager().method2142();
+            }
+        }
+    }
+
     @Override
     protected int method2010() {
         return this.field1448.method1133();
@@ -110,20 +124,6 @@ public class AccountManagerComponent extends BottomRowScaledComponent {
     @Override
     protected void method1904() {
         ClickGUI.field1335.method580(new AddAccountScreen(this.field1447));
-    }
-
-    public static void method642(Account<?> account, AccountSetting accountSetting) {
-        BozeExecutor.method2200(() -> AccountManagerComponent.laa1(account, accountSetting));
-    }
-
-    private static void laa1(Account var0, AccountSetting var1) {
-        if (var0.method2114()) {
-            Boze.getAccounts().method1130(var0);
-            if (var0.method2115()) {
-                var1.setValue(var0.method210());
-                Boze.getPlayerManager().method2142();
-            }
-        }
     }
 
     private void lhic0(Account var1) {

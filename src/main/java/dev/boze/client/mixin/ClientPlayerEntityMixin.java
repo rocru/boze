@@ -56,13 +56,28 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(
-        value = {ClientPlayerEntity.class},
+        value = ClientPlayerEntity.class,
         priority = 999
 )
 public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity implements IClientPlayerEntity {
     @Shadow
     @Final
     public ClientPlayNetworkHandler networkHandler;
+    @Shadow
+    public boolean autoJumpEnabled;
+    @Shadow
+    public float renderYaw;
+    @Shadow
+    public float lastRenderYaw;
+    @Shadow
+    public float renderPitch;
+    @Shadow
+    public float lastRenderPitch;
+    @Shadow
+    public Input input;
+    @Shadow
+    @Final
+    protected MinecraftClient client;
     @Shadow
     private boolean lastSneaking;
     @Shadow
@@ -81,21 +96,6 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
     private double lastX;
     @Shadow
     private boolean lastOnGround;
-    @Shadow
-    public boolean autoJumpEnabled;
-    @Shadow
-    @Final
-    protected MinecraftClient client;
-    @Shadow
-    public float renderYaw;
-    @Shadow
-    public float lastRenderYaw;
-    @Shadow
-    public float renderPitch;
-    @Shadow
-    public float lastRenderPitch;
-    @Shadow
-    public Input input;
     @Unique
     private float lastSpoofedYaw;
     @Unique
@@ -105,6 +105,11 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
 
     public ClientPlayerEntityMixin(ClientWorld world, GameProfile profile) {
         super(world, profile);
+    }
+
+    @Unique
+    private static boolean lambda$sendMovementPackets$0(ItemStack var0) {
+        return var0.isEmpty();
     }
 
     @Shadow
@@ -258,8 +263,8 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
     }
 
     @Inject(
-            method = {"sendMovementPackets"},
-            at = {@At("HEAD")},
+            method = "sendMovementPackets",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onSendMovementPackets(CallbackInfo var1) {
@@ -463,12 +468,12 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
     }
 
     @Inject(
-            method = {"isSneaking"},
-            at = {@At("HEAD")},
+            method = "isSneaking",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void onIsSneaking(CallbackInfoReturnable<Boolean> cir) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             if (Scaffold.INSTANCE.isEnabled() && Scaffold.INSTANCE.field3112 && Scaffold.INSTANCE.field3093.getValue() == AnticheatMode.Grim) {
                 cir.setReturnValue(true);
             }
@@ -476,45 +481,45 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
     }
 
     @Inject(
-            method = {"tickMovement"},
-            at = {@At("HEAD")}
+            method = "tickMovement",
+            at = @At("HEAD")
     )
     private void onPlayerTickPre(CallbackInfo var1) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             Boze.EVENT_BUS.post(PrePlayerTickEvent.method1090(MinecraftClient.getInstance().player));
         }
     }
 
     @Inject(
-            method = {"tickMovement"},
-            at = {@At("TAIL")}
+            method = "tickMovement",
+            at = @At("TAIL")
     )
     private void onPlayerTickPost(CallbackInfo var1) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             Boze.EVENT_BUS.post(PostPlayerTickEvent.method1085(MinecraftClient.getInstance().player));
         }
     }
 
     @Inject(
-            method = {"tick"},
-            at = {@At("TAIL")}
+            method = "tick",
+            at = @At("TAIL")
     )
     private void onTickPost(CallbackInfo var1) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             WTap.INSTANCE.method1626();
         }
     }
 
     @Inject(
-            method = {"move"},
-            at = {@At(
+            method = "move",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;move(Lnet/minecraft/entity/MovementType;Lnet/minecraft/util/math/Vec3d;)V"
-            )},
+            ),
             cancellable = true
     )
     public void onMove(MovementType type, Vec3d movement, CallbackInfo ci) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             if (!Class3091.field217) {
                 ci.cancel();
                 PlayerMoveEvent var4 = Boze.EVENT_BUS.post(PlayerMoveEvent.method1036(type, movement));
@@ -529,14 +534,14 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
     }
 
     @Redirect(
-            method = {"swingHand"},
+            method = "swingHand",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;swingHand(Lnet/minecraft/util/Hand;)V"
             )
     )
     private void onSwingHand(AbstractClientPlayerEntity var1, Hand var2) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             if (!Swing.INSTANCE.isEnabled()) {
                 var1.swingHand(var2, false);
             }
@@ -544,14 +549,14 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
     }
 
     @Redirect(
-            method = {"tickNausea"},
+            method = "tickNausea",
             at = @At(
                     value = "FIELD",
                     target = "Lnet/minecraft/client/MinecraftClient;currentScreen:Lnet/minecraft/client/gui/screen/Screen;"
             )
     )
     private Screen getScreenUpdateNausea(MinecraftClient var1) {
-        if (!((Object) this).equals(var1.player)) {
+        if (!this.equals(var1.player)) {
             return var1.currentScreen;
         } else {
             return ExtraChat.INSTANCE.isEnabled() && ExtraChat.INSTANCE.method1699() && ExtraChat.INSTANCE.field2940.getValue() ? null : var1.currentScreen;
@@ -559,11 +564,11 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
     }
 
     @Inject(
-            method = {"tickMovement"},
-            at = {@At("HEAD")}
+            method = "tickMovement",
+            at = @At("HEAD")
     )
     private void onTickMovementPre(CallbackInfo var1) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             ElytraRecast.INSTANCE.method1854();
             ElytraBoost.INSTANCE.method1854();
             dN var4 = Boze.EVENT_BUS.post(dN.method1035());
@@ -574,36 +579,36 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
     }
 
     @Inject(
-            method = {"tickMovement"},
-            at = {@At(
+            method = "tickMovement",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/MinecraftClient;getTutorialManager()Lnet/minecraft/client/tutorial/TutorialManager;"
-            )}
+            )
     )
     private void onTickMovementMid(CallbackInfo var1) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             ElytraRecast.INSTANCE.method1904();
             ElytraBoost.INSTANCE.method1904();
         }
     }
 
     @Inject(
-            method = {"tickMovement"},
-            at = {@At("TAIL")}
+            method = "tickMovement",
+            at = @At("TAIL")
     )
     private void onTickMovementPost(CallbackInfo var1) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             Class2839.field113 = false;
         }
     }
 
     @Inject(
-            method = {"isUsingItem"},
-            at = {@At("HEAD")},
+            method = "isUsingItem",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onIsUsingItem(CallbackInfoReturnable<Boolean> var1) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             if (Class2839.field113) {
                 var1.setReturnValue(false);
             }
@@ -611,12 +616,12 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
     }
 
     @Inject(
-            method = {"shouldSlowDown"},
-            at = {@At("HEAD")},
+            method = "shouldSlowDown",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onShouldSlowDown(CallbackInfoReturnable<Boolean> var1) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             if (NoSlow.INSTANCE.isEnabled()) {
                 if (NoSlow.INSTANCE.field3316.getValue() && this.isSneaking()) {
                     var1.setReturnValue(false);
@@ -630,21 +635,16 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
     }
 
     @Inject(
-            method = {"pushOutOfBlocks"},
-            at = {@At("HEAD")},
+            method = "pushOutOfBlocks",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onPushOutOfBlocks(double var1, double var3, CallbackInfo var5) {
-        if (((Object) this).equals(this.client.player)) {
+        if (this.equals(this.client.player)) {
             PlayerVelocityEvent var6 = Boze.EVENT_BUS.post(PlayerVelocityEvent.method1048(false));
             if (var6.method1022()) {
                 var5.cancel();
             }
         }
-    }
-
-    @Unique
-    private static boolean lambda$sendMovementPackets$0(ItemStack var0) {
-        return var0.isEmpty();
     }
 }

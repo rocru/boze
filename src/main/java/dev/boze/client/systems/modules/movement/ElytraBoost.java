@@ -26,13 +26,14 @@ import net.minecraft.util.math.Vec3d;
 
 public class ElytraBoost extends Module {
     public static final ElytraBoost INSTANCE = new ElytraBoost();
+    public final MinMaxSetting field1005 = new MinMaxSetting("Factor", 1.0, 0.1, 10.0, 0.1, "Boost factor");
+    public final MinMaxSetting field1006 = new MinMaxSetting("MaxSpeed", 1.8, 0.1, 10.0, 0.1, "Max speed");
+    public final nh field1011 = new nh(this);
     private final BooleanSetting field1000 = new BooleanSetting("ChestPlate", false, "Fly even with ChestPlate on\nRequires Elytra in Inventory\n");
     private final BooleanSetting field1001 = new BooleanSetting("AutoTakeoff", false, "Take off automatically");
     private final BooleanSetting field1002 = new BooleanSetting("UseTimer", true, "Use timer while taking off", this.field1001);
     private final IntSetting field1003 = new IntSetting("Delay", 5, 0, 20, 1, "Tick delay for taking off", this.field1001);
     private final BooleanSetting field1004 = new BooleanSetting("AutoBoost", false, "Automatically boost even when not holding W");
-    public final MinMaxSetting field1005 = new MinMaxSetting("Factor", 1.0, 0.1, 10.0, 0.1, "Boost factor");
-    public final MinMaxSetting field1006 = new MinMaxSetting("MaxSpeed", 1.8, 0.1, 10.0, 0.1, "Max speed");
     private final BooleanSetting field1007 = new BooleanSetting(
             "YControl", false, "Control Y level with keys, not mouse\nUseful for AFK flight in Overworld/End\nAutoBoost is highly recommended for this\n"
     );
@@ -47,10 +48,9 @@ public class ElytraBoost extends Module {
             "Glide speed\nAt higher values, makes you go down over time\nIn exchange for higher cruise speed\n",
             this.field1007::getValue
     );
-    public final nh field1011 = new nh(this);
     private final Timer field1012 = new Timer();
-    private int field1013 = 0;
     private final Timer field1014 = new Timer();
+    private int field1013 = 0;
     private boolean field1015 = false;
 
     public ElytraBoost() {

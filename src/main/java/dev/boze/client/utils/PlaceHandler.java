@@ -16,12 +16,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 
 public class PlaceHandler extends InteractionHandler {
-    private final EnumSetting<InteractionAwaitMode> field244 = new EnumSetting<InteractionAwaitMode>(
-            "Await",
-            InteractionAwaitMode.Off,
-            "Await placement confirmation before further placements\n - Off: Don't await\n - Semi: Only await when placing many blocks\n - Strict: Always await\n",
-            this::method2114
-    );
     public final BooleanSetting field245 = new BooleanSetting("Extension", false, "Extend around players in the way");
     public final BooleanSetting field246 = new BooleanSetting("Shield", false, "Shield blocks being mined by also surrounding them");
     public final BooleanSetting field247 = new BooleanSetting("PingFix", false, "Ping compensation");
@@ -32,6 +26,12 @@ public class PlaceHandler extends InteractionHandler {
             "The type of blocks to place\n - Obsidian: Only Obsidian\n - BlastProof: Most blast-proof block found\n - Custom: Custom blocks\nTo add or remove custom blocks:\n Use '.set <module> blocklist add <block>' to add\n Use '.set <module> blocklist del <block>' to remove\n Use '.set <module> blocklist list' to list all blocks\n"
     );
     public final StringModeSetting field250 = new StringModeSetting("BlockList", "Blocks for custom mode");
+    private final EnumSetting<InteractionAwaitMode> field244 = new EnumSetting<InteractionAwaitMode>(
+            "Await",
+            InteractionAwaitMode.Off,
+            "Await placement confirmation before further placements\n - Off: Don't await\n - Semi: Only await when placing many blocks\n - Strict: Always await\n",
+            this::method2114
+    );
     private final SettingBlock field251 = new SettingBlock(
             "Placement",
             "Block placement settings\nIn ghost mode, you can fine-tune the rotations in the GhostRotations module\n",

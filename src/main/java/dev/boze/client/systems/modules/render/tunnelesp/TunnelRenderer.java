@@ -13,9 +13,9 @@ import net.minecraft.util.math.Direction.Axis;
 public class TunnelRenderer {
     public final int field3833;
     public final int field3834;
+    final TunnelESP field3837;
     public IntSet field3835;
     public boolean field3836;
-    final TunnelESP field3837;
 
     public TunnelRenderer(final TunnelESP arg, int x, int z) {
         this.field3837 = arg;

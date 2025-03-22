@@ -44,6 +44,46 @@ public class AutoCraft extends Module {
         super("AutoCraft", "Automatically crafts items\nUse .autocraft item <item> to set the item to craft", Category.Misc);
     }
 
+    private static void lambda$onSendMovementPackets$5() {
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 0, 0, SlotActionType.QUICK_MOVE, mc.player);
+    }
+
+    private static void lambda$onSendMovementPackets$4(int var0) {
+        boolean var4 = mc.player.currentScreenHandler.getCursorStack().isEmpty();
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
+        mc.interactionManager
+                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(0, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 6, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager
+                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(2, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        if (var4 && !mc.player.currentScreenHandler.getCursorStack().isEmpty()) {
+            mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
+        }
+    }
+
+    private static void lambda$onSendMovementPackets$3(int var0) {
+        boolean var4 = mc.player.currentScreenHandler.getCursorStack().isEmpty();
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
+        mc.interactionManager
+                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(0, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 1, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 2, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 3, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        mc.interactionManager
+                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(2, 0), SlotActionType.QUICK_CRAFT, mc.player);
+        if (var4 && !mc.player.currentScreenHandler.getCursorStack().isEmpty()) {
+            mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
+        }
+    }
+
+    private static boolean lambda$onSendMovementPackets$2(ItemStack var0) {
+        return var0.getItem() == Items.PAPER;
+    }
+
+    private static boolean lambda$onSendMovementPackets$1(ItemStack var0) {
+        return var0.getItem() == Items.GUNPOWDER;
+    }
+
     @EventHandler
     public void method1658(MovementEvent event) {
         if (!(mc.player.currentScreenHandler instanceof CraftingScreenHandler)) {
@@ -96,46 +136,6 @@ public class AutoCraft extends Module {
                 }
             }
         }
-    }
-
-    private static void lambda$onSendMovementPackets$5() {
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 0, 0, SlotActionType.QUICK_MOVE, mc.player);
-    }
-
-    private static void lambda$onSendMovementPackets$4(int var0) {
-        boolean var4 = mc.player.currentScreenHandler.getCursorStack().isEmpty();
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
-        mc.interactionManager
-                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(0, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 6, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager
-                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(2, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        if (var4 && !mc.player.currentScreenHandler.getCursorStack().isEmpty()) {
-            mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
-        }
-    }
-
-    private static void lambda$onSendMovementPackets$3(int var0) {
-        boolean var4 = mc.player.currentScreenHandler.getCursorStack().isEmpty();
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
-        mc.interactionManager
-                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(0, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 1, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 2, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, 3, ScreenHandler.packQuickCraftData(1, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        mc.interactionManager
-                .clickSlot(mc.player.currentScreenHandler.syncId, -999, ScreenHandler.packQuickCraftData(2, 0), SlotActionType.QUICK_CRAFT, mc.player);
-        if (var4 && !mc.player.currentScreenHandler.getCursorStack().isEmpty()) {
-            mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, SlotUtils.method1541(var0), 0, SlotActionType.PICKUP, mc.player);
-        }
-    }
-
-    private static boolean lambda$onSendMovementPackets$2(ItemStack var0) {
-        return var0.getItem() == Items.PAPER;
-    }
-
-    private static boolean lambda$onSendMovementPackets$1(ItemStack var0) {
-        return var0.getItem() == Items.GUNPOWDER;
     }
 
     private boolean lambda$new$0() {

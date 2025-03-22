@@ -11,8 +11,8 @@ import java.util.Locale;
 import java.util.function.BooleanSupplier;
 
 public class EnumSetting<T extends Enum> extends Setting<T> {
-    public T field972;
     private final T field973;
+    public T field972;
 
     public EnumSetting(String name, T value, String description) {
         super(name, description);

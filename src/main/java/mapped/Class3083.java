@@ -12,13 +12,13 @@ public class Class3083 {
 
     public static byte method6049(Direction var3225) {
         return switch (var3225) {
-            default -> throw new IncompatibleClassChangeError();
             case Direction.UP -> 2;
             case Direction.DOWN -> 4;
             case Direction.NORTH -> 8;
             case Direction.SOUTH -> 16;
             case Direction.WEST -> 32;
             case Direction.EAST -> 64;
+            default -> throw new IncompatibleClassChangeError();
         };
     }
 

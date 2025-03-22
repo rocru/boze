@@ -17,6 +17,15 @@ public class Inventory extends HUDModule implements Class5929 {
         this.field595.setValue(1.333);
     }
 
+    public static void method335(DrawContext context, ItemStack itemStack, int x, int y, double scale) {
+        MatrixStack var6 = context.getMatrices();
+        var6.push();
+        var6.scale((float) scale, (float) scale, 1.0F);
+        context.drawItem(itemStack, (int) ((double) x / scale), (int) ((double) y / scale));
+        context.drawItemInSlot(mc.textRenderer, itemStack, (int) ((double) x / scale), (int) ((double) y / scale), null);
+        var6.pop();
+    }
+
     @Override
     public void method295(DrawContext context) {
         this.method314(164.0 * this.method336());
@@ -38,15 +47,6 @@ public class Inventory extends HUDModule implements Class5929 {
                 }
             }
         }
-    }
-
-    public static void method335(DrawContext context, ItemStack itemStack, int x, int y, double scale) {
-        MatrixStack var6 = context.getMatrices();
-        var6.push();
-        var6.scale((float) scale, (float) scale, 1.0F);
-        context.drawItem(itemStack, (int) ((double) x / scale), (int) ((double) y / scale));
-        context.drawItemInSlot(mc.textRenderer, itemStack, (int) ((double) x / scale), (int) ((double) y / scale), null);
-        var6.pop();
     }
 
     private double method336() {

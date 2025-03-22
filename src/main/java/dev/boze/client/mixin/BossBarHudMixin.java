@@ -15,11 +15,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Collection;
 import java.util.Iterator;
 
-@Mixin({BossBarHud.class})
+@Mixin(BossBarHud.class)
 public class BossBarHudMixin {
     @Inject(
-            method = {"render"},
-            at = {@At("HEAD")},
+            method = "render",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void render(CallbackInfo var1) {
@@ -29,7 +29,7 @@ public class BossBarHudMixin {
     }
 
     @Redirect(
-            method = {"render"},
+            method = "render",
             at = @At(
                     value = "INVOKE",
                     target = "Ljava/util/Collection;iterator()Ljava/util/Iterator;"
@@ -41,7 +41,7 @@ public class BossBarHudMixin {
     }
 
     @Redirect(
-            method = {"render"},
+            method = "render",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/hud/ClientBossBar;getName()Lnet/minecraft/text/Text;"
@@ -53,11 +53,11 @@ public class BossBarHudMixin {
     }
 
     @ModifyConstant(
-            method = {"render"},
-            constant = {@Constant(
+            method = "render",
+            constant = @Constant(
                     intValue = 9,
                     ordinal = 1
-            )}
+            )
     )
     public int changeSpacing(int j) {
         BossBarSpacingEvent var2 = Boze.EVENT_BUS.post(BossBarSpacingEvent.method1054(j));

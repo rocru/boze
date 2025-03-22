@@ -30,25 +30,25 @@ import java.util.List;
 
 public class PopChams extends Module {
     public static final PopChams INSTANCE = new PopChams();
-    private final BooleanSetting field3641 = new BooleanSetting("Unique", false, "Only render one pop per player");
     public final BooleanSetting field3642 = new BooleanSetting("Match", false, "Match player bodies");
     public final ColorSetting field3643 = new ColorSetting("Color", new BozeDrawColor(1691587707), "Color for fill");
     public final ColorSetting field3644 = new ColorSetting("Outline", new BozeDrawColor(-2911109), "Color for outline");
+    public final MinMaxSetting field3657 = new MinMaxSetting("Rise", 0.0, 0.0, 10.0, 0.1, "Rise popped players");
+    private final BooleanSetting field3641 = new BooleanSetting("Unique", false, "Only render one pop per player");
     private final BooleanSetting field3645 = new BooleanSetting("Shader", false, "Use a shader");
     public final ColorSetting field3646 = new ColorSetting("Color", new BozeDrawColor(1691587707, true, 0.1, 0.0, 0.2), "Color for shader fill", this.field3645);
     public final ColorSetting field3647 = new ColorSetting(
             "Outline", new BozeDrawColor(-2911109, true, 0.1, 0.0, 0.2), "Color for shader outline", this.field3645
     );
     public final EnumSetting<ShaderMode> field3648 = new EnumSetting<ShaderMode>("Shader", ShaderMode.Colored, "Shader to use", this.field3645);
+    public final StringSetting field3655 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3645);
     public final BooleanSetting field3649 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field3645);
     public final IntSetting field3650 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field3645);
     public final FloatSetting field3651 = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.field3645);
     public final FloatSetting field3652 = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$0, this.field3645);
+    public final MinMaxSetting field3656 = new MinMaxSetting("Fade", 1.0, 0.1, 10.0, 0.1, "Fade popped players", this::lambda$new$2);
     private final IntSetting field3653 = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.field3645);
     private final FloatSetting field3654 = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.field3645);
-    public final StringSetting field3655 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3645);
-    public final MinMaxSetting field3656 = new MinMaxSetting("Fade", 1.0, 0.1, 10.0, 0.1, "Fade popped players", this::lambda$new$2);
-    public final MinMaxSetting field3657 = new MinMaxSetting("Rise", 0.0, 0.0, 10.0, 0.1, "Rise popped players");
     private final List<PoppedPlayerEntity> field3658 = new ArrayList();
     private Renderer3D field3659;
     private ByteTexture field3660;
@@ -56,6 +56,14 @@ public class PopChams extends Module {
 
     public PopChams() {
         super("PopChams", "Shows chams where players popped", Category.Render);
+    }
+
+    private static boolean lambda$onInternalPop$4(FakePlayerEntityWithTotem var0, PoppedPlayerEntity var1) {
+        return var1.field1273.equals(var0.getUuid());
+    }
+
+    private static boolean lambda$onReceivePacket$3(Entity var0, PoppedPlayerEntity var1) {
+        return var1.field1273.equals(var0.getUuid());
     }
 
     @Override
@@ -165,14 +173,6 @@ public class PopChams extends Module {
 
     private boolean lambda$onRender3D$5(Render3DEvent var1, PoppedPlayerEntity var2) {
         return var2.method550(this.field3645.getValue() ? this.field3659 : var1.field1950, var1.field1951);
-    }
-
-    private static boolean lambda$onInternalPop$4(FakePlayerEntityWithTotem var0, PoppedPlayerEntity var1) {
-        return var1.field1273.equals(var0.getUuid());
-    }
-
-    private static boolean lambda$onReceivePacket$3(Entity var0, PoppedPlayerEntity var1) {
-        return var1.field1273.equals(var0.getUuid());
     }
 
     private boolean lambda$new$2() {

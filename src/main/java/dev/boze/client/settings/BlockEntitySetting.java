@@ -21,8 +21,8 @@ import java.util.function.BooleanSupplier;
 
 public class BlockEntitySetting extends Setting<List<String>> implements IMinecraft {
     private final List<BlockEntityType<?>> field946 = new ArrayList();
-    private List<String> field947 = new ArrayList();
     public boolean field948 = true;
+    private List<String> field947 = new ArrayList();
 
     public BlockEntitySetting(String name, String description) {
         super(name, description);
@@ -38,6 +38,54 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
 
     public BlockEntitySetting(String name, String description, BooleanSupplier visibility, Setting parent) {
         super(name, description, visibility, parent);
+    }
+
+    public static BlockEntityType<?> method440(String name) {
+        for (BlockEntityType var5 : Registries.BLOCK_ENTITY_TYPE) {
+            if (Registries.BLOCK_ENTITY_TYPE.getId(var5).getPath().equalsIgnoreCase(name)) {
+                return var5;
+            }
+        }
+
+        return null;
+    }
+
+    /// public Object load(NbtCompound nbtCompound) {
+    //   return this.method444(nbtCompound);
+    //}
+
+    // $VF: synthetic method
+    // $VF: bridge method
+    //@Override
+    //public Object setValue(Object object) {
+    //   return this.method443((List<String>)object);
+    // }
+
+    // $VF: synthetic method
+    // $VF: bridge method
+    //@Override
+    //public List<String> resetValue() {
+    //   return this.method2033();
+    //}
+
+    // $VF: synthetic method
+    // $VF: bridge method
+    //@Override
+    //public Object getValue() {
+    //   return this.method442();
+    //}
+    private static void lambda$addValueToTag$7(NbtList var0, String var1) {
+        if (!var0.contains(NbtString.of(var1))) {
+            var0.add(NbtString.of(var1));
+        }
+    }
+
+    private static void lambda$build$4(BlockEntityType var0) {
+        ChatInstance.method624(" - (highlight)" + Registries.BLOCK_ENTITY_TYPE.getId(var0).getPath());
+    }
+
+    private static void lambda$getBlockEntitiesAsString$1(List<String> var0, BlockEntityType var1) {
+        var0.add(Registries.BLOCK_ENTITY_TYPE.getId(var1).getPath());
     }
 
     public void method439(ArrayList<String> blockEntityNames) {
@@ -72,16 +120,6 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
         return var1;
     }
 
-    public static BlockEntityType<?> method440(String name) {
-        for (BlockEntityType var5 : Registries.BLOCK_ENTITY_TYPE) {
-            if (Registries.BLOCK_ENTITY_TYPE.getId(var5).getPath().equalsIgnoreCase(name)) {
-                return var5;
-            }
-        }
-
-        return null;
-    }
-
     public List<BlockEntityType<?>> method2032() {
         return this.field946;
     }
@@ -108,6 +146,10 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
 
         return this.field947;
     }
+
+    // $VF: synthetic method
+    // $VF: bridge method
+    //@Override
 
     @Override
     public boolean buildCommand(LiteralArgumentBuilder<CommandSource> builder) {
@@ -148,40 +190,6 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
         return this.field947;
     }
 
-    // $VF: synthetic method
-    // $VF: bridge method
-    //@Override
-    ///public Object load(NbtCompound nbtCompound) {
-    //   return this.method444(nbtCompound);
-    //}
-
-    // $VF: synthetic method
-    // $VF: bridge method
-    //@Override
-    //public Object setValue(Object object) {
-    //   return this.method443((List<String>)object);
-    // }
-
-    // $VF: synthetic method
-    // $VF: bridge method
-    //@Override
-    //public List<String> resetValue() {
-    //   return this.method2033();
-    //}
-
-    // $VF: synthetic method
-    // $VF: bridge method
-    //@Override
-    //public Object getValue() {
-    //   return this.method442();
-    //}
-
-    private static void lambda$addValueToTag$7(NbtList var0, String var1) {
-        if (!var0.contains(NbtString.of(var1))) {
-            var0.add(NbtString.of(var1));
-        }
-    }
-
     private int lambda$build$6(CommandContext var1) throws CommandSyntaxException {
         ChatInstance.method624("Clearing all blocks...");
         this.resetValue();
@@ -196,10 +204,6 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
         ChatInstance.method624("Block Entities: " + this.method2032().size());
         this.method2032().forEach(BlockEntitySetting::lambda$build$4);
         return 1;
-    }
-
-    private static void lambda$build$4(BlockEntityType var0) {
-        ChatInstance.method624(" - (highlight)" + Registries.BLOCK_ENTITY_TYPE.getId(var0).getPath());
     }
 
     private int lambda$build$3(CommandContext var1) throws CommandSyntaxException {
@@ -234,10 +238,6 @@ public class BlockEntitySetting extends Setting<List<String>> implements IMinecr
             ChatInstance.method626("Block entity not found!");
             return 0;
         }
-    }
-
-    private static void lambda$getBlockEntitiesAsString$1(List<String> var0, BlockEntityType var1) {
-        var0.add(Registries.BLOCK_ENTITY_TYPE.getId(var1).getPath());
     }
 
     private void lambda$refreshBlockEntities$0(String var1) {

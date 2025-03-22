@@ -22,23 +22,23 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
-@Mixin({BeaconScreen.class})
+@Mixin(BeaconScreen.class)
 public abstract class BeaconScreenMixin extends HandledScreen<BeaconScreenHandler> {
-    @Shadow
-    protected abstract <T extends ClickableWidget> void addButton(T var1);
-
     public BeaconScreenMixin(BeaconScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 
+    @Shadow
+    protected abstract <T extends ClickableWidget> void addButton(T var1);
+
     @Inject(
-            method = {"init"},
-            at = {@At(
+            method = "init",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/screen/ingame/BeaconScreen;addButton(Lnet/minecraft/client/gui/widget/ClickableWidget;)V",
                     ordinal = 1,
                     shift = Shift.AFTER
-            )},
+            ),
             cancellable = true
     )
     public void onInitAddButton(CallbackInfo var1) {
@@ -68,8 +68,8 @@ public abstract class BeaconScreenMixin extends HandledScreen<BeaconScreenHandle
     }
 
     @Inject(
-            method = {"drawBackground"},
-            at = {@At("TAIL")}
+            method = "drawBackground",
+            at = @At("TAIL")
     )
     private void onDrawBackground(DrawContext var1, float var2, int var3, int var4, CallbackInfo var5) {
         if (BeaconSelector.INSTANCE.isEnabled()) {

@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 import java.util.List;
 
-@Mixin({ToastManager.class})
+@Mixin(ToastManager.class)
 public interface ToastManagerAccessor {
     @Accessor
     List<Entry<?>> getVisibleEntries();

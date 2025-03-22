@@ -64,6 +64,7 @@ public class Trigger extends Module {
     private final EnumSetting<ClickMethod> field2838 = new EnumSetting<ClickMethod>("Mode", ClickMethod.Normal, "Click Mode");
     private final IntArraySetting field2839 = new IntArraySetting("CPS", new int[]{6, 10}, 1, 20, 1, "Clicks per second");
     private final FloatSetting field2840 = new FloatSetting("CooldownOffset", 0.0F, -2.5F, 2.5F, 0.05F, "The offset for vanilla clicking", this::lambda$new$0);
+    private final ClickManager field2853 = new ClickManager(this.field2838, this.field2839, this.field2840);
     private final MinMaxSetting field2841 = new MinMaxSetting("MissChance", 0.0, 0.0, 100.0, 0.1, "Artificial miss chance (%)");
     private final MinMaxDoubleSetting field2842 = new MinMaxDoubleSetting(
             "BoxScale",
@@ -87,14 +88,17 @@ public class Trigger extends Module {
     private final BooleanSetting field2850 = new BooleanSetting("Crystals", false, "Target crystals", this.field2844);
     private final BooleanSetting field2851 = new BooleanSetting("Minecarts", false, "Target minecarts", this.field2844);
     private final BooleanSetting field2852 = new BooleanSetting("Boats", false, "Target boats", this.field2844);
-    private final ClickManager field2853 = new ClickManager(this.field2838, this.field2839, this.field2840);
+    private final Timer field2856 = new Timer();
     private float field2854 = 0.0F;
     private Entity field2855 = null;
-    private final Timer field2856 = new Timer();
     private boolean field2857 = false;
 
     private Trigger() {
         super("Trigger", "Automatically attacks when you look at an entity", Category.Legit);
+    }
+
+    private static Float lambda$getTargetList$1(Entity var0) {
+        return var0.distanceTo(mc.player);
     }
 
     @Override
@@ -317,10 +321,6 @@ public class Trigger extends Module {
                     return false;
             }
         }
-    }
-
-    private static Float lambda$getTargetList$1(Entity var0) {
-        return var0.distanceTo(mc.player);
     }
 
     private boolean lambda$new$0() {

@@ -16,13 +16,23 @@ import java.util.function.Consumer;
  * Default implementation of a {@link IListener} that creates a lambda at runtime to call the target method.
  */
 public class LambdaListener implements IListener {
-    public interface Factory {
-        MethodHandles.Lookup create(Method lookupInMethod, Class<?> klass) throws InvocationTargetException, IllegalAccessException;
-    }
-
     private static boolean isJava1dot8;
     private static Constructor<MethodHandles.Lookup> lookupConstructor;
     private static Method privateLookupInMethod;
+
+    static {
+        try {
+            isJava1dot8 = System.getProperty("java.version").startsWith("1.8");
+
+            if (isJava1dot8) {
+                lookupConstructor = MethodHandles.Lookup.class.getDeclaredConstructor(Class.class);
+            } else {
+                privateLookupInMethod = MethodHandles.class.getDeclaredMethod("privateLookupIn", Class.class, MethodHandles.Lookup.class);
+            }
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+    }
 
     private final Class<?> target;
     private final boolean isStatic;
@@ -97,17 +107,7 @@ public class LambdaListener implements IListener {
         return isStatic;
     }
 
-    static {
-        try {
-            isJava1dot8 = System.getProperty("java.version").startsWith("1.8");
-
-            if (isJava1dot8) {
-                lookupConstructor = MethodHandles.Lookup.class.getDeclaredConstructor(Class.class);
-            } else {
-                privateLookupInMethod = MethodHandles.class.getDeclaredMethod("privateLookupIn", Class.class, MethodHandles.Lookup.class);
-            }
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
+    public interface Factory {
+        MethodHandles.Lookup create(Method lookupInMethod, Class<?> klass) throws InvocationTargetException, IllegalAccessException;
     }
 }

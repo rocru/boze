@@ -35,12 +35,13 @@ import java.util.List;
 
 public class Scaffold extends Module {
     public static final Scaffold INSTANCE = new Scaffold();
+    public final StringModeSetting field3091 = new StringModeSetting("Blocks", "Blocks to keep opaque");
+    public final EnumSetting<AnticheatMode> field3093 = new EnumSetting<AnticheatMode>("Mode", AnticheatMode.NCP, "Interaction mode");
+    public final BindSetting field3104 = new BindSetting("Down", Bind.fromKey(342), "Keybind to go down");
     private final BooleanSetting field3088 = new BooleanSetting("Render", true, "Render placements");
     private final ColorSetting field3089 = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill", this.field3088);
     private final ColorSetting field3090 = new ColorSetting("Outline", new BozeDrawColor(-7046189), "Color for outline", this.field3088);
-    public final StringModeSetting field3091 = new StringModeSetting("Blocks", "Blocks to keep opaque");
     private final EnumSetting<ScaffoldFilter> field3092 = new EnumSetting<ScaffoldFilter>("Filter", ScaffoldFilter.Off, "Block filter");
-    public final EnumSetting<AnticheatMode> field3093 = new EnumSetting<AnticheatMode>("Mode", AnticheatMode.NCP, "Interaction mode");
     private final BooleanSetting field3094 = new BooleanSetting("Rotate", true, "Rotate");
     private final BooleanSetting field3095 = new BooleanSetting("RayCast", false, "Ray Cast");
     private final BooleanSetting field3096 = new BooleanSetting("Strict", false, "Strict");
@@ -51,7 +52,6 @@ public class Scaffold extends Module {
     private final BooleanSetting field3101 = new BooleanSetting("Center", true, "Center when towering");
     private final BooleanSetting field3102 = new BooleanSetting("Safe", true, "Prevent walking off edges");
     private final BooleanSetting field3103 = new BooleanSetting("KeepY", false, "Maintain placement Y level");
-    public final BindSetting field3104 = new BindSetting("Down", Bind.fromKey(342), "Keybind to go down");
     private final List<Block> field3105 = Arrays.asList(
             Blocks.ANVIL,
             Blocks.AIR,
@@ -103,17 +103,21 @@ public class Scaffold extends Module {
             Blocks.YELLOW_SHULKER_BOX,
             Blocks.REDSTONE_WIRE
     );
-    private int field3106;
     private final dev.boze.client.utils.Timer field3107 = new dev.boze.client.utils.Timer();
-    private boolean field3108;
     private final dev.boze.client.utils.Timer field3109 = new dev.boze.client.utils.Timer();
-    private BlockInteraction field3110;
     private final ArrayList<Placement> field3111 = new ArrayList();
     public boolean field3112 = false;
+    private int field3106;
+    private boolean field3108;
+    private BlockInteraction field3110;
 
     public Scaffold() {
         super("Scaffold", "Places blocks under you", Category.Misc);
         this.addSettings(this.field3088);
+    }
+
+    private static boolean lambda$onRotate$0(Placement var0) {
+        return System.currentTimeMillis() - var0.method1159() > (long) PlaceRender.method2010();
     }
 
     @EventHandler
@@ -391,9 +395,5 @@ public class Scaffold extends Module {
         }
 
         return var15;
-    }
-
-    private static boolean lambda$onRotate$0(Placement var0) {
-        return System.currentTimeMillis() - var0.method1159() > (long) PlaceRender.method2010();
     }
 }

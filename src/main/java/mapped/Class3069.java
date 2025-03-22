@@ -30,10 +30,14 @@ import org.apache.commons.lang3.mutable.MutableInt;
 import org.joml.Vector3d;
 
 public class Class3069 {
-    private static MinecraftClient field161;
     private static final Vec3d field162;
+    private static MinecraftClient field161;
     private static Explosion field163;
     private static RaycastContext field164;
+
+    static {
+        field162 = new Vec3d(0.0, 0.0, 0.0);
+    }
 
     public Class3069() {
         super();
@@ -183,9 +187,5 @@ public class Class3069 {
 
     private static void lambda$getProtectionAmount$0(final MutableInt mutableInt, final ItemStack stack) {
         mutableInt.add(method6011(stack));
-    }
-
-    static {
-        field162 = new Vec3d(0.0, 0.0, 0.0);
     }
 }

@@ -26,8 +26,8 @@ import net.minecraft.client.gui.DrawContext;
 import java.util.ArrayList;
 
 public class NewColorComponent extends ScaledBaseComponent {
-    public static StaticColor field1488 = null;
     private static final double field1489 = 6.0;
+    public static StaticColor field1488 = null;
     private final ArrayList<InputBaseComponent> field1490 = new ArrayList();
 
     public NewColorComponent(String colorName, StaticColor color, ScaledBaseComponent previousPopup, Class2775 saveCallback) {
@@ -134,6 +134,17 @@ public class NewColorComponent extends ScaledBaseComponent {
         this(colorName, color, previousPopup, arg_0 -> NewColorComponent.lambda$new$1(previousPopup, colorName, arg_0));
     }
 
+    private static void lambda$new$1(ScaledBaseComponent scaledBaseComponent, String string, StaticColor staticColor) {
+        if (scaledBaseComponent instanceof BottomRowScaledComponent bottomRowScaledComponent) {
+            ClickGUI.field1335.method580(bottomRowScaledComponent);
+            bottomRowScaledComponent.method635(() -> NewColorComponent.lambda$new$0(string, staticColor));
+        }
+    }
+
+    private static void lambda$new$0(String string, StaticColor staticColor) {
+        Colors.INSTANCE.field2343.put(string, staticColor);
+    }
+
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
@@ -203,16 +214,5 @@ public class NewColorComponent extends ScaledBaseComponent {
 
             return true;
         }
-    }
-
-    private static void lambda$new$1(ScaledBaseComponent scaledBaseComponent, String string, StaticColor staticColor) {
-        if (scaledBaseComponent instanceof BottomRowScaledComponent bottomRowScaledComponent) {
-            ClickGUI.field1335.method580(bottomRowScaledComponent);
-            bottomRowScaledComponent.method635(() -> NewColorComponent.lambda$new$0(string, staticColor));
-        }
-    }
-
-    private static void lambda$new$0(String string, StaticColor staticColor) {
-        Colors.INSTANCE.field2343.put(string, staticColor);
     }
 }

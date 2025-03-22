@@ -29,6 +29,81 @@ public class ConfigResetCommand extends Command {
         super("reset", "Reset", "Resets your Boze config");
     }
 
+    private static int lambda$build$5(CommandContext var0) throws CommandSyntaxException {
+        Class2782.field95 = -1.0;
+        Class2782.field96 = -1.0;
+        Class2782.field94 = true;
+        ClickGUI.field1335.init();
+        return 1;
+    }
+
+    private static int lambda$build$4(CommandContext var0) throws CommandSyntaxException {
+        for (Setting var5 : Gui.INSTANCE.method1144()) {
+            var5.resetValue();
+            var5.setExpanded(false);
+        }
+
+        for (Setting var10 : Theme.INSTANCE.method1144()) {
+            var10.resetValue();
+            var10.setExpanded(false);
+        }
+
+        for (Category var7 : Category.values()) {
+            var7.extended = true;
+            var7.field42 = -1.0;
+            var7.field43 = -1.0;
+            var7.locked = true;
+        }
+
+        Class2782.field95 = -1.0;
+        Class2782.field96 = -1.0;
+        Class2782.field94 = true;
+        ClickGUI.field1335.init();
+        return 1;
+    }
+
+    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
+        for (Module var5 : Boze.getModules().modules) {
+            var5.setVisibility(true);
+        }
+
+        return 1;
+    }
+
+    private static int lambda$build$2(CommandContext var0) throws CommandSyntaxException {
+        for (Module var5 : Boze.getModules().modules) {
+            var5.field433 = false;
+
+            for (Setting var7 : var5.method1144()) {
+                var7.descriptionSeen = false;
+            }
+        }
+
+        return 1;
+    }
+
+    private static int lambda$build$1(CommandContext var0) throws CommandSyntaxException {
+        for (Module var5 : Boze.getModules().modules) {
+            if (var5 == Gui.INSTANCE) {
+                var5.bind.set(true, 344);
+            } else if (var5 == HUD.INSTANCE) {
+                var5.bind.set(true, 259);
+            } else {
+                var5.bind.set(Bind.create());
+            }
+        }
+
+        return 1;
+    }
+
+    private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
+        for (Module var5 : Boze.getModules().modules) {
+            var5.setName(var5.internalName);
+        }
+
+        return 1;
+    }
+
     @Override
     public void method621(LiteralArgumentBuilder<CommandSource> builder) {
         builder.then(method403("titles").executes(ConfigResetCommand::lambda$build$0));
@@ -129,81 +204,6 @@ public class ConfigResetCommand extends Command {
     private int lambda$build$6(CommandContext var1) throws CommandSyntaxException {
         Module var4 = ModuleArgument.method1004(var1, "module");
         this.method396(var4);
-        return 1;
-    }
-
-    private static int lambda$build$5(CommandContext var0) throws CommandSyntaxException {
-        Class2782.field95 = -1.0;
-        Class2782.field96 = -1.0;
-        Class2782.field94 = true;
-        ClickGUI.field1335.init();
-        return 1;
-    }
-
-    private static int lambda$build$4(CommandContext var0) throws CommandSyntaxException {
-        for (Setting var5 : Gui.INSTANCE.method1144()) {
-            var5.resetValue();
-            var5.setExpanded(false);
-        }
-
-        for (Setting var10 : Theme.INSTANCE.method1144()) {
-            var10.resetValue();
-            var10.setExpanded(false);
-        }
-
-        for (Category var7 : Category.values()) {
-            var7.extended = true;
-            var7.field42 = -1.0;
-            var7.field43 = -1.0;
-            var7.locked = true;
-        }
-
-        Class2782.field95 = -1.0;
-        Class2782.field96 = -1.0;
-        Class2782.field94 = true;
-        ClickGUI.field1335.init();
-        return 1;
-    }
-
-    private static int lambda$build$3(CommandContext var0) throws CommandSyntaxException {
-        for (Module var5 : Boze.getModules().modules) {
-            var5.setVisibility(true);
-        }
-
-        return 1;
-    }
-
-    private static int lambda$build$2(CommandContext var0) throws CommandSyntaxException {
-        for (Module var5 : Boze.getModules().modules) {
-            var5.field433 = false;
-
-            for (Setting var7 : var5.method1144()) {
-                var7.descriptionSeen = false;
-            }
-        }
-
-        return 1;
-    }
-
-    private static int lambda$build$1(CommandContext var0) throws CommandSyntaxException {
-        for (Module var5 : Boze.getModules().modules) {
-            if (var5 == Gui.INSTANCE) {
-                var5.bind.set(true, 344);
-            } else if (var5 == HUD.INSTANCE) {
-                var5.bind.set(true, 259);
-            } else {
-                var5.bind.set(Bind.create());
-            }
-        }
-
-        return 1;
-    }
-
-    private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
-        for (Module var5 : Boze.getModules().modules) {
-            var5.setName(var5.internalName);
-        }
-
         return 1;
     }
 }

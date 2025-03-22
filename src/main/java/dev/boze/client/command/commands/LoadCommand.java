@@ -30,6 +30,10 @@ public class LoadCommand extends Command {
         super("load", "Load", "Load shared configs/profiles");
     }
 
+    private static Message lambda$static$0(Object var0) {
+        return Text.literal("Code " + var0 + " is not 10 characters long.");
+    }
+
     @Override
     public void method621(LiteralArgumentBuilder<CommandSource> builder) {
         builder.then(method402("code", StringArgumentType.string()).executes(this::lambda$build$1));
@@ -207,9 +211,5 @@ public class LoadCommand extends Command {
                 return 1;
             }
         }
-    }
-
-    private static Message lambda$static$0(Object var0) {
-        return Text.literal("Code " + var0 + " is not 10 characters long.");
     }
 }

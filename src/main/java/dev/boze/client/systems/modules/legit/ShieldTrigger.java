@@ -26,6 +26,10 @@ public class ShieldTrigger extends Module {
         super("ShieldTrigger", "Automatically swaps to axe when hitting a shielded player", Category.Legit);
     }
 
+    private static boolean lambda$onAttackEntityPre$0(ItemStack var0) {
+        return var0.getItem() instanceof AxeItem;
+    }
+
     @Override
     public void onEnable() {
         this.field2825 = -1;
@@ -52,9 +56,5 @@ public class ShieldTrigger extends Module {
                 }
             }
         }
-    }
-
-    private static boolean lambda$onAttackEntityPre$0(ItemStack var0) {
-        return var0.getItem() instanceof AxeItem;
     }
 }

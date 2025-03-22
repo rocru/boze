@@ -28,6 +28,13 @@ public class Class5919 implements IMinecraft {
     private static final BlockPos.Mutable field10;
     private static final Vec3d field11;
     private static final Vec3d field12;
+
+    static {
+        field10 = new BlockPos.Mutable();
+        field11 = new Vec3d(0.0, 0.0, 0.0);
+        field12 = new Vec3d(0.0, 0.0, 0.0);
+    }
+
     public final Vector3d field13;
     private final Vector3d field14;
     private double field15;
@@ -38,6 +45,10 @@ public class Class5919 implements IMinecraft {
         super();
         this.field13 = new Vector3d();
         this.field14 = new Vector3d();
+    }
+
+    private static boolean lambda$getCollision$0(final Entity entity) {
+        return !entity.isSpectator() && entity.isAlive() && entity.canHit();
     }
 
     public boolean method44(final Entity user, final ItemStack itemStack, final double simulated, final double tickDelta) {
@@ -188,15 +199,5 @@ public class Class5919 implements IMinecraft {
             raycast = entityCollision;
         }
         return (HitResult) raycast;
-    }
-
-    private static boolean lambda$getCollision$0(final Entity entity) {
-        return !entity.isSpectator() && entity.isAlive() && entity.canHit();
-    }
-
-    static {
-        field10 = new BlockPos.Mutable();
-        field11 = new Vec3d(0.0, 0.0, 0.0);
-        field12 = new Vec3d(0.0, 0.0, 0.0);
     }
 }

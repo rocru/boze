@@ -14,14 +14,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({BlockEntityRenderDispatcher.class})
+@Mixin(BlockEntityRenderDispatcher.class)
 public class BlockEntityRenderDispatcherMixin {
     @Shadow
     private static <T extends BlockEntity> void render(BlockEntityRenderer<T> var0, T var1, float var2, MatrixStack var3, VertexConsumerProvider var4) {
     }
 
     /*@Redirect(
-       method = {"render"},
+       method = "render",
        at = @At(
           value = "INVOKE",
           target = "Lnet/minecraft/client/render/block/entity/BlockEntityRenderDispatcher;render(Lnet/minecraft/client/render/block/entity/BlockEntityRenderer;Lnet/minecraft/block/entity/BlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;)V"
@@ -34,8 +34,8 @@ public class BlockEntityRenderDispatcherMixin {
     }
 
     @Inject(
-            method = {"render(Lnet/minecraft/client/render/block/entity/BlockEntityRenderer;Lnet/minecraft/block/entity/BlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;)V"},
-            at = {@At("RETURN")}
+            method = "render(Lnet/minecraft/client/render/block/entity/BlockEntityRenderer;Lnet/minecraft/block/entity/BlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;)V",
+            at = @At("RETURN")
     )
     private static <T extends BlockEntity> void render(
             BlockEntityRenderer<T> var0, T var1, float var2, MatrixStack var3, VertexConsumerProvider var4, CallbackInfo var5

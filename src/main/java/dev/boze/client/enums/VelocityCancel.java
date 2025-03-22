@@ -10,13 +10,13 @@ public enum VelocityCancel {
 
     private static final VelocityCancel[] field1791 = method902();
 
+    private static VelocityCancel[] method902() {
+        return new VelocityCancel[]{Off, Always, InBlocks};
+    }
+
     public boolean method2114() {
         return Velocity.INSTANCE.method1892()
                 && (this == Always || this == InBlocks && !IMinecraft.mc.world.isSpaceEmpty(IMinecraft.mc.player.getBoundingBox()))
                 && Velocity.INSTANCE.method1895();
-    }
-
-    private static VelocityCancel[] method902() {
-        return new VelocityCancel[]{Off, Always, InBlocks};
     }
 }

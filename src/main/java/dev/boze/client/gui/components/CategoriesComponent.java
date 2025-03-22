@@ -10,8 +10,8 @@ import net.minecraft.client.gui.DrawContext;
 import java.util.ArrayList;
 
 public class CategoriesComponent extends BaseComponent implements IMinecraft {
-    Category field348 = Category.Combat;
     private final ArrayList<BaseComponent> field349 = new ArrayList();
+    Category field348 = Category.Combat;
 
     public CategoriesComponent(BaseComponent parent, double x, double y, double width, double height) {
         super("Categories", parent, x, y, width, height);

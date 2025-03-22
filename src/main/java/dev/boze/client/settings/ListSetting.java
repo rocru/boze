@@ -32,6 +32,12 @@ public class ListSetting extends Setting<ArrayList<String>> {
         this.field953 = value;
     }
 
+    private static void lambda$addValueToTag$0(NbtList var0, String var1) {
+        if (!var0.contains(NbtString.of(var1))) {
+            var0.add(NbtString.of(var1));
+        }
+    }
+
     @Override
     public ArrayList<String> getValue() {
         return this.field953;
@@ -66,23 +72,6 @@ public class ListSetting extends Setting<ArrayList<String>> {
         return tag;
     }
 
-    @Override
-    public ArrayList<String> load(NbtCompound tag) {
-        if (tag.contains("Files")) {
-            NbtList var5 = tag.getList("Files", 8);
-            this.field953.clear();
-
-            for (NbtElement var7 : var5) {
-                if (var7 instanceof NbtString) {
-                    this.field954 = true;
-                    this.field953.add(var7.asString());
-                }
-            }
-        }
-
-        return this.field953;
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     // @Override
@@ -111,9 +100,20 @@ public class ListSetting extends Setting<ArrayList<String>> {
     //   return this.method2120();
     //}
 
-    private static void lambda$addValueToTag$0(NbtList var0, String var1) {
-        if (!var0.contains(NbtString.of(var1))) {
-            var0.add(NbtString.of(var1));
+    @Override
+    public ArrayList<String> load(NbtCompound tag) {
+        if (tag.contains("Files")) {
+            NbtList var5 = tag.getList("Files", 8);
+            this.field953.clear();
+
+            for (NbtElement var7 : var5) {
+                if (var7 instanceof NbtString) {
+                    this.field954 = true;
+                    this.field953.add(var7.asString());
+                }
+            }
         }
+
+        return this.field953;
     }
 }

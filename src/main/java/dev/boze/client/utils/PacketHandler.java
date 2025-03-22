@@ -13,8 +13,8 @@ import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
 import net.minecraft.network.packet.s2c.play.UpdateSelectedSlotS2CPacket;
 
 public class PacketHandler implements IMinecraft {
-    public int field1616 = -1;
     public final Timer field1617 = new Timer();
+    public int field1616 = -1;
 
     @EventHandler
     public void method1853(PrePacketSendEvent event) {

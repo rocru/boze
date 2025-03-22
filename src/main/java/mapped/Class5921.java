@@ -18,6 +18,13 @@ public class Class5921 implements IMinecraft {
     private static final HashMap<Integer, Vector3d> field20;
     public static double field21;
 
+    static {
+        field18 = new Vector3d(0.0, 0.0, 0.0);
+        field19 = new Class3064<Vector3d>(Vector3d::new);
+        field20 = new HashMap<Integer, Vector3d>();
+        Class5921.field21 = 0.0784;
+    }
+
     public Class5921() {
         super();
     }
@@ -91,12 +98,5 @@ public class Class5921 implements IMinecraft {
             n2 -= Class5921.field21;
         }
         return vec.set(n4, n5, n6);
-    }
-
-    static {
-        field18 = new Vector3d(0.0, 0.0, 0.0);
-        field19 = new Class3064<Vector3d>(Vector3d::new);
-        field20 = new HashMap<Integer, Vector3d>();
-        Class5921.field21 = 0.0784;
     }
 }

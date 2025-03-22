@@ -8,11 +8,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({GameOptions.class})
+@Mixin(GameOptions.class)
 public class GameOptionsMixin {
     @Inject(
-            method = {"setPerspective"},
-            at = {@At("HEAD")},
+            method = "setPerspective",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void setPerspective(Perspective var1, CallbackInfo var2) {

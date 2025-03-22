@@ -8,7 +8,7 @@ import net.minecraft.entity.player.BlockBreakingInfo;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-@Mixin({WorldRenderer.class})
+@Mixin(WorldRenderer.class)
 public interface WorldRendererAccessor {
     @Accessor("blockBreakingInfos")
     Int2ObjectMap<BlockBreakingInfo> getBlockBreakingInfos();

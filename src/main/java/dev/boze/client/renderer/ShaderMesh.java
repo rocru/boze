@@ -3,8 +3,8 @@ package dev.boze.client.renderer;
 import dev.boze.client.shaders.ShaderProgram;
 
 public class ShaderMesh extends Mesh {
-    protected final ShaderProgram field2175;
     private static long field2176 = System.currentTimeMillis();
+    protected final ShaderProgram field2175;
 
     public ShaderMesh(ShaderProgram shader, DrawMode drawMode, Attrib... attributes) {
         super(drawMode, attributes);

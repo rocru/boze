@@ -23,9 +23,9 @@ public class Spammer extends Module {
     private final BooleanSetting field3125 = new BooleanSetting("Random", false, "Send messages in random order");
     private final BooleanSetting field3126 = new BooleanSetting("Numbers", false, "Append random numbers to the end of messages");
     private final ArrayList<String> field3127 = new ArrayList();
-    private int field3128 = 0;
     private final dev.boze.client.utils.Timer field3129 = new dev.boze.client.utils.Timer();
     private final Random field3130 = new Random();
+    private int field3128 = 0;
 
     public Spammer() {
         super("Spammer", "Spams messages in chat", Category.Misc);

@@ -47,9 +47,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
 
 public class AuraGhost extends GhostModule {
+    public final BooleanSetting field2462 = new BooleanSetting("Render", true, "Render target");
     private final Aura field2460;
     private final ClickManager field2461;
-    public final BooleanSetting field2462 = new BooleanSetting("Render", true, "Render target");
     private final ColorSetting field2463 = new ColorSetting("Color", new BozeDrawColor(1691624484), "Color for fill", this.field2462);
     private final ColorSetting field2464 = new ColorSetting("Outline", new BozeDrawColor(-2874332), "Color for outline", this.field2462);
     private final BooleanSetting field2465 = new BooleanSetting("InInventory", false, "Track and attack players while in inventory");
@@ -93,15 +93,33 @@ public class AuraGhost extends GhostModule {
     private final BooleanSetting field2493 = new BooleanSetting("Animals", false, "Target animals", this.field2490);
     private final BooleanSetting field2494 = new BooleanSetting("Monsters", false, "Target monsters", this.field2490);
     private final BooleanSetting field2495 = new BooleanSetting("Fireballs", false, "Target fireballs", this.field2490);
+    private final Timer field2499 = new Timer();
     private CopyOnWriteArrayList<Pair<Entity, Vec3d>> field2496 = new CopyOnWriteArrayList();
     private boolean field2497 = false;
     private Entity field2498 = null;
-    private final Timer field2499 = new Timer();
     private final Comparator<Pair<Entity, Vec3d>> field2500 = Comparator.comparing(this::lambda$new$1);
 
     public AuraGhost(Aura aura) {
         this.field2460 = aura;
         this.field2461 = new ClickManager(this.field2478, this.field2479, this.field2480);
+    }
+
+    private static Entity lambda$allAttackedLivingEntities$10(Pair<Entity, Vec3d> var0) {
+        return var0.getLeft();
+    }
+
+    private static boolean lambda$onInteract$9(Pair<Entity, Vec3d> var0) {
+        return var0.getLeft() instanceof LivingEntity
+                && ((LivingEntity) var0.getLeft()).isBlocking()
+                && ((LivingEntity) var0.getLeft()).blockedByShield(var0.getLeft().getDamageSources().playerAttack(mc.player));
+    }
+
+    private static Boolean lambda$onRotate$3(Pair<Entity, Vec3d> var0) {
+        return !(var0.getLeft() instanceof LivingEntity) || ((LivingEntity) var0.getLeft()).isDead();
+    }
+
+    private static boolean lambda$onRotate$2(Entity var0, Pair<Entity, Vec3d> var1) {
+        return var1.getLeft() == var0;
     }
 
     public void method1415() {
@@ -453,16 +471,6 @@ public class AuraGhost extends GhostModule {
         }
     }
 
-    private static Entity lambda$allAttackedLivingEntities$10(Pair<Entity, Vec3d> var0) {
-        return var0.getLeft();
-    }
-
-    private static boolean lambda$onInteract$9(Pair<Entity, Vec3d> var0) {
-        return var0.getLeft() instanceof LivingEntity
-                && ((LivingEntity) var0.getLeft()).isBlocking()
-                && ((LivingEntity) var0.getLeft()).blockedByShield(var0.getLeft().getDamageSources().playerAttack(mc.player));
-    }
-
     private void lambda$onInteract$8(ArrayList<Pair<Entity, Vec3d>> var1, Pair<Entity, Vec3d> var2) {
         Entity var6 = var2.getLeft();
         Vec3d var7 = var2.getRight();
@@ -509,14 +517,6 @@ public class AuraGhost extends GhostModule {
 
     private Boolean lambda$onRotate$4(Pair<Entity, Vec3d> var1) {
         return !this.method1425(var1.getLeft());
-    }
-
-    private static Boolean lambda$onRotate$3(Pair<Entity, Vec3d> var0) {
-        return !(var0.getLeft() instanceof LivingEntity) || ((LivingEntity) var0.getLeft()).isDead();
-    }
-
-    private static boolean lambda$onRotate$2(Entity var0, Pair<Entity, Vec3d> var1) {
-        return var1.getLeft() == var0;
     }
 
     private Double lambda$new$1(Pair<?, ?> pair) {

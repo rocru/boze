@@ -25,14 +25,14 @@ import net.minecraft.util.math.Vec3d;
 
 public class FreeCam extends Module {
     public static final FreeCam INSTANCE = new FreeCam();
+    public final EnumSetting<FreeCamInteract> field3535 = new EnumSetting<FreeCamInteract>("Interact", FreeCamInteract.Dynamic, "Interact");
+    public final BindSetting field3536 = new BindSetting("Control", Bind.fromKey(342), "Control the player while in freecam");
     private final BooleanSetting field3529 = new BooleanSetting("Rotate", true, "Rotate");
     private final MinMaxSetting field3530 = new MinMaxSetting("Speed", 1.0, 0.1, 10.0, 0.1, "Horizontal camera speed");
     private final MinMaxSetting field3531 = new MinMaxSetting("VSpeed", 1.0, 0.1, 10.0, 0.1, "Vertical camera speed");
     private final BooleanSetting field3532 = new BooleanSetting("ScrollSpeed", false, "Change speed by scrolling");
     private final MinMaxSetting field3533 = new MinMaxSetting("Sensitivity", 0.1, 0.01, 1.0, 0.01, "Scroll sensitivity", this.field3532);
     private final BooleanSetting field3534 = new BooleanSetting("Vertical", true, "Scroll up and down to change vertical speed", this.field3532);
-    public final EnumSetting<FreeCamInteract> field3535 = new EnumSetting<FreeCamInteract>("Interact", FreeCamInteract.Dynamic, "Interact");
-    public final BindSetting field3536 = new BindSetting("Control", Bind.fromKey(342), "Control the player while in freecam");
     private final BooleanSetting field3537 = new BooleanSetting("LockOn", false, "Always look at the player");
     private final BooleanSetting field3538 = new BooleanSetting("Follow", false, "Follow the player");
     private final BooleanSetting field3539 = new BooleanSetting("SoftReload", true, "Soft reload the world");

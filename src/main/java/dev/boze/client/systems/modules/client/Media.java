@@ -9,9 +9,9 @@ import java.util.Locale;
 
 public class Media extends Module {
     public static final Media INSTANCE = new Media();
-    private final BooleanSetting field2401 = new BooleanSetting("NameProtect", true, "Hide player's names in nametags");
     public final BooleanSetting field2402 = new BooleanSetting("SkinProtect", true, "Hide player's skins");
     public final ProtectedNamesSetting field2403 = new ProtectedNamesSetting("Usernames", "Protected names/skins");
+    private final BooleanSetting field2401 = new BooleanSetting("NameProtect", true, "Hide player's names in nametags");
 
     private Media() {
         super("Media", "Hide players' names/skins", Category.Client);

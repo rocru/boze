@@ -19,6 +19,8 @@ import net.minecraft.util.Hand;
 
 public class AutoEat extends Module {
     public static final AutoEat INSTANCE = new AutoEat();
+    private final BooleanSetting pauseBaritone = new BooleanSetting("PauseBaritone", false, "Pause baritone while eating");
+    private final BooleanSetting pauseAura = new BooleanSetting("PauseAura", false, "Pause aura while eating");
     public FloatSetting delay = new FloatSetting("Delay", 5.0F, 0.0F, 10.0F, 1.0F, "Delay");
     public BooleanSetting preferGap = new BooleanSetting("PreferGaps", true, "Prefer golden apples");
     public BooleanSetting eatChorus = new BooleanSetting("EatChorus", false, "Eat chorus");
@@ -26,11 +28,9 @@ public class AutoEat extends Module {
     public FloatSetting hunger = new FloatSetting("Hunger", 19.0F, 0.0F, 19.0F, 1.0F, "Hunger");
     public BooleanSetting autoSwap = new BooleanSetting("AutoSwap", true, "Automatic swapping");
     public FloatSetting swapDelay = new FloatSetting("SwapDelay", 5.0F, 0.0F, 10.0F, 1.0F, "Swap Delay", this.autoSwap);
-    private final BooleanSetting pauseBaritone = new BooleanSetting("PauseBaritone", false, "Pause baritone while eating");
-    private final BooleanSetting pauseAura = new BooleanSetting("PauseAura", false, "Pause aura while eating");
-    private dev.boze.client.utils.Timer timer = new dev.boze.client.utils.Timer();
     //private dev.boze.client.utils.Timer timer = new dev.boze.client.utils.Timer();
     public boolean field2887;
+    private dev.boze.client.utils.Timer timer = new dev.boze.client.utils.Timer();
     private boolean field2888;
     private boolean field2889;
 
@@ -40,6 +40,10 @@ public class AutoEat extends Module {
         this.field2887 = false;
         this.field2888 = false;
         this.field2889 = false;
+    }
+
+    public static boolean method1663() {
+        return INSTANCE.isEnabled() && INSTANCE.pauseAura.getValue() && INSTANCE.method1664() && INSTANCE.method1665() != -1;
     }
 
     @EventHandler
@@ -111,10 +115,6 @@ public class AutoEat extends Module {
         if (this.field2887) {
             event.method1020();
         }
-    }
-
-    public static boolean method1663() {
-        return INSTANCE.isEnabled() && INSTANCE.pauseAura.getValue() && INSTANCE.method1664() && INSTANCE.method1665() != -1;
     }
 
     public boolean method1664() {

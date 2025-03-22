@@ -32,11 +32,11 @@ import net.minecraft.util.Hand;
 
 public class AutoMend extends Module {
     public static final AutoMend INSTANCE = new AutoMend();
+    public final BooleanSetting mendRemove = new BooleanSetting("MendRemove", true, "Remove armor when mending using AutoArmor");
     private final EnumSetting<AnticheatMode> interactionMode = new EnumSetting<AnticheatMode>("Mode", AnticheatMode.NCP, "Interaction mode");
     private final BooleanSetting swing = new BooleanSetting("Swing", true, "Swing");
     private final EnumSetting<SwapMode> swapMode = new EnumSetting<SwapMode>("Swap", SwapMode.Silent, "Auto swap mode");
     private final IntSetting delay = new IntSetting("Delay", 1, 0, 4, 1, "Delay for throwing XP");
-    public final BooleanSetting mendRemove = new BooleanSetting("MendRemove", true, "Remove armor when mending using AutoArmor");
     private final BooleanSetting damageDisable = new BooleanSetting("DamageDisable", true, "Disable on damage");
     private final BooleanSetting crystalDisable = new BooleanSetting("CrystalDisable", true, "Disable when crystals placed nearby");
     private float field684;
@@ -44,6 +44,10 @@ public class AutoMend extends Module {
 
     public AutoMend() {
         super("AutoMend", "Automatically mends your armor", Category.Combat);
+    }
+
+    private static boolean lambda$getSlot$0(ItemStack var0) {
+        return var0.getItem() == Items.EXPERIENCE_BOTTLE;
     }
 
     @Override
@@ -163,9 +167,5 @@ public class AutoMend extends Module {
 
             this.field684 = var5;
         }
-    }
-
-    private static boolean lambda$getSlot$0(ItemStack var0) {
-        return var0.getItem() == Items.EXPERIENCE_BOTTLE;
     }
 }

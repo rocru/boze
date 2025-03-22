@@ -39,6 +39,14 @@ public class Class5923 implements IMinecraft {
     private static BozeDrawColor field40;
     private static ShapeMode field41;
 
+    static {
+        field31 = new MatrixStack();
+        field32 = new Vector4f();
+        field33 = new Vector4f();
+        field34 = new Vector4f();
+        field35 = new Vector4f();
+    }
+
     public Class5923() {
         super();
     }
@@ -62,7 +70,7 @@ public class Class5923 implements IMinecraft {
                 if (armPose.isTwoHanded()) {
                     armPose2 = (entity.getOffHandStack().isEmpty() ? BipedEntityModel.ArmPose.EMPTY : BipedEntityModel.ArmPose.ITEM);
                 }
-                if (((LivingEntity) entity).getMainArm() == Arm.RIGHT) {
+                if (entity.getMainArm() == Arm.RIGHT) {
                     playerEntityModel.rightArmPose = armPose;
                     playerEntityModel.leftArmPose = armPose2;
                 } else {
@@ -507,13 +515,5 @@ public class Class5923 implements IMinecraft {
 
     private static void lambda$render$0(final Renderer3D renderer3D, final Object o) {
         method70(renderer3D, (ModelPart) o);
-    }
-
-    static {
-        field31 = new MatrixStack();
-        field32 = new Vector4f();
-        field33 = new Vector4f();
-        field34 = new Vector4f();
-        field35 = new Vector4f();
     }
 }

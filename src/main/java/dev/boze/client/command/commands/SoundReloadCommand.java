@@ -11,13 +11,13 @@ public class SoundReloadCommand extends Command {
         super("reloadsounds", "ReloadSounds", "Reloads sound system");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.executes(SoundReloadCommand::lambda$build$0);
-    }
-
     private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
         mc.getSoundManager().reloadSounds();
         return 1;
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.executes(SoundReloadCommand::lambda$build$0);
     }
 }

@@ -26,6 +26,9 @@ public class Octopus extends Module {
     private final BindSetting field3011 = new BindSetting("Slot6", Bind.create(), "Key to left click 6th slot", this.leftClick);
     private final BindSetting field3012 = new BindSetting("Slot7", Bind.create(), "Key to left click 7th slot", this.leftClick);
     private final BindSetting field3013 = new BindSetting("Slot8", Bind.create(), "Key to left click 8th slot", this.leftClick);
+    private final BindSetting[] field3025 = new BindSetting[]{
+            this.field3005, this.field3006, this.field3007, this.field3008, this.field3009, this.field3010, this.field3011, this.field3012, this.field3013
+    };
     private final BooleanSetting field3014 = new BooleanSetting("RightClick", true, "Right click");
     private final BooleanSetting field3015 = new BooleanSetting("MultiTask", false, "Right click while using items", this.field3014);
     private final BindSetting field3016 = new BindSetting("Slot0", Bind.create(), "Key to right click 0th slot", this.field3014);
@@ -37,9 +40,6 @@ public class Octopus extends Module {
     private final BindSetting field3022 = new BindSetting("Slot6", Bind.create(), "Key to right click 6th slot", this.field3014);
     private final BindSetting field3023 = new BindSetting("Slot7", Bind.create(), "Key to right click 7th slot", this.field3014);
     private final BindSetting field3024 = new BindSetting("Slot8", Bind.create(), "Key to right click 8th slot", this.field3014);
-    private final BindSetting[] field3025 = new BindSetting[]{
-            this.field3005, this.field3006, this.field3007, this.field3008, this.field3009, this.field3010, this.field3011, this.field3012, this.field3013
-    };
     private final BindSetting[] field3026 = new BindSetting[]{
             this.field3016, this.field3017, this.field3018, this.field3019, this.field3020, this.field3021, this.field3022, this.field3023, this.field3024
     };

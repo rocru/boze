@@ -18,13 +18,13 @@ import net.minecraft.util.math.Vec3d;
 
 public class PlaceAction {
     private static final MinecraftClient field3918 = MinecraftClient.getInstance();
+    private final float field3922;
+    private final boolean field3924;
+    private final boolean field3925;
     private BlockPos field3919;
     private Direction field3920;
     private float field3921;
-    private final float field3922;
     private Hand field3923;
-    private final boolean field3924;
-    private final boolean field3925;
     private int field3926;
     private boolean field3927;
     private PlaceInteraction field3928 = null;

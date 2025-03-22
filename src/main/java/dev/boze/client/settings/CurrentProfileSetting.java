@@ -23,8 +23,8 @@ import java.util.Locale;
 public class CurrentProfileSetting extends Setting<String> implements IMinecraft {
     public final HashSet<String> field968;
     public final String field969;
-    private String field970;
     private final String field971;
+    private String field970;
 
     public CurrentProfileSetting(HashSet<String> list, String prefix, String name, String value, String description) {
         super(name, description);
@@ -32,6 +32,10 @@ public class CurrentProfileSetting extends Setting<String> implements IMinecraft
         this.field971 = value;
         this.field968 = list;
         this.field969 = prefix;
+    }
+
+    private static void lambda$build$4(String string) {
+        ConfigManager.delete(string, ConfigType.PROFILE);
     }
 
     @Override
@@ -77,11 +81,6 @@ public class CurrentProfileSetting extends Setting<String> implements IMinecraft
         return tag;
     }
 
-    @Override
-    public String load(NbtCompound tag) {
-        return this.field970;
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     //@Override
@@ -109,6 +108,11 @@ public class CurrentProfileSetting extends Setting<String> implements IMinecraft
     //public Object getValue() {
     //   return this.method1322();
     //}
+
+    @Override
+    public String load(NbtCompound tag) {
+        return this.field970;
+    }
 
     private int lambda$build$7(CommandContext commandContext) throws CommandSyntaxException {
         String string = ProfileListArgument.method1014(commandContext, "profile");
@@ -154,10 +158,6 @@ public class CurrentProfileSetting extends Setting<String> implements IMinecraft
             this.method1337("Profile (highlight)" + string + "(default) doesn't exist");
         }
         return 1;
-    }
-
-    private static void lambda$build$4(String string) {
-        ConfigManager.delete(string, ConfigType.PROFILE);
     }
 
     private int lambda$build$3(CommandContext commandContext) throws CommandSyntaxException {

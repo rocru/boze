@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-@Mixin({ExplosionS2CPacket.class})
+@Mixin(ExplosionS2CPacket.class)
 public interface ExplosionS2CPacketAccessor {
     @Accessor
     float getPlayerVelocityX();

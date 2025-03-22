@@ -22,6 +22,10 @@ public class PlacementRenderer implements SettingsGroup {
     public final SettingBlock field224 = new SettingBlock("Renderer", "Placement renderer settings", this.field221, this.field222, this.field223);
     private final ArrayList<Placement> field225 = new ArrayList();
 
+    private static boolean lambda$onSendMovementPackets$0(Placement var0) {
+        return System.currentTimeMillis() - var0.method1159() > (long) PlaceRender.method2010();
+    }
+
     @Override
     public Setting<?>[] get() {
         return this.field224.method472();
@@ -45,9 +49,5 @@ public class PlacementRenderer implements SettingsGroup {
         if (this.field221.getValue()) {
             this.field225.add(PlaceRender.INSTANCE.method2017(result.getBlockPos().offset(result.getSide())));
         }
-    }
-
-    private static boolean lambda$onSendMovementPackets$0(Placement var0) {
-        return System.currentTimeMillis() - var0.method1159() > (long) PlaceRender.method2010();
     }
 }

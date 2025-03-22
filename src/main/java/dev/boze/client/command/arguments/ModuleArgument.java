@@ -34,6 +34,10 @@ public class ModuleArgument implements ArgumentType<Module> {
         return context.getArgument(name, Module.class);
     }
 
+    private static Message lambda$static$0(Object var0) {
+        return Text.literal("Module with name " + var0 + " doesn't exist.");
+    }
+
     @Override
     public Module parse(StringReader reader) throws CommandSyntaxException {
         String var5 = reader.readString();
@@ -57,17 +61,13 @@ public class ModuleArgument implements ArgumentType<Module> {
         return CommandSource.suggestMatching(Boze.getModules().method2120(), builder);
     }
 
-    public Collection<String> getExamples() {
-        return field1863;
-    }
-
     // $VF: synthetic method
     // $VF: bridge method
     //public Object parse(StringReader stringReader) throws CommandSyntaxException {
     //   return this.method1005(stringReader);
     //}
 
-    private static Message lambda$static$0(Object var0) {
-        return Text.literal("Module with name " + var0 + " doesn't exist.");
+    public Collection<String> getExamples() {
+        return field1863;
     }
 }

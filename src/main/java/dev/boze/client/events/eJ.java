@@ -4,9 +4,9 @@ import dev.boze.client.utils.RotationHelper;
 
 public class eJ {
     public static final eJ field1960 = new eJ();
+    public boolean field1963 = false;
     private RotationHelper field1961;
     private boolean field1962 = false;
-    public boolean field1963 = false;
 
     public static eJ method1098(RotationHelper rotation) {
         field1960.field1961 = rotation;

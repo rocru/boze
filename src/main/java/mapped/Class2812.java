@@ -22,6 +22,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Class2812 implements IMinecraft {
     public static ConcurrentHashMap<BlockPos, Long> field110;
 
+    static {
+        Class2812.field110 = new ConcurrentHashMap<BlockPos, Long>();
+    }
+
     public Class2812() {
         super();
     }
@@ -189,9 +193,5 @@ public class Class2812 implements IMinecraft {
 
     private static Double lambda$getPlaceDirection$0(final BlockPos blockPos, final Direction direction) {
         return EntityUtil.method2144(Class2812.mc.player).distanceTo(new Vec3d(blockPos.getX() + 0.5, blockPos.getY() + 0.5, blockPos.getZ() + 0.5).add(new Vec3d(direction.getUnitVector()).multiply(0.5)));
-    }
-
-    static {
-        Class2812.field110 = new ConcurrentHashMap<BlockPos, Long>();
     }
 }

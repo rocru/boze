@@ -20,6 +20,14 @@ public class BlockArgument implements ArgumentType<Block> {
         return new BlockArgument();
     }
 
+    public static Block method977(CommandContext<?> context, String name) {
+        return context.getArgument(name, Block.class);
+    }
+
+    private static String lambda$listSuggestions$0(Block var0) {
+        return var0.getName().getString();
+    }
+
     @Override
     public Block parse(StringReader reader) {
         String var2 = reader.getRemaining();
@@ -27,21 +35,9 @@ public class BlockArgument implements ArgumentType<Block> {
         return StringModeSetting.method445(var2);
     }
 
-    public static Block method977(CommandContext<?> context, String name) {
-        return context.getArgument(name, Block.class);
-    }
-
     public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
         return CommandSource.suggestMatching(
                 Registries.BLOCK.stream().map(BlockArgument::lambda$listSuggestions$0).collect(Collectors.toList()), builder
-        );
-    }
-
-    public Collection<String> getExamples() {
-        return Arrays.asList(
-                Registries.BLOCK.get(0).getName().getString(),
-                Registries.BLOCK.get(1).getName().getString(),
-                Registries.BLOCK.get(2).getName().getString()
         );
     }
 
@@ -51,7 +47,11 @@ public class BlockArgument implements ArgumentType<Block> {
     //   return this.method976(stringReader);
     //}
 
-    private static String lambda$listSuggestions$0(Block var0) {
-        return var0.getName().getString();
+    public Collection<String> getExamples() {
+        return Arrays.asList(
+                Registries.BLOCK.get(0).getName().getString(),
+                Registries.BLOCK.get(1).getName().getString(),
+                Registries.BLOCK.get(2).getName().getString()
+        );
     }
 }

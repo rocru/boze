@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(
-        targets = {"com.mojang.blaze3d.platform.GlStateManager$CapabilityTracker"}
+        targets = "com.mojang.blaze3d.platform.GlStateManager$CapabilityTracker"
 )
 public interface CapabilityTrackerAccessor {
     @Accessor("state")

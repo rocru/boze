@@ -24,6 +24,15 @@ public class AirPlace extends Module {
         super("AirPlace", "Place blocks in the air", Category.Misc);
     }
 
+    public static void method393(BlockHitResult blockHitResult, boolean offHand) {
+        Class5913.method16(offHand ? Hand.OFF_HAND : Hand.MAIN_HAND);
+        mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.SWAP_ITEM_WITH_OFFHAND, BlockPos.ORIGIN, Direction.DOWN));
+        Class5913.method17(offHand ? Hand.MAIN_HAND : Hand.OFF_HAND, blockHitResult);
+        mc.player.swingHand(offHand ? Hand.MAIN_HAND : Hand.OFF_HAND);
+        mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.SWAP_ITEM_WITH_OFFHAND, BlockPos.ORIGIN, Direction.DOWN));
+        mc.player.swingHand(offHand ? Hand.OFF_HAND : Hand.MAIN_HAND);
+    }
+
     @EventHandler
     public void method1883(RotationEvent event) {
         if (event.field1284 != RotationMode.Vanilla) {
@@ -58,14 +67,5 @@ public class AirPlace extends Module {
 
     private boolean method392(BlockHitResult var1) {
         return mc.world.getBlockState(var1.getBlockPos()).isAir();
-    }
-
-    public static void method393(BlockHitResult blockHitResult, boolean offHand) {
-        Class5913.method16(offHand ? Hand.OFF_HAND : Hand.MAIN_HAND);
-        mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.SWAP_ITEM_WITH_OFFHAND, BlockPos.ORIGIN, Direction.DOWN));
-        Class5913.method17(offHand ? Hand.MAIN_HAND : Hand.OFF_HAND, blockHitResult);
-        mc.player.swingHand(offHand ? Hand.MAIN_HAND : Hand.OFF_HAND);
-        mc.player.networkHandler.sendPacket(new PlayerActionC2SPacket(Action.SWAP_ITEM_WITH_OFFHAND, BlockPos.ORIGIN, Direction.DOWN));
-        mc.player.swingHand(offHand ? Hand.OFF_HAND : Hand.MAIN_HAND);
     }
 }

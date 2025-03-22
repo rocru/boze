@@ -47,18 +47,18 @@ public class TunnelESP extends Module {
     public final MinMaxSetting field3817 = new MinMaxSetting("Height", 2.0, 0.0, 2.0, 0.1, "Height of ESP");
     public final BooleanSetting field3818 = new BooleanSetting("Shader", false, "Use a shader");
     public final EnumSetting<TunnelShader> field3819 = new EnumSetting<TunnelShader>("Shader", TunnelShader.Normal, "Shader to use", this.field3818);
+    public final StringSetting field3826 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3818);
     public final BooleanSetting field3820 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field3818);
     public final IntSetting field3821 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field3818);
     public final FloatSetting field3822 = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.field3818);
     public final FloatSetting field3823 = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$0, this.field3818);
     private final IntSetting field3824 = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.field3818);
     private final FloatSetting field3825 = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.field3818);
-    public final StringSetting field3826 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3818);
+    private final Mutable field3830 = new Mutable();
+    private final Long2ObjectMap<TunnelRenderer> field3831 = new Long2ObjectOpenHashMap();
     private Renderer3D field3827 = null;
     private ByteTexture field3828;
     private String field3829 = "";
-    private final Mutable field3830 = new Mutable();
-    private final Long2ObjectMap<TunnelRenderer> field3831 = new Long2ObjectOpenHashMap();
     private Chunk field3832 = null;
 
     public TunnelESP() {
@@ -79,6 +79,10 @@ public class TunnelESP extends Module {
 
     public static byte method2070(int var0) {
         return (byte) (var0 & 0xFF);
+    }
+
+    private static boolean lambda$onTick$4(TunnelRenderer var0) {
+        return !var0.field3836;
     }
 
     @Override
@@ -335,10 +339,6 @@ public class TunnelESP extends Module {
         }
 
         return ShaderMode.Rainbow;
-    }
-
-    private static boolean lambda$onTick$4(TunnelRenderer var0) {
-        return !var0.field3836;
     }
 
     private void lambda$onTick$3(Chunk var1, TunnelRenderer var2) {

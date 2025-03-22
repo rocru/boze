@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin({LightmapTextureManager.class})
+@Mixin(LightmapTextureManager.class)
 public class LightmapTextureManagerMixin {
     @ModifyArgs(
-            method = {"update"},
+            method = "update",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/texture/NativeImage;setColor(III)V"
@@ -26,8 +26,8 @@ public class LightmapTextureManagerMixin {
     }
 
     @Inject(
-            method = {"getDarknessFactor(F)F"},
-            at = {@At("HEAD")},
+            method = "getDarknessFactor(F)F",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void getDarknessFactor(float var1, CallbackInfoReturnable<Float> var2) {

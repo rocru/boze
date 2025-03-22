@@ -23,8 +23,8 @@ public class EntitySettings implements SettingsGroup, IMinecraft {
     private final IntSetting field94 = new IntSetting("MaxDistance", 0, 0, 100, 1, "Max distance to render wardens", this::lambda$new$0, this.field92);
     public final BooleanSetting field95 = new BooleanSetting("Dying", false, "Don't render dying entities");
     public final BooleanSetting field96 = new BooleanSetting("InsidePlayers", false, "Don't render players inside camera");
-    private final BooleanSetting field97 = new BooleanSetting("NoLimbInterp", false, "Don't interpolate limbs");
     public final BooleanSetting field98 = new BooleanSetting("ForceSneak", false, "Make all players sneak");
+    private final BooleanSetting field97 = new BooleanSetting("NoLimbInterp", false, "Don't interpolate limbs");
     private final SettingCategory field99 = new SettingCategory("Armor", "Options for not rendering armor pieces");
     private final BooleanSetting field100 = new BooleanSetting("ArmorStands", false, "Apply to armor stands", this.field99);
     private final BooleanSetting field101 = new BooleanSetting("Head", false, "Don't render head armor", this.field99);

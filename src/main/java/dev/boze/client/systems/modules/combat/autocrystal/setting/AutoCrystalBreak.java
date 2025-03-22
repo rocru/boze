@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
+    public final Timer timer = new Timer();
     private final SettingCategory field177 = new SettingCategory("Break", "Break settings\nDelays, ranges, etc.\n");
     public final FloatSetting field178 = new FloatSetting("Range", 3.0F, 1.0F, 6.0F, 0.1F, "Break range for breaking visible crystals", this.field177);
     public final FloatSetting field179 = new FloatSetting("WallsRange", 3.0F, 0.0F, 6.0F, 0.1F, "Break range for breaking crystals through walls", this.field177);
@@ -48,7 +49,6 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
     );
     private final Setting<?>[] field182;
     private final AutoCrystal field183;
-    public final Timer timer = new Timer();
     private boolean field184 = false;
 
     public AutoCrystalBreak(AutoCrystal var1) {
@@ -56,6 +56,18 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
         this.field178.setVisibility(() -> $lambda$new$0(var1));
         this.field179.setVisibility(() -> $lambda$new$1(var1));
         this.field182 = new Setting[]{this.field177, this.field178, this.field179, this.field180, this.field181};
+    }
+
+    private static boolean $lambda$findCrystalTarget$2(EndCrystalEntity var0) {
+        return true;
+    }
+
+    private static boolean $lambda$new$1(AutoCrystal var0) {
+        return var0.field1041.field205.getValue() == AnticheatMode.NCP;
+    }
+
+    private static boolean $lambda$new$0(AutoCrystal var0) {
+        return var0.field1041.field205.getValue() == AnticheatMode.NCP;
     }
 
     @Override
@@ -330,17 +342,5 @@ public class AutoCrystalBreak implements IMinecraft, SettingsGroup {
 
     boolean method2117() {
         return this.field183.field1041.field205.getValue() == AnticheatMode.NCP && (this.field183.field1041.field213.getValue() == AutoMineSwapMode.Normal || this.field183.field1041.field213.getValue() == AutoMineSwapMode.Silent);
-    }
-
-    private static boolean $lambda$findCrystalTarget$2(EndCrystalEntity var0) {
-        return true;
-    }
-
-    private static boolean $lambda$new$1(AutoCrystal var0) {
-        return var0.field1041.field205.getValue() == AnticheatMode.NCP;
-    }
-
-    private static boolean $lambda$new$0(AutoCrystal var0) {
-        return var0.field1041.field205.getValue() == AnticheatMode.NCP;
     }
 }

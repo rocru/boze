@@ -70,13 +70,13 @@ public class AutoTrap extends Module {
     private final BooleanSetting animals = new BooleanSetting("Animals", false, "Target animals", this.targets);
     private final BooleanSetting monsters = new BooleanSetting("Monsters", false, "Target monsters", this.targets);
     private final SwapHandler field2539 = new SwapHandler(this, 75);
-    private HitResult[] field2540 = null;
-    private BlockHitResult field2541 = null;
-    private RotationHelper field2542;
     private final Timer field2543 = new Timer();
     private final Timer field2544 = new Timer();
     private final ArrayList<BlockPos> field2545 = new ArrayList();
     private final ArrayList<BlockPos> field2546 = new ArrayList();
+    private HitResult[] field2540 = null;
+    private BlockHitResult field2541 = null;
+    private RotationHelper field2542;
     private Entity field2547 = null;
 
     private AutoTrap() {
@@ -84,6 +84,10 @@ public class AutoTrap extends Module {
         Boze.EVENT_BUS.subscribe(this.field2537);
         this.field435 = true;
         this.addSettings(this.field2537.field224);
+    }
+
+    private static Float lambda$getTargets$3(LivingEntity var0) {
+        return var0.distanceTo(mc.player);
     }
 
     @Override
@@ -436,10 +440,6 @@ public class AutoTrap extends Module {
                     return false;
             }
         }
-    }
-
-    private static Float lambda$getTargets$3(LivingEntity var0) {
-        return var0.distanceTo(mc.player);
     }
 
     private Boolean lambda$onGhostRotate$2(RotationHelper var1) {

@@ -19,6 +19,10 @@ public abstract class InputBaseComponent implements IMinecraft {
         this.field1136 = var8;
     }
 
+    public static boolean isMouseWithinBounds(double var0, double var2, double var4, double var6, double var8, double var10) {
+        return var0 >= var4 && var0 <= var4 + var8 && var2 >= var6 && var2 <= var6 + var10;
+    }
+
     public void render(DrawContext var1, int var2, int var3, float var4) {
     }
 
@@ -43,9 +47,5 @@ public abstract class InputBaseComponent implements IMinecraft {
 
     public boolean keyReleased(int var1, int var2, int var3) {
         return false;
-    }
-
-    public static boolean isMouseWithinBounds(double var0, double var2, double var4, double var6, double var8, double var10) {
-        return var0 >= var4 && var0 <= var4 + var8 && var2 >= var6 && var2 <= var6 + var10;
     }
 }

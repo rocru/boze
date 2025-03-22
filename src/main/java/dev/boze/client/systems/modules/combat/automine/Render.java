@@ -16,19 +16,20 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 public class Render implements SettingsGroup {
+    final BooleanSetting field257 = new BooleanSetting("Fade", true, "Fade render");
+    final BooleanSetting field261 = new BooleanSetting("InstantPos", false, "Show block that can be instant-mined");
+    final BooleanSetting field264 = new BooleanSetting("Queue", false, "Show block in the queue");
+    final HashMap<BlockPos, Long> field268 = new HashMap();
     private final BooleanSetting field252 = new BooleanSetting("Render", true, "Render block being mined");
     private final ColorSetting field253 = new ColorSetting("Start", new BozeDrawColor(1694442018), "Color for unbroken blocks");
     private final ColorSetting field254 = new ColorSetting("StartLine", new BozeDrawColor(-56798), "Color for unbroken block lines");
     private final ColorSetting field255 = new ColorSetting("End", new BozeDrawColor(1680015138), "Color for broken blocks");
     private final ColorSetting field256 = new ColorSetting("EndLine", new BozeDrawColor(-14483678), "Color for broken block lines");
-    final BooleanSetting field257 = new BooleanSetting("Fade", true, "Fade render");
     private final FloatSetting field258 = new FloatSetting("Duration", 1.0F, 0.1F, 5.0F, 0.1F, "Fade duration in seconds", this.field257);
     private final ColorSetting field259 = new ColorSetting("Fade", new BozeDrawColor(2293538), "Color for faded blocks", this.field257);
     private final ColorSetting field260 = new ColorSetting("FadeLine", new BozeDrawColor(2293538), "Color for faded block lines", this.field257);
-    final BooleanSetting field261 = new BooleanSetting("InstantPos", false, "Show block that can be instant-mined");
     private final ColorSetting field262 = new ColorSetting("Color", new BozeDrawColor(0), "Color for faded blocks", this.field261);
     private final ColorSetting field263 = new ColorSetting("Outline", new BozeDrawColor(-1), "Color for faded block lines", this.field261);
-    final BooleanSetting field264 = new BooleanSetting("Queue", false, "Show block in the queue");
     private final ColorSetting field265 = new ColorSetting("Color", new BozeDrawColor(1679958783), "Color for queued blocks", this.field264);
     private final ColorSetting field266 = new ColorSetting("Outline", new BozeDrawColor(-14540033), "Color for queued block lines", this.field264);
     public final SettingBlock field267 = new SettingBlock(
@@ -50,7 +51,6 @@ public class Render implements SettingsGroup {
             this.field265,
             this.field266
     );
-    final HashMap<BlockPos, Long> field268 = new HashMap();
 
     @Override
     public Setting<?>[] get() {

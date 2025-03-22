@@ -16,6 +16,17 @@ import mapped.Class1174;
 public class HUD extends Module {
     public static final HUD INSTANCE = new HUD();
     public final BooleanSetting field2373 = new BooleanSetting("Render", true, "Render the HUD");
+    public final BooleanSetting field2394 = new BooleanSetting("Background", true, "Draw background for HUD");
+    public final ShaderSetting shader = new ShaderSetting(
+            new HudShaderProcessor(),
+            "Options",
+            new Class1147(new BozeDrawColor(10, 10, 10, 40), 0),
+            new Class1174(new BozeDrawColor(100, 35, 250, 255, true, 0.3, 0.0, new double[]{0.0, -0.065}, new double[]{0.5, 0.6}), true, 2, 0.0F, 0.0F),
+            "Background colors and options for HUD",
+            this.field2394
+    );
+    public final RGBASetting field2395 = new RGBASetting("Shadow", new RGBAColor(60, 60, 60, 180), "Shadow color");
+    public final ColorSetting field2396 = new ColorSetting("ShadowGradient", new BozeDrawColor(60, 60, 60, 180), "Gradient shadow color");
     private final SettingCategory field2374 = new SettingCategory("Layout", "HUD layout settings");
     public final MinMaxSetting field2375 = new MinMaxSetting("Scale", 1.0, 0.25, 2.25, 0.05, "Global HUD Scale", this.field2374);
     public final MinMaxSetting field2376 = new MinMaxSetting(
@@ -56,17 +67,6 @@ public class HUD extends Module {
             this.field2386
     );
     public final BooleanSetting field2393 = new BooleanSetting("Shadow", false, "Text shadow", this::lambda$new$2, this.field2386);
-    public final BooleanSetting field2394 = new BooleanSetting("Background", true, "Draw background for HUD");
-    public final ShaderSetting shader = new ShaderSetting(
-            new HudShaderProcessor(),
-            "Options",
-            new Class1147(new BozeDrawColor(10, 10, 10, 40), 0),
-            new Class1174(new BozeDrawColor(100, 35, 250, 255, true, 0.3, 0.0, new double[]{0.0, -0.065}, new double[]{0.5, 0.6}), true, 2, 0.0F, 0.0F),
-            "Background colors and options for HUD",
-            this.field2394
-    );
-    public final RGBASetting field2395 = new RGBASetting("Shadow", new RGBAColor(60, 60, 60, 180), "Shadow color");
-    public final ColorSetting field2396 = new ColorSetting("ShadowGradient", new BozeDrawColor(60, 60, 60, 180), "Gradient shadow color");
     public RenderUtil field2397;
     public BaseFramebuffer field2398;
     public BaseFramebuffer field2399;

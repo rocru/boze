@@ -50,73 +50,6 @@ public class ChestStealer extends Module {
         super("ChestStealer", "Steals items from chests", Category.Legit);
     }
 
-    @Override
-    public void onEnable() {
-        this.field2768 = true;
-        this.field2769 = null;
-        this.field2770 = 0L;
-    }
-
-    @EventHandler
-    public void method1590(FlipFrameEvent event) {
-        try {
-            if (event.method1022()) {
-                return;
-            }
-            if (Server.method539().method538().method2116()) {
-                return;
-            }
-            if (ChestStealer.mc.currentScreen instanceof DownloadingTerrainScreen) {
-                return;
-            }
-            if (!(ChestStealer.mc.currentScreen instanceof GenericContainerScreen genericContainerScreen) || !(ChestStealer.mc.currentScreen instanceof HandledScreen)) {
-                this.field2767.reset();
-                this.field2768 = true;
-                this.field2769 = null;
-                return;
-            }
-            if (!(ChestStealer.mc.currentScreen instanceof HandledScreen)) {
-                return;
-            }
-            HandledScreenAccessor handledScreenAccessor = (HandledScreenAccessor) ChestStealer.mc.currentScreen;
-            GenericContainerScreenHandler genericContainerScreenHandler = genericContainerScreen.getScreenHandler();
-            if (genericContainerScreenHandler != null && !genericContainerScreenHandler.getCursorStack().isEmpty()) {
-                return;
-            }
-            if (this.field2769 == null) {
-                this.field2769 = new Vec2f((float) mc.getWindow().getScaledWidth() / 2.0f, (float) mc.getWindow().getScaledHeight() / 2.0f);
-            }
-            Slot slot = SlotUtils.method665(genericContainerScreenHandler, handledScreenAccessor, this.field2769, (arg_0, arg_1) -> this.lambda$onScreenInput$0(genericContainerScreenHandler, arg_0, arg_1));
-            if (!this.field2767.hasElapsed(this.field2768 ? this.field2765.getValue() * 50.0 : (slot == null ? this.field2766.getValue() * 50.0 : (double) this.field2770))) {
-                return;
-            }
-            this.field2768 = false;
-            this.field2767.reset();
-            if (slot == null) {
-                ChestStealer.mc.currentScreen.close();
-            } else {
-                Vec2f vec2f;
-                Slot slot2;
-                if (ChestStealer.mc.player.getInventory().getEmptySlot() == -1) {
-                    ChestStealer.mc.currentScreen.close();
-                    return;
-                }
-                Vec2f vec2f2 = SlotUtils.method663(handledScreenAccessor, slot).add(new Vec2f(this.field2764.getValue() == 0.0 ? 0.0f : (float) ThreadLocalRandom.current().nextDouble(-this.field2764.getValue().doubleValue() * 30.0, this.field2764.getValue() * 30.0), this.field2764.getValue() == 0.0 ? 0.0f : (float) ThreadLocalRandom.current().nextDouble(-this.field2764.getValue().doubleValue() * 30.0, this.field2764.getValue() * 30.0)));
-                if ((double) ThreadLocalRandom.current().nextInt(100) > this.field2762.getValue() * 100.0 && (slot2 = SlotUtils.method665(genericContainerScreenHandler, handledScreenAccessor, vec2f = this.field2769.add(vec2f2.add(this.field2769.negate()).multiply((float) ThreadLocalRandom.current().nextDouble(0.0, 1.0))), ChestStealer::lambda$onScreenInput$1)) != null) {
-                    slot = slot2;
-                }
-                float f = this.field2769.distanceSquared(vec2f2);
-                this.field2769 = vec2f2;
-                float f2 = (float) Math.sqrt(f) / new Vec2f((float) handledScreenAccessor.getBackgroundWidth(), (float) handledScreenAccessor.getBackgroundHeight()).length();
-                this.field2770 = (long) (this.field2763.method1296() * (double) f2 * 50.0);
-                ChestStealer.mc.interactionManager.clickSlot(genericContainerScreenHandler.syncId, slot.id, 0, SlotActionType.QUICK_MOVE, ChestStealer.mc.player);
-                event.method1021(true);
-            }
-        } catch (Exception exception) {
-            // empty catch block
-        }
-    }
-
     public static boolean method1591(Slot slot, List<Slot> slotList, boolean considerDurability) {
         ArrayList<Slot> arrayList = new ArrayList<Slot>(slotList);
         arrayList.remove(slot);
@@ -215,6 +148,73 @@ public class ChestStealer extends Module {
 
     private static boolean lambda$onScreenInput$1(Slot var0, List var1) {
         return !var0.hasStack();
+    }
+
+    @Override
+    public void onEnable() {
+        this.field2768 = true;
+        this.field2769 = null;
+        this.field2770 = 0L;
+    }
+
+    @EventHandler
+    public void method1590(FlipFrameEvent event) {
+        try {
+            if (event.method1022()) {
+                return;
+            }
+            if (Server.method539().method538().method2116()) {
+                return;
+            }
+            if (ChestStealer.mc.currentScreen instanceof DownloadingTerrainScreen) {
+                return;
+            }
+            if (!(ChestStealer.mc.currentScreen instanceof GenericContainerScreen genericContainerScreen) || !(ChestStealer.mc.currentScreen instanceof HandledScreen)) {
+                this.field2767.reset();
+                this.field2768 = true;
+                this.field2769 = null;
+                return;
+            }
+            if (!(ChestStealer.mc.currentScreen instanceof HandledScreen)) {
+                return;
+            }
+            HandledScreenAccessor handledScreenAccessor = (HandledScreenAccessor) ChestStealer.mc.currentScreen;
+            GenericContainerScreenHandler genericContainerScreenHandler = genericContainerScreen.getScreenHandler();
+            if (genericContainerScreenHandler != null && !genericContainerScreenHandler.getCursorStack().isEmpty()) {
+                return;
+            }
+            if (this.field2769 == null) {
+                this.field2769 = new Vec2f((float) mc.getWindow().getScaledWidth() / 2.0f, (float) mc.getWindow().getScaledHeight() / 2.0f);
+            }
+            Slot slot = SlotUtils.method665(genericContainerScreenHandler, handledScreenAccessor, this.field2769, (arg_0, arg_1) -> this.lambda$onScreenInput$0(genericContainerScreenHandler, arg_0, arg_1));
+            if (!this.field2767.hasElapsed(this.field2768 ? this.field2765.getValue() * 50.0 : (slot == null ? this.field2766.getValue() * 50.0 : (double) this.field2770))) {
+                return;
+            }
+            this.field2768 = false;
+            this.field2767.reset();
+            if (slot == null) {
+                ChestStealer.mc.currentScreen.close();
+            } else {
+                Vec2f vec2f;
+                Slot slot2;
+                if (ChestStealer.mc.player.getInventory().getEmptySlot() == -1) {
+                    ChestStealer.mc.currentScreen.close();
+                    return;
+                }
+                Vec2f vec2f2 = SlotUtils.method663(handledScreenAccessor, slot).add(new Vec2f(this.field2764.getValue() == 0.0 ? 0.0f : (float) ThreadLocalRandom.current().nextDouble(-this.field2764.getValue().doubleValue() * 30.0, this.field2764.getValue() * 30.0), this.field2764.getValue() == 0.0 ? 0.0f : (float) ThreadLocalRandom.current().nextDouble(-this.field2764.getValue().doubleValue() * 30.0, this.field2764.getValue() * 30.0)));
+                if ((double) ThreadLocalRandom.current().nextInt(100) > this.field2762.getValue() * 100.0 && (slot2 = SlotUtils.method665(genericContainerScreenHandler, handledScreenAccessor, vec2f = this.field2769.add(vec2f2.add(this.field2769.negate()).multiply((float) ThreadLocalRandom.current().nextDouble(0.0, 1.0))), ChestStealer::lambda$onScreenInput$1)) != null) {
+                    slot = slot2;
+                }
+                float f = this.field2769.distanceSquared(vec2f2);
+                this.field2769 = vec2f2;
+                float f2 = (float) Math.sqrt(f) / new Vec2f((float) handledScreenAccessor.getBackgroundWidth(), (float) handledScreenAccessor.getBackgroundHeight()).length();
+                this.field2770 = (long) (this.field2763.method1296() * (double) f2 * 50.0);
+                ChestStealer.mc.interactionManager.clickSlot(genericContainerScreenHandler.syncId, slot.id, 0, SlotActionType.QUICK_MOVE, ChestStealer.mc.player);
+                event.method1021(true);
+            }
+        } catch (Exception exception) {
+            // empty catch block
+        }
     }
 
     private boolean lambda$onScreenInput$0(GenericContainerScreenHandler var1, Slot var2, List var3) {

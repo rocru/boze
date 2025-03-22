@@ -26,13 +26,34 @@ public class AutoUpgrade extends Module {
     );
     private final dev.boze.client.utils.Timer field2913 = new dev.boze.client.utils.Timer();
 
-    private boolean method1685() {
-        return Options.INSTANCE.method1971() || this.field2911.getValue() == AutoUpgradeMode.Ghost;
-    }
-
     private AutoUpgrade() {
         super("AutoUpgrade", "Automatically upgrades all tools/armor in inventory, when you open smithing table\n", Category.Misc);
         this.field435 = true;
+    }
+
+    private static boolean lambda$handle$3(ItemStack var0) {
+        Item var4 = var0.getItem();
+        if (var4 instanceof ToolItem var5) {
+            return var5.getMaterial() == ToolMaterials.DIAMOND;
+        } else {
+            return var4 instanceof ArmorItem var6 && var6.getMaterial() == ArmorMaterials.DIAMOND;
+        }
+    }
+
+    private static boolean lambda$handle$2(ItemStack var0) {
+        return var0.getItem() == Items.NETHERITE_INGOT;
+    }
+
+    private static boolean lambda$handle$1(ItemStack var0) {
+        return var0.getItem() == Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE;
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
+
+    private boolean method1685() {
+        return Options.INSTANCE.method1971() || this.field2911.getValue() == AutoUpgradeMode.Ghost;
     }
 
     @EventHandler
@@ -88,26 +109,5 @@ public class AutoUpgrade extends Module {
         } else {
             return false;
         }
-    }
-
-    private static boolean lambda$handle$3(ItemStack var0) {
-        Item var4 = var0.getItem();
-        if (var4 instanceof ToolItem var5) {
-            return var5.getMaterial() == ToolMaterials.DIAMOND;
-        } else {
-            return var4 instanceof ArmorItem var6 && var6.getMaterial() == ArmorMaterials.DIAMOND;
-        }
-    }
-
-    private static boolean lambda$handle$2(ItemStack var0) {
-        return var0.getItem() == Items.NETHERITE_INGOT;
-    }
-
-    private static boolean lambda$handle$1(ItemStack var0) {
-        return var0.getItem() == Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE;
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

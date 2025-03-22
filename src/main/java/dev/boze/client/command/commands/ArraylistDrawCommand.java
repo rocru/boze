@@ -17,19 +17,6 @@ public class ArraylistDrawCommand extends Command {
         super("drawn", "Drawn", "Draw and undraw modules from the arraylist");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.then(
-                ((RequiredArgumentBuilder) method402("module", ModuleArgument.method1003()).executes(ArraylistDrawCommand::lambda$build$0))
-                        .then(method403("draw").executes(ArraylistDrawCommand::lambda$build$1))
-                        .then(method403("undraw").executes(ArraylistDrawCommand::lambda$build$2))
-        );
-        builder.then(
-                ((RequiredArgumentBuilder) method402("category", CategoryArgument.method981()).then(method403("draw").executes(ArraylistDrawCommand::lambda$build$3)))
-                        .then(method403("undraw").executes(ArraylistDrawCommand::lambda$build$4))
-        );
-    }
-
     private static int lambda$build$4(CommandContext var0) throws CommandSyntaxException {
         Category var4 = CategoryArgument.method982(var0, "category");
 
@@ -70,5 +57,18 @@ public class ArraylistDrawCommand extends Command {
         Module var4 = ModuleArgument.method1004(var0, "module");
         var4.setVisibility(!var4.getVisibility());
         return 1;
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.then(
+                ((RequiredArgumentBuilder) method402("module", ModuleArgument.method1003()).executes(ArraylistDrawCommand::lambda$build$0))
+                        .then(method403("draw").executes(ArraylistDrawCommand::lambda$build$1))
+                        .then(method403("undraw").executes(ArraylistDrawCommand::lambda$build$2))
+        );
+        builder.then(
+                ((RequiredArgumentBuilder) method402("category", CategoryArgument.method981()).then(method403("draw").executes(ArraylistDrawCommand::lambda$build$3)))
+                        .then(method403("undraw").executes(ArraylistDrawCommand::lambda$build$4))
+        );
     }
 }

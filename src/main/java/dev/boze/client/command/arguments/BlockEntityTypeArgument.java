@@ -23,6 +23,14 @@ public class BlockEntityTypeArgument implements ArgumentType<BlockEntityType<?>>
         return new BlockEntityTypeArgument();
     }
 
+    public static BlockEntityType<?> method980(CommandContext<?> context, String name) {
+        return (BlockEntityType<?>) context.getArgument(name, BlockEntityType.class);
+    }
+
+    private static String lambda$listSuggestions$0(BlockEntityType var0) {
+        return Registries.BLOCK_ENTITY_TYPE.getId(var0).getPath();
+    }
+
     @Override
     public BlockEntityType<?> parse(StringReader reader) {
         String var2 = reader.getRemaining();
@@ -30,21 +38,9 @@ public class BlockEntityTypeArgument implements ArgumentType<BlockEntityType<?>>
         return BlockEntitySetting.method440(var2);
     }
 
-    public static BlockEntityType<?> method980(CommandContext<?> context, String name) {
-        return (BlockEntityType<?>) context.getArgument(name, BlockEntityType.class);
-    }
-
     public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
         return CommandSource.suggestMatching(
                 Registries.BLOCK_ENTITY_TYPE.stream().map(BlockEntityTypeArgument::lambda$listSuggestions$0).collect(Collectors.toList()), builder
-        );
-    }
-
-    public Collection<String> getExamples() {
-        return Arrays.asList(
-                Registries.BLOCK_ENTITY_TYPE.getId(Registries.BLOCK_ENTITY_TYPE.get(0)).getPath(),
-                Registries.BLOCK_ENTITY_TYPE.getId(Registries.BLOCK_ENTITY_TYPE.get(1)).getPath(),
-                Registries.BLOCK_ENTITY_TYPE.getId(Registries.BLOCK_ENTITY_TYPE.get(2)).getPath()
         );
     }
 
@@ -54,7 +50,11 @@ public class BlockEntityTypeArgument implements ArgumentType<BlockEntityType<?>>
     //   return this.method979(stringReader);
     //}
 
-    private static String lambda$listSuggestions$0(BlockEntityType var0) {
-        return Registries.BLOCK_ENTITY_TYPE.getId(var0).getPath();
+    public Collection<String> getExamples() {
+        return Arrays.asList(
+                Registries.BLOCK_ENTITY_TYPE.getId(Registries.BLOCK_ENTITY_TYPE.get(0)).getPath(),
+                Registries.BLOCK_ENTITY_TYPE.getId(Registries.BLOCK_ENTITY_TYPE.get(1)).getPath(),
+                Registries.BLOCK_ENTITY_TYPE.getId(Registries.BLOCK_ENTITY_TYPE.get(2)).getPath()
+        );
     }
 }

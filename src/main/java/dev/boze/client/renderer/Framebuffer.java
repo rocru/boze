@@ -3,11 +3,11 @@ package dev.boze.client.renderer;
 import dev.boze.client.utils.IMinecraft;
 
 public class Framebuffer implements IMinecraft {
-    private int framebufferID;
     public int textureID;
     public double sizeMulti = 1.0;
     public int framebufferWidth;
     public int framebufferHeight;
+    private int framebufferID;
 
     public Framebuffer(double sizeMulti) {
         this.sizeMulti = sizeMulti;

@@ -55,6 +55,12 @@ public class OffHand extends Module {
     private final EnumSetting<OffhandMode> offhandMode = new EnumSetting<OffhandMode>(
             "Mode", OffhandMode.Anarchy, "Mode for Offhand\n - Anarchy: For anarchy servers\n - Ghost: For legit servers\n", OffHand::lambda$new$0
     );
+    final EnumSetting<ReactMode> reactMode = new EnumSetting<ReactMode>(
+            "React",
+            ReactMode.Tick,
+            "When to react to pops\n - Tick: React to pops on the next tick\n - Packet: Reacts to pops instantly, as soon as they're received from the server",
+            this::method1971
+    );
     private final EnumSetting<InventoryMode> inventoryMode = new EnumSetting<InventoryMode>(
             "Inventory",
             InventoryMode.Await,
@@ -74,12 +80,6 @@ public class OffHand extends Module {
             "CloseDelay", new double[]{0.15, 0.3}, 0.0, 1.0, 0.01, "Delay in seconds before closing inventory", this::lambda$new$4
     );
     private final BooleanSetting inInventory = new BooleanSetting("InInventory", true, "Swap while in inventory", this::method1971);
-    final EnumSetting<ReactMode> reactMode = new EnumSetting<ReactMode>(
-            "React",
-            ReactMode.Tick,
-            "When to react to pops\n - Tick: React to pops on the next tick\n - Packet: Reacts to pops instantly, as soon as they're received from the server",
-            this::method1971
-    );
     private final SettingCategory cancel = new SettingCategory("Cancel", "What to cancel when swapping\nThis is not necessary on most servers", this::method1971);
     private final BooleanSetting movement = new BooleanSetting("Movement", false, "Cancel movement when swapping", this.cancel);
     private final BooleanSetting eating = new BooleanSetting("Eating", false, "Cancel eating when swapping", this.cancel);
@@ -114,6 +114,9 @@ public class OffHand extends Module {
             "Don't check hotbar for items\n - Off: Check hotbar for all items\n - Semi: Only check hotbar for totems\n - SemiLast: Only check hotbar for totems when none in inv\n - Full: Don't check hotbar for items at all"
     );
     private final Timer aa = new Timer();
+    private final Timer ai = new Timer();
+    private final Timer aj = new Timer();
+    private final Timer ak = new Timer();
     public Item ab = null;
     public int ac = -1;
     private boolean ad = false;
@@ -121,9 +124,6 @@ public class OffHand extends Module {
     private Item af = null;
     private Bind ag = null;
     private int ah = -1;
-    private final Timer ai = new Timer();
-    private final Timer aj = new Timer();
-    private final Timer ak = new Timer();
     private boolean al = false;
     private boolean am = false;
     private boolean an = false;
@@ -132,10 +132,31 @@ public class OffHand extends Module {
     private boolean aq = false;
     private boolean ar = false;
 
+    private OffHand() {
+        super(
+                "Offhand",
+                "Automatically places totems and other items in your offhand\nHaving a totem in your HotBar will make you less likely to fail",
+                Category.Combat
+        );
+        this.field435 = true;
+    }
+
     private static void method1750(String var0) {
         if (mc.player != null) {
             BozeLogger.method529(INSTANCE, var0);
         }
+    }
+
+    private static boolean lambda$getSlot$16(Item var0, ItemStack var1) {
+        return var1.getItem() == var0;
+    }
+
+    private static boolean lambda$getSlot$15(Item var0, ItemStack var1) {
+        return var1.getItem() == var0;
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
     }
 
     public boolean method1971() {
@@ -144,15 +165,6 @@ public class OffHand extends Module {
 
     private boolean method1972() {
         return this.offhandMode.getValue() == OffhandMode.Ghost || Options.INSTANCE.method1971();
-    }
-
-    private OffHand() {
-        super(
-                "Offhand",
-                "Automatically places totems and other items in your offhand\nHaving a totem in your HotBar will make you less likely to fail",
-                Category.Combat
-        );
-        this.field435 = true;
     }
 
     @Override
@@ -313,7 +325,6 @@ public class OffHand extends Module {
         }
         return n2;
     }
-
 
     @EventHandler
     public void method1812(MouseButtonEvent event) {
@@ -627,14 +638,6 @@ public class OffHand extends Module {
         return var2.getItem() == var1 && var3 != this.ac && var3 != 40 && !InventoryUtil.method159(var3);
     }
 
-    private static boolean lambda$getSlot$16(Item var0, ItemStack var1) {
-        return var1.getItem() == var0;
-    }
-
-    private static boolean lambda$getSlot$15(Item var0, ItemStack var1) {
-        return var1.getItem() == var0;
-    }
-
     private boolean lambda$new$14() {
         return this.offhandItem.getValue() == OffhandItem.Binds;
     }
@@ -689,9 +692,5 @@ public class OffHand extends Module {
 
     private boolean lambda$new$1() {
         return this.method1972() && this.inventoryMode.getValue() == InventoryMode.Auto;
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

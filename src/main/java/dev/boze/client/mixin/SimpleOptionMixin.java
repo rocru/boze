@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-@Mixin({SimpleOption.class})
+@Mixin(SimpleOption.class)
 public class SimpleOptionMixin implements ISimpleOption {
     @Shadow
     Object value;

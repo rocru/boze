@@ -36,22 +36,22 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class BlockHighlight extends Module {
     public static final BlockHighlight INSTANCE = new BlockHighlight();
+    public final ColorSetting field3388 = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill");
+    public final ColorSetting field3389 = new ColorSetting("Outline", new BozeDrawColor(-7046189), "Color for outline");
     private final EnumSetting<BlockHighlightMode> field3387 = new EnumSetting<BlockHighlightMode>(
             "Mode", BlockHighlightMode.Normal, "Mode for drawing highlight"
     );
-    public final ColorSetting field3388 = new ColorSetting("Color", new BozeDrawColor(1687452627), "Color for fill");
-    public final ColorSetting field3389 = new ColorSetting("Outline", new BozeDrawColor(-7046189), "Color for outline");
     private final BooleanSetting field3390 = new BooleanSetting("Shader", false, "Use a shader");
     public final EnumSetting<BlockHighlightShader> field3391 = new EnumSetting<BlockHighlightShader>(
             "Shader", BlockHighlightShader.Normal, "Shader to use", this.field3390
     );
+    public final StringSetting field3398 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3390);
     public final BooleanSetting field3392 = new BooleanSetting("FastRender", true, "Make the shader render faster at the cost of quality", this.field3390);
     public final IntSetting field3393 = new IntSetting("Blur", 0, 0, 5, 1, "Glow for shader", this.field3390);
     public final FloatSetting field3394 = new FloatSetting("Glow", 0.0F, 0.0F, 5.0F, 0.1F, "Glow for shader", this.field3390);
     public final FloatSetting field3395 = new FloatSetting("Strength", 0.1F, 0.02F, 2.0F, 0.02F, "Glow strength for shader", this::lambda$new$0, this.field3390);
     private final IntSetting field3396 = new IntSetting("Radius", 1, 0, 10, 1, "Outline radius for shader", this.field3390);
     private final FloatSetting field3397 = new FloatSetting("Opacity", 0.3F, 0.0F, 1.0F, 0.01F, "Fill opacity for shader", this.field3390);
-    public final StringSetting field3398 = new StringSetting("Fill", "", "Fill for image shader", this::lambda$new$1, this.field3390);
     private final BooleanSetting field3399 = new BooleanSetting("Fade", true, "Fade block highlights", this::lambda$new$2);
     private final BooleanSetting field3400 = new BooleanSetting("OnlyLast", false, "Only fade last block", this::lambda$new$3, this.field3399);
     private final IntSetting field3401 = new IntSetting(

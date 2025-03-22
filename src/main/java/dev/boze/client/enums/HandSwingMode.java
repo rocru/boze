@@ -10,6 +10,11 @@ public enum HandSwingMode implements IMinecraft {
     Packet,
     Vanilla;
 
+    // $VF: synthetic method
+    private static HandSwingMode[] method672() {
+        return new HandSwingMode[]{Off, Packet, Vanilla};
+    }
+
     public void method671(Hand hand) {
         if (MinecraftUtils.isClientActive()) {
             if (this == Packet) {
@@ -18,10 +23,5 @@ public enum HandSwingMode implements IMinecraft {
                 mc.player.swingHand(hand);
             }
         }
-    }
-
-    // $VF: synthetic method
-    private static HandSwingMode[] method672() {
-        return new HandSwingMode[]{Off, Packet, Vanilla};
     }
 }

@@ -25,6 +25,10 @@ public class Gui extends Module {
     );
     private final BooleanSetting field2361 = new BooleanSetting("Advanced", false, "Advanced settings for the ClickGUI");
     public final EnumSetting<AAMode> field2362 = new EnumSetting<AAMode>("AA", AAMode.MSAA4x, "Anti-Aliasing mode", this.field2361::getValue);
+    public final EnumSetting<ToggleStyle> field2371 = new EnumSetting<ToggleStyle>(
+            "Toggles", ToggleStyle.Switch, "Render mode for toggle elements", this.field2361::getValue
+    );
+    public final BooleanSetting field2372 = new BooleanSetting("ModeBox", false, "Draws a box around the mode selector", this.field2361::getValue);
     private final SettingCategory field2363 = new SettingCategory("Categories", "Options for category gui elements", this.field2361::getValue);
     public final BooleanSetting field2364 = new BooleanSetting(
             "SingleModule", false, "Hides all other modules when displaying settings for a module", this.field2363
@@ -47,15 +51,15 @@ public class Gui extends Module {
     );
     public final IntSetting field2369 = new IntSetting("ScrollSpeed", 10, -20, 20, 1, "Scroll speed in category elements", this.field2363);
     public final IntSetting field2370 = new IntSetting("AnimTime", 150, 0, 1000, 10, "Opening/closing animation time (ms) for category elements", this.field2363);
-    public final EnumSetting<ToggleStyle> field2371 = new EnumSetting<ToggleStyle>(
-            "Toggles", ToggleStyle.Switch, "Render mode for toggle elements", this.field2361::getValue
-    );
-    public final BooleanSetting field2372 = new BooleanSetting("ModeBox", false, "Draws a box around the mode selector", this.field2361::getValue);
 
     public Gui() {
         super("Gui", "Boze Gui", Category.Client, ConfigCategory.Visuals);
         this.bind.set(true, 344);
         this.field2350.method401(Gui::lambda$new$2);
+    }
+
+    private static void lambda$new$2(GUILayout var0) {
+        ClickGUI.field1335.close();
     }
 
     @Override
@@ -67,10 +71,6 @@ public class Gui extends Module {
         }
 
         return false;
-    }
-
-    private static void lambda$new$2(GUILayout var0) {
-        ClickGUI.field1335.close();
     }
 
     private boolean lambda$new$1() {

@@ -13,8 +13,8 @@ import java.util.Locale;
 import java.util.function.BooleanSupplier;
 
 public class BooleanSetting extends Setting<Boolean> {
-    private boolean value;
     private final boolean defaultValue;
+    private boolean value;
 
     public BooleanSetting(String name, boolean value, String description) {
         super(name, description);

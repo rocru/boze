@@ -20,15 +20,19 @@ public class ProfileArgument
         implements ArgumentType<String> {
     private static final DynamicCommandExceptionType field1865 = new DynamicCommandExceptionType(ProfileArgument::lambda$static$0);
 
+    private ProfileArgument() {
+    }
+
     public static ProfileArgument method1009() {
         return new ProfileArgument();
     }
 
-    private ProfileArgument() {
-    }
-
     public static String method1010(CommandContext<?> context, String name) {
         return context.getArgument(name, String.class);
+    }
+
+    private static Message lambda$static$0(Object object) {
+        return Text.literal("Profile with name " + object + " doesn't exist");
     }
 
     @Override
@@ -52,9 +56,5 @@ public class ProfileArgument
 
     public Collection<String> getExamples() {
         return Class1201.field57.stream().limit(3L).collect(Collectors.toList());
-    }
-
-    private static Message lambda$static$0(Object object) {
-        return Text.literal("Profile with name " + object + " doesn't exist");
     }
 }

@@ -10,9 +10,6 @@ import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 
 public class AntiSpam extends Module {
     public static final AntiSpam INSTANCE = new AntiSpam();
-    private final BooleanSetting discord = new BooleanSetting("Discord", true, "Hide discord invites");
-    private final BooleanSetting hideUrls = new BooleanSetting("URLs", false, "Hide URLs");
-    private final BooleanSetting accouncer = new BooleanSetting("Announcer", true, "Hide announcer messages");
     private static final String[] discordLinks = new String[]{"discord.gg"};
     private static final String[] domainLinks = new String[]{
             "http",
@@ -57,6 +54,9 @@ public class AntiSpam extends Module {
             "I lost",
             "I moved"
     };
+    private final BooleanSetting discord = new BooleanSetting("Discord", true, "Hide discord invites");
+    private final BooleanSetting hideUrls = new BooleanSetting("URLs", false, "Hide URLs");
+    private final BooleanSetting accouncer = new BooleanSetting("Announcer", true, "Hide announcer messages");
 
     public AntiSpam() {
         super("AntiSpam", "Tries to hide chat spam", Category.Misc);

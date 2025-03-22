@@ -11,17 +11,13 @@ import net.minecraft.util.math.Direction;
  */
 public class PlaceInteraction implements RotateInteraction {
 
-    private final Runnable callback;
-
-    private final Rotation rotation;
-
     public final BlockPos pos;
     public final Direction direction;
-
     public final Hand hand;
     public final boolean swing;
-
     public final int slot;
+    private final Runnable callback;
+    private final Rotation rotation;
 
     /**
      * Creates a new place interaction

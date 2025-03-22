@@ -12,11 +12,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
 
-@Mixin({Item.class})
+@Mixin(Item.class)
 public class ItemMixin {
     @Inject(
-            method = {"getTooltipData"},
-            at = {@At("HEAD")},
+            method = "getTooltipData",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onTooltipData(ItemStack var1, CallbackInfoReturnable<Optional<TooltipData>> var2) {

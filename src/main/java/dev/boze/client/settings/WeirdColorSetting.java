@@ -18,10 +18,10 @@ import java.util.Locale;
 import java.util.function.BooleanSupplier;
 
 public class WeirdColorSetting extends Setting<ColorWrapper> {
-    private ColorTypes field934 = ColorTypes.ALL;
-    public boolean opacity = false;
-    private ColorWrapper field935;
     public final Class5903<?> field936;
+    public boolean opacity = false;
+    private ColorTypes field934 = ColorTypes.ALL;
+    private ColorWrapper field935;
 
     public WeirdColorSetting(String name, ColorWrapper value, String description) {
         super(name, description);

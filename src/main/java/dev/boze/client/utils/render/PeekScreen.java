@@ -23,6 +23,12 @@ public class PeekScreen extends ShulkerBoxScreen implements IMinecraft {
     private final ItemStack[] field1356;
     private final ItemStack field1357;
 
+    public PeekScreen(ItemStack storageBlock, ItemStack[] contents) {
+        super(new ShulkerBoxScreenHandler(0, mc.player.getInventory(), new SimpleInventory(contents)), mc.player.getInventory(), storageBlock.getName());
+        this.field1356 = contents;
+        this.field1357 = storageBlock;
+    }
+
     @EventHandler
     private static void method2041(MovementEvent var0) {
         if (field1354 != null && mc.currentScreen == null) {
@@ -32,10 +38,21 @@ public class PeekScreen extends ShulkerBoxScreen implements IMinecraft {
         }
     }
 
-    public PeekScreen(ItemStack storageBlock, ItemStack[] contents) {
-        super(new ShulkerBoxScreenHandler(0, mc.player.getInventory(), new SimpleInventory(contents)), mc.player.getInventory(), storageBlock.getName());
-        this.field1356 = contents;
-        this.field1357 = storageBlock;
+    public static boolean method589(ItemStack itemStack, ItemStack[] contents, boolean pause) {
+        if (!StackDeserializer.method1756(itemStack) && itemStack.getItem() != Items.ENDER_CHEST) {
+            return false;
+        } else {
+            StackDeserializer.method670(itemStack, contents);
+            StackDeserializer.method670(itemStack, contents);
+            if (pause) {
+                field1354 = new PeekScreen(itemStack, contents);
+                Boze.EVENT_BUS.subscribe(PeekScreen.class);
+            } else {
+                mc.setScreen(new PeekScreen(itemStack, contents));
+            }
+
+            return true;
+        }
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
@@ -72,22 +89,5 @@ public class PeekScreen extends ShulkerBoxScreen implements IMinecraft {
         int var10 = (this.height - this.backgroundHeight) / 2;
         context.drawTexture(this.field1355, var9, var10, 0, 0, this.backgroundWidth, this.backgroundHeight);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-    }
-
-    public static boolean method589(ItemStack itemStack, ItemStack[] contents, boolean pause) {
-        if (!StackDeserializer.method1756(itemStack) && itemStack.getItem() != Items.ENDER_CHEST) {
-            return false;
-        } else {
-            StackDeserializer.method670(itemStack, contents);
-            StackDeserializer.method670(itemStack, contents);
-            if (pause) {
-                field1354 = new PeekScreen(itemStack, contents);
-                Boze.EVENT_BUS.subscribe(PeekScreen.class);
-            } else {
-                mc.setScreen(new PeekScreen(itemStack, contents));
-            }
-
-            return true;
-        }
     }
 }

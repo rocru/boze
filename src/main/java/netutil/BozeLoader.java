@@ -20,6 +20,60 @@ import java.util.*;
 import java.util.stream.Stream;
 
 class BozeLoader {
+    public static String method18(final String v0) {
+        try {
+            return Base64.getEncoder().encodeToString(MessageDigest.getInstance("MD5").digest(v0.getBytes(StandardCharsets.UTF_8)));
+        } catch (final NoSuchAlgorithmException ex) {
+            return "null";
+        }
+    }
+
+    static String method20(final String v0, final byte[] v1) {
+        final StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < v0.length(); ++i) {
+            sb.append((char) (v0.charAt(i) ^ v1[i % v1.length]));
+        }
+        return sb.toString();
+    }
+
+    static String method21(final String v0, final String v1) {
+        final StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < v0.length(); ++i) {
+            sb.append((char) (v0.charAt(i) ^ v1.charAt(i % v1.length())));
+        }
+        return sb.toString();
+    }
+
+    static byte[] method22(final byte[] v0, final String v1) {
+        final byte[] array = new byte[v0.length];
+        for (int i = 0; i < v0.length; ++i) {
+            array[i] = (byte) (v0[i] ^ v1.charAt(i % v1.length()));
+        }
+        return array;
+    }
+
+    static byte[] method23(final byte[] v0, final byte[] v1) {
+        final byte[] array = new byte[v0.length];
+        for (int i = 0; i < v0.length; ++i) {
+            array[i] = (byte) (v0[i] ^ v1[i % v1.length]);
+        }
+        return array;
+    }
+
+    private static void method25(final byte[] v0, final Cipher v1, final byte[] v2) {
+        final byte[] src = new byte[12];
+        System.arraycopy(v2, 0, src, 0, 12);
+        final GCMParameterSpec params = new GCMParameterSpec(128, src);
+        try {
+            v1.init(2, new SecretKeySpec(v0, 0, v0.length, "AES"), params);
+        } catch (final Exception ex) {
+        }
+    }
+
+    private static byte[] method26(final HashMap v0, final byte[] v1) {
+        return (byte[]) v0.get(new String(v1));
+    }
+
     HashMap<String, byte[]> method11(final String v1, final String v2) throws Throwable {
         try {
             String s = "";
@@ -304,14 +358,6 @@ class BozeLoader {
         return sb.toString();
     }
 
-    public static String method18(final String v0) {
-        try {
-            return Base64.getEncoder().encodeToString(MessageDigest.getInstance("MD5").digest(v0.getBytes(StandardCharsets.UTF_8)));
-        } catch (final NoSuchAlgorithmException ex) {
-            return "null";
-        }
-    }
-
     private byte[] method19(final InputStream v1) throws Throwable {
         final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         final byte[] b = new byte[65535];
@@ -321,55 +367,9 @@ class BozeLoader {
         return byteArrayOutputStream.toByteArray();
     }
 
-    static String method20(final String v0, final byte[] v1) {
-        final StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < v0.length(); ++i) {
-            sb.append((char) (v0.charAt(i) ^ v1[i % v1.length]));
-        }
-        return sb.toString();
-    }
-
-    static String method21(final String v0, final String v1) {
-        final StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < v0.length(); ++i) {
-            sb.append((char) (v0.charAt(i) ^ v1.charAt(i % v1.length())));
-        }
-        return sb.toString();
-    }
-
-    static byte[] method22(final byte[] v0, final String v1) {
-        final byte[] array = new byte[v0.length];
-        for (int i = 0; i < v0.length; ++i) {
-            array[i] = (byte) (v0[i] ^ v1.charAt(i % v1.length()));
-        }
-        return array;
-    }
-
-    static byte[] method23(final byte[] v0, final byte[] v1) {
-        final byte[] array = new byte[v0.length];
-        for (int i = 0; i < v0.length; ++i) {
-            array[i] = (byte) (v0[i] ^ v1[i % v1.length]);
-        }
-        return array;
-    }
-
     private String method24(final String v1) {
         final String name = new File(v1).getName();
         final int lastIndex = name.lastIndexOf(46);
         return (lastIndex == -1) ? "" : name.substring(lastIndex + 1);
-    }
-
-    private static void method25(final byte[] v0, final Cipher v1, final byte[] v2) {
-        final byte[] src = new byte[12];
-        System.arraycopy(v2, 0, src, 0, 12);
-        final GCMParameterSpec params = new GCMParameterSpec(128, src);
-        try {
-            v1.init(2, new SecretKeySpec(v0, 0, v0.length, "AES"), params);
-        } catch (final Exception ex) {
-        }
-    }
-
-    private static byte[] method26(final HashMap v0, final byte[] v1) {
-        return (byte[]) v0.get(new String(v1));
     }
 }

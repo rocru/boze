@@ -16,14 +16,14 @@ import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
 import net.minecraft.util.math.MathHelper;
 
 public class nh {
+    final ElytraBoost field3214;
     private final Timer field3207;
+    private final ni field3213;
     public boolean field3208;
     public boolean field3209;
     public boolean field3210;
     public boolean field3211;
     public boolean field3212;
-    private final ni field3213;
-    final ElytraBoost field3214;
 
     public nh(final ElytraBoost this$0) {
         this.field3214 = this$0;
@@ -34,6 +34,10 @@ public class nh {
         this.field3211 = false;
         this.field3212 = false;
         this.field3213 = new ni(this);
+    }
+
+    private static boolean lambda$getElytraId$0(ItemStack var0) {
+        return var0.getItem() == Items.ELYTRA;
     }
 
     public void method1819() {
@@ -103,9 +107,5 @@ public class nh {
                 this.field3207.reset();
             }
         }
-    }
-
-    private static boolean lambda$getElytraId$0(ItemStack var0) {
-        return var0.getItem() == Items.ELYTRA;
     }
 }

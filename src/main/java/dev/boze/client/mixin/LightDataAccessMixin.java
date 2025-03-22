@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(
-        value = {LightDataAccess.class},
+        value = LightDataAccess.class,
         remap = false
 )
 public class LightDataAccessMixin {
@@ -26,9 +26,9 @@ public class LightDataAccessMixin {
     private Mutable pos;
 
     @ModifyVariable(
-            method = {"compute"},
+            method = "compute",
             at = @At("TAIL"),
-            name = {"bl"}
+            name = "bl"
     )
     private int compute_modifyAO(int var1) {
         if (XRay.INSTANCE.isEnabled()) {

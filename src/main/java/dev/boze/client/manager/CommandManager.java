@@ -20,6 +20,14 @@ public class CommandManager implements IMinecraft {
     private final List<Command> field2135 = new ArrayList();
     private final Map<Class<? extends Command>, Command> field2136 = new HashMap();
 
+    private static boolean lambda$add$1(Command var0, Command var1) {
+        return var1.method210().equals(var0.method210());
+    }
+
+    private static boolean lambda$add$0(Command var0, Command var1) {
+        return var1.method210().equals(var0.method210());
+    }
+
     public void method1137() {
         this.method1142(new AddonsCommand());
         this.method1142(new BaritoneCommand());
@@ -106,13 +114,5 @@ public class CommandManager implements IMinecraft {
 
     public <T extends Command> T method1145(Class<T> klass) {
         return (T) this.field2136.get(klass);
-    }
-
-    private static boolean lambda$add$1(Command var0, Command var1) {
-        return var1.method210().equals(var0.method210());
-    }
-
-    private static boolean lambda$add$0(Command var0, Command var1) {
-        return var1.method210().equals(var0.method210());
     }
 }

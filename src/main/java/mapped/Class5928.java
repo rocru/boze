@@ -11,6 +11,12 @@ public class Class5928 implements IMinecraft {
     private static final boolean[] field45;
     private static CursorType field46;
 
+    static {
+        field44 = new boolean[512];
+        field45 = new boolean[16];
+        Class5928.field46 = CursorType.Normal;
+    }
+
     public Class5928() {
         super();
     }
@@ -48,11 +54,5 @@ public class Class5928 implements IMinecraft {
             GLFW.glfwSetCursor(Class5928.mc.getWindow().getHandle(), style.method826());
             Class5928.field46 = style;
         }
-    }
-
-    static {
-        field44 = new boolean[512];
-        field45 = new boolean[16];
-        Class5928.field46 = CursorType.Normal;
     }
 }

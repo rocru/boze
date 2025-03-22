@@ -13,11 +13,6 @@ public class BaritoneCommand extends Command {
         super("baritone", "Baritone", "Run Baritone commands", "b");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.then(method402("command", StringArgumentType.greedyString()).executes(BaritoneCommand::lambda$build$0));
-    }
-
     private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
         String var4 = (String) var0.getArgument("command", String.class);
         if (BaritoneAPI.class.getProtectionDomain().getCodeSource().getLocation().toString().contains("libraries")) {
@@ -25,5 +20,10 @@ public class BaritoneCommand extends Command {
         }
 
         return 1;
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.then(method402("command", StringArgumentType.greedyString()).executes(BaritoneCommand::lambda$build$0));
     }
 }

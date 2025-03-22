@@ -15,7 +15,6 @@ import net.minecraft.util.Identifier;
 
 public class LatencyTracker implements IMinecraft {
     public static final LatencyTracker INSTANCE = new LatencyTracker();
-    public int field1308;
     public final Identifier[] field1309 = new Identifier[]{
             Identifier.of("minecraft:story/root"),
             Identifier.of("minecraft:recipes/root"),
@@ -25,6 +24,7 @@ public class LatencyTracker implements IMinecraft {
             Identifier.of("minecraft:husbandry/root")
     };
     public final long[] field1310 = new long[6];
+    public int field1308;
     public int field1311 = 0;
     public boolean field1312 = false;
 

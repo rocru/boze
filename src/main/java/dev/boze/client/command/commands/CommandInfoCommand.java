@@ -13,11 +13,6 @@ public class CommandInfoCommand extends Command {
         super("commands", "Commands", "Shows all commands", "help");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.executes(CommandInfoCommand::lambda$build$1);
-    }
-
     private static int lambda$build$1(CommandContext var0) throws CommandSyntaxException {
         ChatInstance.method624("Commands:");
         Boze.getCommands().method1144().forEach(CommandInfoCommand::lambda$build$0);
@@ -26,5 +21,10 @@ public class CommandInfoCommand extends Command {
 
     private static void lambda$build$0(Command var0) {
         ChatInstance.method624(" - (highlight)" + var0.method210());
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.executes(CommandInfoCommand::lambda$build$1);
     }
 }

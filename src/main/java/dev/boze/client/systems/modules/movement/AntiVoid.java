@@ -34,6 +34,8 @@ import org.joml.Vector3d;
 
 public class AntiVoid extends Module {
     public static final AntiVoid INSTANCE = new AntiVoid();
+    public final Class5919 field556 = new Class5919();
+    public final Class3064<Vector3d> field557 = new Class3064<Vector3d>(Vector3d::new);
     private final EnumSetting<AntiVoidMode> field550 = new EnumSetting<AntiVoidMode>(
             "Mode",
             AntiVoidMode.Ghost,
@@ -58,21 +60,23 @@ public class AntiVoid extends Module {
     );
     private final IntSetting field554 = new IntSetting("Offset", 0, 0, 20, 1, "Activates this amount of blocks under void", this::lambda$new$4);
     private final ne field555 = new ne(this);
-    public final Class5919 field556 = new Class5919();
-    public final Class3064<Vector3d> field557 = new Class3064<Vector3d>(Vector3d::new);
     private final Timer field558 = new Timer();
     private final Timer field559 = new Timer();
     private final Timer field560 = new Timer();
     private BlockPos field561 = null;
     private boolean field562 = false;
 
-    private AntiVoidMode method280() {
-        return Options.INSTANCE.method1971() ? AntiVoidMode.Ghost : this.field550.getValue();
-    }
-
     public AntiVoid() {
         super("AntiVoid", "Tries to prevent you from falling into the void", Category.Movement);
         this.field435 = true;
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
+
+    private AntiVoidMode method280() {
+        return Options.INSTANCE.method1971() ? AntiVoidMode.Ghost : this.field550.getValue();
     }
 
     @Override
@@ -292,9 +296,5 @@ public class AntiVoid extends Module {
 
     private boolean lambda$new$1() {
         return this.method280() == AntiVoidMode.Ghost;
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }

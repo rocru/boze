@@ -27,11 +27,6 @@ public class OldColors extends Module {
         this.clientGradient.setSync(false);
     }
 
-    @Override
-    public boolean setEnabled(boolean newState) {
-        return false;
-    }
-
     public static RGBAColor method1342() {
         return INSTANCE.field2404.getValue();
     }
@@ -42,5 +37,10 @@ public class OldColors extends Module {
 
     public static ModuleColors method1344() {
         return INSTANCE.field2405.getValue();
+    }
+
+    @Override
+    public boolean setEnabled(boolean newState) {
+        return false;
     }
 }

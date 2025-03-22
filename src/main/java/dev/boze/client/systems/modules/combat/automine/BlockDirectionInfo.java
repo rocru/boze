@@ -10,9 +10,9 @@ import java.util.function.Function;
 
 public class BlockDirectionInfo {
     public final BlockPos field2523;
+    public final AutoMineMode field2526;
     final Direction field2524;
     final Vec3d field2525;
-    public final AutoMineMode field2526;
     final Function<BlockPos, Boolean> field2527;
 
     public BlockDirectionInfo(BlockPos var1, Direction var2, AutoMineMode var3) {
@@ -31,6 +31,10 @@ public class BlockDirectionInfo {
         this.field2527 = var4;
     }
 
+    private static Boolean lambda$new$0(BlockPos var0) {
+        return true;
+    }
+
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -44,9 +48,5 @@ public class BlockDirectionInfo {
 
     public int hashCode() {
         return Objects.hash(this.field2523);
-    }
-
-    private static Boolean lambda$new$0(BlockPos var0) {
-        return true;
     }
 }

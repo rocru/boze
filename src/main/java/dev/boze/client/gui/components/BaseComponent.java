@@ -4,8 +4,8 @@ import net.minecraft.client.gui.DrawContext;
 
 public abstract class BaseComponent {
     public static double scaleFactor = -1.0;
-    public String field316;
     public final BaseComponent field317;
+    public String field316;
     public double field318;
     public double field319;
     public double field320;
@@ -18,6 +18,10 @@ public abstract class BaseComponent {
         this.field319 = var5;
         this.field320 = var7;
         this.field321 = var9;
+    }
+
+    public static boolean isMouseWithinBounds(double var0, double var2, double var4, double var6, double var8, double var10) {
+        return var0 >= var4 && var0 <= var4 + var8 && var2 >= var6 && var2 <= var6 + var10;
     }
 
     public void render(DrawContext var1, int var2, int var3, float var4) {
@@ -44,9 +48,5 @@ public abstract class BaseComponent {
 
     public boolean keyReleased(int var1, int var2, int var3) {
         return false;
-    }
-
-    public static boolean isMouseWithinBounds(double var0, double var2, double var4, double var6, double var8, double var10) {
-        return var0 >= var4 && var0 <= var4 + var8 && var2 >= var6 && var2 <= var6 + var10;
     }
 }

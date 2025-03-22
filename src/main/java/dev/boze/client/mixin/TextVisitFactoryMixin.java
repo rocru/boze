@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-@Mixin({TextVisitFactory.class})
+@Mixin(TextVisitFactory.class)
 public abstract class TextVisitFactoryMixin {
     @ModifyArg(
             at = @At(
@@ -14,7 +14,7 @@ public abstract class TextVisitFactoryMixin {
                     target = "Lnet/minecraft/text/TextVisitFactory;visitFormatted(Ljava/lang/String;ILnet/minecraft/text/Style;Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
                     ordinal = 0
             ),
-            method = {"visitFormatted(Ljava/lang/String;ILnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z"},
+            method = "visitFormatted(Ljava/lang/String;ILnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
             index = 0
     )
     private static String visitText(String var0) {

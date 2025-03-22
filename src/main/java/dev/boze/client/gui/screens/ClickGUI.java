@@ -39,16 +39,17 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class ClickGUI extends Screen implements IMinecraft {
-    public GUIMenu field1332 = GUIMenu.Normal;
-    public RenderUtil field1333;
-    private final Timer field1334 = new Timer();
     public static final ClickGUI field1335 = new ClickGUI();
-    public boolean field1336 = false;
-    public CursorType field1337 = CursorType.Normal;
-    public Screen field1338 = null;
+    private final Timer field1334 = new Timer();
     private final ArrayList<BaseComponent> field1339 = new ArrayList();
     private final ArrayList<BaseComponent> field1340 = new ArrayList();
     private final ArrayList<HUDModule> field1341 = new ArrayList();
+    private final String field1349 = HttpUtil.get("https://capes.boze.dev/specialcape").method2187();
+    public GUIMenu field1332 = GUIMenu.Normal;
+    public RenderUtil field1333;
+    public boolean field1336 = false;
+    public CursorType field1337 = CursorType.Normal;
+    public Screen field1338 = null;
     private ScaledBaseComponent field1342 = null;
     private String field1343 = null;
     private double field1344 = 0.0;
@@ -56,7 +57,6 @@ public class ClickGUI extends Screen implements IMinecraft {
     private EditableComponent field1346 = null;
     private GhostModeComponent field1347 = null;
     private Framebuffer field1348;
-    private final String field1349 = HttpUtil.get("https://capes.boze.dev/specialcape").method2187();
 
     protected ClickGUI() {
         super(Text.translatable("ClickGUI"));

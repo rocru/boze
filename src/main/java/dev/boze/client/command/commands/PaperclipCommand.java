@@ -16,17 +16,6 @@ public class PaperclipCommand extends Command {
         super("paperclip", "PaperClip", "Teleports to specified location using paper clip exploit");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.then(
-                method402("X", DoubleArgumentType.doubleArg())
-                        .then(
-                                method402("Y", DoubleArgumentType.doubleArg()).then(method402("Z", DoubleArgumentType.doubleArg()).executes(PaperclipCommand::lambda$build$0))
-                        )
-        );
-        builder.then(method402("player", PlayerArgument.method731()).executes(PaperclipCommand::lambda$build$1));
-    }
-
     private static int lambda$build$1(CommandContext var0) throws CommandSyntaxException {
         AbstractClientPlayerEntity var4 = PlayerArgument.method732(var0);
         if (var4 != null) {
@@ -41,5 +30,16 @@ public class PaperclipCommand extends Command {
                 new Vec3d((Double) var0.getArgument("X", Double.class), (Double) var0.getArgument("Y", Double.class), (Double) var0.getArgument("Z", Double.class))
         );
         return 1;
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.then(
+                method402("X", DoubleArgumentType.doubleArg())
+                        .then(
+                                method402("Y", DoubleArgumentType.doubleArg()).then(method402("Z", DoubleArgumentType.doubleArg()).executes(PaperclipCommand::lambda$build$0))
+                        )
+        );
+        builder.then(method402("player", PlayerArgument.method731()).executes(PaperclipCommand::lambda$build$1));
     }
 }

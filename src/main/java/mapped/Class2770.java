@@ -3,11 +3,11 @@ package mapped;
 import net.minecraft.client.gui.DrawContext;
 
 public abstract class Class2770 {
+    protected final Class2770[] field72;
     protected double field68;
     protected double field69;
     protected double field70;
     protected double field71;
-    protected final Class2770[] field72;
     protected boolean field73 = false;
 
     public Class2770(Class2770... children) {

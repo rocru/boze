@@ -13,13 +13,13 @@ public class WatermarkCommand extends Command {
         super("watermark", "Watermark", "Sets your watermark");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        builder.then(method402("watermark", StringArgumentType.greedyString()).executes(WatermarkCommand::lambda$build$0));
-    }
-
     private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
         Options.INSTANCE.field988.setValue((String) var0.getArgument("watermark", String.class));
         return 1;
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        builder.then(method402("watermark", StringArgumentType.greedyString()).executes(WatermarkCommand::lambda$build$0));
     }
 }

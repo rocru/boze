@@ -4,7 +4,7 @@ import net.minecraft.client.input.Input;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-@Mixin({Input.class})
+@Mixin(Input.class)
 public class InputMixin {
     @Shadow
     public float movementSideways;

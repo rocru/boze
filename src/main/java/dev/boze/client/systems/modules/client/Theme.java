@@ -11,6 +11,8 @@ import dev.boze.client.utils.RGBAColor;
 
 public class Theme extends Module {
     public static final Theme INSTANCE = new Theme();
+    public final MinMaxSetting ax = new MinMaxSetting("BrightHighlight", 0.7, 0.05, 0.95, 0.05, "Factor for brightening highlight");
+    public final MinMaxSetting ay = new MinMaxSetting("DarkenHighlight", 0.4, 0.05, 0.95, 0.05, "Factor for darkening highlight");
     private final RGBASetting field2408 = new RGBASetting("Accent", new RGBAColor(-7046189), "Accent color");
     private final RGBASetting field2409 = new RGBASetting("AccentText", new RGBAColor(-1), "Accent text color");
     private final RGBASetting field2410 = new RGBASetting("AccentSubText", new RGBAColor(-922746881), "Accent sub-text color");
@@ -41,6 +43,10 @@ public class Theme extends Module {
     private final IntSetting field2427 = new IntSetting("Indentation", 2, 0, 10, 1, "Module indentation in list", this.field2424);
     private final IntSetting field2428 = new IntSetting("Separation", 1, 0, 10, 1, "Module separation in list", this.field2424);
     private final SettingCategory field2429 = new SettingCategory("Module", "Module settings");
+    public final BooleanSetting field2435 = new BooleanSetting("PowerButton", true, "Show power button icon", this.field2429);
+    public final BooleanSetting field2436 = new BooleanSetting("TuneButton", true, "Show tune button icon", this.field2429);
+    public final BooleanSetting aa = new BooleanSetting("ConfigsButton", true, "Show configs button icon", this.field2429);
+    public final BooleanSetting ab = new BooleanSetting("ExpandButton", true, "Show expand button icon", this.field2429);
     private final IntSetting field2430 = new IntSetting("Height", 12, 0, 20, 1, "Module height", this.field2429);
     private final EnumSetting<AlignMode> field2431 = new EnumSetting<AlignMode>("Align", AlignMode.Left, "Module alignment", this.field2429);
     private final EnumSetting<LetterStyle> field2432 = new EnumSetting<LetterStyle>("Style", LetterStyle.Normal, "Module style", this.field2429);
@@ -48,10 +54,6 @@ public class Theme extends Module {
     private final EnumSetting<ModuleDisplayMode> field2434 = new EnumSetting<ModuleDisplayMode>(
             "Option", ModuleDisplayMode.Icons, "Option to show on module elements", this.field2429
     );
-    public final BooleanSetting field2435 = new BooleanSetting("PowerButton", true, "Show power button icon", this.field2429);
-    public final BooleanSetting field2436 = new BooleanSetting("TuneButton", true, "Show tune button icon", this.field2429);
-    public final BooleanSetting aa = new BooleanSetting("ConfigsButton", true, "Show configs button icon", this.field2429);
-    public final BooleanSetting ab = new BooleanSetting("ExpandButton", true, "Show expand button icon", this.field2429);
     private final BooleanSetting ac = new BooleanSetting("HoverOnly", true, "Only show option when hovering over module", this.field2429);
     private final BooleanSetting ad = new BooleanSetting("ShowBinds", true, "Show binds on modules when not hovering", this::lambda$new$1, this.field2429);
     private final BooleanSetting ae = new BooleanSetting("CustomColors", false, "Custom colors for modules", this.field2429);
@@ -77,18 +79,10 @@ public class Theme extends Module {
     private final MinMaxSetting aw = new MinMaxSetting(
             "Scale", 0.8, 0.1, 2.0, 0.1, "Scale factor for the ClickGUI\nYou need to re-open the gui for changes to take effect"
     );
-    public final MinMaxSetting ax = new MinMaxSetting("BrightHighlight", 0.7, 0.05, 0.95, 0.05, "Factor for brightening highlight");
-    public final MinMaxSetting ay = new MinMaxSetting("DarkenHighlight", 0.4, 0.05, 0.95, 0.05, "Factor for darkening highlight");
 
     public Theme() {
         super("Theme", "Theme for Boze GUI", Category.Client, ConfigCategory.Visuals);
         this.enabled = false;
-    }
-
-    @Override
-    public boolean setEnabled(boolean newState) {
-        this.enabled = false;
-        return false;
     }
 
     public static RGBAColor method1347() {
@@ -288,15 +282,21 @@ public class Theme extends Module {
         return text;
     }
 
+    private static boolean lambda$new$0() {
+        return Gui.INSTANCE.field2350.getValue() == GUILayout.Classic;
+    }
+
+    @Override
+    public boolean setEnabled(boolean newState) {
+        this.enabled = false;
+        return false;
+    }
+
     private boolean lambda$new$2() {
         return this.as.getValue() > 0.0F;
     }
 
     private boolean lambda$new$1() {
         return this.ac.getValue() && this.field2434.getValue() == ModuleDisplayMode.Icons;
-    }
-
-    private static boolean lambda$new$0() {
-        return Gui.INSTANCE.field2350.getValue() == GUILayout.Classic;
     }
 }

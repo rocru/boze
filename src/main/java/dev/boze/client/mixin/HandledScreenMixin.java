@@ -19,15 +19,15 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({HandledScreen.class})
+@Mixin(HandledScreen.class)
 public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen implements ScreenHandlerProvider<T> {
     public HandledScreenMixin(Text title) {
         super(title);
     }
 
     @Inject(
-            method = {"onMouseClick(Lnet/minecraft/screen/slot/Slot;IILnet/minecraft/screen/slot/SlotActionType;)V"},
-            at = {@At("HEAD")},
+            method = "onMouseClick(Lnet/minecraft/screen/slot/Slot;IILnet/minecraft/screen/slot/SlotActionType;)V",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onOnMouseClick(Slot var1, int var2, int var3, SlotActionType var4, CallbackInfo var5) {
@@ -40,8 +40,8 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
     public abstract T getScreenHandler();
 
     @Inject(
-            method = {"init"},
-            at = {@At("TAIL")}
+            method = "init",
+            at = @At("TAIL")
     )
     private void onInit(CallbackInfo var1) {
         if (InventoryTweaks.INSTANCE.isEnabled()

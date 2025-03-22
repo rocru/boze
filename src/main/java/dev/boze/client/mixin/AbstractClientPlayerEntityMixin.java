@@ -14,15 +14,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Locale;
 
-@Mixin({AbstractClientPlayerEntity.class})
+@Mixin(AbstractClientPlayerEntity.class)
 public abstract class AbstractClientPlayerEntityMixin {
     @Shadow
     @Nullable
     protected abstract PlayerListEntry getPlayerListEntry();
 
     @Inject(
-            method = {"getSkinTextures"},
-            at = {@At("HEAD")},
+            method = "getSkinTextures",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void onGetSkinTextures(CallbackInfoReturnable<SkinTextures> info) {

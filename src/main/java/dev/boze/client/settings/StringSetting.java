@@ -5,8 +5,8 @@ import net.minecraft.nbt.NbtCompound;
 import java.util.function.BooleanSupplier;
 
 public class StringSetting extends Setting<String> {
-    private String field925;
     private final String field926;
+    private String field925;
 
     public StringSetting(String name, String value, String description) {
         super(name, description);

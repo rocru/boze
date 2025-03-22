@@ -15,18 +15,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.time.Instant;
 
-@Mixin({MessageHandler.class})
+@Mixin(MessageHandler.class)
 public abstract class MessageHandlerMixin implements Class2780 {
     @Unique
     private GameProfile sender;
 
     @Inject(
-            method = {"processChatMessageInternal"},
-            at = {@At(
+            method = "processChatMessageInternal",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/hud/ChatHud;addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V",
                     shift = Shift.BEFORE
-            )}
+            )
     )
     private void onBeforeAddMessage(
             Parameters var1, SignedMessage var2, Text var3, GameProfile var4, boolean var5, Instant var6, CallbackInfoReturnable<Boolean> var7
@@ -35,12 +35,12 @@ public abstract class MessageHandlerMixin implements Class2780 {
     }
 
     @Inject(
-            method = {"processChatMessageInternal"},
-            at = {@At(
+            method = "processChatMessageInternal",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/hud/ChatHud;addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V",
                     shift = Shift.AFTER
-            )}
+            )
     )
     private void onAfterAddMessage(
             Parameters var1, SignedMessage var2, Text var3, GameProfile var4, boolean var5, Instant var6, CallbackInfoReturnable<Boolean> var7

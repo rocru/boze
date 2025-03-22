@@ -21,15 +21,15 @@ public class EnumArgument implements ArgumentType<Enum> {
         this.field1858 = var1;
     }
 
+    public static Enum method993(CommandContext<?> context, String name) {
+        return context.getArgument(name, Enum.class);
+    }
+
     @Override
     public Enum parse(StringReader reader) {
         String var2 = reader.getRemaining();
         reader.setCursor(reader.getTotalLength());
         return this.field1858.method465(var2);
-    }
-
-    public static Enum method993(CommandContext<?> context, String name) {
-        return context.getArgument(name, Enum.class);
     }
 
     public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {

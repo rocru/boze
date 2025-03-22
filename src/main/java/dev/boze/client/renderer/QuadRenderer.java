@@ -4,8 +4,8 @@ import dev.boze.client.renderer.Mesh.Attrib;
 import net.minecraft.client.util.math.MatrixStack;
 
 public class QuadRenderer {
-    private static Mesh field2164;
     private static final MatrixStack field2165 = new MatrixStack();
+    private static Mesh field2164;
 
     public static void initialize() {
         field2164 = new Mesh(DrawMode.Triangles, Attrib.Vec2);

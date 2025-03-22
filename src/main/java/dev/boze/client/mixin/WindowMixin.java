@@ -6,10 +6,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-@Mixin({Window.class})
+@Mixin(value = Window.class, remap = false)
 public class WindowMixin {
     @ModifyArg(
-            method = {"<init>"},
+            method = "<init>",
             at = @At(
                     value = "INVOKE",
                     target = "Lorg/lwjgl/glfw/GLFW;glfwWindowHint(II)V",

@@ -23,13 +23,13 @@ import java.util.List;
 
 public class nz {
     public final List<Vector3d> field3807;
+    public final Timer field3810;
+    final Trajectories field3814;
     private final List<Long> field3808;
     private final Vector3d field3809;
-    public final Timer field3810;
+    public int field3813;
     private BlockHitResult field3811;
     private Entity field3812;
-    public int field3813;
-    final Trajectories field3814;
 
     public nz(final Trajectories this$0) {
         this.field3814 = this$0;

@@ -13,12 +13,12 @@ import java.util.UUID;
 
 public class PoppedPlayerEntity extends FakePlayerEntity {
     public final UUID field1273;
+    final PopChams field1279;
     private final long field1274;
     private final double field1275;
     private final float field1276;
     private final float field1277;
     private final float field1278;
-    final PopChams field1279;
 
     public PoppedPlayerEntity(final PopChams arg, PlayerEntity player) {
         super(player, "Popped Player", 20.0F, false);

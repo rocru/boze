@@ -15,12 +15,12 @@ public class ShowInArrayListComponent extends ToggleComponent {
     }
 
     @Override
-    protected void setToggled(boolean value) {
-        this.field2088.setVisibility(value);
+    protected boolean isToggled() {
+        return this.field2088.getVisibility();
     }
 
     @Override
-    protected boolean isToggled() {
-        return this.field2088.getVisibility();
+    protected void setToggled(boolean value) {
+        this.field2088.setVisibility(value);
     }
 }

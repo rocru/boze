@@ -30,9 +30,9 @@ public class MurderMystery extends Module {
     private final BooleanSetting field2813 = new BooleanSetting(
             "BowWarning", true, "If you're the murderer, warns you when others have bows", this::lambda$new$0
     );
-    private PlayerEntity field2814 = null;
     private final HashSet<PlayerEntity> field2815 = new HashSet();
     private final HashSet<PlayerEntity> field2816 = new HashSet();
+    private PlayerEntity field2814 = null;
 
     private MurderMystery() {
         super("MurderMystery", "Detects murderer based on the item they're holding\n", Category.Legit);

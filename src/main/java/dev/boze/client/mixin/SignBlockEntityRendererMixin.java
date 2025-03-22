@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({SignBlockEntityRenderer.class})
+@Mixin(SignBlockEntityRenderer.class)
 public class SignBlockEntityRendererMixin {
     @Inject(
-            method = {"renderText"},
-            at = {@At("HEAD")},
+            method = "renderText",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void onRenderText(

@@ -11,8 +11,8 @@ public enum ElytraRecastDirection {
     West(90.0F),
     NW(135.0F);
 
-    public float field1766;
     private static final ElytraRecastDirection[] field1767 = method878();
+    public float field1766;
 
     ElytraRecastDirection(float var3) {
         this.field1766 = var3;

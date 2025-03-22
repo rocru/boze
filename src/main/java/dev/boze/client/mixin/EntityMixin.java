@@ -38,28 +38,28 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.List;
 
-@Mixin({Entity.class})
+@Mixin(Entity.class)
 public abstract class EntityMixin implements IEntity {
     @Shadow
     public boolean noClip;
     @Shadow
-    private Box boundingBox;
-    @Shadow
-    private World world;
+    public int age;
     @Shadow
     protected boolean firstUpdate;
     @Shadow
     protected Object2DoubleMap<TagKey<Fluid>> fluidHeight;
     @Shadow
-    public int age;
-
+    private Box boundingBox;
     @Shadow
-    public abstract Box getBoundingBox();
+    private World world;
 
     @Shadow
     public static Vec3d adjustMovementForCollisions(@Nullable Entity entity, Vec3d movement, Box entityBoundingBox, World world, List<VoxelShape> collisions) {
         return null;
     }
+
+    @Shadow
+    public abstract Box getBoundingBox();
 
     @Shadow
     public abstract Vec3d getRotationVector(float var1, float var2);
@@ -70,8 +70,8 @@ public abstract class EntityMixin implements IEntity {
     }
 
     @Inject(
-            method = {"getRotationVec"},
-            at = {@At("HEAD")},
+            method = "getRotationVec",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void injectRotationFix(float tickDelta, CallbackInfoReturnable<Vec3d> cir) {
@@ -86,8 +86,8 @@ public abstract class EntityMixin implements IEntity {
     }
 
     @Inject(
-            method = {"pushAwayFrom"},
-            at = {@At("HEAD")},
+            method = "pushAwayFrom",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onPushAwayFrom(Entity var1, CallbackInfo var2) {
@@ -102,8 +102,8 @@ public abstract class EntityMixin implements IEntity {
     }
 
     @Inject(
-            method = {"move"},
-            at = {@At("HEAD")}
+            method = "move",
+            at = @At("HEAD")
     )
     private void onMove(MovementType var1, Vec3d var2, CallbackInfo var3) {
         if ((Object) this instanceof LivingEntity) {
@@ -114,8 +114,8 @@ public abstract class EntityMixin implements IEntity {
     }
 
     @Inject(
-            method = {"getTargetingMargin"},
-            at = {@At("HEAD")},
+            method = "getTargetingMargin",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void onGetTargetingMargin(CallbackInfoReturnable<Float> var1) {
@@ -126,13 +126,13 @@ public abstract class EntityMixin implements IEntity {
     }
 
     @Inject(
-            method = {"move"},
-            at = {@At(
+            method = "move",
+            at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/Entity;setPosition(DDD)V",
                     shift = Shift.BEFORE,
                     ordinal = 1
-            )},
+            ),
             locals = LocalCapture.CAPTURE_FAILSOFT
     )
     private void inject$stepEvent(MovementType var1, Vec3d var2, CallbackInfo var3, Vec3d var4) {

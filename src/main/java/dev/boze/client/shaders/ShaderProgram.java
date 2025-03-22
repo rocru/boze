@@ -9,7 +9,6 @@ import dev.boze.client.utils.IMinecraft;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.client.gl.GlProgramManager;
-import net.minecraft.util.Identifier;
 import org.apache.commons.io.IOUtils;
 import org.joml.Matrix4f;
 
@@ -26,9 +25,9 @@ import java.util.Objects;
 
 public class ShaderProgram implements IMinecraft {
     public static ShaderProgram field1552;
+    private static String field1555 = null;
     private final int field1553;
     private final Object2IntMap<String> field1554 = new Object2IntOpenHashMap();
-    private static String field1555 = null;
 
     public ShaderProgram() {
         this(Boze.getNextKey(), Boze.getNextKey());

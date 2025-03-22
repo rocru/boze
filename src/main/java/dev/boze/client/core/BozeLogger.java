@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit;
 
 public class BozeLogger
         implements IMinecraft {
+    public static final BozeLogger field1237 = new BozeLogger();
     private static final ConcurrentHashMap<Module, LinkedList<LogMessage>> field1235 = new ConcurrentHashMap();
     private static final long field1236 = TimeUnit.MINUTES.toMillis(3L);
-    public static final BozeLogger field1237 = new BozeLogger();
 
     public static void method522(Module module, String source, String message) {
         Object object = source;

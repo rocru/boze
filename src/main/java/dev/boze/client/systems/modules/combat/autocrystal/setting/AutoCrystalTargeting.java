@@ -23,21 +23,25 @@ import java.util.stream.Collectors;
 public class AutoCrystalTargeting
         implements IMinecraft,
         SettingsGroup {
-    private final EnumSetting<AutoCrystalTargetingMode> field107 = new EnumSetting<AutoCrystalTargetingMode>("Targeting", AutoCrystalTargetingMode.Optimal, "Algorithm for selecting targets\nOptimal is the best, but uses more CPU, proportional to the number of targets\n - Optimal: Selects the best target based on damage\n - Exposure: Selects the target most in the open (least cover)\n - Distance: Selects the closest target\n - Health: Selects the lowest health target");
-    final FloatSetting field108 = new FloatSetting("MinDamage", 6.0f, 0.0f, 20.0f, 0.1f, "Minimum amount of damage for placing crystals", this.field107);
-    final FloatSetting field109 = new FloatSetting("LethalHP", 4.0f, 0.0f, 20.0f, 0.1f, "Health at which to ignore min damage (face-place)", this.field107);
-    final FloatSetting field110 = new FloatSetting("ArmorPct", 0.05f, 0.0f, 1.0f, 0.01f, "Armor piece percentage at which to ignore min damage\nA.k.a. ArmorBreaker\nSet to 0 to disable\n", this.field107);
-    final FloatSetting field111 = new FloatSetting("TradeOff", 0.0f, 0.0f, 10.0f, 0.1f, "Max amount of damage to sacrifice to maintain max speed\nAt 0, higher damage placements are always prioritized\n0 is recommended if you don't care about CPS, but only DPS\nThis is not ping dependent\n");
-    final BindSetting field112 = new BindSetting("Override", Bind.create(), "Bind to override ignore min damage", this.field107);
-    final FloatSetting field113 = new FloatSetting("OverrideMinDmg", 0.1f, 0.0f, 4.0f, 0.1f, "Minimum amount of damage for ignore mode, when:\n - Health below LethalHP\n - Armor below ArmorPct\n - Override bind pressed\n", this.field107);
-    public final BooleanSetting field114 = new BooleanSetting("Economize", false, "Economize on crystals when face-placing", this.field107);
     public final EnumSetting<AutoCrystalMaxDamage> field115 = new EnumSetting<AutoCrystalMaxDamage>("Safety", AutoCrystalMaxDamage.Combined, "Safety mode for placing and breaking crystals\n - MaxSelfDmg: Don't place/break if self damage is above max self damage\n - Balance: Don't place/break if self damage is above target damage * balance\n - Combined: Use both\n");
     public final FloatSetting field116 = new FloatSetting("MaxSelfDmg", 12.0f, 0.0f, 20.0f, 0.1f, "Maximum amount of self damage for placing/breaking crystals", this::lambda$new$0, this.field115);
     public final FloatSetting field117 = new FloatSetting("Balance", 0.5f, 0.0f, 1.0f, 0.05f, "Balance between self and target damage", this::lambda$new$1, this.field115);
     public final BooleanSetting field118 = new BooleanSetting("Sacrifice", false, "Ignore safety and self-popping to pop/kill target\nSo if damage to target is above their health, it will place regardless of self damage", this.field115);
+    final FloatSetting field111 = new FloatSetting("TradeOff", 0.0f, 0.0f, 10.0f, 0.1f, "Max amount of damage to sacrifice to maintain max speed\nAt 0, higher damage placements are always prioritized\n0 is recommended if you don't care about CPS, but only DPS\nThis is not ping dependent\n");
+    private final EnumSetting<AutoCrystalTargetingMode> field107 = new EnumSetting<AutoCrystalTargetingMode>("Targeting", AutoCrystalTargetingMode.Optimal, "Algorithm for selecting targets\nOptimal is the best, but uses more CPU, proportional to the number of targets\n - Optimal: Selects the best target based on damage\n - Exposure: Selects the target most in the open (least cover)\n - Distance: Selects the closest target\n - Health: Selects the lowest health target");
+    final FloatSetting field108 = new FloatSetting("MinDamage", 6.0f, 0.0f, 20.0f, 0.1f, "Minimum amount of damage for placing crystals", this.field107);
+    final FloatSetting field109 = new FloatSetting("LethalHP", 4.0f, 0.0f, 20.0f, 0.1f, "Health at which to ignore min damage (face-place)", this.field107);
+    final FloatSetting field110 = new FloatSetting("ArmorPct", 0.05f, 0.0f, 1.0f, 0.01f, "Armor piece percentage at which to ignore min damage\nA.k.a. ArmorBreaker\nSet to 0 to disable\n", this.field107);
+    final BindSetting field112 = new BindSetting("Override", Bind.create(), "Bind to override ignore min damage", this.field107);
+    final FloatSetting field113 = new FloatSetting("OverrideMinDmg", 0.1f, 0.0f, 4.0f, 0.1f, "Minimum amount of damage for ignore mode, when:\n - Health below LethalHP\n - Armor below ArmorPct\n - Override bind pressed\n", this.field107);
+    public final BooleanSetting field114 = new BooleanSetting("Economize", false, "Economize on crystals when face-placing", this.field107);
     private final Setting<?>[] field119 = new Setting[]{this.field107, this.field108, this.field109, this.field110, this.field111, this.field112, this.field113, this.field114, this.field115, this.field116, this.field117, this.field118};
     private final AutoCrystal field120;
     private List<LivingEntity> field121 = new ArrayList<LivingEntity>();
+
+    public AutoCrystalTargeting(AutoCrystal autoCrystal) {
+        this.field120 = autoCrystal;
+    }
 
     private static void method1800(String string) {
         if (!AutoCrystal.field1038 || AutoCrystalTargeting.mc.player == null) {
@@ -46,8 +50,16 @@ public class AutoCrystalTargeting
         System.out.println("[AutoCrystal.Targeting @" + AutoCrystalTargeting.mc.player.age + "] " + string);
     }
 
-    public AutoCrystalTargeting(AutoCrystal autoCrystal) {
-        this.field120 = autoCrystal;
+    private static Float lambda$updateTargets$4(LivingEntity livingEntity) {
+        return Float.valueOf(livingEntity.distanceTo(AutoCrystalTargeting.mc.player));
+    }
+
+    private static double lambda$updateTargets$3(LivingEntity livingEntity) {
+        return livingEntity.getHealth() + livingEntity.getAbsorptionAmount();
+    }
+
+    private static Float lambda$updateTargets$2(LivingEntity livingEntity) {
+        return Float.valueOf(livingEntity.distanceTo(AutoCrystalTargeting.mc.player));
     }
 
     @Override
@@ -121,18 +133,6 @@ public class AutoCrystalTargeting
             return 0.0;
         }
         return this.field120.targetRange.getValue() - livingEntity.distanceTo(AutoCrystalTargeting.mc.player);
-    }
-
-    private static Float lambda$updateTargets$4(LivingEntity livingEntity) {
-        return Float.valueOf(livingEntity.distanceTo(AutoCrystalTargeting.mc.player));
-    }
-
-    private static double lambda$updateTargets$3(LivingEntity livingEntity) {
-        return livingEntity.getHealth() + livingEntity.getAbsorptionAmount();
-    }
-
-    private static Float lambda$updateTargets$2(LivingEntity livingEntity) {
-        return Float.valueOf(livingEntity.distanceTo(AutoCrystalTargeting.mc.player));
     }
 
     private boolean lambda$new$1() {

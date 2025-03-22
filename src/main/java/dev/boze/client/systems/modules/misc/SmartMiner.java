@@ -53,10 +53,10 @@ public class SmartMiner extends Module {
     private final BooleanSetting field481 = new BooleanSetting("NetherQuartz", true, "Mine quartz ore to mend tools", this.field477);
     private final IBaritone field482 = BaritoneAPI.getProvider().getPrimaryBaritone();
     private final Settings field483 = BaritoneAPI.getSettings();
+    private final HashMap<Block, String> field487 = new HashMap();
     private BlockPos field484 = null;
     private boolean field485;
     private boolean field486;
-    private final HashMap<Block, String> field487 = new HashMap();
 
     public SmartMiner() {
         super("SmartMiner", "Automatically mines and mends tools", Category.Misc);

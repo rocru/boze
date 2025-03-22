@@ -24,10 +24,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.concurrent.CompletableFuture;
 
-@Mixin({ChatInputSuggestor.class})
+@Mixin(ChatInputSuggestor.class)
 public abstract class CommandSuggestorMixin {
-    @Shadow
-    private ParseResults<CommandSource> parse;
     @Shadow
     @Final
     TextFieldWidget textField;
@@ -37,6 +35,8 @@ public abstract class CommandSuggestorMixin {
     @Shadow
     boolean completingSuggestions;
     @Shadow
+    private ParseResults<CommandSource> parse;
+    @Shadow
     private CompletableFuture<Suggestions> pendingSuggestions;
     @Shadow
     private SuggestionWindow window;
@@ -45,12 +45,12 @@ public abstract class CommandSuggestorMixin {
     public abstract void show(boolean var1);
 
     @Inject(
-            method = {"refresh"},
-            at = {@At(
+            method = "refresh",
+            at = @At(
                     value = "INVOKE",
                     target = "Lcom/mojang/brigadier/StringReader;canRead()Z",
                     remap = false
-            )},
+            ),
             cancellable = true
     )
     public void onRefresh(CallbackInfo ci, @Local StringReader reader) {

@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.IntSupplier;
 
-@Mixin({SplashOverlay.class})
+@Mixin(SplashOverlay.class)
 public class SplashOverlayMixin {
     @Mutable
     @Shadow
@@ -18,8 +18,8 @@ public class SplashOverlayMixin {
     private static IntSupplier BRAND_ARGB;
 
     @Inject(
-            method = {"init"},
-            at = {@At("HEAD")}
+            method = "init",
+            at = @At("HEAD")
     )
     private static void onInit(MinecraftClient var0, CallbackInfo var1) {
         BRAND_ARGB = SplashOverlayMixin::lambda$onInit$0;

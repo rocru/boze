@@ -26,9 +26,6 @@ public class AntiCheat extends Module {
     public final BooleanSetting field2318 = new BooleanSetting(
             "PlaceOnGhost", true, "=Place on ghost blocks\nThis will place on blocks before they're confirmed\n"
     );
-    final BooleanSetting field2319 = new BooleanSetting(
-            "StrictMultiTask", false, "=When MultiTask is off in modules, they pause while eating\nWith this on, they'll also pause while breaking blocks\n"
-    );
     public final BooleanSetting field2320 = new BooleanSetting(
             "SlotSync",
             false,
@@ -44,6 +41,9 @@ public class AntiCheat extends Module {
     );
     public final BooleanSetting field2323 = new BooleanSetting(
             "CancelExpected", false, "Cancel expected slot update packets\nThis can cause desyncs with alt swaps\n"
+    );
+    final BooleanSetting field2319 = new BooleanSetting(
+            "StrictMultiTask", false, "=When MultiTask is off in modules, they pause while eating\nWith this on, they'll also pause while breaking blocks\n"
     );
 
     private AntiCheat() {

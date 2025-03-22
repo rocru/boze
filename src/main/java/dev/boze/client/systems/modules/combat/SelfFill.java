@@ -63,6 +63,10 @@ public class SelfFill extends Module {
         super("SelfFill", "Places a block in your feet", Category.Combat);
     }
 
+    private static boolean lambda$onRotate$6(Entity var0) {
+        return var0 instanceof EndCrystalEntity;
+    }
+
     @Override
     public void onEnable() {
         this.field2565 = null;
@@ -306,10 +310,6 @@ public class SelfFill extends Module {
                     ? var1 == Blocks.ENDER_CHEST
                     : var1 == Blocks.OBSIDIAN || var1 == Blocks.CRYING_OBSIDIAN || var1 == Blocks.NETHERITE_BLOCK || var1 == Blocks.ENDER_CHEST;
         }
-    }
-
-    private static boolean lambda$onRotate$6(Entity var0) {
-        return var0 instanceof EndCrystalEntity;
     }
 
     private boolean lambda$new$5() {

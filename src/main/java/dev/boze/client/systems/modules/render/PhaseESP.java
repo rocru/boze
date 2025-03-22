@@ -37,6 +37,10 @@ public class PhaseESP extends Module {
         super("PhaseESP", "Pearl phase esp", Category.Render);
     }
 
+    private static boolean lambda$new$0() {
+        return !MinecraftClient.IS_SYSTEM_MAC;
+    }
+
     @EventHandler
     public void method2071(Render3DEvent event) {
         if (this.field461.getValue() && !Class5924.method76(true)) {
@@ -178,9 +182,5 @@ public class PhaseESP extends Module {
 
     private boolean lambda$new$1() {
         return this.field467.getValue() > 0.0F;
-    }
-
-    private static boolean lambda$new$0() {
-        return !MinecraftClient.IS_SYSTEM_MAC;
     }
 }

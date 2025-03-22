@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({MapRenderer.class})
+@Mixin(MapRenderer.class)
 public class MapRendererMixin {
     @Inject(
-            method = {"draw"},
-            at = {@At("HEAD")},
+            method = "draw",
+            at = @At("HEAD"),
             cancellable = true
     )
     public void draw(

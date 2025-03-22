@@ -79,6 +79,10 @@ public class ESP extends Module {
         super("ESP", "Draws boxes around entities", Category.Render);
     }
 
+    private static boolean lambda$new$0() {
+        return !MinecraftClient.IS_SYSTEM_MAC;
+    }
+
     @Override
     public String method1322() {
         return Integer.toString(this.ap);
@@ -246,9 +250,9 @@ public class ESP extends Module {
             return this.al.getValue();
         } else {
             return switch (e.getType().getSpawnGroup()) {
-                default -> this.aj.getValue();
                 case SpawnGroup.MONSTER -> this.ak.getValue();
                 case SpawnGroup.MISC -> false;
+                default -> this.aj.getValue();
             };
         }
     }
@@ -276,9 +280,9 @@ public class ESP extends Module {
             return this.ae.getValue();
         } else {
             return switch (e.getType().getSpawnGroup()) {
-                default -> this.field3514.getValue();
                 case SpawnGroup.MONSTER -> this.field3517.getValue();
                 case SpawnGroup.MISC -> false;
+                default -> this.field3514.getValue();
             };
         }
     }
@@ -304,9 +308,9 @@ public class ESP extends Module {
             return this.af.getValue();
         } else {
             return switch (var1.getType().getSpawnGroup()) {
-                default -> this.field3515.getValue();
                 case SpawnGroup.MONSTER -> this.field3518.getValue();
                 case SpawnGroup.MISC -> this.field3515.getValue();
+                default -> this.field3515.getValue();
             };
         }
     }
@@ -332,14 +336,10 @@ public class ESP extends Module {
             return this.ag.getValue();
         } else {
             return switch (var1.getType().getSpawnGroup()) {
-                default -> this.field3516.getValue();
                 case SpawnGroup.MONSTER -> this.field3519.getValue();
                 case SpawnGroup.MISC -> this.field3515.getValue();
+                default -> this.field3516.getValue();
             };
         }
-    }
-
-    private static boolean lambda$new$0() {
-        return !MinecraftClient.IS_SYSTEM_MAC;
     }
 }

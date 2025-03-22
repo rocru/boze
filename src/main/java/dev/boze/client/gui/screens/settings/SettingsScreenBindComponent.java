@@ -16,12 +16,12 @@ public class SettingsScreenBindComponent extends BindComponent {
     }
 
     @Override
-    protected void setBind(Bind value) {
-        this.field2086.bind.set(value);
+    protected Bind getBind() {
+        return this.field2086.bind;
     }
 
     @Override
-    protected Bind getBind() {
-        return this.field2086.bind;
+    protected void setBind(Bind value) {
+        this.field2086.bind.set(value);
     }
 }

@@ -31,24 +31,6 @@ public class DebugCommand extends Command {
         super("debug", "Debug", "Debug command");
     }
 
-    @Override
-    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
-        if (Version.isBeta) {
-            builder.then(method403("autocrystal").executes(DebugCommand::lambda$build$0));
-            builder.then(method403("autocrystal-time").executes(DebugCommand::lambda$build$1));
-            builder.then(method403("automine").executes(DebugCommand::lambda$build$2));
-            builder.then(method403("clip-offhand").then(method402("seconds", IntegerArgumentType.integer(1)).executes(this::lambda$build$3)));
-            builder.then(method403("clip-replenish").then(method402("seconds", IntegerArgumentType.integer(1)).executes(this::lambda$build$4)));
-            builder.then(method403("clip-surround").then(method402("seconds", IntegerArgumentType.integer(1)).executes(this::lambda$build$5)));
-            builder.then(
-                    ((LiteralArgumentBuilder) method403("fakeplayerpath").then(method403("save").executes(this::lambda$build$6)))
-                            .then(method403("load").executes(this::lambda$build$7))
-            );
-            builder.then(method403("features").executes(DebugCommand::lambda$build$8));
-            builder.then(method403("inventory").executes(DebugCommand::lambda$build$9));
-        }
-    }
-
     private static int lambda$build$9(CommandContext var0) throws CommandSyntaxException {
         if (InventoryDebugger.field1628) {
             Boze.EVENT_BUS.unsubscribe(InventoryDebugger.class);
@@ -71,6 +53,39 @@ public class DebugCommand extends Command {
         }
 
         return 1;
+    }
+
+    private static int lambda$build$2(CommandContext var0) throws CommandSyntaxException {
+        AutoMine.field2518 = !AutoMine.field2518;
+        return 1;
+    }
+
+    private static int lambda$build$1(CommandContext var0) throws CommandSyntaxException {
+        AutoCrystal.field1039 = !AutoCrystal.field1039;
+        return 1;
+    }
+
+    private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
+        AutoCrystal.field1038 = !AutoCrystal.field1038;
+        return 1;
+    }
+
+    @Override
+    public void method621(LiteralArgumentBuilder<CommandSource> builder) {
+        if (Version.isBeta) {
+            builder.then(method403("autocrystal").executes(DebugCommand::lambda$build$0));
+            builder.then(method403("autocrystal-time").executes(DebugCommand::lambda$build$1));
+            builder.then(method403("automine").executes(DebugCommand::lambda$build$2));
+            builder.then(method403("clip-offhand").then(method402("seconds", IntegerArgumentType.integer(1)).executes(this::lambda$build$3)));
+            builder.then(method403("clip-replenish").then(method402("seconds", IntegerArgumentType.integer(1)).executes(this::lambda$build$4)));
+            builder.then(method403("clip-surround").then(method402("seconds", IntegerArgumentType.integer(1)).executes(this::lambda$build$5)));
+            builder.then(
+                    ((LiteralArgumentBuilder) method403("fakeplayerpath").then(method403("save").executes(this::lambda$build$6)))
+                            .then(method403("load").executes(this::lambda$build$7))
+            );
+            builder.then(method403("features").executes(DebugCommand::lambda$build$8));
+            builder.then(method403("inventory").executes(DebugCommand::lambda$build$9));
+        }
     }
 
     private int lambda$build$7(CommandContext var1) throws CommandSyntaxException {
@@ -112,21 +127,6 @@ public class DebugCommand extends Command {
         String var5 = BozeLogger.method523(OffHand.INSTANCE, var4);
         this.method624("Debug log for last " + var4 + " seconds:");
         this.method624(var5);
-        return 1;
-    }
-
-    private static int lambda$build$2(CommandContext var0) throws CommandSyntaxException {
-        AutoMine.field2518 = !AutoMine.field2518;
-        return 1;
-    }
-
-    private static int lambda$build$1(CommandContext var0) throws CommandSyntaxException {
-        AutoCrystal.field1039 = !AutoCrystal.field1039;
-        return 1;
-    }
-
-    private static int lambda$build$0(CommandContext var0) throws CommandSyntaxException {
-        AutoCrystal.field1038 = !AutoCrystal.field1038;
         return 1;
     }
 }

@@ -12,16 +12,12 @@ import java.util.ArrayList;
 
 public class ToggleableModule implements Serializable<ToggleableModule> {
 
+    public final ArrayList<SettingBase<?>> settings = new ArrayList<>();
     private final String name;
     private final String description;
-
-    private String title;
-
-    private boolean state;
-
     private final SettingBind bind;
-
-    public final ArrayList<SettingBase<?>> settings = new ArrayList<>();
+    private String title;
+    private boolean state;
 
     protected ToggleableModule(String name, String description) {
         this.name = name;

@@ -56,6 +56,14 @@ public abstract class HUDModule extends Module {
         this.field603 = anchor;
     }
 
+    public static double method2091() {
+        return HUD.INSTANCE.field2376.getValue() * (double) Math.min(mc.getWindow().getScaledWidth(), mc.getWindow().getScaledHeight());
+    }
+
+    public static boolean method323(double mouseX, double mouseY, double x, double y, double width, double height) {
+        return mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
+    }
+
     @Override
     public void method394(NbtCompound tag) {
         super.method394(tag);
@@ -267,10 +275,6 @@ public abstract class HUDModule extends Module {
                 this.method65(this.method1391(), Class3071.method6022(this.method305(), var12, var16));
             }
         }
-    }
-
-    public static double method2091() {
-        return HUD.INSTANCE.field2376.getValue() * (double) Math.min(mc.getWindow().getScaledWidth(), mc.getWindow().getScaledHeight());
     }
 
     private boolean method65(double var1, double var3) {
@@ -573,10 +577,6 @@ public abstract class HUDModule extends Module {
 
     protected boolean method1974() {
         return mc.currentScreen instanceof ChatScreen && HUD.INSTANCE.field2380.getValue() && this.method307() == 0.0;
-    }
-
-    public static boolean method323(double mouseX, double mouseY, double x, double y, double width, double height) {
-        return mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
     }
 
     public boolean method324(double mouseX, double mouseY, int mouseButton) {

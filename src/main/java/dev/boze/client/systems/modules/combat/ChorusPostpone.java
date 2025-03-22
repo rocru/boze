@@ -18,10 +18,10 @@ public class ChorusPostpone extends Module {
     public static final ChorusPostpone INSTANCE = new ChorusPostpone();
     private final BindSetting teleportBind = new BindSetting("Bind", Bind.fromKey(341), "Bind to teleport");
     private final BooleanSetting itemSwap = new BooleanSetting("ItemSwap", false, "Teleport when you swap items");
+    private final Queue<TeleportConfirmC2SPacket> field2555 = new LinkedList();
     private int field2552;
     private boolean field2553;
     private boolean field2554;
-    private final Queue<TeleportConfirmC2SPacket> field2555 = new LinkedList();
 
     public ChorusPostpone() {
         super("ChorusPostpone", "Delay chorus teleports", Category.Combat);

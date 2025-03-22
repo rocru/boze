@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({NbtSizeTracker.class})
+@Mixin(NbtSizeTracker.class)
 public class NbtTagSizeTrackerMixin {
     @Shadow
     private int depth;
@@ -18,8 +18,8 @@ public class NbtTagSizeTrackerMixin {
     private int maxDepth;
 
     @Inject(
-            method = {"pushStack"},
-            at = {@At("HEAD")}
+            method = "pushStack",
+            at = @At("HEAD")
     )
     private void pushStack(CallbackInfo var1) {
         if (this.depth >= this.maxDepth) {

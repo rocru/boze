@@ -39,6 +39,14 @@ public class AutoMount extends Module {
         super("AutoMount", "Automatically mounts entities", Category.Misc);
     }
 
+    private static void lambda$onUpdateWalkingPlayer$1(Entity var0) {
+        mc.player.networkHandler.sendPacket(PlayerInteractEntityC2SPacket.interact(var0, false, Hand.MAIN_HAND));
+    }
+
+    private static Float lambda$onUpdateWalkingPlayer$0(Entity var0) {
+        return mc.player.distanceTo(var0);
+    }
+
     @EventHandler
     public void method1669(PostPlayerTickEvent event) {
         if (mc.player != null) {
@@ -88,13 +96,5 @@ public class AutoMount extends Module {
         } else {
             return var1 instanceof LlamaEntity && this.llamas.getValue();
         }
-    }
-
-    private static void lambda$onUpdateWalkingPlayer$1(Entity var0) {
-        mc.player.networkHandler.sendPacket(PlayerInteractEntityC2SPacket.interact(var0, false, Hand.MAIN_HAND));
-    }
-
-    private static Float lambda$onUpdateWalkingPlayer$0(Entity var0) {
-        return mc.player.distanceTo(var0);
     }
 }

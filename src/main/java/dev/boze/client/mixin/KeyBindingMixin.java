@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({KeyBinding.class})
+@Mixin(KeyBinding.class)
 public abstract class KeyBindingMixin {
     @Shadow
     private int timesPressed;
@@ -18,8 +18,8 @@ public abstract class KeyBindingMixin {
     private boolean prevState = true;
 
     @Inject(
-            method = {"isPressed"},
-            at = {@At("RETURN")},
+            method = "isPressed",
+            at = @At("RETURN"),
             cancellable = true
     )
     public void hookEventKeyBindingIsPressed(CallbackInfoReturnable<Boolean> cir) {

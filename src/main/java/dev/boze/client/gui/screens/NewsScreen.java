@@ -26,9 +26,9 @@ import java.nio.IntBuffer;
 import java.security.NoSuchAlgorithmException;
 
 public class NewsScreen extends Screen implements IMinecraft {
-    private int field1128;
     private final String[] field1129;
     private final Texture[] field1130;
+    private int field1128;
 
     public NewsScreen(String[] urls) {
         super(Text.literal("News"));

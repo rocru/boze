@@ -21,11 +21,11 @@ public class HudSettings implements SettingsGroup {
     public final BooleanSetting field2185 = new BooleanSetting("Spyglass", true, "Don't render spyglass overlay", this.field2183);
     public final BooleanSetting field2186 = new BooleanSetting("PowderedSnow", true, "Don't render powdered snow overlay", this.field2183);
     public final BooleanSetting field2187 = new BooleanSetting("GUIBackground", false, "Don't render GUI background", this.field2183);
+    public final BooleanSetting field2192 = new BooleanSetting("Nausea", true, "Don't render nausea wobble overlay", this.field2183);
     private final BooleanSetting field2188 = new BooleanSetting("Fire", true, "Don't render fire overlay", this.field2183);
     private final BooleanSetting field2189 = new BooleanSetting("Liquid", true, "Don't render liquid overlay", this.field2183);
     private final BooleanSetting field2190 = new BooleanSetting("Pumpkin", true, "Don't render pumpkin overlay", this.field2183);
     private final BooleanSetting field2191 = new BooleanSetting("Blindness", true, "Don't render blindness overlay", this.field2183);
-    public final BooleanSetting field2192 = new BooleanSetting("Nausea", true, "Don't render nausea wobble overlay", this.field2183);
     private final BooleanSetting field2193 = new BooleanSetting("Walls", true, "Don't render wall (in block) overlay", this.field2183);
     private final SettingBlock field2194 = new SettingBlock(
             "HUD",

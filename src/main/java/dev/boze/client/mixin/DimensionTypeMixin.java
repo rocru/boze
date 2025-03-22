@@ -9,15 +9,15 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({DimensionType.class})
+@Mixin(DimensionType.class)
 public class DimensionTypeMixin {
     @Shadow
     @Final
     private float ambientLight;
 
     @Inject(
-            method = {"ambientLight"},
-            at = {@At("HEAD")},
+            method = "ambientLight",
+            at = @At("HEAD"),
             cancellable = true
     )
     private void ambientLight(CallbackInfoReturnable<Float> var1) {

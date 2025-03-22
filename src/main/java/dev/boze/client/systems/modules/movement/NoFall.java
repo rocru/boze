@@ -38,22 +38,35 @@ import net.minecraft.util.math.Vec3d;
 public class NoFall extends Module {
     public static final NoFall INSTANCE = new NoFall();
     private final EnumSetting<NoFallMode> field527 = new EnumSetting<NoFallMode>("Mode", NoFallMode.Grim, "Mode for no fall", NoFall::lambda$new$0);
-    private final MinMaxDoubleSetting field528 = new MinMaxDoubleSetting("AimSpeed", new double[]{1.0, 2.0}, 0.1, 5.0, 0.1, "Aim speed", this::method1971);
     public final MinMaxDoubleSetting field529 = new MinMaxDoubleSetting(
             "SwapDelay", new double[]{1.5, 3.0}, 0.0, 10.0, 0.1, "Delay to swap in ticks", this::method1971
     );
     public final MinMaxDoubleSetting field530 = new MinMaxDoubleSetting(
             "PlaceDelay", new double[]{1.5, 3.0}, 0.0, 10.0, 0.1, "Delay to place in ticks", this::method1971
     );
+    private final MinMaxDoubleSetting field528 = new MinMaxDoubleSetting("AimSpeed", new double[]{1.0, 2.0}, 0.1, 5.0, 0.1, "Aim speed", this::method1971);
     private final BooleanSetting field531 = new BooleanSetting("MultiTask", false, "Place blocks while already using items", this::method1971);
     private final MinMaxSetting field532 = new MinMaxSetting("Distance", 3.0, 0.1, 20.0, 0.1, "Minimum fall distance to activate no fall");
     private final BooleanSetting field533 = new BooleanSetting("Proximity", false, "Only activate no fall when close to ground", this::lambda$new$1);
     private final MinMaxSetting field534 = new MinMaxSetting("Height", 4.0, 0.1, 10.0, 0.1, "Height above ground to activate no fall", this.field533);
     private final Timer field535 = new Timer();
-    private boolean field536 = false;
-    private boolean field537 = false;
     private final Timer field538 = new Timer();
     private final Timer field539 = new Timer();
+    private boolean field536 = false;
+    private boolean field537 = false;
+
+    public NoFall() {
+        super("NoFall", "Prevent falling or fall damage", Category.Movement);
+        this.field435 = true;
+    }
+
+    private static boolean lambda$onSendMovementPackets$2(ItemStack var0) {
+        return var0.getItem() instanceof BlockItem;
+    }
+
+    private static boolean lambda$new$0() {
+        return !Options.INSTANCE.method1971();
+    }
 
     private NoFallMode method275() {
         return Options.INSTANCE.method1971() ? NoFallMode.Ghost : this.field527.getValue();
@@ -61,11 +74,6 @@ public class NoFall extends Module {
 
     private boolean method1971() {
         return this.method275() == NoFallMode.Ghost;
-    }
-
-    public NoFall() {
-        super("NoFall", "Prevent falling or fall damage", Category.Movement);
-        this.field435 = true;
     }
 
     @Override
@@ -262,15 +270,7 @@ public class NoFall extends Module {
         }
     }
 
-    private static boolean lambda$onSendMovementPackets$2(ItemStack var0) {
-        return var0.getItem() instanceof BlockItem;
-    }
-
     private boolean lambda$new$1() {
         return this.method275() != NoFallMode.Grim;
-    }
-
-    private static boolean lambda$new$0() {
-        return !Options.INSTANCE.method1971();
     }
 }
