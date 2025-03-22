@@ -24,7 +24,6 @@
   ],
   "depends": {
     "minecraft": "~1.21.1",
-    "java": ">=21",
-    "baritone": "*"
+    "java": ">=21"
   }
 }
