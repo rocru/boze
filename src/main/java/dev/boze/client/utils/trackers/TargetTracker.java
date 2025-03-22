@@ -115,7 +115,7 @@ public class TargetTracker implements IMinecraft {
         if (MinecraftClient.getInstance().world != null && MinecraftClient.getInstance().player != null) {
             if (var0.packet instanceof PlayerInteractEntityC2SPacket var4
                     && MinecraftUtils.isClientActive()
-                    && ((PlayerInteractEntityC2SPacketAccessor) var0.packet).getType().getType() == InteractType.ATTACK) {
+                    && ((PlayerInteractEntityC2SPacketAccessor) var0.packet).getInteractionType() == PlayerInteractEntityC2SPacket.InteractType.ATTACK) {
                 Entity var6 = mc.world.getEntityById(((PlayerInteractEntityC2SPacketAccessor) var4).getEntityId());
                 if (var6 instanceof LivingEntity) {
                     method488(var6);
